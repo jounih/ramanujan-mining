@@ -143,10 +143,13 @@ def test_search_module_import_smoke():
         RandomProposer, MpmathVerifier, RkcRouter, RkcCostModel,
         JsonlRegistry, search, QR7_OPERATOR_BASIS,
     )
-    assert len(QR7_OPERATOR_BASIS) == 7
+    # The original QR7 basis was 7 ops (Hunt 5 revised set, diary 20).
+    # v0.8b adds modular_transform_with_correction → basis is now 8.
+    assert len(QR7_OPERATOR_BASIS) == 8
     op_ids = [op.id for op in QR7_OPERATOR_BASIS]
     assert "master_theorem" in op_ids
     assert "fractional_functional_iteration" in op_ids
+    assert "modular_transform_with_correction" in op_ids
 
 
 def test_v04_mellin_inversion_poisson_dual_accepted(tmp_path):
@@ -496,3 +499,293 @@ def test_benchmark_default_suite_runs():
     assert p.returncode == 0
     # The 14b script prints "55/55" if everything passes
     assert "55" in p.stdout
+
+
+# ---------------------------------------------------------------------------
+# Project C v0.8a — ClaudeProposer (LLM-powered proposer)
+# ---------------------------------------------------------------------------
+
+def test_v08a_claude_stub_proposer_when_no_api_key(monkeypatch):
+    """v0.8a: with ANTHROPIC_API_KEY unset, ClaudeProposer falls back to
+    ClaudeStubProposer (random selection), logs a warning, and yields
+    OperatorApplications with op_ids from the basis.
+
+    The graceful-fallback path is the contract for CI / offline use.
+    """
+    import sympy as sp
+    from rkc.search import (
+        SearchState, ClaudeProposer, ClaudeStubProposer, QR7_OPERATOR_BASIS,
+    )
+    # Force ANTHROPIC_API_KEY off; clear cached load
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    # Also patch load_dotenv to be a no-op so a local .env file doesn't
+    # accidentally inject the key during testing.
+    import rkc.search.proposers as proposers_mod
+
+    def _fake_load_dotenv(*args, **kwargs):
+        return False
+    monkeypatch.setattr(proposers_mod, "load_dotenv" if hasattr(
+        proposers_mod, "load_dotenv") else "load_dotenv", _fake_load_dotenv,
+                        raising=False)
+    # Also need to monkeypatch the dotenv module that's imported inside
+    # ClaudeProposer.__post_init__
+    import sys as _sys
+    fake_dotenv = type(_sys)("dotenv")
+    fake_dotenv.load_dotenv = _fake_load_dotenv
+    monkeypatch.setitem(_sys.modules, "dotenv", fake_dotenv)
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+    proposer = ClaudeProposer(seed=42)
+    # The fallback should be active
+    assert proposer._fallback is not None
+    assert isinstance(proposer._fallback, ClaudeStubProposer)
+    # Stats should reflect the fallback
+    s = proposer.stats()
+    assert s["fallback_active"] is True
+    assert s["api_calls"] == 0
+    # propose() should yield basis op_ids without making any API call
+    op_ids = {op.id for op in QR7_OPERATOR_BASIS}
+    proposals = list(proposer.propose(state, budget=5))
+    assert len(proposals) == 5
+    for app in proposals:
+        assert app.op_id in op_ids, f"{app.op_id!r} not in basis"
+
+
+def test_v08a_claude_proposer_obeys_basis():
+    """v0.8a: with a MOCK Anthropic client returning a fake JSON-shaped op
+    payload, ClaudeProposer parses it and returns the corresponding
+    OperatorApplication (no real API call).
+
+    Mocks the `client.messages.create()` to return a synthetic response
+    object shaped like the real Anthropic SDK output (a `.content` list
+    of blocks each with a `.text` attribute).
+    """
+    import sympy as sp
+    from rkc.search import SearchState, ClaudeProposer
+
+    class _MockContentBlock:
+        def __init__(self, text):
+            self.text = text
+
+    class _MockResponse:
+        def __init__(self, text):
+            self.content = [_MockContentBlock(text)]
+
+    class _MockMessages:
+        def __init__(self, response_text):
+            self._response_text = response_text
+            self.calls = 0
+
+        def create(self, **kwargs):
+            self.calls += 1
+            return _MockResponse(self._response_text)
+
+    class _MockClient:
+        def __init__(self, response_text):
+            self.messages = _MockMessages(response_text)
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+
+    # Case 1: clean JSON
+    client = _MockClient(
+        '{"op_id": "mellin_inversion", "rationale": "Gaussian Poisson dual"}'
+    )
+    proposer = ClaudeProposer(client=client, seed=42, max_api_calls=5)
+    assert proposer._fallback is None, "should NOT fall back when client supplied"
+    proposals = list(proposer.propose(state, budget=3))
+    assert len(proposals) == 3
+    for app in proposals:
+        assert app.op_id == "mellin_inversion"
+    # The cache should de-dup repeated identical states → only 1 API call
+    assert client.messages.calls == 1
+    assert proposer.stats()["api_calls"] == 1
+
+    # Case 2: JSON wrapped in markdown fences (common LLM artefact)
+    client_md = _MockClient(
+        '```json\n{"op_id": "master_theorem", "rationale": "integral form"}\n```'
+    )
+    proposer_md = ClaudeProposer(client=client_md, seed=42, max_api_calls=5)
+    proposals_md = list(proposer_md.propose(state, budget=1))
+    assert proposals_md[0].op_id == "master_theorem"
+
+    # Case 3: JSON preceded by prose (also common)
+    client_prose = _MockClient(
+        'I think the right choice is:\n{"op_id": "frullani_limit", "rationale": ""}\n'
+    )
+    proposer_prose = ClaudeProposer(client=client_prose, seed=42, max_api_calls=5)
+    proposals_prose = list(proposer_prose.propose(state, budget=1))
+    assert proposals_prose[0].op_id == "frullani_limit"
+
+
+def test_v08a_claude_proposer_parses_malformed_response():
+    """v0.8a: proposer handles non-parseable responses + out-of-basis
+    op_ids by falling back to a random selection from the basis (not
+    erroring), and logs the failure mode.
+    """
+    import logging
+    import sympy as sp
+    from rkc.search import SearchState, ClaudeProposer, QR7_OPERATOR_BASIS
+
+    class _MockContentBlock:
+        def __init__(self, text):
+            self.text = text
+
+    class _MockResponse:
+        def __init__(self, text):
+            self.content = [_MockContentBlock(text)]
+
+    class _MockMessages:
+        def __init__(self, responses):
+            self._responses = list(responses)
+            self.calls = 0
+
+        def create(self, **kwargs):
+            response = self._responses[self.calls % len(self._responses)]
+            self.calls += 1
+            return _MockResponse(response)
+
+    class _MockClient:
+        def __init__(self, responses):
+            self.messages = _MockMessages(responses)
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    op_ids = {op.id for op in QR7_OPERATOR_BASIS}
+
+    # Case A: unparseable response (free-form prose, no JSON)
+    client_garbage = _MockClient([
+        "I don't know, maybe try mellin_inversion or something",
+    ])
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+    proposer = ClaudeProposer(client=client_garbage, seed=42, max_api_calls=5)
+    proposals = list(proposer.propose(state, budget=1))
+    assert len(proposals) == 1
+    # Fallback to random — must still be in basis
+    assert proposals[0].op_id in op_ids
+
+    # Case B: well-formed JSON but op_id not in basis
+    client_wrong = _MockClient([
+        '{"op_id": "not_a_real_operator", "rationale": "made up"}',
+    ])
+    state_2 = SearchState(
+        payload=sp.exp(-sp.Rational(1, 50) * n**2), metadata={"var": n},
+    )
+    proposer_2 = ClaudeProposer(client=client_wrong, seed=42, max_api_calls=5)
+    proposals_2 = list(proposer_2.propose(state_2, budget=1))
+    assert proposals_2[0].op_id in op_ids
+    assert proposals_2[0].op_id != "not_a_real_operator"
+
+    # Case C: API exception → random fallback (no exception escapes propose())
+    class _ExplodingMessages:
+        calls = 0
+
+        def create(self, **kwargs):
+            self.calls += 1
+            raise RuntimeError("API down")
+
+    class _ExplodingClient:
+        def __init__(self):
+            self.messages = _ExplodingMessages()
+
+    client_boom = _ExplodingClient()
+    state_3 = SearchState(payload=sp.Symbol("foo"), metadata={"var": n})
+    proposer_3 = ClaudeProposer(client=client_boom, seed=42, max_api_calls=5)
+    proposals_3 = list(proposer_3.propose(state_3, budget=2))
+    assert len(proposals_3) == 2
+    for app in proposals_3:
+        assert app.op_id in op_ids
+
+
+def test_v08a_claude_proposer_respects_max_api_calls():
+    """v0.8a: proposer caps API calls at `max_api_calls`; excess budget is
+    filled from random fallback (no further API calls).
+    """
+    import sympy as sp
+    from rkc.search import SearchState, ClaudeProposer
+
+    class _MockResponse:
+        def __init__(self, text):
+            class _B: pass
+            b = _B()
+            b.text = text
+            self.content = [b]
+
+    class _MockMessages:
+        def __init__(self):
+            self.calls = 0
+
+        def create(self, **kwargs):
+            self.calls += 1
+            # Force a unique response per state so caching doesn't masque
+            # the call-count behaviour
+            return _MockResponse(
+                f'{{"op_id": "mellin_inversion", "rationale": "call #{self.calls}"}}'
+            )
+
+    class _MockClient:
+        def __init__(self):
+            self.messages = _MockMessages()
+
+    client = _MockClient()
+    proposer = ClaudeProposer(client=client, seed=42, max_api_calls=2)
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    # Use DIFFERENT states each call so the cache doesn't short-circuit
+    proposals = []
+    for i in range(5):
+        state = SearchState(
+            payload=sp.exp(-sp.Rational(1, 100 + i) * n**2),
+            metadata={"var": n},
+        )
+        proposals.extend(list(proposer.propose(state, budget=1)))
+    # Only the first 2 should be live API calls; the rest are random fallback
+    assert client.messages.calls == 2
+    assert len(proposals) == 5
+    assert proposer.stats()["api_calls"] == 2
+
+
+def test_v08a_cli_sweep_accepts_proposer_flag(tmp_path):
+    """v0.8a CLI: `rkc sweep --proposer random` runs (default). The
+    `--proposer claude` path is exercised by the live-benchmark step (not
+    in CI). Smoke-test just the flag plumbing here.
+    """
+    p = _run([
+        "sweep", "--seeds", "gaussian_beta_1em2",
+        "--budget", "10", "--depth", "1", "--workers", "1",
+        "--digits", "8", "--seed", "42",
+        "--proposer", "random",
+        "--out-dir", str(tmp_path),
+    ])
+    assert p.returncode == 0, f"sweep failed: stderr={p.stderr}, stdout={p.stdout}"
+    assert "rkc sweep complete" in p.stdout
+
+
+def test_v08a_cli_search_accepts_proposer_flag(tmp_path):
+    """v0.8a CLI: `rkc search --proposer claude` exercises the
+    ClaudeProposer path (with the stub fallback active when API key
+    isn't set — so this is safe in CI).
+    """
+    import os
+    # Force the stub path so test doesn't try a real API call
+    env = dict(os.environ)
+    env.pop("ANTHROPIC_API_KEY", None)
+    import subprocess
+    import sys as _sys
+    p = subprocess.run(
+        [_sys.executable, "-m", "rkc",
+         "search", "exp(-beta*n**2)",
+         "--budget", "3", "--digits", "8", "--seed", "42",
+         "--out-dir", str(tmp_path),
+         "--proposer", "claude"],
+        capture_output=True, text=True, timeout=60, env=env,
+    )
+    assert p.returncode == 0, f"search failed: stderr={p.stderr}"
+    # Should mention claude in some way (the proposer choice surfaces in output)
+    assert "proposed" in p.stdout

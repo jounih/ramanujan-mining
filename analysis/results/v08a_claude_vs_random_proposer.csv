@@ -1,0 +1,11 @@
+seed_id,proposer,n_proposed,n_accepted,n_rejected,walltime_s,api_calls,fallback_active,note,error
+gaussian_beta_1em2,random,20,2,18,0.26,,,,
+gaussian_beta_1em4,random,20,2,18,1.15,,,,
+gaussian_half_shift_beta_1em2,random,20,1,19,0.31,,,,
+gaussian_weighted_beta_1em2,random,20,1,19,0.49,,,,
+beta_function_integral,random,20,1,19,5.03,,,,
+gaussian_beta_1em2,claude_deferred,0,0,0,0.0,,,deferred — ANTHROPIC_API_KEY env var is unset or empty,
+gaussian_beta_1em4,claude_deferred,0,0,0,0.0,,,deferred — ANTHROPIC_API_KEY env var is unset or empty,
+gaussian_half_shift_beta_1em2,claude_deferred,0,0,0,0.0,,,deferred — ANTHROPIC_API_KEY env var is unset or empty,
+gaussian_weighted_beta_1em2,claude_deferred,0,0,0,0.0,,,deferred — ANTHROPIC_API_KEY env var is unset or empty,
+beta_function_integral,claude_deferred,0,0,0,0.0,,,deferred — ANTHROPIC_API_KEY env var is unset or empty,

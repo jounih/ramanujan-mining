@@ -58,17 +58,30 @@ class SeedSweepResult:
         }
 
 
-def _run_one_seed(args: tuple[str, int, int, int, int | None, str]) -> dict[str, Any]:
+def _run_one_seed(args: tuple) -> dict[str, Any]:
     """Worker function — runs `search` on a single seed. Top-level so it
     pickles cleanly across multiprocessing boundaries.
 
-    args = (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str)
+    args = (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str,
+            proposer_kind, claude_model, claude_max_api_calls)
+
+    proposer_kind: "random" (v0.6 default) or "claude" (v0.8a; uses the
+    Anthropic API via ClaudeProposer with graceful fallback to random
+    when ANTHROPIC_API_KEY is absent).
     """
-    seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str = args
+    # Backward-compat: accept 6-tuple (legacy) or 9-tuple (v0.8a+)
+    if len(args) == 6:
+        (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str) = args
+        proposer_kind = "random"
+        claude_model = "claude-sonnet-4-5"
+        claude_max_api_calls = 10
+    else:
+        (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str,
+         proposer_kind, claude_model, claude_max_api_calls) = args
     # Re-import inside the worker so multiprocessing doesn't share module state
     from rkc.search.seeds import SEED_LIBRARY, build_seed
     from rkc.search import (
-        SearchState, RandomProposer, MpmathVerifier,
+        SearchState, RandomProposer, ClaudeProposer, MpmathVerifier,
         RkcRouter, RkcCostModel, JsonlRegistry, search,
     )
     out_dir = Path(out_dir_str) / seed_id
@@ -79,9 +92,16 @@ def _run_one_seed(args: tuple[str, int, int, int, int | None, str]) -> dict[str,
         expr, var = build_seed(seed)
         state = SearchState(payload=expr, metadata={"var": var})
         registry = JsonlRegistry.with_dir(out_dir)
+        if proposer_kind == "claude":
+            proposer = ClaudeProposer(
+                seed=rng_seed, model=claude_model,
+                max_api_calls=claude_max_api_calls,
+            )
+        else:
+            proposer = RandomProposer(seed=rng_seed)
         summary = search(
             initial_state=state,
-            proposer=RandomProposer(seed=rng_seed),
+            proposer=proposer,
             verifier=MpmathVerifier(n_digits=n_digits),
             router=RkcRouter(),
             cost_model=RkcCostModel(),
@@ -121,7 +141,10 @@ def sweep(seed_ids: list[str] | None = None,
           n_digits: int = 10,
           workers: int = 4,
           rng_seed: int | None = None,
-          out_dir: str | Path = ".rkc_sweep_out") -> dict[str, Any]:
+          out_dir: str | Path = ".rkc_sweep_out",
+          proposer_kind: str = "random",
+          claude_model: str = "claude-sonnet-4-5",
+          claude_max_api_calls: int = 10) -> dict[str, Any]:
     """Run `search()` over multiple seeds in parallel; aggregate results.
 
     Parameters
@@ -159,7 +182,8 @@ def sweep(seed_ids: list[str] | None = None,
     out_dir.mkdir(parents=True, exist_ok=True)
 
     args_list = [
-        (sid, budget, max_depth, n_digits, rng_seed, str(out_dir))
+        (sid, budget, max_depth, n_digits, rng_seed, str(out_dir),
+         proposer_kind, claude_model, claude_max_api_calls)
         for sid in seed_ids
     ]
 
@@ -188,6 +212,9 @@ def sweep(seed_ids: list[str] | None = None,
         "n_digits": n_digits,
         "workers": workers,
         "rng_seed": rng_seed,
+        "proposer_kind": proposer_kind,
+        "claude_model": claude_model if proposer_kind == "claude" else None,
+        "claude_max_api_calls": claude_max_api_calls if proposer_kind == "claude" else None,
         "walltime_total_seconds": t_elapsed,
         "walltime_per_seed_avg_seconds": t_elapsed / n_seeds if n_seeds else 0.0,
         "n_proposed_total": n_proposed_total,

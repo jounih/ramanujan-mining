@@ -367,6 +367,17 @@ def _build_parser() -> argparse.ArgumentParser:
                      help="RandomProposer RNG seed (default: nondeterministic).")
     psw.add_argument("--out-dir", default=".rkc_sweep_out",
                      help="Output directory (default: .rkc_sweep_out).")
+    psw.add_argument("--proposer", choices=["random", "claude"], default="random",
+                     help="Which proposer to use (default: random; v0.8a "
+                          "adds claude which uses the Anthropic API — needs "
+                          "ANTHROPIC_API_KEY in env or .env, falls back to "
+                          "random selection if unavailable).")
+    psw.add_argument("--claude-model", default="claude-sonnet-4-5",
+                     help="Anthropic model id for --proposer claude "
+                          "(default: claude-sonnet-4-5).")
+    psw.add_argument("--claude-max-api-calls", type=int, default=10,
+                     help="Cap on Anthropic API calls per search() invocation "
+                          "(default: 10). Excess budget is filled from random.")
     psw.set_defaults(func=cmd_sweep)
 
     # search (Project C v0.3.0)
@@ -382,6 +393,17 @@ def _build_parser() -> argparse.ArgumentParser:
                     help="Directory for accepted.jsonl + rejected.jsonl (default: .rkc_search_out).")
     ps.add_argument("--seed", type=int, default=None, help="RandomProposer seed.")
     ps.add_argument("--verbose", action="store_true")
+    ps.add_argument("--proposer", choices=["random", "claude"], default="random",
+                    help="Which proposer to use (default: random; v0.8a "
+                         "adds claude which uses the Anthropic API — needs "
+                         "ANTHROPIC_API_KEY in env or .env, falls back to "
+                         "random selection if unavailable).")
+    ps.add_argument("--claude-model", default="claude-sonnet-4-5",
+                    help="Anthropic model id for --proposer claude "
+                         "(default: claude-sonnet-4-5).")
+    ps.add_argument("--claude-max-api-calls", type=int, default=10,
+                    help="Cap on Anthropic API calls per search() invocation "
+                         "(default: 10). Excess budget is filled from random.")
     ps.set_defaults(func=cmd_search)
 
     return p
@@ -398,10 +420,16 @@ def cmd_sweep(args: argparse.Namespace) -> int:
             print(f"unknown seed_ids: {unknown}", file=sys.stderr)
             print(f"available: {list(SEED_LIBRARY.keys())}", file=sys.stderr)
             return 2
+    proposer_kind = getattr(args, "proposer", "random")
+    claude_model = getattr(args, "claude_model", "claude-sonnet-4-5")
+    claude_max_api_calls = getattr(args, "claude_max_api_calls", 10)
     summary = sweep(
         seed_ids=seed_ids, budget=args.budget, max_depth=args.depth,
         n_digits=args.digits, workers=args.workers,
         rng_seed=args.seed, out_dir=args.out_dir,
+        proposer_kind=proposer_kind,
+        claude_model=claude_model,
+        claude_max_api_calls=claude_max_api_calls,
     )
     print(f"rkc sweep complete")
     print(f"  seeds         : {summary['n_seeds']}")
@@ -425,14 +453,23 @@ def cmd_search(args: argparse.Namespace) -> int:
     """Project C v0.3.0 search loop (single-step composition baseline)."""
     expr, n = _parse_expr(args.expr, args.var)
     from rkc.search import (
-        SearchState, RandomProposer, MpmathVerifier,
-        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SearchState, RandomProposer, ClaudeProposer,
+        MpmathVerifier, RkcRouter, RkcCostModel, JsonlRegistry, search,
     )
     state = SearchState(payload=expr, metadata={"var": n})
     registry = JsonlRegistry.with_dir(args.out_dir)
+    proposer_kind = getattr(args, "proposer", "random")
+    if proposer_kind == "claude":
+        proposer = ClaudeProposer(
+            seed=args.seed,
+            model=getattr(args, "claude_model", "claude-sonnet-4-5"),
+            max_api_calls=getattr(args, "claude_max_api_calls", 10),
+        )
+    else:
+        proposer = RandomProposer(seed=args.seed)
     summary = search(
         initial_state=state,
-        proposer=RandomProposer(seed=args.seed),
+        proposer=proposer,
         verifier=MpmathVerifier(n_digits=args.digits),
         router=RkcRouter(),
         cost_model=RkcCostModel(),

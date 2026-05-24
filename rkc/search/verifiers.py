@@ -80,14 +80,56 @@ class MpmathVerifier:
         In `summand_mode=False`, payloads are evaluated pointwise at
         each cell; useful for transformations that are pointwise
         identities, not series identities.
+
+        v0.8b extension: if any op in `op_sequence` carries an
+        `additive_correction` field, the verifier compares
+            Σ_n state_before  ≡  Σ_n state_after + total_additive_correction
+        where `total_additive_correction` is the sum of all the
+        additive_correction fields. Operators that don't carry a
+        correction (v0.4 Gaussian, v0.7 half-shift / weighted — all None
+        by default) contribute 0 to the sum. This preserves the strict
+        v0.7 verification path exactly for the existing identities.
+
+        Similarly, if any op carries a `summand_range`, the verifier uses
+        that range when nsumming the v0.8b summands. v0.4 / v0.7
+        operators leave it None and inherit the verifier's default
+        symmetric range (`(-oo, oo)`). The verifier requires all non-None
+        summand_range entries in op_sequence to agree (operators with
+        incompatible ranges cannot mix; the verifier returns
+        VERIFIER_FAILED in that case).
         """
         expr_before = state_before.payload
         expr_after = state_after.payload
         var = state_before.metadata.get("var")
 
-        # quick symbolic shortcut: if they're sympy-equal, trivially passes
+        # v0.8b: collect additive corrections + summand range from the
+        # op_sequence. Both default to "no override" (correction = 0,
+        # range = self.summand_range).
+        additive_correction = sp.Integer(0)
+        op_summand_range = None
+        for op in op_sequence:
+            if getattr(op, "additive_correction", None) is not None:
+                additive_correction = additive_correction + op.additive_correction
+            r = getattr(op, "summand_range", None)
+            if r is not None:
+                if op_summand_range is not None and op_summand_range != r:
+                    return VerificationResult(
+                        passed=False,
+                        digits_or_examples=0,
+                        reason=f"OPERATOR_DOMAIN_VIOLATION: incompatible "
+                               f"summand_range entries in op_sequence: "
+                               f"{op_summand_range} vs {r}",
+                    )
+                op_summand_range = r
+        # Effective range for THIS verification call: prefer the op-supplied
+        # range when any op set it; else fall back to the verifier default.
+        effective_range = op_summand_range if op_summand_range is not None else self.summand_range
+        has_correction = additive_correction != 0
+
+        # quick symbolic shortcut: if they're sympy-equal (after folding the
+        # additive correction) and no v0.8b override, trivially passes
         try:
-            if sp.simplify(expr_before - expr_after) == 0:
+            if not has_correction and sp.simplify(expr_before - expr_after) == 0:
                 return VerificationResult(
                     passed=True,
                     digits_or_examples=self.n_digits,
@@ -99,13 +141,25 @@ class MpmathVerifier:
         sweep = self.sweep_params if self.sweep_params is not None else self._default_sweep()
         old_dps = mpmath.mp.dps
         try:
-            mpmath.mp.dps = self.n_digits + 10  # working precision buffer
+            # v0.8b: one-sided modular sums (log-Bose-Einstein, Lambert) can
+            # have slow LHS convergence at very small β. The β·n decay of
+            # log(1-e^{-βn}) needs ~50000 terms at β=1e-3 to reach 20 digits.
+            # When an additive correction is present (signaling a v0.8b
+            # modular_transform_with_correction op), bump the working
+            # precision buffer to give mp.nsum enough headroom for the slow
+            # tail. Otherwise the v0.4/v0.7 strict-Poisson default suffices.
+            dps_buffer = 40 if has_correction else 10
+            mpmath.mp.dps = self.n_digits + dps_buffer  # working precision buffer
             tol = mpmath.mpf(10) ** (-self.n_digits)
             for cell in sweep:
                 try:
                     if self.summand_mode and var is not None:
-                        val_before = self._sum_evaluate(expr_before, var, cell)
-                        val_after = self._sum_evaluate(expr_after, var, cell)
+                        val_before = self._sum_evaluate(
+                            expr_before, var, cell, summand_range=effective_range,
+                        )
+                        val_after = self._sum_evaluate(
+                            expr_after, var, cell, summand_range=effective_range,
+                        )
                     else:
                         val_before = self._evaluate(expr_before, cell)
                         val_after = self._evaluate(expr_after, cell)
@@ -118,18 +172,43 @@ class MpmathVerifier:
                     )
                 if val_before is None or val_after is None:
                     continue  # neither side evaluated; skip
+                # v0.8b: fold the additive correction into the after-side
+                # before comparison. The identity is:
+                #   sum(before) = sum(after) + correction
+                # so we test |sum(before) - sum(after) - correction| ≤ tol.
+                if has_correction:
+                    try:
+                        corr_val = self._evaluate(additive_correction, cell)
+                    except Exception as e:
+                        return VerificationResult(
+                            passed=False,
+                            digits_or_examples=0,
+                            reason=f"NUMERICAL_INSTABILITY evaluating additive "
+                                   f"correction at cell {cell}: {e}",
+                        )
+                    if corr_val is None:
+                        return VerificationResult(
+                            passed=False,
+                            digits_or_examples=0,
+                            reason=f"additive correction has free symbols beyond "
+                                   f"cell at {cell}",
+                        )
+                    val_after_eff = val_after + corr_val
+                else:
+                    val_after_eff = val_after
                 if abs(val_before) < 1:
                     # absolute tolerance for small values
-                    if abs(val_before - val_after) > tol:
+                    if abs(val_before - val_after_eff) > tol:
                         return VerificationResult(
                             passed=False,
                             digits_or_examples=0,
                             reason=f"VERIFIER_FAILED at {cell}: "
-                                   f"|before - after| = {abs(val_before - val_after)} > {tol}",
+                                   f"|before - after - correction| "
+                                   f"= {abs(val_before - val_after_eff)} > {tol}",
                         )
                 else:
                     # relative tolerance for non-small values
-                    rel_err = abs(val_before - val_after) / abs(val_before)
+                    rel_err = abs(val_before - val_after_eff) / abs(val_before)
                     if rel_err > tol:
                         return VerificationResult(
                             passed=False,
@@ -141,13 +220,15 @@ class MpmathVerifier:
                 passed=True,
                 digits_or_examples=self.n_digits,
                 reason=f"numerical equality across {len(sweep)} sweep cells "
-                       f"({'summand' if self.summand_mode else 'pointwise'} mode)",
+                       f"({'summand' if self.summand_mode else 'pointwise'} mode"
+                       f"{', with additive correction' if has_correction else ''})",
             )
         finally:
             mpmath.mp.dps = old_dps
 
     def _sum_evaluate(self, expr: sp.Expr, var: sp.Symbol,
-                      cell: dict[str, Any]) -> Any:
+                      cell: dict[str, Any],
+                      summand_range: tuple | None = None) -> Any:
         """Substitute cell params; either integrate (if expr is an Integral)
         or sum (if expr is a summand) numerically. Returns None if
         substitution leaves free symbols other than var, or if the
@@ -157,7 +238,15 @@ class MpmathVerifier:
         are integrated via mp.quad; summands are summed via mp.nsum.
         Closed-form expressions (no Sum/Integral wrapper, no remaining
         var dependence after substitution) are evaluated pointwise.
+
+        v0.8b: `summand_range` overrides the verifier-level default
+        (`self.summand_range`, typically `(-oo, oo)`). The new operator
+        class `modular_transform_with_correction` uses `(1, oo)` for
+        one-sided modular identities (Bose-Einstein eta-log, Lambert /
+        E_2). The override is per-call so a single Verifier instance can
+        handle both regimes across different operator types.
         """
+        effective_range = summand_range if summand_range is not None else self.summand_range
         subs = {sp.Symbol(k): v for k, v in cell.items()}
         subs.update({sp.Symbol(k, positive=True): v for k, v in cell.items()})
         e = expr.subs(subs)
@@ -188,7 +277,7 @@ class MpmathVerifier:
         except Exception:
             return None
         try:
-            return mpmath.nsum(f_callable, self.summand_range)
+            return mpmath.nsum(f_callable, effective_range)
         except Exception:
             return None
 

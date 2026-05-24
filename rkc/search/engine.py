@@ -46,6 +46,17 @@ def _apply_operator(op_app: OperatorApplication,
     """Apply a single operator to a state via its basis apply_fn.
 
     Returns None if the operator doesn't apply (PROPOSER_DECLINED equivalent).
+
+    v0.8b extension: an apply_fn may return either:
+      - sp.Expr → v0.4/v0.7 strict-Poisson path (term-by-term identity).
+        op_app's `additive_correction` and `summand_range` are left as-is
+        (typically None).
+      - tuple `(new_summand, additive_correction, summand_range)` → v0.8b
+        modular-with-correction path. The engine MUTATES op_app to attach
+        these fields so the verifier can pick them up downstream.
+
+    The tuple form is opt-in per-operator; existing v0.4/v0.7 operators
+    continue returning bare exprs and are unaffected.
     """
     try:
         op = get_operator(op_app.op_id)
@@ -54,9 +65,20 @@ def _apply_operator(op_app: OperatorApplication,
     var = state.metadata.get("var")
     if var is None:
         return None
-    new_payload = op.apply_fn(state.payload, var)
-    if new_payload is None:
+    result = op.apply_fn(state.payload, var)
+    if result is None:
         return None
+    # v0.8b extended return convention
+    if isinstance(result, tuple):
+        if len(result) != 3:
+            return None
+        new_payload, additive_correction, summand_range = result
+        if new_payload is None:
+            return None
+        op_app.additive_correction = additive_correction
+        op_app.summand_range = summand_range
+    else:
+        new_payload = result
     return SearchState(payload=new_payload, metadata=dict(state.metadata))
 
 

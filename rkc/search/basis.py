@@ -384,6 +384,223 @@ def _poisson_dual_weighted_gaussian(
             * sp.exp(-sp.pi**2 * n**2 / beta))
 
 
+def _modular_transform_with_correction_apply(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[tuple]:
+    """v0.8b: One-sided modular transformations with additive scalar
+    correction terms.
+
+    Where v0.4 / v0.7 `mellin_inversion` covers STRICT two-sided Poisson
+    identities (`Σ_{n∈Z} f(n) = Σ_{k∈Z} g(k)`), this operator covers the
+    ONE-SIDED (n ≥ 1) class where the modular law carries a non-trivial
+    scalar correction outside the summand — Bernoulli polynomial values,
+    logarithms, and weight-2 quasi-modular anomalies.
+
+    v0.8b ships two cases (both verified to rel-err ≤ 1e-30 at dps=80
+    across β ∈ {1e-3, 1e-2, 1e-1, 1, 10}):
+
+    ### Case A — Bose-Einstein eta-log form
+
+        Σ_{n≥1} log(1 - exp(-β n))
+          = -π²/(6β) - (1/2)·log(β/(2π)) + β/24
+            + Σ_{n≥1} log(1 - exp(-4π² n / β))
+
+    Derivation: differentiate `log eta(it)` modular transformation
+    `eta(i/t) = √t · eta(it)` w.r.t. t in real-form. Substituting
+    β = 2π t gives the identity above. The boundary terms
+    `-π²/(6β) - (1/2)log(β/(2π)) + β/24` come from the (i) `pi*t/12`
+    Eisenstein-of-weight-2 contribution and (ii) the `(1/2)log(t)`
+    half-modular weight in `log eta`.
+
+    The matched input shape is `log(1 - c · exp(-β n))` where `c` is a
+    constant (typically 1). We require c=1 strictly (the c≠1 case is
+    NOT a clean modular identity — it picks up dilogarithm boundary
+    terms). The dual summand is `log(1 - exp(-4π² n/β))`.
+
+    ### Case B — Lambert / E_2 quasi-modular form
+
+        Σ_{n≥1} n·q^n/(1-q^n)     with q = exp(-β)
+          = π²/(6β²) + 1/24 - 1/(2β)
+            - (4π²/β²) · Σ_{n≥1} n / (exp(4π² n/β) - 1)
+
+    Derivation: `Σ n q^n/(1-q^n) = (1 - E_2(τ))/24` for `τ = iβ/(2π)`.
+    Apply Hecke's quasi-modular transformation
+    `E_2(-1/τ) = τ² E_2(τ) - 6iτ/π` with `-1/τ = 2πi/β`. The dual q'
+    parameter is `q' = exp(-4π²/β)`. The `n·q'^n/(1-q'^n)` summand
+    rewrites as `n / (e^{4π² n/β} - 1)`. The multiplicative prefactor
+    `-(2π/β)² = -4π²/β²` baked into the new summand keeps the API
+    tuple-shape clean: `(new_summand, correction, range)`.
+
+    The matched input shape: `c · n · q^n / (1 - q^n)` where q is a
+    rational of the form `Rational(p, q)` with `0 < p < q` (so
+    `log q < 0`, i.e., `β = -log(q) > 0`). For symbolic q (`exp(-β)`
+    form) we'd need extra plumbing; this v0.8b cut handles concrete
+    rational q to match the existing seed `lambert_divisor_q_p1`.
+
+    ### Return convention
+
+    Returns either `None` (declines) or
+    `(new_summand: sp.Expr, additive_correction: sp.Expr, summand_range: tuple)`
+    where `summand_range = (1, sp.oo)`. The engine populates the
+    OperatorApplication's `additive_correction` and `summand_range`
+    fields from the tuple; the verifier picks them up and computes
+    `Σ_{n≥1} before  ≡  Σ_{n≥1} after + correction`.
+
+    See [DID_NOT_PAN_OUT §R17] for the original deferral rationale and
+    [diary 31] for the v0.8b numerical-verification table.
+    """
+    # CASE A: log Bose-Einstein
+    result = _log_bose_einstein_apply(expr, n)
+    if result is not None:
+        return result
+    # CASE B: Lambert / E_2 quasi-modular
+    result = _lambert_e2_apply(expr, n)
+    if result is not None:
+        return result
+    return None
+
+
+def _log_bose_einstein_apply(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[tuple]:
+    """Detect `c · log(1 - exp(-β n))` and emit the eta-log modular dual.
+
+    The input shape is matched STRICTLY: a constant scalar `c` times
+    `log(1 - exp(-β n))` where `β` is a strictly-positive numeric (or
+    sympy-positive symbol). Any other form returns None.
+
+    Returns `(new_summand, additive_correction, (1, oo))` where
+        new_summand = c · log(1 - exp(-4π² n / β))
+        additive_correction = c · (-π²/(6β) - (1/2) log(β/(2π)) + β/24)
+
+    This is c times the unit-c identity; the `c` factor is the
+    n-independent scalar pulled out via `as_independent(n)`.
+    """
+    scalar, n_dep = expr.as_independent(n, as_Add=False)
+    if n_dep.func != sp.log:
+        return None
+    log_arg = n_dep.args[0]
+    # log_arg must be `1 - exp(-β n)`. Match it as `1 + something`.
+    # sp.Add normalizes "1 - x" as "1 + (-1)*x".
+    if not log_arg.has(n):
+        return None
+    diff = sp.simplify(log_arg - 1)  # should be -exp(-β n)
+    # Try to recognise diff = -exp(arg) with arg = -β·n + 0 (i.e., linear in n)
+    # We allow exp factor; deeper structure must be excluded.
+    neg_exp = -diff  # should be exp(-β n)
+    if neg_exp.func != sp.exp:
+        return None
+    exp_arg = neg_exp.args[0]
+    # exp_arg must be linear in n with negative coefficient (β·n with β>0,
+    # so exp_arg = -β·n, leading coeff -β < 0).
+    try:
+        poly = sp.Poly(sp.expand(exp_arg), n)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 1:
+        return None
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if a0 != 0:
+        return None  # require pure exp(-β n), no constant offset
+    if not _is_negative_number(a1):
+        return None
+    beta = -a1  # β > 0
+    # Dual: c · log(1 - exp(-4 π² n / β))
+    new_summand = scalar * sp.log(1 - sp.exp(-4 * sp.pi**2 * n / beta))
+    # Additive correction: c · (-π²/(6β) - (1/2) log(β/(2π)) + β/24)
+    correction = scalar * (
+        -sp.pi**2 / (6 * beta)
+        - sp.log(beta / (2 * sp.pi)) / 2
+        + beta / 24
+    )
+    return (new_summand, correction, (1, sp.oo))
+
+
+def _lambert_e2_apply(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[tuple]:
+    """Detect Lambert summand `c · n · q^n / (1 - q^n)` and emit the
+    E_2 quasi-modular dual.
+
+    The input is matched in either of two equivalent canonical forms
+    (sympy's `as_independent` + `together` simplifies between them):
+
+      (i)  `c · n · q^n / (1 - q^n)` with `q` rational in `(0, 1)`
+      (ii) `c · n / (R^n - 1)` with `R > 1` rational (equivalent to (i)
+           via `R = 1/q`; sympy's `together` produces this form when
+           `q · q^n / (1 - q^n)` is simplified).
+
+    In both cases, `β = log(R) = -log(q) > 0`.
+
+    Returns `(new_summand, additive_correction, (1, oo))` where
+        new_summand = -c · (4π²/β²) · n / (exp(4π² n / β) - 1)
+        additive_correction = c · (π²/(6β²) + 1/24 - 1/(2β))
+
+    The multiplicative prefactor `-(4π²/β²)` is baked INTO new_summand to
+    keep the API tuple-shape clean and match the standing convention
+    (one summand expression, one scalar correction).
+    """
+    # Pull out the n-independent scalar.
+    scalar, n_dep = expr.as_independent(n, as_Add=False)
+    # Try sympy's `together` canonicalisation first.
+    n_dep_t = sp.together(n_dep)
+    beta = _try_extract_lambert_beta(n_dep_t, n)
+    if beta is None:
+        # Try without the together step (sometimes the user's form already is)
+        beta = _try_extract_lambert_beta(n_dep, n)
+    if beta is None:
+        return None
+    new_summand = (
+        -scalar
+        * (4 * sp.pi**2 / beta**2)
+        * n
+        / (sp.exp(4 * sp.pi**2 * n / beta) - 1)
+    )
+    correction = scalar * (
+        sp.pi**2 / (6 * beta**2)
+        + sp.Rational(1, 24)
+        - 1 / (2 * beta)
+    )
+    return (new_summand, correction, (1, sp.oo))
+
+
+def _try_extract_lambert_beta(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[sp.Expr]:
+    """Try to recognise `expr` as `n / (R^n - 1)` (canonical form after
+    `sp.together` on `n · q^n / (1 - q^n)` for rational q ∈ (0,1)).
+    Returns `β = log(R)` if matched; else None.
+    """
+    num, den = sp.fraction(expr)
+    if sp.simplify(num - n) != 0:
+        return None
+    # den should be R^n - 1 with R > 1
+    den_p1 = sp.simplify(den + 1)
+    if den_p1.func != sp.Pow:
+        return None
+    base, exponent = den_p1.args
+    if sp.simplify(exponent - n) != 0:
+        return None
+    if not base.is_number:
+        return None
+    # base must be > 1 (else the series doesn't converge)
+    try:
+        base_f = float(base)
+    except (TypeError, ValueError):
+        return None
+    if base_f <= 1:
+        return None
+    return sp.log(base)
+
+
+def _is_rational_in_open_unit(x: sp.Expr) -> bool:
+    """True iff `x` is a sympy Rational with 0 < x < 1."""
+    if not isinstance(x, sp.Rational):
+        return False
+    return x > 0 and x < 1
+
+
 def _fourier_self_reciprocity_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
     """Fourier cos/sin self-reciprocity stub.
 
@@ -445,9 +662,21 @@ QR7_OPERATOR_BASIS: list[Operator] = [
     Operator(
         id="mellin_inversion",
         notes="Forward Mellin transform M[f](s) = ∫₀^∞ x^(s-1) f(x) dx; "
-              "inverse via Bromwich contour. The substrate of the Master Theorem.",
+              "inverse via Bromwich contour. The substrate of the Master Theorem. "
+              "v0.4-v0.7: covers strict two-sided Poisson identities on n ∈ Z "
+              "(pure Gaussian, half-shift theta_2/theta_4, weighted second-moment).",
         apply_fn=_mellin_inversion_apply,
         family_tag="analytic",
+    ),
+    Operator(
+        id="modular_transform_with_correction",
+        notes="v0.8b: One-sided (n ≥ 1) modular transformations with "
+              "additive scalar correction. Covers log-Bose-Einstein "
+              "(Dedekind eta) and Lambert / E_2 quasi-modular cases. "
+              "Returns (new_summand, additive_correction, summand_range=(1, oo)) "
+              "via the extended apply_fn protocol introduced in v0.8b.",
+        apply_fn=_modular_transform_with_correction_apply,
+        family_tag="modular",
     ),
     Operator(
         id="fourier_self_reciprocity",

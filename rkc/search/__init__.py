@@ -58,7 +58,7 @@ from .core import (
     Registry,
 )
 from .basis import QR7_OPERATOR_BASIS, Operator
-from .proposers import RandomProposer
+from .proposers import RandomProposer, ClaudeProposer, ClaudeStubProposer
 from .verifiers import MpmathVerifier
 from .routers import RkcRouter, RkcCostModel
 from .registries import JsonlRegistry
@@ -75,7 +75,8 @@ __all__ = [
     # operator basis
     "QR7_OPERATOR_BASIS", "Operator",
     # default implementations (the v0 baseline)
-    "RandomProposer", "MpmathVerifier", "RkcRouter", "RkcCostModel",
+    "RandomProposer", "ClaudeProposer", "ClaudeStubProposer",
+    "MpmathVerifier", "RkcRouter", "RkcCostModel",
     "JsonlRegistry",
     # the main loop
     "search",

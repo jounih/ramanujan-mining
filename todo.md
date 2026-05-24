@@ -149,7 +149,15 @@ for full operational notes.
 
 ---
 
-## Status snapshot (2026-05-24, post Hunt 5b Ch. 32/36/34 + Project C v0.7)
+## Status snapshot (2026-05-24, post Hunt 5b Ch. 32/36/34 + Project C v0.7 + v0.8a)
+
+**Project C v0.8a SHIPPED** (diary 30) — `ClaudeProposer` (LLM-powered
+step 2) joins `RandomProposer` as a second proposer option. Encodes the
+Hunt 5b toolkit-split heuristics as system-prompt-resident rules.
+Graceful `ClaudeStubProposer` fallback when `ANTHROPIC_API_KEY` is
+missing. CLI flag `rkc {sweep,search} --proposer {random|claude}`
+(default stays `random`). Cost discipline: SHA-256-cached responses,
+default `max_api_calls=10` cap. 6 new `test_v08a_*` tests.
 
 **Project C v0.7 SHIPPED** (diary 26) — `mellin_inversion` now handles
 three Poisson identity classes via strict double-sided sums:
@@ -161,7 +169,8 @@ three Poisson identity classes via strict double-sided sums:
 All three accepted end-to-end through the engine; correctly fail the
 cost gate at β=5. The basis-coverage trajectory toward
 `recover ≥80% of rkc's 11 known kernel identities within budget=1000`
-inches forward. v0.8 is the natural next step (see T0 below).
+inches forward. v0.8 covers the additive-correction operator class
+(parallel subagent work; merges cleanly with v0.8a).
 
 **Hunt 5b state**: TOOLKIT-SPLIT HYPOTHESIS ESTABLISHED (diary 25,
 Ch. 34 was the 3rd distinct dominance pattern). Three chapters covered:
@@ -169,8 +178,34 @@ Ch. 32 q_shift+modular_S pair, Ch. 36 modular_S monoculture, Ch. 34
 class_field+modular_S pair. `modular_S` is the always-on parent across
 all three; secondary operator varies by problem domain.
 
-**Tests**: 73/73 passing (67 v0.6 baseline + 6 new v0.7 tests).
+**Tests**: 79/79 passing (67 v0.6 baseline + 6 v0.7 + 6 v0.8a tests).
 Recognizer benchmark `analysis/14b` still 55/55 = 100%.
+
+### T0a. Project C v0.8a follow-ups (diary 30 deferred items)
+
+1. **Live ClaudeProposer vs RandomProposer benchmark** — DEFERRED in
+   diary 30; blocked on a usable `ANTHROPIC_API_KEY` in the run shell.
+   Script ready at
+   [`analysis/24_v08a_claude_vs_random_proposer.py`](analysis/24_v08a_claude_vs_random_proposer.py).
+   Rerun once API key is configured; ~50 API calls bounded; should be
+   ≪ $0.10. Output goes to
+   [`analysis/results/v08a_claude_vs_random_proposer.csv`](analysis/results/v08a_claude_vs_random_proposer.csv).
+2. **In-conversation Claude SDK hook** (architectural improvement per
+   diary 29) — `proposers.InProcessClaudeProposer` that detects the
+   surrounding agent context and routes through it instead of opening
+   a new client. 1-2 days; v0.9 candidate.
+3. **`OperatorApplication.params` exploration in the LLM prompt** —
+   currently the proposer only suggests `op_id`; future v0.9 should
+   let Claude suggest `(op_id, params)`. Requires per-op
+   parameter-space documentation in the system prompt.
+4. **Per-state structural-hint pre-pass** — run rkc's recognizer first,
+   pass `result.family` as an explicit hint in the user prompt; let
+   `ClaudeProposer` skip the LLM call for deterministically-pinned
+   cases (e.g. `family=theta-like` → always `mellin_inversion`).
+5. **Cross-validation of the system-prompt heuristics** — measure
+   whether each of the 6 toolkit-split rules actually improves
+   per-state op-id selection on a labelled test set. Drop unused
+   rules for token discipline.
 
 ## Tool-side priority stack (after ChatGPT-Pro reranking — see [BIG_IDEAS_REVIEW](insights/BIG_IDEAS_REVIEW.md))
 

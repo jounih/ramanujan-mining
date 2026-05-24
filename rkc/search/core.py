@@ -8,7 +8,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any, Iterator, Protocol, runtime_checkable
+from typing import Any, Iterator, Optional, Protocol, runtime_checkable
+
+import sympy as sp
 
 
 class RejectReason(str, Enum):
@@ -54,10 +56,43 @@ class OperatorApplication:
     `confidence`: proposer's self-rating in [0, 1]. RandomProposer always
     uses 1.0 (no preference); NeuralProposer would use the softmax /
     likelihood from the model.
+
+    v0.8b extensions for one-sided modular transformations with additive
+    scalar correction terms (Bose-Einstein eta-log, Lambert / E_2
+    quasi-modular). These are OPT-IN — operators that don't set them
+    preserve v0.7 strict-Poisson semantics exactly.
+
+    `additive_correction`: a scalar sympy expression with NO dependence
+    on the iteration variable, such that
+        Σ_n state_before_summand  ≡  Σ_n state_after_summand + additive_correction
+    where the equality is across the operator's `summand_range`. When
+    multiple operators chain in an op_sequence, the verifier sums their
+    additive_correction fields. Defaults to None for backward compat
+    (v0.4, v0.7 strict Poisson identities don't use it — their
+    transformations are clean term-by-term equalities).
+
+    `summand_range`: a (lower, upper) tuple identifying the index range
+    over which the sums in the modular identity are taken. The v0.4 /
+    v0.7 strict-Poisson identities run over Z (i.e., (-oo, oo) — set None
+    to inherit the verifier's default symmetric range). The v0.8b one-
+    sided modular transforms run over positive n only ((1, oo)). When
+    multiple operators chain, the verifier requires their summand_range
+    fields to be consistent — operators with different ranges cannot mix.
+
+    Why both fields live on OperatorApplication (and not on the basis
+    entry / Operator): the same operator id can in principle produce
+    different additive corrections for different inputs (e.g. an operator
+    that handles BOTH the Bose-Einstein eta-log AND the Lambert / E_2
+    case would emit different corrections per input). Carrying these on
+    the per-application record keeps the data model honest: each emitted
+    application IS a complete identity instance, additive correction +
+    summand range included.
     """
     op_id: str
     params: dict[str, Any] = field(default_factory=dict)
     confidence: float = 1.0
+    additive_correction: Optional[sp.Expr] = None
+    summand_range: Optional[tuple] = None
 
 
 @dataclass
