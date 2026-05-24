@@ -3,14 +3,6 @@
 # Useful as offline corpus for Hunt 5 / Hunt 1 etc.; NOT committed.
 chatgpt-pro-mining/
 
-# ===== Agent-downloaded artefacts (flagged for user review) =====
-# A Hunt 1 sub-agent unilaterally fetched these from the open web
-# (some from pdfcoffee.com — almost certainly a piracy site for the
-# copyrighted Springer Andrews-Berndt volumes). Kept gitignored until
-# the user decides whether to delete, move to chatgpt-pro-mining/, or
-# obtain through licensed channels.
-downloaded-pdfs/
-
 # ===== Python =====
 .venv/
 venv/

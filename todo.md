@@ -224,39 +224,58 @@ Status: SCOPED but UNTESTED. Single-experiment scope ~2-3 weeks.
 
 ---
 
-## Partially blocked (have facsimiles, missing Berndt commentary)
+## Newly unblocked by downloaded-pdfs/
 
-### B1. Hunt 2 — Modular equations at level ≥23
+The user obtained Berndt-family commentary volumes directly from the
+authors for personal use; they're now committed to this private repo at
+[downloaded-pdfs/](downloaded-pdfs/) (see
+[downloaded-pdfs/README.md](downloaded-pdfs/README.md) for the manifest).
 
-Have NB II facsimile pages; missing Berndt Notebooks Parts III-V commentary
-(which is where Berndt identifies *which* facsimile pages contain the level
-≥23 entries). Workaround: page-by-page facsimile reading is possible but
-slow. Lower priority than H1, H2 above.
+### H5. Hunt 1a — Resolve Ono pagination ambiguity (Andrews-Berndt Part IV)
 
-### B2. Hunt 3 — Eisenstein-style continued fractions
+Sub-lead from H1 closure. Read AB *Lost Notebook Part IV* (2013) chapter on
+"Approximations and asymptotic methods, including 1729". Locate Berndt's
+own commentary on Ramanujan's pp. 341-343 cube material; identify where
+Ono's "near-counterexamples on pp. 342-343" speculation maps to. Source:
+[downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf](downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf).
+Effort: ~half-day if the chapter is well-organised. Should close the
+H1a ambiguity in DID_NOT_PAN_OUT §R16.
 
-Have Bhatnagar arxiv:2208.12656 (q-CF context) + NB facsimiles; missing
-Berndt Part V ch. 32 (which catalogues the relevant Notebook entries).
-Workaround: read Bhatnagar to identify candidate entries, then look in the
-facsimiles directly.
+### H6. Hunt 2 — Modular equations at level ≥23 — NEWLY UNBLOCKED
 
-### B3. Hunt 4 — Unproven class invariants Gₙ
+Berndt *Notebooks Part V* (Ch. X) now available at
+[downloaded-pdfs/ramanujan-notebooks-v.pdf](downloaded-pdfs/ramanujan-notebooks-v.pdf).
+Ready to run the prediction in [HUNT_MAP §2](insights/HUNT_MAP.md): level-23
+entries decompose into two Atkin-Lehner families; level-29 same pattern;
+level-47 entries hide higher-genus modular curve. Algorithmic win on
+SEA point-counting if confirmed.
 
-Have Lost Notebook facsimile; missing Andrews-Berndt LN Vol I supplement
-pp. 200-220 (which identifies *which* 18 of Ramanujan's 116 tabulated Gₙ
-are unproven). Workaround: would need to re-enumerate from the facsimile
-directly, which is significant work.
+### H7. Hunt 3 — Eisenstein-style continued fractions — NEWLY UNBLOCKED
 
-Partial progress already: 8 invariants verified to ≥100 digits via PSLQ in
-Experiment 08 (diary 09).
+Berndt *Notebooks Part V* Ch. 32 at
+[downloaded-pdfs/ramanujan-notebooks-v.pdf](downloaded-pdfs/ramanujan-notebooks-v.pdf);
+focused secondary source at
+[downloaded-pdfs/1274-16.pdf](downloaded-pdfs/1274-16.pdf) (Berndt-Yee 2002
+RIMS survey). Bhatnagar in chatgpt-pro-mining. Ready to run the
+~20-Eisenstein-CFs clustering analysis in HUNT_MAP §3.
+
+### H8. Hunt 4 — Unproven class invariants Gₙ — NEWLY UNBLOCKED
+
+AB *Lost Notebook Part I* supplement (pp. 200-220) at
+[downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf](downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf).
+Plus Berndt *Notebooks Part V* Ch. 33-34 commentary. **Overlaps with H1b**:
+the Weber class invariants on LN p. 342 are likely a subset of the same
+list; cross-checking H1b with H8 in one pass is the efficient play.
+
+## Still partially blocked
 
 ### B4. Hunt 6 — Ramanujan-Sato at moonshine levels
 
 Have NB II facsimile + open-access context PDFs; missing Cooper *Theta
-Functions* (which catalogues RS series by level). Workaround: re-derive the
-level-by-level catalogue from Berndt's open-access papers (Berndt's papers
-on theta functions are mostly open-access; the book is the
-synthesis).
+Functions* (Springer 2017). Worth emailing Shaun Cooper for a personal-use
+PDF — see [VALIDATION_CONTACTS.md](insights/VALIDATION_CONTACTS.md).
+Workaround: re-derive level-by-level catalogue from Berndt's open-access
+papers on theta functions.
 
 ---
 
@@ -269,6 +288,24 @@ synthesis).
 - **Library-design / silent-zero technical note** (BIG_IDEAS §5). The
   silent-zero hazard at Gauss sums q ≡ 2 mod 4 → 1-2 page note for
   Mathematics of Computation. Cheap, citable.
+
+## Sourcing follow-ups (only when needed)
+
+[VALIDATION_CONTACTS.md](insights/VALIDATION_CONTACTS.md) has the directory
+of expert contacts (Zagier, Ono, Bringmann, Berndt, Andrews, Cooper) with
+"why them for this run" notes. Open asks once we have a result firm enough
+to take to a real expert:
+
+- **Berndt 1984 BLMS paper** ("Ramanujan's Quarterly Reports", Bull. London
+  Math. Soc. 16, 449-489). Contains Berndt's per-section assessment of
+  "really new" vs "rederivation of known results" for the QRs — would let
+  us calibrate the Hunt 5 findings against Berndt's editorial judgment.
+  Ask Berndt next time we're in touch (he's already provided
+  [downloaded-pdfs/](downloaded-pdfs/)).
+- **Cooper *Ramanujan's Theta Functions*** (Springer 2017) for Hunt 6 —
+  ask Cooper.
+- **Berndt *Notebooks Parts III & IV*** (1991, 1994) — lower priority than
+  Part V which is now in.
 
 ---
 

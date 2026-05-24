@@ -431,21 +431,24 @@ Confidence: medium.**
 
 ---
 
-## Source-pack status (verified by inventory agent, 2026-05-24)
+## Source-pack status (updated 2026-05-24 after downloaded-pdfs/ commit)
 
 | Hunt | Status | Notes |
 |---|---|---|
-| 1 | **UNBLOCKED** | LN pp. 341-343 JPGs + Ono-Trebat-Leder K3 paper both in pack |
-| 2 | PARTIAL | Have NB facsimiles; missing Berndt Part III-V commentary |
-| 3 | PARTIAL | Have Bhatnagar q-CF arxiv + facsimiles; missing Berndt Part V ch. 32 |
-| 4 | PARTIAL | Have LN facsimile; missing Andrews-Berndt vol I supplement |
+| 1 | **CLOSED** | diary 21; K3 prediction falsified at 33%; 3 sub-leads (H1a/b/c) |
+| 1a | **UNBLOCKED** | AB *LN Part IV* (2013) in `downloaded-pdfs/` |
+| 2 | **UNBLOCKED** | Berndt *NB Part V* Ch. X in `downloaded-pdfs/` + NB II facsimile |
+| 3 | **UNBLOCKED** | Berndt *NB Part V* Ch. 32 + Berndt-Yee 2002 RIMS survey in `downloaded-pdfs/` |
+| 4 | **UNBLOCKED** | AB *LN Part I* supplement + Berndt *NB Part V* Ch. 33-34 in `downloaded-pdfs/` |
 | 5 | CLOSED | diary 20; Berndt 2022 HRJ reproduction used |
-| **5b** | **UNBLOCKED** | All 4 notebook facsimiles + 1,149 page images in pack |
-| 6 | PARTIAL | Have NB II facsimile + papers; missing Cooper *Theta Functions* |
+| **5b** | **UNBLOCKED** | All 4 notebook facsimiles + 1,149 page images in `chatgpt-pro-mining/` |
+| 6 | PARTIAL | Have NB II facsimile + open-access PDFs; missing Cooper *Theta Functions* (email Cooper) |
 
-The copyrighted Berndt commentary volumes (Notebooks Parts III-V, Lost
-Notebook Part IV, Cooper *Theta Functions*) are the gap. The facsimiles
-themselves are all present.
+Two now-local corpora: `chatgpt-pro-mining/` (~352 MB, gitignored — primary
+facsimiles + Berndt 2022 HRJ QR reproduction + open-access context PDFs) and
+`downloaded-pdfs/` (37 MB, COMMITTED to this private repo — Berndt-family
+commentary volumes obtained from the authors for personal use). See
+[CLAUDE.md](../CLAUDE.md) per-Hunt table for paths.
 
 ## What I'd actually do next, ranked
 

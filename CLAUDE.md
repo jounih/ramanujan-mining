@@ -80,15 +80,26 @@ work; without it you are blind to the primary sources.
 
 What's inside (per Hunt status as of diary 20):
 
-| Hunt | What | Where in pack | Status |
+| Hunt | What | Where | Status |
 |---|---|---|---|
-| 1 | Lost Notebook pp. 341-343 (1729/K3) + Ono-Trebat-Leder arxiv:1510.00735 | `priority_sources/lost_notebook_pages_341_343/`, `priority_sources/open_access_context_pdfs/ono_trebat_leder_*.pdf` | **UNBLOCKED** |
-| 2 | Modular equations at level ≥23 | `primary_originals/pdfs/notebooks/notebook2.pdf` (facsimile) | **PARTIAL** (missing Berndt Part III-V commentary) |
-| 3 | Eisenstein-style CFs | `priority_sources/open_access_context_pdfs/bhatnagar_*.pdf` + notebook facsimiles | **PARTIAL** (missing Berndt Part V ch. 32) |
-| 4 | Unproven class invariants | `primary_originals/pdfs/notebooks/lost_notebook.pdf` (facsimile) | **PARTIAL** (missing Andrews-Berndt vol I supp.) |
-| 5 | Quarterly Reports operator tagging | `priority_sources/quarterly_reports/ramanujan_quarterly_reports_2022_HRJ_Berndt.{pdf,txt,operator_blocks.csv}` | **CLOSED** (see diary 20) |
-| 5b | Notebooks operator tagging | `primary_originals/pdfs/notebooks/` (1,149 facsimile pages across NB I-III + Lost Notebook) | **UNBLOCKED** |
-| 6 | Ramanujan-Sato at moonshine levels | facsimile NB II + open-access PDFs | **PARTIAL** (missing Cooper *Theta Functions*) |
+| 1 | Lost Notebook pp. 341-343 (1729/K3) | `priority_sources/lost_notebook_pages_341_343/` + Ono arxiv | **CLOSED** (diary 21; K3 prediction falsified at 33%) |
+| 1a | Pagination ambiguity follow-up | [downloaded-pdfs/](downloaded-pdfs/) AB *Lost Notebook Part IV* | **UNBLOCKED** |
+| 2 | Modular equations at level ≥23 | [downloaded-pdfs/](downloaded-pdfs/) Berndt *Notebooks Part V* Ch. X + NB II facsimile | **UNBLOCKED** |
+| 3 | Eisenstein-style CFs | [downloaded-pdfs/](downloaded-pdfs/) Berndt *Notebooks Part V* Ch. 32 + Berndt-Yee RIMS 2002 | **UNBLOCKED** |
+| 4 | Unproven class invariants | [downloaded-pdfs/](downloaded-pdfs/) AB *LN Part I* supplement + Berndt *NB Part V* Ch. 33-34 | **UNBLOCKED** |
+| 5 | Quarterly Reports operator tagging | `priority_sources/quarterly_reports/` Berndt 2022 HRJ | **CLOSED** (diary 20; 57.6% < 80% predicted) |
+| 5b | Notebooks operator tagging | `primary_originals/pdfs/notebooks/` (1,149 facsimile pages) + downloaded-pdfs commentary | **UNBLOCKED** |
+| 6 | Ramanujan-Sato at moonshine levels | facsimile NB II + OA PDFs | PARTIAL (missing Cooper *Theta Functions*) |
+
+**downloaded-pdfs/** is the second high-leverage local-only corpus (alongside
+chatgpt-pro-mining/). It is **committed to this private repo** because the
+user obtained the volumes legitimately from the authors (Berndt et al.) for
+personal use; private repo so on-disk inclusion is fine, but **do not
+redistribute outside this repo**. See
+[downloaded-pdfs/README.md](downloaded-pdfs/README.md) for the manifest.
+The pack contains: AB *Lost Notebook* Parts I-IV; Berndt *Notebooks Part V*;
+Berndt-Yee RIMS 2002 Eisenstein CF survey; KSR notebooks-chapter; 1927
+Hardy-Aiyar-Wilson *Collected Papers* (public domain).
 
 The pack also has:
 - `priority_sources/quarterly_reports/` — Berndt 2022 HRJ reproduction (used for Hunt 5)

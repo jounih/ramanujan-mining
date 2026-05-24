@@ -14,9 +14,14 @@ wrong technical lens.
 
 ## Hunt 1 — Lost Notebook pp. 341-343 (the "1729 manipulations") — CLOSED
 
-**Status (updated 2026-05-24):** CLOSED. K3 prediction FALSIFIED at 33% (10/30
-known identities are K3-parameterising; the predicted 60-80% threshold is well
-above). Full writeup in [diary/21_hunt1_lost_notebook_341_343.md](../diary/21_hunt1_lost_notebook_341_343.md);
+**Status (updated 2026-05-24):** CLOSED at the literal-prediction level
+(K3 prediction FALSIFIED at 33%, 10/30 known identities are K3-parameterising;
+the predicted 60-80% threshold is well above). **Hunt 1a sub-lead is now
+actionable** since Andrews-Berndt *Lost Notebook Part IV* (which has Berndt's
+own commentary on these pages) is in
+[downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf](../downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_IV_2013.pdf);
+this should resolve the pagination ambiguity with Ono's 2016 speculation.
+Full writeup in [diary/21_hunt1_lost_notebook_341_343.md](../diary/21_hunt1_lost_notebook_341_343.md);
 inventory in [analysis/results/hunt1_k3_inventory.csv](../analysis/results/hunt1_k3_inventory.csv);
 falsification in [DID_NOT_PAN_OUT.md §R16](DID_NOT_PAN_OUT.md).
 
@@ -87,6 +92,13 @@ Pass D. A new K3 = a new bias-correctable EBM normalizer family.
 
 ## Hunt 2 — Notebook II Chapters 19-21, modular equations at levels 23, 29, 31, 47
 
+**Status (updated 2026-05-24):** **UNBLOCKED** — Berndt *Notebooks Part V*
+now in [downloaded-pdfs/ramanujan-notebooks-v.pdf](../downloaded-pdfs/ramanujan-notebooks-v.pdf)
+(personal-use copy from Berndt). NB II facsimile in
+`chatgpt-pro-mining/.../primary_originals/pdfs/notebooks/notebook2.pdf`.
+Parts III + IV (1991, 1994) are still missing but Part V covers Ch. X
+which has the level-23+ entries directly. Ready to run.
+
 **Located.** Berndt *Ramanujan's Notebooks* Parts III-V (1991, 1994, 1998),
 chapters on modular equations. The original entries are spread across NB II
 chapters 19, 20, 21; original scans in TIFR facsimile vol. II.
@@ -129,6 +141,14 @@ real algorithmic win.
 
 ## Hunt 3 — NB II Chapter 32, Eisenstein-style continued fractions
 
+**Status (updated 2026-05-24):** **UNBLOCKED** — Berndt *Notebooks Part V*
+(which contains Ch. 32) now in [downloaded-pdfs/ramanujan-notebooks-v.pdf](../downloaded-pdfs/ramanujan-notebooks-v.pdf).
+Bonus context: [downloaded-pdfs/1274-16.pdf](../downloaded-pdfs/1274-16.pdf)
+is Berndt & Yee, "A Survey on Eisenstein Series in Ramanujan's Lost
+Notebook" (RIMS 2002), a focused secondary source. Bhatnagar's q-CF survey
+(arXiv:2208.12656) is in `chatgpt-pro-mining/.../priority_sources/open_access_context_pdfs/`.
+Ready to run.
+
 **Located.** Berndt vol. V (1998) covers ch. 30-34; the Eisenstein-style
 CFs are spread across ch. 32. Original scans in TIFR vol. II.
 
@@ -163,6 +183,14 @@ kernel-registry entry at all.
 ---
 
 ## Hunt 4 — Class invariants of class-number-8 discriminants
+
+**Status (updated 2026-05-24):** **UNBLOCKED** — Andrews-Berndt *Lost
+Notebook Part I* (containing the supplement pp. 200-220 with the class
+invariants) now in [downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf](../downloaded-pdfs/Ramanujan_39_s_Lost_Notebook_Part_I_2005.pdf).
+Berndt *Notebooks Part V* (Ch. 33-34 commentary) also in
+[downloaded-pdfs/](../downloaded-pdfs/). **Partial overlap with Hunt 1:**
+the Weber class invariants on LN p. 342 (now identified) likely contain
+several of the ~18 unresolved Gₙ — see H1b in todo.
 
 **Located.** NB II chapter on singular moduli (ch. 14-17 depending on
 edition); Lost Notebook supplement pp. 200-220 in Andrews-Berndt vol. I.
