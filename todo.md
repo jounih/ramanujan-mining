@@ -11,23 +11,45 @@ ingestion of the ChatGPT-Pro source pack at `chatgpt-pro-mining/`.
 
 ## Now actionable (Hunts unblocked by the source pack)
 
-### H1. Hunt 1 — Lost Notebook pp. 341-343 (1729 / two-cubes / K3) — UNBLOCKED
+### H1. Hunt 1 — Lost Notebook pp. 341-343 (1729 / two-cubes / K3) — CLOSED
 
-**Source.** `chatgpt-pro-mining/.../priority_sources/lost_notebook_pages_341_343/`
-(page images) + `chatgpt-pro-mining/.../priority_sources/open_access_context_pdfs/ono_trebat_leder_1729_k3_surface_arxiv_1510.00735.pdf` (8 pages).
+Result in [diary/21](diary/21_hunt1_lost_notebook_341_343.md);
+falsification in [DID_NOT_PAN_OUT §R16](insights/DID_NOT_PAN_OUT.md). K3
+fraction 33% (10/30), well below the 60-80% prediction. K3 material is fully
+concentrated on p. 341 itself; pp. 342-343 are different topics. Three
+sub-leads spawned:
 
-**Predict (HUNT_MAP §1).** 60-80% of the identities on these three pages
-parameterise a 2-parameter family of K3 surfaces. Ono *speculated* it; nobody
-has done the full inventory.
+#### H1a. Resolve pagination ambiguity (need Andrews-Berndt Part IV)
 
-**Concrete deliverable.** A `formula_record_schema.json`-shaped catalogue of
-every identity / observation Ramanujan writes on pp. 341-343, each tagged with:
-classical-known / rediscovered / corpus-novelty / K3-parameterisation /
-none-of-the-above. Then count the K3 fraction. Output: a new diary entry
-+ `analysis/results/hunt1_k3_inventory.csv`.
+Ono's 2016 colloquium speculation about "pp. 342-343 near-counterexamples"
+may refer to a different edition than the Narosa/Sirinudi facsimile inventoried.
+Andrews-Berndt *Lost Notebook Part IV* chapter on "Approximations and
+asymptotic methods, including 1729" would resolve. Copyrighted Springer book;
+not in the local pack. Lower priority than H1b.
 
-**Tractable in one focused session** with image-reading (handwritten facsimile,
-3 pages). If image quality is poor, fall back to Chandra OCR per H4 below.
+#### H1b. Cross-check p. 342 Weber class invariants against Berndt-Chan-Kang-Zhang
+
+**Hunt 4 partial unblock.** p. 342 has a 15-row Weber `f₁(√-n)` table for
+n ∈ {20,27,26,29,35,36,38,39,41,44,50,51,52,63,87}. Some of these
+discriminants (-63 class number ≥ 4, -87 class number ≥ 6) likely overlap
+the ~18 of Ramanujan's 116 tabulated invariants that were unresolved as of
+2000. Cross-check: which (if any) appear here? Each unresolved one is
+simultaneously a Hunt 1 deliverable AND a Hunt 4 deliverable.
+
+Concrete deliverable: a CSV adding a `proof_status_2000` column to the
+p. 342 rows of `analysis/results/hunt1_k3_inventory.csv` based on the
+modern reproof table. ~half-day of work given the table.
+
+#### H1c. Verify Ramanujan's `O(...)` bound on p. 343 against modern Thue-Siegel-Roth
+
+p. 343 has explicit conjugate-product bounds for `|a^m b^n ⁵√2 - p_{m,n}|`.
+Numerically verify (mpmath, ~100 digits) for specific (m,n) whether the
+bound is tight, approximately tight, or loose. Compare against the modern
+effective Thue-Siegel-Roth or Schmidt-subspace bound for ⁵√2. **If tight,
+this is Ramanujan anticipating effective Diophantine bounds 25+ years
+before Schneider-Mahler** — a dedicated diary entry on its own.
+
+~1 day of work.
 
 ### H2. Hunt 5b — Notebooks operator tagging — UNBLOCKED
 
@@ -65,23 +87,27 @@ does today. Adds unit tests. Removes `CompletionNotImplemented` for f5/f7.
 Diary entry. Per BIG_IDEAS_REVIEW §1, this closes the recognizer end-to-end
 on all 3 registered mock-theta families.
 
-### H4. Install Chandra OCR + benchmark against a Lost Notebook page
+### H4. Install Chandra OCR + benchmark against a Lost Notebook page — PARTIAL
 
-**Source.** github.com/datalab-to/chandra (open-weights from HuggingFace,
-tested specifically on Ramanujan's letters to Hardy per user). Pack ships a
-wrapper at `chatgpt-pro-mining/.../phase2_context/run_chandra_ocr.py`.
+**Status.** Chandra installed (chandra-ocr 0.2.0 in `.venv`); model weights
+downloaded (datalab-to/chandra-ocr-2 in `~/.cache/huggingface/`, 2.7 GB).
+**The benchmark agent did not finish:** the `corpora/transcriptions/chandra_benchmark/page-341/`
+directory is empty and the README.md was never written. The agent appears to
+have run out of context / time after the install but before the actual run.
 
-**Concrete deliverable.**
-1. Install Chandra (pip + HF model download).
-2. Run on Lost Notebook pp. 341-343 + 2-3 representative NB II pages.
-3. Hand-grade output: characters correct, mathematical notation correct,
-   typesetting correct, structure preserved.
-4. Compare against alternatives: tesseract baseline, math-aware OCR
-   (e.g., LaTeX-OCR / pix2tex), Claude vision direct image read.
-5. If Chandra wins, set it up as the standard pipeline for facsimile →
-   transcription. Output: a comparison MD in `corpora/transcriptions/`.
+**Finish inline next session:**
+1. Run Chandra on `chatgpt-pro-mining/.../priority_sources/lost_notebook_pages_341_343/page-341.jpg`
+   (which per Hunt 1 finding is actually LN reprint p. 342 — the Weber class
+   invariants page; a good test case since the structure is tabular).
+2. Hand-grade output (characters / math notation / table structure).
+3. Compare against the Claude-vision direct read used in Hunt 1.
+4. Write the README.md with verdict.
 
-Foundation for H1, H2, and any future facsimile work.
+Hunt 1's finding ("the facsimile is legible enough at the level of 'which
+topic is this page about' to be decisive without OCR") suggests Chandra
+is not on the critical path for Hunt 1 results but is critical for Hunt 5b
+(1,149 pages to inventory). Worth finishing the benchmark before launching
+Hunt 5b.
 
 ---
 

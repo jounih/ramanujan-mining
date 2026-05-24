@@ -12,7 +12,35 @@ wrong technical lens.
 
 ---
 
-## Hunt 1 — Lost Notebook pp. 341-343 (the "1729 manipulations")
+## Hunt 1 — Lost Notebook pp. 341-343 (the "1729 manipulations") — CLOSED
+
+**Status (updated 2026-05-24):** CLOSED. K3 prediction FALSIFIED at 33% (10/30
+known identities are K3-parameterising; the predicted 60-80% threshold is well
+above). Full writeup in [diary/21_hunt1_lost_notebook_341_343.md](../diary/21_hunt1_lost_notebook_341_343.md);
+inventory in [analysis/results/hunt1_k3_inventory.csv](../analysis/results/hunt1_k3_inventory.csv);
+falsification in [DID_NOT_PAN_OUT.md §R16](DID_NOT_PAN_OUT.md).
+
+**Key scope correction:** K3 material is 100% concentrated on p. 341 itself
+(10/10 identities = Ono's Picard-18 K3). pp. 342-343 are not cube-identity
+continuation at all — p. 342 is Weber class invariants (**Hunt 4 partial
+unblock**), p. 343 is best Diophantine approximation to ⁵√2 and ⁷√2, p. 344
+is denesting / nested-radical identities. The Lost Notebook is loose scrap
+paper: sequentially-numbered pages can be on entirely unrelated topics.
+
+**Open ambiguity:** Ono's 2016 colloquium speculation about "near-counter-
+examples on pp. 342-343" may refer to a different edition's pagination than
+the Narosa/Sirinudi facsimile used here. Resolving this requires
+Andrews-Berndt *Lost Notebook Part IV* Chapter on "Approximations and
+asymptotic methods, including 1729" (in copyrighted Springer book; not in
+the pack). New sub-leads 1a/1b/1c documented in todo.
+
+**Also discovered:** the `priority_sources/lost_notebook_pages_341_343/`
+filenames in the chatgpt-pro-mining pack are **off by one** — `page-N.jpg`
+contains LN reprint p. `N+1`. Verified by byte-identity check + Ono Appendix
++ Agarwal-Garg Theorem 1.1 cross-reference. Original framing (preserved
+below) was based on the user-provided filenames.
+
+The original Hunt 1 framing is preserved below as the historical prediction.
 
 **Located.** Andrews-Berndt *Ramanujan's Lost Notebook* Part IV (Springer 2013),
 Chapter on "Approximations and asymptotic methods, including 1729". The

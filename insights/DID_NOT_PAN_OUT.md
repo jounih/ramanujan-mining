@@ -24,10 +24,10 @@ accordingly.
 - **OPEN** — speculation made, listed here for inventory, but not yet
   tested. (Distinct from "refuted".)
 
-**Final entry count: 15**, breaking down as:
+**Final entry count: 16**, breaking down as:
 - 4 REFUTED
 - 4 CORRECTED
-- 5 PARTIALLY REFUTED
+- 6 PARTIALLY REFUTED
 - 2 DOWNGRADED
 
 (Plus a separate OUTSTANDING section listing speculations that the run
@@ -441,6 +441,66 @@ qualitative direction was right; the implementation cost was understated.
 
 ---
 
+## R16 — "60-80% of LN pp. 341-343 manipulations parameterize K3 surfaces" (HUNT_MAP §1)
+
+**What was speculated.** HUNT_MAP §1 (and Ono's 2016 colloquium speculation):
+extending Ono's Theorem 1.3 (Picard-18 K3 from the p. 341 cube identities),
+the remaining identities on pp. 342-343 should also trace out K3 surfaces or
+Calabi-Yau threefolds. Predicted fraction: 60-80%.
+
+**What was tested.** Hand inventory of all 48 identifiable identities across
+the LN reprint pp. 340-344 from the Sirinudi/Narosa facsimile in the
+chatgpt-pro-mining pack, cross-referenced against Ono-Trebat-Leder
+(arXiv:1510.00735) and Agarwal-Garg (arXiv:2309.00427). Tagged each with
+`k3_status` ∈ {K3_PARAMETERISATION_CONFIRMED, K3_CANDIDATE_PER_ONO, NOT_K3,
+UNKNOWN_FROM_FACSIMILE}. Documented in `diary/21_hunt1_lost_notebook_341_343.md`;
+inventory in `analysis/results/hunt1_k3_inventory.csv`; reproducible via
+`analysis/24_hunt1_k3_inventory.py`.
+
+**What we found.** 33.3% K3 coverage on the HUNT_MAP §1 target pp. 341-343
+(10/30 known identities, with 1 row tagged UNKNOWN_FROM_FACSIMILE and
+excluded from the fraction). The K3 material is **100% concentrated on p. 341
+itself** (10/10 = 100% there). pp. 342-343 are not cube-identity continuation
+at all:
+
+| Page | Topic | n_known | n_K3 | K3 fraction |
+|---|---|---|---|---|
+| 341 | 1729 cube identities (rational fns + master identity + 6 numerical examples) | 10 | 10 | **100%** |
+| 342 | **Weber class invariants** (`f₁(√-n)` table for n ∈ {20,27,…,87}) — Hunt 4 territory | 18 | 0 | 0% |
+| 343 | Best Diophantine approximation to ⁵√2 and ⁷√2 with conjugate-product `O(…)` bounds | 2 | 0 | 0% |
+
+Widening to pp. 341-344 gives 23.8% (10/42), also FALSIFIED.
+
+**Updated estimate (tag: PARTIALLY REFUTED).** The K3 prediction is refuted
+in the form "60-80% of identities on these three pages are K3" — pp. 342-343
+are entirely different mathematical topics (the Lost Notebook is loose scrap
+paper; consecutive pages aren't always thematically contiguous). The
+underlying Ono-Trebat-Leder finding (the p. 341 cube identities ARE a
+Picard-18 K3) is **fully confirmed and reproduced**, so the prediction's
+core insight is real — it's only the "and the next pages continue it" extension
+that fails.
+
+**Important methodological catch:** the user-curated
+`priority_sources/lost_notebook_pages_341_343/` filenames are off-by-one
+versus the LN reprint pagination — `page-N.jpg` corresponds to LN p. `N+1`.
+Verified by byte-identity check + Ono Appendix cross-reference. The original
+hunt would have given a wrong answer if the agent hadn't caught this
+filename inconsistency. Lesson: cross-reference primary-source canonical
+content before trusting curated-pack metadata.
+
+**Bonus partial unblock:** p. 342's Weber-class-invariant table contains
+discriminants (-63, -87 of class number ≥ 4, among others) that may overlap
+the ~18 of 116 class invariants Hunt 4 targets as unresolved. New todo item
+1b cross-checks this against Berndt-Chan-Kang-Zhang's reproof table.
+
+**Open ambiguity:** Ono's 2016 colloquium speculation referenced
+"pp. 342-343" without qualifying which edition's pagination. The
+Andrews-Berndt *Lost Notebook Part IV* commentary (copyrighted Springer
+book, not in the local pack) would resolve whether Ono meant the same
+facsimile pages this inventory used.
+
+---
+
 ## R15 — "5-10 operators recur 80%+ of the time in the Quarterly Reports" (HUNT_MAP §5)
 
 **What was speculated.** HUNT_MAP §5: a specific 6-operator basis
@@ -503,11 +563,7 @@ These are flagged here so a future pass (or a reader auditing
 credibility) can see what is *still up in the air*. They are not in the
 refuted log because we don't yet know.
 
-### O1 — "60–80% of LN pp. 341-343 manipulations parameterize K3 surfaces"
-
-HUNT_MAP §1 makes this specific quantitative prediction (Ono speculated
-it; nobody has done the full inventory). Cannot test until primary
-scans of LN pp. 341-343 arrive. **Outstanding — not tested.**
+### O1 — RESOLVED → see R16 below.
 
 ### O2 — RESOLVED → see R15 below.
 
