@@ -3,6 +3,13 @@
 # Useful as offline corpus for Hunt 5 / Hunt 1 etc.; NOT committed.
 chatgpt-pro-mining/
 
+# ===== Secrets / API keys =====
+# Datalab Chandra 2 API key etc. NEVER commit.
+.env
+.env.*
+*.env
+!.env.example
+
 # ===== Python =====
 .venv/
 venv/

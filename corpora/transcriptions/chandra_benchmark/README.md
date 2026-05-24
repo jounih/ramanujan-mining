@@ -1,51 +1,100 @@
-# Chandra OCR benchmark — DEFERRED (local inference crashes macOS)
+# Chandra OCR benchmark — OPERATIONAL via Datalab API
 
-**Status (2026-05-24)**: Local Chandra-OCR-2 inference attempts on
-Apple Silicon repeatedly crashed the user's Mac. Pivoting to Chandra 2
-via API (datalab-to hosted endpoint) when OCR work resumes.
+**Status (2026-05-24)**: Pivoted from local `--method hf` (crashed Mac) to
+the Datalab hosted Chandra 2 API. End-to-end smoke test on the canonical
+1729 page (`in/page-340.jpg` = LN reprint p. 341) succeeded in 8.76 s.
 
-## What was tried
+## Operational path
 
-1. `pip install chandra-ocr[hf]` — successful (0.2.0 in `.venv`).
-2. Model weights pulled to `~/.cache/huggingface/hub/models--datalab-to-
-   -chandra-ocr-2/`. Full safetensors blob: 10,591,220,088 bytes
-   (~9.86 GiB) downloaded successfully.
-3. Test runs of `chandra page-340.jpg <out> --method hf`:
-   - First attempt: agent context-window timed out mid-download
-     (safetensors blob truncated at 8.13 GB / 77%)
-   - Subsequent attempts: model load OK after redownload, but inference
-     crashed the system (no output captured; tmpfs logs lost on reboot)
+1. API key in `.env` (gitignored): `DATALAB_API_KEY=…`
+2. SDK: `datalab-python-sdk` (installed in `.venv/`, v0.5.0).
+3. Wrapper: [`corpora/scripts/chandra_api_runner.py`](../../scripts/chandra_api_runner.py).
+4. Settings tuned for handwritten math:
+   - `mode="accurate"` (slowest tier — needed for handwriting)
+   - `output_format="markdown,html,json"` (markdown carries `$..$` LaTeX;
+     html carries `<math display="block">` MathML/LaTeX; json carries
+     block-level structure with bbox/polygon/section hierarchy)
+   - `disable_image_captions=True` (no AI captions on hand diagrams)
+   - figures extracted as base64-decoded PNGs alongside text
+5. Idempotency: wrapper skips files whose `.md` output already exists
+   (override with `--force`); per-run JSONL log in `_run_log.jsonl`.
 
-## Why pivot to API
+## Smoke-test result (page-340.jpg = LN reprint p. 341, canonical 1729 page)
 
-- Local HF inference of the chandra-ocr-2 model is too memory-heavy for
-  the user's Mac (~10 GB model + working memory + RAM).
-- `datalab-to` operates a hosted Chandra 2 API; structured-text/handwriting
-  OCR via the API is the right path for any production OCR work.
-- Per-page cost is small; the 1,149-page facsimile corpus is bounded.
+```
+[chandra-api] inputs=1  output=out  mode=accurate  formats=markdown,html,json
+  OK  page-340.jpg  (8.76s)
+[chandra-api] done: ok=1  skip=0  fail=0
+```
 
-## Next steps when OCR work resumes
+Block recognition: 16 blocks (Page + 15 child blocks, mostly Equation
+blocks with display-math LaTeX). The numerator `(1 - 85x - 85x² + x³)`
+appears in three generating-function lines on the page — this matches
+the canonical cube-near generators Ramanujan tabulated on p. 341 (per
+training-memory; cross-check against Ono arxiv 2014.xxxxx and
+Berndt-Andrews LN Part IV before treating individual OCR'd digits as
+ground truth).
 
-1. Get a datalab-to API key.
-2. Build a `corpora/scripts/chandra_api_runner.py` wrapper that:
-   - Accepts a directory of images
-   - Calls the API per page with retry / rate-limit handling
-   - Writes structured Markdown + HTML output per page
-   - Skips already-processed pages (idempotent)
-3. Initial scope: 30-50 high-value Lost Notebook pages (Hunt 1 + Hunt 4
-   class-invariants pages + a few mock-theta pages).
-4. Feed OCR'd expressions into Project C's seed library
-   (`rkc/search/seeds.py`) as new search inputs.
+## Limits + costs (per Datalab docs)
 
-## What this dir holds today
+| limit | value |
+|---|---|
+| Max file size | 200 MB |
+| Max pages per request | 7,000 |
+| Requests / minute | 400 |
+| Concurrent requests | 400 |
+| Concurrent pages in flight | 5,000 |
 
-- `in/page-340.jpg` — the canonical 1729 page, kept as a benchmark target
-  for when the API path is set up.
-- `LN_p341_canonical_1729/` (empty) — placeholder for the eventual output.
-- `page-341/` (empty) — placeholder.
+At ~9s/page sequential, the full 1,149-page Notebook corpus is
+~3 hours single-threaded; with the `AsyncDatalabClient` and even modest
+concurrency (~10 parallel calls) it drops to ~20 minutes.
 
-## Don't re-attempt local inference
+## Usage examples
+
+```bash
+# Single-image smoke test (this one):
+python corpora/scripts/chandra_api_runner.py \
+    --input  corpora/transcriptions/chandra_benchmark/in/page-340.jpg \
+    --output corpora/transcriptions/chandra_benchmark/out/
+
+# Directory batch (idempotent — skips pages whose .md exists):
+python corpora/scripts/chandra_api_runner.py \
+    --input  chatgpt-pro-mining/.../primary_originals/page_images/lost_notebook \
+    --output corpora/transcriptions/lost_notebook_chandra/
+
+# Dry-run (no API calls, lists what would be processed):
+python corpora/scripts/chandra_api_runner.py --input <dir> --output <dir> --dry-run
+```
+
+## Output layout per input
+
+```
+out/
+├── page-340.md            # LaTeX-rich markdown
+├── page-340.html          # html with <math display="block"> blocks
+├── page-340.json          # blocks: bbox, polygon, block_type, section_hierarchy
+├── page-340.metadata.json # page_stats, num_blocks
+├── page-340_*.png         # extracted figures (if any)
+└── _run_log.jsonl         # append-only run log (one line per file)
+```
+
+## Don't re-attempt local --method hf
 
 Per user note (2026-05-24): "i think chandra keeps crashing my mac".
-Pinning this here so future sessions don't try `chandra ... --method hf`
-again. Use API path only.
+The ~10 GB safetensors blob + working memory exceeded what's stable on
+the user's setup. Stick with the API path; cost per page is small and
+the corpus is bounded (≤1,149 pages).
+
+## Next steps (ladder)
+
+1. **Spot-check page-340 OCR vs Ono 2014 + Berndt-Andrews LN Part IV** —
+   confirm the cube-near generating-function coefficients character-for-
+   character, identify which subscript / digit errors Chandra makes on
+   Ramanujan's hand.
+2. **Pick a 30-50 page Hunt-relevant subset** — e.g. Hunt 4 class-
+   invariants pages, Hunt 1 reverification pages — and batch-OCR via
+   the wrapper.
+3. **Add `--async` flag** to the wrapper to use `AsyncDatalabClient` for
+   concurrent calls when batching the full 1,149-page corpus.
+4. **Feed accepted OCR'd identities into `rkc/search/seeds.py`** as new
+   search inputs for Project C.

@@ -115,29 +115,37 @@ does today. Adds unit tests. Removes `CompletionNotImplemented` for f5/f7.
 Diary entry. Per BIG_IDEAS_REVIEW §1, this closes the recognizer end-to-end
 on all 3 registered mock-theta families.
 
-### H4. Install Chandra OCR + benchmark against a Lost Notebook page — BLOCKED ON BANDWIDTH
+### H4. Chandra 2 OCR via Datalab API — OPERATIONAL (smoke test passed)
 
-**Status.** chandra-ocr 0.2.0 installed in `.venv`; HF model
-`datalab-to/chandra-ocr-2` partially downloaded. The
-`model.safetensors` blob is corrupted: expected 10,591,220,088 bytes
-(~9.86 GiB) per HF API, got 8,130,600,960 bytes (~7.57 GiB) — truncated at
-77% by the first agent's context-limit timeout. Two retry attempts of
-`chandra ... --method hf` fail at model load with
-`safetensors_rust.SafetensorError: Error while deserializing header,
-file not fully covered`.
+**Status (2026-05-24, evening).** Local `chandra --method hf` is
+**DEAD** (crashed user's Mac repeatedly; ~10 GB safetensors + working
+memory exceeds what's stable). Pivoted to Datalab hosted Chandra 2 API:
 
-**Recovery options (user choice):**
-1. **Redownload via `hf download datalab-to/chandra-ocr-2 model.safetensors
-   --force-download`** — fetches the missing ~2.3 GiB. Will be quick if
-   bandwidth allows.
-2. **Skip Chandra and use Claude-vision direct reads** for facsimile OCR.
-   Hunt 1 already validated this is enough for topic-level work. Hunt 5b
-   may need it for higher-granularity transcription.
-3. **Use a smaller VLM** (e.g. qwen2-VL-2B, marker-2.0) or a cloud OCR API
-   (Mathpix) for the math-heavy pages.
-4. **Defer** — Chandra isn't on the critical path for the highest-leverage
-   next steps (W8 iteration-theory lit scan; Hunt 5b can start with
-   vision-direct reads).
+- API key in `.env` (gitignored; `.env.example` committed)
+- SDK `datalab-python-sdk` v0.5.0 in `.venv`
+- Wrapper [`corpora/scripts/chandra_api_runner.py`](corpora/scripts/chandra_api_runner.py)
+  with idempotent batching, JSONL log, dry-run + force flags
+- Smoke test on `page-340.jpg` (LN reprint p. 341, canonical 1729 page):
+  **OK in 8.76 s**, 16 blocks recognized, LaTeX math preserved in
+  markdown + html + json outputs
+- Best settings: `mode=accurate`, `output_format=markdown,html,json`,
+  `disable_image_captions=True`
+- Limits per Datalab: 200 MB file / 7000 pp / 400 req/min / 5000
+  concurrent pages — full 1,149-page Notebook corpus is ~3 h
+  sequential, ~20 min with async concurrency
+
+See [`corpora/transcriptions/chandra_benchmark/README.md`](corpora/transcriptions/chandra_benchmark/README.md)
+for full operational notes.
+
+**Next-step ladder:**
+1. Spot-check page-340.md vs Ono 2014 + Berndt-Andrews LN Part IV —
+   character-for-character confirmation of OCR'd cube-near generators;
+   catalogue which digit / subscript classes Chandra mis-reads on
+   Ramanujan's hand.
+2. Pick a 30-50 page Hunt-relevant subset (Hunt 4 class invariants,
+   Hunt 1 reverification) — batch via wrapper.
+3. Add `--async` flag using `AsyncDatalabClient` for bulk runs.
+4. Feed accepted OCR'd identities into `rkc/search/seeds.py` (Project C).
 
 ---
 

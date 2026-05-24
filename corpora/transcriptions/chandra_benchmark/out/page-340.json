@@ -1,0 +1,604 @@
+{
+  "children": [
+    {
+      "html": "<p>\n<math display=\"block\">= \\frac{\\frac{a}{1-t} + \\frac{a}{1-t} \\cdot \\frac{a}{1-t} + \\dots + \\frac{a}{1-t} + \\frac{a}{1-t} \\cdot \\frac{a}{1-t}}{5}</math>\n<math display=\"block\">f_3 = \\frac{-c + r \\cdot \\frac{a}{1-t} + 1(c + r \\cdot \\frac{a}{1-t}) + (-1) \\frac{a}{1-t}}{5}</math>\n<math display=\"block\">pf_3 = \\frac{\\left(\\frac{c + r \\cdot \\frac{a}{1-t}}{1-t}\\right) - \\left(\\frac{c - r \\cdot \\frac{a}{1-t}}{1-t}\\right)}{5}</math>\n</p><p>\n<math display=\"block\">12.201_3 + 8.250_3 = 8.380_3 + 1</math>\n</p><p>\n<math display=\"block\">101_3 + 81_3 = 1010_3 - 1</math>\n</p><p>\n<math display=\"block\">l_3 + 8_3 = d_3 - 1</math>\n</p><p>\n<math display=\"block\">1111_3 + 1111_3 = 1522_3 + 1</math>\n</p><p>\n<math display=\"block\">d_3 + 10_3 = 15_3 + 1</math>\n</p><p>\n<math display=\"block\">132_3 + 138_3 = 125_3 - 1</math>\n</p>\n<p>example</p>\n<p>\n<math display=\"block\">\\left. \\begin{aligned} a^w_2 + b^w_3 &amp;= x^w_2 + (-1)_3 \\\\ a^w_2 + r^w_3 &amp;= c^w_3 + (-1)_3 \\end{aligned} \\right\\}</math>\n</p>\n<p>If:</p>\n<p>\n<math display=\"block\">(i) \\quad \\frac{1 - 85x - 85x^2 + x^3}{5 + 8x - 10x^2} = c^0 + c^1x + c^2x^2 + c^3x^3 + \\dots</math>\n</p><p>\n<math display=\"block\">(ii) \\quad \\frac{1 - 85x - 85x^2 + x^3}{5 - 59x - 15x^2} = p^0 + p^1x + p^2x^2 + p^3x^3 + \\dots</math>\n</p><p>\n<math display=\"block\">(iii) \\quad \\frac{1 - 85x - 85x^2 + x^3}{1 + 23x + 8x^2} = a^0 + a^1x + a^2x^2 + a^3x^3 + \\dots</math>\n</p>\n<p>It</p>\n\n<p>... result ...</p>\n",
+      "bbox": [
+        0.0,
+        0.0,
+        1540.0,
+        2072.0
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1540.0,
+          0.0
+        ],
+        [
+          1540.0,
+          2072.0
+        ],
+        [
+          0.0,
+          2072.0
+        ]
+      ],
+      "id": "/page/0/Page/0",
+      "block_type": "Page",
+      "children": [
+        {
+          "id": "/page/0/Equation/0",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">= \\frac{\\frac{a}{1-t} + \\frac{a}{1-t} \\cdot \\frac{a}{1-t} + \\dots + \\frac{a}{1-t} + \\frac{a}{1-t} \\cdot \\frac{a}{1-t}}{5}</math>\n<math display=\"block\">f_3 = \\frac{-c + r \\cdot \\frac{a}{1-t} + 1(c + r \\cdot \\frac{a}{1-t}) + (-1) \\frac{a}{1-t}}{5}</math>\n<math display=\"block\">pf_3 = \\frac{\\left(\\frac{c + r \\cdot \\frac{a}{1-t}}{1-t}\\right) - \\left(\\frac{c - r \\cdot \\frac{a}{1-t}}{1-t}\\right)}{5}</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              154.0,
+              62.0
+            ],
+            [
+              970.0,
+              62.0
+            ],
+            [
+              970.0,
+              580.0
+            ],
+            [
+              154.0,
+              580.0
+            ]
+          ],
+          "bbox": [
+            154.0,
+            62.0,
+            970.0,
+            580.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/1",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">12.201_3 + 8.250_3 = 8.380_3 + 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              385.0,
+              580.0
+            ],
+            [
+              939.0,
+              580.0
+            ],
+            [
+              939.0,
+              642.0
+            ],
+            [
+              385.0,
+              642.0
+            ]
+          ],
+          "bbox": [
+            385.0,
+            580.0,
+            939.0,
+            642.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/2",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">101_3 + 81_3 = 1010_3 - 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              462.0,
+              652.0
+            ],
+            [
+              847.0,
+              652.0
+            ],
+            [
+              847.0,
+              714.0
+            ],
+            [
+              462.0,
+              714.0
+            ]
+          ],
+          "bbox": [
+            462.0,
+            652.0,
+            847.0,
+            714.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/3",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">l_3 + 8_3 = d_3 - 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              1047.0,
+              663.0
+            ],
+            [
+              1339.0,
+              663.0
+            ],
+            [
+              1339.0,
+              735.0
+            ],
+            [
+              1047.0,
+              735.0
+            ]
+          ],
+          "bbox": [
+            1047.0,
+            663.0,
+            1339.0,
+            735.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/4",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">1111_3 + 1111_3 = 1522_3 + 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              385.0,
+              725.0
+            ],
+            [
+              893.0,
+              725.0
+            ],
+            [
+              893.0,
+              797.0
+            ],
+            [
+              385.0,
+              797.0
+            ]
+          ],
+          "bbox": [
+            385.0,
+            725.0,
+            893.0,
+            797.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/5",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">d_3 + 10_3 = 15_3 + 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              1047.0,
+              725.0
+            ],
+            [
+              1355.0,
+              725.0
+            ],
+            [
+              1355.0,
+              797.0
+            ],
+            [
+              1047.0,
+              797.0
+            ]
+          ],
+          "bbox": [
+            1047.0,
+            725.0,
+            1355.0,
+            797.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/6",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">132_3 + 138_3 = 125_3 - 1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              462.0,
+              797.0
+            ],
+            [
+              847.0,
+              797.0
+            ],
+            [
+              847.0,
+              870.0
+            ],
+            [
+              462.0,
+              870.0
+            ]
+          ],
+          "bbox": [
+            462.0,
+            797.0,
+            847.0,
+            870.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/7",
+          "block_type": "Text",
+          "html": "\n<p>example</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              231.0,
+              859.0
+            ],
+            [
+              431.0,
+              859.0
+            ],
+            [
+              431.0,
+              932.0
+            ],
+            [
+              231.0,
+              932.0
+            ]
+          ],
+          "bbox": [
+            231.0,
+            859.0,
+            431.0,
+            932.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/8",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\\left. \\begin{aligned} a^w_2 + b^w_3 &amp;= x^w_2 + (-1)_3 \\\\ a^w_2 + r^w_3 &amp;= c^w_3 + (-1)_3 \\end{aligned} \\right\\}</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              292.0,
+              932.0
+            ],
+            [
+              924.0,
+              932.0
+            ],
+            [
+              924.0,
+              1108.0
+            ],
+            [
+              292.0,
+              1108.0
+            ]
+          ],
+          "bbox": [
+            292.0,
+            932.0,
+            924.0,
+            1108.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/9",
+          "block_type": "Text",
+          "html": "\n<p>If:</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              200.0,
+              1098.0
+            ],
+            [
+              277.0,
+              1098.0
+            ],
+            [
+              277.0,
+              1149.0
+            ],
+            [
+              200.0,
+              1149.0
+            ]
+          ],
+          "bbox": [
+            200.0,
+            1098.0,
+            277.0,
+            1149.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/10",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">(i) \\quad \\frac{1 - 85x - 85x^2 + x^3}{5 + 8x - 10x^2} = c^0 + c^1x + c^2x^2 + c^3x^3 + \\dots</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              215.0,
+              1160.0
+            ],
+            [
+              1278.0,
+              1160.0
+            ],
+            [
+              1278.0,
+              1346.0
+            ],
+            [
+              215.0,
+              1346.0
+            ]
+          ],
+          "bbox": [
+            215.0,
+            1160.0,
+            1278.0,
+            1346.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/11",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">(ii) \\quad \\frac{1 - 85x - 85x^2 + x^3}{5 - 59x - 15x^2} = p^0 + p^1x + p^2x^2 + p^3x^3 + \\dots</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              231.0,
+              1367.0
+            ],
+            [
+              1278.0,
+              1367.0
+            ],
+            [
+              1278.0,
+              1554.0
+            ],
+            [
+              231.0,
+              1554.0
+            ]
+          ],
+          "bbox": [
+            231.0,
+            1367.0,
+            1278.0,
+            1554.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/12",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">(iii) \\quad \\frac{1 - 85x - 85x^2 + x^3}{1 + 23x + 8x^2} = a^0 + a^1x + a^2x^2 + a^3x^3 + \\dots</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              231.0,
+              1574.0
+            ],
+            [
+              1278.0,
+              1574.0
+            ],
+            [
+              1278.0,
+              1771.0
+            ],
+            [
+              231.0,
+              1771.0
+            ]
+          ],
+          "bbox": [
+            231.0,
+            1574.0,
+            1278.0,
+            1771.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/13",
+          "block_type": "Text",
+          "html": "\n<p>It</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              215.0,
+              1781.0
+            ],
+            [
+              308.0,
+              1781.0
+            ],
+            [
+              308.0,
+              1895.0
+            ],
+            [
+              215.0,
+              1895.0
+            ]
+          ],
+          "bbox": [
+            215.0,
+            1781.0,
+            308.0,
+            1895.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/14",
+          "block_type": "Text",
+          "html": "\n<p>... result ...</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              908.0,
+              1844.0
+            ],
+            [
+              1370.0,
+              1844.0
+            ],
+            [
+              1370.0,
+              1926.0
+            ],
+            [
+              908.0,
+              1926.0
+            ]
+          ],
+          "bbox": [
+            908.0,
+            1844.0,
+            1370.0,
+            1926.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/PageFooter/15",
+          "block_type": "PageFooter",
+          "html": "",
+          "page": 0,
+          "polygon": [
+            [
+              1293.0,
+              1968.0
+            ],
+            [
+              1355.0,
+              1968.0
+            ],
+            [
+              1355.0,
+              2020.0
+            ],
+            [
+              1293.0,
+              2020.0
+            ]
+          ],
+          "bbox": [
+            1293.0,
+            1968.0,
+            1355.0,
+            2020.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        }
+      ],
+      "section_hierarchy": {}
+    }
+  ],
+  "metadata": {
+    "page_stats": [
+      {
+        "page_id": 0,
+        "num_blocks": 16
+      }
+    ]
+  }
+}
