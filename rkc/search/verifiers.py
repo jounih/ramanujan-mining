@@ -30,6 +30,11 @@ class MpmathVerifier:
     both expressions; compare to `n_digits` precision; pass iff ALL
     sweep cells agree to that precision.
 
+    By default treats inputs as **summand expressions** — given a payload
+    `f(n, β)` and iteration variable `n`, the verifier sums
+    `Σ_{n=0}^∞ f(n, β)` at each parameter cell via `mpmath.nsum`. Pass
+    `summand_mode=False` for pointwise comparison instead.
+
     `n_digits` is the strict bar. Failure modes:
     - Spurious agreement at low precision but disagreement at high
       (per CLAUDE.md noisy-positive discipline; bump n_digits if you
@@ -43,6 +48,11 @@ class MpmathVerifier:
     n_digits: int = 40
     # default parameter sweep: a few orders of magnitude in beta/q-like params
     sweep_params: list[dict[str, Any]] | None = None
+    # if True (default), interpret payload as a summand and compare
+    # Σ_{n=0}^∞ payload values; if False, evaluate payload pointwise.
+    summand_mode: bool = True
+    # range for the summation when summand_mode=True
+    summand_range: tuple[int, Any] = (-mpmath.inf, mpmath.inf)
 
     def _default_sweep(self) -> list[dict[str, Any]]:
         # generic: try a few values of common parameters
@@ -62,13 +72,18 @@ class MpmathVerifier:
         """Verify that `state_after.payload` is numerically equal to
         `state_before.payload` over the parameter sweep.
 
-        For Project C, the verifier asks: "is the transformed expression
-        equal to the original?" (not "is it equal to some target"). We're
-        confirming that the operator sequence preserves the value while
-        possibly changing the form.
+        In `summand_mode=True` (default), both payloads are summed
+        Σ_n payload(n, params) via mpmath.nsum at each cell before
+        comparison. This is the right mode for kernel-routing
+        transformations like Poisson summation (`exp(-β n²)` → dual).
+
+        In `summand_mode=False`, payloads are evaluated pointwise at
+        each cell; useful for transformations that are pointwise
+        identities, not series identities.
         """
         expr_before = state_before.payload
         expr_after = state_after.payload
+        var = state_before.metadata.get("var")
 
         # quick symbolic shortcut: if they're sympy-equal, trivially passes
         try:
@@ -88,8 +103,12 @@ class MpmathVerifier:
             tol = mpmath.mpf(10) ** (-self.n_digits)
             for cell in sweep:
                 try:
-                    val_before = self._evaluate(expr_before, cell)
-                    val_after = self._evaluate(expr_after, cell)
+                    if self.summand_mode and var is not None:
+                        val_before = self._sum_evaluate(expr_before, var, cell)
+                        val_after = self._sum_evaluate(expr_after, var, cell)
+                    else:
+                        val_before = self._evaluate(expr_before, cell)
+                        val_after = self._evaluate(expr_after, cell)
                 except Exception as e:
                     # one cell's eval failed — could be convergence regime or domain
                     return VerificationResult(
@@ -121,10 +140,36 @@ class MpmathVerifier:
             return VerificationResult(
                 passed=True,
                 digits_or_examples=self.n_digits,
-                reason=f"numerical equality across {len(sweep)} sweep cells",
+                reason=f"numerical equality across {len(sweep)} sweep cells "
+                       f"({'summand' if self.summand_mode else 'pointwise'} mode)",
             )
         finally:
             mpmath.mp.dps = old_dps
+
+    def _sum_evaluate(self, expr: sp.Expr, var: sp.Symbol,
+                      cell: dict[str, Any]) -> Any:
+        """Substitute cell params, then sum Σ_n expr(n) over summand_range
+        via mpmath.nsum. Returns None if substitution leaves free symbols
+        other than var, or if the sum doesn't converge.
+        """
+        subs = {sp.Symbol(k): v for k, v in cell.items()}
+        subs.update({sp.Symbol(k, positive=True): v for k, v in cell.items()})
+        e = expr.subs(subs)
+        # any remaining free symbols other than var → undefined cell
+        free = e.free_symbols - {var}
+        # also subtract any positive-symbol twins of var
+        free = {s for s in free if s.name != var.name}
+        if free:
+            return None
+        # compile a numerical function f(n) = e evaluated at integer n
+        try:
+            f_callable = sp.lambdify(var, e, "mpmath")
+        except Exception:
+            return None
+        try:
+            return mpmath.nsum(f_callable, self.summand_range)
+        except Exception:
+            return None
 
     def _evaluate(self, expr: sp.Expr, cell: dict[str, Any]) -> Any:
         """Substitute cell into expr; return mpmath value or None if

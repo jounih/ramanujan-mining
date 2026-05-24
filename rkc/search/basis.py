@@ -62,14 +62,34 @@ def _master_theorem_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
 
 
 def _mellin_inversion_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
-    """Mellin transform / inversion stub.
+    """Mellin transform / Poisson-summation dual.
 
-    For integrals of the form int_0^inf x^(s-1) F(x) dx → M[F](s),
-    apply the Mellin transform symbolically when sympy knows it; else
-    return None.
+    v0.4 implements ONE concrete case end-to-end (the keystone):
+    Gaussian summand `exp(-β n²)` → Poisson-summation dual
+    `√(π/β) · exp(-π² n² / β)`.
+
+    Mathematical justification: Poisson summation is the Z-action
+    instance of Mellin-pair self-reciprocity (Gaussian self-Mellin-pair).
+    The kernel matches rkc's `gaussian_quadratic` registry entry; the
+    transformed summand sits in the *dual β* regime (small β → large
+    effective β'), which is the β\* = c·π crossover that Pass A
+    characterised across 5 independent kernels
+    ([CANDIDATE_INSIGHTS §A6](../../insights/CANDIDATE_INSIGHTS.md)).
+
+    Other kernel families with rkc-known duals (Bose-Einstein partition;
+    Lambert-Eisenstein; partial theta) are v0.5+.
     """
-    # v0 stub
-    return None
+    from ..recognizer import best_match
+    bm = best_match(expr, n)
+    if bm is None or bm.kernel != "gaussian_quadratic":
+        return None
+    beta = bm.params.get("beta")
+    if beta is None:
+        return None
+    # Poisson-summation dual of exp(-β n²): √(π/β) · exp(-π² n² / β)
+    # Use the same iteration variable n (summation indices are dummy).
+    new_summand = sp.sqrt(sp.pi / beta) * sp.exp(-sp.pi**2 * n**2 / beta)
+    return new_summand
 
 
 def _fourier_self_reciprocity_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:

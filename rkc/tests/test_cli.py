@@ -149,6 +149,61 @@ def test_search_module_import_smoke():
     assert "fractional_functional_iteration" in op_ids
 
 
+def test_v04_mellin_inversion_poisson_dual_accepted(tmp_path):
+    """Project C v0.4 acceptance gate: with mellin_inversion's Poisson-
+    summation apply_fn wired, a Gaussian at small β should produce at
+    least one accepted identity via the Poisson dual."""
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = sp.exp(-sp.Rational(1, 100) * n**2)  # β=1/100; Poisson dual is ~54× cheaper
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=30,
+        max_depth=1,
+    )
+    # At least one acceptance expected (the seed is deterministic; mellin_inversion
+    # gets chosen many times among 30, of which ~6-10 actually apply).
+    assert summary.n_accepted >= 1, (
+        f"v0.4 acceptance gate failed: 0 acceptances in 30-budget search; "
+        f"reject reasons = {summary.reject_reason_counts}"
+    )
+    # Verify the accepted record looks right
+    accepted_path = tmp_path / "accepted.jsonl"
+    assert accepted_path.exists()
+    first = json.loads(accepted_path.read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "mellin_inversion"
+    # The cost ratio should be > 1 (the transformation is cheaper)
+    assert first["cost_ratio"] > 1.0
+
+
+def test_v04_mellin_inversion_apply_fn_directly():
+    """Direct unit test of mellin_inversion's apply_fn: Gaussian → Poisson dual."""
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("mellin_inversion")
+    # Should apply to a gaussian
+    expr_in = sp.exp(-sp.Rational(1, 100) * n**2)
+    expr_out = op.apply_fn(expr_in, n)
+    assert expr_out is not None, "mellin_inversion should fire on a gaussian"
+    # Should NOT apply to a non-gaussian
+    expr_not_gauss = sp.exp(-sp.Symbol("alpha", positive=True) * n)  # linear in n
+    expr_out2 = op.apply_fn(expr_not_gauss, n)
+    assert expr_out2 is None, "mellin_inversion should decline on non-gaussian"
+
+
 # ---------------------------------------------------------------------------
 # rkc benchmark — default suite runs the 14b regression
 # ---------------------------------------------------------------------------
