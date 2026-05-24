@@ -460,6 +460,63 @@ validation; the ARC side gives the high-payoff target.
 
 Effort: ~1-2 weeks for the shared engine; per-repo plug-in another week each.
 
+### X4. Document B1 cohomological-irreducibility as architectural constraint in aether-hardware-ebm
+
+The B1 closure (g\* irreducibly an Eichler cocycle in H¹(Γ, V_k), per
+diary 19 + Exp 22's (K+1)² S-transform dimension mismatch) is a hard
+architectural constraint on what aether-hardware-ebm's analog tiles can
+promise: **any EBM with mock-modular partition function structure is
+fundamentally beyond crosspoint reach** (no finite-K intertwiner exists).
+Add a forbidden-class entry to aether-hardware-ebm's
+`docs/analog-acceleration-map.md` so the H4 effort doesn't get spent
+trying. ~half-day. See
+[insights/CROSS_REPO_LEVERAGE.md "Broader read"](insights/CROSS_REPO_LEVERAGE.md).
+
+### X5. Pre-register per-task-family operator predictions for ARC-AGI
+
+Adopt the [HUNT5b_PREDICTIONS.md](insights/HUNT5b_PREDICTIONS.md) template
+for arc-agi-ebm-agent: pre-register per-task-family rule-subset predictions
+for ARC tasks BEFORE running the solver. Falsifier discipline: solver-found
+rule must match the pre-registered family at ≥70% to call the toolkit-split
+hypothesis "supported" for ARC. Directly extends Hunt 5's discipline (predict
+before testing, near-match ≠ match) onto ARC-AGI experimental design.
+
+The Hunt 5 finding ("structured-multidimensional working representation:
+small basis per problem-domain with hard separation between domains") IS the
+architectural pattern ARC needs. Today the ARC solver searches the union of
+all rules per task; pre-registering per-family expectations forces the
+solver into a routing function rather than blind search.
+
+Effort: ~1-2 days to draft per-family predictions; locks down the
+experimental contract.
+
+### X6. Schröder-linearization probe for nonlinear audio resonators (aether-audio)
+
+Per QR III §6's closed-form `F^n(x)` for `F(x) = x²-2` (Chebyshev semigroup
+via cosh-formula Schröder linearization): scope a probe applying the same
+idea to a nonlinear audio resonator (Duffing oscillator suggested). Compute
+the Schröder eigenfunction `σ(x)` numerically; test whether
+`F^n(x) = σ⁻¹(s^n σ(x))` matches direct N-step time-domain integration to
+≥6 digits at steady-state.
+
+If yes, this is a real audio-DSP win for steady-state evaluation of
+nonlinear-resonator topologies (Duffing, Van der Pol, soft/hard clipping
+chains) and validates the W8 angle with applied evidence. ~1 week scope;
+~2-3 weeks for a tested implementation if the probe succeeds.
+
+### X7. "Did not pan out" log discipline across all three sibling repos
+
+aether-audio has `docs/feedback.md`; aether-hardware-ebm has H4 failure-mode
+docs; arc-agi-ebm-agent has `docs/feedback.md`. None has an explicit
+"refuted speculations" log alongside positive findings. Adding one (per the
+[DID_NOT_PAN_OUT.md](insights/DID_NOT_PAN_OUT.md) template — REFUTED /
+CORRECTED / PARTIALLY REFUTED / DOWNGRADED / OUTSTANDING tags, every entry
+citing the experiment that closed it) would lift methodological credibility
+consistently across the run.
+
+~half-day per repo; mostly a back-port of existing claims that turned
+out wrong.
+
 ## Standing items (per BIG_IDEAS_REVIEW)
 
 - **Cohomological generative model** (BIG_IDEAS §3). Research-grade math
