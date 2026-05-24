@@ -381,6 +381,60 @@ papers on theta functions.
 
 ---
 
+## Cross-repo (sibling projects, see [insights/CROSS_REPO_LEVERAGE.md](insights/CROSS_REPO_LEVERAGE.md))
+
+User asked whether rkc/Ramanujan work is useful for: `/Users/jouni/Documents/
+aether-audio` (PHS-flavoured differentiable audio), `/Users/jouni/Documents/
+aether-hardware-ebm` (mixed-signal EBM with EqProp), and `/Users/jouni/
+Documents/arc-agi-ebm-agent` (ARC-AGI program induction + EBM ranking).
+
+Honest read: the Ramanujan-specific kernels are unlikely to fire on any
+of those, but the **rkc architecture** (registry + matcher + cost model
++ certificate + degeneracy detector) is a transferable pattern; there
+are 3-4 specific narrow connections too. Three cross-repo tasks:
+
+### X1. Scope a `rkc_phs` registry for aether-audio
+
+Borrow the rkc/ architecture; plug in the first 3-5 passive physical-audio
+primitives (resonator, all-pass, waveguide, FDN topology, modal expansion).
+Per-kernel: matcher on adjacency/parameter structure; per-route cost
+(time-domain vs frequency-domain vs modal); certificate (passivity bound);
+degeneracy detector (silent passivity violations at parameter edges).
+
+The Gaussian-theta dual representation moves from `rkc` to `rkc_phs`
+unchanged — high-Q resonators at low damping are exactly where the
+β\* = c·π crossover applies. See
+[insights/CROSS_REPO_LEVERAGE.md §aether-audio](insights/CROSS_REPO_LEVERAGE.md).
+
+Effort: ~half-week for scope + skeleton; ~2-3 weeks for first 3 primitives
+fully wired.
+
+### X2. Import rkc/certify pattern as H4 evidence-claim template for aether-hardware-ebm
+
+aether-hardware-ebm's H4 evidence accounting is the same fail-closed
+discipline as rkc/certify. The CLI shape (recognize / compare / certify)
+maps cleanly onto the existing hardware\_\* scripts. Bonus: the B1 closure
+result (cohomological irreducibility of g\*) tells aether-hardware-ebm
+which EBM classes its analog tiles can NOT replicate — a real architectural
+constraint.
+
+Effort: ~half-week to draft the H4-template mapping + a one-pass
+back-port from rkc/cli.py:cmd_certify into a hardware\_certify.py prototype.
+
+### X3. Build the operator-composition search engine (T3) as a shared rkc+arc-agi artefact
+
+The W5/T3 operator-composition search engine maps DIRECTLY onto ARC-AGI's
+program-induction loop: generate candidates by composing operators from a
+small DSL, numerically verify, rank by energy. Build the engine on the
+Ramanujan 7-operator basis as the validation case; refactor so the operator
+basis is pluggable; plug in ARC's DSL as the second test case.
+
+Reusable artefact: `rkc.search` module or a separate `compositional_search`
+package that both repos depend on. The Ramanujan side gives the controlled
+validation; the ARC side gives the high-payoff target.
+
+Effort: ~1-2 weeks for the shared engine; per-repo plug-in another week each.
+
 ## Standing items (per BIG_IDEAS_REVIEW)
 
 - **Cohomological generative model** (BIG_IDEAS §3). Research-grade math

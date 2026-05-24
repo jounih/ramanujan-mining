@@ -149,6 +149,11 @@ If a citation lacks a provenance flag, treat it as suspect.
 - **Always commit findings to a markdown file so they survive context-window
   rotation.** Working state in the conversation is volatile; .md files in the
   repo are not.
+- **Always add your own suggestions to `todo.md`** before / after raising them
+  in chat. If you propose a next step in conversation, write it into todo
+  the same turn. The chat scrolls; todo persists. User's standing
+  instruction: "generally always add your suggestions to todo so they
+  survive this context window".
 - New synthesis that crosses multiple experiments goes in `insights/`.
 - Per-experiment findings go in `diary/`.
 - Action items go in `todo.md` (and TaskCreate during the working session).
