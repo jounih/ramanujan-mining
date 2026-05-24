@@ -11,6 +11,27 @@ ingestion of the ChatGPT-Pro source pack at `chatgpt-pro-mining/`.
 
 ## Now actionable (Hunts unblocked by the source pack)
 
+### H2. Hunt 5b: 3rd chapter for full toolkit-split establishment
+
+**Status:** 2 chapters complete; need 1 more with a 3rd distinct
+operator-dominance pattern to lift the toolkit-split hypothesis from
+"strong inter-chapter variance evidence" to "established".
+- Ch. 32 (Eisenstein-CF, diary 22): SUPPORTED. q_shift 100% + modular_S
+  91.7% — *q-Pochhammer-with-modular-quotient* dominant pair.
+- Ch. 36 (modular equations, diary 24): PARTIALLY SUPPORTED. modular_S
+  100% saturated, q_shift 4.8%, class_field 4.8% — *modular_S
+  single-saturated* pattern.
+- **NEEDED**: a chapter where neither q_shift nor modular_S dominates
+  AND a 3rd operator does. The natural candidate: **class invariants Gₙ
+  chapter** (Berndt NB Part V Ch. 34 + Lost Notebook Part I supplement,
+  both in downloaded-pdfs/). Predicted-dominant by HUNT5b_PREDICTIONS:
+  `class_field_galois_average` ≥60%, `modular_S_transform` ≥30%. If the
+  prediction holds, that's the 3rd distinct dominance pattern — full
+  toolkit-split establishment.
+
+Effort: half-day to full-day for a focused agent. Same template as
+Hunt 5b Ch. 32 + Ch. 36 agents.
+
 ### H1. Hunt 1 — Lost Notebook pp. 341-343 (1729 / two-cubes / K3) — CLOSED
 
 Result in [diary/21](diary/21_hunt1_lost_notebook_341_343.md);
@@ -120,13 +141,62 @@ file not fully covered`.
 
 ---
 
+## Status snapshot (2026-05-24, post Hunt 5b Ch. 32 + Ch. 36 + Project C v0.4)
+
+**Project C v0.4 SHIPPED** — first identity accepted end-to-end (Poisson
+dual of Gaussian via `mellin_inversion`; 54× cost ratio at β=1/100). The
+scaffold is proven; remaining 6 operator apply_fn's are stubs (v0.5+).
+
+**Hunt 5b state**: Ch. 32 SUPPORTED, Ch. 36 PARTIALLY SUPPORTED with
+strong inter-chapter variance evidence (Ch. 32 was q_shift + modular_S
+pair-dominant; Ch. 36 is modular_S single-saturated). Need 1 more chapter
+with a 3rd distinct operator-dominance pattern for the toolkit-split
+hypothesis to be **established** (vs partially supported).
+
+**Tests**: 63/63 passing including 4 CLI smoke tests and 2 new v0.4
+end-to-end tests.
+
 ## Tool-side priority stack (after ChatGPT-Pro reranking — see [BIG_IDEAS_REVIEW](insights/BIG_IDEAS_REVIEW.md))
 
 The headline target: **rkc v0.1** as a usable degeneracy-aware special-
 function routing compiler. The Hunts feed into this as transform-mining
 work. See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the v0.1 spec.
 
-### T1. rkc v0.1 CLI + Python API milestone ★ HEADLINE
+### T0. Project C v0.5: implement next operator apply_fn(s) ★ NOW HEADLINE
+
+Project C v0.4 is shipped (mellin_inversion for Gaussian). v0.5+ implements
+apply_fn for the remaining 6 operators in QR7_OPERATOR_BASIS. Each gives
+the engine a new class of identities to find.
+
+**Recommended order** (easiest → hardest, leverage-ranked):
+
+- **v0.5: master_theorem on Beta-function form** — `∫₀^1 x^{m-1}(1-x)^{n-1} dx
+  ↔ Γ(m)Γ(n)/Γ(m+n)`. Library-of-canonical-cases pattern. ~half-day.
+- **v0.6: mellin_inversion for non-Gaussian theta-like kernels** — extend
+  the Poisson-dual route to Bose-Einstein partition (Z = ∏(1-q^n)^{-1});
+  Lambert series (Σ n q^n / (1-q^n)); partial theta. Each ~half-day; uses
+  rkc's existing routing-table dual selections.
+- **v0.7: fourier_self_reciprocity** — recognise cos/sin integral pairs
+  and apply (π/2) F·F = Id. Requires Integral AST recognition (sympy's
+  Integral class); slightly heavier lift. ~1 day.
+- **v0.8: frullani_limit** — recognise `(f(ax) - f(bx))/x` integrals and
+  return `(f(0) - f(∞)) log(b/a)`. ~half-day with f(0)/f(∞) helpers.
+- **v0.9: mellin_pair_reciprocity** — generalised Mellin-pair self-inversion
+  per QR III §15. ~1 day. Bridges to W7 (Berndt-Dixit αβ=1 transformation
+  is an instance of this).
+- **v0.10: fractional_functional_iteration** — Schröder linearisation for
+  one-parameter iteration semigroups. ~2-3 days; ties to W8 paper + the
+  aether-audio X6 cross-repo Schröder probe.
+- **v0.11: hardy_orders_of_infinity** — asymptotic-comparison operator;
+  the deepest behaviour shift since this isn't an expression rewrite per
+  se. Defer until v0.10 lands.
+
+After v0.7 (4 operators implemented), run the controlled-validation case:
+random composition of operators on a curated seed-identity set; metric =
+fraction of rkc's 11 known kernel identities recovered within budget=1000
+compositions of length ≤3. Target ≥80%.
+
+### T1. rkc v0.1 CLI + Python API milestone
 
 CLI: `rkc recognize`, `rkc compare`, `rkc certify`, `rkc benchmark`.
 Python: `from rkc import route; route(expr, var, params, digits)`.
