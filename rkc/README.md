@@ -13,7 +13,41 @@ stable reference. v2 closes the five documented gaps from v1's diary
 per-component cost rollup for composites, per-term complexity tracking,
 Gauss-sum gcd reachability).
 
-## Example
+**Status:** v0.3.0 (research-quality recognizer + routing, 55/55 routing
+benchmark, 59/59 tests passing). Working toward **v0.1.0** as a packaged
+CLI + stable Python API — see [MILESTONES.md](MILESTONES.md) for the
+release gates.
+
+## Quick start (CLI)
+
+After `pip install -e .` from the repo root:
+
+```bash
+# Identify the kernel family + route + confidence
+rkc recognize "exp(-beta*n**2)"
+# → kernel: gaussian_quadratic, family: theta-like, route: DEGENERATE (β symbolic)
+
+# Compare direct vs dual costs with a numerical parameter
+rkc compare "exp(-beta*n**2)" --param beta=1e-8 --digits 80
+# → recommended: dual, speedup_factor: 26283.5× (52567 → 2 terms)
+
+# Surface the silent-zero hazard at Gauss sums q ≡ 2 mod 4
+rkc certify "exp(2*pi*I*n**2/6)"
+# → DEGENERATE: q=6 ≡ 2 (mod 4); G(p,q) = 0 identically
+# → do NOT use the dual / closed-form route here
+
+# Same syntactic shape with q=7 → safe
+rkc certify "exp(2*pi*I*n**2/7)"
+# → no degeneracy detected; route DIRECT safe to use
+
+# Run the default 55-case regression suite
+rkc benchmark
+```
+
+All commands accept `--json` for machine-readable output. See
+[MILESTONES.md §A](MILESTONES.md) for the full CLI contract.
+
+## Example (Python API)
 
 ```python
 import sympy as sp
