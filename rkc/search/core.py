@@ -31,6 +31,50 @@ class RejectReason(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
+class ConvergenceClass(str, Enum):
+    """v0.9a (Project C v0.9-hardy): divergence-diagnostic classification
+    emitted by `hardy_orders_of_infinity`.
+
+    The operator is a NON-TRANSFORMING annotator — it leaves the summand
+    expression alone but tags the state with the asymptotic behaviour of
+    the summand as n → ∞. Downstream proposers (and the verifier) can use
+    this tag to decide whether the literal `Σ_n payload(n)` makes sense
+    at all, and which routing strategy is appropriate.
+
+    Values:
+
+    - **CONVERGENT** — summand → 0 as n → ∞. The series may or may not
+      converge in absolute value (alternating series with slow decay can
+      still sum), but the necessary condition for absolute convergence is
+      met. v0.9a does not attempt a finer speed-of-convergence split.
+
+    - **DIVERGENT_LITERAL** — summand → c ≠ 0 (finite) as n → ∞. The
+      literal sum cannot converge; downstream proposers MUST transform
+      before any numerical comparison. Motivating example:
+      `1/(1 - exp(-βn)) → 1` as n → ∞.
+
+    - **NEEDS_REGULARIZATION** — summand → ∞ as n → ∞. The literal sum
+      diverges to infinity; an Abel / zeta-regularization or a modular
+      transformation is required before sums make sense. Examples: `n`,
+      `n²`, `log(n)`, `n^s` for s > 0.
+
+    - **UNKNOWN** — sympy's `limit` raised, returned an AccumulationBounds
+      (oscillatory), or otherwise didn't yield a classifiable value. The
+      proposer should treat this as a "no information" signal and not
+      special-case routing on it.
+
+    Tag location: emitted into `SearchState.metadata['convergence_class']`
+    (string-valued) and mirrored to the top-level
+    `SearchState.convergence_class` field for direct access. The
+    JsonlRegistry persists it via the existing `state_after_meta` /
+    `state_before_meta` JSONL fields, so audit trails survive.
+    """
+    CONVERGENT = "CONVERGENT"
+    DIVERGENT_LITERAL = "DIVERGENT_LITERAL"
+    NEEDS_REGULARIZATION = "NEEDS_REGULARIZATION"
+    UNKNOWN = "UNKNOWN"
+
+
 @dataclass
 class SearchState:
     """Current state of a search step. Instance-specific payload.
@@ -41,9 +85,29 @@ class SearchState:
 
     For the ARC side (future): `payload` is the ARC frame state +
     rule-application history; `metadata` carries the task fingerprint.
+
+    v0.9a extension (Project C v0.9-hardy): `convergence_class` is a
+    top-level field carrying the asymptotic-behaviour classification of
+    the summand `payload` as the iteration variable → ∞. It is populated
+    by `hardy_orders_of_infinity`'s apply_fn (a NON-TRANSFORMING
+    annotator) and mirrored from `metadata['convergence_class']`. Default
+    is None — un-classified states are simply "we haven't asked yet".
+
+    The classification values are the `ConvergenceClass` enum:
+    `CONVERGENT` (summand → 0), `DIVERGENT_LITERAL` (summand → c ≠ 0,
+    finite), `NEEDS_REGULARIZATION` (summand → ∞), `UNKNOWN` (couldn't
+    classify in one pass). The string value is stored for JSONL-
+    serialization friendliness.
+
+    The convergence_class field is the LOAD-BEARING addition for v0.9a:
+    downstream proposers (notably ClaudeProposer in v0.9b) can read it
+    off the state and refuse to chain operators that don't make sense
+    for divergent summands (e.g. don't try strict Poisson on a
+    DIVERGENT_LITERAL state).
     """
     payload: Any
     metadata: dict[str, Any] = field(default_factory=dict)
+    convergence_class: Optional[str] = None
 
 
 @dataclass

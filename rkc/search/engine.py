@@ -47,16 +47,34 @@ def _apply_operator(op_app: OperatorApplication,
 
     Returns None if the operator doesn't apply (PROPOSER_DECLINED equivalent).
 
-    v0.8b extension: an apply_fn may return either:
-      - sp.Expr → v0.4/v0.7 strict-Poisson path (term-by-term identity).
-        op_app's `additive_correction` and `summand_range` are left as-is
-        (typically None).
-      - tuple `(new_summand, additive_correction, summand_range)` → v0.8b
-        modular-with-correction path. The engine MUTATES op_app to attach
-        these fields so the verifier can pick them up downstream.
+    ### Return-convention dispatch
 
-    The tuple form is opt-in per-operator; existing v0.4/v0.7 operators
-    continue returning bare exprs and are unaffected.
+    An apply_fn may return one of three forms (the engine dispatches on
+    type + length):
+
+      - **`sp.Expr`** → v0.4/v0.7 strict-Poisson path (term-by-term
+        identity). op_app's `additive_correction` and `summand_range`
+        are left as-is (typically None).
+
+      - **3-tuple `(new_summand, additive_correction, summand_range)`** →
+        v0.8b modular-with-correction path. The engine MUTATES op_app to
+        attach these fields so the verifier can pick them up downstream.
+        The second element is an `sp.Expr` (the scalar correction).
+
+      - **2-tuple `(payload_unchanged, metadata_dict)`** → v0.9a
+        non-transforming annotator path (used by
+        `hardy_orders_of_infinity`). The first element is the original
+        expression returned unchanged; the second is a `dict[str, Any]`
+        whose keys are merged into the new state's `metadata` dict. If
+        the dict contains a `convergence_class` key, the engine ALSO
+        copies that value to the top-level
+        `SearchState.convergence_class` field for direct access (and
+        for JsonlRegistry persistence). The dict-typed second element
+        is what distinguishes this from the v0.8b 3-tuple (whose second
+        element is an Expr, not a dict).
+
+    All extended forms are opt-in per-operator; existing v0.4/v0.7
+    operators continue returning bare Exprs and are unaffected.
     """
     try:
         op = get_operator(op_app.op_id)
@@ -68,18 +86,42 @@ def _apply_operator(op_app: OperatorApplication,
     result = op.apply_fn(state.payload, var)
     if result is None:
         return None
-    # v0.8b extended return convention
+    new_metadata = dict(state.metadata)
+    new_convergence_class = state.convergence_class
+    # Extended return-convention dispatch
     if isinstance(result, tuple):
-        if len(result) != 3:
+        if len(result) == 3:
+            # v0.8b: (new_summand, additive_correction, summand_range)
+            new_payload, additive_correction, summand_range = result
+            if new_payload is None:
+                return None
+            op_app.additive_correction = additive_correction
+            op_app.summand_range = summand_range
+        elif len(result) == 2:
+            # v0.9a: (payload_unchanged, metadata_dict) — non-transforming
+            # annotator. We REQUIRE the second element to be a dict so the
+            # 2-tuple form can't be confused with a partial v0.8b tuple.
+            new_payload, meta_dict = result
+            if new_payload is None or not isinstance(meta_dict, dict):
+                return None
+            # Merge into the metadata dict (caller wins on key conflicts —
+            # the apply_fn is the authoritative source for its own keys).
+            new_metadata.update(meta_dict)
+            # Mirror convergence_class to the top-level field for direct
+            # access. The field is the same value as
+            # metadata['convergence_class']; we duplicate so callers can
+            # use either path without an extra dict lookup.
+            if "convergence_class" in meta_dict:
+                new_convergence_class = meta_dict["convergence_class"]
+        else:
             return None
-        new_payload, additive_correction, summand_range = result
-        if new_payload is None:
-            return None
-        op_app.additive_correction = additive_correction
-        op_app.summand_range = summand_range
     else:
         new_payload = result
-    return SearchState(payload=new_payload, metadata=dict(state.metadata))
+    return SearchState(
+        payload=new_payload,
+        metadata=new_metadata,
+        convergence_class=new_convergence_class,
+    )
 
 
 def search(initial_state: SearchState,

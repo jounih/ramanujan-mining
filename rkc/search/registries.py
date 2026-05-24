@@ -80,12 +80,18 @@ class JsonlRegistry:
             "timestamp": time.time(),
             "state_before": str(outcome.state_before.payload),
             "state_before_meta": _str_keys(outcome.state_before.metadata),
+            # v0.9a: persist top-level convergence_class explicitly on both
+            # sides (in addition to its appearance in *_meta via the
+            # _str_keys dump of metadata). Direct field access at audit
+            # time saves a string-parse of the meta dict.
+            "state_before_convergence_class": outcome.state_before.convergence_class,
             "op_sequence": [
                 {"op_id": op.op_id, "params": _str_keys(op.params), "confidence": op.confidence}
                 for op in outcome.op_sequence
             ],
             "state_after": str(outcome.state_after.payload),
             "state_after_meta": _str_keys(outcome.state_after.metadata),
+            "state_after_convergence_class": outcome.state_after.convergence_class,
             "verification_digits": outcome.verification.digits_or_examples,
             "verification_reason": outcome.verification.reason,
             "cost_direct": outcome.cost.direct_cost,

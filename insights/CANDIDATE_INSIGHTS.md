@@ -159,6 +159,55 @@ divided by per-term computational cost — the registry's cost estimator
 needs to track per-term complexity, not just term count. (Exp 05,
 diary 07.)
 
+### A8. Generalized obstruction principle: scalar time-only functional calculus of FP-type generators preserves the equilibrium sector
+
+**Confidence:** high (3 independent confirming instances; 2 with clean
+1-line structural arguments; scope characterized sharply).
+**Novelty:** to my knowledge, no published work states this principle
+as a unified statement linking modular cohomology obstructions to
+fractional-dynamics obstructions.
+
+**The principle:**
+> Scalar time-only functional calculus of a Fokker-Planck-type generator
+> L preserves ker L (the equilibrium sector). Therefore, any Mellin-pair-
+> style reciprocal-symmetric spectral object (Watson M(α), Berndt-Dixit
+> BD_int(a), etc.) cannot be matched by a functional of L's equilibrium
+> partition function under such a calculus.
+
+**Three confirming instances:**
+1. **B1** — Modular S-transform on lattice-gas g* vs Watson M(α);
+   closed via 20 candidates × 5 structurally-different families failing
+   numerically (Exps 16-22, diary 19); cohomological irreducibility
+   argument.
+2. **B1.5** — Caputo time-fractional FPE with harmonic confinement vs
+   Berndt-Dixit BD_int(α); closed via 1-line argument
+   (E_σ(0) = 1 → zero-mode fixed) (diary 35).
+3. **B1.5-ext** — Riemann-Liouville time-fractional FPE with quartic
+   confinement vs Berndt-Dixit BD_int(α); closed via 1-line argument
+   + handling of RL initialization source term (diary 37).
+
+**Sharp scope statement** (identified by ChatGPT Pro in the
+B1.5-ext analysis): the principle requires **scalar time-only**
+functional calculus. **Space-dependent variable-order subdiffusion**
+(Fedotov-Falconer literature) breaks the zero-mode-protection argument
+and is the genuine route to a counterexample. This is the natural
+Hunt 7 candidate.
+
+**Implication for Project C / rkc**: the recognizer doesn't yet
+reason about which spectral sector a candidate identity lives in.
+Sector-awareness would be a v1.x capability — would let the search
+engine immediately reject "this transformation tries to bridge a
+trivial-sector partition function to a non-trivial reciprocal object,
+no need to attempt".
+
+**Headline corollary**: this is the strongest single PRINCIPLE the run
+has produced. It's a unified explanation for why a whole class of
+naturally-attempted bridges between generative-model partition
+functions and modular-form-style spectral objects must fail.
+
+(B1 = Exps 16-22 + diaries 12, 15, 17-19; B1.5 = diary 35;
+B1.5-ext = diary 37.)
+
 ---
 
 ## B. Operationally plausible — needs more work

@@ -725,6 +725,66 @@ claim. **Outstanding — not tested as a controlled benchmark.**
 
 ---
 
+## R18 — "Some natural extension of the modular B1 bridge will work in fractional dynamics" (B1.5 family)
+
+**What was speculated.** Per `insights/W7_BERNDT_DIXIT_WIRING.md` §4-§6
+and `insights/BIG_IDEAS_REVIEW.md §3b`, the going-in conjecture was
+~10-15% positive: the Ramanujan-Berndt-Dixit αβ=1 Mellin-pair
+reciprocity (arXiv:0904.1053v2 Theorem 1.1) might extend to systems
+with non-Markovian Caputo time-fractional FPE dynamics. The concrete
+question: ∃ α(σ, β) and constant c such that
+
+```
+R_σ(β) := log Z_σ(β) − log Z_1(β) = c · BD_int(α(σ, β))
+```
+
+holds to ≤1% rel-dev across σ ∈ {0.5, 0.7, 0.9} and ≥2 dex of β?
+
+**What was tested (structural, multiple cases).**
+
+**Case 1 — B1.5 (Caputo + harmonic confinement)** — diary 35: For
+Caputo time-fractional FPE with harmonic V(x) = k_h x²/2, the
+equilibrium density `p_eq(x) = e^{-β k_h x²/2}/Z_1(β)` is time-
+independent, so `∂_t^σ p_eq = 0` for any σ. Therefore the same
+`p_eq` solves the fractionalized equation for EVERY σ ∈ (0,1]. So
+`Z_σ(β) = Z_1(β)` identically, and `R_σ(β) ≡ 0`. Meanwhile BD_int(a)
+< 0 strictly for all a > 0 (Binet's formula). Only `c = 0` is
+consistent — degenerate.
+
+**Case 2 — B1.5-ext (Riemann-Liouville + quartic confinement)** —
+diary 37: For RL time-fractional FPE with V(x) = x⁴/4, the
+probability-conserving form carries a `ρ_0 · t^{-σ}/Γ(1-σ)`
+initialization source term (Baeumer-Meerschaert form) that EXACTLY
+cancels `₀D_t^{σ,RL} ρ_eq`. Result: same conclusion as Case 1.
+`Z_σ(β) = Γ(1/4)/√2 · β^{-1/4}` is σ-independent; `R_σ(β) ≡ 0`.
+
+**Why both fail (the unified reason).** Scalar time-only functional
+calculus of the FP generator L commutes with L's spectral projections.
+The zero mode (`ker L`, equilibrium sector) is fixed pointwise since
+`E_σ(0) = 1`. The equilibrium partition function only sees the n=0
+sector. Therefore Z_σ is σ-trivial. Berndt-Dixit's reciprocal-symmetric
+BD_int(α) lives in a non-trivial class and cannot match an identically-
+zero residual non-trivially.
+
+**Status: FALSIFIED across the family.** Two structurally-different
+fractional-dynamics flavors (Caputo + harmonic; RL + quartic) both
+collapse to the same one-line obstruction. Pass D fully closed (B1
+already established at diary 19; B1.5 family closed here).
+
+**What's NOT refuted.** ChatGPT Pro identified the precise scope: the
+principle requires SCALAR time-only functional calculus. **Space-
+dependent variable-order subdiffusion** (Fedotov-Falconer) breaks the
+zero-mode-protection argument and is the genuine route to a
+counterexample. Hunt 7 candidate scoped for future work in diary 37
+§"New open direction".
+
+**Promotion**: this falsification underwrites the **generalized
+obstruction principle** in CANDIDATE_INSIGHTS §A8.
+
+(Diaries 35, 37; CANDIDATE_INSIGHTS §A8.)
+
+---
+
 ## How to read this file alongside CANDIDATE_INSIGHTS.md
 
 `CANDIDATE_INSIGHTS.md` documents what the run **did** establish. This
