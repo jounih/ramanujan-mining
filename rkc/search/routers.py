@@ -187,6 +187,104 @@ def _gaussian_family_cost(expr: sp.Expr, var: sp.Symbol) -> float | None:
     return float(max(1, math.ceil(math.sqrt(28.0 / beta_f))))
 
 
+def _one_sided_exponential_family_cost(
+    expr: sp.Expr, var: sp.Symbol,
+) -> float | None:
+    """v0.8b cost estimate for one-sided modular families: log-Bose-Einstein
+    (`c · log(1 - exp(-β n))`) and Lambert (`c · n / (R^n - 1)`).
+
+    Both have exponential decay with rate β = log(R) or β directly, so the
+    term-count to reach 1e-12 tolerance is `~log(1/tol)/β`. Mirrors
+    `_route_bose_einstein` / `_route_lambert` in `rkc/registry.py`.
+
+    Returns None if `expr` doesn't structurally match either form.
+
+    Used by the cost model to give meaningful improvement ratios when
+    `modular_transform_with_correction` fires on a small-β input and
+    produces a large-β dual.
+    """
+    if var is None:
+        return None
+    scalar, n_dep = expr.as_independent(var, as_Add=False)
+    # Form 1: log(1 - exp(-β n)) (Bose-Einstein log)
+    beta = _try_extract_log_bose_einstein_beta(n_dep, var)
+    # Form 2: n / (R^n - 1) (Lambert canonical form after sp.together)
+    if beta is None:
+        beta = _try_extract_lambert_form_beta(sp.together(n_dep), var)
+    if beta is None:
+        return None
+    # Convert β to a float; if it has unevaluated π / log, use evalf
+    try:
+        beta_f = float(beta.evalf() if hasattr(beta, 'evalf') else beta)
+    except (TypeError, ValueError):
+        return None
+    if beta_f <= 0:
+        return None
+    # Term count for ~1e-12 tol: log(10^12) / β = 28 / β (same constant as
+    # the gaussian-family cost helper for consistency in cost units).
+    import math
+    return float(max(1, math.ceil(28.0 / beta_f)))
+
+
+def _try_extract_log_bose_einstein_beta(
+    expr: sp.Expr, var: sp.Symbol,
+) -> sp.Expr | None:
+    """Recognise `log(1 - exp(-β var))`; return β or None."""
+    if expr.func != sp.log:
+        return None
+    arg = expr.args[0]
+    if not arg.has(var):
+        return None
+    diff = sp.simplify(arg - 1)
+    neg_exp = -diff
+    if neg_exp.func != sp.exp:
+        return None
+    exp_arg = neg_exp.args[0]
+    try:
+        poly = sp.Poly(sp.expand(exp_arg), var)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 1:
+        return None
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if a0 != 0:
+        return None
+    # a1 should be negative
+    try:
+        a1_f = float(a1.evalf() if hasattr(a1, 'evalf') else a1)
+    except (TypeError, ValueError):
+        return None
+    if a1_f >= 0:
+        return None
+    return -a1
+
+
+def _try_extract_lambert_form_beta(
+    expr: sp.Expr, var: sp.Symbol,
+) -> sp.Expr | None:
+    """Recognise `var / (R^var - 1)` (canonical Lambert form for q ∈ (0,1));
+    return β = log(R) or None."""
+    num, den = sp.fraction(expr)
+    if sp.simplify(num - var) != 0:
+        return None
+    den_p1 = sp.simplify(den + 1)
+    if den_p1.func != sp.Pow:
+        return None
+    base, exponent = den_p1.args
+    if sp.simplify(exponent - var) != 0:
+        return None
+    if not base.is_number:
+        return None
+    try:
+        base_f = float(base)
+    except (TypeError, ValueError):
+        return None
+    if base_f <= 1:
+        return None
+    return sp.log(base)
+
+
 def _structural_cost(expr: sp.Expr) -> float:
     """Cost estimate based on expression structure when rkc can't recognise
     it (typical for v0.5+ Integral inputs and closed-form outputs).
@@ -282,6 +380,22 @@ class RkcCostModel:
             gc = _gaussian_family_cost(expr_after, var)
             if gc is not None:
                 cost_after = gc
+
+        # v0.8b fallback: one-sided exponential family (log-Bose-Einstein,
+        # Lambert). rkc's strict matcher doesn't recognise these in our
+        # current registry; the helper computes the same ~log(1/tol)/β
+        # term-count estimate the rkc routing layer uses for the same
+        # kernels (`_route_bose_einstein` / `_route_lambert` in
+        # rkc/registry.py). The result: an honest improvement_ratio for
+        # the modular_transform_with_correction operator's outputs.
+        if cost_before == float("inf"):
+            oc = _one_sided_exponential_family_cost(expr_before, var)
+            if oc is not None:
+                cost_before = oc
+        if cost_after == float("inf"):
+            oc = _one_sided_exponential_family_cost(expr_after, var)
+            if oc is not None:
+                cost_after = oc
 
         # Fallback: structural cost when rkc doesn't recognise. This is the
         # path Integrals and closed-form outputs (like Γ(s)) take in v0.5+.

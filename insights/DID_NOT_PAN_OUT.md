@@ -603,6 +603,58 @@ v0.8 adds the additive-correction extension and re-enables the
 Bose-Einstein and Lambert seeds (which remain in `rkc/search/seeds.py`
 as v0.7+ targets, now correctly labelled `(v0.8+)`).
 
+**R17 CLOSED 2026-05-24 (Project C v0.8b shipped, diary 31).** The v0.7
+"deferred rather than refuted" framing was correct: the underlying
+phenomenon was real and what was needed was the API extension. v0.8b
+shipped it.
+
+Specifically:
+1. `OperatorApplication` got `additive_correction: Optional[sp.Expr]`
+   and `summand_range: Optional[tuple]` fields, both defaulting to None
+   to preserve v0.4 / v0.7 strict-Poisson semantics.
+2. `MpmathVerifier._sum_evaluate` accepts a per-call `summand_range`
+   override; the verifier folds the additive correction into the
+   before-side residual before comparing.
+3. A new `modular_transform_with_correction` operator handles two clean
+   one-sided modular identities verified to **rel-err ≤ 1e-30 at dps=80
+   across β ∈ {1e-3, 1e-2, 1e-1, 1, 10}** (5 dex):
+
+   - **Bose-Einstein log (Dedekind eta-derived)**:
+     `Σ_{n≥1} log(1 - exp(-βn))
+        = -π²/(6β) - (1/2)log(β/(2π)) + β/24
+          + Σ_{n≥1} log(1 - exp(-4π²n/β))`
+   - **Lambert / E_2 quasi-modular**:
+     `Σ_{n≥1} n·q^n/(1-q^n) (q = e^{-β})
+        = π²/(6β²) + 1/24 - 1/(2β)
+          - (4π²/β²) · Σ_{n≥1} n/(exp(4π²n/β) - 1)`
+
+4. The seeds `bose_einstein_beta_1em2` and `lambert_divisor_q_p1` now
+   accept end-to-end through the engine with ~2800× speedup at β=1/100
+   (Bose-Einstein log) and ~13× speedup at q=1/10 (Lambert).
+
+**Refinement to the original speculation (kept here for the record).**
+The brief's original Bose-Einstein form `1/(1-exp(-βn))` (without the
+`log`) was **divergent as a direct summand** (each term → 1 as n → ∞).
+The natural convergent kernel is the **log form** `log(1-exp(-βn))`,
+which IS the kernel of `-log Z_bosonic` and has a clean modular dual.
+The seed was updated accordingly during v0.8b implementation. The
+underlying physics (bosonic partition function) is unchanged; the
+mathematical artefact that has a clean modular dual is the log-sum, not
+the bare-sum.
+
+Numerical evidence: `analysis/results/v08b_modular_correction_verification.csv`
+(10 cells × 2 identities = 20 entries; 9 of 10 below 1e-30 rel-err, the
+single 8e-16 outlier is mpmath.nsum truncation at the slowest-converging
+cell, not an identity defect). Verifier-side numerical agreement at
+n_digits=30 / dps=70 across the default 7-cell sweep is in the v0.8b
+test `test_v08b_verifier_strict_agreement_high_digits`.
+
+**Tag (final): RESOLVED → CONFIRMED at v0.8b.** This entry remains in
+the refuted log per the inclusion discipline (the original "term-by-
+term Poisson dual exists" speculation WAS partially refuted; what
+shipped is a richer API, not the originally-proposed identity shape).
+The deferral was strategic, not a failure.
+
 ---
 
 ## OUTSTANDING — Speculations made but NOT YET TESTED in this run

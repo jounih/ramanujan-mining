@@ -133,27 +133,34 @@ SEED_LIBRARY: dict[str, Seed] = {
         notes="QR I §5(i) reflection-like identity",
     ),
 
-    # === Bose-Einstein partition (summand factor; v0.8+ target — needs
-    # additive-correction operator class; see DID_NOT_PAN_OUT §R17) ===
+    # === Bose-Einstein partition (log form; v0.8b unblocks via the
+    # modular_transform_with_correction operator) ===
     "bose_einstein_beta_1em2": Seed(
         id="bose_einstein_beta_1em2",
-        description="Bose factor 1/(1-exp(-βn)) at β=1/100",
-        expr_string="1 / (1 - exp(-Rational(1, 100) * n))",
+        description="Bose-Einstein log summand log(1-exp(-βn)) at β=1/100",
+        expr_string="log(1 - exp(-Rational(1, 100) * n))",
         kind="summand",
-        expected_route="(v0.8+) modular_transform_with_correction → Dedekind-eta dual",
-        notes="One-sided; modular law carries Bernoulli + log additive correction. "
-              "Not a term-by-term Poisson identity. See R17 for the operator-API rationale.",
+        expected_route="modular_transform_with_correction → Dedekind-eta dual (v0.8b)",
+        notes="One-sided log form: Σ_{n≥1} log(1-exp(-βn)) is the convergent kernel "
+              "underlying the bosonic partition function (log Z = -Σ_n log(1-e^{-βn})). "
+              "Modular law carries an additive correction "
+              "(-π²/(6β) - (1/2)log(β/(2π)) + β/24) outside the summand — see "
+              "diary 31 for the v0.8b operator-class fix. The previous v0.7 seed "
+              "form `1/(1-exp(-βn))` was structurally divergent as a direct sum "
+              "and replaced with the log form per R17 closure.",
     ),
 
-    # === Lambert / divisor sum (summand; v0.8+ target — same rationale) ===
+    # === Lambert / divisor sum (summand; v0.8b unblocked) ===
     "lambert_divisor_q_p1": Seed(
         id="lambert_divisor_q_p1",
         description="Lambert summand n·q^n/(1-q^n) at q=1/10",
         expr_string="n * Rational(1, 10)**n / (1 - Rational(1, 10)**n)",
         kind="summand",
-        expected_route="(v0.8+) modular_transform_with_correction → Eisenstein-series dual",
+        expected_route="modular_transform_with_correction → E_2 quasi-modular dual (v0.8b)",
         notes="One-sided; E_2 quasi-modular weight-2 anomaly is an additive 6iτ/π term. "
-              "Not a term-by-term Poisson identity. See R17.",
+              "Modular dual has multiplicative prefactor -(2π/β)² baked into the new "
+              "summand; additive correction is π²/(6β²) + 1/24 - 1/(2β). "
+              "See diary 31 for the v0.8b numerical-verification table.",
     ),
 
     # === Mock theta f3 (summand; v0.7+ target with MCR completion) ===

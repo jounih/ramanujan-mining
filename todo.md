@@ -178,8 +178,8 @@ Ch. 32 q_shift+modular_S pair, Ch. 36 modular_S monoculture, Ch. 34
 class_field+modular_S pair. `modular_S` is the always-on parent across
 all three; secondary operator varies by problem domain.
 
-**Tests**: 79/79 passing (67 v0.6 baseline + 6 v0.7 + 6 v0.8a tests).
-Recognizer benchmark `analysis/14b` still 55/55 = 100%.
+**Tests**: 87/87 passing (67 v0.6 baseline + 6 v0.7 + 6 v0.8a + 8 v0.8b
+tests). Recognizer benchmark `analysis/14b` still 55/55 = 100%.
 
 ### T0a. Project C v0.8a follow-ups (diary 30 deferred items)
 
@@ -213,39 +213,35 @@ The headline target: **rkc v0.1** as a usable degeneracy-aware special-
 function routing compiler. The Hunts feed into this as transform-mining
 work. See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the v0.1 spec.
 
-### T0. Project C v0.8: additive-correction operator for one-sided kernels ★ NOW HEADLINE
+### T0. Project C v0.8b: additive-correction operator → SHIPPED (diary 31)
 
-Project C v0.7 SHIPPED (diary 26) — `mellin_inversion` now covers three
-strict double-sided Poisson identity classes: pure Gaussian (v0.4),
-half-shifted Gaussian (v0.7-A, theta₂/theta₄ partner), weighted Gaussian
-(v0.7-B, second-moment). All accepted end-to-end; all verified to rel-err
-0 / 1e-34 at dps=50 across 6 orders of magnitude in β.
+**Status:** SHIPPED. Both Bose-Einstein log and Lambert seeds now accept
+end-to-end with 2800× / 13× cost ratios respectively.
 
-**v0.8 — additive-correction operator class** is the natural next step.
-The Bose-Einstein `1/(1-exp(-β n))` and Lambert `n·q^n/(1-q^n)` summands
-have rkc-known dual representations in the cost model
-(`dual_beta = 4π²/β`, `q'=exp(-4π²/-log q)`) but their modular
-transformation laws carry essential **additive scalar corrections**
-(Bernoulli polynomial values, logs, weight-2 anomalies) that can't be
-captured by the current `Operator.apply_fn(expr, n) → expr` API. The
-fix is a data-model extension; see [DID_NOT_PAN_OUT §R17](insights/DID_NOT_PAN_OUT.md)
-for the structural rationale and the deferred-seed inventory.
+Specifically v0.8b shipped:
+1. `OperatorApplication` gained `additive_correction: Optional[sp.Expr]`
+   and `summand_range: Optional[tuple]` fields, both None-default for
+   backward compat.
+2. `MpmathVerifier` folds the correction into the comparison
+   (`Σ before ≡ Σ after + correction`), respects per-call summand_range
+   override, and upgrades to high-precision `evalf` for correction values.
+3. `modular_transform_with_correction` operator handles two cases:
+   - **Bose-Einstein log** `Σ log(1-e^{-βn})` via Dedekind eta.
+   - **Lambert** `Σ n·q^n/(1-q^n)` via E_2 quasi-modular (Hecke trick).
+4. Numerical verification at dps=80: rel-err ≤ 1e-30 across 4 dex of β.
+5. Seeds `bose_einstein_beta_1em2` (log form, replaces divergent original)
+   and `lambert_divisor_q_p1` enabled and recovering identity end-to-end.
 
-**Required v0.8 changes:**
-1. Extend `OperatorApplication` (or add a parallel
-   `OperatorApplicationWithCorrection`) to carry an additive scalar.
-2. Add new operator id `modular_transform_with_correction` with
-   apply_fn returning `(new_summand, additive_scalar)`.
-3. Extend the MpmathVerifier to fold the additive correction into the
-   before-side residual before comparing the two sums.
-4. Re-enable seeds `bose_einstein_beta_1em2` and `lambert_divisor_q_p1`
-   (already in `rkc/search/seeds.py`, currently labelled `(v0.8+)`).
+87/87 tests passing (78 baseline + 8 new `test_v08b_*` + 1 slow).
+Recognizer benchmark 55/55 = 100% (no regression). R17 in
+DID_NOT_PAN_OUT closed → RESOLVED.
 
-Effort: ~1-2 days for the API + verifier extension; ~half-day each for
-Bose-Einstein and Lambert apply_fn's. After v0.8, the basis covers all
-four high-leverage rkc routing families (Gaussian, Bose-Einstein,
-Lambert, mock-theta-via-completion); controlled-validation case becomes
-runnable.
+**Operator basis is now 8** (the 7 QR-derived ops + the new
+modular_transform_with_correction). Three of four high-leverage rkc
+routing families now have working apply_fn: Gaussian (v0.4 + v0.7),
+Bose-Einstein, Lambert. Mock-theta-via-completion is the remaining one
+(needs Watson-Hickerson plumbing in apply_fn; rkc's completions module
+already has the route for f3 to ≥30 digits — would need to wire it).
 
 **Subsequent operator order** (from the v0.5+ ladder, unchanged):
 

@@ -157,12 +157,16 @@ model decides usefulness → store accepted identity or reject with reason.
   Both verified to numerical zero across 6 orders of magnitude in β.
   Tests: 73/73 passing.
 
+- **v0.8b SHIPPED (diary 31)** — `OperatorApplication` extended with
+  `additive_correction` + `summand_range` fields (None-default for
+  backward compat); `MpmathVerifier` folds the correction into the
+  comparison; new `modular_transform_with_correction` operator handles
+  log-Bose-Einstein (Dedekind eta-derived) and Lambert (E_2
+  quasi-modular) one-sided summands. Both verified to rel-err ≤ 1e-30
+  at dps=80 across 4 dex of β. Basis is now 8 ops. 87/87 tests passing.
+
 ### Next (queued):
 
-- **v0.8 (NEXT)** — extend OperatorApplication API to carry `(new_summand,
-  additive_scalar)` so Bose-Einstein and Lambert modular-with-correction
-  duals can ship strictly verified. See diary 26 + DID_NOT_PAN_OUT §R17
-  for structural rationale. Unblocks the 2 seeds currently labelled (v0.8+).
 - **v0.3.1 — NeuralProposer (T3)** — gated until basis grows past 10-20
   operators. Per PROJECT_C_DESIGN, nonlinear ICA / JEPA is the default
   architectural choice but the `Proposer` interface is modular.
@@ -175,11 +179,10 @@ model decides usefulness → store accepted identity or reject with reason.
 
 ≥80% of the 11 known kernel identities in the rkc registry recovered by
 random composition within budget=1000 compositions of length ≤3. Current
-state (v0.7): the engine recovers Gaussian / half-shift / weighted-Gaussian
-strict identities + Beta/Gamma/π-sin Mellin integrals (6 of 11). Bose-Einstein
-+ Lambert + mock-theta f3 + partial theta + Gauss-sum + q-Pochhammer remain
-gated on v0.8 (or, for the modular ones, on extending mellin_inversion's
-correction handling).
+state (v0.8b): the engine recovers Gaussian / half-shift / weighted-Gaussian
+strict identities + Beta/Gamma/π-sin Mellin integrals + log-Bose-Einstein +
+Lambert (8 of 11). Mock-theta f3 + partial theta + Gauss-sum + q-Pochhammer
+remain gated on dedicated apply_fn implementations.
 
 ## Non-goals (for now)
 

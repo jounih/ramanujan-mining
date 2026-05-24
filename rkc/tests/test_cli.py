@@ -486,6 +486,326 @@ def test_v05_master_theorem_canonical_patterns():
 
 
 # ---------------------------------------------------------------------------
+# Project C v0.8b — modular_transform_with_correction (one-sided summands
+# with additive scalar correction terms; unblocks Bose-Einstein + Lambert)
+# ---------------------------------------------------------------------------
+
+def test_v08b_operator_application_additive_correction_field():
+    """v0.8b API extension: OperatorApplication carries optional
+    `additive_correction` and `summand_range` fields. Backward compat:
+    default is None for both, preserving v0.4 / v0.7 strict-Poisson
+    semantics.
+    """
+    import sympy as sp
+    from rkc.search.core import OperatorApplication
+    # Default fields — backward compat for v0.4 / v0.7 operators
+    op_default = OperatorApplication(op_id="mellin_inversion")
+    assert op_default.additive_correction is None
+    assert op_default.summand_range is None
+    # v0.8b explicit fields
+    op_v08b = OperatorApplication(
+        op_id="modular_transform_with_correction",
+        additive_correction=sp.pi**2 / 6,
+        summand_range=(1, sp.oo),
+    )
+    assert op_v08b.additive_correction == sp.pi**2 / 6
+    assert op_v08b.summand_range == (1, sp.oo)
+
+
+def test_v08b_verifier_folds_additive_correction():
+    """v0.8b: MpmathVerifier compares
+        Σ_n before_summand  ≡  Σ_n after_summand + total_additive_correction
+    where total_additive_correction is the sum of the additive_correction
+    fields across the op_sequence. v0.4 / v0.7 operators leaving these
+    fields None get the legacy (correction=0, range=verifier-default)
+    path exactly.
+    """
+    import sympy as sp
+    import mpmath
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    n = sp.Symbol("n", integer=True, positive=True)
+    # Synthetic identity: Σ_{n≥1} 1/2^n = 1 (geometric series).
+    # Express as: state_before = 1/2^n; state_after = 1/2^n (trivially equal);
+    # additive_correction = 0; should pass.
+    expr = sp.Rational(1, 2)**n
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    state_after = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(
+        op_id="modular_transform_with_correction",
+        additive_correction=sp.Integer(0),
+        summand_range=(1, sp.oo),
+    )
+    verifier = MpmathVerifier(n_digits=20, sweep_params=[{}])
+    result = verifier.verify(state_before, [op_app], state_after)
+    assert result.passed, (
+        f"trivial identity with zero additive correction should pass: {result.reason}"
+    )
+
+    # Now a real one: Σ_{n≥1} 1/n² = π²/6 (Basel).
+    # Use state_before = 1/n²; state_after = 0; additive_correction = π²/6.
+    state_b = SearchState(payload=1/n**2, metadata={"var": n})
+    state_a = SearchState(payload=sp.Integer(0), metadata={"var": n})
+    op_app2 = OperatorApplication(
+        op_id="modular_transform_with_correction",
+        additive_correction=sp.pi**2 / 6,
+        summand_range=(1, sp.oo),
+    )
+    result2 = verifier.verify(state_b, [op_app2], state_a)
+    assert result2.passed, (
+        f"Basel identity via additive_correction=π²/6 should pass: {result2.reason}"
+    )
+
+
+def test_v08b_modular_transform_apply_fn_directly():
+    """Direct unit test of `modular_transform_with_correction`:
+    - Bose-Einstein log form `log(1 - exp(-β n))` returns the tuple
+      (new_summand, correction, (1, oo)).
+    - Lambert `n · q^n / (1 - q^n)` returns the tuple.
+    - Non-matching forms (Gaussian, q ≥ 1 Lambert) decline cleanly.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("modular_transform_with_correction")
+
+    # Case A: Bose-Einstein log
+    result_A = op.apply_fn(sp.log(1 - sp.exp(-beta * n)), n)
+    assert result_A is not None, "should match log(1-exp(-β n))"
+    assert isinstance(result_A, tuple), "v0.8b returns a tuple"
+    assert len(result_A) == 3
+    new_summand, correction, srange = result_A
+    assert srange == (1, sp.oo), "Bose-Einstein log is one-sided"
+    # New summand should contain 4*pi**2 * n / beta in the exp arg
+    assert new_summand.has(sp.pi), "dual exponent involves π"
+    # Correction should contain -π²/(6β)
+    assert correction.has(sp.pi), "correction has π contribution"
+
+    # Case B: Lambert
+    q = sp.Rational(1, 10)
+    result_B = op.apply_fn(n * q**n / (1 - q**n), n)
+    assert result_B is not None, "should match n*q^n/(1-q^n)"
+    assert isinstance(result_B, tuple) and len(result_B) == 3
+    _, _, srange_B = result_B
+    assert srange_B == (1, sp.oo)
+
+    # Decline: Gaussian (different family)
+    result_gauss = op.apply_fn(sp.exp(-beta * n**2), n)
+    assert result_gauss is None, "modular_transform_with_correction declines gaussian"
+
+    # Decline: log(1 - 2·exp(-β n)) — c ≠ 1 (not the eta-log form)
+    result_c2 = op.apply_fn(sp.log(1 - 2 * sp.exp(-beta * n)), n)
+    assert result_c2 is None, "declines on log(1 - c·exp(-β n)) for c ≠ 1"
+
+
+def test_v08b_bose_einstein_dual_accepted(tmp_path):
+    """v0.8b acceptance gate (A): Bose-Einstein log seed at β=1/100 produces
+    ≥1 acceptance via the modular_transform_with_correction operator,
+    end-to-end through the engine, with cost ratio > 1.
+
+    This is the strict v0.8 test the brief calls for: the previously-deferred
+    seed (R17) now ships cleanly via the new operator API.
+    """
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = sp.log(1 - sp.exp(-sp.Rational(1, 100) * n))
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=40,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.8b Bose-Einstein log gate failed: 0 acceptances; "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    first = json.loads((tmp_path / "accepted.jsonl").read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "modular_transform_with_correction"
+    assert first["cost_ratio"] > 1.0, (
+        "v0.8b Bose-Einstein dual at β=1/100 should be cheaper "
+        f"(ratio={first['cost_ratio']})"
+    )
+
+
+def test_v08b_lambert_dual_accepted(tmp_path):
+    """v0.8b acceptance gate (B): Lambert seed at q=1/10 produces ≥1
+    acceptance via the modular_transform_with_correction operator,
+    end-to-end through the engine, with cost ratio > 1.
+    """
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    q = sp.Rational(1, 10)
+    expr = n * q**n / (1 - q**n)
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=40,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.8b Lambert gate failed: 0 acceptances; "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    first = json.loads((tmp_path / "accepted.jsonl").read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "modular_transform_with_correction"
+    assert first["cost_ratio"] > 1.0, (
+        f"v0.8b Lambert dual at q=1/10 should be cheaper "
+        f"(ratio={first['cost_ratio']})"
+    )
+
+
+def test_v08b_backward_compat_v07_paths_still_strict():
+    """v0.8b backward compat: v0.4 Gaussian and v0.7 half-shift / weighted
+    identities continue to verify STRICTLY (no additive correction, no
+    summand range override) through the extended verifier.
+
+    This is the load-bearing backward-compat guarantee: the data-model
+    extension is opt-in per-operator, and existing strict-Poisson paths
+    are unaffected.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    from rkc.search.engine import _apply_operator
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    op_mellin = get_operator("mellin_inversion")
+    verifier = MpmathVerifier(n_digits=20)
+
+    # v0.4 pure Gaussian
+    expr_g = sp.exp(-sp.Rational(1, 100) * n**2)
+    state_g = SearchState(payload=expr_g, metadata={"var": n})
+    op_app_g = OperatorApplication(op_id="mellin_inversion")
+    state_g_out = _apply_operator(op_app_g, state_g)
+    assert state_g_out is not None
+    # CRITICAL: op_app's correction / range fields should still be None
+    # (the Gaussian apply_fn returns a bare Expr, not a tuple)
+    assert op_app_g.additive_correction is None, (
+        "v0.4 Gaussian apply_fn should leave additive_correction=None"
+    )
+    assert op_app_g.summand_range is None, (
+        "v0.4 Gaussian apply_fn should leave summand_range=None"
+    )
+    r_g = verifier.verify(state_g, [op_app_g], state_g_out)
+    assert r_g.passed, f"v0.4 Gaussian strict path broken: {r_g.reason}"
+
+    # v0.7-A half-shift Gaussian
+    expr_h = sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 2))**2)
+    state_h = SearchState(payload=expr_h, metadata={"var": n})
+    op_app_h = OperatorApplication(op_id="mellin_inversion")
+    state_h_out = _apply_operator(op_app_h, state_h)
+    assert op_app_h.additive_correction is None
+    assert op_app_h.summand_range is None
+    r_h = verifier.verify(state_h, [op_app_h], state_h_out)
+    assert r_h.passed, f"v0.7-A half-shift strict path broken: {r_h.reason}"
+
+    # v0.7-B weighted Gaussian
+    expr_w = n**2 * sp.exp(-sp.Rational(1, 100) * n**2)
+    state_w = SearchState(payload=expr_w, metadata={"var": n})
+    op_app_w = OperatorApplication(op_id="mellin_inversion")
+    state_w_out = _apply_operator(op_app_w, state_w)
+    assert op_app_w.additive_correction is None
+    assert op_app_w.summand_range is None
+    r_w = verifier.verify(state_w, [op_app_w], state_w_out)
+    assert r_w.passed, f"v0.7-B weighted strict path broken: {r_w.reason}"
+
+
+def test_v08b_verifier_strict_agreement_high_digits():
+    """v0.8b: both modular identities verify to ≥30 digits at the
+    n_digits=30 setting via the default beta sweep. This is the strict bar
+    promised in the brief (≥30-digit agreement, ≤1% rel-dev across ≥2 dex).
+
+    The verifier auto-bumps its working dps when an additive correction is
+    present (since one-sided log sums converge slowly at very small β); the
+    test exercises that path.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    from rkc.search.engine import _apply_operator
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("modular_transform_with_correction")
+
+    # Bose-Einstein log
+    expr_A = sp.log(1 - sp.exp(-beta * n))
+    state_A = SearchState(payload=expr_A, metadata={"var": n})
+    op_app_A = OperatorApplication(op_id="modular_transform_with_correction")
+    state_A_out = _apply_operator(op_app_A, state_A)
+    verifier30 = MpmathVerifier(n_digits=30)
+    r_A = verifier30.verify(state_A, [op_app_A], state_A_out)
+    assert r_A.passed, f"Bose-Einstein log at 30 digits failed: {r_A.reason}"
+
+    # Lambert with concrete q=1/10
+    expr_B = n * sp.Rational(1, 10)**n / (1 - sp.Rational(1, 10)**n)
+    state_B = SearchState(payload=expr_B, metadata={"var": n})
+    op_app_B = OperatorApplication(op_id="modular_transform_with_correction")
+    state_B_out = _apply_operator(op_app_B, state_B)
+    r_B = verifier30.verify(state_B, [op_app_B], state_B_out)
+    assert r_B.passed, f"Lambert at 30 digits failed: {r_B.reason}"
+
+
+def test_v08b_seeds_buildable_and_recover_identity():
+    """v0.8b seeds `bose_einstein_beta_1em2` (log form) and
+    `lambert_divisor_q_p1` are buildable and recover an identity in a
+    40-budget search.
+    """
+    import tempfile
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    for sid in ["bose_einstein_beta_1em2", "lambert_divisor_q_p1"]:
+        assert sid in SEED_LIBRARY, f"v0.8b seed {sid!r} missing"
+        seed = SEED_LIBRARY[sid]
+        expr, var = build_seed(seed)
+        with tempfile.TemporaryDirectory() as tmp:
+            state = SearchState(payload=expr, metadata={"var": var})
+            reg = JsonlRegistry.with_dir(tmp)
+            summary = search(
+                initial_state=state,
+                proposer=RandomProposer(seed=42),
+                verifier=MpmathVerifier(n_digits=10),
+                router=RkcRouter(),
+                cost_model=RkcCostModel(),
+                registry=reg,
+                budget=40,
+                max_depth=1,
+            )
+            assert summary.n_accepted >= 1, (
+                f"v0.8b seed {sid!r} produced 0 acceptances; "
+                f"reasons={summary.reject_reason_counts}"
+            )
+
+
+# ---------------------------------------------------------------------------
 # rkc benchmark — default suite runs the 14b regression
 # ---------------------------------------------------------------------------
 

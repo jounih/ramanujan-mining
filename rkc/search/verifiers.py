@@ -320,16 +320,33 @@ class MpmathVerifier:
 
     def _evaluate(self, expr: sp.Expr, cell: dict[str, Any]) -> Any:
         """Substitute cell into expr; return mpmath value or None if
-        free symbols remain."""
+        free symbols remain.
+
+        Uses sympy's `evalf(mpmath.mp.dps)` for high-precision evaluation
+        rather than `complex(...)` (which silently downcasts to 64-bit
+        Python complex — a problem for v0.8b additive corrections like
+        `-π²/(6β)` where the closed-form needs full mpmath precision).
+        """
         subs = {sp.Symbol(k): v for k, v in cell.items()}
         subs.update({sp.Symbol(k, positive=True): v for k, v in cell.items()})
         e = expr.subs(subs)
         if e.free_symbols:
             return None  # still has unresolved symbols
         try:
-            return mpmath.mpc(complex(e))
-        except (TypeError, ValueError):
-            return None
+            # Use sympy's evalf at the current mpmath dps. This preserves
+            # full precision for expressions involving π / e / γ symbols
+            # (the v0.8b additive corrections do).
+            val = e.evalf(mpmath.mp.dps)
+            # Cast to mpmath complex; sympy Floats are mpf-compatible.
+            if val.is_real:
+                return mpmath.mpf(val)
+            return mpmath.mpc(mpmath.mpf(sp.re(val)), mpmath.mpf(sp.im(val)))
+        except (TypeError, ValueError, AttributeError):
+            # Fallback to the legacy complex path
+            try:
+                return mpmath.mpc(complex(e))
+            except (TypeError, ValueError):
+                return None
 
 
 # Sanity check the Verifier protocol is satisfied
