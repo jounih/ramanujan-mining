@@ -371,7 +371,7 @@ comment on the silent-zero case (when target function has no `n ≡ 0
 q ≡ 2 (mod 4) is a modern engineering catch, not a re-statement of a
 Ramanujan caveat.
 
-### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — LIT SCAN COMPLETE; READY TO DRAFT ★
+### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — DRAFT v0.1 IN HAND ★
 
 **From parallel-Claude review.** QR III §4-§10 contains explicit fractional-
 iteration computations (Chebyshev semigroup F(x) = x²-2 with `F^n(x)` via
@@ -414,16 +414,30 @@ source material directly. **Confirmed concretely:**
   flagged with appropriate discipline).
 
 **Paper outline ready** at
-[insights/W8_PRE_JULIA_PAPER_OUTLINE.md](insights/W8_PRE_JULIA_PAPER_OUTLINE.md).
-Target: *Historia Mathematica*, 12-18 pp, ~5-7 person-days drafting.
-Counterpoint section honestly addresses "Ramanujan-isn't-sphere-level-
-dynamics" qualification.
+[insights/W8_PRE_JULIA_PAPER_OUTLINE.md](insights/W8_PRE_JULIA_PAPER_OUTLINE.md);
+**draft v0.1 in hand** at [insights/W8_PAPER_DRAFT.md](insights/W8_PAPER_DRAFT.md)
+(7,140 words / ~14-16 typeset pages). Target: *Historia Mathematica*
+(primary) or *The Ramanujan Journal* (secondary).
 
-Next decision: draft now vs first close the "couldn't check" gap
-(Belitskii 1979 book, Targonski 1981 book, Encyclopaedia of Math
-[network errored during scan], Berndt 1984 BLMS [paywalled],
-Douady-Hubbard 1984/85 Orsay, full Écalle 3-vol Orsay, ECIT proceedings).
-The Milnor + Berndt negatives alone are probably already enough.
+The draft structures three claims with explicit qualifications:
+1. Conjugation identity = parallel rediscovery of Schröder 1871 (with
+   non-linear worked examples beyond Schröder)
+2. Cosh-form Chebyshev linearisation precedes Lattès 1918 (framework-vs-
+   formula distinction honoured)
+3. **The ψ₁ = C/F infinitesimal-generator identification in QR III §10
+   is genuinely original pre-1914** — load-bearing priority claim;
+   not in Schröder / Koenigs / Leau / Böttcher
+
+**Honest weakness in draft v0.1** (per agent's self-report): §6.4's
+reconciliation between Ramanujan's ψ₁ = C/F and the modern formula
+ψ₁ = log λ · χ/χ′ is partial. Referee target.
+
+Future revision items (per agent):
+- Pull Berndt 1984 BLMS directly (still missing per CLAUDE.md);
+  strengthens §2.2 negative
+- Fully reconcile §6.4
+- Expand §6(d) (the rational map x → (1-x)/(1-x²)) — most modern-
+  rational-dynamics-adjacent example
 
 ### W7. B1.5 fractional-Fokker-Planck bridge experiment
 
