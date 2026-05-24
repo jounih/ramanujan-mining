@@ -40,16 +40,23 @@ Concrete deliverable: a CSV adding a `proof_status_2000` column to the
 p. 342 rows of `analysis/results/hunt1_k3_inventory.csv` based on the
 modern reproof table. ~half-day of work given the table.
 
-#### H1c. Verify Ramanujan's `O(...)` bound on p. 343 against modern Thue-Siegel-Roth
+#### H1c. Verify Ramanujan's `O(...)` bound on p. 343 against modern Thue-Siegel-Roth ★ SPECULATIVE BONUS
 
 p. 343 has explicit conjugate-product bounds for `|a^m b^n ⁵√2 - p_{m,n}|`.
 Numerically verify (mpmath, ~100 digits) for specific (m,n) whether the
 bound is tight, approximately tight, or loose. Compare against the modern
 effective Thue-Siegel-Roth or Schmidt-subspace bound for ⁵√2. **If tight,
-this is Ramanujan anticipating effective Diophantine bounds 25+ years
-before Schneider-Mahler** — a dedicated diary entry on its own.
+this is Ramanujan anticipating effective Diophantine bounds by 13-16 years
+(Mahler 1933, Schneider 1936)** — a dedicated diary entry / standalone
+short note.
 
-~1 day of work.
+~0.5-1 day of work.
+
+**Probability genuinely new (not in some obscure 1960s-90s paper):** **~40%**
+(per parallel-Claude). Mahler covered the general case; the question is
+whether Ramanujan's specific bounds for ⁵√2 / ⁷√2 are sharper or
+methodologically different. If yes, candidate target: Math. of Computation
+note or Acta Arithmetica.
 
 ### H2. Hunt 5b — Notebooks operator tagging — UNBLOCKED
 
@@ -87,27 +94,29 @@ does today. Adds unit tests. Removes `CompletionNotImplemented` for f5/f7.
 Diary entry. Per BIG_IDEAS_REVIEW §1, this closes the recognizer end-to-end
 on all 3 registered mock-theta families.
 
-### H4. Install Chandra OCR + benchmark against a Lost Notebook page — PARTIAL
+### H4. Install Chandra OCR + benchmark against a Lost Notebook page — BLOCKED ON BANDWIDTH
 
-**Status.** Chandra installed (chandra-ocr 0.2.0 in `.venv`); model weights
-downloaded (datalab-to/chandra-ocr-2 in `~/.cache/huggingface/`, 2.7 GB).
-**The benchmark agent did not finish:** the `corpora/transcriptions/chandra_benchmark/page-341/`
-directory is empty and the README.md was never written. The agent appears to
-have run out of context / time after the install but before the actual run.
+**Status.** chandra-ocr 0.2.0 installed in `.venv`; HF model
+`datalab-to/chandra-ocr-2` partially downloaded. The
+`model.safetensors` blob is corrupted: expected 10,591,220,088 bytes
+(~9.86 GiB) per HF API, got 8,130,600,960 bytes (~7.57 GiB) — truncated at
+77% by the first agent's context-limit timeout. Two retry attempts of
+`chandra ... --method hf` fail at model load with
+`safetensors_rust.SafetensorError: Error while deserializing header,
+file not fully covered`.
 
-**Finish inline next session:**
-1. Run Chandra on `chatgpt-pro-mining/.../priority_sources/lost_notebook_pages_341_343/page-341.jpg`
-   (which per Hunt 1 finding is actually LN reprint p. 342 — the Weber class
-   invariants page; a good test case since the structure is tabular).
-2. Hand-grade output (characters / math notation / table structure).
-3. Compare against the Claude-vision direct read used in Hunt 1.
-4. Write the README.md with verdict.
-
-Hunt 1's finding ("the facsimile is legible enough at the level of 'which
-topic is this page about' to be decisive without OCR") suggests Chandra
-is not on the critical path for Hunt 1 results but is critical for Hunt 5b
-(1,149 pages to inventory). Worth finishing the benchmark before launching
-Hunt 5b.
+**Recovery options (user choice):**
+1. **Redownload via `hf download datalab-to/chandra-ocr-2 model.safetensors
+   --force-download`** — fetches the missing ~2.3 GiB. Will be quick if
+   bandwidth allows.
+2. **Skip Chandra and use Claude-vision direct reads** for facsimile OCR.
+   Hunt 1 already validated this is enough for topic-level work. Hunt 5b
+   may need it for higher-granularity transcription.
+3. **Use a smaller VLM** (e.g. qwen2-VL-2B, marker-2.0) or a cloud OCR API
+   (Mathpix) for the math-heavy pages.
+4. **Defer** — Chandra isn't on the critical path for the highest-leverage
+   next steps (W8 iteration-theory lit scan; Hunt 5b can start with
+   vision-direct reads).
 
 ---
 
@@ -181,7 +190,7 @@ caveat. Still worth a one-line note.
 **Effort:** ~30 minutes (just careful re-read of QR II §3, lines 2086-2280,
 plus 1-2 paragraphs of write-up).
 
-### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — standalone paper scope
+### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — standalone paper scope ★ CLEANEST SMALL WIN
 
 **From parallel-Claude review.** QR III §4-§10 contains explicit fractional-
 iteration computations (Chebyshev semigroup F(x) = x²-2 with `F^n(x)` via
@@ -201,8 +210,14 @@ deliverable, with the explicit linearizations + the ψ_1 = C/F identification
 as the historical artefact. Target: Historia Mathematica or a focused
 math-history note in a number-theory venue.
 
-**Effort:** literature scan ~1 day; paper ~2-3 weeks if the lit scan
-confirms novelty. Worth a focused agent.
+**Effort:** literature scan ~0.5-1 day; paper ~2-3 weeks if the lit scan
+confirms novelty.
+
+**Probability genuinely under-noted:** **60-70%** (per parallel-Claude). The
+Ramanujan canon is curated by number theorists; the dynamics community
+(Milnor, Douady-Hubbard, Ecalle, Belitskii) doesn't typically read Ramanujan
+source material directly. This is the cleanest "small win that's actually
+novel" candidate in the run.
 
 ### W7. B1.5 fractional-Fokker-Planck bridge experiment
 
@@ -303,7 +318,15 @@ to take to a real expert:
   Ask Berndt next time we're in touch (he's already provided
   [downloaded-pdfs/](downloaded-pdfs/)).
 - **Cooper *Ramanujan's Theta Functions*** (Springer 2017) for Hunt 6 —
-  ask Cooper.
+  what we'd uniquely gain: (1) systematic RS-series catalogue by level N
+  up to N=12, indexed for "is there a 1/π series at level N" lookups;
+  (2) extension of Ramanujan's "signatures" / "alternative bases" to
+  levels 14-15 (Cooper *Trans. AMS* 368, 2016, open-access via author site);
+  (3) theta-function-only synthesis (Berndt *NB Part V* mixes theta with
+  class invariants + Eisenstein CFs + singular moduli). ~70-80% of the
+  content is reachable from Cooper's open arXiv papers on his Massey
+  page; the book is convenience over necessity. Ask Cooper directly OR
+  reconstruct from ~12 open papers if Hunt 6 becomes a priority.
 - **Berndt *Notebooks Parts III & IV*** (1991, 1994) — lower priority than
   Part V which is now in.
 

@@ -366,6 +366,55 @@ a first-class part of computational-math tooling is broadly missing.
 
 ---
 
+## 5b. Meta-finding: the canonical Ramanujan is posthumously narrowed
+
+Emerges across Hunt 5 and Hunt 1. Both hunts surface mathematical content
+that is *visible in the primary sources* but *under-represented in the
+standard narrative* assembled by Hardy / Watson / Berndt — who worked the
+modular-forms side because that's where the gold was for their own
+research programmes.
+
+Specifically:
+- **QR III** (March 1914): explicit fractional iteration of functions
+  (Schröder/Koenig), Hardy orders of infinity, Riemann-Liouville fractional
+  differentiation, umbral operator calculus, Mellin-pair reciprocity. None
+  of these are in the standard "Ramanujan in modular forms" framing.
+- **LN p. 342** (now identified): a 15-row Weber class-invariants table
+  including discriminants -63, -87 with class number ≥ 4-6 — Hunt 4
+  territory, but visible on a page that's been sitting in the facsimile
+  for 30+ years without being identified as such in the user's set of
+  surfaced commentary.
+- **LN p. 343**: explicit `O(...)` Diophantine-approximation bounds for
+  `a^m b^n ⁵√2` and `a^m b^n ⁷√2` with conjugate-product structure.
+  Possibly anticipates effective Thue-Siegel-Roth by 13-16 years
+  (Mahler 1933, Schneider 1936). Not in the canonical Ramanujan narrative
+  at all.
+
+The meta-pattern: **canonical Ramanujan ⊊ historical Ramanujan**, and the
+gap is roughly the analysis / approximation / dynamics side that Hardy +
+Watson + Berndt chose not to centre. Each of the three findings above is
+a potential publishable result on its own merits *because* the canonical
+narrowing left them under-explored, not because they're hidden in
+inaccessible material. The primary sources are right there; the question
+is who reads them and what they're looking for.
+
+This meta-finding is itself the run's most surprising result. It is a
+generalisable observation about how mathematical reception narrows
+posthumous corpora, not specific to Ramanujan — but Ramanujan is the
+extreme case because the canon was so completely curated by a single
+generation of editors (Hardy, Watson, Berndt) with strongly-shared
+interests.
+
+**Status: SUPPORTED at medium-high confidence (two independent hunts
+generated three independent under-explored findings).**
+
+The cleanest test of generalisability would be to look for analogous
+under-explored content in the QRs that don't connect to either modular
+forms or analysis — the multisection / roots-of-unity work in QR II §3
+is one candidate.
+
+---
+
 ## 6. Gemini's "highly-composite tensor schedules"
 
 **Original claim.** Tensor-decomposition schedules using highly-composite
@@ -450,19 +499,54 @@ facsimiles + Berndt 2022 HRJ QR reproduction + open-access context PDFs) and
 commentary volumes obtained from the authors for personal use). See
 [CLAUDE.md](../CLAUDE.md) per-Hunt table for paths.
 
+## Research output projection (after parallel-Claude excitement read)
+
+The parallel review ranked findings by **likelihood × impact** and gave
+explicit probability estimates for the three highest-leverage open
+questions. Folded in here so it's persistent.
+
+| Finding | Bounded verification cost | Probability genuinely new | Output if positive |
+|---|---|---|---|
+| **QR III pre-Julia iteration theory** (Schröder/Koenig + ψ₁ = C/F Lie generator; Chebyshev semigroup explicit; Julia 1918 / Fatou 1917-19 postdate by 3-4 yrs) | Half-day literature scan (Milnor / Douady-Hubbard / Ecalle / Belitskii on whether they cite Ramanujan QR III) + one comparison of Ramanujan's formulas vs Ecalle's normal-form vector fields | **60-70%** | Standalone short paper: *"Pre-Julia iteration theory in Ramanujan's third Quarterly Report (March 1914)"*. Historia Mathematica or Ramanujan Journal. |
+| **Two-toolkit hypothesis** (analytic-operator-calculus toolkit in QRs vs modular-machinery toolkit in Notebooks, ≥30 pp variance criterion per [HUNT5b_PREDICTIONS.md](HUNT5b_PREDICTIONS.md)) | Hunt 5b on Notebooks Ch. 16 + Ch. 32 spanning pair; ~1 week with vision-direct reads, or ~3-5 days if Chandra OCR works | Conditional on the experimental result — the framing is novel, the question is whether the data supports it | The big paper from this run: bibliographic evidence for *structured-multidimensional working mathematical representation*. Comm. Math. Phys. / Bull. AMS / cog-sci venue. |
+| **Diophantine bound priority on LN p. 343** (Ramanujan's explicit `O(...)` conjugate-product bounds for ⁵√2 and ⁷√2 vs Mahler 1933 / Schneider 1936) | Half-day verification (mpmath ~100 digits on specific (m,n); literature scan for 1960s-90s effective-Thue-Siegel coverage) | **~40%** | Standalone short note: priority result on effective approximations for specific algebraic irrationals. Math. of Computation note or Acta Arithmetica. |
+
+**Total projection if 2-of-3 land positive:** two short standalone papers
++ one substantive paper on Ramanujan's working representation, *beyond*
+the [rkc/](../rkc/) tooling paper (W1) and the cohomological-irreducibility
+B1 closure paper (W2) already in the bag. That's a real publishable output
+from the run.
+
+**What is NOT exciting** (calibration, from the parallel review):
+- The Hunt 5 falsification headline (57.6%) is methodologically solid but
+  is a *calibration* story, not a finding.
+- The Hunt 1 scope correction (pp. 342-343 are different topics) is
+  interesting context but not a result on its own.
+- The B1 closure (20 candidates falsified, cohomological conjecture
+  established) is publishable — but is old news (Pass D / diary 19).
+- The rkc/ package is operationally clean, shippable as W1, but is
+  engineering not research-novelty.
+
+The pattern: **the SURPRISES were the under-explored content surfaced
+during methodologically-sound hunts**, not the headline hunts themselves.
+See §5b (canonical-Ramanujan-narrowing meta-finding) for the
+generalisable observation.
+
 ## What I'd actually do next, ranked
 
 This is my own ranking, not a directive — redirect freely.
 
-1. **Hunt 1 on Lost Notebook pp. 341-343 (UNBLOCKED).**
-   3 facsimile pages + an 8-page Ono-Trebat-Leder paper. Tractable in one
-   focused session. Tests the 60-80% K3-parameterisation prediction. Smallest
-   well-scoped hunt; highest leverage-per-effort.
-2. **Hunt 5b on the Notebooks (UNBLOCKED, but big).**
-   1,149 facsimile pages — should be scoped to ~3-5 chapters targeted at
-   the 4 operators that didn't fire in the QRs (NB II ch. 16 → q_shift,
-   ch. 17 → modular_S, ch. 21 → Eisenstein + class-field). Bottlenecked by
-   OCR of handwritten facsimiles; benchmark Chandra first.
+1. **W8 — QR III pre-Julia iteration literature scan (CLOSED Hunt 1; OPEN W8).**
+   Half-day. The cleanest small win in the run, ~60-70% likely genuinely
+   new. Confirm whether Milnor / Douady-Hubbard / Ecalle / Belitskii cite
+   Ramanujan QR III; if no, draft "Pre-Julia iteration theory in
+   Ramanujan's third Quarterly Report".
+2. **Hunt 5b on the Notebooks (UNBLOCKED).**
+   The big-paper candidate. Should be scoped to NB II Ch. 16 (theta) +
+   Ch. 32 (Eisenstein-CFs) as the spanning pair per
+   [HUNT5b_PREDICTIONS.md](HUNT5b_PREDICTIONS.md). Bottlenecked by OCR
+   of handwritten facsimiles; finish Chandra benchmark first or accept
+   vision-direct reads (Hunt 1 showed that's enough for topic-level work).
 3. **Write the recognizer architecture paper** ("Kernel-fingerprint compiler
    …"). Draft from existing artefacts (rkc/, A1-A7, DID_NOT_PAN_OUT entries).
    1-2 weeks of focused writing.
