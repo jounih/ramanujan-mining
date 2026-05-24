@@ -350,6 +350,25 @@ def _build_parser() -> argparse.ArgumentParser:
                          "regression suite from analysis/14b_recognizer_v2_benchmark.py).")
     pb.set_defaults(func=cmd_benchmark)
 
+    # sweep (parallel sweep over seed library)
+    psw = sub.add_parser("sweep",
+                         help="Parallel Project C sweep over seed library (v0.6+).")
+    psw.add_argument("--seeds", default=None,
+                     help="Comma-separated seed_ids (default: all SEED_LIBRARY entries).")
+    psw.add_argument("--budget", type=int, default=100,
+                     help="Per-seed search budget (default: 100).")
+    psw.add_argument("--depth", type=int, default=2,
+                     help="Max composition depth (default: 2; v0.6 added depth>1).")
+    psw.add_argument("--workers", type=int, default=4,
+                     help="Parallel worker processes (default: 4).")
+    psw.add_argument("--digits", type=int, default=10,
+                     help="Verifier precision in decimal digits (default: 10).")
+    psw.add_argument("--seed", type=int, default=None,
+                     help="RandomProposer RNG seed (default: nondeterministic).")
+    psw.add_argument("--out-dir", default=".rkc_sweep_out",
+                     help="Output directory (default: .rkc_sweep_out).")
+    psw.set_defaults(func=cmd_sweep)
+
     # search (Project C v0.3.0)
     ps = sub.add_parser("search",
                         help="Run Project C operator-composition search (v0.3.0 baseline).")
@@ -366,6 +385,40 @@ def _build_parser() -> argparse.ArgumentParser:
     ps.set_defaults(func=cmd_search)
 
     return p
+
+
+def cmd_sweep(args: argparse.Namespace) -> int:
+    """Parallel sweep over the seed library."""
+    from rkc.search import SEED_LIBRARY, sweep
+    seed_ids = (args.seeds.split(",") if args.seeds else None)
+    if seed_ids:
+        seed_ids = [s.strip() for s in seed_ids if s.strip()]
+        unknown = [s for s in seed_ids if s not in SEED_LIBRARY]
+        if unknown:
+            print(f"unknown seed_ids: {unknown}", file=sys.stderr)
+            print(f"available: {list(SEED_LIBRARY.keys())}", file=sys.stderr)
+            return 2
+    summary = sweep(
+        seed_ids=seed_ids, budget=args.budget, max_depth=args.depth,
+        n_digits=args.digits, workers=args.workers,
+        rng_seed=args.seed, out_dir=args.out_dir,
+    )
+    print(f"rkc sweep complete")
+    print(f"  seeds         : {summary['n_seeds']}")
+    print(f"  budget/seed   : {summary['budget_per_seed']}")
+    print(f"  max_depth     : {summary['max_depth']}")
+    print(f"  workers       : {summary['workers']}")
+    print(f"  walltime total: {summary['walltime_total_seconds']:.1f}s "
+          f"(avg {summary['walltime_per_seed_avg_seconds']:.1f}s/seed)")
+    print(f"  proposed total: {summary['n_proposed_total']}")
+    print(f"  accepted total: {summary['n_accepted_total']}")
+    print(f"  rejected total: {summary['n_rejected_total']}")
+    print(f"  seeds w/accept: {summary['n_seeds_with_acceptance']}/{summary['n_seeds']} "
+          f"({100*summary['acceptance_rate_per_seed']:.0f}%)")
+    print(f"  errors        : {summary['n_errors']}")
+    print(f"  output dir    : {args.out_dir}/")
+    print(f"  → see sweep_summary.json + sweep_summary.csv for per-seed detail")
+    return 0
 
 
 def cmd_search(args: argparse.Namespace) -> int:

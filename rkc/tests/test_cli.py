@@ -238,6 +238,36 @@ def test_v05_master_theorem_beta_function(tmp_path):
     assert "gamma" in first["state_after"].lower()
 
 
+def test_v06_sweep_serial_smoke(tmp_path):
+    """Project C v0.6+ sweep: serial 1-worker run over 3 seeds with the
+    deterministic RNG seed. Hit-rate floor: ≥2 of 3 seeds (Gaussian +
+    Master-Theorem-Beta) should produce at least one acceptance."""
+    from rkc.search import SEED_LIBRARY, sweep
+    seed_ids = ["gaussian_beta_1em2", "gaussian_beta_1em4", "beta_function_integral"]
+    summary = sweep(
+        seed_ids=seed_ids, budget=15, max_depth=2, n_digits=8,
+        workers=1, rng_seed=42, out_dir=tmp_path,
+    )
+    assert summary["n_seeds"] == 3
+    assert summary["n_errors"] == 0
+    assert summary["n_seeds_with_acceptance"] >= 2, (
+        f"sweep smoke failed: only {summary['n_seeds_with_acceptance']} of 3 "
+        f"produced acceptance. Per-seed: {[(r['seed_id'], r['n_accepted']) for r in summary['per_seed']]}"
+    )
+    # Output files written
+    assert (tmp_path / "sweep_summary.json").exists()
+    assert (tmp_path / "sweep_summary.csv").exists()
+
+
+def test_sweep_seed_library_buildable():
+    """Every seed in SEED_LIBRARY must construct without raising."""
+    from rkc.search import SEED_LIBRARY, build_seed
+    for sid, seed in SEED_LIBRARY.items():
+        expr, var = build_seed(seed)
+        assert expr is not None, f"seed {sid} built None expr"
+        assert var is not None, f"seed {sid} built None var"
+
+
 def test_v05_master_theorem_canonical_patterns():
     """Unit test: master_theorem matches the 3 canonical patterns
     (Gamma, Beta, 1/(1+x)) and declines on non-matching forms."""

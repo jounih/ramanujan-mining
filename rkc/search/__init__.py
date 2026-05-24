@@ -63,6 +63,8 @@ from .verifiers import MpmathVerifier
 from .routers import RkcRouter, RkcCostModel
 from .registries import JsonlRegistry
 from .engine import search
+from .seeds import SEED_LIBRARY, Seed, build_seed
+from .sweep import sweep, SeedSweepResult
 
 __all__ = [
     # core types
@@ -77,4 +79,7 @@ __all__ = [
     "JsonlRegistry",
     # the main loop
     "search",
+    # seed library + parallel sweep (v0.6+ scale path)
+    "SEED_LIBRARY", "Seed", "build_seed",
+    "sweep", "SeedSweepResult",
 ]
