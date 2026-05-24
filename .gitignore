@@ -10,6 +10,10 @@ chatgpt-pro-mining/
 *.env
 !.env.example
 
+# ===== CLI tool working-state directories =====
+# agy (Gemini CLI) writes UUID-keyed working memory under brain/
+brain/
+
 # ===== Python =====
 .venv/
 venv/
