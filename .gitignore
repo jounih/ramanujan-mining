@@ -1,0 +1,45 @@
+# ===== Local-only working material (large primary sources, ~350 MB) =====
+# Source pack from ChatGPT pro mining: PDFs, page images, OCR text.
+# Useful as offline corpus for Hunt 5 / Hunt 1 etc.; NOT committed.
+chatgpt-pro-mining/
+
+# ===== Python =====
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ===== macOS / editors =====
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== Primary-source scans (large facsimile PDFs) =====
+# Per the original convention: anything >1MB under corpora/scans/ stays local.
+# Pin specific extensions rather than the whole directory so manifests/READMEs commit.
+corpora/scans/**/*.pdf
+corpora/scans/**/*.png
+corpora/scans/**/*.jpg
+corpora/scans/**/*.jpeg
+corpora/scans/**/*.tif
+corpora/scans/**/*.tiff
+
+# ===== Vendored 3rd-party working state =====
+corpora/RamanujanMachine/source/venv/
+corpora/RamanujanMachine/source/__pycache__/
+corpora/RamanujanMachine/source/tmp_results/
+
+# ===== Experiment outputs that are large or regeneratable =====
+# Keep small CSVs in analysis/results/ (they're the durable record).
+# But ignore stray heavy artifacts:
+*.log
+*.tmp

@@ -1,0 +1,530 @@
+# Did Not Pan Out — Consolidated Log of Refuted / Corrected / Open Speculations
+
+**Purpose.** Methodological credibility. A run that publishes the speculations
+it refuted alongside the ones it confirmed is more trustworthy than one
+that publishes only the wins. Per `todo.md` cross-cutting deliverable #4,
+this file is the consolidated honest accounting.
+
+**Inclusion discipline.** Every entry below cites a specific diary entry
+**and** an experiment script (or a SOTA-check artifact). Speculations
+that were *made but never tested* are listed in the OUTSTANDING section,
+not the refuted section. Some entries are partially refuted or
+significantly corrected rather than fully refuted — they are tagged
+accordingly.
+
+**Tag legend.**
+- **REFUTED** — the speculation failed a numerical or SOTA test outright.
+- **CORRECTED** — the speculation had a true qualitative core but the
+  quantitative claim, mechanism, or normalization was wrong; v1 fixed it.
+- **PARTIALLY REFUTED** — the speculation holds in a restricted regime
+  but was over-stated as a general claim.
+- **DOWNGRADED** — the speculation was not numerically tested but had its
+  calibration lowered by a SOTA check showing prior art covers more
+  ground than initially credited.
+- **OPEN** — speculation made, listed here for inventory, but not yet
+  tested. (Distinct from "refuted".)
+
+**Final entry count: 14**, breaking down as:
+- 4 REFUTED
+- 4 CORRECTED
+- 4 PARTIALLY REFUTED
+- 2 DOWNGRADED
+
+(Plus a separate OUTSTANDING section listing speculations that the run
+made but never tested. These do NOT count toward the refuted-vs-corrected
+total — they are inventory, awaiting future work.)
+
+---
+
+## R1 — v0 mock-theta toy: the "1/√β" asymptotic for the bias
+
+**What was speculated.** Diary 04 (`pass_d_mock_theta_demo.md`, Exp 15)
+stated: *"If you fit an EBM whose true normalizer has the shape of f(q)
+but you use a 'purely modular' Z surrogate (θ_3 in this toy), you
+systematically underestimate the log-partition function near the
+critical / high-temperature regime by a factor that goes like 1/√β."*
+The intuition was that θ_3 diverges as √(π/β) while f(q) saturates,
+giving a residual that scales as 1/√β at small β.
+
+**What was tested.** Experiment 17, written to plug in the exact
+Hickerson-Mortenson shadow and the Watson 1936 Eichler integral, and
+verify the v0 picture quantitatively. Documented in
+`diary/12_mock_theta_residual_v1.md`; script
+`ramanujan/analysis/17_mock_theta_residual_ebm_v1.py`; CSV
+`ramanujan/analysis/results/mock_theta_residual_v1.csv`.
+
+**What we found.** The v1 modular-only residual (the Mordell integral
+M(α)) **saturates at 4/3** as α → 0+ — a finite radial limit (Watson-
+Hickerson), NOT a divergent 1/√β. Empirically the CSV column
+`residual_v1_modonly` reads 1.333 → 1.333 → 1.332 → 1.324 → 1.255 → 0.932
+across β = 1e-4 .. 10. The v0 qualitative picture (mock theta is
+bounded, modular surrogate isn't, ratio → 0) was right; the
+*quantitative* asymptotic was off; v0 was confusing two different
+residuals (the f vs. θ_3 mismatch — which DOES grow like √(2π/α) — with
+the genuine shadow Eichler integral, which is bounded).
+
+**Updated estimate (tag: CORRECTED).** The correct version is that the
+bounded-at-cusp limit 4/3 is what the shadow Eichler integral
+contributes, not a 1/√β divergence. This is now A5 in
+`insights/CANDIDATE_INSIGHTS.md` with the explicit retraction. The
+qualitative point (mock-modular bias is structural and the shadow is
+the missing piece) survives; the numerical asymptotic is replaced by
+the right one.
+
+---
+
+## R2 — v0 mock-theta toy: EVEN Kronecker character mod 12 as the shadow character
+
+**What was speculated.** Diary 04 / Exp 15 used the EVEN Kronecker
+character (12/·) — i.e. χ(n) = +1 if n ≡ ±1 mod 12, −1 if n ≡ ±5 mod 12 —
+as the character of the weight-3/2 unary theta shadow.
+
+**What was tested.** Symbolic derivation in Experiment 17 / Diary 12
+re-derived the shadow's character from first principles by rewriting
+sinh(αt)/sinh(3αt/2) in the Watson Mordell integrand as
+Σ_{m≥0} [e^{−αt(6m+1)/2} − e^{−αt(6m+5)/2}]. The character that emerges
+is the ODD primitive character of conductor 12: χ(1)=χ(7)=+1,
+χ(5)=χ(11)=−1, χ(−n)=−χ(n).
+
+**What we found.** The EVEN-character unary theta `Σ χ(n)·n·q^{n²/24}`
+**vanishes identically** by the pairing n ↔ −n (n·χ(n) + (−n)·χ(−n) =
+0 when χ is even). So v0's `shadow_unary_theta` was structurally
+zero-by-symmetry as a real unary theta; v0 silently computed the
+one-sided (positive-n) version, which is not modular under any
+nontrivial transformation.
+
+**Updated estimate (tag: REFUTED).** v0's character choice is plain
+wrong. The correct character is the ODD one. The fix is documented in
+diary 12 §"v0 bug found and fixed" and the corrected sign pattern is
+verified numerically at α = 1 (n=1:+1, n=5:−5, n=7:+7, n=11:−11, n=13:+13,
+magnitudes decay hyperexponentially). This is exactly the
+"looks-fine-returns-wrong-answer-with-confidence" failure mode that A4
+in `CANDIDATE_INSIGHTS.md` warns about for ANY representation-switching
+compiler — and it's the most painful place it bit me in this run.
+
+---
+
+## R3 — "Naive rational-temperature snapping is a generic RKC speedup"
+
+**What was speculated.** Original framing (carried over from the Gemini
+critique, diary 02 §"Lead 5"): snap an irrational temperature α to a
+nearby rational p/q and use Gauss's closed form for the quadratic Gauss
+sum G(p,q) = Σ_{n=0}^{q-1} exp(2πi p n²/q). This was framed as a generic
+acceleration route, with Gemini warning only about "residual bounds and
+denominator blow-up".
+
+**What was tested.** Experiment 10 — full sweep over α = √2 − 1 with
+snap targets eps ∈ {1e-2 … 1e-13} and best continued-fraction
+convergents. Documented in `diary/05_rational_snap_pareto_and_zero_hazard.md`;
+script `ramanujan/analysis/10_rational_temp_snapping.py`.
+
+**What we found.**
+1. The Pareto is **linear**, not super-linear: doubling q halves the
+   phase error and doubles the cost — a 1-for-1 trade, never
+   asymptotically dominant over a well-damped direct truncation (which
+   gives `O(1/√damping)` cost with linear convergence in `log(1/tol)`).
+2. **The "silent zero hazard"**: classical Gauss-sum evaluation gives
+   G(p, q) = 0 identically when q ≡ 2 (mod 4). Roughly *half* of the
+   best CF convergents of a generic irrational land in that residue
+   class. A naive snap-and-Gauss RKC returns ZERO with high algorithmic
+   confidence on those cases.
+
+**Updated estimate (tag: PARTIALLY REFUTED).** The snap is most genuinely
+valuable only when (a) α is rational *by structure* (physical or
+quantization-imposed), or (b) the dual representation is the ONLY
+available one. As a *generic* speedup over damped direct summation it
+is refuted. The silent-zero hazard is real and serious enough that the
+v1 recognizer (Exp 13) carries an explicit degeneracy detector for
+q ≡ 2 (mod 4); see diary 11 and CANDIDATE_INSIGHTS A4. The recognizer
+benchmark confirms the detector fires on every adversarial case in the
+55-case battery (`recognizer_routing_benchmark.csv`).
+
+---
+
+## R4 — Gemini's "highly composite tensor schedules" as a paradigm
+
+**What was speculated.** Gemini's commentary (relayed in diary 02
+§"Lead 2") framed "highly composite numbers" as the basis for novel
+compute schedules, with the claim that "the entire hardware world is
+locked into powers of two".
+
+**What was tested.** Direct SOTA check (no scripted experiment, but
+documented analysis in `diary/02_critique_gemini.md` §"Lead 2",
+cross-referenced against the SOTA notes for HPC / FFT prior art).
+
+**What we found.**
+1. **The framing conflates two different combinatorial extremes.**
+   Ramanujan's "highly composite" (more divisors than any smaller
+   integer) is a *specific* subset; the FFT-relevant optimum is
+   **smoothness** (no prime factor exceeds bound B). A 5-smooth or
+   7-smooth number isn't necessarily highly composite, and vice versa.
+2. FFTW, cuFFT, MKL already expose mixed-radix algorithms; Bluestein's
+   chirp-z handles arbitrary sizes; Rader's algorithm handles primes;
+   Winograd minimizes multiplications for small kernels. The actual
+   binding constraint in modern AI is memory-bandwidth alignment, not
+   factorization optionality.
+3. Real prior art exists; the "paradigm shift" framing is overstated.
+
+**Updated estimate (tag: PARTIALLY REFUTED).** The narrower honest
+version — *expose compile-time factorization metadata to the schedule
+planner so block/tile/batch decisions can use it; build a Ramanujan-
+style ranking function over (size, factor structure, hardware cost
+model)* — is real but modest. CANDIDATE_INSIGHTS B2 captures the
+calibrated version. The headline is "real niche lead", not "paradigm
+shift". Confidence: medium negative.
+
+---
+
+## R5 — Modular checksums as a broad DP primitive
+
+**What was speculated.** Gemini called Ramanujan's congruences
+(p(5n+4) ≡ 0 mod 5, p(7n+5) ≡ 0 mod 7, p(11n+6) ≡ 0 mod 11) "brilliant
+cheap invariants for combinatorial state spaces."
+
+**What was tested.** Argued, not numerically run. Documented in
+`diary/02_critique_gemini.md` §"Lead 3" and CANDIDATE_INSIGHTS B3.
+
+**What we found.** To use these congruences as DP checksums you need
+either (a) the DP to be computing exactly p(n) (in which case you've
+already done the hard work) or (b) a *structurally analogous* generating
+function for the DP problem where the congruence transfers. The
+general principle (using number-theoretic invariants as cheap parity-
+like checks on coefficient streams) is real and underused, but it's
+bigger than Ramanujan and the work is in *finding the right invariant
+for the right DP*, which is per-problem.
+
+**Updated estimate (tag: PARTIALLY REFUTED).** Real principle, narrow
+applicability of Ramanujan's specific congruences. The lead is a
+"medium novelty, per-problem work" entry rather than a turnkey
+primitive. Confidence: medium. Not pursued further in this run because
+the per-problem cost is the binding constraint.
+
+---
+
+## R6 — "Modular surrogate" in v1 mock-theta toy = a canonical level-X η-product
+
+**What was speculated.** Diary 12 §"Does this count as a publishable
+bias-cancellation demonstration?" flagged the hope that the Watson
+companion `W(q_1²)` used as the modular surrogate would correspond
+cleanly to a canonical η-product / Eisenstein form at level 6 / 12 / 24
+under the modular-forms taxonomy.
+
+**What was tested.** Attempted in the v1 derivation, but not
+disentangled — diary 12 §"what's still missing" honestly states the
+gap: "my Watson identity has been confirmed at small α (calibrated
+regime) to ≥30 digits, but at α > 1 there are O(q_1⁴) corrections I
+haven't disentangled (probably because I'm picking a slightly wrong
+Watson partner; the literature uses several inconsistent labelings of
+ω vs ψ vs ν)."
+
+**Updated estimate (tag: PARTIALLY REFUTED for the "publishable"
+framing; CORRECTED in scope.)** The v1 bias-cancellation IS quantitative
+in the small-α regime (≥30 digits), which is the regime of interest for
+the EBM toy. It is NOT in the canonical-η-product form at all α. A
+publishable mathematical writeup would need to either (i) chase down
+the right Watson partner so the identity holds at all α, or (ii)
+reformulate using only the Mordell integral as the shadow Eichler
+integral, paired with a Dedekind-η-product modular form. Bibliographic
+work, not deep, but explicitly out of scope here. CANDIDATE_INSIGHTS A5
+notes this caveat in its "still missing" line.
+
+---
+
+## R7 — Shadow of f(q) is proportional to mutual information
+
+**What was speculated.** B1 of CANDIDATE_INSIGHTS originally listed
+mutual information `I(n ; total_particles)` as a candidate for the
+shape of the shadow's Eichler integral g*(τ). This was one of four
+standard info-theoretic candidates probed in Pass D.
+
+**What was tested.** Experiment 16. Documented in
+`diary/13_fep_mock_modular_toy.md`; script
+`ramanujan/analysis/16_fep_mock_modular_toy.py`; data
+`ramanujan/analysis/results/fep_mock_modular_toy.csv`. 13 data points
+across β ∈ {10⁻³, …, 10}, 4 orders of magnitude.
+
+**What we found.** Median ratio `MI / g*` = 6.6e-3 with max relative
+deviation **14.3× (= 1430%)** across the sweep. Fails the strict ≤1%
+proportionality bar by a large margin.
+
+**Updated estimate (tag: REFUTED).** MI vanishes at the cusp β → 0
+(the unsigned distribution becomes nearly uniform on a huge range of n
+and particle-count factorizes through n, so MI → 0). g* is bounded at
+the cusp (≈ 3.46). The two have qualitatively wrong shapes at the
+boundary. Not the right info-theoretic identification.
+
+---
+
+## R8 — Shadow of f(q) is proportional to KL divergence
+
+**What was speculated.** Same B1 entry — KL(p_unsigned ‖ p_signed) as
+the second of the four standard candidates.
+
+**What was tested.** Same Exp 16.
+
+**What we found.** Median ratio = 1.34, max relative deviation
+**262× (= 26200%)**. Worst of the four candidates.
+
+**Updated estimate (tag: REFUTED).** KL diverges at the cusp (because
+Z_unsigned diverges fast — bosonic partition function blows up — while
+Z_signed = f(q) → 1.33). The structural mismatch is the same as MI but
+with the opposite sign (divergent rather than vanishing).
+
+---
+
+## R9 — Shadow of f(q) is proportional to cross-entropy "Surprise"
+
+**What was speculated.** Same B1 entry — third candidate.
+
+**What was tested.** Same Exp 16.
+
+**What we found.** Median ratio = 1.81, max relative deviation
+**196× (= 19600%)**.
+
+**Updated estimate (tag: REFUTED).** Same structural reason as KL —
+diverges at the cusp.
+
+---
+
+## R10 — Shadow of f(q) is proportional to Fisher information F(β)
+
+**What was speculated.** Same B1 entry — fourth and most plausible-
+looking candidate.
+
+**What was tested.** Same Exp 16.
+
+**What we found.** Median ratio = 0.076. Max relative deviation
+**0.999 (= 99.9%, i.e. a factor of ~2 variation in ratio across
+4 dex of β)**. The least falsified of the four — but still failing
+the ≤1% bar.
+
+**Updated estimate (tag: REFUTED, with note.)** Fisher vanishes at the
+cusp (p_signed freezes; the β-derivative becomes negligible). g* is
+bounded. Different cusp behaviour ⇒ not proportional. The factor-of-2
+variation suggests Fisher and g* track each other over a *limited*
+range, which is informative for whatever the true identification is
+(if any), but does not pass the test.
+
+The pattern across R7–R10 is itself a finding: the **necessary
+structural condition** for any candidate is "bounded and nonzero at
+the cusp"; none of the four standard candidates satisfies it. This
+"clean negative with structural content" is captured in
+CANDIDATE_INSIGHTS B1 as the *positive* corollary — the search should
+move to bounded-at-cusp candidates (Rényi-α, Bhattacharyya, entropic
+uncertainty).
+
+---
+
+## R11 — "Always prefer the closed-form radical over direct evaluation" for class invariants
+
+**What was speculated.** The standard intuition (and a corollary of the
+"latent-space speedrun" framing): Ramanujan's nested radicals for class
+invariants `G_n` should always beat direct evaluation of the infinite
+product.
+
+**What was tested.** Experiment 08. Documented in
+`diary/09_class_invariants_cost.md`; script
+`ramanujan/analysis/08_class_invariants_cost.py`; CSV
+`ramanujan/analysis/results/class_invariants_cost.csv`. Eight invariants
+all numerically PSLQ-verified to ≥100 digits before the cost benchmark.
+
+**What we found.**
+1. As n grows, **direct evaluation gets faster, not slower** — the
+   expansion parameter q = e^{−π√n} shrinks with n, so fewer product
+   factors are needed at fixed precision. At d=1000 digits: G_1 needs
+   369 terms, G_49 needs only 53. Initial intuition was wrong; the
+   prompt's hedge was correct.
+2. **For n ∈ {17, 49} at d=30 digits, direct beats radical on op-count.**
+   Direct needs 2–3 product factors at 30 digits; the nested radical
+   involves 7–8 primitive ops. This is the most surprising cell of
+   the experiment.
+3. At d=1000 the radical wins for every n by 7×–369× on op-count and
+   3×–430× on wall-time — but only at industrial precision.
+
+**Updated estimate (tag: PARTIALLY REFUTED.)** The "closed form always
+wins" prior has a documented small-d, large-n exception. The honest
+calibrated statement (medium confidence): the radical gives a 1×–400×
+speedup, with the advantage **growing linearly in working precision d**
+and **decaying sub-linearly in n**. Crossover where radical begins to
+dominate by op-count is around d ~ 30–100 digits for medium n
+(17 ≤ n ≤ 49); below that, direct is competitive. A future RKC routing
+policy should encode the "use direct below threshold T(n)" rule, with
+T(n) ~ π · √n · (radical_ops) per the empirical scaling.
+
+---
+
+## R12 — "Bits-per-term is the right routing metric"
+
+**What was speculated.** Implicit in many early diary entries (notably
+diary 06, the π-methods compression piece): bits-per-term is the
+natural compression metric to drive routing.
+
+**What was tested.** Experiment 05 / diary 07 (`hrr_partition_benchmark.md`),
+script `ramanujan/analysis/05_hrr_partition_benchmark.py`. HRR vs the
+pentagonal recurrence for p(n), n ∈ {10, 10², 10³, 10⁴, 10⁵}.
+
+**What we found.** Bits-per-term flatters HRR by a factor of ~10⁵ at
+n=10⁵ (138 HRR terms vs 34.3M pentagonal summands), but the wall-clock
+crossover sits at n ≈ 10⁵ — **only 1.2× speedup**, not 10⁵×. Each HRR
+term costs φ(k) Dedekind sums at dps ≈ log₁₀ p(n) precision, while each
+pentagonal term is one big-int add. With binary-splitting + FLINT
+bignums the wall-clock gap would re-open, but with naive mpmath
+arithmetic, bits-per-term over-credits HRR.
+
+**Updated estimate (tag: CORRECTED.)** Bits-per-term is a *necessary*
+but not *sufficient* routing signal. The cost predictor must divide
+bits-per-term by per-term computational cost — the registry's cost
+estimator needs to track per-term complexity, not just term count.
+This is now A7 in CANDIDATE_INSIGHTS. The full lesson: a kernel's
+information-theoretic density and its computational-cost density must
+be tracked jointly. Confidence: high.
+
+---
+
+## R13 — "Catastrophic cancellation in the Lambert-Eisenstein modular formula at large β is a real route-failure"
+
+**What was speculated.** During Exp 12 derivation (diary 10, "Surprises
+3"), the worry was raised that the modular path `c_k · (small · E − 1)`
+at large β might produce relative-error explosion that breaks the route.
+
+**What was tested.** Direct numerical check at β=100, tol=1e-10 with k=3,
+documented in the CSV `lambert_eisenstein_switch.csv` row for that cell.
+
+**What we found.** Relative error of the modular route at β=100 *is*
+~3e33 in the sense of `value_check`, because L_k ≈ e^{−100} ≈ 4e-44 is
+absurdly tiny and the cancellation noise sits at ~1e-11 — so the
+*absolute* error meets tol but relative blows up by orders of magnitude.
+HOWEVER: at β > 2π, the cost predictor *already* routes to DIRECT (by
+30–95× margin), so the modular route is never actually selected in the
+regime where the cancellation matters.
+
+**Updated estimate (tag: PARTIALLY REFUTED as a real hazard for the
+running system; CORRECTED as a documentation matter.)** The cancellation
+exists but is operationally invisible — the cost-based router never
+picks the modular path where it would blow up. The honest version of
+the hazard: any user manually invoking the modular formula outside its
+β ≤ 2π regime would see it, and the kernel-registry entry should carry
+a warning. Captured in diary 10 §"Surprises 3" as a speculative
+hardening note for a production RKC. The "real route-failure" framing
+is wrong; the "documentation needed" framing is right.
+
+---
+
+## R14 — Gemini lead 1: "completely bypass the log-normalizer wall for specific distributions"
+
+**What was speculated.** Gemini's framing of the Reciprocal-Kernel
+Compiler lead: representation switching gives a clean bypass of the
+log-normalizer wall.
+
+**What was tested.** Experiment 02 (Gaussian theta), Experiment 03 (RKC
+v0 with rigorous tail bounds), Experiment 04 (partition function),
+Experiment 12 (Lambert-Eisenstein). Documented across diary 03 and
+diary 10, CANDIDATE_INSIGHTS A1 and A2.
+
+**What we found.** The bypass IS real *when the kernel structure is
+recognized*. But the *certificate of correctness* is more delicate than
+the cost-prediction — the v0 "next-term < tol" tail bound silently
+violated the target by **4–5 orders of magnitude** in the slow-decay
+regime (Exp 02 → 03 fix). The recognition problem is the binding
+constraint, not the switching itself.
+
+**Updated estimate (tag: DOWNGRADED, with technical addenda.)** The
+bypass is operationally real, but the headline "completely bypass" is
+over-stated. The realistic picture is: **representation switching gives
+10¹–10⁵× term-count reductions on physically-meaningful kernels (A1),
+but each kernel needs (a) a rigorous, kernel-specific tail-bound
+certificate (A2) and (b) a degeneracy detector to guard against
+silent-zero / silent-cancellation hazards (A4)**. The recognizer must
+co-design certificate + cost model + degeneracy guard per kernel.
+Calibrated wins are in CANDIDATE_INSIGHTS A1–A4, A6, A7. Gemini's
+qualitative direction was right; the implementation cost was understated.
+
+---
+
+## OUTSTANDING — Speculations made but NOT YET TESTED in this run
+
+These are flagged here so a future pass (or a reader auditing
+credibility) can see what is *still up in the air*. They are not in the
+refuted log because we don't yet know.
+
+### O1 — "60–80% of LN pp. 341-343 manipulations parameterize K3 surfaces"
+
+HUNT_MAP §1 makes this specific quantitative prediction (Ono speculated
+it; nobody has done the full inventory). Cannot test until primary
+scans of LN pp. 341-343 arrive. **Outstanding — not tested.**
+
+### O2 — "5–10 operators recur 80%+ of the time in the Quarterly Reports"
+
+HUNT_MAP §5 prediction. The schema to test it is shipped
+(`ramanujan/corpora/transcriptions/operator_tagging_schema.py`), but
+the QR transcriptions have not arrived in this env. **Outstanding —
+not tested.**
+
+### O3 — "The 18 unproven class-number-8 invariants Ramanujan tabulated correspond to discriminants where the genus subfield is itself class number ≥ 4"
+
+HUNT_MAP §4 prediction; would directly confirm or falsify Ramanujan's
+implicit "compressed mental algorithm" for nested-radical generation.
+Requires Andrews-Berndt vol. I supplement pp. 200-220 transcription
+plus genuine class-field-theoretic computation (not just sympy).
+**Outstanding — not tested.**
+
+### O4 — "Level-23+ modular equations decompose into two Atkin-Lehner-distinguished families"
+
+HUNT_MAP §2 prediction. Requires Berndt vol. V Ch. X transcription plus
+Newton-polytope analysis of the modular-polynomial coefficients.
+**Outstanding — not tested.**
+
+### O5 — "A bounded-at-cusp candidate (Rényi-α, Bhattacharyya, entropic uncertainty) would track g* to ≤1% across 2 dex of β"
+
+CANDIDATE_INSIGHTS B1 / diary 13 §"What would change the conclusion".
+The structural argument that ANY successful candidate must be bounded
+at the cusp is established; the actual test of specific bounded-at-cusp
+candidates is not in this run's CSVs. **Outstanding — not tested.**
+
+### O6 — "Rationality snap is asymptotically dominated by damped direct summation for irrational α"
+
+Established as "linear Pareto" in R3, but the *direct comparison*
+(snap-and-Gauss vs. damped direct summation as a function of target
+tolerance) was not benchmarked head-to-head. R3 makes the asymptotic
+argument; a numerical wall-clock head-to-head would tighten the
+claim. **Outstanding — not tested as a controlled benchmark.**
+
+---
+
+## Methodological notes
+
+1. **Cross-validation gates caught real bugs.** Exp 04's modular Z had a
+   wrong sign on the (β/24) prefactor; the cross-check against the direct
+   route produced relative error `e^(β/12)` matching observation, instantly
+   diagnosable. Without the cross-check this bug would have shipped silently.
+   Lesson: every representation-switching identity must be cross-validated
+   at ≥40 digits at ≥3 calibration points before being used as a fast route.
+2. **The v0 → v1 cycle is healthy.** Both v0 mock-theta toy bugs (R1
+   asymptotic, R2 character) were caught only because v1 explicitly tried
+   to make a stricter quantitative statement than v0. The methodology
+   "always plan a v1 that demands more precision than v0" *forces* the
+   bugs into the open. Recommended as a discipline going forward.
+3. **`float(round(mpf))` is the silent-zero hazard for high-precision
+   integers.** Caught in Exp 05 (mangled p(1000) by a few units in the
+   trailing 105-bit integer). Fix: `int(mpmath.nint(...))`. Same failure
+   *class* as R3, applied to arithmetic-cast not Gauss-sum-routing.
+4. **"Strict-match or null" recognizers leak coverage but never produce
+   false positives.** The Exp 13 v1 recognizer's one false negative
+   (`3 * exp(-β n²)` — bare gaussian with scalar coefficient) is a
+   documented strict-matcher limitation, not a fingerprinting failure.
+   The 100% precision (zero false positives across 12 family labels in
+   the 55-case battery) is the right trade for a downstream routing
+   compiler where a false positive routes to the wrong identity.
+
+---
+
+## How to read this file alongside CANDIDATE_INSIGHTS.md
+
+`CANDIDATE_INSIGHTS.md` documents what the run **did** establish. This
+file documents what it **didn't**. They are complementary and should be
+read together. Several entries here (R1, R2, R6, R12, R14) are
+explicitly cross-referenced in CANDIDATE_INSIGHTS as "honest correction"
+or "still missing" footnotes; this file consolidates them into one
+auditable place. A reader doing methodological credibility checks
+should diff this file against the speculations in the diary entries 01
+through 13 and confirm the cross-references close.

@@ -1,0 +1,56 @@
+case_id,cohort,true_family,predicted_family,route,degenerate_flag,correct,comment
+0,canonical,gaussian_quadratic,gaussian_quadratic,DUAL,False,True,theta_3 at beta=0.1
+1,canonical,gaussian_quadratic,gaussian_quadratic,DEGENERATE,False,True,"q^(n^2) form, q=1/2"
+2,canonical,bose_einstein_geometric,bose_einstein_geometric,DUAL,False,True,Bose at beta=0.05
+3,canonical,lambert_divisor,lambert_divisor,DUAL,False,True,Lambert q=0.99
+4,canonical,mock_theta_f3,mock_theta_f3,DEGENERATE,False,True,symbolic q; ensures near-cusp completion flag
+5,canonical,mock_theta_f5,mock_theta_f5,DEGENERATE,False,True,
+6,canonical,mock_theta_f7,mock_theta_f7,DEGENERATE,False,True,
+7,canonical,partial_theta,partial_theta,DEGENERATE,False,True,
+8,canonical,q_pochhammer_infty,q_pochhammer_infty,DEGENERATE,False,True,"(a;q)_inf with symbolic a, q"
+9,canonical,eisenstein_E2k,eisenstein_E2k,DEGENERATE,False,True,E_4 summand
+10,canonical,dirichlet_L,dirichlet_L,DUAL,False,True,"L(s, chi) summand at symbolic s"
+11,canonical,gauss_sum,gauss_sum,DIRECT,False,True,"Gauss sum p=1 q=3 (odd, non-degenerate)"
+12,canonical,none,none,NONE,False,True,sin(n) — not in any registered family
+13,canonical,none,none,NONE,False,True,cos(n) + 1 — also not registered
+14,perturbed,gaussian_quadratic,none,NONE,False,False,3 * gaussian — coefficient prefix should not match (we expect MISS)
+15,perturbed,gaussian_quadratic,gaussian_quadratic,DUAL,False,True,"bare gaussian, no perturbation (control)"
+16,perturbed,gaussian_quadratic,gaussian_quadratic,DUAL,False,True,rational beta=7/13
+17,perturbed,gaussian_quadratic,gaussian_quadratic,DIRECT,False,True,"beta=100, deep in direct regime"
+18,perturbed,gaussian_quadratic,gaussian_quadratic,DUAL,False,True,"beta=1e-4, deep in dual regime"
+19,perturbed,lambert_divisor,lambert_divisor,DUAL,False,True,"Lambert at q=1/3 (small q, fast direct)"
+20,perturbed,lambert_divisor,lambert_divisor,DUAL,False,True,Lambert at q very close to 1 (dual region)
+21,perturbed,partial_theta,partial_theta,DIRECT,False,True,alternating partial theta q=1/4
+22,perturbed,partial_theta,partial_theta,DEGENERATE,False,True,non-alternating partial theta (no (-1)^n factor)
+23,perturbed,bose_einstein_geometric,bose_einstein_geometric,DUAL,False,True,Bose at beta=0.01 (dual region)
+24,perturbed,bose_einstein_geometric,bose_einstein_geometric,DUAL,False,True,Bose at beta=5 (direct region)
+25,perturbed,mock_theta_f3,mock_theta_f3,MODULAR_COMPLETION_REQUIRED,False,True,mock f3 at q=1/3
+26,perturbed,mock_theta_f5,mock_theta_f5,MODULAR_COMPLETION_REQUIRED,False,True,
+27,perturbed,mock_theta_f7,mock_theta_f7,MODULAR_COMPLETION_REQUIRED,False,True,
+28,perturbed,q_pochhammer_infty,q_pochhammer_infty,DEGENERATE,False,True,
+29,perturbed,q_pochhammer_infty,q_pochhammer_infty,DIRECT,False,True,
+30,perturbed,eisenstein_E2k,eisenstein_E2k,DEGENERATE,False,True,E_6
+31,perturbed,eisenstein_E2k,eisenstein_E2k,DEGENERATE,False,True,E_8
+32,perturbed,gauss_sum,gauss_sum,DIRECT,False,True,"p=2 q=5 (q odd, non-degenerate)"
+33,perturbed,gauss_sum,gauss_sum,DIRECT,False,True,p=3 q=7 (q odd)
+34,composed,gaussian_quadratic,bose_einstein_geometric,DUAL,False,True,gaussian + bose; composite-wrapper should peel either component
+35,composed,lambert_divisor,lambert_divisor,DUAL,False,True,lambert + lambert
+36,composed,gaussian_quadratic,bose_einstein_geometric,DUAL,False,True,gaussian * bose product
+37,composed,gaussian_quadratic,gaussian_quadratic,DUAL,False,True,gaussian * lambert
+38,composed,partial_theta,partial_theta,DIRECT,False,True,two partial thetas
+39,composed,mock_theta_f3,mock_theta_f3,MODULAR_COMPLETION_REQUIRED,False,True,mock-theta + gaussian (canonical mock-modular decomposition shape)
+40,composed,bose_einstein_geometric,bose_einstein_geometric,DUAL,False,True,bose * lambert
+41,composed,q_pochhammer_infty,q_pochhammer_infty,DIRECT,False,True,product of two q-Pochhammers (each a Product object)
+42,composed,eisenstein_E2k,eisenstein_E2k,DEGENERATE,False,True,E_4 + E_6
+43,composed,gauss_sum,gauss_sum,DIRECT,False,True,sum of two non-degenerate Gauss sums
+44,adversarial,none,none,NONE,False,True,shifted theta — must NOT match gaussian (gaussian matcher refuses linear-in-n)
+45,adversarial,none,none,NONE,False,True,shifted gaussian via exp form — must NOT match
+46,adversarial,gauss_sum,gauss_sum,DEGENERATE,True,True,q=6: SILENT ZERO HAZARD §A4 — must emit DEGENERATE
+47,adversarial,gauss_sum,gauss_sum,DEGENERATE,True,True,q=10: also ≡ 2 (mod 4)
+48,adversarial,gauss_sum,gauss_sum,DEGENERATE,True,True,q=14: ≡ 2 (mod 4)
+49,adversarial,gauss_sum,gauss_sum,DIRECT,False,True,p=2 q=6: sympy auto-simplifies to p=1 q=3 BEFORE the matcher sees it — the non-coprime degeneracy never fires because the fraction is reduced. Diagnostic note: the recognizer's degeneracy_check sees only the simplified form; gcd-based hazards are unreachable through the sympy AST.
+50,adversarial,none,none,NONE,False,True,mock-f3 * cos(n) — we expect MISS (matcher rejects extra factors)
+51,adversarial,none,none,NONE,False,True,q^n / (1 - q^(2n)) — NOT a Lambert divisor; we expect MISS
+52,adversarial,none,none,NONE,False,True,extra constant offset; must NOT match partial_theta or gaussian
+53,adversarial,none,none,NONE,False,True,positive exponent n^s — not a Dirichlet L-summand
+54,adversarial,none,none,NONE,False,True,generic f(n) q^n — not divisor sigma
