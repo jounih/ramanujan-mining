@@ -532,6 +532,60 @@ during methodologically-sound hunts**, not the headline hunts themselves.
 See §5b (canonical-Ramanujan-narrowing meta-finding) for the
 generalisable observation.
 
+## Tooling-vs-history fork (after ChatGPT-Pro reranking)
+
+A second parallel review re-ranked the open questions sharply away from
+historical-priority work (which had become a substantial cluster: W8
+pre-Julia paper, the canonical-narrowing meta-finding, the Diophantine
+priority on LN p. 343) and *toward* turning [rkc/](../rkc/) into a usable
+practical tool — a "degeneracy-aware special-function routing compiler"
+with a CLI + Python API.
+
+Their core argument: **the most immediately useful thing this run can ship
+is not a math-history paper but a software artefact that other people can
+use today.** The history is a search heuristic for finding more transforms
+to add to the recognizer, not the deliverable itself.
+
+Sharpened tool-side ranking (their order):
+
+1. **Degeneracy-aware transform registry / compiler** (the [rkc/](../rkc/)
+   v0.1 milestone). Per-kernel matchers + per-term cost + certificates +
+   failure-mode detection. Useful in mpmath / Sage / FLINT-Arb / scientific
+   simulation / symbolic-numeric tooling. **Flagship usable artefact.**
+2. **Eisenstein / q-CF registry expansion** (Hunt 3 repurposed). Newly
+   unblocked by Berndt *NB Part V* Ch. 32 + Berndt-Yee 2002. ~20 Eisenstein
+   continued fractions to cluster into a small number of orthogonal-
+   polynomial-style families → new rkc registry entry for quasi-modular
+   (weight-2 anomaly) territory currently absent from the recognizer.
+3. **Operator-composition search engine** (W5 sharpened). Generate
+   candidate transforms by composing the 7-operator basis; numerically
+   verify with mpmath; route through rkc; keep only identities that beat
+   known baselines. Identity-discovery engine, not history project.
+4. **H10 Berndt-Dixit αβ=1 as a new transform family** (re-framed). Not
+   "study QR III §15" but "add Mellin-pair self-reciprocity with αβ=1
+   duality to rkc as a new routable kernel class". Could matter for
+   anomalous diffusion / fractional operators / spectral sums.
+5. **Hunt 5b as transform mining**, not cognitive science. Notebook page
+   → operator tags → registry comparison → add missing families → benchmark.
+
+**What's downranked under this framing:**
+- W8 pre-Julia iteration paper (pure history; nice but doesn't ship code)
+- The canonical-Ramanujan-narrowing meta-finding (§5b) — interesting but
+  is a paper, not a tool
+- H1c Diophantine priority — interesting but historical
+- The two-toolkit hypothesis as a *cog-sci paper* (vs as a transform-mining
+  guide which is the tooling reading)
+
+**My honest read of the tension:** both directions are defensible. The
+tool-side is more "shippable in 4-6 weeks"; the history-side is more
+"publishable in 6-12 months". They're not mutually exclusive — the Berndt
+NB Part 1 calibration (H9) feeds both directions; H10 explicitly so. The
+choice is really: which direction sets the *headline* of the run's output?
+
+The ChatGPT-Pro framing argues for **rkc v0.1 as the headline**, with the
+historical findings as supporting backlog. I've started on that scaffold
+([rkc/MILESTONES.md](../rkc/MILESTONES.md) when committed).
+
 ## What I'd actually do next, ranked
 
 This is my own ranking, not a directive — redirect freely.

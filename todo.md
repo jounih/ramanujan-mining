@@ -120,6 +120,58 @@ file not fully covered`.
 
 ---
 
+## Tool-side priority stack (after ChatGPT-Pro reranking — see [BIG_IDEAS_REVIEW](insights/BIG_IDEAS_REVIEW.md))
+
+The headline target: **rkc v0.1** as a usable degeneracy-aware special-
+function routing compiler. The Hunts feed into this as transform-mining
+work. See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the v0.1 spec.
+
+### T1. rkc v0.1 CLI + Python API milestone ★ HEADLINE
+
+CLI: `rkc recognize`, `rkc compare`, `rkc certify`, `rkc benchmark`.
+Python: `from rkc import route; route(expr, var, params, digits)`.
+Internal: minimal public API surface; pin the cost/certificate contract;
+benchmark table per family (recognize / route / certify / degeneracy
+guard / benchmark).
+
+See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the full spec. Effort:
+~2-4 weeks for v0.1 (CLI scaffold ~1 day; per-family hardening ~3-5 days;
+docs + examples ~3-5 days; benchmark suite ~3-5 days).
+
+### T2. Eisenstein-CF registry expansion (Hunt 3 repurposed)
+
+The ~20 Eisenstein-style continued fractions in Berndt *NB Part V* Ch. 32
+and Berndt-Yee 2002 RIMS survey are the natural next rkc kernel family —
+quasi-modular (weight-2 anomaly) territory currently absent. Cluster them
+into orthogonal-polynomial-style families, add a registry entry
+`eisenstein_cf_family_N`, benchmark against direct CF evaluation.
+
+Per Hunt 3 prediction: 3-4 islands in the parameter space.
+Effort: ~1-2 weeks (reading + clustering ~3-5 days; rkc registry entry +
+tests ~3-5 days). Output: a new tested kernel + a sharpened Hunt 3 result.
+
+### T3. Operator-composition search engine (W5 sharpened)
+
+Generate 100-1000 candidate identities by composing the 7-operator basis
+on simple inputs; numerically verify via mpmath/PSLQ; route through rkc;
+classify each as classical-known / numerically-false / numerically-true-but-
+slower / faster-than-baseline. Identity-discovery engine.
+
+Effort: ~1-2 weeks for the first cut (composition framework ~3-5 days;
+verification harness ~2-3 days; classifier + benchmark ~3-5 days). Even
+1-2 genuinely-new identities would validate the approach.
+
+### T4. H10 sharpened: Berndt-Dixit αβ=1 as a new rkc transform family
+
+Read [downloaded-pdfs/0904.1053v2.pdf](downloaded-pdfs/0904.1053v2.pdf)
+carefully; extract Theorem 1.1's αβ=1 Mellin-pair structure; add it as
+`mellin_pair_alpha_beta_one` (or similar) to rkc/registry.py with a
+degeneracy detector for the natural failure modes. Possibly opens the
+door to fractional-operator / anomalous-diffusion / spectral-sum routing.
+
+Effort: ~1 day for the careful read + registry sketch; ~3-5 days for the
+full registry entry + tests + benchmark.
+
 ## Tractable without primary scans
 
 ### W1. Architecture paper draft: kernel-fingerprint compiler
