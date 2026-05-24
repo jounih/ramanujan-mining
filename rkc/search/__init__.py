@@ -51,6 +51,7 @@ from .core import (
     CostEstimate,
     SearchOutcome,
     RejectReason,
+    ConvergenceClass,
     Proposer,
     Verifier,
     Router,
@@ -58,7 +59,12 @@ from .core import (
     Registry,
 )
 from .basis import QR7_OPERATOR_BASIS, Operator
-from .proposers import RandomProposer, ClaudeProposer, ClaudeStubProposer
+from .proposers import (
+    RandomProposer,
+    ClaudeProposer,
+    ClaudeStubProposer,
+    InSessionClaudeProposer,
+)
 from .verifiers import MpmathVerifier
 from .routers import RkcRouter, RkcCostModel
 from .registries import JsonlRegistry
@@ -69,13 +75,14 @@ from .sweep import sweep, SeedSweepResult
 __all__ = [
     # core types
     "SearchState", "OperatorApplication", "VerificationResult",
-    "CostEstimate", "SearchOutcome", "RejectReason",
+    "CostEstimate", "SearchOutcome", "RejectReason", "ConvergenceClass",
     # protocols
     "Proposer", "Verifier", "Router", "CostModel", "Registry",
     # operator basis
     "QR7_OPERATOR_BASIS", "Operator",
     # default implementations (the v0 baseline)
     "RandomProposer", "ClaudeProposer", "ClaudeStubProposer",
+    "InSessionClaudeProposer",
     "MpmathVerifier", "RkcRouter", "RkcCostModel",
     "JsonlRegistry",
     # the main loop

@@ -207,6 +207,30 @@ tests). Recognizer benchmark `analysis/14b` still 55/55 = 100%.
    per-state op-id selection on a labelled test set. Drop unused
    rules for token discipline.
 
+### T0b. Project C v0.9: InSessionClaudeProposer → SHIPPED (diary 34)
+
+`InSessionClaudeProposer` formalizes the in-conversation
+host-LLM-as-proposer pattern via file-based IPC (T0a item 2).
+SHIPPED at commit TBD (pending push). The proposer:
+- Writes a JSON inbox at `<session_dir>/proposer_inbox.json` per ask;
+  blocks on `proposer_outbox.json` with `timeout_s` (default 60s).
+- Reuses `ClaudeProposer`'s system+user prompt builders (byte-exact
+  prompt equivalence — heuristics can't drift between API and
+  in-session paths).
+- Falls back to `RandomProposer` on timeout / malformed / unknown
+  op_id, with `n_round_trips / n_cache_hits / n_timeouts /
+  n_malformed` stats accessible via `proposer.stats()`.
+- CLI: `--proposer in-session [--in-session-dir DIR]
+  [--in-session-timeout SECONDS]` on both `rkc sweep` and `rkc
+  search`. Tests: 7 new `test_v09b_*` cases; 99/99 total.
+
+Deferred to v0.9.1:
+1. Thread per-state reject history through `set_history()` so the
+   host LLM sees prior failed attempts (parity with `ClaudeProposer`).
+2. Live "Claude Code session as host" demo — record a run where this
+   Claude session writes outbox files in response to inbox files and
+   produces ≥1 LLM-selected acceptance (not random fallback).
+
 ## Tool-side priority stack (after ChatGPT-Pro reranking — see [BIG_IDEAS_REVIEW](insights/BIG_IDEAS_REVIEW.md))
 
 The headline target: **rkc v0.1** as a usable degeneracy-aware special-
@@ -259,9 +283,17 @@ already has the route for f3 to ≥30 digits — would need to wire it).
 - **v0.12: fractional_functional_iteration** — Schröder linearisation
   for one-parameter iteration semigroups. ~2-3 days; ties to W8 paper +
   the aether-audio X6 cross-repo Schröder probe.
-- **v0.13: hardy_orders_of_infinity** — asymptotic-comparison operator;
-  the deepest behaviour shift since this isn't an expression rewrite per
-  se. Defer until v0.12 lands.
+- **v0.9-hardy SHIPPED (out of order, ahead of v0.10/v0.11/v0.12)**:
+  hardy_orders_of_infinity as engine divergence diagnostic — see
+  diary 33. Resolves the v0.3 stub. Non-transforming annotator using
+  new 2-tuple `(payload_unchanged, metadata_dict)` return convention.
+  4-class taxonomy: CONVERGENT / DIVERGENT_LITERAL /
+  NEEDS_REGULARIZATION / UNKNOWN populates `SearchState.convergence_class`.
+  92/92 tests green.
+- **v0.13 (originally planned slot for hardy_orders) — REASSIGNED**.
+  hardy_orders shipped ahead-of-order at v0.9. v0.13 slot now open for
+  the next deepest behaviour shift (likely an Abel/zeta regularization
+  operator that fires when convergence_class = NEEDS_REGULARIZATION).
 
 After v0.8 (4 routing families covered), run the controlled-validation
 case: random composition of operators on a curated seed-identity set;

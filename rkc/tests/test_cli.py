@@ -1109,3 +1109,488 @@ def test_v08a_cli_search_accepts_proposer_flag(tmp_path):
     assert p.returncode == 0, f"search failed: stderr={p.stderr}"
     # Should mention claude in some way (the proposer choice surfaces in output)
     assert "proposed" in p.stdout
+
+
+# ---------------------------------------------------------------------------
+# Project C v0.9b — InSessionClaudeProposer (host LLM as proposer via file IPC)
+# ---------------------------------------------------------------------------
+
+def test_v09b_in_session_proposer_uses_inbox_outbox(tmp_path):
+    """v0.9b: with a fake "host" thread that watches inbox + writes outbox,
+    InSessionClaudeProposer makes one round-trip and returns the chosen
+    op_id wrapped in an OperatorApplication.
+
+    This is the core protocol test — verifies inbox is written, outbox is
+    read, the JSON contract holds, and the returned OperatorApplication
+    has the correct op_id.
+    """
+    import threading
+    from typing import Any
+    import sympy as sp
+    from rkc.search import (
+        SearchState, InSessionClaudeProposer, QR7_OPERATOR_BASIS,
+    )
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+    session_dir = tmp_path / "session"
+    proposer = InSessionClaudeProposer(
+        session_dir=session_dir, timeout_s=5.0, poll_interval_s=0.02, seed=42,
+    )
+
+    inbox_seen: dict[str, Any] = {}
+
+    def fake_host():
+        def decide(payload):
+            inbox_seen["payload"] = payload
+            return "mellin_inversion"
+        InSessionClaudeProposer.poll_and_respond(
+            session_dir, decide_fn=decide,
+            poll_interval_s=0.02, max_responses=1, max_idle_s=5.0,
+        )
+
+    t = threading.Thread(target=fake_host, daemon=True)
+    t.start()
+    proposals = list(proposer.propose(state, budget=1))
+    t.join(timeout=10.0)
+
+    assert len(proposals) == 1
+    assert proposals[0].op_id == "mellin_inversion"
+    payload = inbox_seen.get("payload")
+    assert payload is not None, "fake host never saw an inbox"
+    assert payload["version"] == "v0.9"
+    assert "system_prompt" in payload
+    assert "user_prompt" in payload
+    assert "state_hash" in payload
+    assert "basis_op_ids" in payload
+    assert "mellin_inversion" in payload["basis_op_ids"]
+    assert "7-OPERATOR BASIS" in payload["system_prompt"]
+    assert "exp(" in payload["user_prompt"]
+    s = proposer.stats()
+    assert s["n_round_trips"] == 1
+    assert s["n_cache_hits"] == 0
+    assert s["n_timeouts"] == 0
+    assert s["n_malformed"] == 0
+
+
+def test_v09b_in_session_proposer_timeout_falls_back(tmp_path):
+    """v0.9b: when no host ever writes the outbox, the proposer times out
+    and falls back to RandomProposer for that turn (no exception escapes,
+    returned op_id IS in the basis).
+    """
+    import sympy as sp
+    from rkc.search import (
+        SearchState, InSessionClaudeProposer, QR7_OPERATOR_BASIS,
+    )
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+    session_dir = tmp_path / "session"
+    proposer = InSessionClaudeProposer(
+        session_dir=session_dir, timeout_s=0.2, poll_interval_s=0.02, seed=42,
+    )
+    proposals = list(proposer.propose(state, budget=1))
+    assert len(proposals) == 1
+    op_ids = {op.id for op in QR7_OPERATOR_BASIS}
+    assert proposals[0].op_id in op_ids, (
+        f"timeout fallback returned op_id={proposals[0].op_id!r} not in basis"
+    )
+    s = proposer.stats()
+    assert s["n_timeouts"] == 1
+    assert s["n_round_trips"] == 0
+    assert s["n_malformed"] == 0
+    assert not proposer.inbox_path.exists()
+    assert not proposer.outbox_path.exists()
+
+
+def test_v09b_in_session_proposer_parses_malformed_response(tmp_path):
+    """v0.9b: when the host writes garbage to the outbox, the proposer
+    handles it cleanly (no exception, returns a random fallback op_id
+    from the basis, logs the malformed payload).
+    """
+    import threading
+    import sympy as sp
+    from rkc.search import (
+        SearchState, InSessionClaudeProposer, QR7_OPERATOR_BASIS,
+    )
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    op_ids = {op.id for op in QR7_OPERATOR_BASIS}
+
+    for case_label, response_text in [
+        ("non_json_prose", "I think the right move is mellin_inversion."),
+        ("wrong_shape", '{"reasoning": "no op_id key"}'),
+        ("unknown_op", '{"op_id": "totally_made_up_operator"}'),
+    ]:
+        session_dir = tmp_path / case_label
+        proposer = InSessionClaudeProposer(
+            session_dir=session_dir, timeout_s=5.0, poll_interval_s=0.02,
+            seed=42,
+        )
+        state = SearchState(
+            payload=sp.exp(-sp.Rational(1, 100) * n**2),
+            metadata={"var": n},
+        )
+
+        def fake_host(text=response_text, sd=session_dir):
+            import time as _t
+            deadline = _t.monotonic() + 5.0
+            inbox = sd / "proposer_inbox.json"
+            outbox = sd / "proposer_outbox.json"
+            while _t.monotonic() < deadline:
+                if inbox.exists():
+                    tmp_o = outbox.with_suffix(".json.tmp")
+                    tmp_o.write_text(text)
+                    tmp_o.replace(outbox)
+                    return
+                _t.sleep(0.02)
+
+        t = threading.Thread(target=fake_host, daemon=True)
+        t.start()
+        proposals = list(proposer.propose(state, budget=1))
+        t.join(timeout=10.0)
+
+        assert len(proposals) == 1, f"{case_label}: expected 1 proposal"
+        assert proposals[0].op_id in op_ids, (
+            f"{case_label}: fallback returned op_id={proposals[0].op_id!r} "
+            f"not in basis"
+        )
+        s = proposer.stats()
+        assert s["n_malformed"] == 1, (
+            f"{case_label}: expected 1 malformed event, got stats={s}"
+        )
+        assert s["n_round_trips"] == 0
+        assert s["n_timeouts"] == 0
+
+
+def test_v09b_in_session_proposer_cache_hit(tmp_path):
+    """v0.9b: when propose() is called twice with the same state, only
+    ONE inbox is written + ONE host round-trip happens. The second call
+    is served from cache.
+    """
+    import threading
+    import sympy as sp
+    from rkc.search import SearchState, InSessionClaudeProposer
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    state = SearchState(
+        payload=sp.exp(-sp.Rational(1, 100) * n**2), metadata={"var": n},
+    )
+    session_dir = tmp_path / "session"
+    proposer = InSessionClaudeProposer(
+        session_dir=session_dir, timeout_s=5.0, poll_interval_s=0.02, seed=42,
+    )
+
+    response_count = {"n": 0}
+
+    def fake_host():
+        def decide(payload):
+            response_count["n"] += 1
+            return "mellin_inversion"
+        InSessionClaudeProposer.poll_and_respond(
+            session_dir, decide_fn=decide,
+            poll_interval_s=0.02, max_responses=5, max_idle_s=2.0,
+        )
+
+    t = threading.Thread(target=fake_host, daemon=True)
+    t.start()
+    proposals_1 = list(proposer.propose(state, budget=1))
+    proposals_2 = list(proposer.propose(state, budget=1))
+    t.join(timeout=10.0)
+
+    assert proposals_1[0].op_id == "mellin_inversion"
+    assert proposals_2[0].op_id == "mellin_inversion"
+    assert response_count["n"] == 1, (
+        f"expected exactly 1 host response (cache hit on second call); "
+        f"got {response_count['n']}"
+    )
+    s = proposer.stats()
+    assert s["n_round_trips"] == 1
+    assert s["n_cache_hits"] == 1
+    assert s["cache_size"] == 1
+
+
+def test_v09b_cli_search_accepts_in_session_flag(tmp_path):
+    """v0.9b CLI: `rkc search --proposer in-session` parses + runs (the
+    in-session proposer times out → random fallback → search completes).
+    """
+    import subprocess
+    import sys as _sys
+    session_dir = tmp_path / "session"
+    p = subprocess.run(
+        [_sys.executable, "-m", "rkc",
+         "search", "exp(-beta*n**2)",
+         "--budget", "2", "--digits", "8", "--seed", "42",
+         "--out-dir", str(tmp_path / "out"),
+         "--proposer", "in-session",
+         "--in-session-dir", str(session_dir),
+         "--in-session-timeout", "0.2"],
+        capture_output=True, text=True, timeout=60,
+    )
+    assert p.returncode == 0, (
+        f"search --proposer in-session failed: stderr={p.stderr}"
+    )
+    assert "in-session proposer active" in p.stdout
+    assert "proposed" in p.stdout
+
+
+def test_v09b_cli_sweep_accepts_in_session_flag(tmp_path):
+    """v0.9b CLI: `rkc sweep --proposer in-session` parses + runs across
+    one seed with a 1-worker sweep + short in-session timeout.
+    """
+    p = _run([
+        "sweep", "--seeds", "gaussian_beta_1em2",
+        "--budget", "2", "--depth", "1", "--workers", "1",
+        "--digits", "8", "--seed", "42",
+        "--proposer", "in-session",
+        "--in-session-dir", str(tmp_path / "session"),
+        "--in-session-timeout", "0.2",
+        "--out-dir", str(tmp_path / "out"),
+    ])
+    assert p.returncode == 0, f"sweep failed: stderr={p.stderr}, stdout={p.stdout}"
+    assert "rkc sweep complete" in p.stdout
+
+
+def test_v09b_in_session_proposer_protocol_conformance():
+    """v0.9b: InSessionClaudeProposer satisfies the Proposer protocol
+    (structurally typed — propose() returns an iterator of
+    OperatorApplications).
+    """
+    import tempfile
+    from rkc.search import InSessionClaudeProposer
+    from rkc.search.core import Proposer
+    with tempfile.TemporaryDirectory() as tmp:
+        proposer = InSessionClaudeProposer(session_dir=tmp, timeout_s=0.05)
+        assert isinstance(proposer, Proposer)
+
+
+# ---------------------------------------------------------------------------
+# Project C v0.9a — hardy_orders_of_infinity as divergence diagnostic
+# (resolves the v0.3 STUB in `_hardy_orders_apply`)
+# ---------------------------------------------------------------------------
+
+def test_v09a_hardy_orders_detects_divergent_bose_einstein():
+    """v0.9a: `1/(1 - exp(-β n))` has summand → 1 as n → ∞, so the
+    classifier must tag it `DIVERGENT_LITERAL`.
+
+    This is the ChatGPT-Pro proposer-test motivating example: literal
+    summation diverges, so any proposer that tries strict comparison is
+    wasting cycles. The classifier flags it so downstream code can
+    transform before verifying.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import ConvergenceClass
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("hardy_orders_of_infinity")
+    result = op.apply_fn(1 / (1 - sp.exp(-beta * n)), n)
+    assert result is not None, "hardy_orders should not decline on Bose-Einstein"
+    assert isinstance(result, tuple) and len(result) == 2, (
+        "v0.9a returns a 2-tuple (expr_unchanged, metadata_dict)"
+    )
+    expr_out, meta = result
+    # Payload should be UNCHANGED (non-transforming operator)
+    assert sp.simplify(expr_out - 1 / (1 - sp.exp(-beta * n))) == 0, (
+        f"hardy_orders should NOT transform the expression; got {expr_out}"
+    )
+    assert isinstance(meta, dict)
+    assert meta.get("convergence_class") == ConvergenceClass.DIVERGENT_LITERAL.value
+    # Also check that the classifier helper agrees
+    from rkc.search.basis import _v09a_classify_convergence
+    cls = _v09a_classify_convergence(1 / (1 - sp.exp(-beta * n)), n)
+    assert cls == "DIVERGENT_LITERAL"
+
+
+def test_v09a_hardy_orders_detects_convergent_gaussian():
+    """v0.9a: pure Gaussian `exp(-β n²)` has summand → 0 as n → ∞, so
+    the classifier must tag it `CONVERGENT`.
+
+    The Gaussian is THE convergent-summand benchmark — the strict
+    Poisson dual (v0.4) presumes this convergence, so the classifier
+    has to be unambiguously positive on it.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import ConvergenceClass
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("hardy_orders_of_infinity")
+    result = op.apply_fn(sp.exp(-beta * n**2), n)
+    assert result is not None
+    expr_out, meta = result
+    # Non-transforming
+    assert sp.simplify(expr_out - sp.exp(-beta * n**2)) == 0
+    assert meta["convergence_class"] == ConvergenceClass.CONVERGENT.value
+    # Numeric beta should give the same classification
+    result2 = op.apply_fn(sp.exp(-sp.Rational(1, 100) * n**2), n)
+    assert result2 is not None
+    _, meta2 = result2
+    assert meta2["convergence_class"] == ConvergenceClass.CONVERGENT.value
+
+
+def test_v09a_hardy_orders_detects_convergent_log_partition():
+    """v0.9a: `log(1 - exp(-β n))` has summand → log(1 - 0) = log(1) = 0
+    as n → ∞, so the classifier must tag it `CONVERGENT`.
+
+    Despite the surface ugliness (log(0) → -∞ in the OPPOSITE limit
+    n → 0), the n → ∞ asymptote is the well-behaved one and the v0.8b
+    Bose-Einstein eta-log modular identity works on the convergent
+    sum. This test guards against a classifier that confuses the
+    n → 0 singularity with the n → ∞ behaviour.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import ConvergenceClass
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("hardy_orders_of_infinity")
+    result = op.apply_fn(sp.log(1 - sp.exp(-beta * n)), n)
+    assert result is not None
+    _, meta = result
+    assert meta["convergence_class"] == ConvergenceClass.CONVERGENT.value, (
+        f"log(1 - exp(-β n)) summand → 0 at n → ∞; got "
+        f"{meta['convergence_class']}"
+    )
+    # Numeric variant
+    result_n = op.apply_fn(sp.log(1 - sp.exp(-sp.Rational(1, 100) * n)), n)
+    assert result_n is not None
+    _, meta_n = result_n
+    assert meta_n["convergence_class"] == ConvergenceClass.CONVERGENT.value
+
+
+def test_v09a_hardy_orders_unknown_on_complex_expr():
+    """v0.9a: pathological inputs (oscillatory bounded like `sin(n)`,
+    or `n`-independent constants) yield `UNKNOWN` or operator-declines
+    — never a crash, never a confident misclassification.
+
+    Three sub-cases:
+      1. `sin(n)` — oscillates in [-1, 1]; sympy.limit returns
+         AccumulationBounds. Classifier must return `UNKNOWN`.
+      2. `n*sin(n)` — oscillates with unbounded amplitude; sympy
+         reports a sign-ambiguous infinity. Classifier returns
+         `UNKNOWN` (we deliberately don't try to special-case
+         oscillatory unbounded).
+      3. Constant in n (no n-dependence) — the operator DECLINES
+         (returns None), since there's no asymptotic question to ask.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import ConvergenceClass
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("hardy_orders_of_infinity")
+
+    # (1) Bounded oscillatory → UNKNOWN
+    result1 = op.apply_fn(sp.sin(n), n)
+    assert result1 is not None, "hardy_orders should not crash on sin(n)"
+    _, meta1 = result1
+    assert meta1["convergence_class"] == ConvergenceClass.UNKNOWN.value
+
+    # (2) Unbounded oscillatory → UNKNOWN (NOT misclassified as
+    #     CONVERGENT or NEEDS_REGULARIZATION; sympy returns an
+    #     AccumulationBounds-flavored infinity that isn't a clean
+    #     +oo / -oo so the classifier shouldn't claim divergence-to-
+    #     infinity confidently).
+    result2 = op.apply_fn(n * sp.sin(n), n)
+    assert result2 is not None, "hardy_orders should not crash on n*sin(n)"
+    _, meta2 = result2
+    assert meta2["convergence_class"] == ConvergenceClass.UNKNOWN.value, (
+        f"n·sin(n) is oscillatory unbounded — expected UNKNOWN; got "
+        f"{meta2['convergence_class']}"
+    )
+
+    # (3) n-independent constant → operator DECLINES (None)
+    result3 = op.apply_fn(sp.Integer(42), n)
+    assert result3 is None, (
+        "hardy_orders should decline on n-independent constants "
+        "(no asymptotic question to ask)"
+    )
+
+    # Bonus: NEEDS_REGULARIZATION case for completeness — `n` itself
+    # diverges to ∞; classifier must tag NEEDS_REGULARIZATION.
+    result4 = op.apply_fn(n, n)
+    assert result4 is not None
+    _, meta4 = result4
+    assert meta4["convergence_class"] == ConvergenceClass.NEEDS_REGULARIZATION.value
+
+
+def test_v09a_convergence_class_persisted(tmp_path):
+    """v0.9a: `convergence_class` survives a JsonlRegistry round-trip.
+
+    Tests three things in one shot:
+      1. The engine's `_apply_operator` copies the class to the new
+         state's top-level field (in addition to merging into metadata).
+      2. JsonlRegistry.store writes the class out to the JSONL record.
+      3. The round-tripped JSON record's `state_after_convergence_class`
+         field matches the original.
+
+    This is the audit-trail guarantee: long after the search runs, a
+    historian can read the JSONL log and recover WHICH summands were
+    divergent-by-literal-summation (and therefore needed the modular
+    transform to make sense).
+    """
+    import json
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import (
+        ConvergenceClass, OperatorApplication, SearchOutcome, SearchState,
+        VerificationResult, CostEstimate,
+    )
+    from rkc.search.engine import _apply_operator
+    from rkc.search.registries import JsonlRegistry
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+
+    # Set up a Bose-Einstein state and run hardy_orders on it via the engine
+    state_before = SearchState(
+        payload=1 / (1 - sp.exp(-beta * n)),
+        metadata={"var": n},
+    )
+    op_app = OperatorApplication(op_id="hardy_orders_of_infinity")
+    state_after = _apply_operator(op_app, state_before)
+    assert state_after is not None, "hardy_orders failed to apply"
+
+    # (1) top-level field on state_after should carry the class
+    assert state_after.convergence_class == ConvergenceClass.DIVERGENT_LITERAL.value
+    # metadata mirror
+    assert state_after.metadata["convergence_class"] == (
+        ConvergenceClass.DIVERGENT_LITERAL.value
+    )
+
+    # Build a SearchOutcome and store
+    outcome = SearchOutcome(
+        state_before=state_before,
+        op_sequence=[op_app],
+        state_after=state_after,
+        verification=VerificationResult(passed=True, digits_or_examples=20,
+                                        reason="non-transforming op"),
+        cost=CostEstimate(direct_cost=1.0, reduced_cost=1.0,
+                          improvement_ratio=1.0, notes="hardy is annotative"),
+        route="ANNOTATIVE",
+        accepted=True,
+    )
+    reg = JsonlRegistry.with_dir(tmp_path)
+    reg.store(outcome)
+
+    # (3) round-trip the JSONL record and check the field
+    accepted_path = tmp_path / "accepted.jsonl"
+    assert accepted_path.exists()
+    rec = json.loads(accepted_path.read_text().splitlines()[0])
+    assert "state_after_convergence_class" in rec, (
+        "JsonlRegistry must persist convergence_class explicitly"
+    )
+    assert rec["state_after_convergence_class"] == (
+        ConvergenceClass.DIVERGENT_LITERAL.value
+    )
+    # state_before had no classification (None), so it should serialize as None
+    assert rec["state_before_convergence_class"] is None
+    # The metadata mirror should ALSO be present (defense in depth)
+    assert "convergence_class" in rec["state_after_meta"]
+    assert rec["state_after_meta"]["convergence_class"] == (
+        ConvergenceClass.DIVERGENT_LITERAL.value
+    )

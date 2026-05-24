@@ -1,0 +1,54 @@
+{
+  "seeds": [
+    {
+      "seed_id": "gaussian_beta_1em2",
+      "n_proposed": 5,
+      "n_accepted": 0,
+      "n_rejected": 5,
+      "elapsed_s": 1.930445671081543,
+      "proposer_stats": {
+        "session_dir": "/tmp/rkc_in_session_demo_20462/gaussian_beta_1em2",
+        "timeout_s": 0.3,
+        "n_round_trips": 0,
+        "n_cache_hits": 0,
+        "n_timeouts": 5,
+        "n_malformed": 0,
+        "cache_size": 0
+      }
+    },
+    {
+      "seed_id": "gaussian_beta_1em4",
+      "n_proposed": 5,
+      "n_accepted": 0,
+      "n_rejected": 5,
+      "elapsed_s": 1.8598039150238037,
+      "proposer_stats": {
+        "session_dir": "/tmp/rkc_in_session_demo_20462/gaussian_beta_1em4",
+        "timeout_s": 0.3,
+        "n_round_trips": 0,
+        "n_cache_hits": 0,
+        "n_timeouts": 5,
+        "n_malformed": 0,
+        "cache_size": 0
+      }
+    },
+    {
+      "seed_id": "beta_function_integral",
+      "n_proposed": 5,
+      "n_accepted": 0,
+      "n_rejected": 5,
+      "elapsed_s": 3.5767288208007812,
+      "proposer_stats": {
+        "session_dir": "/tmp/rkc_in_session_demo_20462/beta_function_integral",
+        "timeout_s": 0.3,
+        "n_round_trips": 0,
+        "n_cache_hits": 0,
+        "n_timeouts": 5,
+        "n_malformed": 0,
+        "cache_size": 0
+      }
+    }
+  ],
+  "timeout_s": 0.3,
+  "interactive": false
+}

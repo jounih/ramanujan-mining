@@ -367,17 +367,26 @@ def _build_parser() -> argparse.ArgumentParser:
                      help="RandomProposer RNG seed (default: nondeterministic).")
     psw.add_argument("--out-dir", default=".rkc_sweep_out",
                      help="Output directory (default: .rkc_sweep_out).")
-    psw.add_argument("--proposer", choices=["random", "claude"], default="random",
+    psw.add_argument("--proposer", choices=["random", "claude", "in-session"],
+                     default="random",
                      help="Which proposer to use (default: random; v0.8a "
                           "adds claude which uses the Anthropic API — needs "
                           "ANTHROPIC_API_KEY in env or .env, falls back to "
-                          "random selection if unavailable).")
+                          "random selection if unavailable; v0.9 adds "
+                          "in-session which routes proposer decisions through "
+                          "a host LLM agent via file IPC, no API key needed).")
     psw.add_argument("--claude-model", default="claude-sonnet-4-5",
                      help="Anthropic model id for --proposer claude "
                           "(default: claude-sonnet-4-5).")
     psw.add_argument("--claude-max-api-calls", type=int, default=10,
                      help="Cap on Anthropic API calls per search() invocation "
                           "(default: 10). Excess budget is filled from random.")
+    psw.add_argument("--in-session-dir", default=None,
+                     help="Session directory for --proposer in-session file IPC "
+                          "(default: /tmp/rkc_in_session_proposer_<pid>/).")
+    psw.add_argument("--in-session-timeout", type=float, default=60.0,
+                     help="Timeout in seconds for the in-session proposer to wait "
+                          "for the host LLM to write a response (default: 60).")
     psw.set_defaults(func=cmd_sweep)
 
     # search (Project C v0.3.0)
@@ -393,17 +402,26 @@ def _build_parser() -> argparse.ArgumentParser:
                     help="Directory for accepted.jsonl + rejected.jsonl (default: .rkc_search_out).")
     ps.add_argument("--seed", type=int, default=None, help="RandomProposer seed.")
     ps.add_argument("--verbose", action="store_true")
-    ps.add_argument("--proposer", choices=["random", "claude"], default="random",
+    ps.add_argument("--proposer", choices=["random", "claude", "in-session"],
+                    default="random",
                     help="Which proposer to use (default: random; v0.8a "
                          "adds claude which uses the Anthropic API — needs "
                          "ANTHROPIC_API_KEY in env or .env, falls back to "
-                         "random selection if unavailable).")
+                         "random selection if unavailable; v0.9 adds "
+                         "in-session which routes proposer decisions through "
+                         "a host LLM agent via file IPC, no API key needed).")
     ps.add_argument("--claude-model", default="claude-sonnet-4-5",
                     help="Anthropic model id for --proposer claude "
                          "(default: claude-sonnet-4-5).")
     ps.add_argument("--claude-max-api-calls", type=int, default=10,
                     help="Cap on Anthropic API calls per search() invocation "
                          "(default: 10). Excess budget is filled from random.")
+    ps.add_argument("--in-session-dir", default=None,
+                    help="Session directory for --proposer in-session file IPC "
+                         "(default: /tmp/rkc_in_session_proposer_<pid>/).")
+    ps.add_argument("--in-session-timeout", type=float, default=60.0,
+                    help="Timeout in seconds for the in-session proposer to wait "
+                         "for the host LLM to write a response (default: 60).")
     ps.set_defaults(func=cmd_search)
 
     return p
@@ -423,6 +441,8 @@ def cmd_sweep(args: argparse.Namespace) -> int:
     proposer_kind = getattr(args, "proposer", "random")
     claude_model = getattr(args, "claude_model", "claude-sonnet-4-5")
     claude_max_api_calls = getattr(args, "claude_max_api_calls", 10)
+    in_session_dir = getattr(args, "in_session_dir", None)
+    in_session_timeout = getattr(args, "in_session_timeout", 60.0)
     summary = sweep(
         seed_ids=seed_ids, budget=args.budget, max_depth=args.depth,
         n_digits=args.digits, workers=args.workers,
@@ -430,6 +450,8 @@ def cmd_sweep(args: argparse.Namespace) -> int:
         proposer_kind=proposer_kind,
         claude_model=claude_model,
         claude_max_api_calls=claude_max_api_calls,
+        in_session_dir=in_session_dir,
+        in_session_timeout=in_session_timeout,
     )
     print(f"rkc sweep complete")
     print(f"  seeds         : {summary['n_seeds']}")
@@ -453,7 +475,7 @@ def cmd_search(args: argparse.Namespace) -> int:
     """Project C v0.3.0 search loop (single-step composition baseline)."""
     expr, n = _parse_expr(args.expr, args.var)
     from rkc.search import (
-        SearchState, RandomProposer, ClaudeProposer,
+        SearchState, RandomProposer, ClaudeProposer, InSessionClaudeProposer,
         MpmathVerifier, RkcRouter, RkcCostModel, JsonlRegistry, search,
     )
     state = SearchState(payload=expr, metadata={"var": n})
@@ -465,6 +487,16 @@ def cmd_search(args: argparse.Namespace) -> int:
             model=getattr(args, "claude_model", "claude-sonnet-4-5"),
             max_api_calls=getattr(args, "claude_max_api_calls", 10),
         )
+    elif proposer_kind == "in-session":
+        proposer = InSessionClaudeProposer(
+            seed=args.seed,
+            session_dir=getattr(args, "in_session_dir", None),
+            timeout_s=getattr(args, "in_session_timeout", 60.0),
+        )
+        print(f"in-session proposer active:")
+        print(f"  inbox  : {proposer.inbox_path}")
+        print(f"  outbox : {proposer.outbox_path}")
+        print(f"  timeout: {proposer.timeout_s}s — host LLM must respond before fallback")
     else:
         proposer = RandomProposer(seed=args.seed)
     summary = search(

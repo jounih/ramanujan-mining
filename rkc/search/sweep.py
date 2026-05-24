@@ -63,26 +63,41 @@ def _run_one_seed(args: tuple) -> dict[str, Any]:
     pickles cleanly across multiprocessing boundaries.
 
     args = (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str,
-            proposer_kind, claude_model, claude_max_api_calls)
+            proposer_kind, claude_model, claude_max_api_calls,
+            in_session_dir, in_session_timeout)
 
-    proposer_kind: "random" (v0.6 default) or "claude" (v0.8a; uses the
-    Anthropic API via ClaudeProposer with graceful fallback to random
-    when ANTHROPIC_API_KEY is absent).
+    proposer_kind:
+      - "random" (v0.6 default)
+      - "claude" (v0.8a; uses the Anthropic API via ClaudeProposer with
+        graceful fallback to random when ANTHROPIC_API_KEY is absent)
+      - "in-session" (v0.9; routes proposer decisions through a host LLM
+        agent via file IPC, no API key needed; if no host responds within
+        in_session_timeout, falls back to random for that turn)
+
+    Backward-compat: accepts 6-tuple (legacy v0.6), 9-tuple (v0.8a), or
+    11-tuple (v0.9). Older signatures get safe defaults for new fields.
     """
-    # Backward-compat: accept 6-tuple (legacy) or 9-tuple (v0.8a+)
     if len(args) == 6:
         (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str) = args
         proposer_kind = "random"
         claude_model = "claude-sonnet-4-5"
         claude_max_api_calls = 10
-    else:
+        in_session_dir = None
+        in_session_timeout = 60.0
+    elif len(args) == 9:
         (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str,
          proposer_kind, claude_model, claude_max_api_calls) = args
+        in_session_dir = None
+        in_session_timeout = 60.0
+    else:
+        (seed_id, budget, max_depth, n_digits, rng_seed, out_dir_str,
+         proposer_kind, claude_model, claude_max_api_calls,
+         in_session_dir, in_session_timeout) = args
     # Re-import inside the worker so multiprocessing doesn't share module state
     from rkc.search.seeds import SEED_LIBRARY, build_seed
     from rkc.search import (
-        SearchState, RandomProposer, ClaudeProposer, MpmathVerifier,
-        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SearchState, RandomProposer, ClaudeProposer, InSessionClaudeProposer,
+        MpmathVerifier, RkcRouter, RkcCostModel, JsonlRegistry, search,
     )
     out_dir = Path(out_dir_str) / seed_id
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -96,6 +111,18 @@ def _run_one_seed(args: tuple) -> dict[str, Any]:
             proposer = ClaudeProposer(
                 seed=rng_seed, model=claude_model,
                 max_api_calls=claude_max_api_calls,
+            )
+        elif proposer_kind == "in-session":
+            # Each worker gets its OWN session_dir subdir so parallel
+            # workers don't trample each other's inbox/outbox. Anchored
+            # off the user-provided base (or a default tmp tree).
+            base = Path(in_session_dir) if in_session_dir else Path(
+                f"/tmp/rkc_in_session_proposer_sweep")
+            per_worker_dir = base / seed_id
+            proposer = InSessionClaudeProposer(
+                seed=rng_seed,
+                session_dir=per_worker_dir,
+                timeout_s=in_session_timeout,
             )
         else:
             proposer = RandomProposer(seed=rng_seed)
@@ -144,7 +171,9 @@ def sweep(seed_ids: list[str] | None = None,
           out_dir: str | Path = ".rkc_sweep_out",
           proposer_kind: str = "random",
           claude_model: str = "claude-sonnet-4-5",
-          claude_max_api_calls: int = 10) -> dict[str, Any]:
+          claude_max_api_calls: int = 10,
+          in_session_dir: str | None = None,
+          in_session_timeout: float = 60.0) -> dict[str, Any]:
     """Run `search()` over multiple seeds in parallel; aggregate results.
 
     Parameters
@@ -183,7 +212,8 @@ def sweep(seed_ids: list[str] | None = None,
 
     args_list = [
         (sid, budget, max_depth, n_digits, rng_seed, str(out_dir),
-         proposer_kind, claude_model, claude_max_api_calls)
+         proposer_kind, claude_model, claude_max_api_calls,
+         in_session_dir, in_session_timeout)
         for sid in seed_ids
     ]
 
@@ -215,6 +245,8 @@ def sweep(seed_ids: list[str] | None = None,
         "proposer_kind": proposer_kind,
         "claude_model": claude_model if proposer_kind == "claude" else None,
         "claude_max_api_calls": claude_max_api_calls if proposer_kind == "claude" else None,
+        "in_session_dir": in_session_dir if proposer_kind == "in-session" else None,
+        "in_session_timeout": in_session_timeout if proposer_kind == "in-session" else None,
         "walltime_total_seconds": t_elapsed,
         "walltime_per_seed_avg_seconds": t_elapsed / n_seeds if n_seeds else 0.0,
         "n_proposed_total": n_proposed_total,
