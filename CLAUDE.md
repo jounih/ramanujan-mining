@@ -335,6 +335,20 @@ if doing a long-running spike).
    class-field) afresh against actual Notebook content. The QR-vs-Notebooks
    toolkit-contrast hypothesis is the real test.
 
+8. **Chandra 2 OCR fabricates content on TABLE pages** (diary 28). For
+   dense display-math pages with familiar structure (LN p. 341 style),
+   Chandra 2 via the Datalab API is DRAFT-usable with a known 4-class
+   error profile (digit sub / exp↔sub / phantom adornments / letter↔digit
+   confusion). But for table-shaped pages it **invents content** —
+   including hallucinated German text ("Morera-Beweis", "zu zeigen ist")
+   on Ramanujan's English/math hand, and entirely fabricated modular
+   polynomials where the actual Weber class-invariant table content
+   exists on the page. Before running bulk OCR on the 1,149-page Notebook
+   corpus, gate Chandra calls behind a layout-classifier pre-pass so
+   table pages get routed to a different handler (vision-direct or hand
+   transcription). See `corpora/transcriptions/chandra_benchmark/README.md`
+   and diary 27 + 28 for the full audit.
+
 ---
 
 ## Bottom line
