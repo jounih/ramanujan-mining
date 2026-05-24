@@ -132,6 +132,52 @@ primitives to `rkc/registry.py` as new kernels with degeneracy detectors.
 After this, the recognizer can route QR III-style identities, not just the
 QR I + QR II Mellin/Master cluster. Concrete + bounded (~1 week).
 
+### W7-pre. Check QR II §3 cubic-roots-of-unity for Gauss-sum degeneracy awareness
+
+**From parallel-Claude review.** QR II §3 (lines 2086-2280 of the HRJ text)
+uses the cubic-roots-of-unity multisection
+`1 - x³/3! + x⁶/6! - ... = (e^{-x} + e^{-xω} + e^{-xω²}) / 3`. This is the
+same operator family as the **Gauss-sum silent-zero hazard** the recognizer
+guards against ([CANDIDATE_INSIGHTS §A4](insights/CANDIDATE_INSIGHTS.md);
+implemented at `rkc/registry.py` for q ≡ 2 mod 4). Quick test: does QR II §3
+mention or implicitly guard against the q ≡ 2 mod 4 case (the cube-root case
+analogue would be q ≡ 0 mod 3 or some sub-case where the sum degenerates)?
+
+If yes → bibliographic evidence that the silent-zero hazard was in
+Ramanujan's working knowledge, not a modern engineering catch. Strengthens
+the §A4 finding. A small note to add to diary 20 or as a new short diary
+entry.
+
+If no → still informative: Ramanujan happened not to hit the degeneracy
+because he restricted to specific cubic roots, but didn't generalise the
+caveat. Still worth a one-line note.
+
+**Effort:** ~30 minutes (just careful re-read of QR II §3, lines 2086-2280,
+plus 1-2 paragraphs of write-up).
+
+### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — standalone paper scope
+
+**From parallel-Claude review.** QR III §4-§10 contains explicit fractional-
+iteration computations (Chebyshev semigroup F(x) = x²-2 with `F^n(x)` via
+cosh-formula; F(x) = x²+2x, x²-2x, x²+4x; iteration of `x → (1-x)/(1-x²)` at
+fractional r) and the infinitesimal generator `ψ_1(x) = C/F(x)` of the
+iteration flow. Schröder (1871) and Koenig (1884) predate Ramanujan; the
+ψ_1 = C/F identification, however, is the Lie-theoretic content — the bridge
+between iteration theory and one-parameter semigroups that becomes the
+renormalisation-group setup decades later. **Notably this prefigures Julia
+(1918) and Fatou (1917-19) by 3-4 years.**
+
+**Concrete first step:** literature scan. Has modern work on Ecalle resurgence,
+Belitskii normal forms, or holomorphic dynamics integrated Ramanujan's QR III
+fractional-iteration work? If no → a short standalone paper "Pre-Julia
+iteration theory in Ramanujan's third Quarterly Report" is the natural
+deliverable, with the explicit linearizations + the ψ_1 = C/F identification
+as the historical artefact. Target: Historia Mathematica or a focused
+math-history note in a number-theory venue.
+
+**Effort:** literature scan ~1 day; paper ~2-3 weeks if the lit scan
+confirms novelty. Worth a focused agent.
+
 ### W7. B1.5 fractional-Fokker-Planck bridge experiment
 
 **From BIG_IDEAS_REVIEW §3b (NEW).** Parallel to the closed B1 modular bridge:

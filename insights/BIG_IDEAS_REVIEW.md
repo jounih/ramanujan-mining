@@ -98,6 +98,51 @@ with corrected basis). Confidence: high.**
 
 ---
 
+## 2a. Sharpened framing: the QR I → QR III evolution is the real finding
+
+After a second parallel-Claude review of diary 20: the headline "57.6% vs 80%"
+is the surface; the substantive finding is the *temporal evolution* across
+the three QRs. Reading them as a sequence:
+
+- **QR I (Aug 1913)** is a *Master Theorem manifesto*: one foundational
+  identity + ten worked examples. Two operators total.
+- **QR II (Nov 1913)** extends the Master Theorem with the Frullani-limit
+  (Theorem II) and Fourier cos/sin self-reciprocity (Theorem III). Four
+  operators total.
+- **QR III (Mar 1914)** is a *foundations-and-operator-calculus document* —
+  uniqueness of interpolation, fractional iteration of functions, Hardy
+  orders of infinity, Riemann-Liouville fractional differentiation, umbral
+  operator calculus, partial-fraction-of-products, Mellin-pair reciprocity.
+  **Zero vocabulary overlap** with the modular-forms canon (no `\tau`,
+  `\theta`, `\eta`, Eisenstein, class invariant, Heegner anywhere). Six to
+  seven operators, almost none of them in common with QR I + QR II's set.
+
+Seven months, three distinct mathematical universes shown to the Madras Board
+in sequence. **The implication isn't "Ramanujan had a small basis" — it's
+that he had at least two distinct compressed toolkits, deployed by problem
+type, with hard separation between them.** The analytic / operator-calculus
+toolkit is one (and dominates the QRs). The modular-forms toolkit — which
+HUNT_MAP §5 predicted would dominate — is a *different* toolkit, and it
+*does not appear in the QRs at all* despite 5519 lines of mathematical
+writing.
+
+That sharpens the hypothesis significantly. The latent space isn't a single
+small basis; it's **modular in the structural sense**: a small basis per
+problem-domain, with hard separation between domains. This is substantively
+stronger and more falsifiable than the original HUNT_MAP framing. The
+sharpened claim: **Hunt 5b on the Notebooks should show a different
+operator distribution per chapter — modular_S in Ch. 17 (modular eqns),
+class_field_galois_average in Ch. 18-19 (class invariants), q_shift
+ubiquitous in Ch. 16 (q-series), with master_theorem and mellin_inversion
+both small (≤10%)**. If THAT pattern holds, the toolkit-split hypothesis is
+established. If the Notebooks chapters also turn out to be Mellin/Master-
+dominated, the hypothesis weakens — Ramanujan really did have one universal
+basis (just not the one HUNT_MAP predicted).
+
+See §"Hunt 5b sharpened predictions" below and
+[../insights/HUNT5b_PREDICTIONS.md](HUNT5b_PREDICTIONS.md) (when scoped) for
+the falsifier criteria.
+
 ## 2b. QR III operators connect to modern math — addendum after parallel-Claude review
 
 Each of the QR III out-of-schema operators corresponds to a substantial modern

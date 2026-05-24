@@ -193,20 +193,62 @@ Updating [operator_tagging_schema.py](../corpora/transcriptions/operator_tagging
   Notebooks (Berndt's five-volume edition) and the Lost Notebook are where
   modular machinery should be tested next.
 
+## Per-operator marginal coverage (added after parallel-Claude review)
+
+The 91% "covered by any of 7" headline overstates the basis's flatness. The
+honest per-operator marginal contribution to the cumulative coverage is:
+
+| Add to basis | New sections covered | Cumulative | % |
+|---|---|---|---|
+| `master_theorem` | 19 | 19 | 57.6% |
+| + `mellin_inversion` | 0 (subset of master) | 19 | 57.6% |
+| + `FOURIER_SELF_RECIPROCITY` | 5 | 24 | 72.7% |
+| + `FRACTIONAL_FUNCTIONAL_ITERATION` | 5 | 29 | 87.9% |
+| + `HARDY_ORDERS_OF_INFINITY` | 1 | 30 | 90.9% |
+| + `FRULLANI_LIMIT` | 0 (subset of master in QR II §4-5) | 30 | 90.9% |
+| + `MELLIN_PAIR_RECIPROCITY` | 0 (subset of FOURIER in QR III §15) | 30 | 90.9% |
+
+So the "7-operator basis" is really **3 dominant operators + 1 helper** that
+do the actual coverage work:
+
+- `master_theorem` (19 sections, dominant in QR I + QR II);
+- `FOURIER_SELF_RECIPROCITY` (5 marginal, the QR II Theorem III + QR III §13-§15 thread);
+- `FRACTIONAL_FUNCTIONAL_ITERATION` (5 marginal, the QR III §4-§10 Schröder/Koenig thread);
+- `HARDY_ORDERS_OF_INFINITY` (1 marginal, QR III §7 standalone);
+
+The other 3 in the 7-basis (`mellin_inversion`, `FRULLANI_LIMIT`,
+`MELLIN_PAIR_RECIPROCITY`) are **structural subsets** — they always co-occur
+with master_theorem or FOURIER_SELF_RECIPROCITY in this corpus and add no
+marginal coverage. Useful as separate tags for *what kind of move* a section
+makes, but not as separate basis elements for *coverage* counting.
+
+This sharpens the latent-space-speedrun framing: not "7 equally-weighted
+operators" but **"~3-4 dominant moves with domain-specific specialisations"**.
+
 ## Bottom line
 
 The HUNT_MAP §5 prediction (≥80% recurrence of the specified 6-operator
-basis) is **falsified at 57.6% coverage**, but the underlying
-latent-space-speedrun hypothesis (small operator toolkit) is **supported at
-high confidence** by a revised basis. The 6-operator basis was wrong because
-it over-weighted modular machinery; the QRs are about Mellin/Master-Theorem
-analysis and functional/operator calculus, not theta or eta functions. A
-revised 7-operator basis (dropping the 4 modular operators, adding
-Fourier-self-reciprocity / Frullani-limit / fractional-functional-iteration /
-Hardy-orders / Mellin-pair-reciprocity) covers **~91%** of QR math sections.
+basis) is **falsified at 57.6% coverage**, and the 6-operator basis was wrong
+because it over-weighted modular machinery. The QRs are about
+Mellin/Master-Theorem analysis (QR I + QR II) and functional / operator
+calculus (QR III), not theta or eta functions. A revised 7-operator basis
+(dropping the 4 modular operators, adding Fourier-self-reciprocity / Frullani-
+limit / fractional-functional-iteration / Hardy-orders / Mellin-pair-reciprocity)
+covers **~91%** of QR math sections — though as the per-operator marginal-
+coverage table above shows, **the real basis is 3-4 dominant operators with
+the rest as domain-specific specialisations / structural subsets**, not 7
+equally-weighted elements.
 
-**Confidence**: high (the falsification is decisive and the corrected basis
-is mostly mechanical from the empirical operator inventory).
+**Confidence (split per parallel-Claude review):**
+- **High** on the negative: the ≥80% prediction is decisively falsified
+  (57.6% well below 80%; the gap is structural — 4 of 6 predicted operators
+  never fire at all).
+- **Medium-high** on the positive: the revised 3-4-dominant-operator basis
+  is the natural empirical correction but is one-pass hand-tagging without
+  inter-rater reliability check; ±5-8 points on the 57.6% headline is the
+  honest uncertainty. The revised basis stands pending replication (Hunt 5b
+  on Notebooks is the natural test of whether THIS basis holds beyond the
+  QR corpus).
 
 **Status**: Hunt 5 closed. The revised operator basis is the artefact. The
 durable record is [qr_section_index.json](../corpora/transcriptions/quarterly_reports/qr_section_index.json),
