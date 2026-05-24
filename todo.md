@@ -149,20 +149,28 @@ for full operational notes.
 
 ---
 
-## Status snapshot (2026-05-24, post Hunt 5b Ch. 32 + Ch. 36 + Project C v0.4)
+## Status snapshot (2026-05-24, post Hunt 5b Ch. 32/36/34 + Project C v0.7)
 
-**Project C v0.4 SHIPPED** — first identity accepted end-to-end (Poisson
-dual of Gaussian via `mellin_inversion`; 54× cost ratio at β=1/100). The
-scaffold is proven; remaining 6 operator apply_fn's are stubs (v0.5+).
+**Project C v0.7 SHIPPED** (diary 26) — `mellin_inversion` now handles
+three Poisson identity classes via strict double-sided sums:
+1. v0.4: pure Gaussian `exp(-β n²)` (~53× at β=1/100)
+2. v0.7-A: half-shifted Gaussian `exp(-β(n+1/2)²)` (theta₂/theta₄;
+   ~53× at β=1/100)
+3. v0.7-B: weighted Gaussian `n²·exp(-β n²)` (second-moment derivative
+   of v0.4; ~53× at β=1/100)
+All three accepted end-to-end through the engine; correctly fail the
+cost gate at β=5. The basis-coverage trajectory toward
+`recover ≥80% of rkc's 11 known kernel identities within budget=1000`
+inches forward. v0.8 is the natural next step (see T0 below).
 
-**Hunt 5b state**: Ch. 32 SUPPORTED, Ch. 36 PARTIALLY SUPPORTED with
-strong inter-chapter variance evidence (Ch. 32 was q_shift + modular_S
-pair-dominant; Ch. 36 is modular_S single-saturated). Need 1 more chapter
-with a 3rd distinct operator-dominance pattern for the toolkit-split
-hypothesis to be **established** (vs partially supported).
+**Hunt 5b state**: TOOLKIT-SPLIT HYPOTHESIS ESTABLISHED (diary 25,
+Ch. 34 was the 3rd distinct dominance pattern). Three chapters covered:
+Ch. 32 q_shift+modular_S pair, Ch. 36 modular_S monoculture, Ch. 34
+class_field+modular_S pair. `modular_S` is the always-on parent across
+all three; secondary operator varies by problem domain.
 
-**Tests**: 63/63 passing including 4 CLI smoke tests and 2 new v0.4
-end-to-end tests.
+**Tests**: 73/73 passing (67 v0.6 baseline + 6 new v0.7 tests).
+Recognizer benchmark `analysis/14b` still 55/55 = 100%.
 
 ## Tool-side priority stack (after ChatGPT-Pro reranking — see [BIG_IDEAS_REVIEW](insights/BIG_IDEAS_REVIEW.md))
 
@@ -170,39 +178,64 @@ The headline target: **rkc v0.1** as a usable degeneracy-aware special-
 function routing compiler. The Hunts feed into this as transform-mining
 work. See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the v0.1 spec.
 
-### T0. Project C v0.5: implement next operator apply_fn(s) ★ NOW HEADLINE
+### T0. Project C v0.8: additive-correction operator for one-sided kernels ★ NOW HEADLINE
 
-Project C v0.4 is shipped (mellin_inversion for Gaussian). v0.5+ implements
-apply_fn for the remaining 6 operators in QR7_OPERATOR_BASIS. Each gives
-the engine a new class of identities to find.
+Project C v0.7 SHIPPED (diary 26) — `mellin_inversion` now covers three
+strict double-sided Poisson identity classes: pure Gaussian (v0.4),
+half-shifted Gaussian (v0.7-A, theta₂/theta₄ partner), weighted Gaussian
+(v0.7-B, second-moment). All accepted end-to-end; all verified to rel-err
+0 / 1e-34 at dps=50 across 6 orders of magnitude in β.
 
-**Recommended order** (easiest → hardest, leverage-ranked):
+**v0.8 — additive-correction operator class** is the natural next step.
+The Bose-Einstein `1/(1-exp(-β n))` and Lambert `n·q^n/(1-q^n)` summands
+have rkc-known dual representations in the cost model
+(`dual_beta = 4π²/β`, `q'=exp(-4π²/-log q)`) but their modular
+transformation laws carry essential **additive scalar corrections**
+(Bernoulli polynomial values, logs, weight-2 anomalies) that can't be
+captured by the current `Operator.apply_fn(expr, n) → expr` API. The
+fix is a data-model extension; see [DID_NOT_PAN_OUT §R17](insights/DID_NOT_PAN_OUT.md)
+for the structural rationale and the deferred-seed inventory.
 
-- **v0.5: master_theorem on Beta-function form** — `∫₀^1 x^{m-1}(1-x)^{n-1} dx
-  ↔ Γ(m)Γ(n)/Γ(m+n)`. Library-of-canonical-cases pattern. ~half-day.
-- **v0.6: mellin_inversion for non-Gaussian theta-like kernels** — extend
-  the Poisson-dual route to Bose-Einstein partition (Z = ∏(1-q^n)^{-1});
-  Lambert series (Σ n q^n / (1-q^n)); partial theta. Each ~half-day; uses
-  rkc's existing routing-table dual selections.
-- **v0.7: fourier_self_reciprocity** — recognise cos/sin integral pairs
+**Required v0.8 changes:**
+1. Extend `OperatorApplication` (or add a parallel
+   `OperatorApplicationWithCorrection`) to carry an additive scalar.
+2. Add new operator id `modular_transform_with_correction` with
+   apply_fn returning `(new_summand, additive_scalar)`.
+3. Extend the MpmathVerifier to fold the additive correction into the
+   before-side residual before comparing the two sums.
+4. Re-enable seeds `bose_einstein_beta_1em2` and `lambert_divisor_q_p1`
+   (already in `rkc/search/seeds.py`, currently labelled `(v0.8+)`).
+
+Effort: ~1-2 days for the API + verifier extension; ~half-day each for
+Bose-Einstein and Lambert apply_fn's. After v0.8, the basis covers all
+four high-leverage rkc routing families (Gaussian, Bose-Einstein,
+Lambert, mock-theta-via-completion); controlled-validation case becomes
+runnable.
+
+**Subsequent operator order** (from the v0.5+ ladder, unchanged):
+
+- **v0.5 SHIPPED**: master_theorem on Integral patterns (Gamma, Beta,
+  1/(1+x)) — see diary 14b commit `3cbe013`.
+- **v0.6 SHIPPED**: sweep harness across 15 seeds — commit `a7d3bcc`.
+- **v0.9: fourier_self_reciprocity** — recognise cos/sin integral pairs
   and apply (π/2) F·F = Id. Requires Integral AST recognition (sympy's
   Integral class); slightly heavier lift. ~1 day.
-- **v0.8: frullani_limit** — recognise `(f(ax) - f(bx))/x` integrals and
-  return `(f(0) - f(∞)) log(b/a)`. ~half-day with f(0)/f(∞) helpers.
-- **v0.9: mellin_pair_reciprocity** — generalised Mellin-pair self-inversion
-  per QR III §15. ~1 day. Bridges to W7 (Berndt-Dixit αβ=1 transformation
-  is an instance of this).
-- **v0.10: fractional_functional_iteration** — Schröder linearisation for
-  one-parameter iteration semigroups. ~2-3 days; ties to W8 paper + the
-  aether-audio X6 cross-repo Schröder probe.
-- **v0.11: hardy_orders_of_infinity** — asymptotic-comparison operator;
+- **v0.10: frullani_limit** — recognise `(f(ax) - f(bx))/x` integrals
+  and return `(f(0) - f(∞)) log(b/a)`. ~half-day with f(0)/f(∞) helpers.
+- **v0.11: mellin_pair_reciprocity** — generalised Mellin-pair
+  self-inversion per QR III §15. ~1 day. Bridges to W7 (Berndt-Dixit
+  αβ=1 transformation is an instance of this).
+- **v0.12: fractional_functional_iteration** — Schröder linearisation
+  for one-parameter iteration semigroups. ~2-3 days; ties to W8 paper +
+  the aether-audio X6 cross-repo Schröder probe.
+- **v0.13: hardy_orders_of_infinity** — asymptotic-comparison operator;
   the deepest behaviour shift since this isn't an expression rewrite per
-  se. Defer until v0.10 lands.
+  se. Defer until v0.12 lands.
 
-After v0.7 (4 operators implemented), run the controlled-validation case:
-random composition of operators on a curated seed-identity set; metric =
-fraction of rkc's 11 known kernel identities recovered within budget=1000
-compositions of length ≤3. Target ≥80%.
+After v0.8 (4 routing families covered), run the controlled-validation
+case: random composition of operators on a curated seed-identity set;
+metric = fraction of rkc's 11 known kernel identities recovered within
+budget=1000 compositions of length ≤3. Target ≥80%.
 
 ### T1. rkc v0.1 CLI + Python API milestone
 

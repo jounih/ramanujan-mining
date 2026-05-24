@@ -24,10 +24,10 @@ accordingly.
 - **OPEN** — speculation made, listed here for inventory, but not yet
   tested. (Distinct from "refuted".)
 
-**Final entry count: 16**, breaking down as:
+**Final entry count: 17**, breaking down as:
 - 4 REFUTED
 - 4 CORRECTED
-- 6 PARTIALLY REFUTED
+- 7 PARTIALLY REFUTED
 - 2 DOWNGRADED
 
 (Plus a separate OUTSTANDING section listing speculations that the run
@@ -554,6 +554,54 @@ artefact; the prediction's failure is informative because it tells us
 *which* corpus the modular-machinery operators belong to (Notebooks +
 Lost Notebook, not Quarterly Reports). See diary 20 for the full
 operator inventory and the Hunt 5b proposal (Notebooks corpus).
+
+---
+
+## R17 — "Bose-Einstein and Lambert summands have a clean term-by-term Poisson dual"
+
+**What was speculated.** Project C v0.7 design brief (this file would
+extend `_mellin_inversion_apply` in `rkc/search/basis.py`) initially
+proposed handling one-sided kernels — `1/(1 - exp(-β n))` (Bose-Einstein
+partition factor; seed `bose_einstein_beta_1em2`) and `n·q^n/(1-q^n)`
+(Lambert / divisor factor; seed `lambert_divisor_q_p1`) — by emitting a
+"dual summand" at rkc's known dual β'=4π²/β / q'=exp(-4π²/-log q)
+respectively (per `rkc/registry.py` `_route_bose_einstein` and
+`_route_lambert`).
+
+**What was tested (structural, not numerical — v0.7 closure).**
+The modular transformation laws for these one-sided sums are:
+
+```
+Σ_{n≥1} 1/(e^{βn}-1)   =  π²/(6β) - 1/2 - (1/2)log(β/2π) + O(exp(-4π²/β))
+Σ_{n≥1} n q^n/(1-q^n)  =  E_2-related; modular law has additive 6iτ/π term
+```
+
+Neither admits a term-by-term equality `Σ_n f(n) = Σ_n g(n)` at the dual
+parameter — the modular relations carry essential **additive scalar
+correction terms** (Bernoulli polynomial values, logarithms, weight-2
+quasi-modular anomalies) that live OUTSIDE the summand. A naive
+"emit dual summand and verify" path would fail rkc's strict mpmath
+verifier (which compares full sums) by exactly those correction terms.
+
+**Why deferred rather than refuted (tag: PARTIALLY REFUTED).** The
+underlying physical / mathematical phenomenon is real — these sums DO
+have a small-β/large-β crossover, and rkc's existing cost model already
+exploits it. The defect is at the *operator-API* level: the current
+`Operator.apply_fn(expr, n) → expr` signature emits one new summand and
+nothing else, so it cannot capture the additive correction. The correct
+fix is a new operator class — `modular_transform_with_correction` —
+whose apply_fn returns `(new_summand, scalar_correction)`. That is
+**v0.8 territory** (extends the OperatorApplication data model + the
+verifier's sum-comparison logic to fold the correction into the
+before-side residual before comparing).
+
+**Path forward.** v0.7 deliberately ships only **strict double-sided
+Poisson identities** that fit the existing API: half-integer-shifted
+Gaussian and weighted-Gaussian, both verified to rel-err 0 at dps=50
+across β ∈ {1e-4, 5}. Documented in `diary/26_project_c_v07_*.md`.
+v0.8 adds the additive-correction extension and re-enables the
+Bose-Einstein and Lambert seeds (which remain in `rkc/search/seeds.py`
+as v0.7+ targets, now correctly labelled `(v0.8+)`).
 
 ---
 

@@ -117,6 +117,76 @@ def _manual_cost_estimate(bm) -> float | None:
     return None
 
 
+def _gaussian_family_cost(expr: sp.Expr, var: sp.Symbol) -> float | None:
+    """Cost estimate for `polynomial(n) · exp(quadratic_in_n)` summands.
+
+    v0.7: rkc's strict gaussian matcher refuses any non-pure form (linear
+    term, polynomial prefactor); fuzzy matcher catches some cases but not
+    weighted forms like `n² · exp(-β n²)`. This helper recognises the
+    structural class and computes the same `sqrt(28/β)`-style term-count
+    estimate as `_manual_cost_estimate` for the theta-like family.
+
+    The polynomial prefactor doesn't change the gaussian tail bound by
+    more than a constant; the term count to reach 1e-12 absolute tolerance
+    is dominated by the exponential decay rate β. Treats the prefactor as
+    O(1) per-term cost (consistent with rkc's per-term-cost convention).
+
+    Returns None if `expr` isn't structurally `polynomial(n) · exp(deg-2)`
+    with negative leading coefficient — the caller falls back to
+    `_structural_cost`.
+    """
+    if var is None:
+        return None
+    scalar, n_dep = expr.as_independent(var, as_Add=False)
+    # n_dep must be a product of [a poly-in-n] × [exp(deg-2-in-n)] OR just
+    # the exp factor (which is the pure gaussian case rkc handles, but we
+    # still want to cost it here when the strict matcher refused due to
+    # linear coefficient).
+    polynomial_part = sp.Integer(1)
+    exp_part = None
+    if n_dep.func == sp.exp:
+        exp_part = n_dep
+    elif n_dep.func == sp.Pow and n_dep.args[0] == sp.E:
+        exp_part = n_dep
+    elif n_dep.func == sp.Mul:
+        for f in n_dep.args:
+            if (f.func == sp.exp
+                    or (f.func == sp.Pow and f.args[0] == sp.E)):
+                if exp_part is not None:
+                    return None  # multiple exp factors — not the shape
+                exp_part = f
+            else:
+                polynomial_part = polynomial_part * f
+        if exp_part is None:
+            return None
+    else:
+        return None
+    # Parse exp argument as polynomial in var; degree must be exactly 2,
+    # leading coefficient must be a negative number.
+    if exp_part.func == sp.exp:
+        arg = exp_part.args[0]
+    else:
+        arg = exp_part.args[1]
+    if not arg.has(var):
+        return None
+    try:
+        poly = sp.Poly(sp.expand(arg), var)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 2:
+        return None
+    a2 = poly.nth(2)
+    try:
+        beta_f = -float(a2)
+    except (TypeError, ValueError):
+        return None
+    if beta_f <= 0:
+        return None
+    # Term-count estimate: same as _manual_cost_estimate for theta-like.
+    import math
+    return float(max(1, math.ceil(math.sqrt(28.0 / beta_f))))
+
+
 def _structural_cost(expr: sp.Expr) -> float:
     """Cost estimate based on expression structure when rkc can't recognise
     it (typical for v0.5+ Integral inputs and closed-form outputs).
@@ -197,6 +267,21 @@ class RkcCostModel:
 
         cost_before = _direct_cost(bm_before)
         cost_after = _direct_cost(bm_after)
+
+        # v0.7 fallback: gaussian-family with polynomial prefactor or
+        # linear-in-n offset (shifted theta, weighted theta) — rkc's
+        # strict matcher refuses these but they are gaussian-cost-bounded.
+        # This path catches the BEFORE side of half-shift / weighted
+        # gaussian seeds; the AFTER side has a Float-numerified scalar
+        # from the operator output and falls back to _structural_cost.
+        if cost_before == float("inf"):
+            gc = _gaussian_family_cost(expr_before, var)
+            if gc is not None:
+                cost_before = gc
+        if cost_after == float("inf"):
+            gc = _gaussian_family_cost(expr_after, var)
+            if gc is not None:
+                cost_after = gc
 
         # Fallback: structural cost when rkc doesn't recognise. This is the
         # path Integrals and closed-form outputs (like Γ(s)) take in v0.5+.

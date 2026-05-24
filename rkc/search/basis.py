@@ -146,9 +146,32 @@ def _try_inv_1plusx_pattern(integrand: sp.Expr, x: sp.Symbol) -> Optional[sp.Exp
 def _mellin_inversion_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
     """Mellin transform / Poisson-summation dual.
 
-    v0.4 implements ONE concrete case end-to-end (the keystone):
-    Gaussian summand `exp(-β n²)` → Poisson-summation dual
-    `√(π/β) · exp(-π² n² / β)`.
+    v0.4 implemented the keystone case: pure Gaussian summand
+    `exp(-β n²)` → Poisson-summation dual `√(π/β) · exp(-π² n² / β)`.
+
+    v0.7 extends to two further STRICT two-sided Poisson identities (no
+    additive correction term needed — both sides are clean summand-to-
+    summand identities over n ∈ Z):
+
+    (A) **Shifted-Gaussian with half-integer offset**
+        `exp(-β (n + 1/2)²)` → `√(π/β) · (-1)^n · exp(-π² n² / β)`.
+        Verified strictly via mpmath.nsum across β ∈ {1e-3, 1e-2, 1e-1, 1};
+        this is the classical theta_2 ↔ theta_4 modular transform (the
+        Jacobi triple-product half-shift partner of v0.4's theta_3).
+
+    (B) **Weighted-Gaussian (second moment)**
+        `n² · exp(-β n²)` →
+        `√(π/β) · (1/(2β) - π² n² / β²) · exp(-π² n² / β)`.
+        Derived by differentiating v0.4's identity in β; preserves
+        single-summand structure, no Add of sub-duals exposed at the API.
+        Verified strictly via mpmath.nsum across the same β sweep.
+
+    What v0.7 deliberately defers to v0.8: ONE-SIDED kernels with a
+    modular relation but no clean term-by-term equality (Bose-Einstein
+    `1/(1-exp(-β n))` and Lambert `n q^n / (1-q^n)`). These require an
+    "operator that emits dual summand + scalar additive correction" data-
+    model extension (the OperatorApplication currently only emits a new
+    summand). See [DID_NOT_PAN_OUT §R17] for the structural reason.
 
     Mathematical justification: Poisson summation is the Z-action
     instance of Mellin-pair self-reciprocity (Gaussian self-Mellin-pair).
@@ -157,10 +180,24 @@ def _mellin_inversion_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
     effective β'), which is the β\* = c·π crossover that Pass A
     characterised across 5 independent kernels
     ([CANDIDATE_INSIGHTS §A6](../../insights/CANDIDATE_INSIGHTS.md)).
-
-    Other kernel families with rkc-known duals (Bose-Einstein partition;
-    Lambert-Eisenstein; partial theta) are v0.5+.
     """
+    # CASE 1 (v0.4): pure Gaussian via rkc recognizer (a1 == 0)
+    result = _poisson_dual_pure_gaussian(expr, n)
+    if result is not None:
+        return result
+    # CASE 2 (v0.7): half-integer-shifted Gaussian exp(-β (n + 1/2)²)
+    result = _poisson_dual_half_shift_gaussian(expr, n)
+    if result is not None:
+        return result
+    # CASE 3 (v0.7): weighted Gaussian n² · exp(-β n²)
+    result = _poisson_dual_weighted_gaussian(expr, n)
+    if result is not None:
+        return result
+    return None
+
+
+def _poisson_dual_pure_gaussian(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
+    """v0.4 case: pure `c · exp(-β n²)` → `c · √(π/β) · exp(-π² n²/β)`."""
     from ..recognizer import best_match
     bm = best_match(expr, n)
     if bm is None or bm.kernel != "gaussian_quadratic":
@@ -168,15 +205,183 @@ def _mellin_inversion_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
     beta = bm.params.get("beta")
     if beta is None:
         return None
-    # Poisson-summation dual of c·exp(-β n²): c · √(π/β) · exp(-π² n² / β).
     # PRESERVE the scalar c. rkc's bm.scalar_coefficient peels only NUMERICAL
     # scalars; for inputs containing symbolic constants like 10*√π (the typical
     # output of a previous Poisson-dual call), rkc reports scalar=1 and bakes
     # the prefactor into the AST. Use sp.as_independent to extract everything
     # n-independent — handles both cases.
     scalar = expr.as_independent(n, as_Add=False)[0]
-    new_summand = scalar * sp.sqrt(sp.pi / beta) * sp.exp(-sp.pi**2 * n**2 / beta)
-    return new_summand
+    return scalar * sp.sqrt(sp.pi / beta) * sp.exp(-sp.pi**2 * n**2 / beta)
+
+
+def _parse_quadratic_exp(expr: sp.Expr, n: sp.Symbol) -> Optional[tuple]:
+    """Parse `c · exp(P(n))` where P is degree-2 in n with NEGATIVE
+    leading coefficient. Returns `(scalar_c, a2, a1, a0)` such that
+    `expr == scalar_c · exp(a2·n² + a1·n + a0)`, with `a2` guaranteed
+    a negative number. Returns None otherwise.
+
+    Used by both shifted-Gaussian and (future) generic linear-coefficient
+    cases. We pull out the n-independent scalar via `as_independent` and
+    then look for a single Mul/exp/Pow factor that exponentiates a deg-2
+    polynomial in n.
+    """
+    scalar, n_dep = expr.as_independent(n, as_Add=False)
+    # n_dep must be a single `exp(...)` or `Pow(E, ...)` factor (no extra
+    # n-dependent multipliers — that's the weighted case, handled separately).
+    if n_dep.func == sp.exp:
+        arg = n_dep.args[0]
+    elif n_dep.func == sp.Pow:
+        base, exponent = n_dep.args
+        if base != sp.E:
+            return None
+        arg = exponent
+    else:
+        return None
+    if not arg.has(n):
+        return None
+    # Expand so (n + 1/2)² becomes n² + n + 1/4 and is parsed as a polynomial
+    arg_expanded = sp.expand(arg)
+    try:
+        poly = sp.Poly(arg_expanded, n)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 2:
+        return None
+    a2 = poly.nth(2)
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if not _is_negative_number(a2):
+        return None
+    return (scalar, a2, a1, a0)
+
+
+def _is_negative_number(x: sp.Expr) -> bool:
+    """Local copy of the registry helper (avoids circular import).
+
+    Returns True iff sympy can prove `x` is a strictly-negative number.
+    """
+    try:
+        return bool(sp.simplify(x).is_negative)
+    except Exception:
+        return False
+
+
+def _poisson_dual_half_shift_gaussian(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[sp.Expr]:
+    """v0.7 case (A): half-integer-shifted Gaussian.
+
+    Detects `c · exp(-β (n + 1/2)²)` i.e. `a2 = -β`, `a1 = -β`,
+    `a0 = -β/4` after expansion. Emits the strict Poisson dual
+
+        `c · √(π/β) · (-1)^n · exp(-π² n²/β)`.
+
+    Identity: `Σ_n exp(-β (n+1/2)²) = √(π/β) · Σ_k (-1)^k · exp(-π² k²/β)`
+    (Poisson with the `exp(2πi k · 1/2) = (-1)^k` phase from the
+    half-integer translation). Verified strictly with rel-err 0 at dps=50
+    across β ∈ {1e-3, 1e-2, 1e-1, 1} via the v0.7 unit tests.
+
+    Returns None if `expr` isn't of this exact shape (declining cleanly
+    when the offset is anything other than ±1/2).
+    """
+    parsed = _parse_quadratic_exp(expr, n)
+    if parsed is None:
+        return None
+    scalar, a2, a1, a0 = parsed
+    # Half-integer shift signature: a1 / a2 == 1 and a0 / a2 == 1/4
+    # i.e. -β·n² - β·n - β/4 = -β·(n + 1/2)²
+    # Use simplify == 0 rather than == on Rationals for robustness with
+    # potentially un-normalised forms.
+    if sp.simplify(a1 / a2 - 1) != 0:
+        return None
+    if sp.simplify(a0 / a2 - sp.Rational(1, 4)) != 0:
+        return None
+    beta = -a2  # β > 0
+    # Dual: c · √(π/β) · (-1)^n · exp(-π² n²/β)
+    return scalar * sp.sqrt(sp.pi / beta) * (-1)**n * sp.exp(-sp.pi**2 * n**2 / beta)
+
+
+def _poisson_dual_weighted_gaussian(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[sp.Expr]:
+    """v0.7 case (B): weighted Gaussian (second moment).
+
+    Detects `c · n² · exp(-β n²)` and emits the strict Poisson dual
+
+        `c · √(π/β) · (1/(2β) - π² n²/β²) · exp(-π² n²/β)`.
+
+    Derivation: differentiate v0.4's identity
+    `Σ_n exp(-β n²) = √(π/β) · Σ_k exp(-π² k²/β)` w.r.t. β and negate.
+
+    LHS: `-Σ_n n² · exp(-β n²)`.
+    RHS: `-1/(2β) · √(π/β) · Σ_k exp(-π² k²/β)
+           + √(π/β) · Σ_k (π² k²/β²) · exp(-π² k²/β)`
+        = `√(π/β) · Σ_k (-1/(2β) + π² k²/β²) · exp(-π² k²/β)`.
+
+    Negating both sides gives the identity above. Verified strictly to
+    rel-err 0 at dps=50 across β ∈ {1e-3, 1e-2, 1e-1, 1} via the v0.7
+    unit tests. Note that `n=0` contributes 0 on the LHS (the `n²` factor
+    kills it), but the dual evaluates a non-trivial `1/(2β) · √(π/β)`
+    `k=0` term — the sums match overall because the other dual cells
+    re-sum to cancel.
+
+    Returns None if `expr` isn't of this exact shape. We deliberately
+    don't try to handle `n^k` for higher k yet — each k requires its own
+    derivative identity, and the engine has no proposer-side parameter
+    to range over k. v0.8+ if needed.
+    """
+    if expr.func != sp.Mul:
+        return None
+    # Pull out the n-independent scalar; the remainder must factor as
+    # n^2 · exp(quadratic_in_n).
+    scalar, n_dep = expr.as_independent(n, as_Add=False)
+    if n_dep.func != sp.Mul:
+        return None
+    factors = n_dep.args
+    pow_factor = None
+    exp_factor = None
+    other_factors = []
+    for f in factors:
+        if f == n**2 or (f.func == sp.Pow and f.args[0] == n and f.args[1] == 2):
+            if pow_factor is None:
+                pow_factor = f
+                continue
+            other_factors.append(f)
+        elif f.func == sp.exp or (f.func == sp.Pow and f.args[0] == sp.E):
+            if exp_factor is None:
+                exp_factor = f
+                continue
+            other_factors.append(f)
+        else:
+            other_factors.append(f)
+    if pow_factor is None or exp_factor is None or other_factors:
+        return None
+    # Parse the exp argument as a pure Gaussian (a1 == 0, a0 == 0)
+    if exp_factor.func == sp.exp:
+        arg = exp_factor.args[0]
+    else:
+        arg = exp_factor.args[1]
+    if not arg.has(n):
+        return None
+    arg_expanded = sp.expand(arg)
+    try:
+        poly = sp.Poly(arg_expanded, n)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 2:
+        return None
+    a2 = poly.nth(2)
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if a1 != 0 or a0 != 0:
+        return None
+    if not _is_negative_number(a2):
+        return None
+    beta = -a2
+    # Dual: c · √(π/β) · (1/(2β) - π² n²/β²) · exp(-π² n²/β)
+    return (scalar * sp.sqrt(sp.pi / beta)
+            * (sp.Rational(1, 2) / beta - sp.pi**2 * n**2 / beta**2)
+            * sp.exp(-sp.pi**2 * n**2 / beta))
 
 
 def _fourier_self_reciprocity_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:

@@ -204,6 +204,187 @@ def test_v04_mellin_inversion_apply_fn_directly():
     assert expr_out2 is None, "mellin_inversion should decline on non-gaussian"
 
 
+def test_v07_mellin_inversion_half_shift_apply_fn_directly():
+    """Project C v0.7 direct unit test: half-integer-shifted Gaussian.
+
+    `c · exp(-β (n+1/2)²)` → `c · √(π/β) · (-1)^n · exp(-π² n²/β)`.
+
+    Also checks that quarter-integer shifts (not half-integer) DECLINE
+    cleanly — we deliberately don't handle arbitrary rational offsets
+    in v0.7 because the dual becomes complex-valued.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("mellin_inversion")
+    expr_in = sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 2))**2)
+    expr_out = op.apply_fn(expr_in, n)
+    assert expr_out is not None, "mellin_inversion should fire on half-shift gaussian"
+    # Structure check: dual should contain (-1)^n and a √π factor
+    assert expr_out.has((-1)**n) or sp.simplify(
+        expr_out / ((-1)**n)) != expr_out, "dual missing (-1)^n factor"
+    assert expr_out.has(sp.sqrt(sp.pi)) or expr_out.has(sp.pi), \
+        "dual missing √π / π factor"
+    # Decline: quarter-shift (offset 1/4) doesn't match the half-shift signature
+    expr_quarter = sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 4))**2)
+    out_quarter = op.apply_fn(expr_quarter, n)
+    assert out_quarter is None, (
+        "mellin_inversion should decline on non-half-integer shifts in v0.7"
+    )
+
+
+def test_v07_mellin_inversion_weighted_apply_fn_directly():
+    """Project C v0.7 direct unit test: weighted (second-moment) Gaussian.
+
+    `c · n² · exp(-β n²)` →
+    `c · √(π/β) · (1/(2β) - π² n²/β²) · exp(-π² n²/β)`.
+
+    Also checks that `n³ · exp(-β n²)` (third moment, not handled in v0.7)
+    declines.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("mellin_inversion")
+    expr_in = n**2 * sp.exp(-sp.Rational(1, 100) * n**2)
+    expr_out = op.apply_fn(expr_in, n)
+    assert expr_out is not None, "mellin_inversion should fire on n²·exp(-β n²)"
+    # Decline: n³ form not handled
+    expr_cube = n**3 * sp.exp(-sp.Rational(1, 100) * n**2)
+    out_cube = op.apply_fn(expr_cube, n)
+    assert out_cube is None, "mellin_inversion should decline on n^3 weight (v0.7)"
+    # Decline: n²·exp(-β n) (linear, not quadratic in exp) should NOT fire
+    expr_lin = n**2 * sp.exp(-sp.Rational(1, 100) * n)
+    out_lin = op.apply_fn(expr_lin, n)
+    assert out_lin is None, "mellin_inversion should decline on n²·exp(-β n) (linear exp)"
+
+
+def test_v07_mellin_inversion_verifier_strict_agreement():
+    """Project C v0.7: both new Poisson duals satisfy the strict
+    numerical verifier across the default sweep at n_digits=20.
+
+    This is the heart of the v0.7 release gate: the new identities are
+    STRICT two-sided sum equalities (not modular-with-correction
+    approximations), so the MpmathVerifier with default symmetric
+    summand_range and dps buffer must report `passed=True`.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("mellin_inversion")
+    verifier = MpmathVerifier(n_digits=20)
+    for expr_in, label in [
+        (sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 2))**2), "half-shift"),
+        (n**2 * sp.exp(-sp.Rational(1, 100) * n**2), "weighted"),
+    ]:
+        expr_out = op.apply_fn(expr_in, n)
+        sb = SearchState(payload=expr_in, metadata={"var": n})
+        sa = SearchState(payload=expr_out, metadata={"var": n})
+        result = verifier.verify(sb, [], sa)
+        assert result.passed, (
+            f"v0.7 verifier failed for {label}: {result.reason}"
+        )
+
+
+def test_v07_mellin_inversion_half_shift_accepted(tmp_path):
+    """Project C v0.7 acceptance gate (A): half-shift Gaussian → dual,
+    end-to-end through the search engine, produces ≥1 acceptance."""
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 2))**2)
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=30,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.7 half-shift acceptance gate failed: 0 acceptances; "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    first = json.loads((tmp_path / "accepted.jsonl").read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "mellin_inversion"
+    assert first["cost_ratio"] > 1.0, "v0.7 half-shift dual should be cheaper"
+
+
+def test_v07_mellin_inversion_weighted_accepted(tmp_path):
+    """Project C v0.7 acceptance gate (B): weighted Gaussian → dual,
+    end-to-end through the search engine, produces ≥1 acceptance."""
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = n**2 * sp.exp(-sp.Rational(1, 100) * n**2)
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=30,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.7 weighted-gaussian acceptance gate failed: 0 acceptances; "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    first = json.loads((tmp_path / "accepted.jsonl").read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "mellin_inversion"
+    assert first["cost_ratio"] > 1.0, "v0.7 weighted dual should be cheaper"
+
+
+def test_v07_seeds_buildable_and_recover_identity():
+    """v0.7 seeds `gaussian_half_shift_beta_1em2` and
+    `gaussian_weighted_beta_1em2` are buildable and recover an identity
+    in a 30-budget search (smoke-level acceptance check)."""
+    import tempfile
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    for sid in ["gaussian_half_shift_beta_1em2", "gaussian_weighted_beta_1em2"]:
+        assert sid in SEED_LIBRARY, f"v0.7 seed {sid!r} missing from SEED_LIBRARY"
+        seed = SEED_LIBRARY[sid]
+        expr, var = build_seed(seed)
+        with tempfile.TemporaryDirectory() as tmp:
+            state = SearchState(payload=expr, metadata={"var": var})
+            reg = JsonlRegistry.with_dir(tmp)
+            summary = search(
+                initial_state=state,
+                proposer=RandomProposer(seed=42),
+                verifier=MpmathVerifier(n_digits=10),
+                router=RkcRouter(),
+                cost_model=RkcCostModel(),
+                registry=reg,
+                budget=30,
+                max_depth=1,
+            )
+            assert summary.n_accepted >= 1, (
+                f"v0.7 seed {sid!r} produced 0 acceptances; "
+                f"reasons={summary.reject_reason_counts}"
+            )
+
+
 def test_v05_master_theorem_beta_function(tmp_path):
     """Project C v0.5: master_theorem accepts the Beta-function identity
     `∫₀^¹ x^(m-1) (1-x)^(n-1) dx = Γ(m)Γ(n)/Γ(m+n)` end-to-end."""

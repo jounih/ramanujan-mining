@@ -83,6 +83,23 @@ SEED_LIBRARY: dict[str, Seed] = {
         expected_route="DIRECT preferred (mellin_inversion should NOT win)",
         notes="Large β; direct sum converges faster than the Poisson dual. Tests cost-model honesty",
     ),
+    # === v0.7: shifted + weighted Gaussian (Poisson dual variants) ===
+    "gaussian_half_shift_beta_1em2": Seed(
+        id="gaussian_half_shift_beta_1em2",
+        description="Half-shifted Gaussian Σ exp(-β (n+1/2)²) at β=1/100",
+        expr_string="exp(-Rational(1, 100) * (n + Rational(1, 2))**2)",
+        kind="summand",
+        expected_route="mellin_inversion (v0.7) → theta_2/theta_4 dual (~53× at small β)",
+        notes="Theta_2/theta_4 modular partner of v0.4's theta_3 keystone case",
+    ),
+    "gaussian_weighted_beta_1em2": Seed(
+        id="gaussian_weighted_beta_1em2",
+        description="Weighted Gaussian Σ n²·exp(-β n²) at β=1/100",
+        expr_string="n**2 * exp(-Rational(1, 100) * n**2)",
+        kind="summand",
+        expected_route="mellin_inversion (v0.7) → derivative-of-theta dual (~53× at small β)",
+        notes="Second-moment Poisson dual; derived from d/dβ of v0.4 identity",
+    ),
 
     # === Master Theorem integral patterns (3 seeds, v0.5 territory) ===
     "beta_function_integral": Seed(
@@ -116,24 +133,27 @@ SEED_LIBRARY: dict[str, Seed] = {
         notes="QR I §5(i) reflection-like identity",
     ),
 
-    # === Bose-Einstein partition (summand factor; v0.6+ target) ===
+    # === Bose-Einstein partition (summand factor; v0.8+ target — needs
+    # additive-correction operator class; see DID_NOT_PAN_OUT §R17) ===
     "bose_einstein_beta_1em2": Seed(
         id="bose_einstein_beta_1em2",
         description="Bose factor 1/(1-exp(-βn)) at β=1/100",
         expr_string="1 / (1 - exp(-Rational(1, 100) * n))",
         kind="summand",
-        expected_route="(v0.7+) mellin_inversion → Dedekind-eta dual",
-        notes="Σ -log(1-q^n) → log of partition function; rkc DUAL route via η-modular",
+        expected_route="(v0.8+) modular_transform_with_correction → Dedekind-eta dual",
+        notes="One-sided; modular law carries Bernoulli + log additive correction. "
+              "Not a term-by-term Poisson identity. See R17 for the operator-API rationale.",
     ),
 
-    # === Lambert / divisor sum (summand; v0.6+ target) ===
+    # === Lambert / divisor sum (summand; v0.8+ target — same rationale) ===
     "lambert_divisor_q_p1": Seed(
         id="lambert_divisor_q_p1",
         description="Lambert summand n·q^n/(1-q^n) at q=1/10",
         expr_string="n * Rational(1, 10)**n / (1 - Rational(1, 10)**n)",
         kind="summand",
-        expected_route="(v0.7+) mellin_inversion → Eisenstein-series dual",
-        notes="Σ generates σ_1(k)·q^k; Eisenstein E_2 closed form",
+        expected_route="(v0.8+) modular_transform_with_correction → Eisenstein-series dual",
+        notes="One-sided; E_2 quasi-modular weight-2 anomaly is an additive 6iτ/π term. "
+              "Not a term-by-term Poisson identity. See R17.",
     ),
 
     # === Mock theta f3 (summand; v0.7+ target with MCR completion) ===
