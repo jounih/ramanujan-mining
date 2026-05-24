@@ -126,30 +126,60 @@ unblocked Hunts:
   `CompletionNotImplemented` on the higher-order mock thetas using
   Hickerson 1988 / Berndt-Chan.
 
-## v0.3 — Project C: RKC-guided symbolic search (W5 / T3 / X3)
+## v0.3 — Project C: RKC-guided symbolic search (W5 / T3 / X3) — SHIPPED (v0.3.0 → v0.7) ✓
 
 Full design: [../insights/PROJECT_C_DESIGN.md](../insights/PROJECT_C_DESIGN.md).
 
 **Project C** = the "practical Ramanujan latent speedrun" system. The
-6-step loop: choose expression → neural model proposes operator sequence
+6-step loop: choose expression → proposer suggests operator sequence
 → rkc normalizes and routes → verifier tests to high precision → cost
 model decides usefulness → store accepted identity or reject with reason.
 
-Three sub-milestones:
+### Shipped (incremental):
 
-- **v0.3.0 — Project C v0 (W5)**: pure-symbolic baseline (`RandomProposer`).
-  Validates steps 3+4+5+6 end-to-end on the Hunt 5 7-operator basis.
-  Output: `rkc/search/` module + CLI `rkc search`. ~1-2 weeks.
-- **v0.3.1 — Project C v1 (T3)**: adds `NeuralProposer`. Nonlinear ICA /
-  JEPA per Hyvärinen et al. arXiv 2303.16535 is the default architectural
-  choice but the `Proposer` interface is modular.
-- **v0.3.2 — Project C v2 (X3)**: extract `rkc.search` interface as a
-  shared package so arc-agi-ebm-agent's program-induction loop can plug
-  in ARC's DSL as a second instance.
+- **v0.3 scaffold (SHIPPED)** — core dataclasses + Protocols + RandomProposer,
+  MpmathVerifier, RkcRouter, RkcCostModel, JsonlRegistry. `rkc search` CLI
+  works end-to-end on the Hunt 5 7-operator basis (stubs except master_theorem
+  and mellin_inversion, which v0.4-v0.7 fleshed out).
+- **v0.4 (SHIPPED, diary 14b)** — first concrete operator transformation:
+  `mellin_inversion` on pure Gaussian `exp(-βn²)` via Poisson summation
+  (Σ_n exp(-βn²) ↔ √(π/β)·Σ_k exp(-π²k²/β)); ~54× cost-ratio at β=1/100.
+- **v0.5 (SHIPPED, commit `3cbe013`)** — master_theorem on canonical
+  Mellin-transform integrals: Beta function, Gamma function, π/sin(πs).
+  sp.Integral handling in MpmathVerifier via mp.quad.
+- **v0.6 (SHIPPED, commit `a47e71a`)** — multi-step composition (`max_depth>1`).
+  Engine chains operator applications and verifies initial ↔ final state.
+- **v0.6+ (SHIPPED, commit `a7d3bcc`)** — 15-seed library + parallel sweep
+  harness via `multiprocessing.Pool('spawn')`. `rkc sweep --workers N`.
+- **v0.7 (SHIPPED, diary 26, commit `f1758d3`)** — two additional strict
+  Poisson identity classes within `mellin_inversion`: half-shifted Gaussian
+  (theta₂/theta₄ partner) and weighted Gaussian (n²·exp(-βn²) second moment).
+  Both verified to numerical zero across 6 orders of magnitude in β.
+  Tests: 73/73 passing.
 
-Validation case for v0.3.0: random composition recovering ≥80% of the
-11 known kernel identities in the rkc registry within budget=1000
-compositions of length ≤3.
+### Next (queued):
+
+- **v0.8 (NEXT)** — extend OperatorApplication API to carry `(new_summand,
+  additive_scalar)` so Bose-Einstein and Lambert modular-with-correction
+  duals can ship strictly verified. See diary 26 + DID_NOT_PAN_OUT §R17
+  for structural rationale. Unblocks the 2 seeds currently labelled (v0.8+).
+- **v0.3.1 — NeuralProposer (T3)** — gated until basis grows past 10-20
+  operators. Per PROJECT_C_DESIGN, nonlinear ICA / JEPA is the default
+  architectural choice but the `Proposer` interface is modular.
+- **v0.3.2 — Cross-repo extraction (X3)** — pull `Proposer / Verifier /
+  Router / CostModel / Registry` interfaces into a shared
+  `compositional_search` package so arc-agi-ebm-agent can plug in ARC's
+  DSL as a second instance.
+
+### Validation target (still pending):
+
+≥80% of the 11 known kernel identities in the rkc registry recovered by
+random composition within budget=1000 compositions of length ≤3. Current
+state (v0.7): the engine recovers Gaussian / half-shift / weighted-Gaussian
+strict identities + Beta/Gamma/π-sin Mellin integrals (6 of 11). Bose-Einstein
++ Lambert + mock-theta f3 + partial theta + Gauss-sum + q-Pochhammer remain
+gated on v0.8 (or, for the modular ones, on extending mellin_inversion's
+correction handling).
 
 ## Non-goals (for now)
 
