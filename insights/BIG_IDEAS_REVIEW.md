@@ -98,6 +98,68 @@ with corrected basis). Confidence: high.**
 
 ---
 
+## 2b. QR III operators connect to modern math — addendum after parallel-Claude review
+
+Each of the QR III out-of-schema operators corresponds to a substantial modern
+mathematical apparatus. This wasn't obvious before the tagging; it became
+obvious after. Adding here as an addendum because it sharpens what's at stake
+in Hunt 5b and motivates the new B1.5 fractional-calculus bridge below.
+
+- **Schröder / Koenig fractional iteration (QR III §4-§6, §10)** is the
+  eigenfunction equation for dynamics under iteration of a map. Specifically:
+  if σ(f(x)) = s·σ(x) for some constant s, then σ linearises f near a fixed
+  point. **This is exactly the Wilson renormalisation-group fixed-point
+  eigenfunction equation** — Ramanujan was computing fractional iterates and
+  their infinitesimal generators (`ψ_1(x) = C/F(x)` in §10) decades before
+  Wilson. Notable concrete example: QR III §6(b) computes F^n for
+  F(x) = x²-2 (Chebyshev semigroup) explicitly via cosh — which is the
+  Schröder linearisation of the doubling map on the circle, and the genus-0
+  degenerate limit of the j-function modular dynamics. So there is a
+  *deeply-hidden* connection from QR III §6 back to modular forms: Chebyshev
+  is what's left of the j-function dynamics after the elliptic structure
+  collapses.
+
+- **Hardy orders of infinity (QR III §7-§9)** is the L-function /
+  asymptotic-series hierarchy and forms the formal backbone of analytic
+  number theory. Ramanujan's construction of a function defying all
+  logarithmic scales (§8) is in the same spirit as the
+  Hardy-Littlewood-Erdős work on prime-counting asymptotics. Direct
+  connection back to modular forms is thin in QR III itself (no ζ(s) appears),
+  but the scale-hierarchy machinery feeds straight into Selberg-trace-formula-
+  style asymptotic estimates of modular-form coefficients.
+
+- **Riemann-Liouville fractional differentiation (QR III §11)** is the
+  operator behind power-law kinetics in non-Markovian / anomalous-diffusion
+  dynamics. The fractional Fokker-Planck equation is its forward statement.
+  The Mellin-kernel structure (x^{n-1} in §11's defining integral) ties
+  back to zeta-function asymptotics via the Mellin transform of the
+  Riemann ζ.
+
+- **Umbral / operator calculus (QR III §12)** is formal-power-series operator
+  algebra (Blissard / Rota-Roman / Steffensen). Treats sequence coefficients
+  as shadows of an underlying operator. **This is structurally the natural
+  lens for the rkc/ recognizer:** the recognizer's job is to map a kernel
+  expression to the operator that generates its Taylor series. Adding umbral
+  primitives (shift E, difference Δ) to rkc/registry.py is a concrete
+  extension that would recognise QR III-style identities. New W6 in todo.
+
+- **Mellin-pair reciprocity (QR III §15)** generalises Fourier-pair
+  self-inversion to arbitrary Mellin-pairs (F, f) defined by
+  ∫₀^∞ F(ax)f(bx) dx = 1/(a+b). The Poisson summation formula — which is
+  the standard route to theta-function modularity — is a degenerate case
+  of this construction (Gaussian self-Mellin-pair). So §15 IS structurally
+  a shadow of theta modularity, just stated for a much more general class
+  of function pairs.
+
+The implication: QR III is not "Ramanujan worked outside modular forms".
+It's "Ramanujan worked at a more abstract layer that *contains* modular
+forms as a degenerate case." The Notebooks then specialise back to the
+modular case for the actual identity-discovery work. That framing makes the
+QR-vs-Notebooks contrast sharper: not two disjoint toolkits, but a
+foundational layer (QRs) plus the modular application of it (Notebooks).
+
+---
+
 ## 3. The "mock-theta corrections as fitted-EBM bias diagnostics" big swing
 
 **Original claim.** Bridge between Friston FEP and post-Zwegers mock modular
@@ -144,6 +206,56 @@ families. See diary 13, 15, 17, 18, 19 and [CANDIDATE_INSIGHTS §B/C](CANDIDATE_
   "naive functional bias" framing and upgraded to ~30-40% for the
   "cohomological generative model" framing (which is harder but the
   failure modes are now mapped).
+
+---
+
+## 3b. NEW — "B1.5": Fractional-calculus parallel to the closed B1 modular bridge
+
+**Origin.** Suggested by parallel-Claude review after diary 20. The closed
+modular-bridge result (B1, §3 above) was specific to a *modular* generative
+model — a Markovian lattice gas whose partition function is f(q). The
+falsification argument was structural: the cohomological irreducibility of
+g* in H¹(Γ, V_k) means no functional of the lattice gas can reproduce it.
+
+But that argument was specific to the *modular* setting. There is a parallel
+question for *anomalous-diffusion* generative models, where the dynamics is
+non-Markovian (power-law memory kernel) and the natural derivative is the
+**Riemann-Liouville fractional derivative** Ramanujan defines in QR III §11.
+
+**B1.5 statement:** for a non-Markovian lattice gas with fractional-derivative
+dynamics governed by a fractional Fokker-Planck equation, **is there a
+closed-form "completion" of the partition function** analogous to the Watson-
+Hickerson Eichler integral, but built from QR III's fractional-calculus
+operators rather than from modular forms?
+
+If yes, we'd have a *different* Ramanujan-style bridge between FEP and a
+non-modular-but-still-structured generative-model class. The natural toolkit
+is exactly what QR III provides: Schröder linearisation of the iteration
+flow, RL fractional differentiation as the primitive operator, umbral
+calculus for the operator-algebra bookkeeping.
+
+**Status: OPEN, untested. Confidence: medium (15-25%).** The math is
+plausible and the toolkit is now identified. But:
+
+- Anomalous-diffusion generative models are real (heavy-tailed dynamics,
+  Lévy walks, mean-field-models with long-range memory). They show up in
+  active-matter physics, financial-time-series modelling, and a couple of
+  the more obscure FEP variants (Friston-Heins on hierarchical generative
+  models with non-Markov layers).
+- The "completion" notion would need a fractional-calculus analog of the
+  Eichler cocycle. Whether such a thing exists structurally is the central
+  question. There IS a literature on fractional cohomology / fractional
+  Hodge theory (Kapranov, others) that may be relevant.
+
+**Concrete first step.** Pick a 1-D fractional Fokker-Planck system with a
+known closed-form propagator, compute its partition function, and check
+whether the "purely-Markovian surrogate" approximation has a residual whose
+shape is recognisable from QR III's machinery. If yes → write up. If no →
+the bridge is structurally different and we need to think harder.
+
+**Cross-references:** [diary 19 §"what next"](../diary/19_eichler_cocycle_transfer_matrix.md)
+for the cohomological framing of B1; QR III §11 for the RL operator;
+QR III §10 for the Schröder generator-of-flow.
 
 ---
 

@@ -123,6 +123,33 @@ candidates as classical-known vs genuinely new. Even 1-2 new identities
 would validate the approach. Bounded scope (~1 week); is the seed of the
 larger "LLM + symbolic-verification" frontier-AI bet.
 
+### W6. Add umbral-operator kernels to the rkc/ recognizer
+
+**From BIG_IDEAS_REVIEW §2b (added after parallel-Claude review).** QR III §12
+uses formal-power-series operator algebra (shift E, difference Δ, RL fractional
+D^α) — structurally the natural lens for the recognizer. Add umbral-operator
+primitives to `rkc/registry.py` as new kernels with degeneracy detectors.
+After this, the recognizer can route QR III-style identities, not just the
+QR I + QR II Mellin/Master cluster. Concrete + bounded (~1 week).
+
+### W7. B1.5 fractional-Fokker-Planck bridge experiment
+
+**From BIG_IDEAS_REVIEW §3b (NEW).** Parallel to the closed B1 modular bridge:
+pick a 1D fractional Fokker-Planck system with a known closed-form propagator
+(plenty in the Klafter / Metzler anomalous-diffusion literature), compute its
+partition function, and test whether the "Markovian-surrogate residual" is
+recognisable from QR III's Schröder / RL / umbral machinery.
+
+If yes: write up as the second Ramanujan-style FEP bridge, parallel to the
+closed (and falsified-for-candidate-families) modular bridge.
+
+If no: structural reason for closure becomes a sharper result — both modular
+and fractional-calculus generative-model classes resist Ramanujan-style
+completion, suggesting whatever "completion" means is even more specific than
+B1 closure already implied.
+
+Status: SCOPED but UNTESTED. Single-experiment scope ~2-3 weeks.
+
 ---
 
 ## Partially blocked (have facsimiles, missing Berndt commentary)
