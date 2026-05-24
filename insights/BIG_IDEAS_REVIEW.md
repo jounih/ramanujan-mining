@@ -405,8 +405,11 @@ extreme case because the canon was so completely curated by a single
 generation of editors (Hardy, Watson, Berndt) with strongly-shared
 interests.
 
-**Status: SUPPORTED at medium-high confidence (two independent hunts
-generated three independent under-explored findings).**
+**Status: SUPPORTED at high confidence (now THREE independent hunts
+generated under-explored findings, the third — W8 — providing the
+strongest concrete evidence: Berndt himself, the most thorough Ramanujan
+commentator of the modern era, never drew the Schröder-Koenig connection
+across 40+ years and four separate publications on QR III).**
 
 The cleanest test of generalisability would be to look for analogous
 under-explored content in the QRs that don't connect to either modular
@@ -507,7 +510,7 @@ questions. Folded in here so it's persistent.
 
 | Finding | Bounded verification cost | Probability genuinely new | Output if positive |
 |---|---|---|---|
-| **QR III pre-Julia iteration theory** (Schröder/Koenig + ψ₁ = C/F Lie generator; Chebyshev semigroup explicit; Julia 1918 / Fatou 1917-19 postdate by 3-4 yrs) | Half-day literature scan (Milnor / Douady-Hubbard / Ecalle / Belitskii on whether they cite Ramanujan QR III) + one comparison of Ramanujan's formulas vs Ecalle's normal-form vector fields | **60-70%** | Standalone short paper: *"Pre-Julia iteration theory in Ramanujan's third Quarterly Report (March 1914)"*. Historia Mathematica or Ramanujan Journal. |
+| **QR III pre-Julia iteration theory** (Schröder/Koenig + ψ₁ = C/F Lie generator; Chebyshev semigroup explicit; Julia 1918 / Fatou 1917-19 postdate by 3-4 yrs) | ✓ Half-day lit scan COMPLETED (W8 agent, see [W8_PRE_JULIA_LIT_SCAN.md](W8_PRE_JULIA_LIT_SCAN.md)). Confidence upgraded from 60-70% prior → **~75% GENUINELY_UNDER_NOTED**. | **~75%** | Standalone short paper, draft outline ready at [W8_PRE_JULIA_PAPER_OUTLINE.md](W8_PRE_JULIA_PAPER_OUTLINE.md). Target: *Historia Mathematica*, 12-18 pp, ~5-7 person-days. |
 | **Two-toolkit hypothesis** (analytic-operator-calculus toolkit in QRs vs modular-machinery toolkit in Notebooks, ≥30 pp variance criterion per [HUNT5b_PREDICTIONS.md](HUNT5b_PREDICTIONS.md)) | Hunt 5b on Notebooks Ch. 16 + Ch. 32 spanning pair; ~1 week with vision-direct reads, or ~3-5 days if Chandra OCR works | Conditional on the experimental result — the framing is novel, the question is whether the data supports it | The big paper from this run: bibliographic evidence for *structured-multidimensional working mathematical representation*. Comm. Math. Phys. / Bull. AMS / cog-sci venue. |
 | **Diophantine bound priority on LN p. 343** (Ramanujan's explicit `O(...)` conjugate-product bounds for ⁵√2 and ⁷√2 vs Mahler 1933 / Schneider 1936) | Half-day verification (mpmath ~100 digits on specific (m,n); literature scan for 1960s-90s effective-Thue-Siegel coverage) | **~40%** | Standalone short note: priority result on effective approximations for specific algebraic irrationals. Math. of Computation note or Acta Arithmetica. |
 
@@ -590,11 +593,18 @@ historical findings as supporting backlog. I've started on that scaffold
 
 This is my own ranking, not a directive — redirect freely.
 
-1. **W8 — QR III pre-Julia iteration literature scan (CLOSED Hunt 1; OPEN W8).**
-   Half-day. The cleanest small win in the run, ~60-70% likely genuinely
-   new. Confirm whether Milnor / Douady-Hubbard / Ecalle / Belitskii cite
-   Ramanujan QR III; if no, draft "Pre-Julia iteration theory in
-   Ramanujan's third Quarterly Report".
+1. **W8 — pre-Julia iteration lit scan COMPLETED (✓).**
+   Verdict: GENUINELY_UNDER_NOTED at ~75% confidence. Milnor 0
+   "Ramanujan"; Berndt NB Part I 0 mentions of Schröder/Koenigs/Julia/
+   Fatou/Böttcher/Écalle across 17,228 lines. **Berndt himself never
+   drew the connection in 40+ years**. Paper outline at
+   [W8_PRE_JULIA_PAPER_OUTLINE.md](W8_PRE_JULIA_PAPER_OUTLINE.md);
+   *Historia Mathematica*, 12-18 pp, 5-7 person-days. Next decision:
+   draft now, or first close the remaining "couldn't check" sources
+   (Belitskii 1979 book, Targonski 1981 book, Encyclopaedia of Math,
+   Berndt 1984 BLMS, Douady-Hubbard Orsay, full Écalle 3-vol) to push
+   confidence higher. **The negatives on Milnor + Berndt alone are
+   probably already enough** for the paper.
 2. **Hunt 5b on the Notebooks (UNBLOCKED).**
    The big-paper candidate. Should be scoped to NB II Ch. 16 (theta) +
    Ch. 32 (Eisenstein-CFs) as the spanning pair per

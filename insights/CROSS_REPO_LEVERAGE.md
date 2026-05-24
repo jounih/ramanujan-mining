@@ -237,7 +237,7 @@ thinking about, what's useful to the sibling projects? Honest matrix:
 | Pass A: representation switching, β\*=c·π crossover, 10¹-10⁵× speedups | **strong (theta-dual for resonators)** | **strong (EqProp + boundary-reduced EBMs)** | weak (ARC sums are discrete program space, not continuous) |
 | B1 closure: cohomological irreducibility of g\* in H¹(Γ, V_k) | weak | **strong (hard architectural constraint)** | medium-speculative (compression-floor analogy) |
 | Hunt 5: toolkit-split / structured-multidimensional working representation | weak | **medium (hybrid scheduler routing)** | **strong (per-task-family rule subset)** |
-| W8 pre-Julia iteration theory (Schröder linearization, ψ₁ = C/F generator) | **medium-strong (nonlinear-oscillator steady-state)** | **medium (EqProp fixed-point convergence rate)** | weak |
+| W8 pre-Julia iteration theory (Schröder linearization, ψ₁ = C/F generator) ✓ lit scan confirmed under-noted at ~75% | **medium-strong (nonlinear-oscillator steady-state)** | **medium (EqProp fixed-point convergence rate)** | weak |
 | W7 / H10 Berndt-Dixit αβ=1 Mellin-pair | weak | **medium (spectral operator theory, ζ-Ξ machinery)** | weak |
 | Hunt 1 / Diophantine bound / 1729-K3 / Weber class invariants | weak | weak | weak |
 | **Methodology** (claim discipline, predict-before-test, near-match≠match, fail-closed certify, "did not pan out" log) | **medium (proof bookkeeping)** | **strong (H4 evidence accounting already aligned)** | **strong (ARC needs this for honest eval)** |

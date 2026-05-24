@@ -294,7 +294,7 @@ caveat. Still worth a one-line note.
 **Effort:** ~30 minutes (just careful re-read of QR II §3, lines 2086-2280,
 plus 1-2 paragraphs of write-up).
 
-### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — standalone paper scope ★ CLEANEST SMALL WIN
+### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — LIT SCAN COMPLETE; READY TO DRAFT ★
 
 **From parallel-Claude review.** QR III §4-§10 contains explicit fractional-
 iteration computations (Chebyshev semigroup F(x) = x²-2 with `F^n(x)` via
@@ -317,11 +317,36 @@ math-history note in a number-theory venue.
 **Effort:** literature scan ~0.5-1 day; paper ~2-3 weeks if the lit scan
 confirms novelty.
 
-**Probability genuinely under-noted:** **60-70%** (per parallel-Claude). The
-Ramanujan canon is curated by number theorists; the dynamics community
+**Probability genuinely under-noted:** **~75%** (upgraded after W8 agent
+lit scan, see [insights/W8_PRE_JULIA_LIT_SCAN.md](insights/W8_PRE_JULIA_LIT_SCAN.md)).
+The Ramanujan canon is curated by number theorists; the dynamics community
 (Milnor, Douady-Hubbard, Ecalle, Belitskii) doesn't typically read Ramanujan
-source material directly. This is the cleanest "small win that's actually
-novel" candidate in the run.
+source material directly. **Confirmed concretely:**
+- Milnor's *Dynamics in One Complex Variable*: zero "Ramanujan" anywhere.
+  Chronological table of 14 pre-1918 founders does NOT include Ramanujan.
+- Berndt's NB Part I: zero mentions of Schröder/Koenigs/Julia/Fatou/
+  Böttcher/Écalle across 17,228 lines including 150+ pages of Ch. 4 on
+  iteration of exponentials. Berndt frames Ramanujan's iteration work
+  in terms of Bell numbers + Comtet + Hardy's *Orders of Infinity*,
+  never drawing the Schröder-Koenig connection across 1981/1984/1985/2022.
+- Rosa 2026 Springer monograph (most recent historiography) names ~15
+  pre-1918 contributors in preview — Ramanujan NOT among them.
+- Robbins 2015 cites Schröder AND Ramanujan side-by-side BUT the
+  Ramanujan citation is to Amdeberhan-Moll Master Theorem, NOT QR III
+  iteration content. Cited-for-the-wrong-reason near-match (agent
+  flagged with appropriate discipline).
+
+**Paper outline ready** at
+[insights/W8_PRE_JULIA_PAPER_OUTLINE.md](insights/W8_PRE_JULIA_PAPER_OUTLINE.md).
+Target: *Historia Mathematica*, 12-18 pp, ~5-7 person-days drafting.
+Counterpoint section honestly addresses "Ramanujan-isn't-sphere-level-
+dynamics" qualification.
+
+Next decision: draft now vs first close the "couldn't check" gap
+(Belitskii 1979 book, Targonski 1981 book, Encyclopaedia of Math
+[network errored during scan], Berndt 1984 BLMS [paywalled],
+Douady-Hubbard 1984/85 Orsay, full Écalle 3-vol Orsay, ECIT proceedings).
+The Milnor + Berndt negatives alone are probably already enough.
 
 ### W7. B1.5 fractional-Fokker-Planck bridge experiment
 
