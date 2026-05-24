@@ -246,6 +246,41 @@ authors for personal use; they're now committed to this private repo at
 [downloaded-pdfs/](downloaded-pdfs/) (see
 [downloaded-pdfs/README.md](downloaded-pdfs/README.md) for the manifest).
 
+### H9. Hunt 5 calibration against Berndt *Notebooks Part 1* — NEWLY UNBLOCKED
+
+`ramanujankitap1.pdf` is Berndt *Ramanujan's Notebooks Part 1* (Springer 1985)
+Ch. 1-9, which includes Ch. 3-4 — Berndt's commentary on the Master Theorem
+and analysis material that Ramanujan re-presented (and extended) in QR I + QR II.
+
+**Test:** read Berndt's per-entry "rederivation" annotations on NB Ch. 3-4
+and cross-tag the QR I + QR II identities against this. If most of QR I's
+ten worked examples are "rederivations of NB Ch. 3 material", that adjusts
+the headline from "QR I is the Master Theorem manifesto" to "QR I is the
+Master Theorem manifesto, *presented to the Board as if novel even though
+most examples were already in NB Ch. 3*". That's a substantive sharpening
+of the Hunt 5 narrative.
+
+Effort: ~half-day for the cross-tagging pass. Output: a new column
+`berndt_nb1_status` in `analysis/results/qr_operator_tags.csv` per QR I/II
+section, plus a short addendum to diary 20.
+
+### H10. W7 fractional-bridge starter — Berndt-Dixit 2009 αβ=1 transformation
+
+`0904.1053v2.pdf` (Berndt & Dixit arXiv:0904.1053v2, 2009) contains an
+explicit Ramanujan transformation formula with **αβ=1 duality** structure —
+the same operator family as QR III §15 Mellin-pair reciprocity. It treats
+LN pp. 219-227 ("Copied from the Loose Papers", Watson's hand). Theorem 1.1
+gives a series-to-integral identity involving Γ'/Γ + Riemann Ξ, with αβ=1
+as the natural parameter pairing.
+
+**Why it matters for W7:** the W7 fractional-Fokker-Planck bridge needs a
+*concrete* Ramanujan identity that has the right operator-pair structure to
+test the bridge against. Berndt-Dixit's Theorem 1.1 is that identity — it
+already lives in the right operator-class.
+
+Effort: ~1 day to read carefully + sketch the bridge wiring. Then W7
+becomes a concrete numerical experiment rather than a scoping exercise.
+
 ### H5. Hunt 1a — Resolve Ono pagination ambiguity (Andrews-Berndt Part IV)
 
 Sub-lead from H1 closure. Read AB *Lost Notebook Part IV* (2013) chapter on

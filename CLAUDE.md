@@ -96,10 +96,15 @@ chatgpt-pro-mining/). It is **committed to this private repo** because the
 user obtained the volumes legitimately from the authors (Berndt et al.) for
 personal use; private repo so on-disk inclusion is fine, but **do not
 redistribute outside this repo**. See
-[downloaded-pdfs/README.md](downloaded-pdfs/README.md) for the manifest.
-The pack contains: AB *Lost Notebook* Parts I-IV; Berndt *Notebooks Part V*;
-Berndt-Yee RIMS 2002 Eisenstein CF survey; KSR notebooks-chapter; 1927
-Hardy-Aiyar-Wilson *Collected Papers* (public domain).
+[downloaded-pdfs/README.md](downloaded-pdfs/README.md) for the per-file
+manifest.
+The pack contains: Berndt *Notebooks Part 1* + Part V (front and back of the
+5-volume series; II/III/IV still missing); AB *Lost Notebook* Parts I-IV (complete);
+Berndt-Yee RIMS 2002 (Eisenstein-series survey); Berndt-Dixit arXiv 2009
+(αβ=1 Mellin-pair transformation, LN pp. 219-227); Berndt 2022 HRJ QR
+reproduction (duplicate of chatgpt-pro-mining); RMS *Ramanujan Rediscovered*
+front-matter preview only; KSR notebooks-chapter; 1927 Hardy-Aiyar-Wilson
+*Collected Papers* (public domain).
 
 The pack also has:
 - `priority_sources/quarterly_reports/` — Berndt 2022 HRJ reproduction (used for Hunt 5)
