@@ -41,25 +41,28 @@ the Notebooks corpus.
 
 ## Pre-registered predictions
 
-Both the human user AND ChatGPT Pro (via Erdős-style prompt) made
-predictions BEFORE the tagging. Their predictions are documented
-verbatim below.
+**Correction (2026-05-24):** an earlier version of this file attributed
+the meta-prediction "split breaks as provenance / holds as topic" to
+both the human user AND ChatGPT Pro. That was a transcription error —
+ALL pre-registered prediction content below is ChatGPT Pro's, delivered
+in response to the Erdős-style prompt designed in this session
+(Prompt 4 from the v0.8a follow-up: "reverse-Hunt-5b predictive
+validation"). The human user forwarded it without an independent
+prediction of their own.
 
-### Joint meta-prediction (both agents agree)
+The pre-registration remains valid as a single-agent prediction; the
+"two independent agents converge" framing was wrong and is retracted.
 
-> **"The QR-side/Notebooks-side split will break as a corpus/provenance
-> claim, but hold as a topic/toolkit claim."**
+### Meta-prediction (ChatGPT Pro)
+
+> **"Ch. 3-4 will break the QR-side/Notebooks-side split as a corpus/
+> provenance claim, but it will preserve the split as a topic/toolkit
+> claim. I would expect a clean analytic/RMT cluster, not a modular
+> surprise."**
 
 I.e., Ch. 3-4 will fire the QR-side analytic cluster, NOT the
 Notebooks-side modular cluster, even though it physically lives in a
 Notebooks volume.
-
-### Human user (jouni@helminen.co) prediction (verbatim, 2026-05-24)
-
-> My prediction: Ch. 3–4 will break the QR-side / Notebooks-side split
-> as a corpus/provenance claim, but it will preserve the split as a
-> topic/toolkit claim. I would expect a clean analytic/RMT cluster, not
-> a modular surprise.
 
 ### ChatGPT Pro prediction (verbatim, 2026-05-24)
 
