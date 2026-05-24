@@ -806,6 +806,209 @@ def test_v08b_seeds_buildable_and_recover_identity():
 
 
 # ---------------------------------------------------------------------------
+# Project C v0.8c — Stieltjes/Lambert occupation-number identity
+# (third case of modular_transform_with_correction; per ChatGPT Pro
+# proposer answer 2026-05-24; see diary 32)
+# ---------------------------------------------------------------------------
+
+def test_v08c_occupation_number_apply_fn_directly():
+    """Direct unit test of v0.8c's CASE C extension to
+    `modular_transform_with_correction`:
+
+    - `1/(exp(β·n) - 1)` returns a (new_summand, additive_correction,
+      (1, oo)) tuple per the v0.8b 3-tuple convention.
+    - Non-matching forms (Gaussian, log Bose-Einstein, plain exp) decline
+      cleanly without claiming to apply.
+    - Scalar prefactor `c · 1/(exp(β·n) - 1)` is handled — the `c` pulled
+      via `as_independent(n)` and threaded through both the dual summand
+      and the additive correction.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    beta = sp.Symbol("beta", positive=True)
+    op = get_operator("modular_transform_with_correction")
+
+    # Case C: occupation-number (symbolic β)
+    result_C = op.apply_fn(1 / (sp.exp(beta * n) - 1), n)
+    assert result_C is not None, "should match 1/(exp(β·n)-1)"
+    assert isinstance(result_C, tuple), "v0.8c uses v0.8b 3-tuple convention"
+    assert len(result_C) == 3
+    new_summand, correction, srange = result_C
+    assert srange == (1, sp.oo), "occupation-number is one-sided"
+    # Dual summand should contain divisor_sigma, Ei, expint, and 4π²/β
+    assert new_summand.has(sp.divisor_sigma), "dual uses divisor function d(m)"
+    assert new_summand.has(sp.Ei), "dual uses Ei exponential integral"
+    assert new_summand.has(sp.expint), "dual uses E_1 = expint(1, ·)"
+    assert new_summand.has(sp.pi), "dual β* = 4π²/β involves π"
+    # Correction should contain log(1/β), γ (EulerGamma), and 1/4
+    assert correction.has(sp.EulerGamma), "correction has γ contribution"
+    assert correction.has(sp.log), "correction has log(1/β)"
+
+    # Case C with concrete rational β
+    result_C2 = op.apply_fn(1 / (sp.exp(sp.Rational(1, 100) * n) - 1), n)
+    assert result_C2 is not None, "should match concrete β=1/100"
+    assert isinstance(result_C2, tuple) and len(result_C2) == 3
+
+    # Scalar prefactor: c · 1/(exp(β·n) - 1)
+    result_scaled = op.apply_fn(5 * 1 / (sp.exp(beta * n) - 1), n)
+    assert result_scaled is not None, "should match c·1/(exp(β·n)-1)"
+    new_s_scaled, corr_scaled, _ = result_scaled
+    # The scalar 5 should appear in both the summand and the correction
+    # (linearity of the identity).
+    assert (new_s_scaled / new_summand).simplify() == 5, (
+        f"scalar prefactor 5 should scale dual summand linearly; "
+        f"ratio simplified to {(new_s_scaled / new_summand).simplify()}"
+    )
+    assert (corr_scaled / correction).simplify() == 5, (
+        f"scalar prefactor 5 should scale correction linearly"
+    )
+
+    # Decline: Gaussian (different family)
+    result_gauss = op.apply_fn(sp.exp(-beta * n**2), n)
+    assert result_gauss is None, "modular_transform_with_correction declines Gaussian"
+
+    # Decline: log(1 - exp(-β n)) — that's v0.8b Case A, not v0.8c Case C
+    # (the dispatcher should match Case A first, not fall through to Case C)
+    result_log = op.apply_fn(sp.log(1 - sp.exp(-beta * n)), n)
+    assert result_log is not None
+    new_log, corr_log, _ = result_log
+    # The Case A result has log in the summand; Case C does not.
+    assert new_log.has(sp.log), "Case A dual uses log"
+    assert not new_log.has(sp.divisor_sigma), (
+        "Case A should not produce a divisor_sigma summand"
+    )
+
+    # Decline: plain exp(-β·n) (no `1/(... - 1)` denominator)
+    result_plain = op.apply_fn(sp.exp(-beta * n), n)
+    assert result_plain is None, (
+        "modular_transform_with_correction declines bare exp(-β·n)"
+    )
+
+
+def test_v08c_occupation_number_verifier_strict_agreement():
+    """v0.8c: the Stieltjes occupation-number identity verifies via the
+    MpmathVerifier end-to-end at n_digits=8.
+
+    Strict-agreement bound is set to 8 digits, not 30, because the dual
+    series converges as `1/m²` (polynomial) rather than `e^{-βn}`
+    (exponential) like v0.8b's Cases A/B. The `1/m²` truncation tail is
+    the well-documented bottleneck; see `analysis/26_v08c_*.py`'s header
+    for the convergence-regime analysis. At β=1/100 the verifier reaches
+    ~10 digits before truncation noise dominates; we test 8 with margin.
+
+    This is the strict v0.8c bar that the brief calls for in CLAUDE.md
+    gotcha 6: ≤1% rel-err across ≥2 dex β — satisfied at β ∈ {1e-3, 1e-2,
+    1e-1, 1.0} per `analysis/results/v08c_occupation_number_verification.csv`.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    from rkc.search.engine import _apply_operator
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("modular_transform_with_correction")
+
+    # Stieltjes occupation-number at β=1/100
+    expr = 1 / (sp.exp(sp.Rational(1, 100) * n) - 1)
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(op_id="modular_transform_with_correction")
+    state_after = _apply_operator(op_app, state_before)
+    assert state_after is not None, "apply_fn should succeed on β=1/100"
+    assert op_app.additive_correction is not None, (
+        "v0.8c uses 3-tuple convention; correction must be attached"
+    )
+    assert op_app.summand_range == (1, sp.oo)
+
+    verifier = MpmathVerifier(n_digits=8)
+    result = verifier.verify(state_before, [op_app], state_after)
+    assert result.passed, (
+        f"v0.8c occupation-number at β=1/100, 8 digits failed: {result.reason}"
+    )
+
+    # Smaller-β cell should ALSO pass — at β=1/1000 the dual converges
+    # even faster polynomially (β* larger).
+    expr_small = 1 / (sp.exp(sp.Rational(1, 1000) * n) - 1)
+    state_small = SearchState(payload=expr_small, metadata={"var": n})
+    op_app_small = OperatorApplication(op_id="modular_transform_with_correction")
+    state_small_out = _apply_operator(op_app_small, state_small)
+    assert state_small_out is not None
+    result_small = verifier.verify(state_small, [op_app_small], state_small_out)
+    assert result_small.passed, (
+        f"v0.8c occupation-number at β=1/1000, 8 digits failed: "
+        f"{result_small.reason}"
+    )
+
+
+def test_v08c_occupation_number_accepted_end_to_end(tmp_path):
+    """v0.8c acceptance gate: occupation-number seed at β=1/100 produces
+    ≥1 acceptance via the modular_transform_with_correction operator
+    end-to-end through the engine, with cost ratio > 1.
+
+    This is the strict v0.8c integration test the brief calls for: the
+    new Case C unblocks `1/(exp(β·n)-1)` (the bare occupation-number
+    sum) — distinct from v0.8b's log and Lambert seeds.
+    """
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = 1 / (sp.exp(sp.Rational(1, 100) * n) - 1)
+    state = SearchState(payload=expr, metadata={"var": n})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=8),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=40,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.8c occupation-number gate failed: 0 acceptances; "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    first = json.loads((tmp_path / "accepted.jsonl").read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "modular_transform_with_correction"
+    assert first["cost_ratio"] > 1.0, (
+        f"v0.8c occupation-number dual at β=1/100 should be cheaper "
+        f"(ratio={first['cost_ratio']})"
+    )
+    # Also verify the seed loads from SEED_LIBRARY and produces an accepted
+    # run (proves the seed-library entry is wired)
+    import tempfile
+    from rkc.search import SEED_LIBRARY, build_seed
+    assert "bose_occupation_beta_1em2" in SEED_LIBRARY, (
+        "v0.8c seed bose_occupation_beta_1em2 missing from SEED_LIBRARY"
+    )
+    seed = SEED_LIBRARY["bose_occupation_beta_1em2"]
+    seed_expr, var = build_seed(seed)
+    with tempfile.TemporaryDirectory() as tmp2:
+        state2 = SearchState(payload=seed_expr, metadata={"var": var})
+        reg2 = JsonlRegistry.with_dir(tmp2)
+        summary2 = search(
+            initial_state=state2,
+            proposer=RandomProposer(seed=42),
+            verifier=MpmathVerifier(n_digits=8),
+            router=RkcRouter(),
+            cost_model=RkcCostModel(),
+            registry=reg2,
+            budget=40,
+            max_depth=1,
+        )
+        assert summary2.n_accepted >= 1, (
+            f"v0.8c seed bose_occupation_beta_1em2 produced 0 acceptances; "
+            f"reasons={summary2.reject_reason_counts}"
+        )
+
+
+# ---------------------------------------------------------------------------
 # rkc benchmark — default suite runs the 14b regression
 # ---------------------------------------------------------------------------
 

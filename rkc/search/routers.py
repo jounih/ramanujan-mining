@@ -211,6 +211,9 @@ def _one_sided_exponential_family_cost(
     # Form 2: n / (R^n - 1) (Lambert canonical form after sp.together)
     if beta is None:
         beta = _try_extract_lambert_form_beta(sp.together(n_dep), var)
+    # Form 3 (v0.8c): 1 / (exp(β·n) - 1) (Stieltjes occupation-number form)
+    if beta is None:
+        beta = _v08c_try_extract_occupation_number_beta(n_dep, var)
     if beta is None:
         return None
     # Convert β to a float; if it has unevaluated π / log, use evalf
@@ -224,6 +227,49 @@ def _one_sided_exponential_family_cost(
     # the gaussian-family cost helper for consistency in cost units).
     import math
     return float(max(1, math.ceil(28.0 / beta_f)))
+
+
+def _v08c_try_extract_occupation_number_beta(
+    expr: sp.Expr, var: sp.Symbol,
+) -> sp.Expr | None:
+    """v0.8c: recognise `1 / (exp(β·var) - 1)`; return β or None.
+
+    The Stieltjes occupation-number form `Σ 1/(e^{βn}-1)` has the same
+    exponential-decay term-count signature as Bose-Einstein / Lambert
+    (`~log(1/tol)/β` for tolerance tol). We hand it the same cost
+    estimate so the modular_transform_with_correction operator's
+    improvement_ratio is honest in cost-units terms.
+    """
+    num, den = sp.fraction(expr)
+    if sp.simplify(num - 1) != 0:
+        return None
+    # den should be exp(β·var) - 1; den + 1 should equal exp(β·var).
+    den_p1 = sp.simplify(den + 1)
+    if not den_p1.has(var):
+        return None
+    if den_p1.func == sp.exp:
+        arg = den_p1.args[0]
+    elif den_p1.func == sp.Pow and den_p1.args[0] == sp.E:
+        arg = den_p1.args[1]
+    else:
+        return None
+    try:
+        poly = sp.Poly(sp.expand(arg), var)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 1:
+        return None
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if a0 != 0:
+        return None
+    try:
+        a1_f = float(a1.evalf() if hasattr(a1, 'evalf') else a1)
+    except (TypeError, ValueError):
+        return None
+    if a1_f <= 0:
+        return None
+    return a1
 
 
 def _try_extract_log_bose_einstein_beta(

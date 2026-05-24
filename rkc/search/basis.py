@@ -670,9 +670,11 @@ QR7_OPERATOR_BASIS: list[Operator] = [
     ),
     Operator(
         id="modular_transform_with_correction",
-        notes="v0.8b: One-sided (n ≥ 1) modular transformations with "
-              "additive scalar correction. Covers log-Bose-Einstein "
+        notes="v0.8b/v0.8c: One-sided (n ≥ 1) modular transformations with "
+              "additive scalar correction. v0.8b covers log-Bose-Einstein "
               "(Dedekind eta) and Lambert / E_2 quasi-modular cases. "
+              "v0.8c adds Stieltjes/Lambert occupation-number "
+              "Σ 1/(e^{βn}-1) (per ChatGPT Pro proposer answer; diary 32). "
               "Returns (new_summand, additive_correction, summand_range=(1, oo)) "
               "via the extended apply_fn protocol introduced in v0.8b.",
         apply_fn=_modular_transform_with_correction_apply,

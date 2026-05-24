@@ -163,6 +163,21 @@ SEED_LIBRARY: dict[str, Seed] = {
               "See diary 31 for the v0.8b numerical-verification table.",
     ),
 
+    # === Stieltjes / Lambert occupation-number (v0.8c) ===
+    "bose_occupation_beta_1em2": Seed(
+        id="bose_occupation_beta_1em2",
+        description="Bose-Einstein occupation Σ 1/(e^(βn)-1) at β=1/100",
+        expr_string="1 / (exp(Rational(1, 100) * n) - 1)",
+        kind="summand",
+        expected_route="v0.8c: modular_transform_with_correction (Stieltjes/Lambert)",
+        notes="Per ChatGPT Pro proposer answer 2026-05-24; uses Ei/E_1 in dual. "
+              "Distinct from v0.8b's Bose-Einstein-log (Case A) and Lambert/E_2 "
+              "(Case B) — this is the bare occupation-number sum (no log, no n "
+              "factor). Dual converges polynomially (~1/m²) so practical only "
+              "at small β; verified to rel-err ≤ 1e-9 at β=1/100 (see diary 32 "
+              "and analysis/26_v08c_*.py).",
+    ),
+
     # === Mock theta f3 (summand; v0.7+ target with MCR completion) ===
     "mock_theta_f3_q_p5": Seed(
         id="mock_theta_f3_q_p5",

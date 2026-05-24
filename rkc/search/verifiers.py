@@ -22,6 +22,33 @@ import sympy as sp
 from .core import OperatorApplication, SearchState, VerificationResult, Verifier
 
 
+# v0.8c: lambdify modules extension for number-theoretic functions.
+# `sympy.divisor_sigma(m, 0)` (number-of-divisors d(m)) appears in the
+# v0.8c Stieltjes/Lambert occupation-number dual summand. mpmath has no
+# native divisor_count, so we provide a thin shim. The shim rounds the
+# float-cast argument to the nearest positive integer and calls sympy's
+# pure-python divisor_count. This module-list is used by `_sum_evaluate`'s
+# lambdify call; v0.4 / v0.7 / v0.8b summands don't contain divisor_sigma
+# so they're unaffected.
+def _v08c_divisor_sigma_shim(x: Any, k: Any = 0) -> Any:
+    """mpmath-compatible callable for sympy's `divisor_sigma(m, k)`.
+
+    Only `k == 0` (the divisor-count case) is exercised by v0.8c; we
+    accept any `k` for shape-compat but only the k=0 path is verified.
+    """
+    m_int = int(round(float(x)))
+    if m_int < 1:
+        return mpmath.mpf(0)
+    k_int = int(round(float(k)))
+    return mpmath.mpf(int(sp.divisor_sigma(m_int, k_int)))
+
+
+_V08C_LAMBDIFY_MODULES = [
+    {"divisor_sigma": _v08c_divisor_sigma_shim},
+    "mpmath",
+]
+
+
 @dataclass
 class MpmathVerifier:
     """Numerical equality verifier.
@@ -272,8 +299,12 @@ class MpmathVerifier:
         free = {s for s in free if s.name != var.name}
         if free:
             return None
+        # v0.8c: use the extended modules list so summands containing
+        # sympy.divisor_sigma (Stieltjes occupation-number dual) lambdify
+        # cleanly. Backward-compatible: v0.4 / v0.7 / v0.8b summands don't
+        # reference divisor_sigma so the extension is a no-op for them.
         try:
-            f_callable = sp.lambdify(var, e, "mpmath")
+            f_callable = sp.lambdify(var, e, modules=_V08C_LAMBDIFY_MODULES)
         except Exception:
             return None
         try:
