@@ -384,6 +384,34 @@ operator-search engine shared with ARC, and (iv) the methodological
 discipline transfer — with W8 Schröder-for-nonlinear-oscillators as a
 real bonus for audio if it tests out.
 
+## Status — cross-repo branches landed (2026-05-24)
+
+All three sibling repos have been seeded with docs-only branches
+containing the transfer specs. Each branch is on `cross-repo/from-
+ramanujan-mining`, contains 4 new files (overview + 3 transfer docs),
+modifies no existing files, and is pushed to its respective remote.
+
+| Repo | Branch | Transfers | Commit | PR URL |
+|---|---|---|---|---|
+| aether-hardware-ebm | `cross-repo/from-ramanujan-mining` | X4 + X2 + X7 | (auto-noted by user editing) | <https://github.com/jounih/aether-hardware-ebm/pull/new/cross-repo/from-ramanujan-mining> |
+| arc-agi-ebm-agent | `cross-repo/from-ramanujan-mining` | X3 + X5 + X7 | (pushed) | <https://github.com/jounih/arc-agi-ebm-agent/pull/new/cross-repo/from-ramanujan-mining> |
+| aether-audio | `cross-repo/from-ramanujan-mining` | X1 + X6 + X7 | (pushed) | <https://github.com/jounih/aether-audio/pull/new/cross-repo/from-ramanujan-mining> |
+
+Each branch contains:
+- `docs/from-ramanujan-mining-overview.md` — entry point, transfer table,
+  merge-or-reject flow
+- 2-3 transfer-specific docs per the matrix above (X1/X4/X3 + X2/X5/X6 +
+  X7 everywhere)
+
+User edited the aether-hardware-ebm X4 doc post-landing to soften the
+language: "no-go theorem / forbidden class" → "high-confidence workload-
+screening rule, not yet a formal theorem owned by this repo, requires
+local re-derivation before being treated as a theorem here". This is the
+correct discipline for cross-repo imports: a B1-result-shaped argument
+that's strong in the source repo still needs local re-opening before
+becoming a theorem in the destination repo. The user's edit is the
+template to apply if reviewing the other branches' docs.
+
 ## See also
 
 - [BIG_IDEAS_REVIEW.md](BIG_IDEAS_REVIEW.md) — full ranking of run-internal
