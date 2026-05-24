@@ -1,69 +1,118 @@
 # Ramanujan Mining Run — Handoff Brief
 
 You are taking over an ongoing research run that has been running across
-multiple Claude Code sessions (remote + now local). The run is mining
-Ramanujan's mathematical work for novel insights in three areas:
+multiple Claude Code sessions. The run is mining Ramanujan's mathematical
+work for novel insights in three areas:
 **(1) computation acceleration**, **(2) energy-based modeling / Friston FEP**,
 **(3) "latent-space speedrun" — what compressed representations Ramanujan
 carried in his head**.
 
-This file is your orientation. Read it once, then start from `todo.md`.
+This file is your orientation. Read it once, then start from
+[todo.md](todo.md).
 
 ---
 
-## First five files to read (in order)
+## First six files to read (in order)
 
-1. `diary/00_charter.md` — mission, operating discipline, corpus inventory
-2. `diary/INDEX.md` — every diary entry with topic + source pointer
-3. `todo.md` — current state of every Pass A/B/C/D/E + cross-cutting deliverable
-4. `insights/CANDIDATE_INSIGHTS.md` — every substantiated finding, with confidence + novelty tags
-5. `insights/DID_NOT_PAN_OUT.md` — the equally-important refuted / corrected speculations
+1. [diary/00_charter.md](diary/00_charter.md) — mission, operating discipline, corpus inventory
+2. [diary/INDEX.md](diary/INDEX.md) — every diary entry with topic + source pointer
+3. [todo.md](todo.md) — current state of every Pass A/B/C/D/E + hunts + cross-cutting deliverable
+4. [insights/CANDIDATE_INSIGHTS.md](insights/CANDIDATE_INSIGHTS.md) — every substantiated finding, with confidence + novelty tags
+5. [insights/DID_NOT_PAN_OUT.md](insights/DID_NOT_PAN_OUT.md) — the equally-important refuted / corrected speculations
+6. [insights/BIG_IDEAS_REVIEW.md](insights/BIG_IDEAS_REVIEW.md) — running judgment on which big-picture ideas still have legs
 
-After those five files you'll know what's been done, what's pending, and what was tried and didn't work. Then read `insights/HUNT_MAP.md` for the prioritized targets that need primary-scan access.
+After those six files you'll know what's been done, what's pending, what was
+tried and didn't work, and where the open questions sit. Then read
+[insights/HUNT_MAP.md](insights/HUNT_MAP.md) for the prioritized targets and
+their current scan-blocked / unblocked status.
 
 ---
 
 ## File layout
 
 ```
-ramanujan/
+ramanujan-mining/
 ├── CLAUDE.md                  ← you are here
-├── todo.md                    ← live state of all passes
+├── todo.md                    ← live state of all passes + open action items
 ├── analysis/                  ← experiment scripts; numbered ##_*.py
-│   ├── 02..21_*.py            ← experiments (some skipped — see todo)
+│   ├── 02..23_*.py            ← experiments (some skipped — see todo)
 │   └── results/               ← every script writes a *.csv here
-├── diary/                     ← numbered ##_*.md entries
+├── chatgpt-pro-mining/        ← ★ LOCAL ONLY (gitignored, ~352 MB) ★
+│                                 ChatGPT-Pro-curated source pack
+├── diary/                     ← numbered ##_*.md entries (latest is the head)
 │   ├── 00_charter.md
 │   ├── INDEX.md               ← keep updated when adding entries
-│   └── 01..18_*.md            ← latest entry # is the head of the run
+│   └── 01..20_*.md
 ├── insights/                  ← synthesis documents
-│   ├── CANDIDATE_INSIGHTS.md  ← positive findings, organized A/B/C/D/E
+│   ├── CANDIDATE_INSIGHTS.md  ← positive findings, organized A/B/C/D/E + D1
 │   ├── DID_NOT_PAN_OUT.md     ← refuted / corrected / outstanding
-│   └── HUNT_MAP.md            ← priority targets for primary-scan access
-├── manifest/                  ← cataloging of primary sources (per Berndt-Andrews bibliography)
+│   ├── HUNT_MAP.md            ← priority targets and current unblock status
+│   └── BIG_IDEAS_REVIEW.md    ← which big-picture ideas have legs after each pass
+├── manifest/                  ← cataloging of primary sources
 ├── sota_comparisons/          ← what published work covers vs doesn't
 ├── corpora/                   ← primary sources
 │   ├── scans/                 ← raw facsimile PDFs (gitignored above 1MB)
 │   ├── transcriptions/        ← LaTeX/unicode transcriptions
 │   │   ├── README.md          ← format spec
-│   │   ├── operator_tagging_schema.py  ← 6-operator schema for Hunt 5
-│   │   └── quarterly_reports/ ← naming spec: qr<N>_section_<M>.tex
-│   ├── RamanujanMachine/      ← vendored 3rd-party (Trinity College Dublin project)
+│   │   ├── operator_tagging_schema.py  ← 6-operator schema (now QR-verified)
+│   │   └── quarterly_reports/ ← qr_section_index.json + tagging deliverables
+│   ├── RamanujanMachine/      ← vendored 3rd-party (Trinity College Dublin)
 │   └── RamanujanMachine_v0/   ← older vendored fork
 └── rkc/                       ← STANDALONE PACKAGE — kernel-fingerprint recognizer
     ├── __init__.py, recognizer.py, registry.py, routing.py, costs.py
-    ├── completions.py         ← (if V1 has landed) wires MCR route to exp 17
+    ├── completions.py         ← MCR route wired to exp 17 Eichler integral
     ├── README.md              ← 1-page worked example
-    └── tests/                 ← pytest unit tests; MUST stay green
+    └── tests/                 ← pytest unit tests; MUST stay green (50/50)
 ```
 
-There's also `.venv/` at `ramanujan/.venv/` — activate before running scripts.
+The repo is on `main` branch at [github.com/jounih/ramanujan-mining](https://github.com/jounih/ramanujan-mining)
+(private). Default expectation: **commit & push frequently** — the user's
+preference, and diary entries are the durable artifacts.
+
+---
+
+## ★ chatgpt-pro-mining/ — the local-only high-leverage corpus ★
+
+The `chatgpt-pro-mining/` directory (gitignored, ~352 MB) is the curated
+source pack ChatGPT-Pro assembled to unblock the Hunts. **This is the most
+operationally important resource in the repo** for any hunt or notebook-tagging
+work; without it you are blind to the primary sources.
+
+What's inside (per Hunt status as of diary 20):
+
+| Hunt | What | Where in pack | Status |
+|---|---|---|---|
+| 1 | Lost Notebook pp. 341-343 (1729/K3) + Ono-Trebat-Leder arxiv:1510.00735 | `priority_sources/lost_notebook_pages_341_343/`, `priority_sources/open_access_context_pdfs/ono_trebat_leder_*.pdf` | **UNBLOCKED** |
+| 2 | Modular equations at level ≥23 | `primary_originals/pdfs/notebooks/notebook2.pdf` (facsimile) | **PARTIAL** (missing Berndt Part III-V commentary) |
+| 3 | Eisenstein-style CFs | `priority_sources/open_access_context_pdfs/bhatnagar_*.pdf` + notebook facsimiles | **PARTIAL** (missing Berndt Part V ch. 32) |
+| 4 | Unproven class invariants | `primary_originals/pdfs/notebooks/lost_notebook.pdf` (facsimile) | **PARTIAL** (missing Andrews-Berndt vol I supp.) |
+| 5 | Quarterly Reports operator tagging | `priority_sources/quarterly_reports/ramanujan_quarterly_reports_2022_HRJ_Berndt.{pdf,txt,operator_blocks.csv}` | **CLOSED** (see diary 20) |
+| 5b | Notebooks operator tagging | `primary_originals/pdfs/notebooks/` (1,149 facsimile pages across NB I-III + Lost Notebook) | **UNBLOCKED** |
+| 6 | Ramanujan-Sato at moonshine levels | facsimile NB II + open-access PDFs | **PARTIAL** (missing Cooper *Theta Functions*) |
+
+The pack also has:
+- `priority_sources/quarterly_reports/` — Berndt 2022 HRJ reproduction (used for Hunt 5)
+- `primary_originals/page_images/` — 1,149 extracted page-images from the four facsimile PDFs
+- `phase2_context/formula_record_schema.json` + `operator_tag_taxonomy.json` — alternative 20-operator broader taxonomy
+- `phase2_context/run_chandra_ocr.py` + `wren_ramanujan_downloader.py` — auxiliary scripts
+- `PACK_MANIFEST.csv` + `PDF_MANIFEST.csv` with SHA-256 hashes
+
+What's **not** in the pack (copyrighted AMS/Springer): Andrews-Berndt *Lost
+Notebook Part IV*, Berndt *Notebooks Part V*, Cooper's *Ramanujan's Theta
+Functions*, Ramanujan: Letters and Commentary. These are the gap. Trinity/Wren
+IIIF page images are also not included but a downloader is.
+
+When you need a PDF or page image, look in this pack first. **If you OCR or
+transcribe any facsimile page, drop the output under
+`corpora/transcriptions/<source-tag>/` so it lands in the committed history
+even though the source images stay local.**
 
 ---
 
 ## Conventions (non-negotiable)
 
 ### Provenance flags
+
 Every cited identity carries one of:
 - **(scan)** — primary source, page-cited; transcription expected in `corpora/transcriptions/`
 - **(transcription)** — Berndt/Andrews printed text or verified GitHub mirror, cited
@@ -72,167 +121,264 @@ Every cited identity carries one of:
 If a citation lacks a provenance flag, treat it as suspect.
 
 ### Diary discipline
+
 - Every experiment session writes a numbered, dated entry in `diary/`.
 - Each entry: `# Diary <N> — <topic>` + Date + Source/Status + body.
-- Body: setup, what you did, numbers, surprises, one-line bottom-line claim with confidence tag (high/medium/low/indicative).
-- Update `diary/INDEX.md` when you add an entry.
+- Body: setup, what you did, numbers, surprises, one-line bottom-line claim
+  with confidence tag (high / medium / low / indicative).
+- Update [diary/INDEX.md](diary/INDEX.md) when you add an entry.
+
+### Documentation discipline
+
+- **Always commit findings to a markdown file so they survive context-window
+  rotation.** Working state in the conversation is volatile; .md files in the
+  repo are not.
+- New synthesis that crosses multiple experiments goes in `insights/`.
+- Per-experiment findings go in `diary/`.
+- Action items go in `todo.md` (and TaskCreate during the working session).
 
 ### Claim discipline (strict)
-- Every numerical claim must be reproducible by running the script (no orphan numbers).
-- Tag speculation explicitly. The boundary between observation and interpretation must be clear in every diary entry.
-- **If a "near match" exists in an experiment, report it as a near-match with the specific deviation pattern — never as a match.** Noisy positives are the worst possible outcome.
-- The strict bar for proportionality claims: ≤1% relative deviation across ≥2 orders of magnitude in the swept parameter.
-- Honest "did not pan out" entries go in `insights/DID_NOT_PAN_OUT.md`. The credibility of the run depends on this file growing alongside `CANDIDATE_INSIGHTS.md`.
+
+- Every numerical claim must be reproducible by running the script
+  (no orphan numbers).
+- Tag speculation explicitly. The boundary between observation and
+  interpretation must be clear in every diary entry.
+- **If a "near match" exists in an experiment, report it as a near-match with
+  the specific deviation pattern — never as a match.** Noisy positives are
+  the worst possible outcome.
+- The strict bar for proportionality claims: ≤1% relative deviation across
+  ≥2 orders of magnitude in the swept parameter.
+- Honest "did not pan out" entries go in `insights/DID_NOT_PAN_OUT.md`. The
+  credibility of the run depends on this file growing alongside
+  `CANDIDATE_INSIGHTS.md`.
 
 ### Bug-find protocol (per T7's mock-theta v0 bug)
-The strongest single methodological lesson from the run: **rerun prior work with explicit "verify rigorously" instructions every few experiments**. T7 caught a real character-parity bug in v0 of the mock-theta toy that the original session's introspection missed. If you find a similar bug while extending earlier work, retract the prior claim in `DID_NOT_PAN_OUT.md` and ship the fix — never paper over.
+
+The strongest single methodological lesson from the run: **rerun prior work
+with explicit "verify rigorously" instructions every few experiments**. T7
+caught a real character-parity bug in v0 of the mock-theta toy that the
+original session's introspection missed. If you find a similar bug while
+extending earlier work, retract the prior claim in `DID_NOT_PAN_OUT.md` and
+ship the fix — never paper over.
 
 ---
 
 ## Environment
 
-### Local vs remote
-- **This file was written from the REMOTE Claude-Code-on-the-web session.** The remote env has constraints the local env may not: no outbound HTTP except github/pypi/npm + WebSearch tool; no archive.org/Trinity/arXiv direct; no binary-PDF download; no PARI/GP (cypari2 fails to build); ephemeral container.
-- **The local env almost certainly has more capabilities** — full network for arXiv/Wikipedia, ability to install PARI/GP, persistent filesystem for large PDFs, and (critically) direct access to wherever the user is storing primary-source scans.
-- **If you need a PDF that the remote agent couldn't fetch, fetch it.** Just commit it under `corpora/scans/` with a SHA-256 manifest; the `.gitignore` excludes files >1MB so it stays out of history. Add a `corpora/scans/MANIFEST.tsv` if multiple PDFs land.
+### Local context (this repo lives on the user's machine)
+
+- macOS / zsh, full network access (arXiv/Wikipedia/HuggingFace OK).
+- Python 3.12.7 in `.venv/` (3.11 not available on system; 3.12 is fine for
+  sympy 1.14 + mpmath 1.3).
+- PARI/GP can be installed locally if needed for class-number /
+  modular-polynomial work.
+- The user's primary-source corpus is at `chatgpt-pro-mining/` (gitignored,
+  see section above).
 
 ### Dependencies
+
 ```
-python 3.11
+python 3.12 (3.11 originally specified; 3.12 substitute works)
 sympy 1.14
 mpmath 1.3
 numpy
 pytest (for rkc/tests)
 ```
-All in `ramanujan/.venv/`. Activate: `source ramanujan/.venv/bin/activate`.
-If you need PARI/GP (for class-number / modular-polynomial work), install it locally and document the dependency in any new script.
 
-### Branch
-- Working branch: `claude/ramanujan-original-works-4TwPG`
-- Branch is merged to `Main` as of commit `599d5a5`. Re-merge after major work, or keep developing on the feature branch and merge in one go.
-- **Default expectation**: commit & push to the feature branch frequently. The remote env has a stop-hook that complains about untracked files; the user's preference is "commit and push frequently."
+All in `.venv/`. Activate: `source .venv/bin/activate`.
 
----
+For OCR of handwritten facsimiles (Hunt 1, Hunt 5b on the Notebooks):
+**Chandra OCR** (datalab-to/chandra on GitHub, weights on HuggingFace) is the
+recommended tool — was tested specifically on Ramanujan's letters to Hardy.
+Install + benchmark before bulk OCR work. The pack ships a wrapper at
+`chatgpt-pro-mining/.../phase2_context/run_chandra_ocr.py`.
 
-## Git workflow
+### Git workflow
 
 ```bash
 # Standard cycle when finishing an experiment:
-git add ramanujan/analysis/NN_*.py ramanujan/analysis/results/NN_*.csv ramanujan/diary/NN_*.md
+git add analysis/NN_*.py analysis/results/NN_*.csv diary/NN_*.md
 git commit -m "Exp NN: <one-line summary>"
-git push origin claude/ramanujan-original-works-4TwPG
+git push origin main
 
-# Do NOT push to Main directly. Merge feature → Main with --no-ff after major checkpoints.
 # Do NOT use --no-verify or --no-gpg-sign.
 # Do NOT amend published commits.
+# Do NOT force-push to main.
 ```
 
-If the user asks you to "merge to Main" again: use `--no-ff` so the merge commit is easy to identify when they split repos. The plan is to split `ramanujan/` into its own repository — see git-filter-repo notes below.
+The repo is standalone on `main` (no feature branches required; create one
+if doing a long-running spike).
 
 ---
 
-## Current state (as of handoff, branch HEAD at commit `f289a51` or later)
+## Current state (as of diary 20)
 
 ### Completed
-- **Pass A (representation switching)**: 5 kernels substantiated (Gaussian theta, Bose-Einstein partition, Lambert-Eisenstein, π methods, divisor sum). Universal β\* = c·π crossover pattern (§A6); per-term-cost vs term-count framing (§A7).
-- **Pass B (recognizer)**: shipped as standalone `rkc/` package. v2 hits **55/55 = 100%** on the routing benchmark with macro precision 1.00. **50 passing unit tests** (35 base + 15 completions). `MODULAR_COMPLETION_REQUIRED` route wired through to Watson-Hickerson Eichler integral — **f3 mock-theta inputs return numerical values to ≥30 digits with a certificate**; f5/f7 surface `CompletionNotImplemented` honestly.
-- **Pass D (FEP × mock-modular bridge) — CLOSED for the candidate-family approach**: forward direction confirmed as an *identity* (lattice gas → f(q) to 25-50 digits); reverse direction *falsified for 20 candidates across 5 structurally-different families* (Exp 16: 4 marginal divergences, Exp 18: 8 bounded-at-cusp, Exp 20: 4 Wigner-negativity, Exp 21: 3 path-measure, Exp 22: transfer-matrix eigenstructure). Two decisive structural arguments anchor the closure (Exp 21 path-direction; Exp 22 (K+1)² dim mismatch + Watson-reduction). **The cohomological-irreducibility conjecture is essentially established at medium-high → high confidence**: g\* is irreducibly an Eichler cocycle in H¹(Γ, V_k).
-- **Cross-cutting deliverables**: `insights/CANDIDATE_INSIGHTS.md` (positive findings), `insights/DID_NOT_PAN_OUT.md` (14 entries + 6 outstanding), `insights/HUNT_MAP.md` (scan-blocked targets), `corpora/transcriptions/operator_tagging_schema.py` (6-operator schema ready for Hunt 5).
 
-### Blocked on primary scans (priority order per user-confirmed sourcing pipeline)
-1. **Berndt-Rankin Quarterly Reports** → unlocks Hunt 5 (operator-tagging test of latent-space-speedrun hypothesis). **Highest-leverage single source — this is the user's central question.** Schema is ready at `corpora/transcriptions/operator_tagging_schema.py`.
-2. **Andrews-Berndt Lost Notebook Part IV pp. 341-343** → unlocks Hunt 1 (1729-K3 inventory).
-3. **Berndt Notebooks Part V Ch. 32** → unlocks Hunt 3 (Eisenstein-style CFs) — would add the recognizer's missing quasi-modular (weight-2 anomaly) registry entry.
-4. **Berndt Notebooks Parts III-V** modular equations at levels 23+ → unlocks Hunt 2.
-5. **Cooper Theta Functions** → unlocks Hunt 6 (RS series at moonshine levels).
-6. **Andrews-Berndt LN Vol I supplement pp. 200-220** → unlocks Hunt 4 (class invariants); partial work in Exp 08 verified 8 invariants via PSLQ.
+- **Pass A (representation switching)**: 5 kernels substantiated (Gaussian
+  theta, Bose-Einstein partition, Lambert-Eisenstein, π methods, divisor
+  sum). Universal β\* = c·π crossover pattern (§A6); per-term-cost vs
+  term-count framing (§A7).
+- **Pass B (recognizer)**: shipped as standalone `rkc/` package. v2 hits
+  **55/55 = 100%** on the routing benchmark with macro precision 1.00.
+  **50 passing unit tests** (35 base + 15 completions).
+  `MODULAR_COMPLETION_REQUIRED` route wired through to Watson-Hickerson
+  Eichler integral — **f3 mock-theta inputs return numerical values to
+  ≥30 digits with a certificate**; f5/f7 surface `CompletionNotImplemented`
+  honestly.
+- **Pass D (FEP × mock-modular bridge) — CLOSED for the candidate-family
+  approach**: forward direction confirmed as an *identity* (lattice gas →
+  f(q) to 25-50 digits); reverse direction *falsified for 20 candidates
+  across 5 structurally-different families* (Exp 16, 18, 20, 21, 22). Two
+  decisive structural arguments anchor the closure (Exp 21 path-direction;
+  Exp 22 (K+1)² dim mismatch + Watson-reduction). **The cohomological-
+  irreducibility conjecture is essentially established at medium-high →
+  high confidence**: g\* is irreducibly an Eichler cocycle in H¹(Γ, V_k).
+- **Hunt 5 (CLOSED, diary 20)**: 80% prediction falsified at 57.6% coverage;
+  4 of 6 predicted operators never fire; revised 7-operator basis covers
+  ~91%. QR III is fractional-iteration / Hardy-orders / operator-calculus,
+  not modular forms.
+- **Cross-cutting deliverables**: CANDIDATE_INSIGHTS.md, DID_NOT_PAN_OUT.md
+  (15 entries + outstanding), HUNT_MAP.md (with current Hunt-by-Hunt
+  unblock status), BIG_IDEAS_REVIEW.md (running judgment on the 7 big-
+  picture ideas from the brainstorm).
 
-When material arrives, drop under `corpora/scans/<source-tag>/` (or `corpora/transcriptions/<source-tag>/` if pre-OCR'd). The `.gitignore` excludes binary facsimiles >1MB.
+### Open / actionable (see [todo.md](todo.md) for the live list)
 
-### Next-pass leads (tractable WITHOUT scans, in order of value)
+**Hunts with primary-source material now in the pack:**
+- **Hunt 1**: UNBLOCKED (LN pp. 341-343 page images + Ono K3 paper). Test
+  the 60-80% K3-parameterisation prediction.
+- **Hunt 5b**: UNBLOCKED (1,149 notebook facsimile pages). Operator-tagging
+  on the Notebooks, scoped to chapters that test the 4 operators that
+  didn't fire in the QRs (modular S-transform, Eisenstein normal-ordering,
+  q-shift, class-field Galois average).
+- **Hunts 2, 3, 4, 6**: PARTIAL unblock (have facsimiles; missing the
+  copyrighted Berndt commentary books). Manual reading of facsimiles is
+  possible but slower.
 
-1. **f5/f7 Watson-Hickerson instrumentation for `rkc/completions.py`** — requires transcribing Hickerson 1988 / Berndt-Chan identities for the higher-order mock thetas; out of scope in the original remote env but natural with local network / PDF access. After this, the recognizer is end-to-end complete on all three registered mock-theta families.
-2. **`recognize_composite` `numerical_completion` propagation** — cheap fix flagged in diary 16; deferred. Wire the opt-in flag through to per-component calls so composites return values not flags.
-3. **Watson-identity calibration regime extension** — the W-partner formula in `analysis/17_*.py` is calibrated only for α ≤ 0.7; in (0.7, π) results are tagged `regime="near-cusp-warning"` with uncomputed q₁⁴ correction. Computing the next-order correction extends the calibrated regime.
-4. **The cohomological generative model** — given the B1 closure, the question shifts from "find the shadow as a functional" to "build a generative model that has H¹(Γ, V_k) cocycle structure as a primitive." This is research-grade math, not a well-scoped experiment. See diary 19 §"what next" for entry points.
+**Tractable without scans:**
+- f5/f7 Watson-Hickerson instrumentation for `rkc/completions.py` (needs
+  Hickerson 1988 / Berndt-Chan transcriptions; check pack first).
+- Watson-identity calibration regime extension (α > 0.7).
+- Architecture paper draft for the recognizer.
+- Closure paper draft for the cohomological-irreducibility conjecture.
 
-### Numbered experiment slots that are FREE
-- **Experiments**: 23+ are clear. (00, 01 reserved historically; 02-22 used.)
-- **Diary entries**: 20+ are clear.
+### Numbered slots that are FREE
+
+- **Experiments**: 24+ are clear. (00, 01 reserved; 02-23 used.)
+- **Diary entries**: 21+ are clear.
 
 ---
 
 ## Known gotchas (these will bite you if you don't watch for them)
 
-1. **Silent-zero hazard at Gauss sums q ≡ 2 mod 4** (§A4). Built into `rkc/registry.py` as a degeneracy detector. If you add a new Gauss-sum-related kernel, *test the degeneracy branch explicitly* — sympy auto-reduces `2n²/6 → n²/3` before the matcher sees it; use `recognize_with_raw_string` for AST-pre-reduction work.
+1. **Silent-zero hazard at Gauss sums q ≡ 2 mod 4** (§A4). Built into
+   `rkc/registry.py` as a degeneracy detector. If you add a new
+   Gauss-sum-related kernel, *test the degeneracy branch explicitly* —
+   sympy auto-reduces `2n²/6 → n²/3` before the matcher sees it; use
+   `recognize_with_raw_string` for AST-pre-reduction work.
 
-2. **Character parity in mock-theta shadows** (T7's bug). The unary theta shadow of Ramanujan's f3 uses the **ODD primitive character mod 12**, not the even Kronecker character. Using the even one makes the weight-3/2 theta with `n` in front vanish identically. Documented in `diary/12_*.md` and `DID_NOT_PAN_OUT.md` R2.
+2. **Character parity in mock-theta shadows** (T7's bug). The unary theta
+   shadow of Ramanujan's f3 uses the **ODD primitive character mod 12**,
+   not the even Kronecker character. Using the even one makes the
+   weight-3/2 theta with `n` in front vanish identically. Documented in
+   `diary/12_*.md` and `DID_NOT_PAN_OUT.md` R2.
 
-3. **Mock-theta v0 asymptotic claim was wrong** (T7). The "1/√β" asymptotic for the bias is incorrect; the actual modular-only residual saturates at the Watson-Hickerson radial limit 4/3. See `DID_NOT_PAN_OUT.md` R1.
+3. **Mock-theta v0 asymptotic claim was wrong** (T7). The "1/√β" asymptotic
+   for the bias is incorrect; the actual modular-only residual saturates at
+   the Watson-Hickerson radial limit 4/3. See `DID_NOT_PAN_OUT.md` R1.
 
-4. **Bits-per-term is a misleading routing metric** (§A7). The recognizer's cost estimator must use per-term complexity, not just term count. HRR uses 4× fewer terms than pentagonal recurrence at n=10⁵ but is comparable in wall-clock without binary-splitting + FLINT.
+4. **Bits-per-term is a misleading routing metric** (§A7). The recognizer's
+   cost estimator must use per-term complexity, not just term count. HRR
+   uses 4× fewer terms than pentagonal recurrence at n=10⁵ but is comparable
+   in wall-clock without binary-splitting + FLINT.
 
-5. **Cross-validate before benchmarking** any new representation-switching pair. At least one (kernel, β) cell must match to ≥40 digits across both representations before you trust the comparison. See `analysis/12_*.py` for the template: it caught a sign-factor bug and a Bernoulli-prefactor cancellation that would have shipped silently otherwise.
+5. **Cross-validate before benchmarking** any new representation-switching
+   pair. At least one (kernel, β) cell must match to ≥40 digits across both
+   representations before you trust the comparison. See `analysis/12_*.py`
+   for the template: it caught a sign-factor bug and a Bernoulli-prefactor
+   cancellation that would have shipped silently otherwise.
 
-6. **Strict claim discipline at candidate 3 of any "shadow probe"**. Any path-measure / Eichler-shaped candidate is the structurally-most-likely-to-match candidate in the FEP × mock-modular investigation. A noisy positive at one of those is the worst-possible outcome — hold the ≤1% / ≥2-dex bar ruthlessly. Falsify cleanly or confirm cleanly; nothing in between.
+6. **Strict claim discipline at candidate 3 of any "shadow probe"**. Any
+   path-measure / Eichler-shaped candidate is the structurally-most-likely-
+   to-match candidate in the FEP × mock-modular investigation. A noisy
+   positive at one of those is the worst-possible outcome — hold the
+   ≤1% / ≥2-dex bar ruthlessly. Falsify cleanly or confirm cleanly; nothing
+   in between.
 
----
-
-## Repo-split plan (when the user asks)
-
-The `ramanujan/` directory was merged into `Main` alongside an unrelated `studio-gear-configurator` project as a temporary co-residence. The user plans to split. The clean extraction is:
-
-```bash
-# Clone a working copy, then:
-git filter-repo --path ramanujan/ --path-rename ramanujan/:.
-
-# This moves ramanujan/ contents to repo root and drops everything else.
-# Run `git remote remove origin && git remote add origin <new-repo-url>`,
-# then push to the new repo.
-```
-
-The vendored `RamanujanMachine/` and `RamanujanMachine_v0/` (~14K of ~17.7K lines on the merge) are 3rd-party code. Consider replacing with `git submodule` after the split — they're large and rarely modified.
+7. **Hunt 5 lesson: predicted operator bases can be wrong without the
+   underlying hypothesis being wrong.** The 6-operator HUNT_MAP §5 basis
+   was falsified at 57.6%, but a revised 7-operator basis covers 91%. When
+   running Hunt 5b on the Notebooks, do not assume the QR basis carries
+   over — test the *predicted* basis (modular S, q-shift, Eisenstein,
+   class-field) afresh against actual Notebook content. The QR-vs-Notebooks
+   toolkit-contrast hypothesis is the real test.
 
 ---
 
 ## Bottom line
 
-The intellectual win of this run is **the lens + the catalogue + a closed conjecture**, not new theorems:
-- An operational kernel-fingerprint recognizer with documented failure modes, end-to-end on mock-theta f3;
-- A universal β\* = c·π crossover pattern across five independent kernels;
-- A **closed-verdict** FEP × mock-modular bridge story: forward direction = identity, reverse direction falsified for 20 independent candidates across 5 structurally-different families, sharpened cohomological conjecture established at medium-high → high confidence;
+The intellectual win of this run so far is **the lens + the catalogue + a
+closed conjecture + a partial-falsification-with-correction**, not new
+theorems:
+
+- An operational kernel-fingerprint recognizer with documented failure modes,
+  end-to-end on mock-theta f3 (Pass B).
+- A universal β\* = c·π crossover pattern across five independent kernels
+  (Pass A).
+- A **closed-verdict** FEP × mock-modular bridge story: cohomological-
+  irreducibility conjecture established (Pass D, ~20 candidates across 5
+  structurally-different families all fail).
+- **The QR-as-Mellin/operator-calculus finding** (Hunt 5, diary 20): the
+  Quarterly Reports are not a modular-forms document at all; QR III is
+  fractional iteration / Hardy orders / operator calculus. The
+  latent-space-speedrun hypothesis is supported with a corrected
+  7-operator basis (91% coverage).
 - The honest "did not pan out" log.
 
-The deepest research question — *what compressed representations did Ramanujan carry in his head?* — is blocked on Hunt 5 (Quarterly Reports operator tagging). When those scans arrive, **that's the single highest-leverage experiment remaining in the entire run**. The 6-operator schema is ready and waiting.
+The deepest research question — *what compressed representations did
+Ramanujan carry in his head?* — is now testable on a different corpus:
+**Hunt 5b on the Notebooks** is the natural next test. Confirming a
+*different but still small* toolkit in the Notebooks (vs. the QR toolkit)
+would make the QR-vs-Notebooks contrast the headline cog-sci finding.
 
-Carry on with the same discipline. Commit & push frequently. Diary entries are the durable artifacts.
+Carry on with the same discipline. Commit & push frequently. Diary entries
+are the durable artifacts.
 
 ---
 
 ## Quick-start for a fresh Claude Code session
 
 ```bash
-# 1. Get the latest branch
-git fetch origin claude/ramanujan-original-works-4TwPG
-git checkout claude/ramanujan-original-works-4TwPG
+# 1. Latest main
 git pull --ff-only
 
-# 2. Set up the venv (skipped from git history; ~30 seconds)
-cd ramanujan
-python3.11 -m venv .venv
+# 2. Activate venv (already set up)
 source .venv/bin/activate
-pip install -r requirements.txt
 
-# 3. Verify everything works
-python -m pytest rkc/tests/        # expect 50/50 passing
-python analysis/14b_recognizer_v2_benchmark.py  # expect 55/55 = 100%
+# 3. Verify everything works (<30 s)
+python -m pytest rkc/tests/                      # expect 50/50 passing
+python analysis/14b_recognizer_v2_benchmark.py   # expect 55/55 = 100%
+python corpora/transcriptions/operator_tagging_schema.py  # expect 6/6 OK
+python analysis/23_hunt5_qr_operator_tagging.py  # expect 57.6% overall coverage
 
-# 4. Read CLAUDE.md (this file), then todo.md, then insights/CANDIDATE_INSIGHTS.md
-# 5. Start work — incoming scans go under corpora/scans/<source-tag>/
+# 4. Read CLAUDE.md (this file), then todo.md, then insights/BIG_IDEAS_REVIEW.md
+# 5. Start work — incoming primary sources land under
+#    chatgpt-pro-mining/ (local-only) or corpora/scans/ (gitignored >1MB)
 ```
 
-If a primary-source scan arrives:
-1. Drop the PDF under `corpora/scans/<source-tag>/`.
-2. If you OCR or transcribe, put the text under `corpora/transcriptions/<source-tag>/`.
-3. For Quarterly Reports specifically: use the schema at `corpora/transcriptions/operator_tagging_schema.py`, file under `corpora/transcriptions/quarterly_reports/qr<N>_section_<M>.tex`.
-4. Then dispatch a Hunt-N agent (see `insights/HUNT_MAP.md` for the specific prediction each scan is meant to test).
+If a new primary-source artefact arrives:
+1. Drop the PDF or page images under `chatgpt-pro-mining/` (if part of
+   the bundled pack) or `corpora/scans/<source-tag>/` (if separate).
+2. If you OCR or transcribe, put the text under
+   `corpora/transcriptions/<source-tag>/` so the transcription itself lands
+   in git history even though the binary stays local.
+3. For Quarterly Reports specifically: use the schema at
+   `corpora/transcriptions/operator_tagging_schema.py`, output under
+   `corpora/transcriptions/quarterly_reports/`.
+4. For Notebooks (Hunt 5b): same schema, but expect to need to **add new
+   operators** to it as new kinds of moves appear; the QR-derived schema
+   may be incomplete for the Notebooks corpus.
+5. Then dispatch a Hunt-N agent (see `insights/HUNT_MAP.md` for the
+   specific prediction each scan is meant to test) or work through it
+   directly.
