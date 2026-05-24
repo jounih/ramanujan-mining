@@ -267,6 +267,31 @@ Bose-Einstein, Lambert. Mock-theta-via-completion is the remaining one
 (needs Watson-Hickerson plumbing in apply_fn; rkc's completions module
 already has the route for f3 to ≥30 digits — would need to wire it).
 
+### T0.5. Project C v0.8c: Stieltjes occupation-number → SHIPPED (diary 32)
+
+**Status:** SHIPPED. Stieltjes/Lambert occupation-number identity for
+`Σ 1/(e^{βn}-1)` operational as CASE C of
+`modular_transform_with_correction` per ChatGPT Pro proposer answer
+(2026-05-24, Rank 2).
+
+  * Identity: `Σ 1/(e^{βn}-1) = (log(1/β)+γ)/β + 1/4 − (2/β)·Σ d(m)·[e^{-z_m}Ei(z_m) − e^{z_m}E_1(z_m)]`
+    with z_m = 4π²m/β.
+  * Numerical verification: rel-err ≤ 1e-9 across 4 dex of β at dps=50
+    (small-β regime); large-β cells truncation-limited due to dual's
+    polynomial `1/m²` convergence. See diary 32 §"Surprises" for the
+    convergence-regime caveat.
+  * Tests: 99 → 102 passing (3 new `test_v08c_*`). Backward-compat
+    maintained: all v0.4/v0.7/v0.8a/v0.8b/v0.9a/v0.9b paths still
+    green.
+  * End-to-end engine acceptance: 2800× cost ratio at β=1/100 on the
+    new seed `bose_occupation_beta_1em2`.
+
+The `modular_transform_with_correction` operator now spans 3 distinct
+one-sided modular identity classes (Dedekind eta, E_2 quasi-modular,
+Stieltjes/Ei). Future v0.8d candidate: quadratic Lambert
+`Σ 1/(e^{β·n²}-1)` (heat-kernel / Riemann-zeta dual) — would extend the
+pattern to a 4th class.
+
 **Subsequent operator order** (from the v0.5+ ladder, unchanged):
 
 - **v0.5 SHIPPED**: master_theorem on Integral patterns (Gamma, Beta,
