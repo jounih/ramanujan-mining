@@ -148,26 +148,84 @@ class MpmathVerifier:
 
     def _sum_evaluate(self, expr: sp.Expr, var: sp.Symbol,
                       cell: dict[str, Any]) -> Any:
-        """Substitute cell params, then sum Σ_n expr(n) over summand_range
-        via mpmath.nsum. Returns None if substitution leaves free symbols
-        other than var, or if the sum doesn't converge.
+        """Substitute cell params; either integrate (if expr is an Integral)
+        or sum (if expr is a summand) numerically. Returns None if
+        substitution leaves free symbols other than var, or if the
+        evaluation fails.
+
+        v0.5: dispatches on `isinstance(expr, sp.Integral)` — Integrals
+        are integrated via mp.quad; summands are summed via mp.nsum.
+        Closed-form expressions (no Sum/Integral wrapper, no remaining
+        var dependence after substitution) are evaluated pointwise.
         """
         subs = {sp.Symbol(k): v for k, v in cell.items()}
         subs.update({sp.Symbol(k, positive=True): v for k, v in cell.items()})
         e = expr.subs(subs)
-        # any remaining free symbols other than var → undefined cell
+
+        # CASE A: Integral expression — integrate via mp.quad over the
+        # Integral's own (var, lower, upper) limits
+        if isinstance(e, sp.Integral):
+            return self._integrate_evaluate(e)
+
+        # CASE B: Non-Integral with no remaining var dependence → closed
+        # form, evaluate directly. Handles the AFTER-side of v0.5
+        # master_theorem applications (Γ(s), Γ(m)Γ(n)/Γ(m+n), π/sin(πs)).
+        free_minus_var = e.free_symbols - {var}
+        free_minus_var = {s for s in free_minus_var if s.name != var.name}
+        if not e.has(var) and not free_minus_var:
+            try:
+                return mpmath.mpc(complex(e))
+            except (TypeError, ValueError):
+                return None
+
+        # CASE C: Summand — sum via mp.nsum (the v0.4 path)
         free = e.free_symbols - {var}
-        # also subtract any positive-symbol twins of var
         free = {s for s in free if s.name != var.name}
         if free:
             return None
-        # compile a numerical function f(n) = e evaluated at integer n
         try:
             f_callable = sp.lambdify(var, e, "mpmath")
         except Exception:
             return None
         try:
             return mpmath.nsum(f_callable, self.summand_range)
+        except Exception:
+            return None
+
+    def _integrate_evaluate(self, expr: sp.Integral) -> Any:
+        """Numerically integrate an sp.Integral via mp.quad.
+
+        Handles single-variable integrals with finite or infinite limits.
+        Returns None on failure (non-convergent, free symbols remain, etc.).
+        """
+        if len(expr.limits) != 1 or len(expr.limits[0]) != 3:
+            return None
+        x, lower, upper = expr.limits[0]
+        integrand = expr.function
+        # any free symbols other than x → undefined; can't integrate
+        free = integrand.free_symbols - {x}
+        if free:
+            return None
+        try:
+            f_callable = sp.lambdify(x, integrand, "mpmath")
+        except Exception:
+            return None
+        # translate sympy oo → mpmath.inf
+        def _to_mp(b):
+            if b is sp.oo:
+                return mpmath.inf
+            if b is -sp.oo:
+                return -mpmath.inf
+            try:
+                return mpmath.mpf(complex(b).real)
+            except (TypeError, ValueError):
+                return None
+        a_num = _to_mp(lower)
+        b_num = _to_mp(upper)
+        if a_num is None or b_num is None:
+            return None
+        try:
+            return mpmath.quad(f_callable, [a_num, b_num])
         except Exception:
             return None
 

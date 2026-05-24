@@ -47,17 +47,99 @@ class Operator:
 # ---------------------------------------------------------------------------
 
 def _master_theorem_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
-    """Master Theorem stub.
+    """Master Theorem application via a library of canonical Mellin-
+    transform identities (v0.5).
 
-    If expr is an alternating Taylor series of the form
-        sum_k (-1)^k phi(k) x^k / k!
-    then return the formal Mellin-pair Γ(n)·φ(-n) where φ is recovered
-    from the coefficient extraction.
+    Recognises sp.Integral expressions matching known Master-Theorem
+    pattern and returns the closed-form RHS. v0.5 library:
 
-    v0 returns None; v0.4 will implement coefficient extraction. The
-    operator is registered so the RandomProposer can propose it; when
-    the apply returns None, the engine rejects with PROPOSER_DECLINED.
+    1. Gamma function:   ∫_0^∞ x^(s-1) exp(-x) dx = Γ(s)
+    2. Beta function:    ∫_0^1 x^(m-1) (1-x)^(n-1) dx = Γ(m)Γ(n)/Γ(m+n)
+       (QR I §5(ii) worked example)
+    3. ∫_0^∞ x^(s-1)/(1+x) dx = π/sin(πs)
+       (QR I §5(i) special case)
+
+    Returns None if expr is not an Integral or doesn't match any of the
+    canonical patterns. v0.6+ will extend with the (-1)^k phi(k)/k!
+    coefficient-extraction generality.
+
+    The `n` argument (iteration variable for summand kernels) is unused
+    here — Integral expressions have their own integration variable in
+    the Integral AST. We accept it for API uniformity with the other
+    operator apply_fn's.
     """
+    if not isinstance(expr, sp.Integral):
+        return None
+    integrand = expr.function
+    limits = expr.limits
+    if len(limits) != 1 or len(limits[0]) != 3:
+        return None
+    x, lower, upper = limits[0]
+    # Beta function pattern: x^(m-1) * (1-x)^(n-1) on [0, 1]
+    if lower == 0 and upper == 1:
+        bm = _try_beta_pattern(integrand, x)
+        if bm is not None:
+            m, n_param = bm
+            return sp.gamma(m) * sp.gamma(n_param) / sp.gamma(m + n_param)
+    # Patterns on [0, ∞)
+    if lower == 0 and upper == sp.oo:
+        # Gamma: x^(s-1) exp(-x) → Γ(s)
+        bm = _try_gamma_pattern(integrand, x)
+        if bm is not None:
+            return sp.gamma(bm)
+        # Mellin of 1/(1+x): x^(s-1) / (1+x) → π / sin(π s)
+        bm = _try_inv_1plusx_pattern(integrand, x)
+        if bm is not None:
+            return sp.pi / sp.sin(sp.pi * bm)
+    return None
+
+
+def _try_beta_pattern(integrand: sp.Expr, x: sp.Symbol) -> Optional[tuple]:
+    """Try to match `x^(m-1) * (1-x)^(n-1)`; return (m, n) or None.
+
+    Both `m-1` and `n-1` must be symbolic-or-numerical exponents; we
+    extract `m` and `n` by adding 1.
+    """
+    if integrand.func != sp.Mul:
+        return None
+    factors = integrand.args
+    if len(factors) != 2:
+        return None
+    # Both factors should be Pow
+    a, b = factors
+    if a.func != sp.Pow or b.func != sp.Pow:
+        return None
+    # Try (x^(m-1), (1-x)^(n-1)) in either order
+    for first, second in [(a, b), (b, a)]:
+        base1, exp1 = first.args
+        base2, exp2 = second.args
+        if base1 == x and sp.simplify(base2 - (1 - x)) == 0:
+            return (exp1 + 1, exp2 + 1)
+    return None
+
+
+def _try_gamma_pattern(integrand: sp.Expr, x: sp.Symbol) -> Optional[sp.Expr]:
+    """Try to match `x^(s-1) * exp(-x)`; return s or None."""
+    if integrand.func != sp.Mul:
+        return None
+    pow_part, exp_part = None, None
+    for arg in integrand.args:
+        if arg.func == sp.Pow and arg.args[0] == x:
+            pow_part = arg
+        elif arg == sp.exp(-x) or arg.func == sp.exp and sp.simplify(arg.args[0] + x) == 0:
+            exp_part = arg
+    if pow_part is None or exp_part is None:
+        return None
+    return pow_part.args[1] + 1  # s = exp + 1
+
+
+def _try_inv_1plusx_pattern(integrand: sp.Expr, x: sp.Symbol) -> Optional[sp.Expr]:
+    """Try to match `x^(s-1) / (1+x)`; return s or None."""
+    num, den = sp.fraction(integrand)
+    if sp.simplify(den - (1 + x)) != 0:
+        return None
+    if num.func == sp.Pow and num.args[0] == x:
+        return num.args[1] + 1
     return None
 
 

@@ -204,6 +204,73 @@ def test_v04_mellin_inversion_apply_fn_directly():
     assert expr_out2 is None, "mellin_inversion should decline on non-gaussian"
 
 
+def test_v05_master_theorem_beta_function(tmp_path):
+    """Project C v0.5: master_theorem accepts the Beta-function identity
+    `∫₀^¹ x^(m-1) (1-x)^(n-1) dx = Γ(m)Γ(n)/Γ(m+n)` end-to-end."""
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    x = sp.Symbol("x", positive=True)
+    m = sp.Symbol("m", positive=True)
+    n = sp.Symbol("n", positive=True)
+    beta_int = sp.Integral(x**(m-1) * (1-x)**(n-1), (x, 0, 1))
+    state = SearchState(payload=beta_int, metadata={"var": x})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state, proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=10),
+        router=RkcRouter(), cost_model=RkcCostModel(),
+        registry=reg, budget=30, max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.5 acceptance gate failed: {summary.reject_reason_counts}"
+    )
+    accepted_path = tmp_path / "accepted.jsonl"
+    assert accepted_path.exists()
+    first = json.loads(accepted_path.read_text().splitlines()[0])
+    assert first["op_sequence"][0]["op_id"] == "master_theorem"
+    # The closed-form Γ-product should be much cheaper than the integral
+    assert first["cost_ratio"] >= 50.0
+    # The output should contain gamma functions
+    assert "gamma" in first["state_after"].lower()
+
+
+def test_v05_master_theorem_canonical_patterns():
+    """Unit test: master_theorem matches the 3 canonical patterns
+    (Gamma, Beta, 1/(1+x)) and declines on non-matching forms."""
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    op = get_operator("master_theorem")
+    x = sp.Symbol("x", positive=True)
+    m = sp.Symbol("m", positive=True)
+    n = sp.Symbol("n", positive=True)
+    s = sp.Symbol("s", positive=True)
+    dummy = sp.Symbol("dummy")
+
+    # Gamma
+    out = op.apply_fn(sp.Integral(x**(s-1) * sp.exp(-x), (x, 0, sp.oo)), dummy)
+    assert out == sp.gamma(s)
+
+    # Beta
+    out = op.apply_fn(sp.Integral(x**(m-1) * (1-x)**(n-1), (x, 0, 1)), dummy)
+    assert sp.simplify(out - sp.gamma(m)*sp.gamma(n)/sp.gamma(m+n)) == 0
+
+    # 1/(1+x)
+    out = op.apply_fn(sp.Integral(x**(s-1) / (1+x), (x, 0, sp.oo)), dummy)
+    assert sp.simplify(out - sp.pi/sp.sin(sp.pi*s)) == 0
+
+    # Decline: not an Integral
+    out = op.apply_fn(sp.exp(-x), x)
+    assert out is None
+
+    # Decline: integrand doesn't match any pattern
+    out = op.apply_fn(sp.Integral(x**2 * sp.log(x), (x, 0, 1)), dummy)
+    assert out is None
+
+
 # ---------------------------------------------------------------------------
 # rkc benchmark — default suite runs the 14b regression
 # ---------------------------------------------------------------------------

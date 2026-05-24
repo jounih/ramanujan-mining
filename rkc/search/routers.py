@@ -95,7 +95,6 @@ def _manual_cost_estimate(bm) -> float | None:
     # Gaussian: Σ exp(-β n²) needs num_terms ~ sqrt(-ln(tol)/β) before
     # exp(-β n²) < tol. Use tol=1e-12 (28 nats).
     if bm.family == "theta-like":
-        # extract β from params; FUZZY shape uses 'a2' = -β
         beta = bm.params.get("beta")
         if beta is None:
             a2 = bm.params.get("a2")
@@ -111,13 +110,38 @@ def _manual_cost_estimate(bm) -> float | None:
             if beta_f <= 0:
                 return None
             import math
-            # rkc's cost_direct is term count (NOT multiplied by per_term_cost);
-            # match that convention so comparisons are like-for-like.
             num_terms = max(1, math.ceil(math.sqrt(28.0 / beta_f)))
             return float(num_terms)
         except Exception:
             return None
     return None
+
+
+def _structural_cost(expr: sp.Expr) -> float:
+    """Cost estimate based on expression structure when rkc can't recognise
+    it (typical for v0.5+ Integral inputs and closed-form outputs).
+
+    Conventions (matched to rkc's term-count units):
+    - sp.Integral with finite or infinite limits → 100 (adaptive-quad iters)
+    - sp.Sum / sp.Product with infinite upper limit → 100
+    - Closed-form (no Sum/Integral/Product, finite operation count) → 1
+    - Otherwise → None (signal "can't estimate")
+    """
+    if expr is None:
+        return None
+    if isinstance(expr, sp.Integral):
+        return 100.0
+    if isinstance(expr, (sp.Sum, sp.Product)):
+        # if any limit is infinite, treat as aggregate cost
+        for lim in expr.limits:
+            if any(b is sp.oo or b is -sp.oo for b in lim[1:]):
+                return 100.0
+        return 50.0
+    # has nested Sum/Integral/Product?
+    if expr.has(sp.Integral, sp.Sum, sp.Product):
+        return 100.0
+    # closed form (Γ, sin, π, etc. evaluable in O(1))
+    return 1.0
 
 
 @dataclass
@@ -173,6 +197,17 @@ class RkcCostModel:
 
         cost_before = _direct_cost(bm_before)
         cost_after = _direct_cost(bm_after)
+
+        # Fallback: structural cost when rkc doesn't recognise. This is the
+        # path Integrals and closed-form outputs (like Γ(s)) take in v0.5+.
+        if cost_before == float("inf"):
+            sc = _structural_cost(expr_before)
+            if sc is not None:
+                cost_before = sc
+        if cost_after == float("inf"):
+            sc = _structural_cost(expr_after)
+            if sc is not None:
+                cost_after = sc
 
         if cost_after == float("inf") and cost_before == float("inf"):
             ratio = 0.0
