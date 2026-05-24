@@ -168,9 +168,14 @@ def _mellin_inversion_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
     beta = bm.params.get("beta")
     if beta is None:
         return None
-    # Poisson-summation dual of exp(-β n²): √(π/β) · exp(-π² n² / β)
-    # Use the same iteration variable n (summation indices are dummy).
-    new_summand = sp.sqrt(sp.pi / beta) * sp.exp(-sp.pi**2 * n**2 / beta)
+    # Poisson-summation dual of c·exp(-β n²): c · √(π/β) · exp(-π² n² / β).
+    # PRESERVE the scalar c. rkc's bm.scalar_coefficient peels only NUMERICAL
+    # scalars; for inputs containing symbolic constants like 10*√π (the typical
+    # output of a previous Poisson-dual call), rkc reports scalar=1 and bakes
+    # the prefactor into the AST. Use sp.as_independent to extract everything
+    # n-independent — handles both cases.
+    scalar = expr.as_independent(n, as_Add=False)[0]
+    new_summand = scalar * sp.sqrt(sp.pi / beta) * sp.exp(-sp.pi**2 * n**2 / beta)
     return new_summand
 
 

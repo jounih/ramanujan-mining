@@ -69,23 +69,34 @@ def search(initial_state: SearchState,
            budget: int = 1000,
            max_depth: int = 1,
            verbose: bool = False) -> SearchSummary:
-    """The six-step Project C loop.
+    """The six-step Project C loop with multi-step composition.
 
-    v0.3.0 scope: single-step composition (max_depth=1). For each of `budget`
-    proposer-emitted operator candidates:
-
-      1. propose op
-      2. apply op to initial_state → state_after (or None if op declines)
-      3. router classifies state_after
-      4. verifier tests state_before ↔ state_after
-      5. cost model estimates improvement_ratio
+    For each of `budget` proposer rounds:
+      1. propose op (or, when max_depth > 1, an op sequence of length
+         1..max_depth — the proposer can return single ops; the engine
+         chains them by repeated proposer calls on intermediate states)
+      2. apply op-sequence to initial_state → state_after (None if any
+         intermediate apply declines)
+      3. router classifies the final state_after
+      4. verifier tests initial_state ↔ final state_after (single pass at
+         the end; verifying intermediate states is expensive and usually
+         redundant — if the FINAL state is numerically equal to the initial
+         AND the sequence is valid, the intermediate equalities are implied)
+      5. cost model estimates improvement_ratio over the WHOLE sequence
       6. registry.store on accept, registry.reject on reject (with named reason)
 
-    Returns a SearchSummary with the run's aggregate stats.
+    v0.6 multi-step composition: at depth d, the engine takes the
+    proposer's d operator suggestions and chains them. The proposer can be
+    stateful (NeuralProposer with context window) or stateless
+    (RandomProposer; just samples d ops independently). The op_sequence is
+    stored as a list in the SearchOutcome.
+
+    Multi-step rejections at intermediate steps don't count toward
+    n_proposed (the proposer effectively "used" multiple op-suggestions
+    for one search attempt, but only one search attempt happened).
     """
-    if max_depth != 1:
-        raise NotImplementedError("v0.3.0 supports max_depth=1; multi-step "
-                                  "composition deferred to v0.4")
+    if max_depth < 1:
+        raise ValueError(f"max_depth must be ≥ 1, got {max_depth}")
 
     n_proposed = 0
     n_accepted = 0
@@ -93,17 +104,53 @@ def search(initial_state: SearchState,
     reject_counts: dict[str, int] = {}
     accepted_hashes: list[str] = []
 
-    proposals = list(proposer.propose(initial_state, budget=budget))
-    for op_app in proposals:
+    # For depth-1, one budget unit = one proposer call. For depth-N, we
+    # use N proposer calls per search attempt. So total proposer calls =
+    # budget * max_depth (approximately — proposer-declines short-circuit).
+    if max_depth == 1:
+        proposals = list(proposer.propose(initial_state, budget=budget))
+        proposal_iter = iter(proposals)
+        n_attempts = budget
+    else:
+        # multi-step: proposer is called repeatedly during each search attempt
+        proposal_iter = None
+        n_attempts = budget
+
+    for _ in range(n_attempts):
         n_proposed += 1
-        # Step 2: apply the operator
-        state_after = _apply_operator(op_app, initial_state)
-        if state_after is None:
-            # operator declined — log as PROPOSER_DECLINED for visibility
+        # Build the operator sequence + chained intermediate states
+        op_sequence: list[OperatorApplication] = []
+        cur_state = initial_state
+        decline_hit = False
+        for depth in range(max_depth):
+            if max_depth == 1:
+                op_app = next(proposal_iter, None)
+                if op_app is None:
+                    break
+            else:
+                # call proposer with the CURRENT state (lets stateful
+                # proposers condition on intermediate context)
+                gen = proposer.propose(cur_state, budget=1)
+                op_app = next(gen, None)
+                if op_app is None:
+                    break
+            next_state = _apply_operator(op_app, cur_state)
+            if next_state is None:
+                # this op declined — for multi-step, count the partial
+                # sequence as a single proposer-decline if depth == 0,
+                # or as a partial-sequence rejection if depth > 0
+                if depth == 0:
+                    decline_hit = True
+                break
+            op_sequence.append(op_app)
+            cur_state = next_state
+
+        # If the very first op declined, log PROPOSER_DECLINED
+        if decline_hit or not op_sequence:
             outcome = SearchOutcome(
                 state_before=initial_state,
-                op_sequence=[op_app],
-                state_after=initial_state,  # placeholder
+                op_sequence=op_sequence,
+                state_after=initial_state,
                 verification=VerificationResult(passed=False, digits_or_examples=0,
                                                reason="operator declined / not applicable"),
                 cost=CostEstimate(direct_cost=-1, reduced_cost=-1,
@@ -117,17 +164,20 @@ def search(initial_state: SearchState,
             reject_counts["PROPOSER_DECLINED"] = reject_counts.get("PROPOSER_DECLINED", 0) + 1
             continue
 
-        # Step 3: router classifies
+        state_after = cur_state
+
+        # Step 3: router classifies the final state_after
         route_label, route_payload = router.route(state_after)
 
-        # Step 4: verifier tests
-        verification = verifier.verify(initial_state, [op_app], state_after)
+        # Step 4: verifier tests initial ↔ final (intermediate equalities are
+        # implied transitively if each operator preserves value)
+        verification = verifier.verify(initial_state, op_sequence, state_after)
         if not verification.passed:
             reject_reason = (RejectReason.NUMERICAL_INSTABILITY
                              if verification.reason and "NUMERICAL_INSTABILITY" in verification.reason
                              else RejectReason.VERIFIER_FAILED)
             outcome = SearchOutcome(
-                state_before=initial_state, op_sequence=[op_app],
+                state_before=initial_state, op_sequence=op_sequence,
                 state_after=state_after, verification=verification,
                 cost=CostEstimate(direct_cost=-1, reduced_cost=-1,
                                   improvement_ratio=0.0, notes="skipped — verifier failed"),
@@ -138,12 +188,14 @@ def search(initial_state: SearchState,
             reject_counts[reject_reason.value] = reject_counts.get(reject_reason.value, 0) + 1
             continue
 
-        # Step 5: cost model
+        # Step 5: cost model — initial vs final, NOT per-step. The cumulative
+        # cost is what matters for acceptance: did the WHOLE sequence yield
+        # a cheaper representation?
         cost = cost_model.cost(initial_state, state_after)
 
         # Compose preliminary outcome to check registry
         outcome = SearchOutcome(
-            state_before=initial_state, op_sequence=[op_app],
+            state_before=initial_state, op_sequence=op_sequence,
             state_after=state_after, verification=verification, cost=cost,
             route=route_label, accepted=False, reject_reason=None,
             notes=str(route_payload),
@@ -178,7 +230,8 @@ def search(initial_state: SearchState,
         accepted_hashes.append(h)
         n_accepted += 1
         if verbose:
-            print(f"  ACCEPT: {op_app.op_id} → {route_label} "
+            op_chain = " → ".join(op.op_id for op in op_sequence)
+            print(f"  ACCEPT: [{op_chain}] → {route_label} "
                   f"(ratio={cost.improvement_ratio:.2f}×, hash={h})")
 
     return SearchSummary(
