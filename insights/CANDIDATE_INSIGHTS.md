@@ -372,6 +372,56 @@ S-transforms). The RamanujanMachine project does this for constants via
 continued fractions; an analogous search over the q-series identity
 manifold has not been done at scale.
 
+### D1. The latent-space-speedrun hypothesis is supported at high confidence on the Quarterly Reports — but the predicted operator basis was wrong
+
+**Confidence:** high. **Novelty:** the operator inventory itself; the
+QR-vs-Notebooks contrast (proposed but not tested).
+
+The ChatGPT-Pro corpus arrived with Berndt's 2022 Hardy-Ramanujan
+Journal reproduction of the QRs (faithful copy of Satagopan's 1925
+handwritten copy of the otherwise-lost originals — only ~6 generations
+removed from Ramanujan's hand). Direct hand-tagging of all 33
+math-content sections against the
+[6-operator schema](../corpora/transcriptions/operator_tagging_schema.py)
+predicted by HUNT_MAP §5 (see [diary 20](../diary/20_hunt5_qr_operator_tagging.md)):
+
+- The 80% recurrence prediction **fails** at 57.6% coverage. See
+  [DID_NOT_PAN_OUT.md §R15](DID_NOT_PAN_OUT.md).
+- 2 of 6 predicted operators dominate (`master_theorem` 19 sections,
+  `mellin_inversion` 17); 4 of 6 (`q_shift`, `modular_S_transform`,
+  `eisenstein_normal_ordering`, `class_field_galois_average`) **never fire**.
+- Zero occurrences of any modular-form notation in the 5519 lines:
+  no `\tau`, `\theta`, `\eta`, Eisenstein, class invariant, Heegner.
+  The QRs are not a modular-forms document.
+- The **revised 7-operator basis** (dropping the 4 modular operators
+  and adding `FOURIER_SELF_RECIPROCITY`, `FRACTIONAL_FUNCTIONAL_ITERATION`,
+  `HARDY_ORDERS_OF_INFINITY`, `FRULLANI_LIMIT`, `MELLIN_PAIR_RECIPROCITY`)
+  covers **~91%** of QR math sections (30 of 33).
+
+The headline qualitative claim — Ramanujan ran on a small compressed
+toolkit — survives, with a corrected operator inventory. The
+specifically interesting *new* finding is the QR III shift to a
+*different toolkit* than QR I and QR II: fractional iteration of
+functions (Schröder / Koenig functional equation), Hardy orders of
+infinity, Riemann-Liouville fractional differentiation, umbral operator
+calculus, partial-fraction decomposition of infinite products,
+Mellin-pair self-reciprocity. None of this is in the published
+"Ramanujan in modular forms" tradition; it is closer to early-20th-
+century holomorphic-dynamics / functional-calculus traditions
+(Schröder 1871, Koenig 1884, Hardy on orders of infinity).
+
+A complementary test on the Notebooks (where modular machinery should
+actually appear) is the natural Hunt 5b. Confirmation there would
+establish the **QR-vs-Notebooks toolkit contrast** as the real finding:
+Ramanujan carried at least two distinct operator toolkits and deployed
+them in different report-vs-personal contexts.
+
+**Status of underlying findings:**
+- Per-section operator tags: [qr_section_index.json](../corpora/transcriptions/quarterly_reports/qr_section_index.json),
+  [qr_operator_tags.csv](../analysis/results/qr_operator_tags.csv).
+- Per-report verdict: [qr_hunt5_verdict.csv](../analysis/results/qr_hunt5_verdict.csv).
+- Schema verification flags updated: 2 verified, 4 marked falsified-for-QR-corpus.
+
 ---
 
 ## E. Bottom-line synthesis (revised after the third parallel follow-up)

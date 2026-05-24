@@ -150,10 +150,18 @@ Inverse:
 \]
 """,
     test=_test_mellin,
-    verified_against_transcription=False,
+    verified_against_transcription=True,
     notes="HUNT_MAP §5: continuous Fourier on the multiplicative group. "
-          "Strong textbook signature; expect to dominate Quarterly Report II "
-          "(per Berndt 1984 §4).",
+          "VERIFIED against Berndt 2022 HRJ reproduction of the Quarterly "
+          "Reports: forward Mellin ∫₀^∞ x^{n-1} F(x) dx is the substrate of "
+          "the Master Theorem and appears in 17 of 33 math-content sections "
+          "(see diary/20). Bromwich-contour inverse Mellin NOT used by "
+          "Ramanujan — his proofs are formal/series, not contour. The "
+          "schema's `_test_mellin` regex would not fire on much of the QR "
+          "corpus because Ramanujan rarely names the operator and writes "
+          "`Z ∞` for `∫₀^∞`; hand-tagging was used instead. Dominance "
+          "concentrated in QR I + QR II — QR III drops Mellin almost "
+          "entirely in favour of operator calculus.",
 )
 
 
@@ -203,9 +211,14 @@ then
 \]
 """,
     test=_test_master_theorem,
-    verified_against_transcription=False,
+    verified_against_transcription=True,
     notes="HUNT_MAP §5: coefficient extraction from generating function. "
-          "Expected to be the SIGNATURE move of QR I (per Berndt 1984 §3).",
+          "VERIFIED: this is THE signature move of QR I and QR II. Verbatim "
+          "statement and proof in QR I §1-§2 (HRJ 2022 lines 158-308). "
+          "Appears in 19 of 33 math-content sections; 100% of QR I (13/13) "
+          "and most of QR II. In QR III it appears only as a consistency "
+          "check on operator calculus (§12), not as a primary move. See "
+          "diary/20 for full tagging.",
 )
 
 
@@ -249,9 +262,14 @@ Equivalently, $D_q [(z; q)_\infty] = -(z; q)_\infty / (1-z)$.
 """,
     test=_test_q_shift,
     verified_against_transcription=False,
-    notes="HUNT_MAP §5: q-analog of differentiation. Less prominent in QRs "
-          "than in NB II ch. 16; still expected to appear in QR III where "
-          "Ramanujan demonstrates the q-MA partner of the Master Theorem.",
+    notes="HUNT_MAP §5: q-analog of differentiation. FALSIFIED for the QR "
+          "corpus (diary/20): never fires in the 33 QR math-content "
+          "sections. The closest surface match is QR I §5(v), the infinite "
+          "product (1+x)(1+ax)(1+a²x)···, but Ramanujan treats it as a "
+          "Taylor series in x and reduces to the Master Theorem — not as a "
+          "q-Pochhammer. No (a;q)_n notation, no D_q, no q-binomial, no "
+          "Heine. Test in the Notebooks (NB II ch. 16, NB Part III) where "
+          "modular/q-machinery actually appears.",
 )
 
 
@@ -297,9 +315,14 @@ $\sum_{n} e^{-\beta n^2} = \sqrt{\pi/\beta}\,\sum_n e^{-\pi^2 n^2/\beta}$.
 """,
     test=_test_modular_S,
     verified_against_transcription=False,
-    notes="HUNT_MAP §5: tau -> -1/tau. Already in the RKC recognizer "
-          "(analysis/13_recognizer_v1.py); expect QR III to show this as "
-          "a primitive operation, not a derived calculation.",
+    notes="HUNT_MAP §5: tau -> -1/tau. FALSIFIED for the QR corpus "
+          "(diary/20): never fires. Zero occurrences of \\tau, \\theta, "
+          "\\eta, or any modular-form notation across 5519 lines of the "
+          "Berndt 2022 HRJ reproduction. The Quarterly Reports are NOT a "
+          "modular-forms document — they are Mellin/Master-Theorem + "
+          "Fourier-reciprocity + operator-calculus. Test in the Notebooks "
+          "(Berndt Part III ch. 17, Part V ch. 32) where modular machinery "
+          "actually appears.",
 )
 
 
@@ -349,10 +372,13 @@ recognising the Lambert series.
 """,
     test=_test_eisenstein_normal_order,
     verified_against_transcription=False,
-    notes="HUNT_MAP §5: the 'pull a residue' move. Most distinctive in QR II "
-          "(Berndt's 'calculus of zeta values', §4). Heuristic is broader "
-          "than the strict residue operator — also picks up E_{2k} normal "
-          "forms because that is operationally the same move.",
+    notes="HUNT_MAP §5: the 'pull a residue' move. FALSIFIED for the QR "
+          "corpus (diary/20): never fires. Zero occurrences of E_{2k}, "
+          "σ_k(n), Lambert series, divisor-sum generating functions, or "
+          "'Eisenstein' anywhere in the 5519 lines. The HUNT_MAP §5 "
+          "prediction misread Berndt's 'calculus of zeta values' commentary "
+          "— QR II's central theorem (Theorem II) is the Frullani-extended "
+          "Master Theorem, not an Eisenstein construction.",
 )
 
 
@@ -401,10 +427,12 @@ factor of $H_{-4n}$ at the Weber-modular level.
 """,
     test=_test_galois_average,
     verified_against_transcription=False,
-    notes="HUNT_MAP §5: 'sum over Heegner orbit'. Expected to appear "
-          "wherever Ramanujan quotes a numerical value of G_n or 1/pi at a "
-          "CM point. Most relevant to QR III if Berndt's commentary on "
-          "Hardy's 'Twelve Lectures' ch. 11 holds.",
+    notes="HUNT_MAP §5: 'sum over Heegner orbit'. FALSIFIED for the QR "
+          "corpus (diary/20): never fires. Zero occurrences of Heegner, "
+          "class invariant, j(τ), Gal, √(-D), or any CM-point notation in "
+          "the 5519 lines. Class-invariant material is in Notebooks Part V "
+          "ch. 34-37 and the Lost Notebook (Andrews-Berndt vol. IV), not "
+          "the QRs.",
 )
 
 

@@ -1,0 +1,498 @@
+{
+  "$schema_note": "Section-by-section index of Ramanujan's Quarterly Reports as reproduced in Berndt's 2022 Hardy-Ramanujan Journal paper (open-access reproduction of Satagopan 1925 handwritten copy).",
+  "source": {
+    "title": "Ramanujan's Quarterly Reports",
+    "editor": "Bruce C. Berndt",
+    "venue": "Hardy-Ramanujan Journal 45 (2022), 1-41",
+    "open_access_url": "https://hrj.episciences.org/volume/view/id/727",
+    "local_pdf_path_when_present": "chatgpt-pro-mining/ramanujan_claude_source_pack_v2/priority_sources/quarterly_reports/ramanujan_quarterly_reports_2022_HRJ_Berndt.pdf",
+    "local_text_path_when_present": "chatgpt-pro-mining/ramanujan_claude_source_pack_v2/priority_sources/quarterly_reports/ramanujan_quarterly_reports_2022_HRJ_Berndt.txt",
+    "text_total_lines": 5519,
+    "based_on": "Satagopan's 1925 handwritten copy of Ramanujan's three Quarterly Reports to the Board of Studies in Mathematics, University of Madras, dated 5 Aug 1913, 7 Nov 1913, 9 Mar 1914. Originals lost."
+  },
+  "tagging_basis": {
+    "schema": "corpora/transcriptions/operator_tagging_schema.py",
+    "schema_version": "6-operator HUNT_MAP §5 predicted basis",
+    "tagging_method": "hand-judgment, not regex; reading line-by-line through the Berndt reproduction",
+    "method_note": "Section-level granularity (one tag set per Ramanujan-numbered section), with operator detection at the level of the *mathematical move being executed*, not the surface-LaTeX notation. A section may carry multiple operator tags if it uses several moves."
+  },
+  "extra_operators_taxonomy": {
+    "purpose": "Operators that DO appear in the QRs but are NOT in the predicted 6-operator schema. These are the empirical correction.",
+    "tags": [
+      {"tag": "FOURIER_SELF_RECIPROCITY", "definition": "Fourier cosine (or sine) transform that is its own inverse up to a π/2 factor: F[f]=g implies F[g]=(π/2)f. Theorem III of QR II."},
+      {"tag": "MULTISECTION_ROOTS_OF_UNITY", "definition": "Extracting a sub-series f_k(x)=∑_{n≡k mod r} a_n x^n by averaging f(ω^j x) over r-th roots of unity ω. ChatGPT taxonomy approximates this with FINITE_GAUSS_COLLAPSE."},
+      {"tag": "FRULLANI_LIMIT", "definition": "Taking the n→0 limit in a parametric Master-Theorem identity to land on ∫(φ(ax)-ψ(bx))/x dx-style formulas. Theorem II of QR II."},
+      {"tag": "FRACTIONAL_FUNCTIONAL_ITERATION", "definition": "Defining F^n(x) for non-integer n via the Schröder-Koenig functional equation f^m = χ^{-1} ∘ φ ∘ χ. QR III §4-§6, §10."},
+      {"tag": "HARDY_ORDERS_OF_INFINITY", "definition": "Asymptotic comparison using Hardy's ≺ relation; constructing growth scales that defy logarithmic / exponential ones. QR III §7-§9."},
+      {"tag": "RIEMANN_LIOUVILLE_FRACTIONAL_DIFF", "definition": "Defining D^k for non-integer k via the Mellin-style integral ∫x^{n-1} f^{(r)}(a-x) dx = Γ(n) f^{(r-n)}(a). QR III §11. Mellin-adjacent but uses derivatives of f rather than the function itself; distinct operator move."},
+      {"tag": "UMBRAL_OPERATOR_SUBSTITUTION", "definition": "Substituting the shift operator E or difference operator Δ for a scalar parameter (a → E·D, etc.) in an identity that was proved for scalars. Heaviside-style. QR III §12."},
+      {"tag": "PARTIAL_FRACTION_OF_INFINITE_PRODUCT", "definition": "Decomposing an infinite product 1/∏(1+x²/(a+k)²) into partial fractions in x² before integrating. QR III §13. ChatGPT taxonomy has PARTIAL_FRACTION_LATENTS for the moment-theory version; this is the multiplicative version."},
+      {"tag": "BANDLIMITED_FOURIER_DISCONTINUITY", "definition": "Fourier-transform identity with a sharp cutoff at the bandwidth (π/2 below, π/4 at the cutoff, 0 above). QR III §14."},
+      {"tag": "MELLIN_PAIR_RECIPROCITY", "definition": "Reciprocal-function pair (F,f) defined by ∫x^{p-1} F(x) dx · ∫x^{-p} f(x) dx = π/sin(πp), generalizing Fourier self-reciprocity to arbitrary Mellin-pairs. QR III §15."}
+    ]
+  },
+  "reports": [
+    {
+      "report_id": "QR1",
+      "date": "1913-08-05",
+      "line_range": [115, 1530],
+      "header_pages": "pp. 4-13 in HRJ",
+      "sections": [
+        {
+          "section_id": "qr1_sec_1",
+          "title": "Subject of the paper — statement of the Master Theorem",
+          "line_range": [158, 175],
+          "type": "theorem_statement",
+          "content_summary": "Two-direction statement: (A) ∫₀^∞ x^{n-1} F(x) dx can be found from the coefficient of x^n in F(x); (B) and conversely.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [159, 168, 170]
+        },
+        {
+          "section_id": "qr1_sec_2",
+          "title": "A:- Proof of the Master Theorem",
+          "line_range": [176, 308],
+          "type": "proof",
+          "content_summary": "Ramanujan's formal proof: starts from ∫₀^∞ e^{-mx} x^{n-1} dx = Γ(n)/m^n, substitutes m = 1, r, r², ..., multiplies by Taylor-derivatives of f at a, and matches powers of x via Taylor expansion of f(a + hr^n) = φ(n).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [189, 195, 285, 295, 304]
+        },
+        {
+          "section_id": "qr1_sec_3",
+          "title": "When valid? — convergence conditions",
+          "line_range": [309, 338],
+          "type": "validity_discussion",
+          "content_summary": "Four conditions: (a) F(x) Taylor-expansible; (b) F finite and continuous on (0,∞); (c) n > 0 (because the Eulerian integral requires it); (d) x^n F(x) vanishes at infinity.",
+          "operators_predicted_basis": [],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "is_meta": true,
+          "evidence_lines": [318]
+        },
+        {
+          "section_id": "qr1_sec_4",
+          "title": "Generalization — substitution rules",
+          "line_range": [345, 363],
+          "type": "extension",
+          "content_summary": "Discusses substitutions: (a) any (α,β) → (0,∞) via (x-α)/(β-x)=y; (b) any transcendental can be reduced by substitution; (c) fractional powers handled by substitution.",
+          "operators_predicted_basis": [],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "is_meta": true,
+          "evidence_lines": [357]
+        },
+        {
+          "section_id": "qr1_sec_5i",
+          "title": "Example (i): ∫₀^∞ x^{m-1}/(1+x^n) dx = π/(n sin(πm/n))",
+          "line_range": [367, 461],
+          "type": "worked_example",
+          "content_summary": "Substitute x→y^{1/n}, then apply Master Theorem with φ(t)=Γ(1+t), get Γ(m/n)Γ(1-m/n) = π/sin(πm/n).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [375, 420, 437]
+        },
+        {
+          "section_id": "qr1_sec_5ii",
+          "title": "Example (ii): Beta function ∫₀^1 x^{m-1}(1-x)^{n-1} dx = Γ(m)Γ(n)/Γ(m+n)",
+          "line_range": [466, 519],
+          "type": "worked_example",
+          "content_summary": "Substitute x→y/(1+y), apply Master Theorem with φ(t)=Γ(m+n+t)/Γ(m+n).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [482, 513]
+        },
+        {
+          "section_id": "qr1_sec_5iii",
+          "title": "Example (iii): ∫₀^∞ x^{n-1} cos(px) dx = Γ(n) cos(πn/2) / p^n",
+          "line_range": [520, 611],
+          "type": "worked_example",
+          "content_summary": "Substitute x→√y to turn cos px into alternating power series in y, apply Master Theorem with φ(t)=p^{2t}Γ(t+1)/Γ(2t+1). Derives sin version by differentiating in p.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [546, 580, 600]
+        },
+        {
+          "section_id": "qr1_sec_5iv",
+          "title": "Example (iv): Bessel-function integral via Master Theorem",
+          "line_range": [612, 646],
+          "type": "worked_example",
+          "content_summary": "Substitute x→√y in a Bessel-style power series, apply Master Theorem to get a closed form in Γ functions.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [622, 642]
+        },
+        {
+          "section_id": "qr1_sec_5v",
+          "title": "Example (v): ∫₀^∞ x^{n-1} dx / ∏_{k≥0}(1+a^k x) and triangular-number identity",
+          "line_range": [647, 826],
+          "type": "worked_example",
+          "content_summary": "Apply Master Theorem to the infinite product (1+x)(1+ax)(1+a²x)... Treats the product as a Taylor series 1 - A₁ x + A₂ x² - ... where A_r = 1/∏_{k=1}^r(1-a^k). Particular cases at n=1,2,3,1/2; the n=1/2 case gives an identity involving sum a^{n(n-1)/2} (triangular-number exponents).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "note": "Surface notation involves a q-Pochhammer-like product. But Ramanujan does NOT use (a;q)_n notation, D_q, Heine, or the q-binomial theorem. He treats the product as an ordinary Taylor series in x and reduces to Master Theorem. So this does NOT trigger the schema's q_shift detector (correctly: the operator move is Master Theorem, not q-shift).",
+          "evidence_lines": [669, 698, 808, 825]
+        },
+        {
+          "section_id": "qr1_sec_5vi",
+          "title": "Example (vi): ∫₀^∞ Γ(x+a)/(x^m Γ(x+a+n+1)) dx",
+          "line_range": [828, 989],
+          "type": "worked_example",
+          "content_summary": "Use Beta-function representation z^{x+a-1}(1-z)^n to land an integrand that is a Taylor series in x, apply Master Theorem with φ(t)=Γ(t+1)·(alternating ratios), final form involves csc(πm).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [850, 920, 950]
+        },
+        {
+          "section_id": "qr1_sec_6_intro",
+          "title": "B. Converse of A — Expansions of functions using the theorem",
+          "line_range": [991, 997],
+          "type": "extension",
+          "content_summary": "Statement: use Master Theorem in inverse direction to read off Taylor coefficients of F(x) from a known closed-form Mellin integral.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [991]
+        },
+        {
+          "section_id": "qr1_sec_6i",
+          "title": "B.(i): Expansion of (2/(1+√(1+4x)))^n",
+          "line_range": [998, 1131],
+          "type": "worked_example",
+          "content_summary": "Substitution x = y+y², then y = z/(1-z), reduces to a Beta integral; reads off φ(p) = n·Γ(n-2p)/Γ(n-p+1), giving the explicit power-series coefficients (Catalan-numbers-style for n=1).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "note": "This is functionally Lagrange inversion done via Master Theorem.",
+          "evidence_lines": [1049, 1059, 1084, 1115]
+        },
+        {
+          "section_id": "qr1_sec_6ii",
+          "title": "B.(ii): Expansion of (x+√(1+x²))^{-n}",
+          "line_range": [1137, 1295],
+          "type": "worked_example",
+          "content_summary": "Substitution x + √(1+x²) = 1/y, then y = √(1-z²)... finally φ(p) = n·2^{p-1} Γ((n+p)/2)/Γ((n-p)/2+1), giving Chebyshev-style polynomial coefficients. Cor: change x→ix, n→in to get power series of e^{n·arcsin x}.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [1180, 1192, 1259, 1281]
+        },
+        {
+          "section_id": "qr1_sec_6_3",
+          "title": "B.(3): Given log x / x = -a, find expansion of x^n in powers of a",
+          "line_range": [1297, 1370],
+          "type": "worked_example",
+          "content_summary": "Substitute x → e^{-y}, apply Master Theorem with φ(p)=n(n+p)^{p-1}. Result: Lambert W / tree-function-style expansion.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "note": "The φ(p)=n(n+p)^{p-1} formula is the Cayley tree formula / Lambert-W coefficients.",
+          "evidence_lines": [1313, 1338, 1347, 1357]
+        },
+        {
+          "section_id": "qr1_sec_6_4",
+          "title": "B.(4): Given aq·x^p + x^q = 1, find expansion of x^n in powers of a",
+          "line_range": [1372, 1525],
+          "type": "worked_example",
+          "content_summary": "General algebraic-equation inversion via Master Theorem, giving φ(r) = n(n+pr-q)(n+pr-2q)...(n+pr-rq).",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "note": "This is the explicit power-series formula for a root of an algebraic equation in terms of the equation's coefficients — Lagrange inversion in its most general form, done via Master Theorem.",
+          "evidence_lines": [1380, 1390, 1444, 1503, 1510]
+        }
+      ]
+    },
+    {
+      "report_id": "QR2",
+      "date": "1913-11-07",
+      "line_range": [1531, 3461],
+      "header_pages": "pp. 14-24 in HRJ",
+      "sections": [
+        {
+          "section_id": "qr2_sec_a",
+          "title": "Further example (a): ∫₀^∞ x^{r-1}(1-2mx/1!+3m²x²/2!-...) dx = Γ(r)(1-r)^m",
+          "line_range": [1543, 1620],
+          "type": "worked_example",
+          "content_summary": "Verifies at m=1, m=2 by direct computation; then exhibits the non-integer m=π case (which by then-known methods would be 'very difficult'). Cor: r=1/2, x→x² gives a √π evaluation.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [1543, 1567, 1580]
+        },
+        {
+          "section_id": "qr2_sec_b",
+          "title": "Further example (b): Expand e^{ax} in powers of e^{-bx} sin(cx)/c (Lagrange-like inversion)",
+          "line_range": [1622, 1884],
+          "type": "worked_example",
+          "content_summary": "Pulls e^{-ax} out as a Taylor series in y=e^{-bx} sinh(cx)/c; applies Master Theorem; uses Beta-integral reduction; final coefficient formula involves products like a(a-2b)(a²-3²c²)/3! etc.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [1632, 1644, 1685, 1775]
+        },
+        {
+          "section_id": "qr2_sec_2_3",
+          "title": "§2-§3: Convergence and validity discussion of (b)",
+          "line_range": [1886, 1928],
+          "type": "validity_discussion",
+          "content_summary": "Discusses when the expansion (b) is convergent; gives a closed-form bound e^{-(b/c) arctan(c/b)}/√(b²+c²).",
+          "operators_predicted_basis": [],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "is_meta": true,
+          "evidence_lines": [1886]
+        },
+        {
+          "section_id": "qr2_sec_3_particulars",
+          "title": "Particular cases (a)-(d) of (b)",
+          "line_range": [1929, 2086],
+          "type": "worked_examples",
+          "content_summary": "(a) b=0 — gets e^{ax} = ∑ ... sin(cx)/c; (b) c=0 — gets Abel's theorem-style; (c) a→ai, b→bi — separates real and imaginary parts; (d) coefficient-of-a — gets x = ∑ ...e^{-kbx} sin(cx)/c.",
+          "operators_predicted_basis": ["master_theorem"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [1929, 1973, 1988, 2026]
+        },
+        {
+          "section_id": "qr2_sec_3_cubic_roots",
+          "title": "Roots of 1 - x³/3! + x⁶/6! - ... = 0 via cube roots of unity",
+          "line_range": [2086, 2280],
+          "type": "worked_example",
+          "content_summary": "Recognises 1 - x³/3! + x⁶/6! - ... = (e^{-x} + e^{-xω} + e^{-xω²})/3 where ω, ω² are primitive cube roots of unity. Reduces equation to (1/2)e^{-3x/2} cos(x√3/2) = -1/2. Approximates roots near πn/√3 (n odd) using a perturbation series in h = e^{-πn√3/2}.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["MULTISECTION_ROOTS_OF_UNITY"],
+          "in_predicted_basis": false,
+          "note": "The multisection (∑_{n≡0 mod 3} x^{3n}/(3n)! extracted by averaging exp at 1, ω, ω²) is a distinct operator move. The 6-operator schema does not predict it. ChatGPT's broader taxonomy has FINITE_GAUSS_COLLAPSE which is the closest match.",
+          "evidence_lines": [2107, 2113, 2125, 2270]
+        },
+        {
+          "section_id": "qr2_sec_4",
+          "title": "§4: Theorem II — Frullani-extended Master Theorem",
+          "line_range": [2287, 2615],
+          "type": "theorem",
+          "content_summary": "Theorem II: if φ(0)=ψ(0) and φ(∞)=ψ(∞), then ∫₀^∞ (φ(ax)-ψ(bx))/x dx = [φ(0)-φ(∞)] log(b/a) + d/dn [log (n-th coefft of ψ / n-th coefft of φ)]_{n=0}. Proof takes n→0 limit in two Master-Theorem-derived integrals.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": ["FRULLANI_LIMIT"],
+          "in_predicted_basis": true,
+          "note": "The Frullani-limit move (n→0 in a Master-Theorem identity) is a distinct operator. The 6-operator schema does not capture this specific limit, though MASTER_THEOREM itself is the underlying primitive.",
+          "evidence_lines": [2319, 2358, 2419, 2615]
+        },
+        {
+          "section_id": "qr2_sec_5",
+          "title": "§5: Examples of Theorem II — Frullani as special case",
+          "line_range": [2616, 2869],
+          "type": "worked_examples",
+          "content_summary": "(1) Recovers Frullani's Theorem from φ=ψ; (2)-(4) various integrals involving (1+ax)^{-p} - (1+bx)^{-q} etc.; (5) multi-function generalization with p,q,r,s coefficients.",
+          "operators_predicted_basis": ["master_theorem"],
+          "operators_extra": ["FRULLANI_LIMIT"],
+          "in_predicted_basis": true,
+          "evidence_lines": [2617, 2629, 2682, 2870]
+        },
+        {
+          "section_id": "qr2_sec_6",
+          "title": "§6: Corollaries (1)-(8) to Theorem I — cos/sin variants",
+          "line_range": [2884, 3149],
+          "type": "corollaries",
+          "content_summary": "(1) Cosine integral by substituting x→x², n→n/2, then un→un Γ(n/2)/Γ(n): get Γ(n) cos(πn/2). (2) πu_{-n}/sin(πn) version for n∈(0,1). (3)-(4) Variants for cos and arbitrary r. (5)-(8) Mixed product-integrals against cos nx.",
+          "operators_predicted_basis": ["master_theorem", "mellin_inversion"],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "evidence_lines": [2884, 2965, 2974, 3033]
+        },
+        {
+          "section_id": "qr2_sec_7",
+          "title": "§7: Theorem III — Fourier cosine/sine self-reciprocity",
+          "line_range": [3158, 3239],
+          "type": "theorem",
+          "content_summary": "Theorem III: if ∫₀^∞ φ(x) cos(nx) dx = ψ(n), then ∫₀^∞ ψ(x) cos(nx) dx = (π/2) φ(n). Same for sin.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["FOURIER_SELF_RECIPROCITY"],
+          "in_predicted_basis": false,
+          "note": "This is the Fourier cosine inversion theorem (modern: F_c·F_c = π/2·Id). It is NOT one of the 6 predicted operators. The 6-operator MELLIN_INVERSION is conceptually similar (continuous transform self-inverse) but the schema's regex looks for Mellin-specific signatures (x^{s-1}, Bromwich, Γ(s)) — Fourier cos has none of these.",
+          "evidence_lines": [3158, 3170, 3232]
+        },
+        {
+          "section_id": "qr2_sec_7_examples",
+          "title": "Examples of Theorem III + closing integrals",
+          "line_range": [3239, 3457],
+          "type": "worked_examples",
+          "content_summary": "(1) ∫cos nx/(1+x²) dx = (π/2)e^{-n}. (2)-(3) ∫x^{p-1} e^{-ax} cos/sin nx dx with arctan(n/a) in the argument. (4) Gaussian cos integral, Fresnel-like ∫ cos(π/4 - a/x)/√x · cos nx dx = (√π/2√n) cos(2√(an)).",
+          "operators_predicted_basis": [],
+          "operators_extra": ["FOURIER_SELF_RECIPROCITY"],
+          "in_predicted_basis": false,
+          "evidence_lines": [3240, 3263, 3296, 3332, 3380, 3438]
+        }
+      ]
+    },
+    {
+      "report_id": "QR3",
+      "date": "1914-03-09",
+      "line_range": [3462, 5519],
+      "header_pages": "pp. 25-41 in HRJ",
+      "sections": [
+        {
+          "section_id": "qr3_sec_1",
+          "title": "§1: Validity of Theorem I revisited — nature of u_n",
+          "line_range": [3481, 3510],
+          "type": "validity_discussion",
+          "content_summary": "Notes that the theorem's validity depends on (a) n, (b) the function ∑(-1)^k u_k x^k/k!, and (c) the function u_n. Discusses continuity and finiteness conditions on u_n as a function of n.",
+          "operators_predicted_basis": [],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "is_meta": true,
+          "evidence_lines": [3481, 3506]
+        },
+        {
+          "section_id": "qr3_sec_2_3",
+          "title": "§2-§3: Uniqueness of the function passing through u_n",
+          "line_range": [3511, 3556],
+          "type": "foundational_argument",
+          "content_summary": "Argues there is one and only one 'unique' function passing through given values u_0, u_1, u_2, ... — modulo functions vanishing at all positive integers (such as sin(πn) or f(n)/Γ(-n)). Examples: u_n = n² is unique despite n² + sin²(πn) agreeing at integers.",
+          "operators_predicted_basis": [],
+          "operators_extra": [],
+          "in_predicted_basis": true,
+          "is_meta": true,
+          "note": "This is a meta-discussion about interpolation, important as a foundation for all subsequent fractional-iteration / fractional-differentiation work but not itself an operator move.",
+          "evidence_lines": [3511, 3535, 3545]
+        },
+        {
+          "section_id": "qr3_sec_4_5",
+          "title": "§4-§5: Fractional Order of Functions — definition of F^n",
+          "line_range": [3557, 3641],
+          "type": "definition_and_examples",
+          "content_summary": "Defines F^n(x) for non-integer n as the unique function passing through F^0, F^1, F^2, ... Example: F(x) = ax^p gives F^n(x) = a^{(p^n-1)/(p-1)} x^{p^n}; in particular F^{1/2}(x) = a^{1/(1+√p)} x^{√p}. Extends to irrational n via F^{√2}, F^{log 2}, F^e, F^π.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["FRACTIONAL_FUNCTIONAL_ITERATION"],
+          "in_predicted_basis": false,
+          "note": "This is the entry point to Ramanujan's fractional iteration theory. Closely related to the Schröder / Koenig functional equation tradition. Not in the 6-operator schema.",
+          "evidence_lines": [3557, 3577, 3588, 3625]
+        },
+        {
+          "section_id": "qr3_sec_6",
+          "title": "§6: Conjugation theorem for fractional iteration + examples",
+          "line_range": [3643, 3950],
+          "type": "theorem_and_examples",
+          "content_summary": "Theorem: if F^m(x) = φ(x), F^n(x) = ψ(x), and f^m(x) = χ^{-1}φ(χ(x)), then f^n(x) = χ^{-1}ψ(χ(x)). Examples: (a) F(x) = (a(x^m+1)^p - 1)^{1/m}; (b) F(x) = x²-2 → F^n(x) via cosh-like closed form (Chebyshev family); (c) F^n for x²+2x, x²-2x, x²+4x; (d) iteration of x → (1-x)/(1-x²) involving F^{log 3}.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["FRACTIONAL_FUNCTIONAL_ITERATION"],
+          "in_predicted_basis": false,
+          "note": "Schröder conjugation: F^n acts on a fixed-point-free function by conjugating to a 'normal form' φ where the iterate is easy (a power map). Example (b) — F(x) = x²-2 has the Chebyshev semigroup as its iteration; F^{log 3/log 2}(x) = x³-3x and so on, which Ramanujan computes explicitly.",
+          "evidence_lines": [3643, 3703, 3789, 3847]
+        },
+        {
+          "section_id": "qr3_sec_7",
+          "title": "§7: Orders of Infinity — Hardy ≺ notation",
+          "line_range": [3958, 3983],
+          "type": "definitions",
+          "content_summary": "Adopts Hardy's ≺/≻ notation for asymptotic order comparison. Lists scales: x ≺ x² ≺ x³ ≺ ...; e^x ≻ x^x ≻ x! ≻ e^{x²} ≻ x^n (any n); e^x ≺ e^{e^x} ≺ e^{e^{e^x}}. Notes 'functions which defy all exponential scales'.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["HARDY_ORDERS_OF_INFINITY"],
+          "in_predicted_basis": false,
+          "evidence_lines": [3959, 3961, 3979]
+        },
+        {
+          "section_id": "qr3_sec_8",
+          "title": "§8: Construction of a function defying all logarithmic scales",
+          "line_range": [4034, 4181],
+          "type": "construction",
+          "content_summary": "Defines φ(x) by the functional equation xφ(x) = φ(log x), φ(0)=1. Computes φ(1)=1, φ(e)=1/e, φ(e^e)=1/e^{1+e}, .... Lets u_n = φ(tower of n e's); uses the 'unique function' to interpolate. Proves ∫₀^x φ dx grows like (log_n x) so the series ∑ φ(n) diverges, but sum to 10^{2,000,000} terms still doesn't exceed 5.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["HARDY_ORDERS_OF_INFINITY", "FRACTIONAL_FUNCTIONAL_ITERATION"],
+          "in_predicted_basis": false,
+          "evidence_lines": [4036, 4046, 4083, 4140, 4169]
+        },
+        {
+          "section_id": "qr3_sec_9",
+          "title": "§9: Scales of Orders of Infinity — theorem that the number of scales is infinite",
+          "line_range": [4182, 4287],
+          "type": "theorem",
+          "content_summary": "Generalizes §8: given any 'scale' (a family closed under iteration of f), one can construct F by F(x) = f^{-1}(x) F(f(x)) such that ∫F defies that scale. Hence infinite tower of scales.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["HARDY_ORDERS_OF_INFINITY", "FRACTIONAL_FUNCTIONAL_ITERATION"],
+          "in_predicted_basis": false,
+          "evidence_lines": [4230, 4247, 4286]
+        },
+        {
+          "section_id": "qr3_sec_10",
+          "title": "§10: Expand f^r(x) in ascending powers of r — derives ψ_1(x) = C/F(x)",
+          "line_range": [4288, 4456],
+          "type": "theorem_and_derivation",
+          "content_summary": "Taylor-expands f^r(x) = ψ_0(x) + r/1! ψ_1(x) + r²/2! ψ_2(x) + .... Shows ψ_0(x) = x, then by differentiating f^{r+h} = f^r∘f^h in two ways shows df^r/dr = ψ_1(x) df^r/dx, and ψ_n(x) = ψ_1(x) dψ_{n-1}/dx. Combined with §9 (∫F = const along f-orbit), deduces ψ_1(x) = C/F(x) — the infinitesimal generator of the iteration semigroup.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["FRACTIONAL_FUNCTIONAL_ITERATION"],
+          "in_predicted_basis": false,
+          "note": "This is the Lie-theoretic / generator-of-flow content of fractional iteration. Modern: ψ_1 is the vector field of the iteration flow.",
+          "evidence_lines": [4288, 4324, 4380, 4451]
+        },
+        {
+          "section_id": "qr3_sec_11",
+          "title": "§11: Fractional Order of Differentiation",
+          "line_range": [4458, 4561],
+          "type": "theorem_and_examples",
+          "content_summary": "Defines D^n f(x) as the unique function passing through D^0, D^1, D^2, .... Theorem: ∫₀^∞ x^{n-1} f^{(r)}(a-x) dx = Γ(n) f^{(r-n)}(a). Use to define f^{(k)}(a) for non-integer k: pick r > k integer, set n = r-k, evaluate LHS. Cor: with n = 1/2, x → x²: ∫f(a-x²) dx = √π/2 · f^{(-1/2)}(a).",
+          "operators_predicted_basis": [],
+          "operators_extra": ["RIEMANN_LIOUVILLE_FRACTIONAL_DIFF"],
+          "in_predicted_basis": false,
+          "note": "This is the Riemann-Liouville fractional derivative via the Cauchy formula, but with the role of f and its derivatives flipped (operates on f^{(r)}, returns f^{(r-n)}). Has a Mellin-style kernel x^{n-1} but is not what schema mellin_inversion detects; the schema looks for x^{s-1} F(x) where F is a function, not f^{(r)}.",
+          "evidence_lines": [4459, 4493, 4513, 4539]
+        },
+        {
+          "section_id": "qr3_sec_12",
+          "title": "§12: The Use of Operators — shift E, difference Δ",
+          "line_range": [4562, 4805],
+          "type": "theorem_and_examples",
+          "content_summary": "Defines E = 1+Δ, E^n φ(0) = φ(n). Notes E^n φ(0) = φ(n) only when φ is the 'unique' function (§3). Example: Euler-Maclaurin sum formula derived heuristically. (ii) Conditions for substituting D (differentiation) for a scalar: result must be true for complex values. (iii) Example: substitute aD for a in Mellin formulas to get operator identities like ∫x^{n-1} ∑(-E)^s x^s/s! φ(0) dx = Γ(n)φ(-n) (recovers the Master Theorem with E acting on φ). Bessel-function example.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["UMBRAL_OPERATOR_SUBSTITUTION"],
+          "in_predicted_basis": false,
+          "note": "Heaviside / umbral operator calculus. The MASTER_THEOREM appears here AS A CHECK / consistency test: substituting E for a scalar a in the Mellin integral gives back the Master Theorem statement. Methodologically interesting — Ramanujan is using the Master Theorem as a check on his operator calculus.",
+          "evidence_lines": [4563, 4583, 4595, 4647, 4738, 4759]
+        },
+        {
+          "section_id": "qr3_sec_13",
+          "title": "§13: Partial fractions of an infinite product → cos integrals",
+          "line_range": [4806, 4956],
+          "type": "theorem_and_examples",
+          "content_summary": "Decomposes (1+x²/a²)(1+x²/(a+1)²)·...·(1+x²/(a+n)²)^{-1} as partial fractions in x²; takes n→∞ to get a series form. From this derives ∫₀^∞ cos(2nx) / ∏(1+x²/(a+k)²) dx = √π Γ(a+1/2)/[Γ(a) cosh^{2a}(n)]. Applies Theorem 12(b) to get ∫ cos(2nx)/cosh^{2a}(x) dx in inverse form.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["PARTIAL_FRACTION_OF_INFINITE_PRODUCT", "FOURIER_SELF_RECIPROCITY"],
+          "in_predicted_basis": false,
+          "evidence_lines": [4806, 4831, 4892, 4922, 4947]
+        },
+        {
+          "section_id": "qr3_sec_14",
+          "title": "§14: Finite-vs-infinite Fourier — discontinuous-bandwidth theorem",
+          "line_range": [5044, 5108],
+          "type": "theorem",
+          "content_summary": "Computes ∫₀^h e^{-ax} cos(mx) dx as real part of (1-e^{-(a+mi)b})/(a+mi). Combines with another integral to show: ∫₀^∞ ψ(x) cos(nx) dx = (π/2)φ(n) if n<h, = (π/4)φ(n) at n=h, = 0 if n>h, where ψ comes from ∫₀^h φ(x) cos(mx) dx.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["BANDLIMITED_FOURIER_DISCONTINUITY", "FOURIER_SELF_RECIPROCITY"],
+          "in_predicted_basis": false,
+          "note": "The bandlimited variant of Theorem III. This is essentially the Paley-Wiener phenomenon: compactly-supported φ has Fourier transform that 'looks band-pass' against trial functions.",
+          "evidence_lines": [5044, 5076, 5088, 5099]
+        },
+        {
+          "section_id": "qr3_sec_15",
+          "title": "§15: Reciprocal-pair theorem — Mellin pair self-reciprocity + Bessel/Fourier corollaries",
+          "line_range": [5111, 5519],
+          "type": "theorem_and_corollaries",
+          "content_summary": "Theorem: if F and f satisfy ∫₀^∞ F(ax) f(bx) dx = 1/(a+b) (equivalently ∫x^{p-1} F dx · ∫x^{-p} f dx = π/sin(πp)), then the Fourier-like pair ψ(n) = ∫φ(x) [F(nxi)+F(-nxi)]/2 dx implies φ(n) = (2/π) ∫ψ(x)[f(nxi)+f(-nxi)]/2 dx. Corollaries: (1) e^{-x} pair gives Fourier cos pair (= Theorem III), (2) 1/(1+x²) pair, (3) Bessel J_n pair, (4) x → x^m variant, (5) m=n=2, a=b=1 gives ∫F(x²) dx · ∫f(x²) dx = π/4.",
+          "operators_predicted_basis": [],
+          "operators_extra": ["MELLIN_PAIR_RECIPROCITY", "FOURIER_SELF_RECIPROCITY"],
+          "in_predicted_basis": false,
+          "note": "Most general reciprocity theorem in the QRs. Uses MASTER_THEOREM in the proof (line 5234, line 5275) but the *operator* is Mellin-pair reciprocity — a generalization of Mellin self-inversion to pairs of functions.",
+          "evidence_lines": [5111, 5127, 5160, 5253, 5283, 5340, 5396]
+        }
+      ]
+    }
+  ]
+}

@@ -173,7 +173,21 @@ beyond Chudnovsky.
 
 ---
 
-## Hunt 5 — Quarterly Reports to the Madras Board of Studies
+## Hunt 5 — Quarterly Reports to the Madras Board of Studies — CLOSED
+
+**Status (updated 2026-05-24):** CLOSED. ChatGPT-Pro corpus delivered
+Berndt's 2022 Hardy-Ramanujan Journal reproduction (open-access copy of
+Satagopan's 1925 handwritten copy of the lost originals). All 33
+math-content sections hand-tagged; full verdict in
+[diary/20_hunt5_qr_operator_tagging.md](../diary/20_hunt5_qr_operator_tagging.md).
+The 80% prediction below is **falsified at 57.6%**; the corrected
+7-operator basis covers ~91%. See
+[DID_NOT_PAN_OUT.md §R15](DID_NOT_PAN_OUT.md) and
+[CANDIDATE_INSIGHTS.md §D1](CANDIDATE_INSIGHTS.md). The natural
+follow-up — Hunt 5b on the Notebooks — is open.
+
+The original Hunt 5 framing is preserved below as the historical
+prediction.
 
 **Located.** Originals in University of Madras Library; Berndt-Rankin
 *Ramanujan: Letters and Commentary* (AMS HMath 9, 1995) reproduces and

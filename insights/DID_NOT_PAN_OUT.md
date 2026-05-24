@@ -24,10 +24,10 @@ accordingly.
 - **OPEN** — speculation made, listed here for inventory, but not yet
   tested. (Distinct from "refuted".)
 
-**Final entry count: 14**, breaking down as:
+**Final entry count: 15**, breaking down as:
 - 4 REFUTED
 - 4 CORRECTED
-- 4 PARTIALLY REFUTED
+- 5 PARTIALLY REFUTED
 - 2 DOWNGRADED
 
 (Plus a separate OUTSTANDING section listing speculations that the run
@@ -441,6 +441,62 @@ qualitative direction was right; the implementation cost was understated.
 
 ---
 
+## R15 — "5-10 operators recur 80%+ of the time in the Quarterly Reports" (HUNT_MAP §5)
+
+**What was speculated.** HUNT_MAP §5: a specific 6-operator basis
+(mellin_inversion, master_theorem, q_shift, modular_S_transform,
+eisenstein_normal_ordering, class_field_galois_average) would cover ≥80%
+of mathematical sections in Ramanujan's three Quarterly Reports. The
+prediction served the latent-space-speedrun hypothesis: that Ramanujan
+ran on a small compressed toolkit.
+
+**What was tested.** Hand-tagging all 33 math-content sections of
+Berndt's 2022 HRJ reproduction of the QRs (5519 lines from the
+open-access PDF; faithful reproduction of Satagopan's 1925 handwritten
+copy of the otherwise-lost originals). Documented in
+`diary/20_hunt5_qr_operator_tagging.md`; structured tagging in
+`corpora/transcriptions/quarterly_reports/qr_section_index.json`;
+machine-readable output via `analysis/23_hunt5_qr_operator_tagging.py`
+to `analysis/results/qr_operator_tags.csv` and
+`analysis/results/qr_hunt5_verdict.csv`.
+
+**What we found.** Coverage of the predicted basis is **57.6%** (19 of
+33 math sections), well below the ≥80% bar. Breakdown:
+
+| Report | n_math | n_in_basis | % | meets ≥80%? |
+|---|---|---|---|---|
+| QR1 | 13 | 13 | **100%** | YES |
+| QR2 | 9  | 6  | **67%**  | NO |
+| QR3 | 11 | 0  | **0%**   | NO |
+
+Of the 6 predicted operators, **only 2 fire**: `master_theorem` (19
+sections) and `mellin_inversion` (17 sections). The 4 modular-machinery
+operators (`q_shift`, `modular_S_transform`, `eisenstein_normal_ordering`,
+`class_field_galois_average`) **never fire**. Vocabulary check: zero
+occurrences of `\tau`, `\theta`, `\eta`, "Bernoulli", "Heegner",
+"Eisenstein", "modular", "class invariant" in the 5519 lines.
+
+The QRs are NOT a modular-forms document. They are Mellin /
+Master-Theorem analysis (QR I + QR II) and operator calculus / fractional
+iteration / Hardy orders of infinity (QR III). The HUNT_MAP §5
+prediction misread the QRs as Ramanujan's "modular toolkit demo" — they
+are actually his "Mellin / functional calculus demo".
+
+**Updated estimate (tag: PARTIALLY REFUTED).** The 80%-recurrence
+prediction is refuted for the specified 6-operator basis. But the
+*underlying* latent-space-speedrun hypothesis (small operator toolkit)
+**holds at high confidence**, with a corrected basis. A revised
+7-operator basis — dropping the 4 unfired modular operators and adding
+{FOURIER_SELF_RECIPROCITY, FRACTIONAL_FUNCTIONAL_ITERATION,
+HARDY_ORDERS_OF_INFINITY, FRULLANI_LIMIT, MELLIN_PAIR_RECIPROCITY} —
+covers ~91% of QR math sections (30 of 33). The corrected basis is the
+artefact; the prediction's failure is informative because it tells us
+*which* corpus the modular-machinery operators belong to (Notebooks +
+Lost Notebook, not Quarterly Reports). See diary 20 for the full
+operator inventory and the Hunt 5b proposal (Notebooks corpus).
+
+---
+
 ## OUTSTANDING — Speculations made but NOT YET TESTED in this run
 
 These are flagged here so a future pass (or a reader auditing
@@ -453,12 +509,7 @@ HUNT_MAP §1 makes this specific quantitative prediction (Ono speculated
 it; nobody has done the full inventory). Cannot test until primary
 scans of LN pp. 341-343 arrive. **Outstanding — not tested.**
 
-### O2 — "5–10 operators recur 80%+ of the time in the Quarterly Reports"
-
-HUNT_MAP §5 prediction. The schema to test it is shipped
-(`ramanujan/corpora/transcriptions/operator_tagging_schema.py`), but
-the QR transcriptions have not arrived in this env. **Outstanding —
-not tested.**
+### O2 — RESOLVED → see R15 below.
 
 ### O3 — "The 18 unproven class-number-8 invariants Ramanujan tabulated correspond to discriminants where the genus subfield is itself class number ≥ 4"
 
