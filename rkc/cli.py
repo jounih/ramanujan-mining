@@ -350,7 +350,53 @@ def _build_parser() -> argparse.ArgumentParser:
                          "regression suite from analysis/14b_recognizer_v2_benchmark.py).")
     pb.set_defaults(func=cmd_benchmark)
 
+    # search (Project C v0.3.0)
+    ps = sub.add_parser("search",
+                        help="Run Project C operator-composition search (v0.3.0 baseline).")
+    ps.add_argument("expr", help='Initial expression to search from.')
+    ps.add_argument("--var", default="n", help="Iteration variable.")
+    ps.add_argument("--budget", type=int, default=100,
+                    help="Number of operator proposals to try (default: 100).")
+    ps.add_argument("--digits", type=int, default=20,
+                    help="Verifier precision in decimal digits (default: 20).")
+    ps.add_argument("--out-dir", default=".rkc_search_out",
+                    help="Directory for accepted.jsonl + rejected.jsonl (default: .rkc_search_out).")
+    ps.add_argument("--seed", type=int, default=None, help="RandomProposer seed.")
+    ps.add_argument("--verbose", action="store_true")
+    ps.set_defaults(func=cmd_search)
+
     return p
+
+
+def cmd_search(args: argparse.Namespace) -> int:
+    """Project C v0.3.0 search loop (single-step composition baseline)."""
+    expr, n = _parse_expr(args.expr, args.var)
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+    )
+    state = SearchState(payload=expr, metadata={"var": n})
+    registry = JsonlRegistry.with_dir(args.out_dir)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=args.seed),
+        verifier=MpmathVerifier(n_digits=args.digits),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=registry,
+        budget=args.budget,
+        max_depth=1,
+        verbose=args.verbose,
+    )
+    print(f"search: {args.expr!r}")
+    print(f"  budget        : {summary.budget}")
+    print(f"  proposed      : {summary.n_proposed}")
+    print(f"  accepted      : {summary.n_accepted}")
+    print(f"  rejected      : {summary.n_rejected}")
+    print(f"  reject reasons: {summary.reject_reason_counts}")
+    print(f"  accepted hashes: {summary.accepted_hashes[:5]}{' …' if len(summary.accepted_hashes) > 5 else ''}")
+    print(f"  output dir    : {args.out_dir}")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -112,6 +112,47 @@ def test_certify_gauss_sum_q_seven_is_safe():
 # rkc benchmark — default suite runs the 14b regression
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# rkc search (Project C v0.3.0 baseline)
+# ---------------------------------------------------------------------------
+
+def test_search_baseline_runs_and_writes_reject_log(tmp_path):
+    """v0.3.0: with stub apply_fn's, all proposals decline; verify the
+    engine + reject log path works end-to-end."""
+    p = _run([
+        "search", "exp(-beta*n**2)",
+        "--budget", "5",
+        "--digits", "10",
+        "--seed", "42",
+        "--out-dir", str(tmp_path),
+    ])
+    assert p.returncode == 0
+    assert "proposed      : 5" in p.stdout
+    assert "rejected      : 5" in p.stdout
+    # reject log should exist
+    assert (tmp_path / "rejected.jsonl").exists()
+    # accepted log only created on first acceptance
+    # (v0.3.0 has no implemented operators yet, so no acceptance expected)
+
+
+def test_search_module_import_smoke():
+    """Public API surface importable; protocols satisfied."""
+    from rkc.search import (
+        SearchState, OperatorApplication, RejectReason,
+        Proposer, Verifier, Router, CostModel, Registry,
+        RandomProposer, MpmathVerifier, RkcRouter, RkcCostModel,
+        JsonlRegistry, search, QR7_OPERATOR_BASIS,
+    )
+    assert len(QR7_OPERATOR_BASIS) == 7
+    op_ids = [op.id for op in QR7_OPERATOR_BASIS]
+    assert "master_theorem" in op_ids
+    assert "fractional_functional_iteration" in op_ids
+
+
+# ---------------------------------------------------------------------------
+# rkc benchmark — default suite runs the 14b regression
+# ---------------------------------------------------------------------------
+
 @pytest.mark.slow
 def test_benchmark_default_suite_runs():
     """The default benchmark runs `analysis/14b_recognizer_v2_benchmark.py`.

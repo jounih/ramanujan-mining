@@ -298,7 +298,10 @@ def best_match(expr_summand: sp.Expr, n: sp.Symbol,
 
 
 def recognize_composite(expr: sp.Expr, n: sp.Symbol,
-                        target_precision: float = 1e-12) -> Optional[RoutingResult]:
+                        target_precision: float = 1e-12,
+                        numerical_completion: bool = False,
+                        q_value: Any = None,
+                        target_digits: int = 30) -> Optional[RoutingResult]:
     """Composite wrapper for sum/product decomposition with per-component
     cost rollup (gap 3).
 
@@ -308,8 +311,19 @@ def recognize_composite(expr: sp.Expr, n: sp.Symbol,
     and whose `total_cost` is the sum of component total_costs.
 
     Returns None if no component matches.
+
+    The `numerical_completion`, `q_value`, and `target_digits` flags
+    propagate to per-component `best_match` calls (W4 fix per diary 16
+    deferred follow-up). When any component is MODULAR_COMPLETION_REQUIRED
+    AND `numerical_completion=True`, that component's `.completion` field
+    will hold the Watson-Hickerson Eichler integral result; the composite
+    result's components list preserves this. (The composite's own value
+    is not yet computed — that would require knowing how to combine
+    component values under Add vs Mul, which is the v0.4 follow-up.)
     """
-    direct = best_match(expr, n, target_precision)
+    direct = best_match(expr, n, target_precision,
+                        numerical_completion=numerical_completion,
+                        q_value=q_value, target_digits=target_digits)
     if direct is not None:
         return direct
     components: list[RoutingResult] = []
@@ -317,13 +331,17 @@ def recognize_composite(expr: sp.Expr, n: sp.Symbol,
     if expr.func == sp.Add:
         decomposition = "sum"
         for term in expr.args:
-            bm = best_match(term, n, target_precision)
+            bm = best_match(term, n, target_precision,
+                            numerical_completion=numerical_completion,
+                            q_value=q_value, target_digits=target_digits)
             if bm is not None:
                 components.append(bm)
     elif expr.func == sp.Mul:
         decomposition = "product"
         for factor in expr.args:
-            bm = best_match(factor, n, target_precision)
+            bm = best_match(factor, n, target_precision,
+                            numerical_completion=numerical_completion,
+                            q_value=q_value, target_digits=target_digits)
             if bm is not None:
                 components.append(bm)
     if not components:

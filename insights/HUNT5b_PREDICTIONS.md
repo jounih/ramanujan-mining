@@ -140,6 +140,69 @@ The hypothesis is *falsified* if the distributions look like the QRs
 ## Cross-references
 
 - [diary/20_hunt5_qr_operator_tagging.md](../diary/20_hunt5_qr_operator_tagging.md) — Hunt 5 closure
+- [diary/22_hunt5b_nb_v_ch32_tagging.md](../diary/22_hunt5b_nb_v_ch32_tagging.md) — Hunt 5b Ch. 32 first chapter (see addendum below)
 - [BIG_IDEAS_REVIEW §2a, §2b, §4](BIG_IDEAS_REVIEW.md) — sharpened framings
 - [HUNT_MAP.md](HUNT_MAP.md) — original predictions
 - [todo.md H2](../todo.md) — Hunt 5b is unblocked
+
+---
+
+## Ch. 32 result (2026-05-24, see diary 22)
+
+Pre-registered predictions for Ch. 32 (above) are NOT modified — this section
+records the *outcome* of the first Hunt 5b chapter pass.
+
+**Verdict: SUPPORTED** (per the rubric: ≥3 of 4 predicted-dominant operators
+hit floor; ≥3 of 4 predicted-rare operators under ceiling), with one genuine
+prediction miss (`eisenstein_normal_ordering`).
+
+| Operator | Predicted (Ch. 32) | Actual (24 entries) | Hit? |
+|---|---|---|---|
+| `eisenstein_normal_ordering` | ≥40% | **8.3%** | **MISS** (only Family D + E10 proof-chain) |
+| `modular_S_transform` | ≥30% | **91.7%** | hit (×3 floor) |
+| `q_shift` | ≥30% | **100.0%** | hit (×3 floor) |
+| `class_field_galois_average` | ~20% | **33.3%** | hit (above bracket) |
+| `master_theorem` | ≤10% | 0.0% | under |
+| `mellin_inversion` | ≤10% | 0.0% | under |
+| All QR III operators | ~0% | 0.0% | under |
+
+**Headline:** Ch. 32 has zero overlap with the QR operator toolkit. The
+chapter's dominant pair is `q_shift + modular_S_transform` (100%, 91.7%);
+the QR's dominant operators (`master_theorem`, `FRACTIONAL_FUNCTIONAL_ITERATION`,
+`FOURIER_SELF_RECIPROCITY`) all fire 0% in Ch. 32. The toolkit-split
+hypothesis is **supported on this chapter**.
+
+**Reason for the `eisenstein_normal_ordering` miss:** the chapter name is
+misleading — per [T2_EISENSTEIN_CF_SCOPING §"TL;DR"](T2_EISENSTEIN_CF_SCOPING.md),
+only **1-2 entries** in Ch. 32 are genuinely Eisenstein (Family D cubic-base
+CF). The other ~22 entries are theta-quotient CFs at small levels N=2,3,4,5,8
+— modular machinery (Jacobi triple product, η-quotients, modular equations)
+not Eisenstein series. T2's scoping doc explicitly flagged this risk; the
+HUNT5b prediction did not propagate the flag to its `eisenstein_normal_ordering`
+floor. The corrected per-Ch. 32 prediction for any re-run should be
+`eisenstein_normal_ordering` ≤15% (firing only on E10 + E32-cubic).
+
+**Per-family distribution (T2 clustering A/B/C-ambig/C/D)** — see diary 22
+for the table. Family B (R(q) special values) is the only family where
+`class_field_galois_average` is dominant (4/4 = 100%), validating T2's
+"separate sub-route, not a CF family" call. Family C (Andrews-Gordon-Selberg
+bulk, 6 entries) fires `q_shift + modular_S` at 100% each but 0%
+`class_field_galois_average` — pure q-product identities at fixed q.
+
+**What's still needed to call the toolkit-split hypothesis "Established":**
+≥3 chapters with different dominant operators across them. The most-informative
+single next chapter is **NB V Ch. 34** (class invariants and singular moduli,
+pp. 183-321 in the same volume, no extra commentary needed). Then either Ch. 16
+(theta functions), Ch. 17 (modular equations), or Ch. 36 (modular equations
++ theta-function identities, also in this volume) for a third.
+
+**Ambiguous-rate:** ~17% (4 near-match decisions in 24 entries), in line
+with diary 20's QR tagging (~12%). All four near-matches sit at the
+`class_field_galois_average` boundary; including them all would shift the
+operator to 50% (still in the "moderate" predicted range, just at the
+upper end).
+
+**Confidence:** medium-high on the Ch. 32 SUPPORTED verdict; medium on
+the broader hypothesis (one chapter, replication needed). The
+`eisenstein_normal_ordering` miss is the genuine prediction failure and
+is honest.

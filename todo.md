@@ -271,7 +271,7 @@ primitives to `rkc/registry.py` as new kernels with degeneracy detectors.
 After this, the recognizer can route QR III-style identities, not just the
 QR I + QR II Mellin/Master cluster. Concrete + bounded (~1 week).
 
-### W7-pre. Check QR II §3 cubic-roots-of-unity for Gauss-sum degeneracy awareness
+### W7-pre. Check QR II §3 cubic-roots-of-unity for Gauss-sum degeneracy awareness — CLOSED (NEGATIVE)
 
 **From parallel-Claude review.** QR II §3 (lines 2086-2280 of the HRJ text)
 uses the cubic-roots-of-unity multisection
@@ -293,6 +293,13 @@ caveat. Still worth a one-line note.
 
 **Effort:** ~30 minutes (just careful re-read of QR II §3, lines 2086-2280,
 plus 1-2 paragraphs of write-up).
+
+**Result (diary 23):** NEGATIVE. Ramanujan applies the cube-roots-of-
+unity multisection to `1 - x³/3! + x⁶/6! - ···` cleanly but does NOT
+comment on the silent-zero case (when target function has no `n ≡ 0
+(mod 3)` Taylor coefficients). §A4's silent-zero detector at Gauss sums
+q ≡ 2 (mod 4) is a modern engineering catch, not a re-statement of a
+Ramanujan caveat.
 
 ### W8. "Pre-Julia iteration theory in Ramanujan's third Quarterly Report" — LIT SCAN COMPLETE; READY TO DRAFT ★
 
