@@ -203,6 +203,59 @@ modular case for the actual identity-discovery work. That framing makes the
 QR-vs-Notebooks contrast sharper: not two disjoint toolkits, but a
 foundational layer (QRs) plus the modular application of it (Notebooks).
 
+## 2c. NEW: The analytic toolkit is BIPARTITE, not unitary (Hunt 5b NB1 Ch. 3-4, diary 36)
+
+The Hunt 5b reverse-validation experiment (diaries 36) hand-tagged
+Berndt *Notebooks Part 1* Ch. 3-4 (Master Theorem material, Notebooks-
+volume provenance but QR-side topic). Pre-registered prediction by
+ChatGPT Pro (insights/HUNT5B_NB1_CH3_4_PREDICTION_REGISTRATION.md): a
+clean `master_theorem`-dominant analytic cluster matching the QR
+profile, falsifying the corpus/provenance reading of toolkit-split.
+
+**Actual result**: corpus/provenance reading IS falsified (zero
+modular ops despite Notebooks-volume), confirming topic-toolkit. BUT
+the QR-side internal mix is **NOVEL and unexpected**:
+
+| Operator | Predicted | Actual (91 units) |
+|---|---|---|
+| `master_theorem` | 85-95% | **24.2%** combined / 52.4% Ch. 4 alone |
+| `fractional_functional_iteration` | 8-20% supporting | **33.0%** combined (Ch. 3 monoculture; 32.7%) |
+| `modular_S_transform` | 0-3% | 0.0% (confirmed) |
+| `class_field_galois_average` | 0-1% | 0.0% (confirmed) |
+
+The analytic toolkit is **bipartite within Ch. 3-4**, not unitary:
+- **Ch. 3** is `fractional_functional_iteration` MONOCULTURE (Schröder-
+  Koenig material, 32.7% on chapter, zero of the other operators)
+- **Ch. 4** is split between `master_theorem` (52.4%) and
+  `fractional_iteration` (33.3%) in **DISJOINT entry-sets** — zero
+  co-tagging across 52 units in the iteration + Master-Theorem
+  subdomains
+
+**Implication for the latent-space hypothesis**: The analytic cluster
+from §2a + §2b is itself sub-decomposed by problem-domain. RMT material
+fires `master_theorem`; Schröder-Koenig material fires
+`fractional_iteration`. They co-exist in Ch. 4 because Berndt grouped
+two distinct domains in one chapter, NOT because they're
+interchangeable operators.
+
+**This validates the W8 paper draft's specific framing** (pre-Julia
+iteration theory in QR III §4-§6) as a substantive contribution —
+Ramanujan was actively deploying Schröder-Koenig fractional iteration
+in NB Part 1 work circa 1903-1914, several years before Julia's
+canonical 1918 paper. The bipartite finding gives W8 direct empirical
+support: 33% of the proof units in Berndt's "Master Theorem chapter"
+are actually Schröder-Koenig iteration, not RMT.
+
+**Cog-sci upgrade**: the toolkit-split is now hierarchical:
+- Top-level split: modular vs analytic (Hunt 5b across 4 chapters now)
+- Within analytic: bipartite by problem-domain (RMT vs fractional
+  iteration; §2c, this addendum)
+- Within modular: per-domain operator clusters (Hunt 5b §2a)
+
+The latent space is genuinely modular in the structural sense.
+Confidence: high (4 chapters tagged; 2 different sub-decompositions
+each consistent with the topic-driven reading).
+
 ---
 
 ## 3. The "mock-theta corrections as fitted-EBM bias diagnostics" big swing

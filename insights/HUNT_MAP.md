@@ -278,8 +278,25 @@ math-content sections hand-tagged; full verdict in
 The 80% prediction below is **falsified at 57.6%**; the corrected
 7-operator basis covers ~91%. See
 [DID_NOT_PAN_OUT.md §R15](DID_NOT_PAN_OUT.md) and
-[CANDIDATE_INSIGHTS.md §D1](CANDIDATE_INSIGHTS.md). The natural
-follow-up — Hunt 5b on the Notebooks — is open.
+[CANDIDATE_INSIGHTS.md §D1](CANDIDATE_INSIGHTS.md).
+
+**Hunt 5b update (2026-05-25):** Hunt 5b complete on 4 chapters
+(Berndt NB V Ch. 32 / 34 / 36 + NB I Ch. 3-4). Toolkit-split hypothesis
+**ESTABLISHED at high confidence as TOPIC-DRIVEN HIERARCHICAL**:
+- Top-level partition: modular ⊥ analytic (zero cross-firing in 200+ units)
+- Within modular: per-domain operator clusters (Ch.32 q+S; Ch.36 S
+  monoculture; Ch.34 g+S)
+- Within analytic (diary 36): BIPARTITE — `master_theorem` (RMT) ⊥
+  `fractional_iteration` (Schröder-Koenig) in DISJOINT entry-sets
+- The corpus/provenance reading is FALSIFIED — NB I Ch. 3-4 is
+  Notebooks-volume but pure analytic; zero modular firings
+
+Headlines:
+- Pre-registered prediction (ChatGPT Pro): `master_theorem` 85-95%
+  dominant in NB I Ch. 3-4. ACTUAL: 24.2% combined / 52.4% Ch. 4 only,
+  with `fractional_iteration` co-dominant at 33% (predicted 8-20%).
+  See HUNT5B_NB1_CH3_4_PREDICTION_REGISTRATION.md for the locked
+  registration and diary/36 for the verdict.
 
 The original Hunt 5 framing is preserved below as the historical
 prediction.

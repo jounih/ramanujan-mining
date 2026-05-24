@@ -387,7 +387,7 @@ def _poisson_dual_weighted_gaussian(
 def _modular_transform_with_correction_apply(
     expr: sp.Expr, n: sp.Symbol,
 ) -> Optional[tuple]:
-    """v0.8b: One-sided modular transformations with additive scalar
+    """v0.8b/v0.8c: One-sided modular transformations with additive scalar
     correction terms.
 
     Where v0.4 / v0.7 `mellin_inversion` covers STRICT two-sided Poisson
@@ -396,8 +396,9 @@ def _modular_transform_with_correction_apply(
     scalar correction outside the summand — Bernoulli polynomial values,
     logarithms, and weight-2 quasi-modular anomalies.
 
-    v0.8b ships two cases (both verified to rel-err ≤ 1e-30 at dps=80
-    across β ∈ {1e-3, 1e-2, 1e-1, 1, 10}):
+    v0.8b shipped two cases (verified to rel-err ≤ 1e-30 at dps=80
+    across β ∈ {1e-3, 1e-2, 1e-1, 1, 10}); v0.8c added Case C (Stieltjes
+    occupation-number; per ChatGPT Pro proposer answer 2026-05-24):
 
     ### Case A — Bose-Einstein eta-log form
 
@@ -437,6 +438,38 @@ def _modular_transform_with_correction_apply(
     form) we'd need extra plumbing; this v0.8b cut handles concrete
     rational q to match the existing seed `lambert_divisor_q_p1`.
 
+    ### Case C — Stieltjes / Lambert occupation-number form (v0.8c)
+
+        Σ_{n≥1} 1/(e^{β n} − 1)
+          = (log(1/β) + γ)/β + 1/4
+            − (2/β) · Σ_{m≥1} d(m) · [e^{-z_m}·Ei(z_m) − e^{z_m}·E_1(z_m)]
+
+    where β* = 4π²/β, z_m = β*·m, γ is Euler-Mascheroni, d(m) is the
+    number of divisors (sympy.divisor_sigma(m, 0)), and Ei / E_1 are
+    the exponential integrals.
+
+    Derivation: Mellin-inversion of `Σ d(N) e^{-βN} = S_0(β)` (using
+    `1/(e^x-1) = Σ_k e^{-kx}` and pooling by N = nk gives d(N)). The
+    Mellin transform is `Γ(s)·ζ(s)²`; the closed pieces come from the
+    Laurent expansion at the s=1 double pole (`(γ - log β)/β`) and the
+    s=0 simple pole (`1/4`). The remaining contour residue is the
+    dual-series term involving Ei/E_1 weighted by d(m), which is a
+    rewriting of the `Σ d(m)·e^{−β*m}·integral` form via the standard
+    Mellin transform of `1/(e^x − 1)`.
+
+    The matched input shape is `c · 1/(exp(β·n) - 1)` where β is a
+    strictly-positive numeric (rational, e.g. `Rational(1, 100)`) or
+    sympy-positive symbol. Other forms decline.
+
+    **Convergence-regime caveat** (per `analysis/26_v08c_*.py` header):
+    The LHS converges fast as `e^{-βn}` at every β; the dual SUM
+    converges only as `1/m²` (asymptotic from `e^{-z}Ei(z) − e^z E_1(z)
+    ~ 2/z²`). In the small-β regime (β ≪ 1, β* large) the dual is
+    practically computable to high precision; in the large-β regime
+    (β ≥ 10, β* small) the dual is truncation-noise-limited at
+    rel-err ~few%. This is the inverse of v0.8b Case A/B's
+    speedup-direction — exactly the modular-dual character.
+
     ### Return convention
 
     Returns either `None` (declines) or
@@ -446,8 +479,9 @@ def _modular_transform_with_correction_apply(
     fields from the tuple; the verifier picks them up and computes
     `Σ_{n≥1} before  ≡  Σ_{n≥1} after + correction`.
 
-    See [DID_NOT_PAN_OUT §R17] for the original deferral rationale and
-    [diary 31] for the v0.8b numerical-verification table.
+    See [DID_NOT_PAN_OUT §R17] for the original v0.8b deferral
+    rationale, [diary 31] for the v0.8b numerical-verification table,
+    and [diary 32] for the v0.8c Stieltjes/Lambert addition.
     """
     # CASE A: log Bose-Einstein
     result = _log_bose_einstein_apply(expr, n)
@@ -455,6 +489,10 @@ def _modular_transform_with_correction_apply(
         return result
     # CASE B: Lambert / E_2 quasi-modular
     result = _lambert_e2_apply(expr, n)
+    if result is not None:
+        return result
+    # CASE C: Stieltjes / Lambert occupation-number (v0.8c)
+    result = _v08c_try_occupation_number_pattern(expr, n)
     if result is not None:
         return result
     return None
@@ -594,6 +632,102 @@ def _try_extract_lambert_beta(
     return sp.log(base)
 
 
+def _v08c_try_occupation_number_pattern(
+    expr: sp.Expr, n: sp.Symbol,
+) -> Optional[tuple]:
+    """v0.8c (Case C of modular_transform_with_correction): detect
+    `c · 1/(exp(β·n) − 1)` and emit the Stieltjes/Lambert occupation-
+    number dual.
+
+    The matched input shape: a constant scalar `c` (pulled via
+    `as_independent(n)`) times `1/(exp(β·n) − 1)` where `β` is
+    strictly-positive. Equivalent canonical forms accepted:
+
+      (i)   `1 / (exp(β·n) - 1)`
+      (ii)  `1 / (E**(β·n) - 1)`     (sympy may render `exp` as `Pow(E, ·)`)
+
+    Returns `(new_summand, additive_correction, (1, oo))` where
+        new_summand = -c · (2/β) · divisor_sigma(n, 0)
+                       · [exp(-4π² n/β) · Ei(4π² n/β)
+                          − exp(4π² n/β) · expint(1, 4π² n/β)]
+        additive_correction = c · ((log(1/β) + γ)/β + 1/4)
+
+    The dual summand uses sympy.divisor_sigma + sympy.Ei + sympy.expint;
+    the verifier's lambdify modules-list (see
+    `rkc/search/verifiers.py`'s `_V08C_LAMBDIFY_MODULES`) wires
+    divisor_sigma to a sympy.divisor_count shim so mpmath.nsum can
+    evaluate the dual cleanly. Ei and expint are stock-mpmath supported.
+
+    See [diary 32] for the v0.8c numerical-verification table and the
+    convergence-regime caveat (dual is `~1/m²` slow; only practical at
+    small β — exactly the modular-speedup direction).
+    """
+    # Pull out the n-independent scalar.
+    scalar, n_dep = expr.as_independent(n, as_Add=False)
+    # n_dep must be `1 / (something - 1)` where `something` is
+    # `exp(β · n)` for some β > 0.
+    num, den = sp.fraction(n_dep)
+    if sp.simplify(num - 1) != 0:
+        return None
+    # `den` should be `exp(β · n) - 1`; den + 1 should equal exp(β·n).
+    den_p1 = sp.simplify(den + 1)
+    beta = _v08c_extract_beta_from_exp(den_p1, n)
+    if beta is None:
+        return None
+    # Build the dual summand
+    bstar = 4 * sp.pi**2 / beta
+    zn = bstar * n
+    dual_summand = (
+        -scalar
+        * (2 / beta)
+        * sp.divisor_sigma(n, 0)
+        * (sp.exp(-zn) * sp.Ei(zn) - sp.exp(zn) * sp.expint(1, zn))
+    )
+    # Build the additive correction
+    correction = scalar * (
+        (sp.log(1 / beta) + sp.EulerGamma) / beta + sp.Rational(1, 4)
+    )
+    return (dual_summand, correction, (1, sp.oo))
+
+
+def _v08c_extract_beta_from_exp(
+    candidate: sp.Expr, n: sp.Symbol,
+) -> Optional[sp.Expr]:
+    """If `candidate == exp(β·n)` for some strictly-positive β, return β;
+    else return None.
+
+    Accepts both `sp.exp(arg)` and `sp.Pow(sp.E, arg)` AST shapes.
+    """
+    if not candidate.has(n):
+        return None
+    if candidate.func == sp.exp:
+        arg = candidate.args[0]
+    elif candidate.func == sp.Pow and candidate.args[0] == sp.E:
+        arg = candidate.args[1]
+    else:
+        return None
+    # arg must be linear in n with positive leading coefficient and zero offset.
+    arg_expanded = sp.expand(arg)
+    try:
+        poly = sp.Poly(arg_expanded, n)
+    except sp.PolynomialError:
+        return None
+    if poly.degree() != 1:
+        return None
+    a1 = poly.nth(1)
+    a0 = poly.nth(0)
+    if a0 != 0:
+        return None  # require pure exp(β·n), no constant offset
+    # require β > 0; for symbolic positive β, sympy's `is_positive` returns True
+    try:
+        is_pos = sp.simplify(a1).is_positive
+    except Exception:
+        is_pos = None
+    if is_pos is not True:
+        return None
+    return a1
+
+
 def _is_rational_in_open_unit(x: sp.Expr) -> bool:
     """True iff `x` is a sympy Rational with 0 < x < 1."""
     if not isinstance(x, sp.Rational):
@@ -619,14 +753,173 @@ def _fractional_iteration_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr
     return None
 
 
-def _hardy_orders_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
-    """Hardy orders of infinity stub.
+def _hardy_orders_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[tuple]:
+    """v0.9a (Project C v0.9-hardy): Hardy-orders divergence diagnostic.
 
-    For asymptotic-comparison queries, apply the ≺/≻ relation to
-    classify growth orders. Doesn't transform expressions in the
-    standard sense; placeholder for v0.
+    Per QR III §7-§9, Ramanujan's "orders of infinity" is the systematic
+    Hardy ≺/≻ classification of how fast functions grow at ∞ — the
+    substrate that makes the Quarterly-Report operator calculus
+    well-typed. v0.3 - v0.8 left this operator as a stub returning None;
+    v0.9a wires it as the engine's **divergence diagnostic**: a
+    non-transforming annotator that flags the asymptotic class of the
+    literal summand `payload(n)` as n → ∞.
+
+    Concrete motivating example (ChatGPT Pro's proposer-test answer):
+    given the seed `1/(1 - exp(-β n))`, naively summing the LHS
+    diverges — each term tends to 1 as n → ∞. Before the proposer
+    suggests `modular_transform_with_correction` (the operator that
+    actually applies), the engine needs to know the literal summand
+    does not converge so the verifier doesn't waste cycles trying to
+    compare divergent sums.
+
+    ### Return convention (v0.9a — new 2-tuple form)
+
+    `_hardy_orders_apply` returns one of:
+
+      - `None` — the operator declines (e.g. expr has no n-dependence
+        at all, so the limit question is trivial / nonsensical).
+      - A 2-tuple `(expr_unchanged, {"convergence_class": <ConvergenceClass value>})`
+        — engine merges the metadata dict into `state_after.metadata` AND
+        copies the class to the top-level `state_after.convergence_class`
+        field. The payload is RETURNED UNCHANGED (this is a non-
+        transforming operator — it annotates, doesn't rewrite).
+
+    The 2-tuple convention is distinct from the v0.8b 3-tuple
+    `(new_summand, additive_correction, summand_range)` convention by
+    its length AND by the dict-typed second element (vs. v0.8b's
+    Expr-typed second element). The engine dispatches on length + type.
+
+    ### Classification method
+
+    Compute `sp.limit(expr, n, sp.oo)`. Decision:
+
+      - limit is `0` (zero) → `CONVERGENT`. The necessary condition for
+        absolute summability is met. We don't try a finer
+        speed-of-convergence test (e.g. detecting harmonic-style
+        divergence at the boundary between absolute and conditional
+        convergence). That's a v0.10+ refinement; for v0.9a the goal is
+        a fast 3-bin diagnostic to flag the WORST common failure
+        (divergent-literal summands).
+
+      - limit is `±oo` (infinite) → `NEEDS_REGULARIZATION`. The summand
+        diverges to infinity; Abel / zeta regularization or a modular
+        transformation is required to make sense of any sum.
+
+      - limit is a finite non-zero number (sympy `is_finite=True` and
+        `is_number=True` and not zero) → `DIVERGENT_LITERAL`. The
+        summand stabilises at a non-zero level — `Σ_n c = ∞` trivially.
+
+      - limit is `AccumulationBounds` (oscillatory bounded), `nan`,
+        `zoo`, or sympy's limit raises → `UNKNOWN`. We don't make a
+        confident classification.
+
+    ### Why this design (rather than a pre-pass)
+
+    The brief offers two implementation options: (a) a regular operator
+    the proposer can suggest, or (b) a pre-pass the engine runs first
+    on every new state. v0.9a goes with (a) — regular operator —
+    because:
+
+      1. **Zero engine surgery beyond the metadata-merge.** The
+         apply_fn return-convention extension (2-tuple form) is small,
+         backward-compatible, and reuses the same dispatch path the
+         v0.8b 3-tuple takes.
+
+      2. **Composability.** Future operators (e.g. an "Abel
+         regularization" operator that fires when convergence_class is
+         NEEDS_REGULARIZATION) can read the class off the state and
+         decide whether to apply. A pre-pass would need its own hook
+         system.
+
+      3. **The proposer can BE the gating logic.** ClaudeProposer
+         (v0.8a) sees the state and can be prompted to fire
+         hardy_orders FIRST on novel states (we'll wire this hint into
+         the system prompt as a follow-up; v0.9a focuses on the
+         operator + data-model side). RandomProposer in the meantime
+         will fire hardy_orders ~1/8 of the time uniformly, which is
+         fine for a diagnostic that's cheap to compute.
+
+    ### Why None is returned for expressions with no n-dependence
+
+    If `expr.has(n) is False`, the summand is a constant in n. The
+    "limit as n → ∞" is the constant itself; this is not a
+    classification of n-dependent asymptotic behaviour. We decline
+    rather than emit a confusing CONVERGENT-or-DIVERGENT tag, mirroring
+    how `mellin_inversion` declines on non-Gaussian inputs. The engine
+    will record PROPOSER_DECLINED, which is the right outcome — there's
+    nothing for hardy_orders to say about an n-independent expression.
     """
-    return None
+    # Decline on n-independent expressions — there's nothing asymptotic
+    # to classify if the summand doesn't depend on n.
+    if not expr.has(n):
+        return None
+    convergence_class = _v09a_classify_convergence(expr, n)
+    if convergence_class is None:
+        # Defensive: classifier should always return some value (incl. UNKNOWN)
+        # but if it ever returns None we decline rather than silently misclassify.
+        return None
+    return (expr, {"convergence_class": convergence_class})
+
+
+def _v09a_classify_convergence(expr: sp.Expr, n: sp.Symbol) -> Optional[str]:
+    """v0.9a helper: classify the n → ∞ asymptotic class of `expr`.
+
+    Returns one of the string values from `ConvergenceClass` (CONVERGENT,
+    DIVERGENT_LITERAL, NEEDS_REGULARIZATION, UNKNOWN). The string form
+    matches what we serialize into JSONL via `JsonlRegistry`.
+
+    Pulled out as a module-level helper so the proposer (or any other
+    caller) can invoke the same classifier without going through the
+    apply_fn return-tuple plumbing. Useful for the future Claude-side
+    proposer hint ("if the state's convergence_class is UNKNOWN, fire
+    hardy_orders first").
+
+    Implementation: a single `sp.limit(expr, n, sp.oo)` call wrapped in
+    a broad try/except. The classification then inspects sympy's flags
+    on the returned object:
+
+      - `lim.is_zero is True`               → CONVERGENT
+      - `lim is sp.oo` or `lim is -sp.oo`   → NEEDS_REGULARIZATION
+      - `lim.is_finite is True` AND
+        `lim.is_number is True` AND
+        `lim != 0`                          → DIVERGENT_LITERAL
+      - everything else (AccumBounds, zoo,
+        nan, sympy raises)                  → UNKNOWN
+
+    We require `is_number=True` to reject AccumulationBounds (which
+    report `is_finite=True` but are not classifiable point values).
+    """
+    try:
+        lim = sp.limit(expr, n, sp.oo)
+    except Exception:
+        # Any limit-evaluation failure (NotImplementedError, PolynomialError,
+        # recursion explosion, sympy bugs, etc.) — bail to UNKNOWN.
+        return "UNKNOWN"
+    # Pathological values
+    if lim is sp.nan or lim is sp.zoo:
+        return "UNKNOWN"
+    # Infinite limits → NEEDS_REGULARIZATION (sign doesn't matter for
+    # the diagnostic — both +oo and -oo are divergent-to-infinity).
+    if lim is sp.oo or lim is -sp.oo:
+        return "NEEDS_REGULARIZATION"
+    # Zero limit → CONVERGENT (necessary condition met)
+    if lim.is_zero is True:
+        return "CONVERGENT"
+    # Finite, classifiable non-zero number → DIVERGENT_LITERAL
+    if lim.is_finite is True and lim.is_number is True:
+        # Defensive: re-check non-zero (a number with is_zero=None could be
+        # something exotic; if it's a sympy number we can compare).
+        try:
+            if lim == 0:
+                return "CONVERGENT"
+        except Exception:
+            return "UNKNOWN"
+        return "DIVERGENT_LITERAL"
+    # AccumBounds (oscillatory), symbolic-with-free-symbols-beyond-n
+    # (parameters in the expression beyond the summand variable), or
+    # anything else that isn't a clean number → UNKNOWN. We deliberately
+    # don't try harder here; v0.9a is a fast 3-bin diagnostic.
+    return "UNKNOWN"
 
 
 def _frullani_limit_apply(expr: sp.Expr, n: sp.Symbol) -> Optional[sp.Expr]:
@@ -674,7 +967,7 @@ QR7_OPERATOR_BASIS: list[Operator] = [
               "additive scalar correction. v0.8b covers log-Bose-Einstein "
               "(Dedekind eta) and Lambert / E_2 quasi-modular cases. "
               "v0.8c adds Stieltjes/Lambert occupation-number "
-              "Σ 1/(e^{βn}-1) (per ChatGPT Pro proposer answer; diary 32). "
+              "Σ 1/(e^{βn}-1) (per ChatGPT Pro proposer answer). "
               "Returns (new_summand, additive_correction, summand_range=(1, oo)) "
               "via the extended apply_fn protocol introduced in v0.8b.",
         apply_fn=_modular_transform_with_correction_apply,
