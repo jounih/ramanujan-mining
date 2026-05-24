@@ -33,7 +33,15 @@ appears in three generating-function lines on the page — this matches
 the canonical cube-near generators Ramanujan tabulated on p. 341 (per
 training-memory; cross-check against Ono arxiv 2014.xxxxx and
 Berndt-Andrews LN Part IV before treating individual OCR'd digits as
-ground truth).
+ground truth). Diary 27 has the full 4-class error audit on this page.
+
+**See also diary 28** for the expanded 6-class error taxonomy after
+OCR'ing 3 more LN pages (pp. 342-344). Key downgrade: Chandra 2
+**hallucinates fabricated content** on TABLE pages (page-341 returned
+German text and invented modular polynomials in place of the actual
+Weber class-invariant table). The chandra_api_runner is fine; the
+underlying model is not safe to point at table-shaped pages without a
+layout-classifier pre-pass.
 
 ## Limits + costs (per Datalab docs)
 

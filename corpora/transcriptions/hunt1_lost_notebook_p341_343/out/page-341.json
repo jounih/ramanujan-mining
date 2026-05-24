@@ -1,0 +1,225 @@
+{
+  "children": [
+    {
+      "html": "<p>\n<math display=\"block\">\n\\begin{aligned}\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_3 - (s + s\\sqrt{3}) F_2 - (s + \\sqrt{3}) F_1 - 1 = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_1 \\sqrt{s} &amp; \\frac{F_2 - F_1 + 1}{F_2 + 3F_1 - 1} = \\sqrt{\\frac{3}{s}} \\\\\nf'(\\sqrt{2-2s}) &amp;= F_8 \\sqrt{s} &amp; F_8 - s(s + \\sqrt{3}) F_2 - \\frac{s}{s + \\sqrt{3}} = 0 \\\\\nf(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_3 - (s + \\sqrt{3}) F_2 - F_1 - 1 = 0 \\\\\nf'(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_3 - F_2 = \\frac{s}{1 + \\sqrt{2}} (F + 1) \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_{13} - (s + s\\sqrt{11}) F_8 + (8 + s\\sqrt{11}) F_2 - (3 + \\sqrt{11}) = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; (F_3 + \\frac{F_2}{s})_s - \\frac{s}{2 + \\sqrt{s+1}} (F_2 + \\frac{F_2}{s}) + \\frac{s}{s + \\sqrt{s+1}} = s \\\\\nf(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - \\frac{s}{s + \\sqrt{13}} (F_3 + 1) = 0 \\\\\nf'(\\sqrt{2-3s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - s F_2 - (s F_2 + 1)(1 + \\sqrt{3}) = 0 \\\\\nf'(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - s F_2 - s = s\\sqrt{3} (F_3 + 1) \\\\\nf(\\sqrt{2-s^2}) &amp;= F &amp; F_3 - s = (1 + s^2)(F_3 - F) \\\\\nf(\\sqrt{2-3s}) &amp;= F_2 \\sqrt{s} &amp; s F_{13} - s F_8 - 8 F_2 - 2 = s\\sqrt{3} (F_2 + 1)_s \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_2 - F_2 - \\frac{s}{s + \\sqrt{13}} (F_3 + 1) = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_3 - 3 F_2 - 3 F_1 - 1 = 0 \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_8 \\sqrt{s} &amp; F_8 - \\frac{s}{1 + \\sqrt{2}} (s F_2 + 1) = 0\n\\end{aligned}\n</math>\n</p><h1>\n<p><u>Morera-Beweis</u></p>\n</h1><p>\n<p>zu zeigen ist <math>\\int_{\\gamma} f(z) dz = 0</math></p>\n<p>d.h. <math>f(\\sqrt{2-s^2}) = s \\sqrt{s}</math></p>\n<math display=\"block\">\n(s + \\frac{s}{s})_s - \\frac{s}{2 + \\sqrt{s+1}} (s + \\frac{s}{s}) + \\frac{s}{s + \\sqrt{s+1}} = 0\n</math>\n<p>s entspricht <math>\\frac{s}{\\int_{\\gamma} f(z) dz} + \\frac{\\int_{\\gamma} f(z) dz}{s}</math></p>\n<math display=\"block\">\ns = \\frac{s}{\\int_{\\gamma} f(z) dz} + \\frac{\\int_{\\gamma} f(z) dz}{s}\n</math>\n<math display=\"block\">\ns^2 - 2 s_2 + 3 s_3 + 3 s + s = 0\n</math>\n</p>\n<p>schauen wir mal<br/>\n(83)</p>\n",
+      "bbox": [
+        0.0,
+        0.0,
+        1540.0,
+        2016.0
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1540.0,
+          0.0
+        ],
+        [
+          1540.0,
+          2016.0
+        ],
+        [
+          0.0,
+          2016.0
+        ]
+      ],
+      "id": "/page/0/Page/0",
+      "block_type": "Page",
+      "children": [
+        {
+          "id": "/page/0/Equation/0",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\n\\begin{aligned}\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_3 - (s + s\\sqrt{3}) F_2 - (s + \\sqrt{3}) F_1 - 1 = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_1 \\sqrt{s} &amp; \\frac{F_2 - F_1 + 1}{F_2 + 3F_1 - 1} = \\sqrt{\\frac{3}{s}} \\\\\nf'(\\sqrt{2-2s}) &amp;= F_8 \\sqrt{s} &amp; F_8 - s(s + \\sqrt{3}) F_2 - \\frac{s}{s + \\sqrt{3}} = 0 \\\\\nf(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_3 - (s + \\sqrt{3}) F_2 - F_1 - 1 = 0 \\\\\nf'(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_3 - F_2 = \\frac{s}{1 + \\sqrt{2}} (F + 1) \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_{13} - (s + s\\sqrt{11}) F_8 + (8 + s\\sqrt{11}) F_2 - (3 + \\sqrt{11}) = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; (F_3 + \\frac{F_2}{s})_s - \\frac{s}{2 + \\sqrt{s+1}} (F_2 + \\frac{F_2}{s}) + \\frac{s}{s + \\sqrt{s+1}} = s \\\\\nf(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - \\frac{s}{s + \\sqrt{13}} (F_3 + 1) = 0 \\\\\nf'(\\sqrt{2-3s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - s F_2 - (s F_2 + 1)(1 + \\sqrt{3}) = 0 \\\\\nf'(\\sqrt{2-2s}) &amp;= F_2 \\sqrt{s} &amp; F_2 - s F_2 - s = s\\sqrt{3} (F_3 + 1) \\\\\nf(\\sqrt{2-s^2}) &amp;= F &amp; F_3 - s = (1 + s^2)(F_3 - F) \\\\\nf(\\sqrt{2-3s}) &amp;= F_2 \\sqrt{s} &amp; s F_{13} - s F_8 - 8 F_2 - 2 = s\\sqrt{3} (F_2 + 1)_s \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_2 - F_2 - \\frac{s}{s + \\sqrt{13}} (F_3 + 1) = 0 \\\\\nf(\\sqrt{2-s^2}) &amp;= F_2 \\sqrt{s} &amp; F_3 - 3 F_2 - 3 F_1 - 1 = 0 \\\\\nf'(\\sqrt{2-s^2}) &amp;= F_8 \\sqrt{s} &amp; F_8 - \\frac{s}{1 + \\sqrt{2}} (s F_2 + 1) = 0\n\\end{aligned}\n</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              207.0,
+              231.0
+            ],
+            [
+              1347.0,
+              231.0
+            ],
+            [
+              1347.0,
+              1219.0
+            ],
+            [
+              207.0,
+              1219.0
+            ]
+          ],
+          "bbox": [
+            207.0,
+            231.0,
+            1347.0,
+            1219.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/SectionHeader/1",
+          "block_type": "SectionHeader",
+          "html": "<h1>\n<p><u>Morera-Beweis</u></p>\n</h1>",
+          "page": 0,
+          "polygon": [
+            [
+              554.0,
+              1219.0
+            ],
+            [
+              900.0,
+              1219.0
+            ],
+            [
+              900.0,
+              1320.0
+            ],
+            [
+              554.0,
+              1320.0
+            ]
+          ],
+          "bbox": [
+            554.0,
+            1219.0,
+            900.0,
+            1320.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/2",
+          "block_type": "Equation",
+          "html": "<p>\n<p>zu zeigen ist <math>\\int_{\\gamma} f(z) dz = 0</math></p>\n<p>d.h. <math>f(\\sqrt{2-s^2}) = s \\sqrt{s}</math></p>\n<math display=\"block\">\n(s + \\frac{s}{s})_s - \\frac{s}{2 + \\sqrt{s+1}} (s + \\frac{s}{s}) + \\frac{s}{s + \\sqrt{s+1}} = 0\n</math>\n<p>s entspricht <math>\\frac{s}{\\int_{\\gamma} f(z) dz} + \\frac{\\int_{\\gamma} f(z) dz}{s}</math></p>\n<math display=\"block\">\ns = \\frac{s}{\\int_{\\gamma} f(z) dz} + \\frac{\\int_{\\gamma} f(z) dz}{s}\n</math>\n<math display=\"block\">\ns^2 - 2 s_2 + 3 s_3 + 3 s + s = 0\n</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              200.0,
+              1320.0
+            ],
+            [
+              1309.0,
+              1320.0
+            ],
+            [
+              1309.0,
+              1864.0
+            ],
+            [
+              200.0,
+              1864.0
+            ]
+          ],
+          "bbox": [
+            200.0,
+            1320.0,
+            1309.0,
+            1864.0
+          ],
+          "section_hierarchy": {
+            "1": "/page/0/SectionHeader/1"
+          },
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/3",
+          "block_type": "Text",
+          "html": "\n<p>schauen wir mal<br/>\n(83)</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              1093.0,
+              1673.0
+            ],
+            [
+              1309.0,
+              1673.0
+            ],
+            [
+              1309.0,
+              1864.0
+            ],
+            [
+              1093.0,
+              1864.0
+            ]
+          ],
+          "bbox": [
+            1093.0,
+            1673.0,
+            1309.0,
+            1864.0
+          ],
+          "section_hierarchy": {
+            "1": "/page/0/SectionHeader/1"
+          },
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/PageFooter/4",
+          "block_type": "PageFooter",
+          "html": "",
+          "page": 0,
+          "polygon": [
+            [
+              200.0,
+              1844.0
+            ],
+            [
+              261.0,
+              1844.0
+            ],
+            [
+              261.0,
+              1895.0
+            ],
+            [
+              200.0,
+              1895.0
+            ]
+          ],
+          "bbox": [
+            200.0,
+            1844.0,
+            261.0,
+            1895.0
+          ],
+          "section_hierarchy": {
+            "1": "/page/0/SectionHeader/1"
+          },
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        }
+      ],
+      "section_hierarchy": {}
+    }
+  ],
+  "metadata": {
+    "page_stats": [
+      {
+        "page_id": 0,
+        "num_blocks": 5
+      }
+    ]
+  }
+}

@@ -1,0 +1,534 @@
+{
+  "children": [
+    {
+      "html": "<p>\n<math display=\"block\">\\frac{\\sigma^2(\\sigma+r+c+r_s)(\\sqrt{\\sigma+r} + \\sqrt{r+c} + \\sqrt{c+r})}{\\left\\{ \\sigma + \\sqrt{(r+c)(c+\\sigma)} \\right\\} \\left\\{ \\sigma + \\sqrt{(c+\\sigma)(\\sigma+r)} \\right\\} \\left\\{ -r + \\sqrt{(c+r)(r+c)} \\right\\}}</math>\n</p><p>\n<math display=\"block\">\\frac{\\sigma+r - \\sqrt{\\sigma+r+c+r_s}}{(\\sqrt{\\sigma+r+c+r_s} - \\sigma)(\\sigma+r+c+r_s - r)} = \\sigma+r</math>\n</p><p>\n<math display=\"block\">\\left\\{ \\frac{\\sqrt{(c+r)(r+c+r_s)} - \\sigma}{\\sqrt{(c+r)(c+r_s)} - r} \\right\\} \\left\\{ \\frac{\\sqrt{(r+c)(c+r_s)} - r}{\\sqrt{(r+c)(c+r_s)} - r} \\right\\} = \\frac{\\sqrt{(c+r)(r+c+r_s)} + \\sqrt{(c+r)(c+r_s)}}{\\sqrt{(c+r)(r+c+r_s)} - \\sqrt{(c+r)(c+r_s)}} (\\sigma+r+c+r_s)</math>\n</p><p>\n<math display=\"block\">\\frac{\\sqrt{3}}{1} + \\frac{\\sqrt{3}}{2} = \\sqrt{\\frac{3-3^2}{3^2-1}} = \\sqrt{\\frac{3^2-1}{3+3^2}} = \\sqrt{\\frac{3-3^2}{3\\sqrt{3}+3^2}} \\dots</math>\n</p><p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{1+s_2} = \\frac{\\sqrt{2}}{\\sqrt{1+s_1}} \\quad s_1 + 2s_2 + 2s_3 + s = 0</math>\n</p><p>\n<math display=\"block\">s_2 = s \\quad \\sqrt{s-s_3} = \\frac{\\sqrt{2}}{1+s-s_3} \\quad s = 3</math>\n</p><p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{s-3} = \\frac{\\sqrt{2}}{s_1+s_2+s_3-1} \\quad +</math>\n</p><p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{1+s_3} = \\frac{\\sqrt{2}}{s_1+s_2+s_3-1} \\quad +</math>\n</p><p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s_3+1} - \\sqrt{2s-2}}{\\sqrt{s_3+1} + \\sqrt{2s-2}} = \\frac{s}{1} + s + s_2 + s_3</math>\n</p><p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s_3+1} - \\sqrt{s-3}}{\\sqrt{s_3+1} + \\sqrt{s-3}} = \\frac{2}{1} (1 + s_2 + s_3 + s_1) \\quad s</math>\n</p><p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s+3} - \\sqrt{2s-2}}{\\sqrt{s+3} + \\sqrt{2s-2}} = s + s_3</math>\n</p><p>\n<math display=\"block\">s_1 = s \\quad \\frac{\\sqrt{3+s_3} + \\sqrt{r-r_3}}{\\sqrt{3+s_3} - \\sqrt{r-r_3}} = s + s_2 + s_3 + s_1</math>\n</p>\n<p>449 1/2 = 224 1/2 (87)</p>\n",
+      "bbox": [
+        0.0,
+        0.0,
+        1540.0,
+        2016.0
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1540.0,
+          0.0
+        ],
+        [
+          1540.0,
+          2016.0
+        ],
+        [
+          0.0,
+          2016.0
+        ]
+      ],
+      "id": "/page/0/Page/0",
+      "block_type": "Page",
+      "children": [
+        {
+          "id": "/page/0/Equation/0",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\\frac{\\sigma^2(\\sigma+r+c+r_s)(\\sqrt{\\sigma+r} + \\sqrt{r+c} + \\sqrt{c+r})}{\\left\\{ \\sigma + \\sqrt{(r+c)(c+\\sigma)} \\right\\} \\left\\{ \\sigma + \\sqrt{(c+\\sigma)(\\sigma+r)} \\right\\} \\left\\{ -r + \\sqrt{(c+r)(r+c)} \\right\\}}</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              254.0,
+              318.0
+            ],
+            [
+              1247.0,
+              318.0
+            ],
+            [
+              1247.0,
+              483.0
+            ],
+            [
+              254.0,
+              483.0
+            ]
+          ],
+          "bbox": [
+            254.0,
+            318.0,
+            1247.0,
+            483.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/1",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\\frac{\\sigma+r - \\sqrt{\\sigma+r+c+r_s}}{(\\sqrt{\\sigma+r+c+r_s} - \\sigma)(\\sigma+r+c+r_s - r)} = \\sigma+r</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              394.0,
+              499.0
+            ],
+            [
+              1098.0,
+              499.0
+            ],
+            [
+              1098.0,
+              610.0
+            ],
+            [
+              394.0,
+              610.0
+            ]
+          ],
+          "bbox": [
+            394.0,
+            499.0,
+            1098.0,
+            610.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/2",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\\left\\{ \\frac{\\sqrt{(c+r)(r+c+r_s)} - \\sigma}{\\sqrt{(c+r)(c+r_s)} - r} \\right\\} \\left\\{ \\frac{\\sqrt{(r+c)(c+r_s)} - r}{\\sqrt{(r+c)(c+r_s)} - r} \\right\\} = \\frac{\\sqrt{(c+r)(r+c+r_s)} + \\sqrt{(c+r)(c+r_s)}}{\\sqrt{(c+r)(r+c+r_s)} - \\sqrt{(c+r)(c+r_s)}} (\\sigma+r+c+r_s)</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              286.0,
+              631.0
+            ],
+            [
+              1418.0,
+              631.0
+            ],
+            [
+              1418.0,
+              723.0
+            ],
+            [
+              286.0,
+              723.0
+            ]
+          ],
+          "bbox": [
+            286.0,
+            631.0,
+            1418.0,
+            723.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/3",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">\\frac{\\sqrt{3}}{1} + \\frac{\\sqrt{3}}{2} = \\sqrt{\\frac{3-3^2}{3^2-1}} = \\sqrt{\\frac{3^2-1}{3+3^2}} = \\sqrt{\\frac{3-3^2}{3\\sqrt{3}+3^2}} \\dots</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              308.0,
+              758.0
+            ],
+            [
+              1222.0,
+              758.0
+            ],
+            [
+              1222.0,
+              840.0
+            ],
+            [
+              308.0,
+              840.0
+            ]
+          ],
+          "bbox": [
+            308.0,
+            758.0,
+            1222.0,
+            840.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/4",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{1+s_2} = \\frac{\\sqrt{2}}{\\sqrt{1+s_1}} \\quad s_1 + 2s_2 + 2s_3 + s = 0</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              266.0,
+              901.0
+            ],
+            [
+              1376.0,
+              901.0
+            ],
+            [
+              1376.0,
+              995.0
+            ],
+            [
+              266.0,
+              995.0
+            ]
+          ],
+          "bbox": [
+            266.0,
+            901.0,
+            1376.0,
+            995.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/5",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_2 = s \\quad \\sqrt{s-s_3} = \\frac{\\sqrt{2}}{1+s-s_3} \\quad s = 3</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1016.0
+            ],
+            [
+              1128.0,
+              1016.0
+            ],
+            [
+              1128.0,
+              1100.0
+            ],
+            [
+              263.0,
+              1100.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1016.0,
+            1128.0,
+            1100.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/6",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{s-3} = \\frac{\\sqrt{2}}{s_1+s_2+s_3-1} \\quad +</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1124.0
+            ],
+            [
+              1078.0,
+              1124.0
+            ],
+            [
+              1078.0,
+              1215.0
+            ],
+            [
+              263.0,
+              1215.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1124.0,
+            1078.0,
+            1215.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/7",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_1 = s \\quad \\sqrt{1+s_3} = \\frac{\\sqrt{2}}{s_1+s_2+s_3-1} \\quad +</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1215.0
+            ],
+            [
+              1078.0,
+              1215.0
+            ],
+            [
+              1078.0,
+              1296.0
+            ],
+            [
+              263.0,
+              1296.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1215.0,
+            1078.0,
+            1296.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/8",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s_3+1} - \\sqrt{2s-2}}{\\sqrt{s_3+1} + \\sqrt{2s-2}} = \\frac{s}{1} + s + s_2 + s_3</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1308.0
+            ],
+            [
+              1170.0,
+              1308.0
+            ],
+            [
+              1170.0,
+              1433.0
+            ],
+            [
+              263.0,
+              1433.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1308.0,
+            1170.0,
+            1433.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/9",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s_3+1} - \\sqrt{s-3}}{\\sqrt{s_3+1} + \\sqrt{s-3}} = \\frac{2}{1} (1 + s_2 + s_3 + s_1) \\quad s</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1455.0
+            ],
+            [
+              1258.0,
+              1455.0
+            ],
+            [
+              1258.0,
+              1588.0
+            ],
+            [
+              263.0,
+              1588.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1455.0,
+            1258.0,
+            1588.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/10",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_2 = s \\quad \\frac{\\sqrt{s+3} - \\sqrt{2s-2}}{\\sqrt{s+3} + \\sqrt{2s-2}} = s + s_3</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1596.0
+            ],
+            [
+              991.0,
+              1596.0
+            ],
+            [
+              991.0,
+              1715.0
+            ],
+            [
+              263.0,
+              1715.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1596.0,
+            991.0,
+            1715.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Equation/11",
+          "block_type": "Equation",
+          "html": "<p>\n<math display=\"block\">s_1 = s \\quad \\frac{\\sqrt{3+s_3} + \\sqrt{r-r_3}}{\\sqrt{3+s_3} - \\sqrt{r-r_3}} = s + s_2 + s_3 + s_1</math>\n</p>",
+          "page": 0,
+          "polygon": [
+            [
+              263.0,
+              1725.0
+            ],
+            [
+              1113.0,
+              1725.0
+            ],
+            [
+              1113.0,
+              1842.0
+            ],
+            [
+              263.0,
+              1842.0
+            ]
+          ],
+          "bbox": [
+            263.0,
+            1725.0,
+            1113.0,
+            1842.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/Text/12",
+          "block_type": "Text",
+          "html": "\n<p>449 1/2 = 224 1/2 (87)</p>\n",
+          "page": 0,
+          "polygon": [
+            [
+              917.0,
+              1832.0
+            ],
+            [
+              1242.0,
+              1832.0
+            ],
+            [
+              1242.0,
+              1891.0
+            ],
+            [
+              917.0,
+              1891.0
+            ]
+          ],
+          "bbox": [
+            917.0,
+            1832.0,
+            1242.0,
+            1891.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        },
+        {
+          "id": "/page/0/PageFooter/13",
+          "block_type": "PageFooter",
+          "html": "",
+          "page": 0,
+          "polygon": [
+            [
+              255.0,
+              1893.0
+            ],
+            [
+              303.0,
+              1893.0
+            ],
+            [
+              303.0,
+              1923.0
+            ],
+            [
+              255.0,
+              1923.0
+            ]
+          ],
+          "bbox": [
+            255.0,
+            1893.0,
+            303.0,
+            1923.0
+          ],
+          "section_hierarchy": {},
+          "images": {},
+          "markdown": null,
+          "inference_failed": false,
+          "metadata": null
+        }
+      ],
+      "section_hierarchy": {}
+    }
+  ],
+  "metadata": {
+    "page_stats": [
+      {
+        "page_id": 0,
+        "num_blocks": 14
+      }
+    ]
+  }
+}
