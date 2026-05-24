@@ -126,12 +126,30 @@ unblocked Hunts:
   `CompletionNotImplemented` on the higher-order mock thetas using
   Hickerson 1988 / Berndt-Chan.
 
-## v0.3 — identity-discovery engine (W5 / T3)
+## v0.3 — Project C: RKC-guided symbolic search (W5 / T3 / X3)
 
-Generate candidate identities by composing the operator basis. Numerically
-verify. Route through rkc. Classify each as classical-known / numerically-
-false / numerically-true-but-slower / faster-than-baseline. The
-RamanujanMachine generalised beyond continued fractions.
+Full design: [../insights/PROJECT_C_DESIGN.md](../insights/PROJECT_C_DESIGN.md).
+
+**Project C** = the "practical Ramanujan latent speedrun" system. The
+6-step loop: choose expression → neural model proposes operator sequence
+→ rkc normalizes and routes → verifier tests to high precision → cost
+model decides usefulness → store accepted identity or reject with reason.
+
+Three sub-milestones:
+
+- **v0.3.0 — Project C v0 (W5)**: pure-symbolic baseline (`RandomProposer`).
+  Validates steps 3+4+5+6 end-to-end on the Hunt 5 7-operator basis.
+  Output: `rkc/search/` module + CLI `rkc search`. ~1-2 weeks.
+- **v0.3.1 — Project C v1 (T3)**: adds `NeuralProposer`. Nonlinear ICA /
+  JEPA per Hyvärinen et al. arXiv 2303.16535 is the default architectural
+  choice but the `Proposer` interface is modular.
+- **v0.3.2 — Project C v2 (X3)**: extract `rkc.search` interface as a
+  shared package so arc-agi-ebm-agent's program-induction loop can plug
+  in ARC's DSL as a second instance.
+
+Validation case for v0.3.0: random composition recovering ≥80% of the
+11 known kernel identities in the rkc registry within budget=1000
+compositions of length ≤3.
 
 ## Non-goals (for now)
 

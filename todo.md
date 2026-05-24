@@ -226,14 +226,41 @@ self-contained, useful.
 Cheap fix flagged in diary 16; deferred. Wire the opt-in flag through to
 per-component calls so composites return values not flags. <1 day of work.
 
-### W5. Small operator-composition search prototype
+### W5. Small operator-composition search prototype — NOW LABELED Y1 / "Project C v0"
 
-**From BIG_IDEAS_REVIEW §7.** Build a small operator-composition search
-using the 7 QR operators; generate ~100 candidate identities; run them
-through the recognizer + mpmath/PSLQ numerical verification; classify
-candidates as classical-known vs genuinely new. Even 1-2 new identities
-would validate the approach. Bounded scope (~1 week); is the seed of the
-larger "LLM + symbolic-verification" frontier-AI bet.
+**Reframed (user-supplied "Project C" naming):** this is now the
+**v0 pure-symbolic baseline of Project C — the RKC-guided symbolic search
+system**. Full design in
+[insights/PROJECT_C_DESIGN.md](insights/PROJECT_C_DESIGN.md).
+
+W5 = T3 v0 = X3 spine-extraction = Project C v0. The label "Project C" is
+the external name; W5/T3/X3 are the internal priority tags. All refer to
+the same system at different stages of maturity:
+
+- **Project C v0 (W5)**: pure-symbolic baseline — random operator-composition
+  + rkc verification + cost-model gate + accepted-identities JSONL registry
+  + reject-with-reason taxonomy. ~1-2 weeks.
+- **Project C v1 (T3)**: adds the neural proposer. Default architectural
+  choice per ChatGPT: nonlinear ICA / JEPA proposing in latent operator
+  space (Hyvärinen et al. arXiv 2303.16535 for the identifiability
+  framework). Categorical classifier suffices at current basis size (~10);
+  ICA becomes valuable when the basis scales to ~100s.
+- **Project C v2 (X3)**: extract the `rkc.search` interface (proposer,
+  verifier, gate, registry) as a shared spine so arc-agi-ebm-agent can
+  plug in ARC's DSL as a second instance.
+
+Honest caveat from the design doc: the novelty of Project C is in steps
+3+4+5+6 (RKC verifier + router + cost model + registry-with-reject-log),
+NOT in the neural proposer step 2. Many people have built neural proposers
+for math reasoning (Drori; AlphaProof; AlphaGeometry; Lean-Copilot); few
+have built a *certified, degeneracy-aware, cost-modelled* verifier that
+prunes the proposer's output. That's where rkc earns its keep.
+
+Even 1-2 genuinely-new identities from the v0 baseline would validate the
+approach. See [insights/PROJECT_C_DESIGN.md](insights/PROJECT_C_DESIGN.md)
+for the controlled-validation case (random composition recovering ≥80% of
+the rkc registry's 11 known kernel identities within budget=1000
+compositions of length ≤3) and the v0 scope breakdown.
 
 ### W6. Add umbral-operator kernels to the rkc/ recognizer
 
