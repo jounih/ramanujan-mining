@@ -138,17 +138,42 @@ See [rkc/MILESTONES.md](rkc/MILESTONES.md) for the full spec. Effort:
 ~2-4 weeks for v0.1 (CLI scaffold ~1 day; per-family hardening ~3-5 days;
 docs + examples ~3-5 days; benchmark suite ~3-5 days).
 
-### T2. Eisenstein-CF registry expansion (Hunt 3 repurposed)
+### T2. Eisenstein-CF registry expansion (Hunt 3 repurposed) — SCOPED
 
-The ~20 Eisenstein-style continued fractions in Berndt *NB Part V* Ch. 32
-and Berndt-Yee 2002 RIMS survey are the natural next rkc kernel family —
-quasi-modular (weight-2 anomaly) territory currently absent. Cluster them
-into orthogonal-polynomial-style families, add a registry entry
-`eisenstein_cf_family_N`, benchmark against direct CF evaluation.
+Scoping pass complete in
+[insights/T2_EISENSTEIN_CF_SCOPING.md](insights/T2_EISENSTEIN_CF_SCOPING.md).
+HUNT_MAP §3 framing corrected: "Eisenstein-style CFs" actually splits into
+~30 weight-0 q-CFs (Rogers-Ramanujan + Andrews-Gordon-Selberg family,
+no quasi-modular anomaly) + 1 genuinely-quasi-modular cubic-base CF
+in NB V §33.
 
-Per Hunt 3 prediction: 3-4 islands in the parameter space.
-Effort: ~1-2 weeks (reading + clustering ~3-5 days; rkc registry entry +
-tests ~3-5 days). Output: a new tested kernel + a sharpened Hunt 3 result.
+**Four registry families to implement (recommended granularity: separate
+entries per family, matching the existing `mock_theta_f3/f5/f7` pattern):**
+
+- **Family A** (~3 entries): `rogers_ramanujan_cf` + sign variations.
+  Closed-form via Rogers-Ramanujan identities; well-studied.
+- **Family B** (~5 entries): `rogers_ramanujan_special_values` at
+  q=exp(-πk) — radical closed forms; bridges to Hunt 4 class invariants.
+- **Family C** (~13 entries): `eisenstein_cf_level_N` for N ∈ {2,3,4,8} —
+  Andrews-Gordon-Selberg q-CFs; bulk of NB V Ch. 32 §2.
+- **Family D** (~1 entry): `cubic_eisenstein_cf` (NB V §33) — the only
+  truly quasi-modular entry; weight-2 anomaly handling needed.
+
+**Implementation cut-points:**
+- **Day 12** (Families A + C): clean partial-ship cut. Registry grows
+  11 → 14 entries. No quasi-modular machinery needed.
+- **Day 17-20** (Families B + D added): full v0.2 ship. Registry grows
+  11 → 17 entries. Family D requires the quasi-modular route flag
+  threaded through the routing layer.
+
+**The single concrete decision before implementation:** confirmed in scope
+doc — go with 4 separate registry entries per family, NOT one
+parameterised entry. Cleaner matchers; easier to extend to Bhatnagar's
+level 5/7 q-CFs later.
+
+**Cross-validation gate per CLAUDE.md gotcha #5:** the T2 scope doc lists
+the 2-3 specific (kernel, param) cells per family to run the ≥40-digit
+agreement gate on before benchmarking.
 
 ### T3. Operator-composition search engine (W5 sharpened)
 

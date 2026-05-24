@@ -141,13 +141,52 @@ real algorithmic win.
 
 ## Hunt 3 — NB II Chapter 32, Eisenstein-style continued fractions
 
-**Status (updated 2026-05-24):** **UNBLOCKED** — Berndt *Notebooks Part V*
-(which contains Ch. 32) now in [downloaded-pdfs/ramanujan-notebooks-v.pdf](../downloaded-pdfs/ramanujan-notebooks-v.pdf).
-Bonus context: [downloaded-pdfs/1274-16.pdf](../downloaded-pdfs/1274-16.pdf)
-is Berndt & Yee, "A Survey on Eisenstein Series in Ramanujan's Lost
-Notebook" (RIMS 2002), a focused secondary source. Bhatnagar's q-CF survey
-(arXiv:2208.12656) is in `chatgpt-pro-mining/.../priority_sources/open_access_context_pdfs/`.
-Ready to run.
+**Status (updated 2026-05-24):** **UNBLOCKED AND SCOPED** — Berndt
+*Notebooks Part V* (which contains Ch. 32) now in
+[downloaded-pdfs/ramanujan-notebooks-v.pdf](../downloaded-pdfs/ramanujan-notebooks-v.pdf).
+Scoping pass is complete in
+[insights/T2_EISENSTEIN_CF_SCOPING.md](T2_EISENSTEIN_CF_SCOPING.md).
+
+**Framing correction.** The original Hunt 3 framing of "~20 Eisenstein-style
+continued fractions in NB V Ch. 32" was imprecise and conflated two
+distinct corpora:
+
+- **(a) q-CFs with theta-quotient closed forms** (Ch. 32 §1-§2,
+  Rogers-Ramanujan family + Selberg-Andrews-Gordon siblings; ~17 entries in
+  §1 + ~13 in §2 = ~30 total). These are *modular weight 0*; quasi-modular
+  anomaly does NOT apply.
+- **(b) Eisenstein series themselves** (P, Q, R = E_2, E_4, E_6; Lambert
+  series, congruences for p(n), 1/π approximations). These live in the
+  Lost Notebook (Berndt-Yee 2002 surveys) and NB V Ch. 33 §4, but are
+  *mostly not in CF form*. Quasi-modular weight-2 anomaly applies to E_2.
+
+The intersection — CFs that genuinely need Eisenstein series — is
+**essentially one entry**: the cubic-base G(q) CF in NB V §33. That's
+"Family D" in the T2 scope.
+
+Bhatnagar's q-CF survey (arXiv:2208.12656) is in
+`chatgpt-pro-mining/.../priority_sources/open_access_context_pdfs/`.
+
+**Revised prediction structure.** The original "3-4 islands in CF parameter
+space" prediction was approximately right (T2 found 4 families) but the
+islands aren't all "Eisenstein-style" — only Family D (1 of 4 families,
+1 of ~30 entries) is genuinely Eisenstein. The other ~28 entries are
+weight-0 η-quotients.
+
+The 4 families:
+- **Family A**: Rogers-Ramanujan + sign variations (R(q), S(q), …)
+- **Family B**: R(q) special radical values at q=exp(-πk) (singular
+  moduli — bridges to Hunt 4)
+- **Family C**: Andrews-Gordon-Selberg level-N q-CFs (N ∈ {2,3,4,8} —
+  the bulk of §2; recommended as 4 separate registry entries
+  `eisenstein_cf_level_N` matching the existing mock_theta_f3/f5/f7
+  pattern)
+- **Family D**: cubic-base Eisenstein CF (the only genuinely
+  quasi-modular entry; in NB V §33 not §32)
+
+Implementation effort: 17-20 days for full v0.2 ship; clean partial-ship
+cut at Family A+C by Day 12 (defers the Family D quasi-modular work to
+a follow-up).
 
 **Located.** Berndt vol. V (1998) covers ch. 30-34; the Eisenstein-style
 CFs are spread across ch. 32. Original scans in TIFR vol. II.
