@@ -1,0 +1,632 @@
+                                         A TRANSFORMATION FORMULA INVOLVING THE GAMMA AND
+                                             RIEMANN ZETA FUNCTIONS IN RAMANUJAN’S LOST
+                                                             NOTEBOOK
+
+                                                                BRUCE C. BERNDT1 AND ATUL DIXIT
+
+                                                                    In Memory of Alladi Ramakrishnan
+arXiv:0904.1053v2 [math.NT] 8 Apr 2009
+
+
+
+
+                                                                              1. Introduction
+                                            Pages 219–227 in the volume [15] containing Ramanujan’s lost notebook are devoted
+                                         to material “Copied from the Loose Papers.” We emphasize that these pages are not
+                                         part of the original lost notebook found by George Andrews at Trinity College Li-
+                                         brary, Cambridge in the spring of 1976. These “loose papers”, in the handwriting of
+                                         G.N. Watson, are found in the Oxford University Library, and evidently the original
+                                         pages in Ramanujan’s handwriting are no longer extant. Most of these nine pages,
+                                         which are divided into four rough, partial manuscripts, are connected with material
+                                         in Ramanujan’s published papers. However, there is much that is new in these frag-
+                                         ments, which will be completely examined in [2]. One claim in the first manuscript
+                                         on pages 219–220 is the subject of this short note and is the most interesting theo-
+                                         rem in the manuscript. This claim provides a beautiful series transformation involving
+                                         the logarithmic derivative of the gamma function and the Riemann zeta function. To
+                                         state Ramanujan’s claim, it will be convenient to use the familiar notation [6, p. 952,
+                                         formulas 8.360, 8.362, no. 1]
+                                                                                      ∞                 
+                                                                       Γ′ (x)        X      1        1
+                                                             ψ(x) :=          = −γ −            −          ,               (1.1)
+                                                                       Γ(x)          k=0
+                                                                                          k + x   k  + 1
+                                         where γ denotes Euler’s constant. We also need to recall the following functions asso-
+                                         ciated with Riemann’s zeta function ζ(s). Let
+                                                                                             1
+                                                                     ξ(s) := (s − 1)π − 2 s Γ(1 + 21 s)ζ(s).
+                                         Then Riemann’s Ξ-function is defined by
+                                                                             Ξ( 21 t) := ξ( 12 + 21 it).
+                                         Theorem 1.1. Define
+                                                                                        1
+                                                                         φ(x) := ψ(x) +   − log x.                            (1.2)
+                                                                                       2x
+                                         If α and β are positive numbers such that αβ = 1, then
+                                               (                  ∞
+                                                                           )       (                   ∞
+                                                                                                                  )
+                                           √     γ − log(2πα)    X             p     γ − log(2πβ)     X
+                                             α                 +     φ(nα) = β                     +      φ(nβ)
+                                                      2α         n=1
+                                                                                           2β         n=1
+                                                                                                     2
+                                                                                                         cos 12 t log α
+                                                                            Z ∞                                      
+                                                                         1          1        −1 + it
+                                                                   = − 3/2      Ξ     t Γ                                 dt, (1.3)
+                                                                       π     0      2           4           1 + t2
+                                           1
+                                            Research partially supported by grant H98230-07-1-0088.
+                                                                                         1
+2                                 B. C. BERNDT AND A. DIXIT
+
+where γ denotes Euler’s constant and Ξ(x) denotes Riemann’s Ξ-function.
+   The first identity in (1.3) is beautiful in its elegant symmetry and surprising as well,
+because why would subtracting the two leading terms in the asymptotic expansion of
+the logarithmic derivative of the Gamma function, in order to gain convergence of the
+infinite series on the left side, yield a “modular relation” for the resulting function? The
+second identity in (1.3) is also surprising, for why would the first identity foreshadow
+a connection with the Riemann zeta function in the second?
+   Although Ramanujan does not provide a proof of (1.3), he does indicate that (1.3)
+“can be deduced from”
+                Z ∞
+                                                         1
+                    (ψ(1 + x) − log x) cos(2πnx)dx = (ψ(1 + n) − log n) .               (1.4)
+                 0                                       2
+This latter result was rediscovered by A.P. Guinand [8] in 1947, and he later found a
+simpler proof of this result in [9]. In the footnote at the end of his paper [9], Guinand
+remarks that T.A. Brown had told him that he himself had proved the self-reciprocality
+of ψ(1+x)−log x some years ago, and that when he (Brown) communicated the result to
+G.H. Hardy, Hardy told him that the result was also given by Ramanujan in a progress
+report to the University of Madras, but was not published elsewhere. However, we
+cannot find this result in any of the three Quarterly Reports that Ramanujan submitted
+to the University of Madras [3], [4]. Therefore, Hardy’s memory was perhaps imperfect;
+it would appear that he saw (1.4) in the aforementioned manuscript that Watson had
+copied. On the other hand, the only copy of Ramanujan’s Quarterly Reports that
+exists is in Watson’s handwriting! It could be that the manuscript on pages 219–220 of
+[15], which is also in Watson’s handwriting, was somehow separated from the original
+Quarterly Reports, and therefore that Hardy was indeed correct in his assertion!
+   The first equality in (1.3) was rediscovered by Guinand in [8] and appears in a
+footnote on the last page of his paper [8, p. 18]. It is interesting that Guinand remarks,
+“This formula also seems to have been overlooked.” Here then is one more instance in
+which a mathematician thought that his or her theorem was new, but unbeknownst to
+him or her, Ramanujan had beaten them to the punch! We now give Guinand’s version
+of (1.3).
+Theorem 1.2. For any complex z such that |arg z| < π, we have
+    ∞  ′                         
+    X  Γ                     1      1
+            (nz) − log nz +           +
+                                      (γ − log 2πz)
+    n=1
+          Γ                 2nz    2z
+                                 ∞  ′                                  
+                              1 X Γ n            n  z     1          2π
+                            =                − log +      +    γ − log      . (1.5)
+                              z n=1 Γ z            z 2n     2           z
+
+   Although not offering a proof of (1.5) in [8], Guinand did remark that it can be
+obtained by using an appropriate form of Poisson’s summation formula, namely the
+form given in Theorem 1 in [7]. Later Guinand gave another proof of Theorem 1.2
+in [9], while also giving extensions of (1.5) involving derivatives of the ψ-function. He
+also established a finite version of (1.5) in [10]. However, Guinand apparently did not
+                               TRANSFORMATION FORMULA                                       3
+
+discover the connection of his work with Ramanujan’s integral involving Riemann’s
+Ξ-function.
+   In this paper we first provide a proof of both identities in Theorem 1.1. In Section
+4, we construct a second proof of (1.5) along the lines suggested by Guinand in [8]. We
+can also provide another proof of (1.3) employing both (1.4) and
+              Z ∞                   
+                         1        1     −2πnx        1
+                              −        e      dx =     (log n − ψ(1 + n)) ,        (1.6)
+                0    e2πx − 1 2πx                   2π
+which can be derived from an integral evaluation in [6, p. 377, formula 3.427, no. 7].
+However, this proof is similar but slightly more complicated than the first proof that
+we provide below.
+  Although the Riemann zeta function appears at various instances throughout Ra-
+manujan’s notebooks [13] and lost notebook [15], he only wrote one paper in which the
+zeta function plays the leading role [12], [14, pp. 72–77]. In fact, a result proved by
+Ramanujan in [12], namely equation (3.7) in Section 3 below, is a key to proving (1.3).
+About the integral involving Riemann’s Ξ-function in this result, Hardy [11] comments
+that “the properties of this integral resemble those of one which Mr. Littlewood and I
+have used, in a paper to be published shortly in the Acta Mathematica, to prove that
+                          Z T            2
+                                    1              2
+                                ζ     + ti    dt ∼ T log T.”                       (1.7)
+                            −T      2              π
+  It is also interesting that on a page in the original lost notebook [15, p. 195], Ra-
+manujan defines
+                                             1
+                             φ(x) := ψ(x) +    − γ − log x                         (1.8)
+                                            2x
+and then concludes that (1.3) is valid. However, with the definition (1.8) of φ(x),
+the series in (1.3) do not converge. For a more complete discussion of Ramanujan’s
+incorrect claim, see [2].
+
+                                2. Preliminary Results
+   We first collect several well-known theorems that we use in our proof. First, from
+[5, p. 191], for t 6= 0,
+                          ∞                               
+                         X        1         1     1   1 1
+                                          =          − +      .                  (2.1)
+                         n=1
+                             t2 + 4n2 π 2   2t et − 1 t 2
+Second, from [16, p. 251], we find that, for Re z > 0,
+                                     Z ∞
+                                                    tdt
+                           φ(z) = −2                             .                     (2.2)
+                                      0    (t2 + z 2 )(e2πt − 1)
+Third, we require Binet’s integral for log Γ(z), i.e., for Re z > 0 [16, p. 249], [6, p. 377,
+formula 3.427, no. 4],
+                                                Z ∞                    −zt
+                     1               1                    1 1        1      e
+   log Γ(z) = z −        log z − z + log(2π) +              − + t               dt.     (2.3)
+                     2               2              0     2 t e −1            t
+4                                   B. C. BERNDT AND A. DIXIT
+
+Fourth, from [6, p. 377, formula 3.427, no. 2], we find that
+                              Z ∞                    
+                                               1     1 −x
+                                                   −    e dx = γ,                                        (2.4)
+                                0           1 − e−x x
+
+where γ denotes Euler’s constant. Fifth, by Frullani’s integral [6, p. 378, formula 3.434,
+no. 2],
+                      Z ∞ −µx
+                           e   − e−νx            ν
+                                       dx = log ,        µ, ν > 0.                   (2.5)
+                       0        x                µ
+
+
+
+                            3. First Proof of Theorem 1.1
+Proof. Our first goal is to establish an integral representation for the far left side of
+(1.3). Replacing z by nα in (2.2) and summing on n, 1 ≤ n < ∞, we find, by absolute
+convergence, that
+                     ∞                       ∞ Z ∞
+                     X                       X                       tdt
+                           φ(nα) = −2
+                     n=1                     n=1       0   (t2 + n2 α2 )(e2πt − 1)
+                                             Z ∞                ∞
+                                        −2                  t  X        1
+                                    =                                          .                         (3.1)
+                                        α2     0       (e − 1) n=1 (t/α)2 + n2
+                                                         2πt
+
+
+
+Invoking (2.1) in (3.1), we see that
+              ∞                     Z ∞                                                       
+              X             2π                    1                    1    α   1
+                  φ(nα) = −                    2πt               2πt/α
+                                                                          −   +                    dt.   (3.2)
+              n=1
+                            α           0    (e − 1)            e      − 1 2πt 2
+
+    Next, setting x = 2πt in (2.4), we readily find that
+                                        Z ∞                               
+                                                  2π      e−2πt
+                              γ=                        −                      dt.                       (3.3)
+                                        0      e2πt − 1     t
+
+By Frullani’s integral (2.5),
+                     Z ∞                                              
+                            e−t/α − e−2πt                         2π
+                                          dt = log                         = log(2πα).                   (3.4)
+                       0          t                              1/α
+
+Combining (3.3) and (3.4), we arrive at
+                                               Z ∞                                  
+                                                              2π      e−t/α
+                       γ − log (2πα) =                              −                    dt.             (3.5)
+                                                   0       e2πt − 1     t
+                                 TRANSFORMATION FORMULA                                          5
+
+  Hence, from (3.2) and (3.5), we deduce that
+                                  ∞
+                                           !
+         √     γ − log(2πα) X
+           α                  +      φ(nα)                                                   (3.6)
+                     2α          n=1
+                        Z ∞                    
+                    1             2π      e−t/α
+               = √                      −         dt
+                  2 α 0        e2πt − 1      t
+                     2π ∞
+                                                               
+                                   1           1        α     1
+                         Z
+                 −√                                   −     +     dt
+                      α 0 (e2πt − 1) e2πt/α − 1 2πt 2
+                 Z ∞        √                                            
+                               α                   2π               e−t/α
+               =                     − √ 2πt/α                   − √        dt.
+                   0     t(e2πt − 1)     α(e      − 1)(e2πt − 1) 2t α
+  Now from [12, p. 260, eqn. (22)] or [14, p. 77], for n real,
+             Z ∞                                  2
+                        −1 + it           −1 − it            1        cos nt
+                    Γ                Γ                  Ξ      t             dt
+               0            4                4               2        1 + t2
+                        Z ∞                        2
+                                   1        −1 + it         cos nt
+                     =         Ξ t Γ                               dt
+                          0        2           4            1 + t2
+                              Z ∞                                              
+                          3/2             1         1              1           1
+                     =π                         −                         −         dx.       (3.7)
+                               0      exen − 1 xen            exe−n − 1 xe−n
+                                       √
+Letting n = 12 log α and x = 2πt/ α in (3.7), we deduce that
+                                            2
+                                                cos( 12 t log α)
+             Z ∞   
+          1              1        −1 + it
+      − 3/2          Ξ t Γ                                       dt                           (3.8)
+        π      0         2            4             1 + t2
+            2π ∞
+                Z                                                 
+                            1           1           1             α
+      = −√                        −                          −         dt
+             α 0        e2πt − 1 2πt           e2πt/α − 1 2πt
+         Z ∞                  √                  √                                  √ 
+                        −2π/ α                       α                   1              α
+      =            2πt/α         2πt
+                                            +    2πt
+                                                             + √ 2πt/α            −       dt.
+          0      (e      − 1)(e − 1) t(e − 1) t α(e                           − 1) 2πt2
+  Hence, combining (3.6) and (3.8), in order to prove that the far left side of (1.3)
+equals the far right side of (1.3), we see that it suffices to show that
+                 Z ∞                       √              
+                                1             α      e−t/α
+                         √               −       + √         dt
+                  0     t α(e2πt/α − 1) 2πt2 2t α
+                              Z ∞                                
+                           1             1          1    e−u/(2π)
+                       =√                       −     +             du = 0,     (3.9)
+                            α 0      u(eu − 1) u2           2u
+where we made the change of variable u = 2πt/α. In fact, more generally, we show
+that
+                Z ∞                        
+                         1         1   e−ua         1
+                        u
+                               − 2+           du = − log(2πa),             (3.10)
+                 0   u(e − 1) u         2u          2
+so that if we set a = 1/(2π) in (3.10), we deduce (3.9).
+6                                 B. C. BERNDT AND A. DIXIT
+
+    Consider the integral, for t > 0,
+                           Z ∞                                    
+                                       1    1 1 e−tu e−ua − e−tu
+              F (a, t) : =                − +            +             du
+                             0      eu − 1 u 2         u       2u
+                                           
+                                          1              1         1    t
+                         = log Γ(t) − t −     log t + t − log(2π) + log ,                  (3.11)
+                                          2              2         2    a
+where we applied (2.3) and (2.5). Upon the integration of (1.1), it is easily gleaned
+that, as t → 0,
+                                   log Γ(t) ∼ − log t − γt,
+where γ denotes Euler’s constant. Using this in (3.11), we find, upon simplification,
+that, as t → 0,
+                                                     1          1
+                     F (a, t) ∼ −γt − t log t + t − log(2π) − log a.
+                                                     2          2
+Hence,
+                                                  1
+                                 lim F (a, t) = − log(2πa).                                (3.12)
+                                 t→0              2
+Letting t approach 0 in (3.11), taking the limit under the integral sign on the right-
+hand side using Lebesgue’s dominated convergence theorem, and employing (3.12),
+we immediately deduce (3.10). As previously discussed, this is sufficient to prove the
+equality of the first and third expressions in (1.3), namely,
+    (                              )                                        2
+                                                                                 cos 12 t log α
+                         ∞                                                                      
+√
+                                                Z ∞   
+      γ − log(2πα)      X                    1           1       −1 + it
+  α                  +       φ(nα) = − 3/2            Ξ    t Γ                                    dt.
+            2α          n=1
+                                           π     0       2            4              1 + t2
+                                                                                           (3.13)
+  Lastly, using (3.13) with α replaced by β and employing the relation αβ = 1, we
+conclude that
+                 (                    ∞
+                                                )
+            p      γ − log(2πβ) X
+               β                   +      φ(nβ)
+                         2β          n=1
+                                                         2
+                                                            cos 12 t log β
+                              Z ∞                                       
+                          1             1        −1 + it
+                   = − 3/2         Ξ      t Γ                                dt
+                        π      0        2           4          1 + t2
+                                                         2
+                                                            cos 12 t log(1/α)
+                              Z ∞                                            
+                          1             1        −1 + it
+                   = − 3/2         Ξ      t Γ                                     dt
+                        π      0        2           4             1 + t2
+                                                         2
+                                                            cos 12 t log α
+                              Z ∞                                       
+                          1             1        −1 + it
+                   = − 3/2         Ξ      t Γ                                dt.
+                        π      0        2           4          1 + t2
+Hence, the equality of the second and third expressions in (1.3) has been demonstrated,
+and so the proof is complete.                                                        
+
+                                4. Second Proof of (1.3)
+  In this section we give our second proof of the first identity in (1.3) using Guinand’s
+generalization of Poisson’s summation formula in [7]. We emphasize that this route
+does not take us to the integral involving Riemann’s Ξ-function in the second identity
+                                  TRANSFORMATION FORMULA                                           7
+
+of (1.3). First, we reproduce the needed version of the Poisson summation formula
+from Theorem 1 in [7].
+                                                                                   ′
+Theorem 4.1. If f (x) is an integral, tends to zero at infinity, and xf (x) belongs to
+Lp (0, ∞), (1 < p ≤ 2), then
+                   N          Z N        !         N           Z N       !
+                  X                               X
+            lim       f (n) −     f (t)dt = lim       g(n) −       g(t)dt ,      (4.1)
+            N →∞                   0               N →∞                   0
+                     n=1                                    n=1
+
+where                                     Z →∞
+                               g(x) = 2          f (t) cos(2πxt)dt.                            (4.2)
+                                           0
+
+  Next, we state a lemma1 that will subsequently be used in our proof of (1.3).
+Lemma 4.2.            Z ∞                                
+                                              1                1
+                          ψ(t + 1) −               − log t dt = log 2π.                        (4.3)
+                       0                  2(t + 1)             2
+Proof. Let I denote the integral on the left-hand side. Then,
+                          et Γ(t + 1)
+            Z ∞                      
+                 d
+        I=             ln t √             dt
+             0   dt        t t+1
+                    et Γ(t + 1)             et Γ(t + 1)
+         = lim ln t √             − lim ln t √
+            t→∞      t t+1          t→0      t t+1
+                     t
+                    e Γ(t + 1)                                          1
+         = ln lim t √             − ln lim et Γ(t + 1) − lim t ln t − lim ln(t + 1)
+               t→∞ t     t+1             t→0              t→0         t→0 2
+                     t
+                    e Γ(t + 1)
+         = ln lim t √            .                                                             (4.4)
+               t→∞ t     t+1
+Next, Stirling’s formula [6, p. 945, formula 8.327] tells us that,
+                                                   √
+                                 Γ(z) ∼ z z−1/2 e−z 2π,                                        (4.5)
+as |z| → ∞ and | arg z| ≤ π − δ, where 0 < δ < π. Hence, employing (4.5), we find
+that                                              t √
+                            et Γ(t + 1)
+                                           
+                                                1      2π
+                                √       ∼ 1+              ,                 (4.6)
+                              t
+                             t t+1              t     e
+so that
+                                    et Γ(t + 1) √
+                                 lim t √       = 2π.                        (4.7)
+                                t→∞ t    t+1
+Thus from (4.4) and (4.7), we conclude that
+                                                1
+                                           I=     ln 2π.                                       (4.8)
+                                                2
+                                                                                                  
+  1The authors are indebted to M. L. Glasser for the proof of this lemma. The authors’ original proof
+of this lemma was substantially longer than Glasser’s given here.
+8                               B. C. BERNDT AND A. DIXIT
+
+   Now we are ready to give our second proof of (1.3). We first prove it for real z > 0.
+Let
+                                f (x) = ψ(xz + 1) − log xz.                        (4.9)
+We show that f (x) satisfies the hypotheses of Theorem 4.1. From (1.4), it is true that
+f (x) is an integral. Next, we need two formulas for ψ(x).
+   First, from [1, p. 259, formula 6.3.18] for | arg z| < π, as z → ∞,
+                                     1     1         1        1
+                    ψ(z) ∼ log z −     −     2
+                                                +       4
+                                                          −        +··· .         (4.10)
+                                    2z 12z         120z     252z 6
+   Second, we use the fact from [16, p. 250] that
+                                             ∞
+                                     ′
+                                           X        1
+                                   ψ (z) =                .                       (4.11)
+                                            n=0
+                                                (z + n)2
+From (4.10), we have
+                             1    1          1          1
+                  f (x) ∼      −   2  2
+                                        +      4 4
+                                                   −           +··· ,                (4.12)
+                            2xz 12x z     120x z     252x6 z 6
+so that
+                                        lim f (x) = 0.                               (4.13)
+                                      x→∞
+                            ′
+  Next, we show that xf (x) belongs to Lp (0, ∞) for some p such that 1 < p ≤ 2.
+  Using (4.10), we find that
+                                 ′       ′         1            1
+                            xf (x) = xzψ (xz) −      −1∼−          ,                  (4.14)
+                                                  xz           2xz
+so that |xf (x)|p ∼ 2p z1p xp . Now p > 1 implies that xf (x) is locally integrable near ∞.
+           ′                                              ′
+
+
+Also, using (4.11), we have
+                                              ∞
+                                                                      !
+                               ′
+                                             X       1          1
+                    lim xf (x) = lim xz                    2
+                                                             −     −1
+                    x→0              x→0
+                                             n=0
+                                                 (xz +  n)     xz
+                                              ∞
+                                                                !
+                                             X       1
+                                   = lim xz                2
+                                                             −1
+                                     x→0
+                                             n=1
+                                                 (xz +  n)
+                                = −1.                                                (4.15)
+                    ′                                                          ′
+This proves that xf (x) is locally integrable near 0. Hence it is true that xf (x) belongs
+to Lp (0, ∞) for some p such that 1 < p ≤ 2.
+  Now from (4.2) and (4.9), we find that
+                              Z ∞
+                    g(x) = 2       (ψ(tz + 1) − log tz) cos (2πxt) dt.
+                                0
+Employing a change of variable y = tz and using (1.4), we find that
+                          2 ∞
+                            Z
+                 g(x) =         (ψ(y + 1) − log y) cos (2πxy/z) dy
+                          z 0
+                          1  x              x 
+                       =      ψ    + 1 − log         .                               (4.16)
+                          z      z              z
+                                      TRANSFORMATION FORMULA                                     9
+
+  Substituting the expressions for f (x) and g(x) from (4.9) and (4.16), respectively, in
+(4.1), we find that
+            N                         Z N                       !
+           X
+    lim       (ψ(nz + 1) − log nz) −      (ψ(tz + 1) − log tz)dt
+    N →∞                                       0
+                n=1
+            "            N                    Z N                !#
+      1                 X      n          n          t           t
+    =           lim         ψ    + 1 − log    −     ψ    + 1 − log    dt  .                (4.17)
+      z      N →∞
+                        n=1
+                               z           z     0     z           z
+
+Thus,
+            N  ′                            X    N          Z N                       !
+            X  Γ                 1                     1
+ lim                    (nz) +      − log nz +             −      (ψ(tz + 1) − log tz)dt
+N →∞
+            n=1
+                      Γ         2nz               n=1
+                                                      2nz      0
+                       N                                N
+        "                   ′                    X             Z N                     !#
+    1                 X Γ n           z        n           z               t             t
+=           lim                     +     − log      +         −        ψ     + 1 − log      dt    .
+    z   N →∞
+                      n=1
+                            Γ z       2n        z      n=1
+                                                           2n      0        z             z
+                                                                                            (4.18)
+  Now if we can show that
+                             N        Z N                       !
+                            X    1                                 γ − log 2πz
+                      lim           −     (ψ(tz + 1) − log tz)dt =             ,           (4.19)
+                  N →∞
+                            n=1
+                                2nz    0                               2z
+
+then replacing z by 1/z in (4.19) will give us
+              N       Z N                      !
+             X    z              t             t       z(γ − log(2π/z))
+       lim          −        ψ     + 1 − log      dt =                  .                  (4.20)
+      N →∞
+             n=1
+                 2n    0         z             z               2
+
+Then substituting (4.19) and (4.20) in (4.18) will complete the proof of the theorem.
+So our goal now is to prove (4.19).
+        N           Z N                         !
+       X     1
+ lim             −      (ψ(tz + 1) − log tz)dt
+N →∞
+       n=1
+           2nz       0
+                 N
+                               !               Z N                       !
+           1 X1                      log N
+ = lim                 − log N +            −      (ψ(tz + 1) − log tz)dt
+   N →∞   2z n=1 n                     2z       0
+                                     Z N                        
+    γ              log z log Nz
+ =    + lim −            +          −      (ψ(tz + 1) − log tz)dt
+   2z N →∞          2z        2z        0
+                          log(Nz + 1) 1 N z
+                                                                                     
+    γ   log z                                                             1          1
+                                             Z
+ =    −        + lim                    −         (ψ(t + 1) − log t)dt −    log 1 +
+   2z     2z     N →∞          2z          z 0                           2z         Nz
+                                            Z Nz                     
+    γ   log z 1             log(Nz + 1)
+ =    −        + lim                      −       (ψ(t + 1) − log t)dt
+   2z     2z      z N →∞          2           0
+                           Z Nz               Z Nz                     
+    γ   log z 1             1         1
+=     −        + lim                      dt −      (ψ(t + 1) − log t)dt
+   2z     2z      z N →∞ 2 0 t + 1              0
+10                                  B. C. BERNDT AND A. DIXIT
+                         Z Nz                              
+    γ     log z 1                               1
+ =     −       − lim             ψ(t + 1) −          − log t dt
+    2z     2z     z N →∞ 0                  2(t + 1)
+          log z 1 ∞
+                    Z                                
+    γ                                     1
+ =     −       −          ψ(t + 1) −           − log t dt
+    2z     2z     z 0                 2(t + 1)
+    γ     log z log 2π
+ =     −       −
+    2z     2z       2z
+    γ − log 2πz
+ =              ,                                                               (4.21)
+        2z
+where in the antepenultimate line, we have made use of Lemma 4.2. This completes
+the proof of (4.19) and hence the proof of Theorem 1.2 for real z > 0. But both sides
+of (1.5) are analytic for | arg z| < π. Hence by analytic continuation, the theorem is
+true for all complex z such that | arg z| < π.
+                                           References
+ [1] M. Abramowitz and I.A. Stegun, eds., Handbook of Mathematical Functions, Dover, New York,
+     1965.
+ [2] G.E. Andrews and B.C. Berndt, Ramanujan’s Lost Notebook, Part IV, Springer, New York, to
+     appear.
+ [3] B.C. Berndt, Ramanujan’s quarterly reports, Bull. London Math. Soc. 16 (1984), 449–489.
+ [4] B.C. Berndt, Ramanujan’s Notebooks, Part I, Springer–Verlag, New York, 1985.
+ [5] J.B. Conway, Functions of One Complex Variable, 2nd ed., Springer, New York, 1978.
+ [6] I.S. Gradshteyn and I.M. Ryzhik, eds., Table of Integrals, Series, and Products, 5th ed., Academic
+     Press, San Diego, 1994.
+ [7] A.P. Guinand, On Poisson’s summation formula, Ann. Math. (2) 42 (1941), 591–603.
+ [8] A.P. Guinand, Some formulae for the Riemann zeta-function, J. London Math. Soc. 22 (1947),
+     14–18.
+ [9] A.P. Guinand, A note on the logarithmic derivative of the Gamma function, Edinburgh Math.
+     Notes 38 (1952), 1–4.
+[10] A.P. Guinand, Some finite identities connected with Poisson’s summation formula, Proc. Edin-
+     burgh Math. Soc. (2) 12 (1960), 17–25.
+[11] G.H. Hardy, Note by G.H. Hardy on the preceding paper, Quart. J. Math. 46 (1915), 260–261.
+[12] S. Ramanujan, New expressions for Riemann’s functions ξ(s) and Ξ(t), Quart. J. Math. 46 (1915),
+     253–260.
+[13] S. Ramanujan, Notebooks (2 volumes), Tata Institute of Fundamental Research, Bombay, 1957.
+[14] S. Ramanujan, Collected Papers, Cambridge University Press, Cambridge, 1927; reprinted by
+     Chelsea, New York, 1962; reprinted by the American Mathematical Society, Providence, RI,
+     2000.
+[15] S. Ramanujan, The Lost Notebook and Other Unpublished Papers, Narosa, New Delhi, 1988.
+[16] E.T. Whittaker and G.N. Watson, A Course of Modern Analysis, 4th ed., Cambridge University
+     Press, Cambridge, 1966.
+
+  Department of Mathematics, University of Illinois, 1409 West Green Street, Ur-
+bana, IL 61801, USA
+  E-mail address: berndt@illinois.edu
+
+  Department of Mathematics, University of Illinois, 1409 West Green Street, Ur-
+bana, IL 61801, USA
+  E-mail address: aadixit2@illinois.edu
+

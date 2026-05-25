@@ -4,8 +4,36 @@ The live list of open action items. The bottom of the file preserves the
 historical record of completed work. New work goes near the top; finished work
 gets moved into the historical record.
 
-**Last major update:** 2026-05-24, after Hunt 5 closure (diary 20) and
-ingestion of the ChatGPT-Pro source pack at `chatgpt-pro-mining/`.
+**Last major update:** 2026-05-25, after the user's "verification is key"
+pivot. Adversarial verification subagents in-flight for the last batch of
+ChatGPT-Pro claims (cycles 16-25).
+
+---
+
+## ★ EPISTEMIC POSTURE (per user 2026-05-25) ★
+
+**User said:** "we are really just probing ChatGPT pro. Is cool... but not
+sure we can publish something new based on this? Any closed form solutions
+that accelerate will be useful though." then: "test the claims and also
+find if they've already been discovered and published. Adversarial
+verification (actively try to refute) + automated literature diff."
+
+**Standing rule:** No new ChatGPT-Pro prompts until the in-flight
+verification + literature-diff subagents return verdicts. If a claim is
+CONFIRMED + NOVEL → keep it. If CONFIRMED + KNOWN → reframe as
+"verified-implementation", not "novel finding". If REFUTED → retract in
+diary + DID_NOT_PAN_OUT.md + paper draft.
+
+## ★ IN-FLIGHT VERIFICATION SUBAGENTS (2026-05-25 spawn) ★
+
+| # | Agent ID | Scope | Verdict bar |
+|---|---|---|---|
+| #66 | `a523969af20acdada` | Adversarial AB LN Part IV Entry 4.2.3 defense (diary 56 Result 1): independent contour proof + 300-dps verification across 7 orders × 5 λ × 6 ε + reconstruct AB's original asymptotic argument | rel-err ≤ 10⁻²⁹⁰ across all cells; otherwise REFUTE |
+| #67 | `a1162a324b4618a72` | Adversarial Level-pq family (diary 55): 7 levels at dps=200, edge cases, 3-prime/prime-power extensions + literature diff via downloaded-pdfs + WebFetch | rel-err ≤ 10⁻¹⁹⁰ per cell; novelty audit |
+| #68 | `a7c6cab78eacccfea` | Implement + verify 4 cross-domain accelerators (diaries 50, 51, 53, 56): finite-pole attention (`rkc/attention/`), annular Poisson Green (`rkc/pde/`), PH Bessel-image (`rkc/ph/`), Airy Tricomi-U (`rkc/special/`) | numerical agreement to claimed digits + benchmark within 0.5× of claimed speedup |
+
+When these complete, fold results into diaries 57-59 and update
+CANDIDATE_INSIGHTS / DID_NOT_PAN_OUT accordingly. **Do not spawn duplicates.**
 
 ---
 

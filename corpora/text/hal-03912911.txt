@@ -1,0 +1,2861 @@
+Hardy-Ramanujan Journal 45 (2022), 1-41                       submitted 09/09/2022, accepted 09/09/2022, revised 09/09/2022
+
+
+
+
+                          Ramanujan’s Quarterly Reports
+                                           Bruce C. Berndt, Editor
+
+
+Abstract. This is a faithful reproduction of Ramanujan’s Quarterly Reports from a handwritten copy by T.A. Satagopan in 1925.
+Keywords. Ramanujan’s quarterly reports, August 1913 to March 1914, Satagopan’s handwritten copy
+2010 Mathematics Subject Classification. 01A70, 11-03
+
+
+
+1.     History of the Quarterly Reports
+After marrying Janaki in 1909, Ramanujan moved to Madras in 1910 to secure employment but also
+with the goal of seeking recognition for his mathematical discoveries. In 1911, Ramanujan began to
+publish both papers and problems in the Journal of the Indian Mathematical Society. His emerging
+fame reached the English astronomer Sir Gilbert Walker, working at an observatory in Madras. In
+a letter to the University of Madras dated February 26, 1913 [6, p. 51], he wrote, “The University
+would be justified in enabling S. Ramanujan for a few years at least to spend the whole of his time
+on mathematics, without any anxiety as to his livelihood.” The Board of Studies at the University
+of Madras agreed to this request, and its chairman, Professor B. Hanumantha Rao, wrote a letter
+to the Vice-Chancellor on March 25, 1913, with the recommendation that Ramanujan be awarded a
+scholarship of 75 rupees per month [6, p. 76]. The approval was swift, and Ramanujan was awarded
+a scholarship commencing on May 1, 1913.
+    A stipulation in the scholarship required Ramanujan to write quarterly reports describing his
+research to the Board of Studies in Mathematics. Ramanujan wrote three of these quarterly reports,
+dated 5th August 1913, 7th November 1913, and 9th March, 1914, before he departed for England
+on March 17, 1914. Unfortunately, these reports were either destroyed or misplaced at the University
+of Madras; they have never been found. Fortunately, in 1925, T. A. Satagopan made a handwritten
+copy of the reports totalling 51 pages. This copy was sent to G. H. Hardy and is now at the library
+at Trinity College, Cambridge. Also on file at Trinity College is a second copy of the reports made
+by G. N. Watson. Hardy used the reports in writing Chapter 11 of his book [8] on Ramanujan’s
+work. The reports have never been published in their entirety. However, a complete description
+of their contents was published by this editor in the Bulletin of the London Mathematical Society
+[4]. A shorter, somewhat less technical account was written by the same author for the American
+Mathematical Monthly [3].
+    Some of the material in the Quarterly Reports can also be found in Chapters 3 and 4 of
+Ramanujan’s second notebook [2], [1], [5, Chapters 3, 4]. In contrast to his notebooks [11], Ramanujan
+provided proofs in his reports. His proofs are mostly formal and not rigorous. In discussing perhaps
+the most important result from the reports, in a paper published in 1937, Hardy [7, p. 150] remarked,
+“There is one particularly interesting formula . . . of which he was especially fond and made continual
+use. . . . had not ‘really’ proved any of the formulae which I have quoted. It was impossible that he
+should have done so because the ‘natural’ conditions involve ideas of which he knew nothing in 1914,
+and which he had hardly absorbed before his death”. (Hardy’s paper [7] is reprinted in Chapter
+1 of [8].) The aforementioned theorem provides a method for evaluating large classes of definite
+integrals. After arriving in England, Ramanujan evidently was informed by Hardy that his proof
+We thank episciences.org for providing open access hosting of the electronic journal Hardy-Ramanujan Journal
+2                                                                2.   Notes on Transcribing the Quarterly Reports
+
+
+
+
+was not rigorous, for in a paper [9], [10, pp. 53–58] offering several integral evaluations written in
+1915, Ramanujan remarked, “My own proofs of the above results make use of a general formula, the
+truth of which depends on conditions which I have not yet investigated completely. A direct proof
+depending on Cauchy’s theorem will be found in Mr. Hardy’s note which follows this paper”. Readers
+of Ramanujan’s Quarterly Reports will find many interesting applications of his ingenious “general
+formula.”
+
+
+References
+    [1] B. C. Berndt and B. M. Wilson, Chapter 4 of Ramanujan’s second notebook, Proc. Royal
+        Soc. Edinburgh 89A (1981), 87–109.
+
+    [2] B. C. Berndt, R. J. Evans, and B. M. Wilson, Chapter 3 of Ramanujan’s second notebook,
+        Adv. Math. 49 (1983), 123–169.
+
+    [3] B. C. Berndt, The quarterly reports of S. Ramanujan, Amer. Math. Monthly 90 (1983), 505–516.
+
+    [4] B. C. Berndt, Ramanujan’s quarterly reports, Bull. London Math. Soc. 16 (1984), 449–489.
+
+    [5] B. C. Berndt, Ramanujan’s Notebooks, Part I, Springer–Verlag, New York, 1985.
+
+    [6] B. C. Berndt and R. A. Rankin, Ramanujan: Letters and Commentary, American Mathematical
+        Society, Providence, RI, 1995; jointly published by the London Mathematical Society, London,
+        1995; published in India by Affiliated East West, New Delhi, 1997.
+
+    [7] G. H. Hardy, The Indian mathematician Ramanujan, Amer. Math. Monthly 44 (1937), 137–155.
+
+    [8] G. H. Hardy, Ramanujan, Chelsea, New York, 1978.
+
+    [9] S. Ramanujan, Some definite integrals, Mess. Math. 44 (1915), 10–18.
+
+[10] S. Ramanujan, Collected Papers, Chelsea, New York, 1962.
+
+[11] S. Ramanujan, Notebooks (2 volumes), Tata Institute of Fundamental Research, Bombay, 1957;
+     second edition with improved photography, 2012.
+
+
+2.      Notes on Transcribing the Quarterly Reports
+We have attempted to reproduce Ramanujan’s style as much as possible. But it should be emphasized
+that we have prepared our transmission of the Quarterly Reports from a handwritten copy made at
+the University of Madras in 1925. Presumably, the copyist, T. A. Satagopan, had a background in
+mathematics. Out of a deep respect to Ramanujan, we guess that Satagopan attempted to adhere
+to Ramanujan’s style as much as possible. However, we have made some exceptions. For example,
+Ramanujan frequently wrote mathematical symbols, especially integrals, within his text. A long series
+of equalities on multiple lines can sometimes be shortened by distributing them on fewer lines. For
+typographical and aesthetical reasons, we have often put these mathematical expressions in display
+modes. In a few instances, we have put Ramanujan’s words in sans-serif font to indicate that we were
+unable to apply latex to reproduce Ramanujan’s style.
+    In general, we have not changed Ramanujan’s punctuation, but for clarity, we have occasionally
+inserted commas and periods. Ramanujan’s results and proofs are not organized consistently, with
+Theorem, Cor., Art., (a), (b), (i), (ii), etc., 1, 2, 3, etc., (1), (2), (3), etc. being employed, but we
+have kept his designations.
+B.C. Berndt, Quarterly Reports                                                                         3
+
+
+
+
+    We have adhered to Ramanujan’s notation, but with two notable exceptions. We write ! in place
+of the now antiquated n . which was utilized by Ramanujan. In his third Quarterly Report, he used
+the notation II(x) for Γ(x + 1). Since the latter notation is almost now universally used, we have
+adopted the Γ-function notation.
+    We are grateful to Jaebum Sohn, who helped prepare the Quarterly Reports, and to Shivajee
+Gupta, who constructed the two geometric figures.
+
+
+3.    Ramanujan’s Quarterly Reports
+                                 Sample image from Satagopan’s copy
+
+
+
+
+                                                                                                Madras
+                                                                                         5th Aug. 1913
+From S. Ramanujan,
+Scholarship holder in Mathematics
+To   The Board of Studies in Mathematics
+Through The Registrar, University of Madras.
+Gentlemen,
+    With reference to para. 2 of the University Registrar’s letter no. 1631 dated the 9th April 1913, I
+beg to submit herewith my quarterly Progress Report for the quarter ended the 31st July, 1913. The
+Progress Report is merely the exposition of a new theorem I have discovered in Integral Calculus. At
+present there are many definite integrals the values of which we know to be finite but still not possible
+of evaluation by the present known methods . This theorem will be an instrument by which at least
+some of the definite integrals whose values are at present not known can be evaluated. For instance,
+the integral treated in Ex(V) note Art. 5. in the paper, Mr. G. H. Hardy M.A., F.R.S. of Trinity
+4                                                                                          3.   Ramanujan’s Quarterly Reports
+
+
+
+
+College, Cambridge, considers to be “new and interesting.” Similarly, the integral connected with
+the Besselian function of the nth order which at present requires many complicated manipulations to
+evaluate can be readily inferred from the theorem given in the paper. I have also utilised this theorem
+in definite integrals for the expansion of functions which can now be ordinarily done by Lagrange’s,
+Burmann’s, or Abel’s theorems. For instance, the expansions marked as examples nos. (3) and (4),
+Art. 6, in the second part of the paper.
+    The investigations I have made on the basis of this theorem are not all contained in the attached
+paper. There is ample scope for new and interesting results out of this theorem. This paper may be
+considered the first instalment of the results I have got out of the theorem. Other new results, based
+on the theorem I shall communicate in my later reports.
+    I beg to submit this, my maiden attempt, and I humbly request that the Members of the Board
+will make allowance for any defect which they may notice to my want of usual training which is now
+undergone by college students and view sympathetically my humble effort in the attached paper.
+
+                                                                                            I beg to remain,
+                                                                                               Gentlemen
+                                                                                           Your obedient servant
+                                                                                              S. Ramanujan
+
+1. Subject of the paper
+    If F (x) be a function capable of expansion in positive integral powers of x, then
+    (A) the value of                       Z            ∞
+                                                            xn−1 F (x)dx
+                                           0
+                                      n
+can be found from the coefficient of x in the expansion of F (x) and conversely.
+    (B) the expansion of F (x) in powers of x can be found if the value of the integral
+                                          Z ∞
+                                               xn−1 F (x)dx
+                                                    0
+be known.
+2. A:—
+    Let the expansion of F (x) be
+
+                                                   x        x2
+                                        φ(0) −        φ(1) + φ(2) − · · · ,
+                                                   1!       2!
+then                                    Z ∞
+                                              xn−1 F (x)dx = Γ(n)φ(−n).
+                                        0
+Dem. We know                                Z ∞
+                                                                         Γ(n)
+                                                  e−mx xn−1 dx =              .
+                                              0                          mn
+By giving the values 1, r, r2 , r3 , . . . to m on both the sides, multiplying the results by
+                                                                00            000
+                                            hf 0 (a)        h2 f (a)       h3 f (a)
+                               f (a),                ,               ,              ,...
+                                              1!                2!             3!
+B.C. Berndt, Quarterly Reports                                                                            5
+
+
+
+
+and adding up all these results, we have
+                  Z ∞                        Z ∞                           Z ∞
+                       −x n−1        h 0             −rx n−1        h2 00         2
+            f (a)     e x       dx + f (a)          e x        dx + f (a)      e−r x xn−1 dx
+                    0                1!        0                    2!      0
+                  3      Z ∞
+                h 000              3
+             + f (a)          e−r x xn−1 dx + · · ·
+                3!         0
+                   (             0          00             000
+                                                                        )
+                             h f (a)    h2 f (a)       h3 f (a)
+           =Γ(n) f (a) + n           + 2n           + 3n           + ··· .
+                             r 1!       r    2!       r      3!
+                            2
+Expanding e−x , e−rx , e−r x , . . . on the left side in ascending powers of x and collecting all the terms
+that contain the same powers of x, we have by applying Taylor’s Theorem,
+                   Z ∞
+                                                                x2
+                                                                                 
+                           n−1                   x                       2
+                         x          f (a + h) − f (a + rh) + f (a + r h) − · · · dx
+                      0                          1!             2!
+                                                               
+                                                              h
+                                              = Γ(n) f a + n .
+                                                              r
+
+   Now let us suppose f (a + hrn ) = φ(n) treating a, h and r to be constants. Then we see
+that f (a + rhn ) = φ(−n) and also f (a + h), f (a + rh), f (a + r2 h), . . . are respectively equal to
+φ(0), φ(1), φ(2), . . . . Substituting these results in the above one we have,
+                          Z ∞
+                                                       x2
+                                                                  
+                               n−1           x
+                              x      φ(0) − φ(1) + φ(2) − · · · dx = Γ(n)φ(−n).
+                           0                1!         2!
+                                                                                                  Q. E. D.
+3. When valid?
+     The above theorem is legitimate if the following conditions are satisfied.
+     (a) As already stated, F (x) should be capable of expansion in positive integral powers of x.
+     (b) F (x) should be finite and continuous between the limits 0 and ∞ but not necessarily at 0 and
+∞.
+     (c) n should be positive.
+     (d) xn F (x) should vanish when x becomes infinite.
+     The first two conditions are evident from the nature of the integral itself.
+     The 3rd condition is necessary because we have used the Eulerian Integral
+                                        Z ∞
+                                             xn−1 e−x dx = Γ(n)
+                                           0
+
+which is true only when n is positive.
+   The 4th condition is also necessary; for, if when x = ∞, xn F (x) does not vanish but be finite, say
+equal to a, then the greatest term in the expansion of xn−1 F (x) is xa and consequently the greatest
+term in                                     Z
+                                                xn−1 F (x)dx
+                                                   a
+is a log x which is infinite when x = ∞. Hence we see that, if when x = ∞, xn F (x) is finite, then
+                                          Z ∞
+                                              xn−1 F (x)dx
+                                               0
+
+is infinite; and much more so it will be if xn F (x) is itself infinite when x becomes infinite.
+    Although the first three conditions are necessary in case of oscillating functions such as the circular,
+Besselian and other functions, yet the fourth condition differs for different functions we take.
+6                                                                          3.   Ramanujan’s Quarterly Reports
+
+
+
+
+4. Generalization:—
+   (a) The theorem can be used not only in case of Integrals having the limits 0 and ∞ but also in
+case of Integrals having any two limits; for any Integral
+                                              Z β
+                                                  ψ(x)dx
+                                                         α
+
+may be transformed to an Integral of the form
+                                            Z ∞
+                                                              F (x)dx
+                                                         0
+
+by suitable substitutions such as x−α
+                                    β−x = y, etc.
+    (b) According to the condition 3(a), F (x) may include all algebraic functions and all transcendental
+functions which can be expanded in ascending powers of x, such as cos x, sin x, e−x , tan−1 x, log(1+x),
+etc.; but if F (x) contained transcendentals of the form log x, etc. which cannot be expressed in powers
+of x, we can substitute ey etc. for x and then apply our theorem.
+    (c) Similarly by suitable substitutions all fractional powers also may be removed.
+5. Examples:—
+   The extreme importance of this theorem in the Integral Calculus is illustrated by the following
+few examples:
+(i) Let us take the integral                      Z ∞
+                                                              xm−1
+                                                                    dx.
+                                                     0       1 + xn
+Changing x to y 1/n we have the integral reduced to
+                                                     Z ∞        m
+                                                 1            y n −1
+                                                                     dy.
+                                                 n       0    1+y
+The conditions to be satisfied are:—
+                                   m
+                                       should be positive . . . by 3(c)
+                                   n
+                                  y m/n
+                                         = 0 when y = ∞. . . by 3(d)
+                                 1+y
+                                        m
+                                  i.e.    should lie between 0 and 1.
+                                        n
+                                   or m should lie between 0 and n.
+
+Now                  Z ∞    m              Z ∞
+                           y n −1                                    y2
+                                                                                 
+                 1                     1           m          y
+                                  dy =           y n −1 φ(0) − φ(1) + φ(2) − · · · dy,
+                 n    0    1+y         n   0                  1!     2!
+where φ(t) = Γ(1 + t).
+                                                  1 m  m
+                          Hence the integral =      Γ   φ −      by 2.
+                                                  n   n     n
+                                                  1 m      m        π
+                                                 = Γ    Γ 1−     =           .
+                                                  n   n       n     n sin πm
+                                                                           n
+
+Thus we see that if m lies between 0 and n
+                                    Z ∞ m−1
+                                         x              π
+                                               dx =          .
+                                      0  1+x n      n sin πm
+                                                           n
+B.C. Berndt, Quarterly Reports                                                                   7
+
+
+
+
+(ii)
+                                     Z 1
+                                                                   Γ(m)Γ(n)
+                                           xm−1 (1 − x)n−1 dx =             ,
+                                      0                            Γ(m + n)
+if m and n are positive.
+                    y
+    Changing x to 1+y  the integral becomes
+                                             Z ∞
+                                                   y m−1 (1 + y)−m−n dy.
+                                              0
+
+The conditions to be satisfied are
+
+                                          m should be positive by 3(c)
+                                          ym
+                                                  = 0 when y = ∞ by 3(d)
+                                     (1 + y)m+n
+                                         i.e. n should also be positive.
+
+Now            Z ∞                                Z ∞
+                                                                           y2
+                                                                                       
+                                                                    y
+                     y m−1 (1 + y)−m−n dy =             y m−1 φ(0) − φ(1) + φ(2) − · · · dy,
+                0                                  0                1!     2!
+where
+                                                         Γ(m + n + t)
+                                               φ(t) =                 .
+                                                          Γ(m + n)
+
+                                                                                Γ(m)Γ(n)
+                          Hence the integral = Γ(m)φ(−m)           (by 2)   =            .
+                                                                                Γ(m + n)
+
+(iii) When n lies between 0 and 1,
+                                Z ∞
+                                                                Γ(n)     πn
+                                             xn−1 cos px dx =     n
+                                                                     cos    .
+                                      0                          p        2
+                 √
+Changing x to        y, we have
+                    Z ∞
+                                            1 ∞ n −1           p2     p4
+                                              Z                                 
+                          xn−1 cos px dx =         y2      1 − y + y 2 − · · · dy
+                     0                      2 0                2!     4!
+                                              Z ∞
+                                                                            y2
+                                                                                    
+                                            1       n
+                                                      −1           y
+                                          =        y2      φ(0) − φ(1) + φ(2) − · · · dy
+                                            2 0                   1!        2!
+                                                              2t
+                                                                         
+                                                             p Γ(t + 1)
+                                              where φ(t) =               .
+                                                              Γ(2t + 1)
+                                            1  n   n  Γ n2 Γ 1 − n2
+                                                                               
+                                          = Γ       φ −       =
+                                            2    2         2       2pn Γ(1 − n)
+                                                      πn
+                                            Γ(n) cos 2
+                                          =              .
+                                                pn
+   In a similar manner on differentiating the above result with regard to p and then changing n to
+n − 1 on both sides, we have,
+   When n lies between 0 and 1
+                                Z ∞
+                                                      Γ(n)     πn
+                                     xn−1 sin px dx = n sin       .
+                                 0                     p        2
+
+(iv) Similarly taking the Besselian Function of the nth order, we have,
+8                                                                                                 3.   Ramanujan’s Quarterly Reports
+
+
+
+
+   If p lies between 0 and 2n+3
+                              2 ,
+                    Z ∞
+                                   x2              x4
+                                                                         
+                          p−1             1                1    1
+                        x       1−    ·        +      ·       ·    − · · · dx
+                     0             2 2n + 2 2 · 4 2n + 2 2n + 4
+                                          2p−1 Γ p2 Γ(n + 1)
+                                                   
+                                        =                  .
+                                            Γ n + 1 − p2
+                                                        √
+The above result is immediately got by changing x to y and applying our theorem.
+(v) If n is positive and a less than unity, then
+                                Z ∞
+                                                     xn−1 dx
+                                 0    (1 + x)(1 + ax)(1 + a2 x)(1 + a3 x) · · ·
+                              π      1 − a1−n 1 − a2−n 1 − a3−n 1 − a4−n
+                         =         ·          ·          ·          ·           ··· .
+                           sin πn      1−a       1 − a2     1 − a3      1 − a4
+
+Dem. Suppose
+                                                           1
+                                        (1 + x)(1 + ax)(1 + a2 x)(1 + a3 x) · · ·
+                                       = 1 − A1 x + A2 x2 − A3 x3 + A4 x4 − · · · .
+
+Then changing x to ax, we see that
+                                   1
+                                                              =1 − A1 ax + A2 a2 x2 − · · ·
+                (1 + ax)(1 + a2 x)(1 + a3 x) · · ·
+                                                              =(1 + x) 1 − A1 x + A2 x2 − A3 x3 + · · · .
+                                                                                                       
+
+Hence,
+                        1                                1                                   1
+                A1 =       ;               A2 =                    ;       A3 =
+                       1−a                        (1 − a)(1 − a2 )                (1 − a)(1 − a2 )(1 − a3 )
+and generally
+                                                                      1
+                                       Ar =                                                  .
+                                                 (1 − a)(1 − a2 )(1 − a3 ) · · · (1 − ar )
+Hence the integral                 Z ∞
+                                                                       x2
+                                                                                        
+                                                n−1             x
+                               =            x             φ(0) − φ(1) + φ(2) − · · ·             dx,
+                                       0                        1!     2!
+
+                                                   1 − a1+t 1 − a2+t 1 − a3+t
+                                                                                                       
+                       where       φ(t) = Γ(t + 1)         ·         ·        ···
+                                                     1−a      1 − a2   1 − a3
+                                        = Γ(n)φ(−n)       by 2.
+                                                           1 − a1−n 1 − a2−n 1 − a3−n
+                                             = Γ(n)Γ(1 − n)         ·          ·          ···
+                                                             1−a        1 − a2     1 − a3
+                                                  π 1 − a1−n 1 − a2−n 1 − a3−n
+                                             =                ·           ·          ···
+                                               sin πn 1 − a      1 − a2     1 − a3
+
+Note. If n is any positive integer the value of the above integral assumes an indeterminate form and
+the value may be evaluated by writing n+h instead of n and ultimately making h vanish; examples.—
+(a) When n = 1, the above becomes
+                         Z ∞
+                                                dx
+                                                                         = − log a.
+                          0   (1 + x)(1 + ax)(1  + a2 x)(1 + a3 x) · · ·
+B.C. Berndt, Quarterly Reports                                                                  9
+
+
+
+
+(b) When n = 2, the result is
+                    Z ∞
+                                                    dx                     2(1 − a)
+                                        √           √         √         =−          log a.
+                          0      (1 +       x)(1 + a x)(1 + a2 x) · · ·       a
+(c) When n = 3, the result is
+                Z ∞
+                                     dx                         3(1 − a)(1 − a2 )
+                           √        √           √           = −                   log a.
+                 0   (1 + 3 x)(1 + a 3 x)(1 + a2 3 x) · · ·            a3
+                                                        and so on.
+But if n is any fraction we can actually substitute that value; example:—
+(d) when n = 12 , the result is
+                            Z ∞
+                                                         dx
+                                (1 + x 2 )(1 + a2 x2 )(1 + a4 x2 )(1 + a6 x2 ) · · ·
+                              0
+                                  π 1 − a 1 − a3 1 − a5 1 − a7
+                                =            ·         ·        ·        ···
+                                  2 1 − a2 1 − a4 1 − a6 1 − a8
+which I have found to be equal to
+                                                          π
+                                         2(1 + a + a3 + a6 + a10 + a15 + · · · )
+where the general term in the denominator is
+
+                                                        an(n−1)/2 .
+
+(vi) If a is positive, m less than 1 and n greater than −m, then
+                                        Z ∞
+                                                 Γ(x + a)     dx
+                                         0   Γ(x + a + n + 1) xm
+                                                                                
+                         π csc πm     1    n     1       n(n − 1)     1
+                       =                −             +                    − ···
+                         Γ(n + 1) am 1! (a + 1)m            2!    (a + 2)m
+
+Dem. We know that                  Z 1
+                                                                 Γ(x + a)Γ(n + 1)
+                                         z x+a−1 (1 − z)n dz =                    .
+                                    0                            Γ(x + a + n + 1)
+Expanding the left side, we have
+                            Z 1                                    
+                                  x+a−1      n    n(n − 1) 2
+                                z         1− z+            z − · · · dz
+                              0              1!       2!
+                            1      n       1      n(n − 1)      1
+                       =        − ·             +          ·          − ··· .
+                          a + x 1! a + x + 1         2!      a+2+x
+Therefore
+                                               Z ∞
+                                           Γ(x + a)Γ(n + 1)
+                                            m Γ(x + a + n + 1)
+                                                               dx
+                                      0   x
+                     Z ∞                                                    
+                           −m     1     n      1       n(n − 1)   1
+                   =     x           −               +                − · · · dx.
+                      0         a + x 1! a + x + 1        2!    a+2+x
+Now expanding the terms within the integral on the right side, we see that the above integral
+                          Z ∞
+                                                       x2
+                                                                   
+                                −m           x
+                        =     x       φ(0) − φ(1) + φ(2) − · · · dx.
+                           0                 1!        2!
+10                                                                                  3.     Ramanujan’s Quarterly Reports
+
+
+                                                                                  
+                                           n 1   1        n(n − 1)     1
+               where φ(t) =Γ(t + 1)      −              +                     − ···
+                                     at+1 1! (a + 1)t+1       2!   (a + 2)t+1
+                                                                                      
+                                                                 1   n     1
+                          =Γ(1 − m)φ(m − 1) = Γ(1 − m)Γ(m)         −             + ···
+                                                               am 1! (a + 1)m
+                                                           
+                                       1   n    1
+                          =π csc πm      −            + ···
+                                      am 1! (a + 1)m
+Hence                       Z ∞                                                       
+                                      Γ(x + a)     dx    π csc πm            1
+                                                     m
+                                                       =                       − ···       .
+                            0     Γ(x + a + n + 1) x     Γ(n + 1)           am
+6. B. Converse of A:—
+    Expansions of functions by using the theorem.
+    examples:——                             n
+                                     2
+(i) Required the expansion of       √           in ascending powers of x.
+                               1 +   1 +
+                                        n4x
+                                2
+    Let the expansion of      √            be
+                           1 + 1 + 4x
+
+                                                    x        x2
+                                         φ(0) −        φ(1) + φ(2) − · · · .
+                                                    1!       2!
+Then
+                      Z ∞
+                                                    x2
+                                                                      
+                             p−1             x
+                            x          φ(0) − φ(1) + φ(2) − · · ·          dx
+                        0                    1!     2!
+                    =Γ(p)φ(−p)
+                      Z ∞                       n
+                              p−1        2
+                                                              Substitute x = y + y 2
+                                                                                     
+                    =      x           √            dx
+                                    1 + 1 + 4x
+                      Z0 ∞                                                            
+                              p−1       p−n−1                                      z
+                    =      y (1 + y)          (1 + 2y)dy         Substitute y =
+                       0                                                        1−z
+                      Z 1
+                    =     z p−1 (1 − z)n−2p−1 (1 + z)dz
+                       0
+                      Z 1                        Z 1
+                            p        n−2p−1
+                    =     z (1 − z)         dz +     z p−1 (1 − z)n−2p−1 dz
+                        0                               0
+                       Γ(p)Γ(n − 2p)
+                    =n               .
+                        Γ(n − p + 1)
+Hence
+                                        Γ(n − 2p)                             Γ(n + 2p)
+                        φ(−p) = n                           or    φ(p) = n                ,
+                                       Γ(n − p + 1)                          Γ(n + p + 1)
+i.e.
+
+               φ(0) = 1;        φ(1) = n;          φ(2) = n(n + 3);        φ(3) = n(n + 4)(n + 5);
+                                φ(4) = n(n + 5)(n + 6)(n + 7);           and so on.
+
+Hence
+                                       n
+                            2                       n     n(n + 3) 2 n(n + 4)(n + 5) 3
+                           √                 =1 −      x+          x −              x
+                        1 + 1 + 4x                  1!       2!              3!
+                                                   n(n + 5)(n + 6)(n + 7) 4
+                                                 +                       x − ··· .
+                                                             4!
+B.C. Berndt, Quarterly Reports                                                                               11
+
+
+
+                                                    1
+(ii) Required the expansion of                  √             in ascending powers of x.
+                                         (x +       1 + x2 )n
+    Let the expansion be
+                                                        x        x2
+                                               φ(0) −      φ(1) + φ(2) − · · · ,
+                                                        1!       2!
+then
+                    Z ∞
+                                                     x2      x3
+                                                                        
+                              p−1          x
+                         x      φ(0) − φ(1) + φ(2) − φ(3) + · · · dx
+                     0                     1!        2!      3!
+                                    Z ∞          p−1
+                                                                                   
+                                                x                         p
+                                                                               2
+                                                                                  1
+                  =Γ(p)φ(−p) =                  √         dx      put x + 1 + x =
+                                      0   (x + 1 + x2 )n                          y
+                       Z 1
+                                                                           √ 
+                                                         
+                    1                                   1
+                  = p      (1 − y 2 )p−1 y n−p+1 1 + 2 dy;         put y = z
+                   2 0                                  y
+                         Z 1                           
+                     1                      n−p       1
+                  = p+1      (1 − z)p−1 z 2       1+      dz
+                   2       0                          z
+                                          
+                                    n−p
+                         Γ(p)Γ
+                     n                  2
+                  = p+1                   .
+                   2          n+p
+                          Γ            +1
+                                2
+
+Hence                                                                  
+                                                                   n+p
+                                                                Γ
+                                                           p−1      2
+                                                φ(p) = n 2                
+                                                                  n−p
+                                                              Γ        +1
+                                                                   2
+so that
+
+             φ(0) = 1;    φ(1) = n;            φ(2) = n2 ;    φ(3) = n(n2 − 12 );    φ(4) = n2 (n2 − 22 );
+                    φ(5) = n(n2 − 12 )(n2 − 32 );             φ(6) = n2 (n2 − 22 )(n2 − 42 );   etc.
+
+Hence
+                              1              n      n2      n(n2 − 12 ) 3
+                          √             =1 − x + x2 −                  x
+                   (x +       1 + x2 )n      1!     2!          3!
+                                            n2 (n2 − 22 ) 4 n(n2 − 12 )(n2 − 32 ) 5
+                                         +               x −                     x + ··· .
+                                                 4!                    5!
+Cor. Changing x to ix, and n to in, we have
+
+                                        −1 x          n     n2    n(n2 + 12 ) 3
+                               en sin          =1+       x + x2 +            x + ··· .
+                                                      1!    2!        3!
+
+(3) Given logx x = −a, required the expansion of xn in ascending powers of a.
+    Let the expansion be
+                                           a         a2
+                                    φ(0) − φ(1) + φ(2) − · · · ,
+                                           1!        2!
+12                                                                              3.   Ramanujan’s Quarterly Reports
+
+
+
+
+then
+                          Z ∞
+                                                      a2
+                                                                
+                                            a
+                            ap−1 φ(0) − φ(1) + φ(2) − · · · da = Γ(p)φ(−p)
+                         0                 1!         2!
+                                                  log x p−1 n 1 − log x
+                        Z ∞               Z 1         
+                      =     ap−1 xn da =       −           x            dx
+                         0                 0        x            x2
+                        Z ∞
+                      =     y p−1 (1 + y)e−y(n−p) dy,    by changing x to e−y
+                           0
+                            nΓ(p)
+                      =              .
+                          (n − p)p+1
+
+Hence φ(p) = n(n + p)p−1 so that
+
+                φ(0) = 1;        φ(1) = n;     φ(2) = n(n + 2);        φ(3) = n(n + 3)2 ; . . .
+
+Hence
+                      n     n(n + 2) 2 n(n + 3)2 3 n(n + 4)3 4 n(n + 5)4 5
+            xn =1 −      a+         a −         a +         a −         a + ··· .
+                      1!       2!         3!          4!          5!
+
+(4) Given aqxp + xq = 1; required the expansion of xn in ascending powers of a.
+    Let the expansion be
+                                                a         a2
+                                      φ(0) − φ(1) + φ(2) − · · · ,
+                                                1!        2!
+then
+                   Z ∞
+                                                    a2        a3
+                                                                           
+                                         a
+                        ar−1 φ(0) − φ(1) + φ(2) − φ(3) + · · · da
+                    0                    1!         2!         3!
+                                  Z ∞
+                                                                      1 − xq
+                                                                                  
+                                         r−1 n
+                =Γ(r)φ(−r) =            a x da            substitute          for a
+                                    0                                  qxp
+                   Z 1            q r−1      p 1 − xq
+                                                                 
+                        n 1−x                                q−p−1
+                =      x         p
+                                                 ·    p
+                                                          +x         dx      (put x = y 1/q )
+                    0         qx              x    qx
+                   Z 1                    r−1                          
+                       1 n+1  −1    1 −  y           p    1 − y     q−p−1
+                =        y q                            ·       +y q        dy
+                    0 q             qy p/q         y 1/q qy p/q
+                        Z 1
+                                                       1 1 n−pr
+                                                         Z
+                    p         n−pr
+                                   −1          r
+                = r+1       y  q      (1 − y) dy + r         y q (1 − y)r−1 dy
+                  q       0                           q 0
+                                            
+                                    n − pr
+                          Γ(r)Γ
+                    n                  q
+                = r+1                         .
+                  q         n − pr
+                        Γ             +r+1
+                               q
+
+Hence
+                                     
+                               n + pr
+                           Γ
+                    r−1          q
+           φ(r) =nq                            (so that φ(0) = 1)
+                           n + pr
+                        Γ          −r+1
+                             q
+                                                                                     
+                    r−1    n + pr        n + pr         n + pr
+                =nq                −1            −2              − 3 · · · to r − 1 factors
+                             q             q               q
+                =n(n + pr − q)(n + pr − 2q)(n + pr − 3q) · · · to r factors.
+B.C. Berndt, Quarterly Reports                                                                    13
+
+
+
+
+Hence we see that: if aqxp + xq = 1, then
+
+                          n     n(n + 2p − q) 2 n(n + 3p − q)(n + 3p − 2q) 3
+                 xn =1 −     a+                a −                           a
+                          1!          2!                       3!
+                         n(n + 4p − q)(n + 4p − 2q)(n + 4p − 3q) 4
+                       +                                        a
+                                            4!
+                         n(n + 5p − q)(n + 5p − 2q)(n + 5p − 3q)(n + 5p − 4q) 5
+                       −                                                     a + ···
+                                                   5!
+
+
+
+
+                                                                                       S. Ramanujan
+                                                                                       5th Aug. 1913.
+14                                                                           3.   Ramanujan’s Quarterly Reports
+
+
+
+
+                               The Second Quarterly Progress Report of
+                                           S. Ramanujan
+                                 The Mathematics Research Student
+                                 ————————————————-
+
+
+   As further examples of the Theorem in the previous progress report, let us have one on integrals
+and another on expansions.
+   (a) If r lies between 0 and 1
+            Z ∞                         2      3
+                                                         
+                    r−1    m  mx      mx     mx
+                  x       1 −2     +3      −4     + · · · dx = Γ(r)(1 − r)m .       (1)
+              0                 1!     2!     3!
+Let us verify the result for a few values of m by the known methods.
+   When m = 1, the integral reduces to
+                        Z ∞
+                             xr−1 e−x (1 − x)dx = Γ(r) − Γ(r + 1) = Γ(r)(1 − r).
+                         0
+
+When m = 2, the integral is
+          Z ∞
+               xr−1 e−x (1 − 3x + x2 )dx = Γ(r) − 3Γ(r + 1) + Γ(r + 2) = Γ(r)(1 − r)2 .
+               0
+
+It is very difficult to prove the result by the known methods for non-integral values of m; e.g.,
+                       Z ∞            9       18      27             23π
+                                                                            
+                              π     πx      πx      πx                       10
+                             1 −2        +3       −4      + · · · dx = 2π Γ      .
+                        0            1!       2!      3!              3      9
+
+Cor. Putting r = 12 , and changing x to x2 in (1), we have
+                        Z ∞            2        4       6
+                                                                       √
+                               m     mx      mx       mx                  π
+                              1 −2        +3       −4      + · · · dx = m+1 .
+                         0             1!       2!      3!             2
+                                                                              sin cx
+(b) Let us try to find the expansion of eax in ascending powers of e−bx              .
+                                                                                 c
+                                                         sinh cx −bx
+    First let us expand e−ax in ascending powers of               e    and then change a to −a and c to ci.
+                                                             c
+    Let
+                                                         y          y2
+                                   e−ax = φ(0) − φ(1) + φ(2) − · · ·
+                                                        1!          2!
+where
+                                                        sinh cx
+                                              y = e−bx          .
+                                                            c
+Then, we have by the theorem in the previous progress report:
+                    Z ∞
+                                                  y2
+                                                                 
+                           n−1          y
+                         y       φ(0) − φ(1) + φ(2) − · · · dy = Γ(n)φ(−n)
+                     0                  1!        2!
+                    Z ∞                    n−1
+                                ecx − e−cx               (c − b)e(c−b)x + (c + b)e−(c+b)x
+                                           
+                  =        e−bx                  e−ax ·                                   dx
+                     0              2c                                  2c
+                    c − b ∞ −{a+n(b−c)}x
+                          Z
+                  =            e             (1 − e−2cx )n−1 dx
+                    (2c)n 0
+                       c + b ∞ −{a+n(b−c)+2c}x
+                             Z
+                    +             e                (1 − e−2cx )n−1 dx.
+                       (2c)n 0
+B.C. Berndt, Quarterly Reports                                                                                                 15
+
+
+
+
+But we know that
+               Z ∞
+                               −px            −qx n−1
+                                                               Z 1
+                                                                         p/q−1         n−1 dz
+                                                                                                    Γ(n)Γ( pq )
+                           e         (1 − e      )      dx =         z           (1 − z)        =                 .
+                     0                                          0                          q        qΓ( pq + n)
+Hence the previous integral
+                                                                                    
+                                   a + n(b − c)                      a + n(b − c) + 2c
+                          Γ(n)Γ                              Γ(n)Γ
+                   c−b                  2c           c+b                     2c
+                =     n+1
+                                                +      n+1
+                                                                                      
+                  (2c)             a + n(b − c)     (2c)             a + n(b − c) + 2c
+                          Γ n+                               Γ n+
+                                        2c                                  2c
+                                           
+                               a + n(b − c)
+                     aΓ(n)Γ
+                                    2c
+                =                            .
+                              a + n(b + c)
+                  (2c)n+1 Γ                +1
+                                   2c
+Hence
+                                                  
+                                      a + n(c − b)
+                                a(2c)n−1 Γ
+                                           2c
+                   φ(n) =                      
+                                a − n(b + c)
+                            Γ                +1
+                                     2c
+                        =a {a − n(b + c) + 2c} {a − n(b + c) + 4c} {a − n(b + c) + 6c}
+                                × {a − n(b + c) + 8c} · · · {a − n(b − c) − 2c}
+and also φ(0) = 1. Hence we have,
+                                     a −bx sinh cx a(a − 2b) −bx sinh cx 2
+                                                                               
+                          −ax
+                      e         =1 − e              +              e
+                                     1!        c         2!                 c
+                                              2    2                  3
+                                    a (a − 3b) − c
+                                                      
+                                                              sinh cx
+                                 −                      e−bx
+                                            3!                   c
+                                                     2     2  2                  4
+                                    a(a − 4b) (a − 4b) − 2 c
+                                                                  
+                                                                      −bx sinh cx
+                                 +                                   e               − ··· .
+                                                 4!                           c
+Now changing a to −a and c to ci on both the sides of the above result we have,
+               a −bx sin cx a(a + 2b) −2bx sin cx 2
+                                                            
+      ax
+     e =1 + e               +             e
+              1!        c           2!                 c
+                        2    2                  3
+             a (a + 3b) + c               sin cx
+          +                      e−3bx
+                     3!                      c
+                                 2     2 2                   4
+             a(a + 4b) (a + 4b) + 2 c          −4bx sin cx
+          +                                   e
+                           4!                              c
+                       2     2
+                                           2      2 2                5
+              a(a + 5b) + c        (a + 5b) + 3 c         −5bx sin cx
+          +                                              e
+                                5!                                  c
+                                 2     2 2
+                                                         2     2 2              6
+             a(a + 6b) (a + 6b) + 2 c           (a + 6b) + 4 c        −6bx sin cx
+          +                                                          e               + ··· .                          —– (2)
+                                       6!                                     c
+
+2. By comparing the nth and the (n + 1)th terms of the above expansion it can be proved that it
+                                                        b    −1 c
+                   −bx sin cx                        e− c tan b
+is convergent if e        c     is not greater than   √           ; but the least value of x which makes
+                                                        b2 + c2
+                            b    −1 c
+ −bx sin cx            e− c tan b          1      c
+e           equal to     √             is    tan−1 .
+        c                     2
+                            b +c   2       c      b
+16                                                                           3.   Ramanujan’s Quarterly Reports
+
+
+
+                                                               1      c
+                                                                 tan−1 though the
+     Therefore the expansion (2) is legitimate only when x is not greater than
+                                                               c      b
+series is convergent for many higher values of x. —————————————— (3)
+    As particular cases of (2), we have,
+(a) When b = 0,
+
+                                  a sin cx a2 sin cx 2 a(a2 + c2 ) sin cx 3
+                                                                            
+                        ax
+                       e     =1 +           +                +
+                                  1! c          2!     c           3!        c
+                                  2  2     2  2
+                                                        4
+                                 a (a + 2 c ) sin cx
+                              +
+                                       4!            c
+                                 a(a2 + c2 )(a2 + 32 c2 ) sin cx 5
+                                                               
+                              +                                    + ··· ,
+                                            5!               c
+
+from which we have, as particular cases, the expansions of cos ax, sin ax, x, x2 , x3 , . . . in ascending
+          sin cx
+powers of        .
+             c
+(b) When c = 0, we have
+
+                               a −bx a(a + 2b) 2 −2bx a(a + 3b)2 3 −3bx
+                    eax =1 +      xe +        x e    +          x e     + ···
+                               1!        2!               3!
+from which Abel’s Theorem and all the expansions connected with it can be found.
+(c) Changing a to ai and b to bi in (2) and separating the real and imaginary parts we have,
+
+                                                                       sin cx 2
+                                                                             
+                               a        sin cx a(a + 2b)
+                   cos ax =1 + sin bx           −            cos 2bx
+                               1!          c          2!                  c
+                                        2      2                  3
+                              a (a + 3b) − c
+                                                          
+                                                            sin cx
+                           −                      sin 3bx
+                                      3!                       c
+                                                  2     2 2
+                                                                        sin cx 4
+                                       
+                              a(a + 4b) (a + 4b) − 2 c
+                                                                             
+                           +                                 cos 4bx             + ··· .
+                                             4!                            c
+
+Similarly for sin ax also.
+(d) Taking the coefficient of a on both sides in (2) we have,
+
+                    e−bx sin cx       b −2bx sin cx 2
+                                                      
+                 x=               + e
+                     1!     c        1!            c
+                       (3b) + c −3bx sin cx 3 b (4b)2 + (2c)2 −4bx sin cx 4
+                                                            
+                            2     2
+                                                                                
+                    +               e                   +                   e
+                            3!                   c                 3!            c
+                             2     2
+                                              2       2                5
+                         (5b) + c        (5b) + (3c)              sin cx
+                    +                                     e−5bx
+                                        5!                           c
+                               2         2
+                                                  2       2               6
+                       b (6b) + (2c)           (6b) + (4c)      −6bx sin cx
+                    +                                         e
+                                            6!                           c
+                    + ···                                                ——————— (4)
+
+Similarly we can expand x2 , x3 , . . . also in powers of e−bx sin cx.
+3. Not only can a number of expansions be derived as particular cases from (2) but also the solution
+of many transcendental equations. As an example, let us consider the equation
+
+                                         x3 x6 x9 x12
+                                    1−      +    −    +     − · · · = 0.
+                                         3!   6!   9!   12!
+B.C. Berndt, Quarterly Reports                                                                           17
+
+
+
+
+This equation has an infinite number of real roots, as will be seen later, and all its imaginary roots
+can be found by multiplying all the real roots by ω and ω 2 , the imaginary cube roots of unity.
+   Now,
+                                                                             √
+                                                              −x     x/2    x 3
+                   x3 x6             e−x + e−xω + e−xω
+                                                       2     e + 2e cos
+               1−     +      − ··· =                     =                   2 = 0.
+                   3!     6!                  3                       3
+Hence
+                                                √
+                                               x 3    1
+                                           cos     = − e−3x/2                                      (5)
+                                                2     2
+                                                                                                    √
+We can easily see that there are an infinite number of intersections of the two curves y = cos x 2 3 and
+y = − 12 e−3x/2 and the values of x corresponding to these intersections are all positive and are very
+                            √
+near to the roots of cos x 2 3 .
+                        √                                             
+   As the roots of cos x 2 3 are √
+                                 πn
+                                   3
+                                     where n is odd, let x =   πn
+                                                               √
+                                                                 3
+                                                                   − z   , n being any odd positive integer.
+Substituting this value of x in the equation (5) we have,
+                                               √ !              √
+                                       πn z 3             1
+                                 cos       −         = − e−πn 3/2+3z/2
+                                        2       2         2
+
+that is                                               √
+                                                     z 3    1    √
+                                   (−1)(n−1)/2
+                                                 sin     = − e−πn 3/2+3z/2 .
+                                                      2     2
+                            √
+    Let h stand for e−πn 3/2 . Then we see that
+                                                                          √
+                                            (n+1)/2 h        −3z/2       z 3
+                                       (−1)              =e          sin     .
+                                                     2                    2
+                                                         √
+Now expand z in ascending powers of e−3z/2 sin z 2 3 by using (4) and then substitute (−1)(n+1)/2 h2
+                 √
+for e−3z/2 sin z 2 3 in the expansion.
+    Thus we see that
+                                 (−1)(n+1)/2 h   h2      (−1)(n+1)/2 7h3
+                         z=         √       · +        +    √       ·    + ··· .
+                                       3     1! 2 · 1!         3      3!
+Hence
+                                               1 h2 13 4 28 · 31 6
+                                                  
+                           πn           πn
+                        x =√ − z = √ −                 + h +            h
+                            3            3 2 1!           3!         5!
+                                                                          
+                              49 · 52 · 57 8 76 · 79 · 84 · 91 10
+                           +              h +                     h + ···
+                                   7!                   9!
+                             (−1)(n−1)/2 h
+                                             
+                                                    7        19 · 21 5 37 · 39 · 43 7
+                           +       √              + h3 +            h +            h
+                                     3         1!   3!         5!           7!
+                                                                                    
+                              61 · 63 · 67 · 73 9 91 · 93 · 97 · 103 · 111 11
+                           +                    h +                        h + ···
+                                      9!                       11!
+                  √
+where h = e−πn 3/2 and n any odd positive  √     integer.
+   The series is convergent if h <√e   −π    3/6   by (3) and fortunately the first value of h itself is
+   √
+e−π 3/2 which is by far less than e−π 3/6 . When n becomes greater and greater, h rapidly diminishes
+and consequently the series becomes more and more rapidly convergent.
+18                                                                                      3.   Ramanujan’s Quarterly Reports
+
+
+
+
+4. Let us write for the sake of simplicity the Theorem in the first progress report viz.
+                     Z ∞
+                                                  x2
+                                                             
+                            n−1          x
+                          x       φ(0) − φ(1) + φ(2) − · · · dx = Γ(n)φ(−n)
+                      0                  1!       2!
+in the form                  Z ∞
+                                                             x2
+                                                                         
+                                       n−1              x
+                                   x             µ0 − µ1 + µ2 − · · ·         dx = Γ(n)µ−n .
+                             0                          1!   2!
+Theorem II. If φ(0) = ψ(0) and φ(∞) = ψ(∞), then
+                                                            coeff of xn in ψ(x)
+                                                                                                           
+       Z ∞                                   
+                                                     d log                                                   
+                                                                                                              
+            φ(ax) − ψ(bx)                        b         coeff of xn in φ(x) 
+                                                                                                             
+                           dx = {φ(0) − φ(∞)} log +                                                             .
+        0          x                         
+                                                a               dn                                         
+                                                                                                              
+                                                                                                             
+                                                                                                        n=0
+
+Dem. By Theorem I we have,
+                  Z ∞
+                                            a2 x2
+                                                        
+                                    ax
+                      xn−1
+                            u0 − u1    + u2       − · · · dx = Γ(n)a−n u−n
+                   0                1!       2!
+and                   Z ∞
+                                                      b2 x2
+                                                                  
+                                                bx
+                              x  n−1
+                                         v0 − v1 + v2       − · · · dx = Γ(n)b−n v−n .
+                         0                      1!     2!
+     Let
+                                                            x      x2
+                                                  u0 − u1      + u2 − · · ·
+                                                            1!     2!
+be denoted by φ1 (x) and
+                                                            x      x2
+                                                  v0 − v1      + v2 − · · ·
+                                                            1!     2!
+be denoted by ψ1 (x) then we see that
+                   Z ∞
+                        xn−1 {φ1 (ax) − ψ1 (bx)} dx =Γ(n) a−n u−n − b−n v−n
+                                                                            
+                     0
+                                                                              a−n u−n − b−n v−n
+                                                                  =Γ(n + 1)                     .
+                                                                                      n
+Now suppose that φ1 (0) = ψ1 (0) so that u0 = v0 and let n become indefinitely small and ultimately
+vanish, then we have,
+                  Z ∞                                   −n
+                                                         a u−n − b−n v−n
+                                                                               
+                         {φ1 (ax) − ψ1 (bx)}
+                                               dx =
+                   0              x                                n            n=0
+                       n        n
+                                     
+                        b vn − a un
+                  =                         ,              by changing n to − n
+                              n        n=0
+                       n
+                        d(b vn − an un )
+                                                                                          
+                                                                                          0
+                  =                              ,      since the above is of the form
+                               dn          n=0                                            0
+                                                                        
+                                                          dvn        dun
+                  = vn bn log b − un an log a + bn             − an
+                                                          dn         dn n=0
+                                                             
+                                                dvn dun
+                  = v0 log b − u0 log a +             −
+                                                dn        dn n=0
+                                                                            
+                                                   d log vn        d log un
+                  = v0 log b − u0 log a + vn                 − un
+                                                      dn              dn
+                                                                        n=0 
+                                                   d log vn                d log un
+                  = v0 log b − u0 log a + v0                       − u0                 .
+                                                      dn       n=0            dn    n=0
+B.C. Berndt, Quarterly Reports                                                                        19
+
+
+
+
+    But    u0 = v0 = φ1 (0).         Hence the above reduces to
+                                                             vn           
+                                                        d log               
+                                                  b          un 
+                                                                             
+                                        φ1 (0) log + 
+                                                   a        dn
+                                                                  
+                                              
+                                                                            
+                                                                             
+                                                                      n=0
+
+But
+                                             vn   coefft of xn in ψ1 (x)
+                                                =                        .
+                                             un   coefft of xn in φ1 (x)
+Hence we have: if φ1 (0) = ψ1 (0), then
+
+                                                              coefft of xn in ψ1 (x)
+                                                                                           
+            Z ∞                                
+                                                       d log                                 
+                                                                                              
+                  φ1 (ax) − ψ1 (bx)                b         coefft of xn in φ1 (x) 
+                                                                                             
+                                    dx = φ1 (0) log +                                           .
+             0            x                    
+                                                  a                dn                      
+                                                                                              
+                                                                                             
+                                                                                        n=0
+
+But according to the 4th condition of validity of Theorem I given in the first Progress Report φ1 (x)
+and ψ1 (x) should vanish when x becomes infinitely great.
+    Now let φ(x) and ψ(x) be two functions which do not necessarily vanish when x = ∞ but let
+them approach the same finite limit when x becomes infinite so that φ(∞) = ψ(∞) and let φ(0) be
+also equal to ψ(0).
+    Then we see that,
+                Z ∞                      Z ∞
+                     φ(ax) − ψ(bx)            {φ(ax) − φ(∞)} − {ψ(bx) − ψ(∞)}
+                                   dx =                                           dx
+                  0         x              0                      x
+                                                       coefft of xn in ψ(x)
+                                                                             
+                                    
+                                                d log              n in φ(x) 
+                                                                                
+                                                                                
+                                          b          coefft  of x
+                                                                                
+                    = {φ(0) − φ(∞)} log +                                    
+                                    
+                                          a                 dn               
+                                                                                
+                                                                               
+                                                                                  n=0
+
+since {φ(ax) − φ(∞)} and {ψ(bx) − ψ(∞)} vanish when x = ∞ and also φ(0) − φ(∞) = ψ(0) − ψ(∞).
+                                                                                       Q.E.D.
+5. Examples of Theorem II.
+(1)
+                                     ∞
+                                         φ(ax) − φ(bx)
+                          Z
+                                                                             b
+                                                       dx = {φ(0) − φ(∞)} log .
+                                 0             x                             a
+This result, which is known as “Frullani’s Theorem” (given in Williamson’s Integral Calculus) can
+very easily be got from Theorem II by supposing φ and ψ to be the same function.
+(2)
+                        Z ∞
+                             (1 + ax)−p − (1 + bx)−q
+                                                     dx
+                          0              x
+                                        Γ(q + n)Γ(p)
+                                                    
+                                  d log
+                            b          Γ(p + n)Γ(q) 
+                      = log +                       
+                            a             dn        
+                                                               n=0
+
+which reduces to
+
+                                 b 1 1  1   1   1   1
+                           log    + − +   −   +   −    + ··· .
+                                 a p q p+1 q+1 p+2 q+2
+20                                                                                           3.      Ramanujan’s Quarterly Reports
+
+
+
+
+In particular cases we have,
+                     Z ∞
+                          (1 + ax)−5 − (1 + bx)−7       11        b
+                                                   dx = + log .
+                      0               x                 30        a
+                 Z ∞            −p           −p−1
+                        (1 + ax) − (1 + bx)             1       b
+                                                   dx = + log .
+                   0                 x                  p       a
+             Z ∞
+                     (1 + ax)−p−1 − (1 + bx)−p−5           2(2p + 5)(p2 + 5p + 5)         b
+                                                   dx =                              + log .
+               0                    x                   (p + 1)(p + 2)(p + 3)(p + 4)      a
+              Z ∞              −1/4           −3/4
+                      (1 + ax)      − (1 + bx)                  b
+                                                   dx =π + log ,
+                 0                  x                           a
+and so on.
+(3)
+                                                                   q
+                                                              2
+                                    Z ∞   (1 + ax)−p −      √
+                                                       1 + 1 + 4bx
+                                                                       dx
+                                      0                x
+                                                     qΓ(q + 2n)Γ(p)
+                                                                      
+                                            d log
+                                        b        Γ(q + n + 1)Γ(p + n) 
+                                  = log +                             
+                                        a               dn            
+                                                                                     n=0
+                                                                                            
+                                          b 1        1 1  1   1
+                                  = log    − +        − +   −    + ···                           .
+                                          a q        p q p+1 q+1
+Cor.                                                                      p
+                                                                 2
+                           Z ∞ (1 + ax)−p −                  √
+                                                      1+         1 + 4bx                   b 1
+                                                                                dx = log    − .
+                              0                       x                                    a p
+(4)
+                                    Z ∞                       √
+                                         (1 + ax)−p − (bx + 1 + b2 x2 )−2q
+                                                                             dx
+                                      0                   x
+                                                      2n qΓ(q + n2 )Γ(p)
+                                                                          
+                                              d log
+                                        b          Γ(q + 1 − n2 )Γ(p + n) 
+                                  = log + 
+                                                                          
+                                        a                 dn
+                                                                           
+                                                                           
+                                                                                       n=0
+                                    1        1                           b
+                                  = ψ(q) + ψ(q + 1) − ψ(p) + log 2 + log
+                                    2        2                           a
+                                        2b    1  1 1      1        1
+                                  = log    +    + − +         −        + ··· .
+                                        a    2q p q p + 1 q + 1
+Cor.
+                         Z ∞                             √
+                                  (1 + ax)−p − (bx +         1 + b2 x2 )−2p                2b   1
+                                                                                dx = log      + .
+                          0                       x                                        a   2p
+      Similarly many other Integrals, such as
+                                                                                                         p
+                                                                                           2
+                 Z ∞                                  Z ∞        e−ax cos5 bx −          √
+                       e−ax − (1 + bx)−p                                              1 + 1 + 4cx
+                                         dx,                                                                   dx
+                  0            x                         0                           x
+B.C. Berndt, Quarterly Reports                                                                  21
+
+
+
+
+etc. can be found from Theorem II.
+(5) If
+
+                                           pφ(0) + qψ(0) + rf (0) + sχ(0) + · · · = 0,
+
+and
+
+                                     pφ(∞) + qψ(∞) + rf (∞) + sχ(∞) + · · · = 0,
+
+then                         Z ∞
+                                       pφ(kx) + qψ(`x) + rf (mx) + sχ(nx) + · · ·
+                                                                                  dx
+                                 0                        x
+can be found from Theorem II.
+6. Corollaries to Theorem I. (1)
+                     Z ∞
+                                        x2   x4
+                                                    
+                           n−1                                         πn
+                         x       u0 − u2 + u4 − · · · dx = Γ(n)u−n cos    ,
+                      0                 2!   4!                         2
+n being any positive quantity.
+Dem. By Theorem I we have,
+                       Z ∞
+                                               x2
+                                                      
+                              n−1         x
+                            x      u0 − u2 + u4 − · · · dx = Γ(n)u−2n .
+                        0                 1!   2!
+
+Changing x to x2 and n to n2 , we have,
+                    Z ∞
+                                         x2   x4
+                                                     
+                           n−1                             1 n
+                         x        u0 − u2 + u4 − · · · dx = Γ    u−n .
+                      0                  1!   2!           2  2
+                     Γ( n
+                        2)
+Now changing un to un Γ(n) we have
+                                                                                n
+                                                                                 Γ − n2
+                       Z ∞                                                             
+                                                  x2   x4
+                                                                  
+                                 n−1                                        Γ   2
+                             x             u0 − u2 + u4 − · · ·        dx =               u−n
+                        0                         2!   4!                     2Γ(−n)
+                                                                                        πn
+                                                                          =Γ(n)u−n cos     .
+                                                                                         2
+(2) If n lies between 0 and 1,
+                        Z ∞
+                                                                        πu−n
+                            xn−1 u0 − u1 x + u2 x2 − u3 x3 + · · · dx =
+                                                                  
+                                                                               .
+                         0                                              sin πn
+
+Dem. Changing un to un Γ(n + 1) in Theorem I we can get the result.
+(3) If n lies between 0 and 2,
+                       Z ∞
+                                                                         πu−n
+                           xn−1 u0 − u2 x2 + u4 x4 − u6 x6 + · · · dx =
+                                                                  
+                                                                                 .
+                        0                                               2 sin πn
+                                                                               2
+
+Dem. Change x to x2 , n to n2 , and ut to u2t in Cor. 2.
+    Similarly by changing x to x2 and n to nr , we have
+(4) If n lies between 0 and r,
+                     Z ∞
+                                                                            πu−n
+                          xn−1 u0 − ur xr + u2r x2r − u3r x3r + · · · dx =
+                                                                     
+                                                                                    .
+                       0                                                   r sin πn
+                                                                                  r
+22                                                                              3.    Ramanujan’s Quarterly Reports
+
+
+
+
+(5)
+                               Z ∞
+                                               x2   x3
+                                                            
+                                          x
+                                   a0 − a1 + a2 − a3 + · · · cos nx dx
+                                0         1!   2!   3!
+                               = a−1 − n2 a−3 + n4 a−5 − n6 a−7 + · · · .
+
+Dem. Expand cos nx and integrate separately.
+(6) In a similar manner we have,
+                   Z ∞
+                                     x2                n2 x2      n4 x4
+                                                                             
+                                x
+                        a0 − a1 + a2 − · · ·   b0 − b2       + b4       − · · · dx
+                    0          1!    2!                 2!         4!
+                 =b0 a−1 − n2 b2 a−3 + n4 b4 a−5 − n6 b6 a−7 + · · · .
+
+(7)
+                                 Z ∞
+                                       a0 − a2 x2 + a4 x4 − a6 x6 + · · · cos nx dx
+                                                                         
+                                   0
+                                                     n2         n3
+                                                                            
+                                 π          n
+                               =     a−1 − a−2 + a−3 − a−4 + · · · .
+                                 2         1!        2!         3!
+
+Dem. Here we should not expand cos nx and integrate separately as in Cor. (5) for the integral
+                        Z ∞
+                                                                  πa−n
+                            xn−1 a0 − a2 x2 + a4 x4 − · · · dx =
+                                                           
+                         0                                       2 sin πn
+                                                                        2
+
+is true only when n lies between 0 and 2. Now
+
+                                     a0 − a2 x2 + a4 x4 − · · · cos nx
+                                                               
+
+                                          n2                     n2      n4
+                                                                         
+                                 2                 4
+                         = a0 − x a2 + a0       + x a4 + a2         + a0      − ··· .
+                                          2!                     2!      4!
+Let
+                                                n2        n4
+                                ur = ar + ar−2     + ar−4     + · · · to infinity
+                                                2!         4!
+                                              nr+2           nr+4
+                                       −a−2          − a−4           − ··· .
+                                            (r + 2)!       (r + 4)!
+Then we see that,
+                    Z ∞
+                           a0 − a2 x2 + a4 x4 − a6 x6 + · · · cos nx dx
+                                                             
+                     0
+                         Z ∞
+                                                                    π
+                            u0 − u2 x2 + u4 x4 − u6 x6 + · · · dx = u−1
+                                                              
+                    =                                                           by Cor. (3)
+                       0                                            2
+                                            2          3
+                                                                 
+                      π          n        n          n
+                    =      a−1 − a−2 + a−3 − a−4 + · · · .
+                      2          1!       2!         3!
+
+(8) Similarly we can prove that
+                   Z ∞
+                                                              n2 x2      n4 x4
+                                                                                     
+                        a0 − a2 x2 + a4 x4 − · · ·
+                                                   
+                                                      b0 − b2       + b4       − · · · dx
+                    0                                          2!         4!
+                                                             2
+                                                                          
+                                π             n            n
+                             =       b0 a−1 − b1 a−2 + b2 a−3 − · · · .
+                                2             1!           2!
+B.C. Berndt, Quarterly Reports                                                                            23
+
+
+
+
+7. Theorem III If                                Z ∞
+                                                              φ(x) cos nx dx = ψ(n)
+                                                      0
+then                                          Z ∞
+                                                                                π
+                                                          ψ(x) cos nx dx =        φ(n),
+                                                 0                              2
+and also: if                                      Z ∞
+                                                              φ(x) sin nx dx = ψ(n)
+                                                      0
+then                                          Z ∞
+                                                                               π
+                                                          ψ(x) sin nx dx =       φ(n).
+                                                  0                            2
+Dem. By Cor. (5) to Theorem I, we have,
+         Z ∞
+                             x2
+                                     
+                      x
+               a0 − a1 + a2 − · · · cos nx dx = a−1 − n2 a−3 + n4 a−5 − n6 a−7 + · · ·
+          0           1!     2!
+and by Cor. (7) we have
+            Z ∞
+                                                                         n2
+                                                                                
+                        2       4
+                                                        π         n
+                 a−1 − x a−3 + x a−5 − · · · cos nx dx =    a0 − a1 + a2    − ··· .
+             0                                           2         1!    2!
+Let
+                                                                   x      x2
+                                                      a0 − a1         + a2 − · · ·
+                                                                   1!     2!
+be denoted by φ(x) and
+                                              a−1 − n2 a−3 + n4 a−5 − · · ·
+by ψ(n). Then we evidently see that
+                                  Z ∞
+                                                                                π
+                                                          ψ(x) cos nx dx =        φ(n).
+                                                 0                              2
+Thus the first part of the theorem is proved.
+   In a similar manner the 2nd part also can be proved.
+                                                                                                    Q. E. D.
+Examples:—-
+(1)                                           Z ∞
+                                                                                  1
+                                                          e−x cos nx dx =             ;
+                                                  0                            1 + n2
+Hence                                                 Z ∞
+                                                                cos nx     π
+                                                                     2
+                                                                       dx = e−n .
+                                                          0     1+x        2
+(2)
+                                                                      Γ(p) cos p tan−1 na
+                                 Z ∞                                                      
+                                           p−1 −ax
+                                       x     e            cos nx dx =                       .
+                                 0                                        (a2 + n2 )p/2
+Hence
+                                             cos p tan−1 xa
+                                      Z ∞                   
+                                                                         π
+                             Γ(p)               2    2 p/2
+                                                              cos nx dx = np−1 e−an .
+                                       0      (a + x )                   2
+(3)
+                                                                          Γ(p) sin p tan−1 na
+                                 Z ∞                                                          
+                                           p−1 −ax
+                                       x      e               sin nx dx =                       .
+                                  0                                          (a2 + n2 )p/2
+24                                                                                       3.   Ramanujan’s Quarterly Reports
+
+
+
+
+Hence
+                                              sin p tan−1 xa
+                                     Z ∞                     
+                                                                          π
+                            Γ(p)                  2   2  p/2
+                                                               sin nx dx = np−1 e−an .
+                                      0         (a + x )                  2
+
+(4)                                   Z ∞                               √
+                                                    −ax2                  π  2
+                                                e          cos 2nx dx = √ e−n /a .
+                                          0                            2 a
+Changing a to a + bi, separating the real and imaginary parts and then putting a = 0, we have
+                           Z ∞                      √
+                                                              π n2
+                                                                    
+                                              2       π
+                                cos 2nx cos bx dx = √ cos       −
+                             0                      2 b       4    b
+
+and
+                                Z ∞                      √
+                                                                  π n2
+                                                                       
+                                                           π    2
+                                      cos 2nx sin bx dx = √ sin     −     .
+                                 0                       2 b      4   b
+                √
+Changing x to       x we have
+                                Z ∞            √              r
+                                          cos 2 ax cos nx       π     π   a
+                                                √         dx =    cos    −
+                                 0                x             n      4 n
+
+and
+                                Z ∞            √              r
+                                          cos 2 ax sin nx       π     π   a
+                                                √         dx =    sin    −    .
+                                 0                x             n      4 n
+
+Hence by Theorem III, we have
+                                Z ∞             π   a
+                                                                          √
+                                      cos       4 − x                        π    √
+                                                √              cos nx dx = √ cos(2 an)
+                                0                   x                     2 n
+
+and
+                                Z ∞             π   a
+                                                                          √
+                                          sin   4 − x                        π    √
+                                                √              sin nx dx = √ cos(2 an).
+                                 0                  x                     2 n
+
+
+                                                                                                          S. Ramanujan
+                                                                                                          7th Nov. 1913.
+B.C. Berndt, Quarterly Reports                                                                            25
+
+
+
+
+                                                                                             Madras
+                                                                                            9th March 1914
+From
+             S. Ramanujan
+             Scholarship holder in Mathematics
+To The Board of Studies in Mathematics
+through The Registrar of the University of Madras
+Gentlemen,
+    In continuation of my second progress report, dated 7th Nov. 1913, I beg to submit herewith my
+third progress report for the period ended the 28th Feb. 1914.
+                                                                                         I beg to remain
+                                                                                            gentlemen,
+                                                                                     Your obedient servant
+                                                                                         S. Ramanujan
+
+1. The validity of the Theorem given in the first report, viz.,
+                         Z ∞
+                                                    x2
+                                                            
+                               n−1          x
+                             x       u0 − u1 + u2 − · · · dx = Γ(n)u−n
+                          0                 1!      2!
+depends upon
+   (a) The nature of n
+   (b) The nature of the function (of x) viz.,
+                                               x      x2   x3
+                                     u0 − u1      + u2 − u3 + · · ·
+                                               1!     2!   3!
+    (c) The nature of the function (of n) un .
+(a) and (b) have already been discussed in the 1st report, (c) is the most important of all as the
+theorems in the 2nd report as well as many other results are derived from the above theorem.
+    Since n can be fractional un should be a continuous function of n for all values of n.
+    un should not be infinite for all finite positive integral values of n.
+2. In spite of all these conditions there is another difficulty, viz., that of ascertaining un for fractional
+values of n from the values of un for positive integral values of n only.
+    But an infinite no. of functions may have the same values u0 , u1 , u2 , u3 , . . . as shown below.
+
+
+
+
+                                     Figure 1: Graphical Illustration
+26                                                                                               3.   Ramanujan’s Quarterly Reports
+
+
+
+
+     Now let us try to ascertain which of these functions we should take for our theorem as the value
+of the integral cannot be indeterminate.
+     First let us see what becomes of un when u0 = 0, u1 = 0, u2 = 0, u3 = 0, u4 = 0, . . . . Here we
+evidently see that the value of the integral is always zero for all values of n integral or fractional.
+Therefore un in this case should always be zero and not a function of n vanishing only for the values
+                                                                            f (n)
+0, 1, 2, 3, 4, . . . of n, such as the functions f (n) sin πn, Γ(−n)              , etc. where f (n) is any arbitrary function
+not becoming infinite for positive integral values of n. Hence we infer that un in the integral we
+have taken should not contain any function of n vanishing for positive, integral values of n; as an
+example n + sin πn should not be supposed to be un as it contains a function sin πn which vanishes
+for 0, 1, 2, 3, 4, . . . of n.
+3. There can be only one such function having the values u0 , u1 , u2 , u3 , . . . corresponding to the values
+of 0, 1, 2, 3, . . . of n.
+     For, if possible let there be two such functions un and vn different from each other, and yet having
+the same values u0 , u1 , u2 , u3 , . . . when n = 0, 1, 2, 3, . . . . Then we see that vn = un + (vn − un ) of
+which vn − un = 0 when n = 0, 1, 2, 3, 4, . . . which contradicts our hypothesis. Hence we conclude
+there cannot be more than one such function.
+     Thus we see that, whenever we want such a unique function passing through u0 , u1 , u2 , u3 , . . .
+first we should find a continuous function passing through u0 , u1 , u2 , u3 , . . . and then remove from
+it functions vanishing for positive integral values of n (if any) and the function left is the unique
+function required.
+Examples:—- If u0 = 0, u1 = 1, u2 = 4, u3 = 9, etc., the squares of natural numbers, then the unique
+un is n2 and not any other function such as n2 + sin2 πn.
+     If u0 , u1 , u2 , . . . are 1, 1, 1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 7, 7, 7, etc., then
+                                                         n + 1 + cos πn
+                                                                      2
+                                                 un =                   .
+                                                               2
+The unique un is not only useful in the present theorem on integrals but also in all fractional order
+of functions, differentiations, etc.
+
+                                             Fractional Order of Functions
+
+4. Let F F (x) be denoted by F 2 (x), F F F (x) by F 3 (x) and so on. Then F n (x) for all values of n is
+the unique function passing through
+
+                                  F 0 (x),    F 1 (x),    F 2 (x),        F 3 (x), . . . ;   e.g.,
+
+let F (x) = axp , then we see that
+                                                                                   2                  2        3
+                   F 0 (x) = x;     F 1 (x) = axp ;      F 2 (x) = ap+1 xp ;            F 3 (x) = ap +p+1 xp ;
+
+and so on.
+   Hence
+                                                                pn −1          n
+                                                   F n (x) = a p−1 xp
+which is unique, so that
+                                                                     1√        √
+                                                 F 1/2 (x) = a 1+ p x p .
+5. The meaning of F m (x) when m is not an integer can be got from the identity F m (F n (x))
+= F m+n (x). Since F 1/2 F 1/2 (x) = F (x), we see that F 1/2 (x) is a function operated upon by the
+same function producing the original function F (x); e.g., let
+                                                                 1√        √
+                                                   ψ(x) = a 1+ p x p ,
+B.C. Berndt, Quarterly Reports                                                                           27
+
+
+
+
+then
+                                                                   √
+                                                     1√    1√  √  p
+                                         ψψ(x) = a 1+ p a 1+ p x p    = axp .
+
+Hence if F (x) = axp , then
+                                                                       1√      √
+                                                      F 1/2 (x) = a 1+ p x p .
+Similarly, F p/q (x) may be defined and F n (x) may be extended to irrational values of n such as
+                                     √
+                                         2
+                                 F           (x);    F log 2 (x);   F e (x);       F π (x);   etc.
+
+6. Theorem.
+   If
+                                                          F m (x) = φ(x)
+and
+                                                          F n (x) = ψ(x),
+and
+                                                      f m (x) = χ−1 φ{χ(x)},
+then
+                                                      f n (x) = χ−1 ψ{χ(x)}.
+
+Dem. Since
+                                                      f m (x) = χ−1 φ{χ(x)},
+we see that
+
+                                                    f 2m (x) =χ−1 φ2 {χ(x)}
+
+and generally
+
+                                                     f n (x) =χ−1 φn/m {χ(x)}.
+
+But
+                                         φn/m {χ(x)} = F n {χ(x)} = ψ{χ(x)}.
+Hence
+                                                      f n (x) = χ−1 ψ{χ(x)}.
+                                                                                                     Q.E.D.
+Examples.
+(a) If                                                      p
+                                                    F (x) = m a(xm + 1)p − 1,
+then                                   q n
+                                          p −1             m
+                                                n
+                              F (x) =    a p−1 (xm + 1)pn − 1.
+                                          √
+Dem. Let χ(x) = xm + 1, so that χ−1 (x) = m x − 1 and φ(x) = axp , then we see that
+
+                                                       F (x) =χ−1 φ{χ(x)}
+28                                                                                                  3.    Ramanujan’s Quarterly Reports
+
+
+
+
+so that
+
+                        F n (x) =χ−1 φn {χ(x)}
+                                       n               
+                                         p −1
+                                   −1                pn
+                                =χ     a  p−1 {χ(x)}      by the above theorem
+                                  q n
+                                 m    p −1
+                                = a p−1 (xm + 1)pn − 1.
+
+(b) If F (x) = x2 − 2, then
+                                                       √            !√2               √            !√2
+                                              x+           x2 − 4              x−         x2 − 4
+                          F 1/2 (x) =                                     +                               ,
+                                                        2                             2
+                            log 3
+                         F log 2 (x) =x3 − 3x,
+
+and
+                                    log 5
+                              F log 2 =x5 − 5x3 + 5x.
+
+                1
+Dem. Let x = y + , then we see that
+                y
+                                 1                                   1                             1
+                    F 0 (x) = y + ;               F 1 (x) = y 2 +       ;     F 2 (x) = y 4 +         ;       etc.
+                                 y                                   y2                            y4
+Hence
+                                                              √             !2n              √             !−2n
+                    n          2n           −2n         x+     x2 − 4                 x−       x2 − 4
+                  F (x) = y           +y          =                               +                                  ,
+                                                               2                               2
+
+so that F 1/2 (x) etc. = the required result.
+(c) Find F n (x) when
+
+                                                      (i) F (x) =x2 + 2x,
+                                                      (ii) F (x) =x2 − 2x,
+                                                    (iii) F (x) =x2 + 4x.
+
+(i) Let φ(x) = x2 and χ(x) = x + 1 so that χ−1 (x) = x − 1 then we see that
+
+                                                    F (x) = χ−1 φ{χ(x)}.
+
+Hence we have
+                                                                                      n
+                                      F n (x) = χ−1 φn {χ(x)} = (x + 1)2 − 1.
+
+(ii) Let φ(x) = x2 − 2, and χ(x) = x − 1, so that χ−1 (x) = x + 1, then we see that
+
+                                                    F (x) = χ−1 φ{χ(x)}.
+
+Hence we have
+
+              F n (x) =χ−1 φn {χ(x)}   which by (b)
+                                      √            !2n                                     √                     !−2n
+                               x − 1 + x2 − 2x − 3                             x−1−            x2 − 2x − 3
+                     =1 +                              +                                                                 .
+                                        2                                                      2
+B.C. Berndt, Quarterly Reports                                                                            29
+
+
+
+
+(iii) Let φ(x) = x2 − 2,    and χ(x) = x + 2             so that χ−1 (x) = x − 2, then we see that
+
+                                               F (x) = χ−1 φ{χ(x)}.
+
+Hence we have
+
+                         F n (x) =χ−1 φn {χ(x)} which by (b)
+                                   ( √        √ 2n  √        √ −2n )2
+                                        x+4+ x              x+4− x
+                                 =                    −                   .
+                                            2                 2
+
+(d) If                                                             s
+                                                                       1 − F log 2 (x)
+                                         q
+                                      1 + F log 2 (x) =
+                                                                          1−x
+then                                         s                     s
+                                                 F log 3 (x)           1 − F log 3 (x)
+                                      1+2                    =                         .
+                                                     x                    1−x
+Dem. Let
+                                                                             2
+                                                                   1 − y2
+                                                               
+                                             F log 2 (x) =                        ,
+                                                                   1 + y2
+                    √
+then we see that        1 − x = y or x = 1 − y 2          from which we can prove as in the previous example
+that
+                                                                         4
+                                 F n log 2 (x) =              2n                   2n        .
+                                                     1+y                     1−y
+                                                                     +                      +2
+                                                     1−y                     1+y
+                    log 3
+Now putting n =           , we have
+                    log 2
+
+                                                   4(1 − y 2 )3        (1 − y 2 )3
+                             F log 3 (x) =           3          3 2
+                                                                    =              ,
+                                             {(1 + y) + (1 − y) }     (1 + 3y 2 )2
+
+so that
+                                                                   y 2 (3 + y 2 )2
+                                         1 − F log 3 (x) =                         .
+                                                                   (1 + 3y 2 )2
+Hence we have                                s                     s
+                                                 F log 3 (x)           1 − F log 3 (x)
+                                      1+2                    =
+                                                  1 − y2                    y2
+that is                                      s                     s
+                                                 F log 3 (x)           1 − F log 3 (x)
+                                      1+2                      =                       .
+                                                     x                    1−x
+
+
+                                                  Orders of Infinity
+
+7. Using the notation used by Mr. G. H. Hardy, viz.,  which means ‘is of an order higher than’ and
+≺ which means ‘is of an order lower than’ we have when x becomes infinite,
+
+                                        x ≺ x2 ≺ x3 ≺ x4                and so on.
+30                                                                                             3.   Ramanujan’s Quarterly Reports
+
+
+
+                           2
+                         ex  xx  x!  ex  xn                  however great n may be.
+                                               x              ex
+                                         ex ≺ ee ≺ ee                   and so on.
+There are functions which defy all exponential scales; for example, the series,
+                                                                                    x
+                                                   x               ex          ee
+                                       ex ee    ee    ee
+                                    1 + 3 + 34 + 45 +     56
+                                                             + ···
+                                       2   2    23    234
+(which is convergent for all values of x)
+                                                                      x
+                                                                   ·e
+                                                                e··
+                                                              e
+                                                   e
+however great n may be, and where there are n e’s. We need not consider the higher orders than x
+and lower orders than x separately as the higher orders are inverse functions of the lower orders; e.g.,
+                              x
+ex is the inverse of log x; ee is the inverse of log log x or log2 x and so on.
+                                                √
+                                        log x ≺ n x      however great n may be
+                             2
+                                                p
+                                                n
+                          log x or log log x ≺ log x         ”        ”        ”
+                                                q
+                                                n
+                                       log3 x ≺ log2 x        ”        ”        ”.
+
+and so on.
+8. Now let us try to find a function defying all logarithmic scales i.e., a function ≺ logn x however
+great n may be.
+    First let us consider the function φ(x) defined by the relation xφ(x) = φ(log x) and φ(0) = 1.
+Then we see that
+                                            1                 1
+                       φ(1) = 1;     φ(e) = ;       φ(ee ) = 1+e     and so on.
+                                            e               e
+Let
+                                                 ·e
+                                                    !
+                                                          ·
+                                                       e·
+                                             φ ee                       = un ,
+
+and where there are n e’s. Then
+                                                1                                1
+                               u0 = 1,      u1 = ,                      u2 =        ,   etc.
+                                                e                              e1+e
+Hence by taking the unique function un passing through u0 , u1 , u2 etc. we see that φ(x) is finite and
+definite for all values of x and φ(±∞) = 0 and also φ(x) < 1 when x > 1.
+
+
+
+
+                                    Figure 2: Graphical Illustration
+B.C. Berndt, Quarterly Reports                                                                                                 31
+
+
+
+
+     Let                                            Z 1
+                                                            φ(x)dx = C,
+                                                       0
+then we see that
+                                 Z e               Z 1           Z 1
+                                                   φ(log x)
+                                      φ(x)dx =              dx =     φ(x)dx = C,
+                                    1           0     x           0
+                                 Z ee          Z e               Z e
+                                                   φ(log x)
+                                      φ(x)dx =              dx =     φ(x)dx = C,
+                                  e             1     x           1
+
+and so on. Hence                                    Z ∞
+                                                                φ(x)dx = ∞
+                                                       0
+and therefore                                              Z x
+                                                                    φ(x)dx
+                                                                0
+                                                                                                              R
+is a function becoming infinite as x becomes ∞. Now let us see what the order of                                  φ(x)dx is. When
+x is great,
+                                       1                    φ(log x)
+                               φ(x) <       since    φ(x) =          .
+                                       x                        x
+Therefore                                 Z
+                                            φ(x)dx ≺ log x.
+
+Similarly
+                                    φ(log x)   φ(log log x)   φ(log log log x)
+                         φ(x) =              =              =                   ,                    etc.
+                                       x         x log x      x log x log log x
+Hence                                              Z
+                                                       φ(x)dx ≺ logn x
+                                    R
+however great n may be. Therefore φ(x)dx is a functionR becoming infinite when x = ∞ and defying
+all logarithmic scales and consequently the inverse of φ(x)dx defies all exponential scales.
+     From the above result we can easily prove that the series
+
+                                          φ(1) + φ(2) + φ(3) + φ(4) + · · ·
+
+is a divergent series defying all logarithmic tests and its divergency is so slow that the sum to 102000000
+terms does not exceed 5.
+    But there will be no wonder in the above statement if we know that even if we add up 1029 terms
+in the ordinary divergent series
+                                          1       1       1       1
+                                              +       +       +        + ···
+                                       2 log 2 3 log 3 4 log 4 5 log 5
+the sum will not exceed 5.
+
+                                              Scales of Orders of Infinity
+
+9.                                                  √               √        √
+                                                                    3        4
+                                              x,           x,           x,       x, . . .
+belong to the ordinary scale.
+                                   p
+                                   3
+                       log x,        log x,     log log x,           log log log x,         log(x + log x),
+32                                                                                                  3.   Ramanujan’s Quarterly Reports
+
+
+
+
+etc. belong to the logarithmic scale.
+    Using the φ function of art. 8., we have
+
+                                       φ(x),      φφ(x)         or φ2 (x),           φ(log x),
+
+etc. belonging to the φ-scale. Thus we see that the number of orders of infinity in each scale is infinite.
+Theorem. The number of scales is infinite.
+Dem. Let                                                                                    p
+                            f (x),     f f (x),       or     f 2 (x),       {f (x)}2 ,           f f (x),
+etc. belong to the f -scale (a known scale) and let F be a function defined by the relation
+
+                                                  F (x) = f 1 (x)F {f (x)}.
+
+Then we can prove, as in art. 8. that
+                 Z f (a)                Z f 2 (a)                  Z f 3 (a)
+                           F (x)dx =                F (x)dx =                     F (x)dx = · · · = C         say.
+                   a                      f (a)                         f 2 (a)
+
+Hence                                               Z f n (a)
+                                                                F (x)dx = nC,
+                                                     a
+and consequently                                      Z ∞
+                                                             F (x)dx = ∞.
+                                                         a
+           R
+Therefore F (x)dx is a function becoming infinite as x becomes infinite, R and can be proved to be
+                                     n
+(as in the previous art. 8) to be ≺ f (x) however great n may be; that is F (x)dx defies all f -scales.
+Hence we see that if one scale is known another scale can be found defying the known scale and so
+the number of scales is infinite.
+
+                                 To Expand f r (x) in Ascending Powers of r
+
+10. In arts. 4 and 5 we have given meaning to f r (x) for fractional values of r and since there is a
+continuity in the value of r we shall try to differentiate f r (x) with respect to r and expand it in
+ascending powers of r also.
+(a) Let
+
+                                                             r          r2
+                                 f r (x) = ψ0 (x) +             ψ1 (x) + ψ2 (x) + · · · ,
+                                                             1!         2!
+where ψ0 (x), ψ1 (x), . . . do not contain r.
+(b) Putting r = 0, we have f 0 (x) = x = ψ0 (x).
+    Again changing x to f h (x) in both sides we have
+                                                                        r
+                                     f r {f h (x)} = f h (x) +             ψ1 {f h (x)} + · · · .
+                                                                        1!
+But
+
+                            f r {f h (x)} =f r+h (x)              which by Taylor’s Theorem
+                                                             r df h (x)
+                                           =f h (x) +                   + ··· .
+                                                             1! dh
+B.C. Berndt, Quarterly Reports                                                                     33
+
+
+
+
+Hence by equating the coefficients of r we have
+
+                                            df h (x)
+                                                     = ψ1 {f h (x)}.
+                                              dh
+Let f h (x) = y and f h (y) = z, then we see that
+                                                    dy
+                                                       = ψ1 (y).
+                                                    dh
+Therefore
+                                                   dz          dz
+                                                      = ψ1 (y)
+                                                   dh          dy
+i.e.,
+                                           df h (y)          df h (y)
+                                                    = ψ1 (y)          ,
+                                             dh                dy
+which by changing h to r and y to x becomes
+(c) Theorem.
+                                           df r (x)          df r (x)
+                                                    = ψ1 (x)          .
+                                             dr                dx
+Again,
+                                 df r (x)           r        r2
+                                          = ψ1 (x) + ψ2 (x) + ψ3 (x) + · · ·
+                                   dr               1!       2!
+and
+                                         df r (x)             r dψ1 (x)
+                                  ψ1 (x)          = ψ1 (x) +              ψ1 (x)
+                                            dx                1! dx
+                             r2 dψ2 (x)           r3 dψ3 (x)
+                           +            ψ1 (x) +             ψ1 (x) + · · · by 10(a).
+                             2! dx                3! dx
+Hence by equating the coefficient of rn−1 we have
+Theorem.
+                                                        dψn−1 (x)
+                                           ψn (x) = ψ1 (x)
+                                                           dx
+from which we can deduce ψ2 (x), ψ3 (x), ψ4 (x), . . . from ψ1 (x) so that we have to determine ψ1 (x)
+only.
+   Now let us consider the function in art. 9; viz., F (x) defined by the relation
+
+                                                                df (x)
+                                           F (x) = F {f (x)}           .
+                                                                  dx
+Then integrating both sides, we have
+                                             Z f (x)
+                                                       F (z)dz = C,
+                                               x
+
+i.e., a constant whatever be the value of x. We have also proved in art. 9. that
+                                         Z f r (x)
+                                                   F (z)dz = rC.
+                                              x
+
+Differentiating both sides with respect to r we have
+                                                          df r (x)
+                                            F {f r (x)}            = C.
+                                                            dr
+34                                                                                            3.   Ramanujan’s Quarterly Reports
+
+
+
+
+But
+                                      df r (x)          df r (x)
+                                               = ψ1 (x)                      by 10(c).
+                                        dr                dx
+Hence we have
+                                                       df r (x)
+                                              ψ1 (x)            F {f r (x)} = C.
+                                                         dx
+But
+                                   df (x)               df 2 (x)
+                           F (x) =        F {f (x)} =            F {f 2 (x)}
+                                     dx                   dx
+                                   df 3 (x)                       df r (x)
+                                 =          F {f 3 (x)} = · · · =          F {f r (x)}.
+                                     dx                             dx
+(e) Therefore
+                                                                    C
+                                                       ψ1 (x) =          .
+                                                                   F (x)
+Thus we have expanded f r (x) in ascending powers of r.
+
+                                      Fractional Order of Differentiation
+
+11. Using the notation
+                                                                             00
+                               Df (x) = f 0 (x),             D2 f (x) = f (x),        etc.,
+we can define Dn f (x) for all values of n as the unique function (discussed in art. 3) passing through
+
+                          D0 f (x),        D1 f (x),        D2 f (x),    D3 f (x), . . . ;    e.g.,
+
+Let f (x) = eax then we see that Dn eax is the unique function passing through
+
+                                      eax ,     aeax ,       a2 eax ,   a3 eax ,   etc.
+
+Hence
+                                                      Dn (eax ) = an eax
+for all values of n.
+Theorem. If n is any positive quantity then
+                              Z ∞
+                                  xn−1 f (r) (a − x)dx = Γ(n)f (r−n) (a)
+                                  0
+
+where f (r) (a) denotes that f (a) is differentiated r times. The above result is a theorem as well as a
+definition; for if we know f (r) (a) for all values of r, we can use the theorem in finding the definite
+integral                                   Z          ∞
+                                                          xn−1 f r (a − x)dx.
+                                                  0
+But if we do not know f r (a) for all values of r, we can use the theorem in getting fractional order of
+differential coefficient, thus:–
+    Suppose we want the k th differential coefficient of f (a) where k is any quantity, fraction or integer.
+    Take r any integer greater than k and let n = r − k. Then n is a positive quantity and so we have
+                                  Z ∞
+                                       xn−1 f r (a − x)dx = Γ(n)f k (a).
+                                       0
+B.C. Berndt, Quarterly Reports                                                                          35
+
+
+
+
+Since r is an integer the left side is intelligible and so we can use the theorem as a definition of
+fractional differentiation.
+Dem. of the Theorem.
+                Z ∞                      Z ∞
+                       n−1 (r)
+                                                    n        x                   o
+                     x    f (a − x)dx =        xn−1 f r (a) − f (r+1) (a) + · · · dx
+                 0                        0                  1!
+                                         =Γ(n)f (r−n) (a)       by the Theorem on Integral.
+
+Cor. Putting n = 12 , and changing x to x2 in the above theorem, we have
+                                Z ∞                     √
+                                                          π (r− 1 )
+                                    f (r) (a − x2 )dx =    · f 2 (a),
+                                 0                       2
+
+so that
+                                    Z ∞                     √
+                                                 2           π (− 1 )
+                                          f (a − x )dx =      · f 2 (a).
+                                     0                      2
+We can get a number of difficult, new and interesting results by differentiating many known simple
+results to fractional number of times.
+
+                                          The Use of Operators
+
+12(i) If n is any positive integer E n φ(0) can be used for φ(n) whatever be the function φ. But if n
+is not restricted to positive integers E n φ(0) = φ(n) only when φ is the unique function discussed in
+(3), for
+
+               E n φ(0) =(1 + ∆)n φ(0)
+                                                       
+                               n       n(n − 1) 2
+                        = 1+ ∆+                ∆ + · · · φ(0)
+                               1!         2!
+                                n                 n(n − 1)
+                        =φ(0) + {φ(1) − φ(0)} +            {φ(2) − 2φ(1) + φ(0)} + · · · .
+                                1!                     2!
+Hence if we write φ(n) for E n φ(0), we see that φ(n) is got from the values φ(0), φ(1), φ(2), φ(3), . . .
+only. Therefore φ(n) should be the unique function in 3.
+Example.– The Euler–Maclaurin Sum Formula viz.
+                                                 Z
+                                                               1       B2 0
+                φ(1) + φ(2) + · · · + φ(n) = C + φ(n)dn + φ(n) +           φ (n) − · · ·
+                                                               2        2!
+should be applied if φ(n) is the unique function as we have used the operators inR getting the result
+and φ(n) is known for integral values of n in the left side while we use φ(n) and φ(n)dn as if it is
+known for all values of n.
+ii. If a result is true only for real values of a quantity (say a), then the result got by using the
+operators for a is true only when the new function can be expressed in terms of the original function;
+e.g.,
+    We know                              Z ∞
+                                             cos ax       π
+                                                  2
+                                                    dx = e−a
+                                          0  1 + x        2
+is not true for complex values of a. Hence
+                                     Z ∞
+                                         cos Dx         π
+                                              2
+                                                φ(0)dx = e−D φ(0)
+                                      0  1+x            2
+36                                                                                                             3.     Ramanujan’s Quarterly Reports
+
+
+
+
+or
+                                              Z ∞
+                                                        φ(ix) + φ(−ix)     π
+                                                                  2
+                                                                       dx = φ(−1)
+                                               0           2(1 + x )       2
+
+is true only when φ(ix) + φ(−ix) can be expressed in the form
+
+                                                   A + B cos P x + C cos Qx + · · ·
+
+and not in case of any other function.
+iii. But if a result is true for complex values of a then we can freely use the operators; e.g.
+(a) Since
+                       Z ∞                                                  Z ∞             ∞
+                                n−1 −ax                                               n−1
+                                                                                            X (−1)s as xs              Γ(n)
+                               x        e      dx                or               x                          dx =
+                       0                                                     0                        s!                an
+                                                                                            s=0
+
+is true even when a is changed to p + qi, we have
+
+                    Z ∞                ∞
+                                       X (−1)s E s xs
+                            x   n−1
+                                                                      φ(0)dx =Γ(n)E −n φ(0)                E operating on φ
+                       0                                s!
+                                        s=0
+                           Z ∞               ∞
+                                       n−1
+                                             X (−1)s xs φ(s)
+                i.e.               x                                        dx =Γ(n)φ(−n)
+                           0                                     s!
+                                             s=0
+
+which is the theorem in the first report.
+Example. Since
+                                                                      ∞
+                                                                      X         (−1)s xn+2s
+                                                   Jn (x) =
+                                                                            2n+2s s!Γ(n + s + 1)
+                                                                      s=0
+
+we have
+                                                                                                      Γ( 12 p)
+                                   Z ∞
+                                            xp−n−1 Jn (ax)dx = 2p−n−1 an−p                                        .
+                                   0                                                              Γ(n + 1 − 21 p)
+(b) Since we have
+                                                         Z ∞
+                                                                                                a
+                                                                      e−ax cos nx dx =
+                                                             0                               n2 + a2
+
+and
+                                                   Z ∞
+                                                                      a                π
+                                                                            cos nx dx = e−an ,
+                                                    0        x2 + a2                   2
+
+both being true even if we change a to p + iq, we easily infer that
+                               Z ∞
+                                                                aD
+                                    e−aDx cos nx f (b)dx = 2           f (b)
+                                0                           n + a2 D 2
+
+and
+                                       Z ∞
+                                                 aD                       π
+                                                          cos nx f (b)dx = e−aDn f (b).
+                                        0     x2 + a2 D 2                 2
+B.C. Berndt, Quarterly Reports                                                                           37
+
+
+
+
+Now let
+                                                                       aD
+                          e−aDx f (b) = φ(x)               and                   f (b) = ψ(x);
+                                                                   x2 + a2 D 2
+then we see that: if
+                                                 Z ∞
+                                                       φ(x) cos nx dx =ψ(n)
+                                                   0
+
+then
+                                                 Z ∞
+                                                                       π
+                                                       ψ(x) cos nx dx = φ(n).
+                                                   0                   2
+
+    Similarly for sin nx also, which is the theorem at the end of the 2nd report.
+N.B. The use of operators is somewhat dangerous when the constant for which the operator is
+substituted is not true for complex values.
+13. By splitting
+                                                            1
+                        n                           2          2               2 
+                                   o
+                                 x 2              x
+                                                             
+                                                                x
+                                                                                 
+                                                                                   x
+                         1+      a           1 + a+1       1 + a+2      · · · 1 + a+n
+
+into partial fractions and ultimately making n infinite we can show that
+(i)
+                                                             1
+                        n                             2           2 
+                                 x 2
+                                      o           
+                                                    x
+                                                                 
+                                                                   x
+                         1+      a             1 + a+1        1 + a+2      · · · ad infinitum
+                                     (
+                       2Γ(2a)              2a1     1         2a(2a + 1)      1
+                     =                         2   −     2 +                     x2
+                       {Γ(a)}2           a + xa
+                                           1! a + 1 +  x         2!     a + 2 + a+2
+                                                      a+1
+                                                               )
+                          2a(2a + 1)(2a + 2)      1
+                        −                             x2
+                                                          + ··· .
+                                  3!         a + 3 + a+3
+
+Hence we have
+                                                                     √
+                                                                       π Γ(a + 21 )
+                  Z ∞
+                                       cos 2nx dx                                   1
+          (ii)                                                     =                     .
+                                                                           Γ(a) cosh2a n
+                                           2          2 
+                    0
+                        n
+                            x 2
+                               o      
+                                          x
+                                                     
+                                                       x              2
+                         1+ a       1 + a+1       1 + a+2      ···
+
+Hence by applying the theorem in 12(b) we have
+                Z ∞                                                     √
+                     cos 2nx                                               πΓ(a)
+       (iii)                 dx =                                                              2  .
+                    cosh2a x
+                                             n                        o        2     
+                 0                                                n 2
+                                  2Γ(a + 12 ) 1 +                              n            n
+                                                                    
+                                                                  a      1 + a+1       1 + a+2     ···
+
+
+Example. Putting a = 52 we have by changing n to n2
+                                          Z ∞
+                                                 cos nx     π(n2 + 1)(n2 + 9)
+                                                     5 dx =    48 cosh πn
+                                                                              .
+                                           0     cosh x                 2
+38                                                                                                        3.   Ramanujan’s Quarterly Reports
+
+
+
+
+(iv) Changing a to 1 − a in (iii) and multiplying the two results we have
+          Z ∞              Z ∞
+               cos 2nx             cos 2nx           πΓ(a)Γ(1 − a)
+                   2a   dx                    dx =
+           0   cosh x       0    cosh2(1−a) x      4Γ(a + 12 )Γ( 32 − a)
+                                                      1
+          ×n            o          2           2                2         2 
+                    n 2            n               n                    n            n
+                     
+              1+ a         1 + a+1          1 + a+2       · · · 1 + 1−a         1 + 2−a      ···
+                        π sin 2πa
+          =                                 ;
+              2(1 − 2a)(cosh 2πn − cos 2πa)
+that is                 Z ∞                      Z ∞
+                                 cos nx                        cos nx               π sin πa
+                                         dx                       2−a dx = 2(1 − a)(cosh πn − cos πa) .
+                        0        cosha x             0       cosh     x
+Similarly we can find                                Z ∞                      Z ∞
+                                                                 cos nx             cos nx
+                                                                         dx                 dx
+                                                         0       cosha x       0    coshb x
+if a + b is any odd even integer.
+14.                  Z       h                                                                   Z h
+                                     −ax
+                                 e         cos mx dx               is the real part of                 e−(a+mi)x dx
+                         0                                                                        0
+i.e. that of
+                                 1 − e−(a+mi)b   a(1 − e−ab cos mb) me−ab sin mb
+                                               =                   +             .
+                                    a + mi            a2 + m2        a2 + m2
+Again we have,
+                  Z ∞
+                        a(1 − e−ab cosh x) + xe−ab sinh x            π      π
+                                      2    2
+                                                          cos nx dx = e−an , e−an , or 0
+                    0                a +x                            2       4
+according as n < h, = h or > h. Using the operator in the above result as in 12 iii(b) we have the
+Theorem. If
+                                    Z h
+                                        φ(x) cos mx dx = ψ(m)
+                                                             0
+then                                       Z ∞
+                                                                              π      π
+                                                 ψ(x) cos nx dx =               φ(n), φ(n), or 0
+                                             0                                2      4
+according as n < h, n = h or n > h.
+    Similarly for sine also.
+    Till now we have seen only the peculiarities of the trigonometric functions sine and cosine within
+a definite integral and now let us try to find out other functions having similar properties.
+15. Theorem. If the functions F and f are so related that
+                                             Z ∞
+                                                                    1
+                                                 F (ax)f (bx)dx =       ,
+                                              0                    a+b
+or
+                                           Z ∞                         Z ∞
+                                                                                                π
+                                                 xp−1
+                                                             F (x)dx          x−p f (x)dx =          ,
+                                             0                          0                     sin πp
+p being any positive proper fraction, then if
+                              Z ∞
+                                        F (nxi) + F (−nxi)
+                                   φ(x)                    dx = ψ(n)
+                               0                 2
+B.C. Berndt, Quarterly Reports                                                                               39
+
+
+
+
+then
+                                     Z ∞
+                                                    f (nxi) + f (−nxi)     π
+                                             ψ(x)                      dx = φ(n).
+                                         0                   2             2
+If F is known, then f can be found by solving the first or the second Integral Equation.
+Dem. By Cor. 6 and 8 to Theorem I given in the 2nd progress report, we have,
+                    Z ∞
+                                        x2                   n2 x2      n4 x4
+                                                                                   
+                                 x
+               (a)        a0 − a1 + a2 − · · ·       b0 − b2       + b4       − · · · dx
+                     0           1!     2!                    2!         4!
+                     =a−1 b0 − a−3 b2 n2 + a−5 b4 n4 − a−7 b6 n6 + · · · .
+
+and
+                         Z ∞
+                                                              n2 x2      n4 x4
+                                                                                     
+                                 c0 − c2 x2 + c4 x4 − · · ·
+                                                               
+                 (b)                                 d0 − d2        + d4       − · · · dx
+                           0                                    2!        4!
+                                                2
+                                                            
+                         π           n        n
+                       =     c−1 d0 − c−2 d1 + c−3 d2 − · · · .
+                         2           1!       2!
+                                             1
+Supposing cr = br a−r−1 and           dr = b−r−1 , and
+
+                                                            x       x2
+                                             φ(x) =a0 − a1     + a2 − · · ·
+                                                            1!      2!
+                                             ψ(x) =c0 − c2 x2 + c4 x4 − · · ·
+                                                               x      x2
+                                             F (x) =b0 − b1       + b2 − · · ·
+                                                               1!     2!
+and
+
+                                                               x      x2
+                                             f (x) =d0 − d1       + d2 − · · · ,
+                                                               1!     2!
+we see that, by Theorem I,
+              Z ∞                                                       Z ∞
+                  xp−1 F (x)dx = Γ(p)b−p                 and                  x−p f (x)dx = Γ(1 − p)dp−1 .
+                 0                                                        0
+
+Multiplying the two results, we have
+                             Z ∞           Z ∞
+                                                                                        π
+                                   p−1
+                                 x F (x)dx     x−p f (x)dx =                                 ,
+                                     0                     0                          sin πp
+since
+                                                                    1
+                                                        b−p =
+                                                                   dp−1
+by supposition. Thus, the second part is proved.
+   Now change x into kx in f (x) and multiply F (x) by f (kx).
+   Then expanding the product in ascending powers of k and integrating the terms separately by
+Theorem I, we have                 Z ∞
+                                                           1
+                                         F (x)f (kx)dx =       .
+                                     0                   1+k
+Now putting k = ab and changing x into ax, we have
+                                   Z ∞
+                                                                               1
+                                       F (ax)f (bx)dx =                           .
+                                                0                             a+b
+40                                                                                     3.   Ramanujan’s Quarterly Reports
+
+
+
+
+Also (a) and (b) may be written as
+                             Z ∞
+                                      F (nxi) + F (−nxi)
+                                 φ(x)                    dx = ψ(n)
+                              0                2
+
+and
+                                 Z ∞
+                                                   f (nxi) + f (−nxi)     π
+                                         ψ(x)                         dx = φ(n).
+                                 0                          2             2
+
+Cor. 1 We know that                        Z ∞
+                                                                       1
+                                                     e−ax e−bx dx =       .
+                                               0                      a+b
+Here F (x) = f (x) = e−x when the theorem is: if
+                                          Z ∞
+                                                   φ(x) cos nx dx =ψ(n)
+                                           0
+
+then
+                                         Z ∞
+                                                                   π
+                                                   ψ(x) cos nx dx = φ(n).
+                                           0                       2
+
+Cor. 2 We know that               Z ∞
+                                            1       2/π         1
+                                              2 2
+                                                  ·   2 2
+                                                          dx =     .
+                                     0    1+a x 1+b x          a+b
+Here
+                                            1                                     2
+                           F (x) =                       and      f (x) =
+                                         1 + x2                               π(1 + x2 )
+and the theorem reduces to: if
+                                          Z ∞
+                                                      φ(x)
+                                                              dx = ψ(n)
+                                           0        1 − n2 x2
+
+then
+                                          Z ∞
+                                                      ψ(x)         π2
+                                                              dx =    φ(n).
+                                           0        1 − n2 x2      4
+
+Cor. 3. In a similar manner, we can prove that: if
+                                    Z ∞
+                                         xφ(x)Jn (`x)dx = ψ(`)
+                                           0
+
+then
+                                          Z ∞
+                                                    xψ(x)Jn (`x)dx = φ(`)
+                                           0
+
+and so on.
+Cor. 4 If
+                                                     a   n−b
+                                                       =     =p
+                                                     m    n
+B.C. Berndt, Quarterly Reports                                                                            41
+
+
+
+
+and
+                                                           Z ∞
+                                                                                             1
+                                                                    F (αx)f (βx)dx =
+                                                           0                                α+β
+
+then
+                             Z ∞                            Z ∞
+                                         a−1           m                                       π
+                                     x         F (x )dx                  xb−1 f (xn )dx =             .
+                                 0                              0                           mn sin πp
+
+Dem. We have proved that: if
+                                                           Z ∞
+                                                                                             1
+                                                                    F (αx)f (βx)dx =
+                                                            0                               α+β
+
+then
+                                     Z ∞                            Z ∞
+                                                                                              π
+                                             x   p−1
+                                                       F (x)dx             x−p f (x)dx =           .
+                                     0                               0                      sin πp
+
+If we change x to xm and xn respectively in the above integrals we can get the result by assuming
+                                                                    a   n−p
+                                                           p=         =     .
+                                                                    m    n
+
+Cor. 5 As a particular case of the above Cor. when m = n = 2, and a = b = 1 and p = 12 we have: if
+                                         Z ∞
+                                                               1
+                                             F (ax)f (bx)dx =
+                                          0                   a+b
+
+then
+                                             Z ∞                    Z ∞
+                                                                                      π
+                                                   F (x2 )dx               f (x2 )dx = .
+                                             0                       0                4
+
+
+                                         *             *         *           *       *         *
+
+Bruce C. Berndt, Editor
+Department of Mathematics
+University of Illinois, 1409 West Green Street
+Urbana, IL 61801, USA
+
+e-mail : berndt@illinois.edu
+

@@ -1,0 +1,765 @@
+3. Ramanujan’s Notebooks
+
+The history of the notebooks, in brief, is the following: Ramanujan had
+noted down the results of his researches, without proofs, (as in A Synopsis
+of Elementary Results, a book on pure Mathematics, by G.S. Carr), in three
+notebooks, between the years 1903 - 1914, before he left for England. These
+were the notebooks which he showed to his benefactors to convince them
+about his abilities as a mathematician. The results in these notebooks were
+organized by him. The first notebook has 16 chapters in 134 pages. The
+second is a revised, enlarged version of the first, containing 21 chapters in
+252 pages. The third notebook contains 33 pages of unorganized material
+(included at the end of volume 2 of the facsimile edition [VII]). Ramanujan
+took these notebooks with him to Cambridge. But, in one of his letters to a
+friend, he wrote that he had no time to look into them and most probably
+he did not put them to use during his five year stay abroad.
+
+The Preface to the Collected Papers of Srinivasa Ramanujan ([III], p.ix)
+contains the following appraisal of the work in the notebooks:
+     There is still a large mass of unpublished material. None of the
+     contents of Ramanujan’s notebooks has been printed, unless incor-
+     porated in later papers, except that one chapter, on generalized hy-
+     pergeometric series, was analyzed by Hardy [37] in the Proceedings
+     of the Cambridge Philosophical Society. This chapter is sufficient
+     to show that, while the notebooks are naturally unequal in quality,
+     they contain much which should certainly be published. It would be
+     a very formidable task to work through them systematically, select
+     particular passages, and edit these with adequate comment, and it
+     is impossible to print the notebooks as they stand without further
+     monetary assistance. The singular quality of Ramanujan’s work
+     and the romance which surrounds his career, encourage us to hope
+     that this volume may enjoy sufficient success to make possible the
+     publication of another.
+
+Hardy tried to persuade the University of Madras to undertake such a task
+and in turn, Prof. G.N. Watson was requested by the Madras University,
+in 1931, to edit the notebooks in a suitable form for publication. This
+was a formidable task since the notebooks contained about 4000 theorems.
+3. Ramanujan’s Notebooks                                                     ii
+
+
+Prof. Watson gave a lecture [39] on Ramanujan’s notebooks at the London
+Mathematical Society in 1931, and published several papers between 1928–
+36, motivated by Ramanujan’s work. Watson’s Presidential address to the
+London Mathematical Society, in 1935, was on mock-theta functions, discov-
+ered by Ramanujan during the period when he was terminally ill (March
+1919 – April 1920) after his return to India. Watson undertook the task of
+editing the notebooks with Prof. B.M. Wilson and
+      they focussed their attention on the second notebook. Chapters
+      2–13 were to be edited by Wilson, and Watson was to examine
+      chapters 14–21. Unfortunately, Wilson passed away prematurely
+      in 1935 at the age of 38. (Berndt [40]).
+This possibly put an end to the joint effort of Watson and Wilson to edit the
+notebooks.
+
+In 1957, with monetary assistance from Sir Dadabai Naoroji Trust, at the
+instance of Prof. Homi J. Bhabha and Prof. K. Chandrasekaran of the Tata
+Institute of Fundamental Research, the Tata Institute published a facsimile
+edition of the notebooks of Ramanujan in two volumes. The reproduction
+is thoroughly faithful to the original. About a thousand copies were made
+then and in the centenary year of Ramanujan’s birth, 1987, Springer - Narosa
+reprinted the same.
+
+The formidable task of truly editing the notebooks –viz. to either prove each
+of the results or provide references to the literature where the proofs may
+be found – which was started by G. N. Watson and B. M. Wilson but never
+completed, was taken up in right earnest by Prof. Bruce C. Berndt, who has
+been publishing a series of papers, since 1981, by himself or in collaboration
+with others, including Indian Mathematicians Padmini T. Joshi, C. Adiga
+and S. Bhargava. He has also utilized the earlier work of G.N. Watson and
+B.M. Wilson on the notebooks with the Trinity College. This dedicated work
+of Berndt, published by Springer-Verlag [VIII], is now available in five parts,
+the first of which appeared in 1985 and the fifth, in 1997.
+
+At the beginning of his work, in Part I, Berndt [34] points out:
+     The notebooks were originally intended primarily for Ramanujan’s
+     own personal use and not for publication ... Some of Ramanu-
+     jan’s incorrect ‘theorems’ in number theory found in his letters to
+3. Ramanujan’s Notebooks                                                     iii
+
+
+     Hardy have been well publicized. Thus, perhaps, some think that
+     Ramanujan was prone to making errors. However, such thinking
+     is erroneous. The notebooks contain scattered errors. Especially
+     if one takes into account the roughly hewn nature of the mate-
+     rial and his frequently formal arguments, Ramanujan’s accuracy
+     is amazing.
+
+Resurgence of interest
+
+After Ramanujan returned to India, though he was seriously ill and bedridden
+for most of the time, he was working continuously. His life-long habit had
+been to work on a slate and transfer the final results to the notebook or sheets
+of paper. His brother-in-law has stated [59] that a vast quantity of papers
+containing his notes was handed over to the University after his death. Three
+days after Ramanujan died, his brother S. Lakshminarasimhan, in a letter to
+Prof. Hardy, dated 29th April 1920, informing him about his demise, wrote :
+      All his Mss that were in his trunk were handed over on the day of
+      his death to Mr. Ramachandra Row’s son in law, since the former
+      is at Nilgiris. Not only those but also the journals, magazines -
+      all he possessed except the books which he had, were taken away
+      by them.
+In a letter to Prof. Hardy, dated 3 Dec. 1920, Mr. R. Ramachandra Row,
+wrote:
+      Ramanujan’s M.S.S whatever they are are with me and will be
+      handed over intact to the University of Madras who I understand
+      is already in correspondence with you regarding the methods of
+      publication.
+These papers reached Prof. Hardy, who should have passed them on to
+Prof. G.N. Watson and hence to their final destination – viz. the estate of
+Prof. Watson, in the underground cellar of Trinity College – after he wrote
+several papers inspired Ramanujan’s results, until their discovery in 1976 by
+George E. Andrews.
+
+Prof. Watson died in Feb. 1965. A decade later, in the spring of 1976, when
+Prof. George Andrews [53] of the Pennsylvania State University was going
+through the estate of Watson, he discovered a box of papers.
+      The most interesting item in this box was a manuscript of more
+3. Ramanujan’s Notebooks                                                     iv
+
+
+     than one hundred pages in Ramanujan’s distinctive handwriting
+     which contains over six hundred mathematical formulae listed
+     one after the other without proof. It is my contention that this
+     manuscript, or notebook, was written during the last year of Ra-
+     manujan’s life after his return to India from England. My evi-
+     dence for this assertion is all indirect; in the words of Stephen
+     Leacock, ‘It is what we call circumstantial evidence — the same
+     that people are hanged for’ .
+These are now referred to as the contents of the Lost notebook of Ramanujan.
+Andrews assessed ([101], p.xii):
+     While it is impossible to categorize the various formulas com-
+     pletely, a rough approximation of its contents is the following:
+
+     q-series and related topics including mock θ-functions: 60%
+     Modular equations and relation, singular moduli: 30%
+     Integrals, Dirichlet series, congruences, asymptotics, misc.: 10%
+
+     I give only this rough break down because of the chaotic nature of
+     this manuscript. On many pages there are fragments of numeri-
+     cal computations and infinite series running off in all directions.
+     It may be possible eventually to make sense out of some of these
+     pages; if so, the above percentage breakdown may change. . . .
+     In any event it is clear that q-series investigations make up the
+     bulk of the work in in the Lost Notebook. Indeed I count about
+     380 formulae that I consider to belong more to q-series than to
+     modular relations or other topics.
+
+Sixty-seven years after the death of Ramanujan, due to the discovery of the
+‘lost’ notebook by Prof. George Andrews, in 1976, and the editing of the three
+Notebooks of Ramanujan by Prof. Bruce Berndt, there has been a resur-
+gence of interest in the work of Ramanujan. These notebooks of Ramanujan
+have formed the basis for numerous papers by many mathematicians, who
+gave proofs of the theorems and conjectures of Ramanujan obtained by him
+through his intuition and sheer brilliance. This is a singular and unparalleled
+phenomenon in the annals of mathematics. In the centenary year of his birth,
+1987, several conferences were held in many countries to focus attention on
+his work and the recent developments. Mystery still surrounds some of his
+3. Ramanujan’s Notebooks                                                      v
+
+
+work, mostly in the theory of elliptic functions, wherein
+     it is not possible, after all the work of Watson and Mordell, to
+     draw the line between what he may have picked up somehow and
+     what he must have found for himself. ([IV], p.10).
+
+Hardy [60] regretted that he could easily have but did not find out all the
+details from Ramanujan himself since he
+      was quite able and willing to give a straight answer to a straight
+      question, and not in the least disposed to make a mystery of his
+      achievements.
+However, Hardy [60] argues that Ramanujan
+
+     was not particularly interested in his own history or psychology;
+     he was a mathematician anxious to get on with the job. And af-
+     ter all I too was a mathematician, and a mathematician meeting
+     Ramanujan had more interesting things to think about than his-
+     torical research. It seemed ridiculous to worry him about how he
+     had found this or that known theorem, when he was showing me
+     half a dozen new ones almost every day.
+
+A Page from the second Notebook
+
+To provide a feeling for Ramanujan’s notebooks, we reproduce here a page
+[61] from his second Notebook, Chapter XVIII. There is no particular reason
+for choosing this page except that it contains an entry which has become
+a ‘folklore’ which illustrates the attachment Ramanujan had to numbers
+prompting Littlewood to state that to Ramanujan every number is a per-
+sonal friend.
+
+There are 2 parts shown in this page. The first part is concerning the geo-
+metrical construction of a square whose area is equal to that of a given circle.
+This is a rare piece of Ramanujan’s work in geometry, since he did very little
+work in geometry and perhaps did not have much interest in it. Several at-
+tempts on this problem have been made from early times by (ancient Greek
+and Hindu) mathematicians and it has been shown that it is impossible
+3. Ramanujan’s Notebooks                                                 vi
+
+
+
+
+Fig. caption: The last three lines of p. 224 and the p. 225 from the second
+              notebook of Ramanujan, chapter XVIII. ([61]).
+3. Ramanujan’s Notebooks                                                                    vii
+
+
+to square the circle, in the Euclidian sense1 . Hardy has commented that
+he found in Ramanujan’s collection of books in Cambridge some books by
+‘quacks’ on this theme.
+
+Ramanujan published a paper [62] entitled, “Squaring the circle” in the Jour.
+of the I.M.S. in 1913, in which he gives a geometrical construction for finding
+the length of the side of a square whose area equals that of the circle. He
+also reproduced this and another geometrical construction for π in his later
+paper [63] on “Modular equations and approximations to π”. In this paper,
+he deduced several formulae2 for π like:
+                                 √
+                       63 17 + 15 5
+                                 √ = 3.14159265380...
+                       25 7 + 15 5
+                            ( Ã          √ !       Ã       √ !)
+                    24       √ 10 + 11 2         √ 10 + 7 2
+             π=√        log                    +
+                    142               4                  4
+                          √           √      √         √
+                  π = 12 190 log {(2 2 + 10)(3 + 10)}
+formulae correct to 9, 16 and 18 decimal places; and
+                    ½                                                                 ¾
+        1   √ 1103 27493 1 1.3 53883 1.3 1.3.5.7
+          =2 2     +     · · 2 +       ·   · . 2 + ···
+        π      992   996  2 4    991 0 2.4   48
+              √ X ∞
+                     (1/4)n (1/2)n (3/4)n                  1
+            =2 2                          (1103 + 26390n)( )4n+2 ,
+                 n=0    (1)n (1)n (1)n                    99
+which he asserted would be “rapidly convergent”, for the first term itself
+gives the sum to 8 decimal places. In 1986, Borwein and Borwein [64], two
+computer scientists used a version of Ramanujan’s formula to calculate π to
+   1
+      It is the ancient Greeks who set-up the circle-squaring problem with the following
+two conditions [83]: the solution should use only a straightedge and compass, so that the
+proofs can be reduced to Euclid’s theorems and the solution must use only a finite number
+of steps. If, in fact, πr2 = a2 , where r is the radius of the circle and a is the length of the
+side of a square, then it follows that π = (a/r)2 , or that π is rational. In fact, π has been
+shown to be not only an irrational number but also, proved by Ferdinand von Lindermann,
+in 1882, to be a transcendental number. Furthermore, the phrase ‘squaring the circle’ in
+common usage suggests a project doomed to failure!
+    2
+      Note that Ramanujan has used the equality sign for his approximations to π even
+though he states explicitly that the formulae are correct only to a certain number of
+decimal places.
+3. Ramanujan’s Notebooks                                                                    viii
+
+
+17 million places and found that the formula converges on the exact value
+with far greater efficiency than any previous method3 . This success proved
+that Ramanujan’s insight was correct.
+
+The next entries on this page in Ch. XVIII of his second note book are
+solutions of Diophantine equations:
+                            X3 + Y 3 = U 2
+     and              X + Y 3 + Z 3 = U 3 (Euler’s equation).
+                        3
+
+which are followed by numerical examples for these equations – 6 solutions
+for the first and 12 solutions for the Euler’s equation and one which looks like
+but is not a solution of the Euler’s equation. Characteristically, Ramanujan
+does not give the values of the parameters for the examples (ref. [VIII], part
+III, p.199 for the examples with the values of the parameters appended).
+
+Ramanujan’s solution of Euler’s equation in rational numbers given here is:
+                   X     =   m7 − 3m4 (1 + p) + m(2 + 6p + 3p2 ),
+                   Y     =   2m6 − 3m3 (1 + 2p) + 1 + 3p + 3p2 ,
+                   Z     =   m6 − 1 − 3p − 3p2 ,
+                   U     =   m7 − 3m4 p + m(3p2 − 1),
+where m and p denote arbitrary numbers. He has also given another solution
+of this equation elsewhere (see Question 441 which follows) but neither of
+these two parameter solutions is the general solution4 which contains three
+parameters, prompting Hardy [65] to comment that
+      Diophantine equations should have suited him, but he did compar-
+      atively little with them, and what he did was not his best.
+
+The second of the 12 examples given for the Euler equation on this page:
+                             13 + 123 = 93 + 103 (= 1729)
+   3
+      David and Gregory Chudnovsky are two mathematicians who hold several world
+records for calculating the highest number of digits of π: first up to 450 million dig-
+its, then 1 billion and then 2 billion digits. The current record is over 51 billion digits (cf.
+For a brief history of π, [83]).
+    4
+      The last of the examples 13 + 63 + 83 = 93 does not belong to this class of solutions,
+since no values of m and p yield this solution to the Euler’s equation. So, its presence
+reveals that perhaps, Ramanujan was aware that his solution was not the most general for
+Euler’s equation.
+3. Ramanujan’s Notebooks                                                             ix
+
+
+corresponds to (m = 2, p = 3). This has been made famous by the following
+anecdote associated with it, due to Hardy [66]:
+      He could remember the idiosyncrasies of numbers in an almost
+      uncanny way. It was Littlewood who said that every positive inte-
+      ger was one of Ramanujan’s personal friends. I remember going
+      to see him once when he was lying ill in Putney. I had ridden in
+      taxi-cab number 1729, and remarked that the number seemed to
+      me rather a dull one, and that I hoped that it was not an unfor-
+      tunate omen. ‘No’, he replied, ‘it is a very interesting number, it
+      is the smallest number expressible as a sum of two cubes in two
+      different ways’. I asked him, naturally, whether he could tell me
+      the solution of the corresponding problem for fourth powers; and
+      he replied, after a moment’s thought, that he knew no obvious
+      example, and supposed that the first such number must be very
+      large.
+The simplest known solution of:
+
+                                  x4 + y 4 = z 4 + t 4
+
+is Euler’s:    594 + 1584 = 1334 + 1344 = 635318657.
+Euler gave a solution involving two parameters, but no ‘general’ solution is
+known.
+
+The anecdote reveals Ramanujan’s remarkable feeling for numbers and his
+sharp memory which made him recall one entry out of several thousands he
+had made in his notebook just like that and the fact that he had not recorded
+in his notebook the observation he made about 1729 which came from him
+only when Prof. Hardy made an innocuous statement regarding the taxi
+number.
+
+Though the number 1729 itself finds no explicit mention in the notebooks,
+the Euler’s equation and/or its solution: 13 + 123 = 93 + 103 finds mention5
+in three Questions to the Journal of the I.M.S. ([III], p.331) and in two places
+in his notebooks ([VII], Vol. 2, p.266 and 387). These are indicated below:
+
+   5
+     I am thankful to Mr. P.K. Srinivasan for drawing my attention to these and his pub-
+lications [81].
+3. Ramanujan’s Notebooks                                                             x
+
+
+         • Question 441 (V, 39)6 :
+         Shew that
+(6a2 − 4ab + 4b2 )3 = (3a2 + 5ab − 5b2 )3 + (4a2 − 4ab + 6b2 )3 + (5a2 − 5ab − 3b2 )3 ,
+         and find other quadratic expressions satisfying similar relations.
+         [Solution by S. Narayanan, VI, 226.]
+
+         • Question 661 (VII, 119):
+         Solve in integers     x 3 + y 3 + z 3 = u6 ,
+         and deduce the following:
+                    63 − 53 − 33 = 26 ,                    83 + 63 + 13 = 36 ,
+                 123 − 103 + 13 = 36 ,                  463 − 373 − 33 = 66 ,
+              1743 + 1333 − 453 = 146 ,              11883 − 5093 − 33 = 346 .
+         [Solutions by N.B. Mitra, XIII, 15 – 17. Additional solution and re-
+         marks by N.B. Mitra, XIV, 73 – 77.]
+
+         • Question 681 (VII, 160):
+         Solve in integers      x3 + y 3 + z 3 = 1,
+         and deduce the following:
+                        63 + 83 = 93 − 1,                 93 + 103 = 123 + 1,
+                   1353 + 1383 = 1723 − 1,            7913 + 8123 = 10103 − 1,
+             11161 + 11468 = 14258 + 1, 656013 + 674023 = 838023 + 1.
+                    3         3              3
+
+         [Partial solution by N.B. Mitra, XIII, 17. See also N.B. Mitra, XIV,
+         73–77 (76–77).]
+
+         • If p, q, r are quantities so taken that p + 3a2 = q + 3ab = r + 3b2 =
+         (a + b)2 and m and n are any two quantities, then
+            n(mp + nq)3 + m(mq + nr)3 = m(np + mq)3 + n(nq + mr)3 .
+         A particular case of the above theorem is:
+(3a2 + 5ab − 5b2 )3 + (4a2 − 4ab + 6b2 )3 + (5a2 − 5ab − 3b2 )3 = (6a2 − 4ab + 4b2 )3 .
+                                                               ([VIII], Vol.2, p.266)
+
+   6
+       J. of the IMS, vol. V, p.39.
+3. Ramanujan’s Notebooks                                                      xi
+
+
+     • If α2 + αβ + β 2 = 3λγ 2 , then
+
+             (α + λ2 γ)3 + (λβ + γ)3 = (λα + γ)3 + (β + λ2 γ)3 .
+
+                                                          ([VIII], Vol.2, p.387)
+
+Note that in the above 4-parameter solution for the Euler’s equation, it has
+been observed (cf. [95] (c), p.43) that for α = 3, β = 0, λ = 3 and γ = 1, we
+get 123 + 13 = 103 + 93 = 1729. The fact that Ramanujan could come out
+spontaneously with the statement that 1729 in the smallest number which
+could be expressed as the sum of two cubes in two different ways, something
+which he had not jotted down in his notebooks, proves that every integer is
+a ‘personal friend’ of Ramanujan as remarked by Prof. Littlewood.
+
+Hardy’s statement that two thirds of Srinivasan Ramanujan’s work in In-
+dia, (contained in the notebooks), consisted of rediscoveries, is refuted by
+Prof. Bruce C. Berndt, who states after his extensive studies that Hardy’s
+estimate is too high. Berndt’s main goal was: “To prove each of Ramanu-
+jan’s theorems” and for known results refer to literature where proofs may
+be found. Tables of the contents of “Ramanujan’s Notebooks”, Parts I to V,
+edited by Prof. Berndt are given here in the following pages. The titles of
+the chapters gives the reader an idea about the nature and range of problems
+and the number of results Ramanujan had recorded in each chapter.
+
+In the Introduction to Part V, Berndt states:
+      This volume, however, should not be regarded as the closing chap-
+      ter on Ramanujan’s notebooks. Instead, it is just the first mile-
+      stone on our journey to understanding Ramanujan’s ideas. ...
+      It is our fervent wish that these volumes will serve as spring-
+      boards for further investigations by mathematicians intrigued by
+      Ramanujan’s remarkable ideas. ... Ramanujan remarked that sev-
+      eral of his series arose from alternative theories of elliptic func-
+      tions ... The first of the three alternative theories is the most
+      interesting and the most important, and we feel that a large body
+      of work remains to be discovered here.
+3. Ramanujan’s Notebooks                                                    xii
+
+
+      Ramanujan’s Note Books, Part I, Bruce C. Berndt ([VIII], 1985):
+
+ Ch. Subject                                                            # of Results
+
+
+ 1.     Magic Squares                                                             43
+ 2.     Sums Related to the Harmonic series or the
+              Inverse Tangent Function                                             68
+ 3.     Combinatorial Analysis and Series Inversions                               86
+ 4.     Iterates of the Exponential Function and an
+              Ingenius Formal Technique                                            50
+ 5.     Eulerian Polynomials and Numbers, Bernoulli Numbers
+              and the Riemann Zeta-Function                                        94
+ 6.     Ramanujan’s Theory of Divergent series                                     61
+ 7.     Sums of Powers, Bernoulli Numbers and the Γ Function                      110
+ 8.     Analogues of the Gamma Function                                           108
+ 9.     Infinite Series Identities, Transformations, and Evaluations              139
+        Ramanujan’s Quarterly Reports
+
+
+      Ramanujan’s Note Books, Part II, Bruce C. Berndt ([VIII], 1989):
+
+        Ch. Subject                                      # of Results
+
+
+        10.   Hypergeometric Series I                             116
+        11.   Hypergeometric Series II                            103
+        12.   Continued Fractions                                 113
+        13.   Integrals and Asymptotic Expansions                  92
+        14.   Infinite Series                                      87
+        15.   Asymptotic Expansions Modular Forms                  94
+
+Ramanujan’s work on hypergeometric series, contained in chapters X and XI
+of his second notebook was edited by Hardy, as stated earlier. In chapter 4 of
+this book, we take a closer look at some of the beautiful work of Ramanujan
+on hypergeometric series.
+3. Ramanujan’s Notebooks                                                  xiii
+
+
+       Ramanujan’s Notebooks, Part III, Bruce C. Berndt ([VIII], 1991):
+
+
+ Ch. Subject                                                       # of Results
+
+
+ 16.     q-Series and Theta Functions                                           134
+ 17.     Fundamental Properties of Elliptic Functions                           162
+ 18.     The Jacobian Elliptic Functions                                        135
+ 19.     Modular Equations of Degrees 3, 5 and 7 and Associated
+              Theta Function Identities                                         185
+ 20.     Modular Equations of Higher & Composite Degrees                        173
+ 21.     Eisenstein series                                                       45
+
+
+The 100 Pages of Unorganized material after Chapter 21 of Srinivasa Ra-
+manujan’s second Notebook and the 33 Pages of his third Notebook were
+organized into chapters 22 to 31 by Berndt.
+       Ramanujan’s Notebooks, Part IV, Bruce C. Berndt ([VIII], 1994):
+
+
+ Ch. Subject                                                    # of Results
+
+
+ 22      Elementary results                                                47
+ 23.     Number Theory                                                    108
+ 24.     Theory of Prime numbers                                           24
+ 25.     Theta Function and Modular Equations                              86
+ 26.     Inversion Formulas for Lemniscate & other functions.              10
+ 27.     Q series                                                           9
+ 28.     Integrals                                                         63
+ 29.     Special Functions                                                 39
+ 30.     Partial Fraction Expansions                                       15
+ 31.     Elementary and miscellaneous analysis                             36
+         16 Chapters of first Notebook                                     54
+3. Ramanujan’s Notebooks                                                         xiv
+
+
+In the concluding part V, Berndt examines the unorganized pages in all
+the three notebooks of Ramanujan on continued fractions, alternative theo-
+ries of elliptic functions, class invariants and singular moduli, explicit values
+of theta-functions, modular equations, infinite series, approximations and
+asymptotic expansions, etc. Berndt points out that very few claims in this
+volume pertain to Ramanujan’s published papers and problems.
+
+
+      Ramanujan‘s Notebooks, Part V, Bruce C. Berndt ([VIII], 1997)7 :
+
+
+      Ch. Subject                                                # of Results
+
+
+      32.   Continued Fractions                                             73
+      33.   Ramanujan’s Theories of Elliptic Functions
+            to Alternative Bases                                            62
+      34.   Class Invariants and Singular Moduli                           196
+      35.   Values of Theta-Functions                                       24
+      36.   Modular Equations and Theta-Function
+            Identities in Notebook 1                                        87
+      37.   Infinite Series                                                 53
+      38.   Approximations and Asymptotic Expansions                        46
+      39.   Miscellaneous Results in the First Notebook                     24
+
+
+
+Many theorems communicated by Ramanujan to Hardy in his Jan.16, Feb.
+27, 1913 letters are found in Chapters.22 – 31. In all, 759 + 605 + 834 + 491 +
+565 = 3254 theorems have been studied in the parts I–V by Prof. Berndt.
+Hardy had estimated that the notebooks of Ramanujan contained approxi-
+mately 3000 – 4000 statements of theorems and besides editing one chapter
+of Ramanujan’s second Notebook, in 1923, he tried to get them edited. His
+intentions have at long last been fulfilled by the tireless efforts of the inde-
+fatigable Bruce C. Berndt. For the motivated student of Mathematics, this
+  7
+    The author thanks Prof. Berndt for readily communicating the Preface and the Con-
+tents pages of Part V, by e-mail, on request.
+3. Ramanujan’s Notebooks                                                             xv
+
+
+five part publication will provide a plethora of results for further studies.
+As stated elsewhere [XV], it is no exaggeration to say that as long as peo-
+ple do mathematics, the work of Ramanujan and the stupendous effort of
+Prof. Bruce C. Berndt in editing the Ramanujan notebooks will be appreci-
+ated.
+
+R.P. Agarwal’s work on the notebooks
+
+Prof. Ratan P. Agarwal is the founder of a school of ordinary and basic hy-
+pergeometric series in India. In recent times, he has consolidated a part of
+his work in a publication entitled: Resonance of Ramanujan’s Mathematics
+[82]. This two volume work concerns some of the results of Srinivasa Ra-
+manujan (1887 - 1920), the renowned Indian Mathematician, recorded in his
+notebooks, which continue to be a perennial source of inspiration for gener-
+ations of Mathematicians.
+
+Volume I has five chapters. Chapter 1 concerns certain summation and
+asymptotic formulae for generalized (ordinary and basic) hypergeometric se-
+ries. Chapter 2 is on Rogers-Ramanujan identities. Chapters 3 - 5 deal with
+certain definite Integrals of interest to Ramanujan.
+
+Prof. Agarwal opines, like Hardy, that a major part of Ramanujan’s sys-
+tematic work on ordinary hypergeometric series has been in the nature of a
+rediscovery of the work already done by previous authors – the 7 F6 (1) summa-
+tion formula of Dougall (1907) and particular cases of this sum, such as, Pfaff
+(1797) - Saalschütz (1890) theorem for the 3 F2 (1) and the Gauss and Kum-
+mer summation theorems for the 2 F1 (1) and the 2 F1 (−1), respectively, and
+Dixon’s summation theorem for a well-poised 3 F2 (1). These and Ramanu-
+jan’s entries in his notebooks concerning the deep results on the asymptotic
+relations for a finite number of terms of a variety of ordinary hypergeometric
+series, which center around the behaviour of the logarithmic solutions of the
+hypergeometric differential equation are presented in Chapter 1.
+
+Chapter 2 deals with the derivations of the celebrated Rogers–Ramanujan
+identities8 , their combinatorial interpretations, their generalizations and their
+  8
+      Refer chapter 2 of this work for a discussion about these famous identities.
+3. Ramanujan’s Notebooks                                                     xvi
+
+
+applications in Statistical Mechanics for the solution of the two-dimensional
+hard-hexagonal model (by R.J. Baxter). Several proofs of these identities and
+the interesting mathematical developments have been described very well in
+this cogently written chapter.
+
+The next three chapters of Volume I deal with some of the integrals studied
+by Ramanujan. Prof. Agarwal presents definite integrals associated with
+Fourier transforms in the second Notebook and self-reciprocal functions given
+in his ‘lost’ Notebook in Chapter 3. He has shown how some of Ramanujan’s
+results on integrals in his Notebook can be established with the help of other
+entries of his
+      that every entry given in the notebooks by him has a purpose, al-
+      though sometimes a particular entry may look out of context at
+      the first instance. ... We have advocated elsewhere also that it
+      may be interesting many a time to try to prove ‘unproven’ entry
+      of Ramanujan with the help of some other entry given by him ear-
+      lier or later on.
+
+Chapter 4 is focused on Ramanujan’s Master Theorem for the evaluation of
+definite integrals, viz.:
+     Z ∞                                                  ∞
+                                                          X φ(k)(−x)k
+           xn−1 F (x)dx = Γ(n)φ(−n),      where F (x) =                  ,
+      0                                                   k=0     k!
+
+in some neighbourhood of x = 0 and for n not necessarily a positive inte-
+ger. The three Quarterly Reports submitted by Ramanujan to the Madras
+University, as a requirement stipulated by the University for awarding him
+the First Research Scholarship in Mathematics, contain various applications
+of this theorem to the evaluation of a huge variety of integrals and expan-
+sion formulae. The appropriate conditions of convergence for its validity
+have been provided by Hardy in his lectures contained in Ramanujan [IV].
+The q-extension of the Master Theorem by Jackson (1951) and its extension
+to two variables by R.P. Agarwal (1974) are presented. The fundamental
+gamma and beta functions of mathematical analysis have been ingeniously
+extended by Ramanujan and these are related to the ‘incomplete’ gamma
+and beta functions (in which the upper limit of the integrals is finite and not
+∞). The q-extensions of these works by several mathematicians including
+3. Ramanujan’s Notebooks                                                    xvii
+
+
+Thomae (1879), F.H. Jackson (1904), R. Askey (1978), G.E. Andrews and
+R. Askey (1981), A. Verma and V.K. Jain (1992) are also included.
+
+Chapter 5 is devoted to the study of integrals of the type:
+                                Z ∞     2
+                                     eat +bt
+                                             dt
+                                  −∞ ect + d
+
+for particular values of a, b, c, d, evaluated by Ramanujan. Mordell (1933)
+classified these according to the values of the parameters and evaluated them
+in terms of Jacobi’s theta and other related functions, using the method of
+complex contour integration. Professor Agarwal presents the general method
+of evaluation of different standard forms of this integral and relates them to
+those studied by Ramanujan, who used transform calculus to evaluate his
+integrals. Integrals associated with Riemann’s zeta functions and elliptic
+modular relations are not discussed, as pointed out by the author himself.
+The chapter concludes with the mention of the example of a definite integral
+with fractional derivatives in the integrand stated in the third Quarterly Re-
+port. Ramanujan’s formal deduction is based on his Master theorem and it
+agrees with the classical Liouville’s definition of a fractional derivative of a
+function.
+
+In Volume II, Prof. Agarwal presents a critical appraisal of Ramanujan’s
+extensive and intriguing work on elliptic functions. Results pertaining to
+theta functions, partial theta functions, ‘mock’ theta functions (discovered
+by Ramanujan during the last year of his life on his return to India), as
+well as Lambert series and their relationship with elliptic functions, ‘mock’
+theta functions and allied functions. While theta functions and partial theta
+functions are covered in chapter 1 of this volume and Lambert series and
+related functions are dealt with in chapter 5, the major part of this volume
+is concerned with the ‘mock’ theta function results of Ramanujan, presented
+in three extensive chapters (2, 3 and 4), contained in the ‘Lost’ Notebook,
+which was made available to the world in a facsimile edition, by Narosa, for
+the first time in the centenary year of Ramanujan’s birth 1987 (though it
+was discovered in the estate of G.N. Watson by Prof. George E. Andrews of
+the Pennsylvania State University, in Spring 1976).
+3. Ramanujan’s Notebooks                                                   xviii
+
+
+After giving the definitions of the four Jacobi theta functions and the ‘false’
+theta functions (viz. theta functions with the ‘wrong’ signs for the terms)
+defined by L.J. Rogers, Prof. Agarwal introduces the Ramanujan notation
+for the theta function in terms of his symmetric function:
+                            ∞
+                            X
+               f (a, b) =       (ab)k(k−1)/2 (ak + bk ),   |ab| < 1.
+                            k=−∞
+
+In terms of this symmetric function, Ramanujan defines:
+
+           f (qe2iz , qe−2iz ) = θ3 (z, q), where q = eiπτ and |q| < 1.
+
+Several general properties of the function f (a, b) are then presented. Jacobi’s
+triple product identity and other such identities due to D. Hickerson (1988)
+and G.E. Andrews and D. Hickerson (1991) are derived explicitly, due to
+their importance to simplify calculations in later chapters on ‘mock’ theta
+functions. A number of theta function expansions in the ‘lost’ notebook per-
+tain to ‘partial’ theta functions. Some of these are stated and G.E. Andrews
+(1981) derived a general basic hypergeometric identity and showed the re-
+sults of Ramanujan as special cases of it.
+
+Ramanujan defined four third order mock theta functions and to this set three
+more were added by Watson. Watson used the transformations of basic hy-
+pergeometric series for obtaining new definitions for all the seven functions.
+Agarwal himself has contributed significantly to the theory of ‘mock’ theta
+functions by showing that most of the general identities of Andrews (referred
+above) belong to a very general class of basic hypergeometric transforma-
+tions. His results are presented and those of Andrews deduced from them.
+Furthermore, Agarwal defines the third order mock theta functions in terms
+of a 2 Φ1 basic hypergeometric series and deduces many of the mock theta
+function properties from the well-known properties of the 2 Φ1 . Ramanujan
+gave ten mock theta functions of order five, in two groups of five each, and
+three functions of order seven. He asserted that the members of each of the
+two groups of mock theta functions of order five are related amongst those
+belonging to the same group only, while the three mock theta functions of or-
+der seven are not related to each other. The works of Andrews, Agarwal and
+M. Gupta on the mock theta functions of order five are presented in detail.
+A. Gupta and Agarwal showed that mock theta functions of order five and
+3. Ramanujan’s Notebooks                                                              xix
+
+
+seven are defined through basic hypergeometric series of type 3 Φ2 and 4 Φ3 .
+They have also made attempts to develop the theory of the above types of
+basic hypergeometric series to obtain new transformations and definitions for
+certain mock theta functions of orders five and seven. It is pointed out that
+the absence of a general transformation theory for the 3 Φ2 (a, b, c; e, f ; z) se-
+ries [except when the argument z is q (the base parameter itself) or ef /abc],
+is the main reason why there exists no general transformation theory for
+mock theta functions of order five.
+
+Observations of Agarwal on the relationship between the ‘mock’ theta func-
+tions and the basic hypergeometric series lead him to define:
+       the order of a mock theta function as (2r + 1) if it is expressible
+       in terms of a r+1 Φr series, on a single base q k , k ≤ r + 1. There
+       may be in the definition of the mock theta function an additive
+       term with r+1 Φr consisting of θ-products, which do not affect the
+       order.
+While this is an intersting observation by itself, it is simplistic, to say the
+least. For, mystery still surrounds the incomplete work of Ramanujan in this
+area contributing to the belief that Ramanujan was working on a general
+theory of mock theta functions, whose preliminary results are the ones in the
+‘lost’ notebook of his and that he was snatched away by fate before he could
+reveal his grand scheme!
+
+This two volume work of Prof. Agarwal is a deep study of some of the work
+of Ramanujan on ordinary and basic hypergeometric series, on definite inte-
+grals and theta, partial theta and mock theta functions. It is very original in
+parts and has a minimum overlap with the comprehensive five part work on
+the notebooks of Ramanujan by Bruce C. Berndt9 . This work presents, in as
+coherent a way as is possible, the work of Agarwal and his school of students
+and coworkers. It is a valuable supplement for the research scholar and for
+mathematicians and presents the author’s understanding of the ‘how’ and
+‘why’ of what Ramanujan did.
+
+   9
+    The author’s reference to these Parts I to V as the Berndt Notebooks is unfortunate,
+especially in view of the significance of the Ramanujan notebooks and the ‘Lost’ notebook,
+which are the source materials for both Berndt and Agarwal.
+3. Ramanujan’s Notebooks                                                   xx
+
+
+Dyson on Ramanujan’s notebooks
+
+Freeman J. Dyson, the renowned Physicist ([XVI], p.25), concludes his article
+entitled: A Walk through Ramanujan’s Garden, with the following advise:
+      In conclusion, I would like to urge all of you who are working
+      in the many fields of mathematics which have been enriched by
+      Ramanujan’s ideas to go back to the source the collected papers
+      and the notebooks. . . . The notebooks . . . are now appearing in a
+      splendidly annotated version edited by Bruce Berndt [VIII]. The
+      “lost” notebook is now accessible to us through the devoted labors
+      of George Andrews ([53], [56]). When I started my walk through
+      Ramanujan’s garden 47 years ago, only the collected papers were
+      available. A year after I chose Hardy and Wright’s “Theory of
+      Numbers” (Oxford, Clarendon Press, 1938) as a school prize, I
+      won another prize. For the second prize I chose Ramanujan’s col-
+      lected papers. The collected papers have traveled with me from
+      England to America and are still as fresh to-day as they were in
+      1940. Whenever I am angry or depressed, I pull down the col-
+      lected papers from the shelf and take a quiet stroll in Ramanujan’s
+      garden. I recommend this therapy to all of you who suffer from
+      headaches or jangled nerves. And Ramanujan’s papers are not
+      only a good therapy for headaches. They also are full of beautiful
+      ideas which may help you to do more interesting mathematics.
+
+Certainly several of us will not find this therapy useful. Since Dyson, Erdös
+and Selberg were among the very best in their chosen fields, they were greatly
+benefited by an early introduction to the Collected Papers. The rest can de-
+rive the benefit of the extensive study of Ramanujan’s work by Hardy [IV]
+and Berndt [VIII] to begin appreciating the prolific, original work of the
+mathematical genius in his published work and in his notebooks.
+

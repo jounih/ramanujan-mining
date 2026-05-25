@@ -1,0 +1,2533 @@
+             W
+       IE
+ Ramanujan Rediscovered
+ EV
+PR
+                                               W
+            Ramanujan Mathematical Society
+            Lectures Notes Series
+ Vol. 1:    Number theory
+ Vol. 2:
+ Vol. 3:
+ Vol. 4:
+ Vol. 5:
+ Vol. 6:
+                          IE
+            The Riemann zeta function and related themes
+            Formal language aspects of natural computing
+            Commutative algebra and combinatorics
+            Convexity in discrete structures
+            Number theory and discrete geometry
+ EV
+ Vol. 7:    Discrete mathematics
+ Vol. 8:    Lectures on operator theory
+ Vol. 9:    Essays on geometric group theory
+ Vol. 10:   Techmüller theory and moduli problems
+ Vol. 11:   Perspectives in geometry and topology
+ Vol. 12:   The Iwasawa theory of totally real fields
+ Vol. 13:   Advances in discrete mathematics and applications
+PR
+
+
+ Vol. 14:   Ramanujan Rediscovered
+ Vol. 15:   Number Theory
+ Vol. 16:   Symmetry: A Multi-Disciplinary Perspective
+             Ramanujan Mathematical Society
+
+             Lecture Notes Series
+                          Volume 14
+
+
+
+
+                                       W
+ Ramanujan Rediscovered
+         Proceedings of a Conference on Elliptic
+          Functions, Partitions, and q-Series in
+        Memory of K. Venkatachaliengar, Bangalore,
+
+
+                    IE June 2009
+ EV
+                         Volume editors
+         Bruce C. Berndt (University of Illinois at Urbana)
+ Shaun Cooper (Massey University, Albany, Auckland, New Zealand)
+PR
+
+
+    Nayandeep Deka (Baruah, Tezpur University, Assam, India)
+          Tim Huber (University of Texas Pan-American)
+        Michael J. Schlosser (University of Vienna, Austria)
+
+
+
+
+                       International Press
+                       www.intlpress.com
+ Ramanujan Mathematical Society
+ Lecture Notes Series, Volume 14
+ Ramanujan Rediscovered
+
+ Volume editors:
+ Bruce C. Berndt (University of Illinois at Urbana)
+ Shaun Cooper (Massey University, Albany, Auckland, New Zealand)
+ Nayandeep Deka (Baruah, Tezpur University, Assam, India)
+ Tim Huber (University of Texas Pan-American)
+ Michael J. Schlosser (University of Vienna, Austria)
+
+
+
+
+                                                    W
+                              IE
+ Copyright © 2010 by the Ramanujan Mathematical Society, Mysore, India.
+
+ Published in 2012 by International Press, Somerville, Massachusetts, U.S.A. under license
+ from the Ramanujan Mathematical Society.
+
+ This work is also published in the Republic of India, exclusively by the Ramanujan
+ EV
+ Mathematical Society.
+
+ All rights reserved. Individual readers of this publication, and non-profit libraries acting
+ for them, are permitted to make fair use of the material, such as to copy a chapter for use
+ in teaching or research. Permission is granted to quote brief passages from this publica-
+ tion in reviews, provided the customary acknowledgement of the source is given. Repub-
+ lication, systematic copying, or mass reproduction of any material in this publication is
+ permitted only under license from the Ramanujan Mathematical Society. Excluded from
+ these provisions is material in articles to which the author holds the copyright. (If the
+ author holds copyright, notice of this will be given with article.) In such cases, requests
+ for permission to use or reprint should be addressed directly to the author.
+PR
+
+
+ ISBN: 978-1-57146-245-9
+
+ Printed in the United States of America.
+
+ 16 15 14 13 12         123456789
+                                      Preface
+
+
+ On 1–5 June, 2009, a conference in number theory was held on the beautiful campus
+ of Infosys in Bangalore. The impetus for organizing this meeting was to recognize
+
+
+
+
+                                                 W
+ and commemorate K. Venkatachaliengar, an outstanding, well-known mathematician,
+ who taught primarily at universities in Bangalore and Mysore for most of his career.
+ He was born on 8 December, 1908, and so the meeting marked the centenary of
+ Venkatachaliengar’s birth. In the last several decades of his long life of 95 years, KV,
+ as he was affectionately known to most of his friends, had become keenly interested
+ in the life and work of India’s greatest mathematician, Srinivasa Ramanujan, and so it
+
+
+
+                             IE
+ was natural for Ramanujan’s ﬁrst loves of theta functions, partitions, and q-series to
+ be the focus of the conference. Accordingly, over 50 mathematicians gathered for the
+ presentation of 32 lectures in memory of both Ramanujan and KV. This volume com-
+ prises 13 papers by mathematicians who lectured at the meeting. In addition, three
+ papers on the life and work of KV, along with a complete list of his publications, are
+ offered.
+    All the participants, especially the organizers, are extremely grateful to Infosys
+ EV
+ Corporation for making available its exceptional facilities, staff, and ﬁnancial support
+ for the conference. The International Institute of Information Technology, Bangalore,
+ and especially its Director, Professor Sadagopan, deserve our warm thanks for their
+ generous support. Lastly, it is a pleasure to acknowledge the muniﬁcent ﬁnancial
+ support of the Indian Mathematical Society.
+PR
+PR
+  EV
+     IE
+       W
+                                   Foreword
+
+ To commemorate the birth centenary of Prof. K. Venkatachaliengar, an Interna-
+ tional Conference “Ramanujan Rediscovered” was held at Infosys, Bangalore on
+
+
+
+
+                                                 W
+ June 1–5, 2009. It was jointly organized by the International Institute of Information
+ Technology, Bangalore and the Indian Mathematical Society. The Conference was
+ inaugurated with the lighting of the traditional lamp by Professors S. Sadagopan
+ (Director, IIIT, Bangalore), B. C. Berndt (co-chair, University of Illinois at Urbana-
+ Champaign, USA), A. K. Agarwal (co-chair, Panjab University, Chandigarh),
+ Ravichandran (Indian Institute of Management, Indore), Mr. Dinesh (Infosys) and
+ Mr. Srikantan Moorthy (VP, Infosys). In their inaugural speeches, the speakers high-
+
+
+
+                            IE
+ lighted the mathematical contributions of S. Ramanujan and K. Venkatachaliengar.
+ The inauguration function was followed by three keynote addresses delivered by
+ Professors B. C. Berndt, A. K. Agarwal and Ravichandran. After the keynote
+ addresses Professor A. K. Agarwal gave a talk on the history, objectives and activities
+ of the Indian Mathematical Society.
+    In all there were about 250 participants. There was a large number of overseas par-
+ EV
+ ticipants. Prof. G. N. Srinivasa Prasanna, IIIT, B was the convener of the Conference.
+ There were two parallel sessions-one for mathematics and the other for Information
+ Technology (IT). In mathematics, the main topics discussed were: elliptic functions,
+ q-series, partitions and related number theory and in IT session the main topics
+ covered were: discrete mathematics, game theory, bioinformatives, optimization tech-
+ niques and formal methods in software engineering. There were 18 invited speakers
+ in mathematics session and 7 in IT session. There were about 10 contributed talks and
+ 4 poster presentations in mathematics session.
+    On the ﬁrst day of the Conference a ﬁlm “God, Zero and Inﬁnity” on Ramanujan’s
+ story was screened in the evening. The ﬁlm directed by Santosh Dhavala and narrated
+PR
+
+
+ by Tom Alter was liked by all participants. The other highlights of the Conference
+ were: (1) a skype session on June 3 in which Prof. Zhi-Guo Liu presented his paper as
+ he could not attend the Conference physically, (2) a cultural program and a banquet at
+ Manipal County in the evening of June 3, and (3) on June 4, Prof. S. Sadagopan met
+ all the participants over a cup of tea and presented them momentos. The Conference
+ was concluded on June 5 with a popular talk on Ramanujan by Prof. B. C. Berndt.
+    In my opinion the Conference was very stimulating and indeed achieved its goals.
+ The proceedings of the conference will be published by the Ramanujan Mathematical
+ Society in its Lecture Notes Series.
+
+                                                                Prof. A. K. Agarwal
+                                           Centre for Advanced Study in Mathematics
+                                         Panjab University, Chandigarh 160 014, India
+                                                                E-mail: aka@pu.ac.in
+  Members of the Advisory Board
+
+ R. Balasubramanian (IMSc, Chennai, India)
+
+
+
+
+                                  W
+ R. B. Bapat (ISI, Delhi, India)
+ Manjul Bhargava (Princeton U, NJ, USA)
+ J. H. Coates (Cambridge U, UK)
+ W. Goldman (U of Maryland, Md, USA)
+ G. Misra (IISc, Bangalore, India)
+ V. Kumar Murty (U of Toronto, Canada)
+
+
+
+               IE
+ M. S. Narasimhan (IISc, Bangalore, India)
+ Nitin Nitsure (TIFR, Mumbai, India)
+ Gopal Prasad (U of Michigan, Michigan, USA)
+ M. S. Raghunathan (TIFR, Mumbai, India)
+ S. S. Sane (U of Mumbai, India)
+ EV
+ V. D. Sharma (IIT (Bombay), Mumbai, India)
+ Alladi Sitaram (Formerly at ISI (Bangalore), India)
+ V. Srinivas (TIFR, Mumbai, India)
+ S. Thangavelu (IISc, Bangalore, India)
+ V. S. Varadarajan (UCLA, California, USA)
+ S. R. S. Varadhan (Courant Institute, New York, USA)
+ S. T. Yau (Harvard U, Mass, USA)
+PR
+ K. Venkatachaliengar
+
+           G. N. Srinivasa Prasanna1 and K. V. Venkataramu2
+           1 International Institute of Information Technology, Bangalore
+
+
+
+
+                                                       W
+           e-mail: gnsprasanna@iiitb.ac.in
+           2 Retd. Scientiﬁc Ofﬁcer, Department of Atomic Energy, Govt. of India
+           e-mail: venkataramu@yahoo.com
+
+
+
+ K. Venkatachaliengar (KVI) was born on 8 December 1908 in a small village called
+ Kadaba about sixty kilometers northwest of Bangalore. He was the last of four
+
+
+
+                               IE
+ brothers and two sisters all born to K. Venkatarama Iyengar (father) and Venkata-
+ laxamma (mother). He lost his mother when he was still a toddler and thus missed
+ motherly love. His father was a farmer by profession and was well read.
+    From early childhood, KVI showed great aptitude at studies, and his only limitation
+ was lack of books and learned teachers in the small village. When he was around ten
+ years his father also passed away and the burden of raising the family was thrust on
+ the young shoulders of his elder brother, K. Anantha Char. After completing primary
+ EV
+ schooling in Kadaba, he continued his higher schooling in Tumkur and Bangalore.
+ He was always at the top of his class and, apart from brilliance at mathematics, had
+ great liking for the classics and Kannada language.
+    After the school ﬁnal, he entered the Central College, and all his student
+ colleagues and teachers alike immediately took note of his extraordinary talents.
+ At this time, it is pertinent to note that generally the standards of mathematics among
+ the Indian universities were very low, and teaching was like school teaching and
+ research unknown.
+    Luckily for KVI, he had as teachers two very bright mathematicians,
+PR
+
+
+ Prof. K. S. K. Iyengar and Prof. B. S. Madhava Rao, who were his seniors by a few
+ years. Prof. KSK probably had studied in Cambridge and was very proﬁcient in
+ pure mathematics. Prof. B. S. Madhava Rao had completed his Masters from the
+ Calcutta University and was more inclined towards applied mathematics and theo-
+ retical physics. Along with these teachers, he also had a senior fellow student, also
+ very talented in mathematics, V. R. Tiruvenkatachar. It was very lucky for univer-
+ sity mathematics in India that a very talented quartet was in the Central College as
+ contemporaries. Abundant talents they had in mathematics but soon they learnt that
+ the books in modern pure mathematics were not in English but mostly in French and
+ German. India, being a British colony, usually had books only from England and in
+ English. This quartet immediately went about repairing this sad state of affairs and
+ started getting books to learn French and German from the continent. They self-
+ acquired reading ability in these languages and subsequently started getting from
+ the continent works of the great mathematicians of the French and German schools.
+
+                                                                                     vii
+ viii           G. N. Srinivasa Prasanna and K. V. Venkataramu
+
+ Combined with their innate brilliance and studying the great French and German
+ works, they entered eagerly to pursue research and teaching of mathematics. They
+ were even conducting courses in French and German for mathematics students!
+    After completing his B.Sc. (Hons) from the Central college, KVI went to Calcutta
+ University for his Masters. Here his mathematical brilliance was immediately noticed
+ by his teachers. During his time in Calcutta, an incident is worth recording. A British
+ gentleman, who was good at mathematics, proposed a hard problem regarding some
+ property of a triangle (the famous Morley Trisector Theorem) and remarked that it
+
+
+
+
+                                                  W
+ was beyond the ability of Indian students to solve. When KVI heard of this in the
+ evening, he solved the same before going to bed and gave two different solutions the
+ next morning!
+    KVI completed his Masters and as usual stood ﬁrst. Some years later, he also
+ obtained his D.Sc. from the Calcutta University. The thesis examiners for his
+ D.Sc. thesis were Hermann Weyl, Garrett Birkhoff and F. W. Levi. Weyl went out of
+ his way to praise the thesis and predicted a bright future for the candidate.
+
+
+
+                             IE
+    When he returned to Bangalore after his Masters, the immediate problem was get-
+ ting a job. Since in those days the number of positions was rigidly ﬁxed, one had to
+ wait for the retirement of a senior member before one could get a job! For some time,
+ KVI worked as a lecturer in a private college in Belgaum.
+    KVI had known Sir C. V. Raman probably even from Calcutta days and when
+ Sir C. V. Raman was the director of the Indian Institute of Science, he ﬁnally offered
+ some position to KVI at the Indian Institute of Science, with a salary around Rs. 80/-
+ EV
+ per month, a princely sum in those days. The ﬁrst task Sir C. V. Raman assigned KVI
+ was to conduct a course on integral equations at the Institute. During this time, KVI
+ also worked out the mathematical theory of some problem connected with a vibrating
+ string which had attracted the interest of Sir C. V. Raman, and a detailed paper resulted
+ from this. Most of this was during World War II, during which time Max Born was
+ also at the Indian Institute of Science.
+    KVI ﬁnally got a proper teaching job at the Central College after a vacancy arose.
+ Here he had the excellent company of the other three mathematicians (KSK, BSMR,
+ and VRT), and they started courses of high standard in modern mathematics and built
+PR
+
+
+ up an excellent library. This was also the golden age of their research work. Since, for-
+ tunately, four of them were there, they collaborated on many problems and a number
+ of papers of the highest standard followed. KSK passed away early around the 1940’s,
+ but the other three carried on their work vigorously and went on publishing results.
+ One such was on particle spins and was published in the Proceedings of the Royal
+ Society in 1946 [1].
+    Unfortunately, due to a variety of reasons, this collaborative work was put to an
+ end, due to KVI being transferred out of Bangalore to a nearby small town called
+ Tumkur, where only junior classes were held. In spite of lacking good students of
+ senior classes and a library, KVI went about his research work ceaselessly. In the
+ Tumkur College where he had been posted, he was actively looking for some talented
+ students to teach some advanced mathematics. Luckily for him he found a fellow
+ physics lecturer, K. N. Srinivasa Rao, who showed some mathematical ability. KVI
+                                                    K. Venkatachaliengar             ix
+
+ immediately caught on to him and started a course for his colleague. Finding that
+ he had not learnt group theory, he ﬁrst taught him group theory and then complex
+ variables, etc. After ﬁnding that Srinivasa Rao was very sincere and learnt all his
+ teaching well, around 1948–50, he managed to get him a fellowship from the Council
+ of Scientiﬁc and Industrial Research. This allowed KNS to devote all his time for
+ mathematical studies under KVI without the burden of teaching students elementary
+ physics at the college. This happened when both were posted to a college in Mysore.
+    In 1953, KVI was transferred back to Bangalore and this time to the Engineer-
+
+
+
+
+                                                 W
+ ing college. Since there were no postgraduate courses here, to satisfy his intellec-
+ tual prowess, he introduced advanced mathematics for those students who showed an
+ above average interest in mathematics. This was besides the normal curriculum.
+    Around 1962, the University of Mysore created a postgraduate centre in Mysore
+ called Manasa Gangothri, and KVI moved there as the head of the department. Here
+ again he started building a proper library and introduced many advanced subjects
+ such as abstract algebra, etc. After reaching the age of 58, he retired in 1966 from
+
+
+
+                            IE
+ the University of Mysore and settled down in Bangalore. Here he had the company
+ of his earlier collaborators Prof. B. S. Madhava Rao and Prof. V. R. Tiruvenkatachar.
+ For two years, he served as an emeritus professor at Madurai University, teaching
+ advanced courses to the faculty there. The following is worth mentioning here. One
+ of the faculty members told him that he was stuck on some problem connected with
+ Krull algebra. KVI on the spot proved the necessary result, and this was submitted as a
+ paper in a special volume of a journal in honour of Prof. Krull. Prof. Krull personally
+ EV
+ wrote a letter of appreciation.
+    During this time, Prof. KVI was also associated with the National Council for
+ Educational Research and Training, and heading the geometry study group. He made
+ geometry exciting for youngsters, by having plastic stick models of polyhedra made.
+ These, and the wooden models of complex topological surfaces, made during his
+ Central College days (1940–50’s) by a master carpenter Giriappa, can be used for
+ teaching at all levels. For example, counting can be taught to a child, trigonometry to
+ middle and high school students, and graph colouring and group theory to Ph.D. level
+ candidates. The topological surfaces reﬂect some of the deepest aspects of topology,
+PR
+
+
+ including non-Euclidean relativistic geometries. This material has been donated to the
+ International Institute of Information Technology, Bangalore, and is on display there.
+    When he was past 50, he noticed that mathematical books could be procured from
+ the USSR through some specialized book stores specializing in USSR books. Since
+ these could be obtained at rock bottom prices which he could afford, he started teach-
+ ing himself enough Russian to understand mathematics in Russian.
+    At this time Prof. B. S. Madhava Rao was in his house in South Bangalore, and
+ Prof. V. R. Tiruvenkatachar lived near KVI’s house. KVI and Prof. V. R. Tiruvenkat-
+ achar used to go for walks in the mornings and evenings discussing mathematics as
+ usual. They used to visit Prof. B. S. Madhava Rao around once every few months.
+    After his retirement, KVI decided to devote most of his energies on Ramanujan’s
+ life and works. This culminated in his beautiful book, Development of Elliptic Func-
+ tions According to Ramanujan, which has been described in detail elsewhere in this
+ volume.
+ x           G. N. Srinivasa Prasanna and K. V. Venkataramu
+
+    In 1977, Bruce Berndt began to devote all of his research efforts toward proving
+ the claims left behind by Ramanujan in notebooks that he compiled before heading
+ to Cambridge. After the publication of Berndt’s ﬁrst volumes on Ramanujan, KVI
+ was very happy, and told Berndt that this appeared to be the only example where all
+ the work, including unpublished work, of a great mathematician is being critically
+ examined.
+    Being a born-mathematician, KVI always breathed and lived mathematics. When-
+ ever he sat down to dinner, he never failed to scribble mathematics on his dinner plate.
+
+
+
+
+                                                 W
+ His wife had to disturb him from this so that he could be served. This trait was with
+ him throughout his life. More often than not, the scribbling included a triangle.
+    Around the 1960’s, he was requested by the then pontiff of the Parkala Mutt (Hindu
+ religious body) at Mysore, who was a very great scholar, to become the president of
+ the Mutt for some administrative duties. Since the request came from a great seer,
+ KVI accepted it, even though he had until then never taken part in any such organized
+ cultural activity. Once he accepted this task, he devoted his energies to it and started
+
+
+
+                             IE
+ learning certain portions of philosophy required by his duties. Due to his intellectual
+ acumen, he succeeded eminently and served the Swamiji (seer) and the Mutt with
+ utmost devotion.
+    The triangle remained his most endearing object spanning his entire life. He had a
+ great liking to imbibe mathematics into any willing child or young person. The elliptic
+ functions and lots of other mathematics were ﬁrst taught to his grandson – of course it
+ went well above the young child’s (between 7–15 years of age) head. He also taught
+ EV
+ his grandson the “Morley-Trisector Theorem.” His grandson was inspired enough and
+ learnt enough about the construction to do it during one evening when he had gone for
+ a walk, and showed it to him when he returned with great pride. KVI taught all this,
+ plus trigonometry, Gauss polynomials, complex variables, especially using Hurwitz’s
+ double series approach, etc. Some of this material is with his grandson in India and
+ the USA. He was especially happy when his great-granddaughter Anagha gave him a
+ lecture on polyhedra!
+    Even though he walked the high roads of mathematics, he never in his whole life
+ felt any ‘pride’. He was always eager to teach any willing soul less endowed than
+PR
+
+
+ himself in mathematics.
+    In closing, we include below views of Prof. KVI from some of his former students:
+ Prof. Mahabala, a prominent Indian Computer Scientist; Prof. Prabhu, a control theo-
+ rist and former Head of Electrical Engineering at IIT-Kanpur; and Dr. Ramamani, his
+ Ph.D. student.
+
+
+
+ KV Fondly Remembered by Prof. H. N. Mahabala, IIITb
+ Prof. K. Venkatachala Iyengar was a young researcher’s delight. He would often recall
+ results of great mathematicians of the past. He did not like teaching routine math
+ courses to undergraduate students, but was transferred to an engineering college due
+ to departmental politics. His talent was wasted on disinterested engineering students.
+ At any opportunity, he would talk about great mathematicians and their work. Students
+                                                     K. Venkatachaliengar              xi
+
+ were perplexed. He would walk across to talk to graduate students where I was a
+ student studying for B.Sc. (Hons.) in mathematics. We were fascinated by his obses-
+ sion with mathematics. He would advise us to learn Russian, because Russian books
+ on advanced mathematics were sold very cheap! We heard from him about Bourbaki.
+ We were attracted to read Hardy’s book on Ramanujan.
+    At that time (1950’s) a scientiﬁc exposition was held, and who should organize the
+ maths exhibits, but KV. There were wooden models of interesting solids, made by a
+ carpenter under his close direction, which we volunteers had to explain. We found
+
+
+
+
+                                                  W
+ out to our great surprise that the circle was not the only curve with constant width.
+ He got constructed a model where one could roll the curve to check that it had constant
+ width. We had wire frames to demonstrate minimal surfaces using soap ﬁlms. We had
+ to prepare a soap solution using oxalic acid and some other ingredients. We enjoyed
+ confounding the visitors with minimal surfaces, in particular using the cube frame.
+ We found out how interesting mathematics can be. We wrote in big letters the digits
+ of pi accurate to some 600 digits and ﬁxed it along the wall for visitors to check
+
+
+
+                             IE
+ that pi was a non-repeating irrational number. The lattice components were developed
+ later. He would train us on how to explain mathematics and would frequently call
+ us “Hopeless Fellows,” all with a smirk on his face. He breathed mathematics and
+ explained in an excited way about great results in mathematics. We set up a 5-inch
+ telescope and showed the moon and Saturn to long queues of people. It is surprising
+ that he was the only faculty member who helped us put up a good show. His complete
+ disregard for every day etiquette and lack of interest in things other than mathematics
+ EV
+ made him a poor conversationalist though.
+    I am proud that IIITb celebrated KV’s centenary, with many Ramanujan enthusiasts
+ around the world participating.
+
+
+
+ Professor K. Venkatachaliengar by Prof. Prabhu
+ It was the academic year 1958–1959. I was a third year Electrical (Power) Engineering
+ student in the Bachelor of Engineering course in the Government College of Engineer-
+PR
+
+
+ ing, Bangalore. It was a traditional course. It dealt mainly with engineering practice of
+ those days. Much of it was descriptive. Engineering education was poised to undergo
+ radical changes. It was already happening in the advanced countries. Our batch of
+ students were lucky. The university had started taking a few tentative steps to usher in
+ refreshing changes. We were offered a new curriculum which had incorporated some
+ small, but signiﬁcant, changes to the old curriculum. One aspect of it was to offer us
+ two elective courses, one in electronics and radio engineering, and the other in mathe-
+ matics. We were extraordinarily lucky in getting Professor Venkatachaliengar as our
+ mathematics teacher. He taught us the theory of complex variables.
+    Mathematics was not given much importance earlier in engineering curricula. Now,
+ of course, everybody knows the importance of a good mathematical foundation to
+ build the superstructure of engineering knowledge and ability.
+    For Professor Venkatachaliengar, who was an outstanding mathematician, spend-
+ ing time teaching undergraduate engineering students, rather than guiding research
+ xii           G. N. Srinivasa Prasanna and K. V. Venkataramu
+
+ work of gifted mathematics students, must have been a difﬁcult experience. He was
+ a mathematics teacher in a government run system, and had been posted to an engi-
+ neering college. It must have been highly demoralizing and depressing for him. But
+ his behavior did not indicate anything of this. He was one of the best teachers I have
+ ever had. Always full of energy, he had a child-like ability to get thrilled with ideas
+ and insights, and was ever ready to share his knowledge. It was just a blackboard and
+ a piece of chalk; but what an experience they wrought through the hands of Professor
+ Venkatachaliengar!
+
+
+
+
+                                                   W
+    It was only later, much later, that I realized the value of what we had gained as
+ students of Professor Venkatachaliengar. He made a big difference to us. He taught us
+ deep things. He taught us that no matter what the circumstances in your life may be, as
+ a teacher you should always be ever enthusiastic and dedicated towards your students.
+
+
+ A Brief Reminiscence by Dr. V. Ramamani
+
+
+
+                              IE
+ Scientist, Defence Research and Development Organization (Retd.)
+ My association with Prof. KV was a long one – for over 40 years. I was a postgraduate
+ student of Prof. KV during 1961–63. Thereafter, I continued as a research scholar and
+ did a Ph.D. under his able guidance. However, I continued to meet him. Whatever
+ knowledge I gained in his association is a valuable one. Prof. KV was a versatile
+ EV
+ scholar both in pure and applied mathematics. But his love for S. Ramanujan was
+ unique. He was devoting a lot his time in solving problems found in the note books
+ of S. Ramanujan. His other favorite subjects were ancient Indian mathematics and
+ astronomy. Prof. KV was a simple and a straightforward person and never hesitated to
+ express his opinion. He expected hard work from his students and encouraged them
+ whenever they did good work.
+    Prof. KV was a voracious reader and knowledgeable in varied ﬁelds. I had the
+ opportunity and privilege to meet him on numerous occasions and during every visit
+ I learned something from him. It was a treat to listen to him.
+PR
+
+
+ References
+ [1] B. S. Madhava Rao, V. R. Thiruvenkatachar, and K. Venkatachaliengar, Algebra related to
+     elementary particles of spin 32 , Proc. Roy. Soc. London, Ser. A., 187 (1946) 385–397.
+ K. Venkatachaliengar
+
+            Bruce C. Berndt
+
+            Department of Mathematics, University of Illinois, 1409 West Green Street, Urbana,
+
+
+
+
+                                                           W
+            IL 61801, USA
+            e-mail: berndt@illinois.edu
+
+
+
+ During the period from 1985 to 1994, the author received at least nine lengthy letters
+ from Venkatachaliengar. The ﬁrst, written on 15 July 1985, came in response to recei-
+ ving a copy of the author’s ﬁrst book on Ramanujan’s notebooks [4], which the author
+
+
+
+                                  IE
+ had earlier sent to Venkatachaliengar. In order to set the context of a long passage that
+ we are going to quote from this letter, we need to recall a brief history of Ramanujan’s
+ Quarterly Reports.
+    On 26 February 1913, Sir Gilbert Walker, Head of the Meteorological Observatory
+ in Madras, sent a letter to Francis Dewsbury, Registrar at the University of Madras,
+ exhorting the University to provide Ramanujan with a scholarship. On 1 May 1913,
+ Ramanujan was granted such a scholarship with the stipulation that he write Quar-
+ EV
+ terly Reports on his research activity. Before departing for England in March of 1914,
+ Ramanujan wrote three reports, dated 5 August 1913, 7 November 1913, and 9 March
+ 1914. An account of these reports may be found in the author’s book [4] or his papers
+ [2,3]. In his ﬁrst letter to the author, Venkatachaliengar provided an account of the
+ deliberations that took place before the scholarship was approved. In the quote below,
+ S. R. is an abbreviation for Srinivasa Ramanujan.
+
+            The English professors in Madras headed by Littlehailes stoutly opposed
+            the grant of a research scholarship to S. R. although the Board of Studies in
+PR
+
+
+            Mathematics in Madras University consisting of a majority of Indian pro-
+            fessors had recommend[ed] the award at the suggestion of the competent
+            distinguished mathematician G. Walker. The Indian professors were appre-
+            hensive; the vice-chancellor was the chief justice of the Madras High Court
+            who was appointed directly by the Secretary of State of India (India ofﬁce,
+            London). One of the members of the Syndicate of the Madras Univ. was
+            Justice Sundaram Iyer of the Madras High Court who had been briefed by
+            the Indian professors; at the meeting of the Syndicate all the English Profs.
+            opposed the proposal with all their vehement speeches. After all of them
+            had talked out their breath, Justice Sundaram Iyer stood up and read out
+            the preamble to Madras University act passed by the British Parliament in
+            London: The Madras University is founded to promote learning and encour-
+            age research . . . . The English Chief Justice was told that nothing had been
+ Research partially supported by grant H98230-07-1-0088 from the National Security Agency.
+
+                                                                                                 xiii
+ xiv           Bruce C. Berndt
+
+           done by the Univ. till that time to encourage research and he immediately
+           stiﬂed the opposition and made the recommendation to the Governor of
+           Madras Lord Pentland, who was also a direct appointee of the British Govt.
+           Even with this there was a hitch; and Sir Francis Spring wrote a letter to the
+           private secretary of the Governor strongly recommending the case. After
+           S. R. became famous, Prof. Littlehailes used to take S. R. in the sidecar of
+           his motorbike. His Indian colleagues were having a hearty laugh. This was
+           narrated to me by late Prof. S. R. Ranganathan, who had written a book
+
+
+
+
+                                                 W
+           on S. R.
+
+    Descriptions of events leading to Ramanujan’s scholarship vary somewhat; see for
+ example, [17] and [4, p. 295]. Venkatachaliengar’s account highlights the objections
+ of English mathematicians, in particular Littlehailes. In one of the two Presidential
+ addresses [20] that Venkatachliengar gave before the Indian Mathematical Society,
+ he pointed out that this was the ﬁrst research scholarship awarded by the University
+
+
+
+
+                            IE
+ some 50 years after the British Parliament had passed the Act. Sir Francis Spring
+ was the Chairman of the Madras Port Trust Ofﬁce where Ramanujan served as a
+ clerk, and was one of Ramanujan’s earliest and most devoted supporters. Ranganathan
+ was Librarian at the University of Madras and wrote the ﬁrst thorough biography of
+ Ramanujan [17]. He is also famous in the ﬁeld of library science and is considered
+ to be one of the founders of modern library science. Littlehailes was Professor of
+ Mathematics at Presidency College in Madras and later became Vice-Chancellor of
+ EV
+ the University of Madras; more information about him can be found in [6].
+    In his visits to India, the author can recall three long conversations with
+ Venkatachaliengar. Although our conversations were chieﬂy about mathematics, in
+ particular, about modular equations, he would often relate interesting facts about
+ Indian mathematics and mathematicians, including Ramanujan, over a broad expanse
+ of the twentieth century. It is unfortunate that portions of these conversations were
+ not recorded for posterity.
+    An examination of the bibliography of Venkatachaliengar shows a broad stretch
+ of interests. For roughly the ﬁrst half of his career, Venkatachaliengar’s inter-
+PR
+
+
+ ests were algebraic, covering a wide variety of topics. In the second half of his
+ career, his interests took on a more analytic bent, and he became fascinated with
+ the work of Ramanujan. Although he published few papers on Ramanujan’s work,
+ his passion for Ramanujan was evident in his two Presidential addresses to the
+ Indian Mathematical Society [20], his highly original monograph on Ramanujan’s
+ discoveries in elliptic functions [21], and his unpublished, handwritten mono-
+ graph on selected results from Ramanujan’s work that he coauthored with his
+ close friend V. R. Thiruvenkatachar [19]. We offer a few remarks about some of
+ Venkatachaliengar’s publications.
+    Venkatachaliengar’s monograph [21] is thoroughly reviewed by S. Cooper else-
+ where in this volume. A corrected, edited, and more widely distributed edition of this
+ work is greatly desired.
+    A typed version of [19] has been made by M. D. Hirschhorn. This will be the
+ starting point of an edited version that is being undertaken by the present author
+                                                     K. Venkatachaliengar               xv
+
+ and several of his graduate students, and which will be published by the Ramanujan
+ Mathematical Society.
+    Readers might be interested in the origin of the author’s paper [7] with
+ Venkatachaliengar. In early 1999, the author visited the University of Mysore, and
+ one of his hosts, Professor S. Bhargava, accompanied him to the home of retired
+ University of Mysore Professor T. S. Nanjundiah, who presented the author with
+ a handwritten partial manuscript of a paper that he had once started to write with
+ Venkatachaliengar. Although the Dedekind eta-function η(τ ) was not mentioned in
+
+
+
+
+                                                  W
+ this partial manuscript, the intended authors had very cleverly derived the trans-
+ formation formula for η(τ ). Nanjundiah demurred about his own contributions to
+ the paper, and so eventually with the gracious accedence of both Nanjundiah and
+ Venkatachaliengar, the present author added a few minor contributions of his own
+ and coauthored [7] with the latter. Readers might turn to the paper by the author,
+ C. Gugg, S. Kongsiriwong, and J. Thiel [5] in this volume, where they will ﬁnd
+ Venkatachaliengar’s ingenious idea generalized.
+
+
+
+                             IE
+    Venkatachaliengar supervised the doctoral dissertation of only one student,
+ V. Ramamani [12]. In her beautiful thesis, she extended some of the ideas from
+ Ramanujan’s epic paper [14]. Two of the author’s doctoral students, Heekyoung
+ Hahn and Tim Huber, in turn used her work in their own research, [8,9] and [11],
+ respectively.
+    Ramamani and Venkatachaliengar coauthored [13], which, for the present author,
+ has been the latter’s most inﬂuential paper, for he has lectured on its content in his
+ EV
+ classes and seminars. Recall ﬁrst a famous theorem of Euler on partitions: The number
+ of partitions of the positive integer n into odd parts is equal to the number of parti-
+ tions of n into distinct parts. J. J. Sylvester [18] gave a beautiful extension of Euler’s
+ theorem in 1884, and Ramamani and Venkatachaliengar provided an elegant proof in
+ [13], which one can ﬁnd in the text by G. E. Andrews [1, pp. 24–25] and which moti-
+ vated a further proof by M .D. Hirschhorn [10]. We state Sylvester’s theorem.
+ Theorem 1. Let Ak (n) denote the number of partitions of the positive integer n into
+ odd parts such that exactly k different parts occur. Let Bk (n) denote the number of
+ partitions λ = (λ1 , . . . , λr ) of n, where λi ≥ λi+1 and 1 ≤ i ≤ r − 1, such that the
+PR
+
+
+ sequence (λ1 , . . . , λr ) is composed of exactly k noncontiguous sequences of one or
+ more consecutive integers. Then Ak (n) = Bk (n), for all k and n.
+    As intimated above, Venkatachaliengar served as President of the Indian Mathe-
+ matical Society for two years. In his two addresses to the Society [20], he urged Indian
+ mathematicians to study Ramanujan’s (earlier) notebooks [15] and lost notebook [16].
+ In particular, he focused on particular examples from the lost notebook and his proofs
+ of them. He also discussed the manuscripts of Ramanujan that were found in the
+ library at Oxford University and published with Ramanujan’s lost notebook [16].
+
+
+ References
+  [1] G. E. Andrews, The Theory of Partitions, Addison–Wesley, Reading, MA, 1976; reissued:
+      Cambridge University Press, Cambridge (1998).
+ xvi             Bruce C. Berndt
+
+  [2] B. C. Berndt, The quarterly reports of S. Ramanujan, Amer. Math. Monthly, 90 (1983)
+      505–516.
+  [3] B. C. Berndt, Ramanujan’s quarterly reports, Bull. London Math. Soc., 16 (1984)
+      449–489.
+  [4] B. C. Berndt, Ramanujan’s Notebooks, Part I, Springer-Verlag, New York (1985).
+  [5] B. C. Berndt C. Gugg, S. Kongsiriwong and J. Thiel, A proof of the general theta trans-
+      formation formula, this volume, pp. 53–62.
+  [6] B. C. Berndt and R. A. Rankin, Ramanujan: Letters and Commentary, American Mathe-
+      matical Society, Providence, RI, 1995; London Mathematical Society, London (1995).
+  [7] B. C. Berndt and K. Venkatachaliengar, On the transformation formula for the Dedekind
+
+
+
+
+                                                       W
+      eta-function, in Symbolic Computation, Number Theory, Special Functions, Physics
+      and Combinatorics, F. G. Garvan and M. E. H. Ismail, eds., Kluwer, Dordrecht (2001)
+      pp. 73–77.
+  [8] H. Hahn, Convolution sums of some functions on divisors, Rocky Mt. J. Math., 37 (2007)
+      315–344.
+  [9] H. Hahn, Eisenstein series associated with 0 (2), Ramanujan J., 15 (2008) 235–257.
+ [10] M. D. Hirschhorn, Sylvester’s partition theorem and a related result, Michigan Math. J.,
+      21 (1975) 133–136.
+
+
+
+                                IE
+ [11] T. Huber, Zeros of Generalized Rogers–Ramanujan Series and Topics from Ramanujan’s
+      Theory of Elliptic Functions, Ph.D. thesis, University of Illinois at Urbana–Champaign,
+      Urbana (2007).
+ [12] V. Ramamani, Some Identities Conjectured by Srinivasa Ramanujan Found in His Litho-
+      graphed Notes Connected with Partition Theory and Elliptic Modular Functions – Their
+      Proofs – Interconnection with Various Other Topics in the Theory of Numbers and Some
+      Generalisations Thereon, Ph.D. thesis, University of Mysore, Mysore (1970).
+ EV
+ [13] V. Ramamani and K. Venkatachaliengar, On a partition theorem of Sylvester, Michigan
+      Math. J., 19 (1972) 137–140.
+ [14] S. Ramanujan, On certain arithmetical functions, Trans. Cambridge Philos. Soc., 22
+      (1916) 159–184.
+ [15] S. Ramanujan, Notebooks (2 volumes), Tata Institute of Fundamental Research, Bombay
+      (1957).
+ [16] S. Ramanujan, The Lost Notebook and Other Unpublished Papers, Narosa, New Delhi
+      (1988).
+ [17] S. R. Ranganathan, Ramanujan: The Man and the Mathematician, Asia Publishing House,
+      Bombay (1967).
+ [18] J. J. Sylvester, A constructive theory of partitions arranged in three acts, an interact, and
+PR
+
+
+      an exodion, Amer. J. Math., 5 (1884) 251–330; 6 (1886) 334–336.
+ [19] V. R. Thiruvenkatachar and K. Venkatachaliengar, Ramanujan at Elementary Levels:
+      Glimpses, Unpublished handwritten notes.
+ [20] K. Venkatachaliengar, Ramanujan Manuscripts, I, II, Presidential Addresses given in
+      December 1979, 1980 to the Indian Mathematical Society, Math. Student, 52 (1984) 1–4;
+      215–233.
+ [21] K. Venkatachaliengar, Development of Elliptic Functions According to Ramanujan,
+      Tech. Rep. 2, Madurai Kamaraj University, Madurai (1988).
+ A Review of Venkatachaliengar’s Book on Elliptic Functions
+
+              Shaun Cooper
+
+              Institute of Information and Mathematical Sciences, Massey University-Albany,
+
+
+
+
+                                                               W
+              Private Bag 102904, North Shore Mail Centre, Auckland, New Zealand
+              e-mail: s.cooper@massey.ac.nz
+
+
+
+
+ 1. Introduction
+
+
+                                    IE
+ One of the things Professor K. Venkatachaliengar is best remembered for is his book:
+ “Development of Elliptic Functions according to Ramanujan”, published by Madurai
+ Kamaraj University in 19881 . In this review we shall survey several of the topics
+ covered in the book and discuss some of the methods and ideas.
+    We will deliberately be brief and not go too heavily into the details. The exception
+ is in Section 4, where a complete proof of Ramanujan’s 1 ψ1 summation formula, due
+ EV
+ to Venkatachaliengar, is given.
+    Throughout this review, τ will always be a complex number with positive imaginary
+ part, and q = exp(2πiτ ), so that |q| < 1. Occasionally, reference will be made to
+ the Weierstrassian functions ℘, ζ , and σ , and the Weierstrassian invariants g2 and g3 .
+ Deﬁnitions and all of the main properties of the Weierstrassian functions can be found
+ in Chapter 20 of the book by Whittaker and Watson [42]. For this review, it should be
+ sufﬁcient to refer to the equations (13)–(16), (49) and (50), below.
+    The page numbers that appear in the section headings refer to Venkatachaliengar’s
+ book [39].
+PR
+
+
+ 2. A generalization of Ramanujan’s identity [pp. 1–13]
+ The ﬁrst part of Venkatachaliengar’s book takes much of its inspiration from
+ Ramanujan’s paper “On Certain Arithmetical Functions” [32]. Two of the fundamental
+ formulas in Ramanujan’s paper are
+ 1 There is no publication date in Venkatachaliengar’s book [39]. Dr. G. N. Srinivasa Prasanna has told me that
+ according to Professor Soundararajan of Madurai University, the book went to press in Dec. 1987 and was released
+ in Feb. 1988. This is consistent with information I have received from Professors R. A. Askey and B. C. Berndt.
+ The article [38], published in vol. 52 of The Mathematics Student, reports that Venkatachaliengar’s book was
+ published in 1980. This is most likely an error. For, although this volume of The Mathematics Student has a
+ publication year of 1984, MathSciNet indicates that it was not actually published until 1990. We conclude that
+ Venkatachaliengar’s book [39] must have been published in 1988.
+
+                                                                                                            xvii
+ xviii               Shaun Cooper
+         ⎛                                                 ⎞2
+                         ∞
+                         
+         ⎝ cot θ +
+          1                           qj
+                                                 sin j θ ⎠
+          4    2                    1−qj
+                             j =1
+                                2       ∞
+                                                                              ∞
+                     1     θ                        qj                 1  jq j
+             =         cot            +                      cos j θ +          (1 − cos j θ )        (1)
+                     4     2                     (1 − q j )2           2  1−qj
+                                          j =1                                j =1
+
+ and
+                     ⎛                                   ⎞2
+
+
+
+
+                                                                       W
+                                  ∞
+                                  
+                      1    θ
+                     ⎝ cot2 + 1      j q j
+                                +          (1 − cos j θ )⎠
+                      8    2 12     1−qj
+                                                      j =1
+                                                       2             ∞
+                                 1     θ  1                         1  j 3q j
+                         =         cot2 +                        +             (5 + cos j θ ).        (2)
+                                 8     2 12                        12  1−qj
+                                                                      j =1
+
+
+
+
+                                       IE
+ These identities are each valid in the horizontal strip |Im θ | < 2π Im τ , although all of
+ the functions involved have analytic continuations to functions that are meromorphic
+ on the complex plane.
+    The identities (1) and (2) can be expressed in terms of theta and elliptic functions,
+ as follows. It is easy to check that the theta function
+                                      ∞
+                                      
+ EV
+                                              q (2 j +1) /8 ei(2 j +1)θ/2 ,    where q = e−t ,
+                                                             2
+             u(θ, t) = −i
+                                      j =−∞
+
+ is a solution of the heat equation
+
+                                                           ∂u  ∂ 2u
+                                                       2      = 2.
+                                                           ∂t  ∂θ
+ Therefore, log u satisﬁes the non-linear partial differential equation
+                                   
+                             ∂ log u 2     ∂ log u     ∂ 2 log u
+PR
+
+
+                                       =2           −            .                                    (3)
+                               ∂θ             ∂t          ∂θ 2
+ By Jacobi’s triple product identity [5, p. 10] we have
+                                                      ∞
+                                                  θ
+                 u(θ, t) = 2q 1/8 sin                      (1 − q j eiθ )(1 − q j e−iθ )(1 − q j ).   (4)
+                                                  2
+                                                      j =1
+
+ In 1951, B. van der Pol [36] observed that if (4) is substituted into (3), the result is
+ Ramanujan’s identity (1). Moreover, if we apply the differential operator ∂/∂θ to (3)
+ and put w = −∂ log u/∂θ , the result simpliﬁes to Burgers’ equation [14]
+
+                                              ∂w    ∂w   1 ∂ 2w
+                                                 +w    =
+                                              ∂t    ∂θ   2 ∂θ 2
+ which has applications in ﬂuid mechanics.
+           A Review of Venkatachaliengar’s Book on Elliptic Functions                   xix
+
+   Ramanujan’s identity (2) may be shown to be equivalent to the identity
+                                                 1        g2
+                                 ℘ 2 (θ ) =        ℘ (θ ) +
+                                                 6          12
+ satisﬁed by the Weierstrass elliptic ℘ function, [42, p. 450].
+    Venkatachaliengar’s book begins with a generalization of Ramanujan’s identity (1).
+ Let ρ1 and ρ2 be the functions deﬁned by
+                     1  x n                                     1    q n x n
+
+
+
+
+                                                        W
+          ρ1 (x) =     +                  and ρ2 (x) = −            +               ,   (5)
+                     2   1 − qn                                  12     (1 − q n )2
+ where the primes denote that the summations are over all non-zero integers n.
+ These series converge in the annuli |q| < |x| < 1 and |q| < |x| < |q|−1 , respectively.
+ Venkatachaliengar’s identity is:
+
+          ρ1 (x)ρ1 (y) − ρ1 (x y) {ρ1 (x) + ρ1 (y)} = ρ2 (x) + ρ2 (y) + ρ2 (x y).       (6)
+
+
+
+                              IE
+ It may be proved by computing the coefﬁcient of x m y n on the left hand side and noting
+ that it simpliﬁes to zero unless n = 0, m = 0 or m = n. The non-zero terms give rise
+ to the three functions that occur on the right hand side of the identity.
+    The analytic continuation for ρ1 may be obtained as follows. We have
+
+                             1 
+                                ∞ 
+                                     xj      x− j
+                                                    
+ EV
+                     ρ1 (x) = +          +
+                             2      1−qj   1 − q− j
+                                  j =1
+
+                                      ∞ 
+                                                           
+                              1   x       q jx j   q j x− j
+                          =     +   +            −            .                         (7)
+                              2 1−x       1−qj     1−qj
+                                                 j =1
+
+ Expanding each term as a geometric series and interchanging the order of summation
+ in the resulting double series gives
+
+                                           ∞    ∞
+                             1+x
+PR
+
+
+                 ρ1 (x) =            +   (q j k x j − q j k x − j )
+                            2(1 − x)
+                                           j =1 k=1
+
+                                            ∞
+                           1+x           qk x       q k x −1
+                        =          +            −                              .        (8)
+                          2(1 − x)     1 − qk x   1 − q k x −1
+                                           k=1
+
+ Thus ρ1 (x) is analytic for 0 < |x| < ∞ except for simple poles at x = q k for every
+ integer k. In a similar way, we ﬁnd that
+
+                                        ∞
+                               1     kq k x     kq k x −1
+                     ρ2 (x) = − +            +                             ,            (9)
+                               12   1 − qk x   1 − q k x −1
+                                         k=1
+
+ and therefore ρ2 (x) is analytic for 0 < |x| < ∞ except for simple poles at x = q k for
+ every non-zero integer k.
+ xx             Shaun Cooper
+
+      From (8) and (9) we deduce the properties
+                       ρ1 (x) = −ρ1 (x −1 )   and ρ2 (x) = ρ2 (x −1 ).               (10)
+ Combining (6) and (10) we obtain the symmetric form
+            ρ1 (x)ρ1 (y) + ρ1 (y)ρ1 (z) + ρ1 (z)ρ1 (x) = ρ2 (x) + ρ2 (y) + ρ2 (z),   (11)
+ which holds for all complex numbers x, y and z that satisfy x yz = 1.
+    Venkatachaliengar shows how (11) can be used to deduce two forms of the addition
+
+
+
+
+                                                     W
+ formula for the Weierstrass elliptic ℘ function [42, pp. 440–441]:
+                                                  
+                                1 ℘  (α) − ℘  (β) 2
+                 ℘ (α + β) =                           − ℘ (α) − ℘ (β)          (12)
+                                4 ℘ (α) − ℘ (β)
+ and
+                     1       1         1
+                  ℘ (α) ℘ (β)       ℘ (γ ) = 0,       where α + β + γ = 0,
+
+
+
+                              IE
+                  ℘  (α) ℘  (β)   ℘  (γ )
+ as well as the differential equation [42, p. 437]
+                           (℘  (θ ))2 = 4℘ 3 (θ ) − g2 ℘ (θ ) − g3 .
+ Moreover, taking the limit as y → 1 in (6) gives
+ EV
+                           −ρ12 (x) + xρ1 (x) = 2ρ2 (x) + ρ2 (1).
+ Putting x = exp(iθ ) in this and appealing to (7), we obtain Ramanujan’s identity (1);
+ that is, Venkatachaliengar’s identities (6) and (11) are generalizations of Ramanujan’s
+ identity (1).
+
+
+ 3. Ramanujan’s Eisenstein series [pp. 15–18, 31–32]
+ Ramanujan’s Eisenstein series P, Q and R are deﬁned by
+                                                    ∞
+PR
+
+
+                                                            jq j
+                             P = P(q) = 1 − 24                    ,                  (13)
+                                                            1−qj
+                                                     j =1
+                                                      ∞
+                                                        j 3q j
+                            Q = Q(q) = 1 + 240                  ,                    (14)
+                                                        1−qj
+                                                      j =1
+                                                ∞
+                                                  j 5q j
+                             R = R(q) = 1 − 504           .                          (15)
+                                                  1−qj
+                                                      j =1
+
+ In terms of Weierstrassian parameters [42, pp. 437, 446], it turns out that
+                       12
+                  P(q) =  η1 , Q(q) = 12g2 and R(q) = 216g3 ,                    (16)
+                        π
+ where the corresponding Weierstrass elliptic function has periods 2π and 2π τ .
+             A Review of Venkatachaliengar’s Book on Elliptic Functions                   xxi
+
+    The series P, Q and R were favorites of Ramanujan. They were studied extensively
+ by him in the paper [32], in his second notebook [34] and in the lost notebook [35].
+ A survey of the Eisenstein series occurring in the lost notebook has been given by
+ B. C. Berndt and A. J. Yee [8].
+    The Eisenstein series (13)–(15) arise as coefﬁcients when the identities (1) and (2)
+ are expanded in powers of θ . Ramanujan [32, p. 165] showed that by equating the
+ coefﬁcients of θ 2 , θ 4 and θ 6 in the power series expansions of (1), and the coefﬁcients
+ of θ 4 in (2), the following differential equations may be deduced:
+
+
+
+
+                                                         W
+           dP   P2 − Q            dQ   PQ − R                       dR   P R − Q2
+       q      =        ,     q       =        ,            and q       =          .       (17)
+           dq     12              dq     3                          dq       2
+
+ These have come to be known as Ramanujan’s differential equations, although
+ they were known earlier to G.-H. Halphen in 1886 [23, p. 450]. Detailed proofs of
+ Ramanujan’s differential equations, following Ramanujan’s method, are given at the
+
+
+
+
+                              IE
+ beginning of Chapter 2 of Venkatachaliengar’s book, and also in Chapter 4 of the
+ introductory text by B. C. Berndt [5]. The reader is encouraged to work through
+ the proof in Ramanujan’s original paper [32], as well.
+    As noted by Ramanujan, the differential equations in (17) imply, by logarithmic
+ differentiation, the result
+
+
+                            Q − R = 1728q
+                              3         2
+                                                    ∞
+                                                         (1 − q j )24 .
+ EV
+                                                    j =1
+
+   Let Un and Vn be deﬁned by
+
+                           1n+1 − 3n+1 q + 5n+1 q 3 − 7n+1 q 6 + · · ·
+                    Un =                                               ,
+                                 1 − 3q + 5q 3 − 7q 6 + · · ·
+                           1n − 5n q − 7n q 2 + 11n q 5 + 13n q 7 + · · ·
+                    Vn =                                                  ,
+                                 1 − q − q2 + q5 + q7 + · · ·
+PR
+
+
+ or equivalently,
+
+                         j n+1 q j /8                       (−1)(k−1)/6 k n q k /24
+                                   2                                             2
+
+               Un =                         and   Vn =                                ,   (18)
+                           j q j /8                          (−1)(k−1)/6 q k /24
+                               2                                             2
+
+
+
+ where the sums range over all integers j and k (positive as well as negative) that
+ satisfy j ≡ 1 (mod 4) and k ≡ 1 (mod 6), respectively. Clearly, U0 = V0 = 1. In the
+ lost notebook [35, p. 369], Ramanujan derived the recurrence relations
+
+                                                           dUn
+                                   Un+2 = PUn + 8q             ,                          (19)
+                                                            dq
+                                                           d Vn
+                                   Vn+2 = P Vn + 24q            .                         (20)
+                                                           dq
+ xxii                Shaun Cooper
+
+ To prove these, recall that the denominators in (18) have factorizations given by
+ [5, pp. 12, 14]
+                                                  ∞
+                                     j 2 /8
+                                  jq        =q 1/8
+                                                     (1 − q  )3               (21)
+                                j ≡1 (mod 4)                      =1
+
+ and
+                                                                            ∞
+                                              (k−1)/6 k 2 /24
+                                       (−1)          q           =q   1/24
+                                                                                   (1 − q  ).                  (22)
+
+
+
+
+                                                                 W
+                         k≡1 (mod 6)                                         =1
+
+ Therefore,
+
+             d
+        8q      log Un
+             dq
+                            ⎛                                ⎞
+                                                                                            ∞
+             = 8q
+
+
+
+             =
+                    d
+                    dq
+                       log ⎝
+
+
+                    j ≡1 (mod 4) j
+
+                    j ≡1 (mod 4) j
+
+                 Un+2
+                                      IE
+                                j ≡1 (mod 4)
+
+
+
+                                   n+1 q j 2 /8
+                                                j n+1 q j /8 ⎠ − 8q
+
+
+                                     n+3 q j 2 /8
+                                                − 1 − 24
+                                                         2
+
+
+
+
+                                                         ∞
+                                                            q 
+                                                           1 − q
+                                                                 =1
+                                                                       d
+                                                                       dq
+                                                                          log q 1/8
+                                                                                            =1
+                                                                                                  (1 − q  )3
+ EV
+             =        − P.
+                  Un
+
+ The recurrence for Un now follows, and the recurrence for Vn may be proved by the
+ same method. Using the recurrence relations (19), (20) and Ramanujan’s differential
+ equations (17), we obtain
+
+                                            1                                1
+   U0 = 1,          U2 = P,       U4 =        (5P 2 − 2Q),        U6 =         (35P 3 − 42P Q + 16R),
+                                            3                                9
+   V0 = 1,          V2 = P,       V4 = 3P 2 − 2Q,                V6 = 15P 3 − 30P Q + 16R.
+PR
+
+
+ By induction, it follows that for any positive integer n,
+                                                                            
+        U2n =                  μi j k P i Q j R k   and      V2n =                     νi j k P i Q j R k ,     (23)
+                   i, j,k≥0                                              i, j,k≥0
+                 i+2 j +3k=n                                           i+2 j +3k=n
+
+ where μi j k and νi j k are rational and integer constants, respectively.
+    In his presidential address delivered to the Indian Mathematical Society [38],
+ Venkatachaliengar described the proof of (23) outlined by Ramanujan in the lost note-
+ book [35, p. 369] as “disarmingly simple”. The identities in (23) are discussed further
+ in [2, pp. 355–364] and [39, pp. 31–32].    Analogues of   (23) for which the products in
+ (21) and (22) are replaced with q r/24 ∞     =1 (1 − q  )r for r ∈ {2, 4, 6, 8, 10, 14, 26}
+
+ have been given in [16].
+          A Review of Venkatachaliengar’s Book on Elliptic Functions                              xxiii
+
+ 4. Ramanujan’s 1 ψ1 summation formula [pp. 22–30]
+ One of Ramanujan’s most important and well-known results is the 1 ψ1 summation
+ formula. Venkatachaliengar gave two proofs, and we reproduce one of them here. This
+ elegant proof makes use of symmetry and functional equations. First, recall Jacobi’s
+ triple product identity, which in one form is [5, p. 10]
+                ∞                                                         ∞
+                                                                          
+                              2n−1              2n−1 −1            2n              2
+                     (1 + q          z)(1 + q         z   )(1 − q ) =           q n zn .          (24)
+
+
+
+
+                                                           W
+               n=1                                                       n=−∞
+
+ It may be regarded as the Laurent series expansion of the product
+                                 ∞
+                                      (1 + q 2n−1 z)(1 + q 2n−1 z −1 )                            (25)
+                                n=1
+
+ in the annulus 0 < |z| < ∞. Ramanujan’s 1 ψ1 summation formula involves a gene-
+
+
+
+
+                                 IE
+ ralization of this product to include a denominator which consists of two inﬁnite
+ products. Speciﬁcally, let
+
+                     φ(z, α, β) =
+
+ and suppose in addition that
+                                        ∞
+
+
+                                       n=1
+                                              (1 + q 2n−1 z)(1 + q 2n−1 z −1 )
+                                             (1 + αq 2n−1 z)(1 + βq 2n−1 z −1 )
+                                                                                                  (26)
+ EV
+                                        |βq| < |z| < |αq|−1 .                                     (27)
+ The poles of φ are given by
+        z ∈ {−βq, −βq 3, −βq 5 , . . .} ∪ {−(αq)−1, −(αq 3 )−1 , −(αq 5)−1 , . . .},
+ and the purpose of the condition (27) is to ensure that φ is analytic in an annulus that
+ separates the two families of poles. By Laurent’s theorem, φ has an expansion of the
+ form
+                                            ∞
+                            φ(z, α, β) =         cn (α, β)z n                       (28)
+PR
+
+
+                                                   n=−∞
+ in the annulus (27). It is easy to check that
+                       (1 + αqz)φ(z, α, β) = (β + qz)φ(q 2 z, α, β).                              (29)
+ If we put
+                                 (z) = (1 + αqz)φ(z, α, β),
+ we see that (z) has a Laurent expansion valid in the larger annulus
+                                        |βq| < |z| < |αq 3 |−1 ,                                  (30)
+ because the pole of φ(z, α, β) at z = −(αq)−1 has been eliminated. Now
+                               ∞
+                                                         ∞
+                                                          
+      (z) = (1 + αqz)                 cn (α, β)z =
+                                                  n
+                                                                 (cn (α, β) + αqcn−1 (α, β))z n
+                              n=−∞                        n=−∞
+ xxiv               Shaun Cooper
+
+ and by (29),
+                                          ∞
+                                          
+                    (z) = (β + qz)             cn (α, β)q 2n z n
+                                         n=−∞
+                               ∞
+                               
+                          =          (βcn (α, β)q 2n + cn−1 (α, β)q 2n−1 )z n .
+                              n=−∞
+
+ Both of these expansions for  are valid in the larger annulus given by (30). Compar-
+
+
+
+
+                                                        W
+ ing coefﬁcients of z n gives
+
+             cn (α, β) + αqcn−1 (α, β) = βcn (α, β)q 2n + cn−1 (α, β)q 2n−1 ,
+
+ hence, we obtain the recurrence relation
+                                            q 2n−2 − α
+                              cn (α, β) =              qcn−1 (α, β).
+
+ Iterating, gives
+
+                cn (α, β) =
+                                 IE         1 − q 2n β
+
+
+                               (1 − α)(q 2 − α) · · · (q 2n−2 − α)
+                              (1 − βq 2 )(1 − βq 4 ) · · · (1 − βq 2n )
+ for any positive integer n. From the deﬁnition (26), it is clear that
+                                                                        q n c0 (α, β),   (31)
+ EV
+                                   φ(z, α, β) = φ(z −1 , β, α)
+
+ and comparing coefﬁcients of z −n on each side gives
+
+                                      c−n (α, β) = cn (β, α).                            (32)
+
+ Combining (31) and (32) it follows that for any positive integer n,
+
+                c−n (α, β) = cn (β, α)                                                   (33)
+PR
+
+
+                                (1 − β)(q 2 − β) · · · (q 2n−2 − β) n
+                          =                                              q c0 (β, α)
+                               (1 − αq 2 )(1 − αq 4 ) · · · (1 − αq 2n )
+                                (1 − β)(q 2 − β) · · · (q 2n−2 − β) n
+                          =                                              q c0 (α, β),
+                               (1 − αq 2 )(1 − αq 4 ) · · · (1 − αq 2n )
+ where the last step follows by taking n = 0 in (32). It remains to evaluate c0 (α, β).
+ Again, it is easy to check from the deﬁnition (26) that
+
+                              φ(z, αq 2, β) = (1 + αqz)φ(z, α, β),
+
+ and both sides represent analytic functions of z for |βq| < |z| < |αq 3 |−1 . Equating
+ the constant coefﬁcients and using (33) we obtain
+
+                                                                1 − αβq 2
+              c0 (αq 2 , β) = c0 (α, β) + αqc−1 (α, β) =                  c0 (α, β).
+                                                                 1 − αq 2
+           A Review of Venkatachaliengar’s Book on Elliptic Functions                     xxv
+
+ Iterating gives
+                                                               n
+                                                                      1 − αq 2 j
+                          c0 (α, β) = c0 (αq , β)2n
+                                                                                 ,
+                                                                     1 − αβq 2 j
+                                                              j =1
+
+ and taking the limit as n → ∞ gives
+                                                           ∞
+                                                                    1 − αq 2 j
+                           c0 (α, β) = c0 (0, β)                               .          (34)
+                                                                   1 − αβq 2 j
+                                                         j =1
+
+
+
+
+                                                              W
+ By (32) and (34), we deduce further that
+                                                                     ∞
+                      c0 (0, β) = c0 (β, 0) = c0 (0, 0)                  (1 − βq 2 j ),   (35)
+                                                                     j =1
+
+ and substituting (35) into (34) gives
+
+
+
+                                IE
+                     c0 (α, β) = c0 (0, 0)
+                                                ∞
+
+
+                                                j =1
+                                                       (1 − αq 2 j )(1 − βq 2 j )
+                                                            1 − αβq 2 j
+                                                                                  .
+
+
+ Now take α = β = 1 and observe that φ(z, 1, 1) = 1 identically. Hence, c0 (1, 1) = 1.
+ Using this in (36) gives
+                                                       ∞
+                                                                                          (36)
+ EV
+                                   1 = c0 (0, 0)           (1 − q 2 j )
+                                                       j =1
+
+ and so
+                                                    ∞
+                                                             1
+                                   c0 (0, 0) =                        ,
+                                                         (1 − q 2 j )
+                                                  j =1
+
+ therefore (36) becomes
+                                         ∞
+                                                (1 − αq 2 j )(1 − βq 2 j )
+                          c0 (α, β) =                                      .
+PR
+
+
+                                                                                          (37)
+                                                (1 − αβq 2 j )(1 − q 2 j )
+                                         j =1
+
+ If we divide both sides of (28) by c0 (α, β) and use (31), (33) and (37), the ﬁnal result
+ is Ramanujan’s 1 ψ1 summation formula:
+               ∞
+                      (1 + q 2n−1 z)(1 + q 2n−1 z −1 )(1 − αβq 2 j )(1 − q 2 j )
+                    (1 + αq 2n−1 z)(1 + βq 2n−1 z −1 )(1 − αq 2 j )(1 − βq 2 j )
+              n=1
+                          ∞
+                            (1 − α)(q 2 − α) · · · (q 2n−2 − α)
+                   =1+                                                q n zn
+                            (1 − βq 2 )(1 − βq 4 ) · · · (1 − βq 2n )
+                          n=1
+                         ∞
+                               (1 − β)(q 2 − β) · · · (q 2n−2 − β) n −n
+                     +                                                   q z .            (38)
+                               (1 − αq 2 )(1 − αq 4 ) · · · (1 − αq 2n )
+                         n=1
+ xxvi            Shaun Cooper
+
+ By the ratio test, the series involving positive powers of z in (38) converges for
+ |αqz| < 1, while the series involving negative powers of z converges for |βq/z| < 1.
+ The two series will converge simultaneously and represent an analytic function of z
+ when both conditions are satisﬁed, and this is precisely the condition given by (27).
+    It should be noted that the Jacobi triple product identity (24) is the limiting case
+ α, β → 0 of (38). In this case, the annulus of convergence becomes 0 < |z| < ∞.
+    For some historical background and references to other proofs of Ramanujan’s 1 ψ1
+ summation formula (38), see [2, pp. 54–56] and [28].
+
+
+
+
+                                                            W
+ 5. The Jordan–Kronecker function [pp. 37–43]
+ The Jordan-Kronecker function is deﬁned by
+                        ∞
+                                  (1 − q j −1 x y)(1 − q j x −1 y −1 )(1 − q j )2
+          F(x, y) =                                                                     .    (39)
+                             (1 − q j −1 x)(1 − q j x −1 )(1 − q j −1 y)(1 − q j y −1 )
+                      j =1
+
+
+
+
+                                IE
+ It has two important properties. The ﬁrst is its expansion as a series:
+
+                 F(x, y) =
+                                    ∞
+                                    
+
+                                j =−∞
+                                             xj
+                                          1 − yq j
+                                                   ,       provided |q| < |x| < 1.
+
+
+ This is an immediate consequence of Ramanujan’s 1 ψ1 summation formula: set
+                                                                                             (40)
+ EV
+ (z, α, β) = (−x y/q, 1/y, y) in (38), divide both sides by 1 − y, then replace q 2
+ with q.
+    The inﬁnite product (39) is symmetric in x and y, but the series in (40) is not.
+ Symmetry in the series can be restored by a calculation that is similar to (7). That is,
+ consider the terms for which j is positive, negative or zero, and expand into a double
+ series, to get
+                                                     ∞    ∞
+                                 1 − xy
+              F(x, y) =                     +    q j k (x j y k − x − j y −k ).              (41)
+                             (1 − x)(1 − y)
+                                                       j =1 k=1
+PR
+
+
+ This converges for |q| < |x|, |y| < |q|−1 , apart from simple poles at x = 1, y = 1.
+ The series (41) can be manipulated to yield a series that converges for all x and y,
+ apart from at the poles, by separating the terms in (41) into the three cases j = k,
+ j > k and j < k, and summing the geometric series. The ﬁnal result is
+                            1 − xy
+            F(x, y) =
+                        (1 − x)(1 − y)
+                             ∞
+                                                                           
+                                     j2                  q jx      qjy
+                        +           q x y 1+
+                                          j   j
+                                                                +
+                                                       1 − q jx   1−qjy
+                             j =1
+
+                             ∞
+                                                            q j x −1       q j y −1
+                                    q j x − j y− j 1 +
+                                      2
+                        −                                               +                .   (42)
+                                                           1 − q j x −1   1 − q j y −1
+                             j =1
+            A Review of Venkatachaliengar’s Book on Elliptic Functions                                            xxvii
+
+ The formulas (39) and (41) were given by Kronecker2 in lectures in July 1876, and
+ then in a paper published in 1881 [30]. The formulas (39), (40) and (42) appear
+ in Jordan’s Cours d’Analyse [29, p. 507–511]. For these reasons, Venkatachaliengar
+ refers to the function F(x, y) as the Jordan-Kronecker function.
+    Kroencker’s paper has a reference to the 1850 paper of Jacobi      √ “Sur la rotation
+ d’un corps”, [25]. If eq. (3) in [25, p. 297] is multiplied by i = −1 and the result
+ subtracted from eq. (4), ibid., the result eventually simpliﬁes to the identity (40). Thus,
+ although (40) is implicit in Jacobi’s work, it would be a bit of a stretch to attribute
+
+
+
+
+                                                                   W
+ the identity to him. However, Jacobi’s work is noteworthy because the genesis of the
+ identity may be seen there, and because the identity arises in a physical application.
+    Kronecker’s analysis has been examined and simpliﬁed by Weil [41, pp. 70–71].
+ Both Kronecker and Weil expand the product in (39) as a Laurent series and use
+ Cauchy’s theorem to compute the coefﬁcients.
+    The second important property is the result which Venkatachaliengar calls the
+ fundamental multiplicative identity:
+
+                  F(x, t)F(y, t) = t
+                                     IE       ∂
+                                              ∂t
+                                                 F(x y, t) + F(x y, t) (ρ1 (x) + ρ1 (y)) ,
+
+ where ρ1 is deﬁned in (5). This can be proved by writing
+
+
+                       F(x, t)F(y, t) =
+                                                   ∞
+                                                          ∞
+                                                                 x m yn
+                                                                                  ,
+                                                                                                                   (43)
+ EV
+                                                 n=−∞ m=−∞
+                                                           (1 − tq m )(1 − tq n )
+
+ breaking the sum into the cases m = n and m = n, and using partial fractions in the
+ latter case. The details have been reproduced in [18] and [21].
+    Two special cases of (43) deserve special mention. First, if we set t = ev in
+ (43), expand both sides in powers of v, then equate coefﬁcients of v 0 , the result
+ is Venkatachaliengar’s identity (11). See [18, p. 75] for the details. Thus, (43) may
+ be regarded as a generalization of Ramanujan’s identity (1) that involves two extra
+ parameters.
+    The other noteworthy special case is to take the limit as y → 1/x in (43). The result
+PR
+
+
+ simpliﬁes to
+                                              d             d
+                       F(x, t)F(x −1 , t) = t ρ1 (t) − x ρ1 (x).                     (44)
+                                             dt            dx
+ This can be shown to be equivalent to the Weierstrassian identity [42, p. 451]
+                                 σ (α + β)σ (α − β)
+                                                    = ℘ (β) − ℘ (α).
+                                     σ 2 (α)σ 2 (β)
+ 2 Kronecker gives the identity in the form
+
+                           2
+         (−1)(μ−1)/2 μq μ /4
+                                                   2
+                                  (−1)(ν−1)/2 q ν /4 (x ν y ν − x −ν y −ν )       
+                                2                  2
+                                                                              =        q μν/2 (x μ y ν − x −μ y −ν )
+                           (−q)m x 2m         (−q)n y 2n
+ where the sums are over positive odd integers μ and ν, and all integers m and n. Kronecker’s form can be mani-
+ pulated into the form we have given by converting each of the four sums in the quotient into inﬁnite products via
+ Jacobi’s triple product identity and making a change of variable.
+ xxviii           Shaun Cooper
+
+    The identity (43) should be regarded as classical. It has been rediscovered and
+ reproved many times. For, dividing by F(x y, t) gives
+
+                  F(x, t)F(y, t)    ∂
+                                 = t log F(x y, t) + ρ1 (x) + ρ1 (y)
+                    F(x y, t)       ∂t
+                                   = ρ1 (x) + ρ1 (y) + ρ1 (t) − ρ1 (x yt),
+
+ and this can be shown to be equivalent to the Weierstrassian identity
+
+
+
+
+                                                       W
+       σ (α + β)σ (α − β)σ (2γ )
+                                          = ζ (α+γ )−ζ (α−γ )+ζ (β −γ )−ζ (β +γ ).
+ σ (α + γ )σ (α − γ )σ (β + γ )σ (β − γ )
+
+ This was given by G.-H. Halphen [23, p. 187]. Further historical background for the
+ identity (43) has been given in [2, p. 60].
+
+
+
+
+                              IE
+ 6. Inversion for elliptic functions, and theories for alternative bases
+    [pp. 52–56, 89–95]
+ At the end of Chapter 3, a novel approach to the connection between theta functions
+ and hypergeometric functions is proposed. For |q| < 1, deﬁne x = x(q) by
+
+                                                     2  
+ EV
+                                  ∞
+                                                        ∞             4
+                                             n+ 12                 n2
+                        x=               q                     q            .       (45)
+                                  n=−∞                  n=−∞
+
+ It can be shown that as q increases from 0 to 1, x also increases from 0 to 1. The basic
+ problem is to ﬁnd a formula for the inverse function q = q(x). The result is
+                                  ⎛                          ⎞
+                                        2 F1 2 , 2 ; 1; 1 − x
+                                                1 1
+                         q = exp ⎝−π                         ⎠,                    (46)
+                                           2 F1 2 , 2 ; 1; x
+                                                   1 1
+PR
+
+
+ where
+                                                      ∞
+                                                       (a)n (b)n
+                         2 F1 (a, b; c; x) = 1 +                        xn
+                                                            (c)n n!
+                                                      n=1
+
+ is the hypergeometric function, and
+
+                              (a + n)
+                     (a)n =            = a(a + 1) · · · (a + n − 1)
+                                (a)
+ is the shifted factorial. These results were known to Jacobi in 1828, see, e.g., [24].
+    Venkatachaliengar’s approach is to disregard (45) and begin instead by deﬁning z
+ and x implicitly by
+
+      Q(q) = z 4 (1 − x + x 2 )    and       R(q) = z 6 (1 + x)(1 − 2x)(1 − x/2).   (47)
+          A Review of Venkatachaliengar’s Book on Elliptic Functions                  xxix
+
+ The goal is to solve the equations in (47) for q to obtain (46). The main step in the
+ argument is to use Ramanujan’s differential equations (17) to show that z satisﬁes the
+ following hypergeometric differential equation with respect to x:
+                                                
+                                d             dz      z
+                                    x(1 − x)        = .
+                               dx             dx      4
+
+ Venkatachaliengar’s proof has been explained in more detail by S. Bhargava
+ [9, pp. 315–318].
+
+
+
+
+                                                       W
+    In Chapter 5, [pp. 89–95] Venkatachaliengar proposes to use the same approach
+ to prove the analogous results for (what are now known as) Ramanujan’s theories
+ of elliptic functions to alternative bases. These are commonly referred to by their
+ signatures, which are 3, 4, or 6. Jacobi’s classical theory involving (45) and (46) is
+ said to belong to the theory of signature 2. In the signature 3 theory Venkatachaliengar
+ begins by deﬁning z 3 and x 3 implicitly by
+
+
+
+
+                                IE
+                     Q = z 34 (1 + 8x 3 ),     R = z 36 (1 − 20x 3 − 8x 32 ).
+
+ There are similar deﬁnitions in each of the theories for signatures 4 and 6.
+    Let us discuss some of the merits and objections to Venkatachaliengar’s approach
+ just described. The utility of Venkatachaliengar’s method has been demonstrated by
+ H. H. Chan and Y. L. Ong [17] in establishing a septic theory. The most obvious
+ objection is that the formulas (47) and (48) are unmotivated and have to be known
+                                                                                      (48)
+ EV
+ in advance. Also, z and x are multivalued and a selection has to be made. Moreover,
+ this is almost certainly not the method Ramanujan would have used. Ramanujan in
+ fact outlined his approach to this inversion problem for elliptic functions in the ﬁrst
+ few entries of Chapter 17 in his second notebook [34]. Full details of Ramanujan’s
+ method have been worked out by B. C. Berndt [3, pp. 87–102]. Ramanujan’s method
+ is original, and Berndt makes the comment [3, p. 99]: “Proofs in the latter half of
+ the second notebook are very rare indeed”. In contrast, Ramanujan left no clues as
+ to how he discovered the results for signatures 3, 4 and 6. The reader is referred to
+ [4, Chapter 33], [6,7,10–13,15], and [20] for more information about Ramanujan’s
+PR
+
+
+ theories of elliptic functions to alternative bases.
+    The reviewer [20] has proposed the following alternative starting point, which leads
+ to a uniﬁed treatment of the classical and alternative theories. Let r = 1, 2, 3 or 4. Let
+ zr = zr (q) be deﬁned by
+                             ⎧
+                             ⎪
+                             ⎨(Q(q))1/4             if r = 1,
+                       zr =                 
+                             ⎪
+                             ⎩ r P(q )−P(q)
+                                     r         1/2
+                                                    if r = 2, 3 or 4.
+                                     r−1
+
+ Let xr = xr (q) be deﬁned to be the solution of the initial value problem
+                         d xr                                    √        1
+                     q        = zr2 xr (1 − xr ),      xr (e−2π/ r ) =      .
+                         dq                                               2
+ xxx            Shaun Cooper
+
+ It can be shown that as q increases from 0 to 1, xr increases from 0 to 1. Therefore,
+ the inverse function q = qr (xr ) exists. It is given explicitly by the formula
+                                                                     
+                                   2π 2 F1 (cr , 1 − cr ; 1; 1 − xr )
+                     q = exp − √                                        ,
+                                     r 2 F1 (cr , 1 − cr ; 1; xr )
+ where cr = 1/6, 1/4, 1/3 or 1/2, according to whether r = 1, 2, 3 or 4, respectively.
+ The quantity 1/cr has come to be known as the signature. In the theory of modular
+ forms, the parameter r is called the level. Thus, levels r = 1, 2, 3 and 4 correspond
+
+
+
+
+                                                        W
+ to the signatures 6, 4, 3 and 2, respectively. The formulas (45) and (46) are the results
+ for level 4 (signature 2).
+
+
+ 7. Halphen’s differential equations [pp. 57–76]
+ Let
+                                          d
+
+
+
+                              IE   (θ ) = i
+                                          dθ
+ From (7), we may obtain the explicit formula
+
+                         (θ ) =
+                                   1 2θ
+                                   4
+                                     csc − 2
+                                        2
+                                             ρ1 (eiθ ).
+
+
+                                              jq j
+                                              1−qj
+                                                    ∞
+                                                    cos j θ.
+                                                    j =1
+                                                                                     (49)
+ EV
+ It can be shown, e.g., [18, p. 69], that
+                                                           P
+                                   (θ ) = ℘ (θ ) +           ,                      (50)
+                                                           12
+ where ℘ (z) is the Weierstrass elliptic function with periods 2π and 2π τ and P is
+ Ramanujan’s Eisenstein series deﬁned by (13).
+   Venkatachaliengar deﬁnes three functions u 1 , u 2 and u 3 by
+
+                                    u 1 = 4(π ),
+PR
+
+
+                                    u 2 = 4(π τ ),
+                                    u 3 = 4(π + π τ ).
+
+ Using (49), and setting h = eiπ τ so that h 2 = q, we ﬁnd that
+                                              ∞
+                                               (−1)n nh 2n
+                               u1 = 1 − 8                          ,                 (51)
+                                                      1 − h 2n
+                                              n=1
+                                            ∞
+                                                   nh n
+                               u 2 = −8                    ,                         (52)
+                                                  1 − h 2n
+                                            n=1
+                                            ∞
+                                             (−1)n nh n
+                               u 3 = −8                        .                     (53)
+                                                   1 − h 2n
+                                            n=1
+           A Review of Venkatachaliengar’s Book on Elliptic Functions               xxxi
+
+ G.-H. Halphen [23, p. 330] proved that the functions given by (51)–(53) satisfy the
+ system of differential equations
+                                        d
+                                    h      (u 1 + u 2 ) = u 1 u 2 ,                 (54)
+                                        dh
+                                        d
+                                    h      (u 2 + u 3 ) = u 2 u 3 ,                 (55)
+                                        dh
+                                 d
+                                    (u 3 + u 1 ) = u 3 u 1 .
+                                    h                                               (56)
+
+
+
+
+                                                            W
+                                 dh
+ Halphen noted that the system (54)–(56) is a special case of the differential equations
+                      C(d A + d B) = B(d A + dC) = A(d B + dC),
+ posed by G. Darboux [22, p. 149] in 1878. More recently, the system (54)–(56)
+ and other related systems of nonlinear differential equations have been studied by
+ W. Zudilin [43].
+
+
+
+                               IE
+   By ingenious use of (11), Venkatachaliengar gave a simple proof that the functions
+ deﬁned by (51)–(53) are solutions of the system (54)–(56).
+   By series manipulations using (13) and (51)–(53), we ﬁnd that
+
+
+                                      d
+ Applying the differential operator h dh
+                                        u 1 + u 2 + u 3 = P.
+                                         = 2q dq
+                                              d
+                                                 , and using (54)–(56) on the left and
+ EV
+ (17) on the right, we ﬁnd that
+                        u 21 + u 22 + u 23 − u 1 u 2 − u 2 u 3 − u 3 u 1 = Q.
+ Differentiating again using (54)–(56) and (17), and simplifying, it can be shown that
+              1
+                (2u 1 − u 2 − u 3 )(2u 2 − u 3 − u 1 )(2u 3 − u 1 − u 2 ) = R.
+              2
+   The differences u j − u k have simple representations as inﬁnite products. For
+ example, subtracting (55) from (56) gives
+PR
+
+
+                                d
+                               h    (u 1 − u 2 ) = (u 1 − u 2 )u 3 .
+                               dh
+ Divide by (u 1 − u 2 )h and integrate with respect to h, to get
+                                           ∞ 
+                                                    (−1)n nh n−1
+                     log(u 1 − u 2 ) = −8                            dh
+                                                       1 − h 2n
+                                                n=1
+                                              ∞
+                                                                      
+                                                             1 − hn
+                                        =4          (−1) log
+                                                        n
+                                                                            + c.
+                                                             1 + hn
+                                              n=1
+
+ Letting h = 0 we ﬁnd that the constant of integration is given by c = 0. It follows that
+                                          ∞
+                                               (1 − h 2n )4 (1 + h 2n−1 )4
+                          u1 − u2 =                                        .
+                                               (1 − h 2n−1 )4 (1 + h 2n )4
+                                         n=1
+ xxxii           Shaun Cooper
+
+ A formula, for the number of representations of an integer as a sum of four squares
+ as a divisor sum, can be deduced from this result. Inﬁnite products for the differences
+ u 1 − u 3 and u 3 − u 2 can be obtained by the same method.
+    Lastly, we note that by expanding each of (51)–(53) as double series and inter-
+ changing the order of summation, if follows that u 1 > 0, u 2 < 0 and u 3 > 0 for
+ 0 < h < 1.
+
+
+
+
+                                                          W
+ 8. Jacobian elliptic functions [pp. 97–114]
+ In Chapter 6 of [39], Venkatachaliengar uses the Jordan-Kronecker function (39) and
+ the fundamental multiplicative identity (43) to give a new and efﬁcient development
+ of the main properties of Jacobian elliptic functions. An outline of this theory goes as
+ follows. Let
+
+                                f 1 (θ ) = −i F(eiπ , eiθ ),                              (57)
+
+
+
+                                IE
+                                f 2 (θ ) = −ieiθ/2 F(eiπ τ , eiθ ),
+                                f 3 (θ ) = −ieiθ/2 F(eiπ +iπ τ , eiθ ).
+
+ The factors −i and −ieiθ/2 are included so that f 1 , f 2 and f 3 will be real valued
+ when θ is real. Inﬁnite product expansions follow directly from the deﬁnition (39).
+                                                                                          (58)
+                                                                                          (59)
+ EV
+ The results are
+                                      ∞
+                           1     θ         (1 + 2q n cos θ + q 2n )(1 − q n )2
+               f1 (θ ) =     cot                                               ,          (60)
+                           2     2         (1 − 2q n cos θ + q 2n )(1 + q n )2
+                                     n=1
+                                     ∞                1
+                        1    θ             (1 − 2q n− 2 cos θ + q 2n−1 )(1 − q n )2
+               f2 (θ ) = csc                                                  1
+                                                                                      ,   (61)
+                        2    2              (1 − 2q n cos θ + q 2n )(1 − q n− 2 )2
+                                     n=1
+                                     ∞                1
+                           1     θ         (1 + 2q n− 2 cos θ + q 2n−1 )(1 − q n )2
+               f3 (θ ) =     csc                                                      .   (62)
+PR
+
+
+                                                                              1
+                           2     2          (1 − 2q n cos θ + q 2n )(1 + q n− 2 )2
+                                     n=1
+
+   The Fourier expansions follow directly from (40) or (41), and using the symmetry
+ property F(x, y) = F(y, x). After simpliﬁcation, we ﬁnd that
+
+                                       qn       ∞
+                             1   θ
+                   f 1 (θ ) = cot − 2         sin nθ,                                     (63)
+                             2   2     1 + qn
+                                                n=1
+                                          ∞
+                                                  1             
+                                1    θ        q n− 2            1
+                   f 2 (θ ) =     csc + 2            1
+                                                       sin  n −     θ,                    (64)
+                                2    2      1 − q n− 2          2
+                                               n=1
+                                      ∞
+                                              1            
+                             1   θ        q n− 2           1
+                   f 3 (θ ) = csc − 2            1
+                                                   sin n −     θ.                         (65)
+                             2   2      1 + q n− 2         2
+                                               n=1
+         A Review of Venkatachaliengar’s Book on Elliptic Functions                   xxxiii
+
+    The Fourier expansions for the squares of each function can be obtained from (44).
+ For, taking t = eiθ and successively setting x = eiπ , eiπ τ and eiπ +iπ τ in (44) gives,
+ respectively,
+                                                       θ
+                                            d
+                              f12 (θ ) = i    ρ1 (e ) ,
+                                                   iα
+                                                                                       (66)
+                                           dα            π
+                                                       θ
+                                            d
+                              f22 (θ ) = i    ρ1 (eiα )     ,                          (67)
+                                           dα
+
+
+
+
+                                                          W
+                                                         πτ
+                                                       θ
+                                            d
+                              f3 (θ ) = i
+                                2
+                                              ρ1 (e )
+                                                   iα
+                                                                ,                      (68)
+                                           dα            π +π τ
+
+ and the Fourier expansions now follow by applying (49). For future reference, we note
+ that (66)–(68) imply
+                            β
+                    d
+
+
+                              IE
+                   i ρ1 (e ) = [ f 12 (z)]βα = [ f 22 (z)]βα = [ f32 (z)]βα .
+                    dz
+                          iz
+                              α
+
+    Comparison of the products (60)–(62) and series (63)–(65) with those in
+                                                                                       (69)
+
+
+
+ [42, pp. 508, 511–512], reveals that the functions f 1 , f 2 and f3 are, up to rescaling,
+ the Jacobian elliptic functions cs, ns and ds, respectively.
+ EV
+    From the inﬁnite products, it is easy to show that
+
+                         f 1 (θ + 2π m + 2π τ n) = (−1)n f 1 (θ ),                     (70)
+                         f 2 (θ + 2π m + 2π τ n) = (−1) f 2 (θ ), m
+                                                                                       (71)
+                         f 3 (θ + 2π m + 2π τ n) = (−1)m+n f 3 (θ ).                   (72)
+
+ Here m and n are integers. Thus f 1 is doubly periodic with periods 2π and 4π τ , f2
+ is doubly periodic with periods 4π and 2π τ , while f3 is doubly periodic with periods
+ 4π and 2π + 2π τ .
+PR
+
+
+    The zeros and poles may be determined from the inﬁnite products (60)–(62). The
+ zeros of f 1 , f 2 and f 3 are at θ = (2m + 1)π + 2nπ τ , θ = 2mπ + (2n + 1)π τ and
+ θ = (2m + 1)π + (2n + 1)π τ , respectively, where m and n are any integers. The poles
+ of f 1 , f 2 and f3 all occur when θ = 2mπ + 2nπ τ .
+    The fundamental multiplicative identity (43) may be used to compute the deriva-
+ tives of each of f 1 , f2 and f 3 , as well as their addition formulas. We begin with the
+ derivatives. In (43), let t = eiθ to get
+
+                                   1 ∂
+          F(a, eiθ )F(b, eiθ ) =        F(ab, eiθ ) + F(ab, eiθ )(ρ1 (a) + ρ1 (b)).    (73)
+                                   i ∂θ
+
+ Now let a = eiπ and b = eiπ τ . Noting that ρ1 (eiπ ) = 0 and ρ1 (eiπ τ ) = 12 , the result
+ (73) eventually simpliﬁes to
+
+                                    f 3 (θ ) = − f 1 (θ ) f 2 (θ ).                   (74)
+ xxxiv             Shaun Cooper
+
+ Similarly, letting a = eiπ τ , b = eiπ +iπ τ and a = eiπ +iπ τ , b = eiπ in (73) leads,
+ respectively, to
+
+                                      f 1 (θ ) = − f 2 (θ ) f 3(θ ),                         (75)
+                                      f 2 (θ ) = − f 3 (θ ) f 1(θ ).                         (76)
+
+    In order to deduce the addition formulas, write the fundamental multiplicative
+ identity (43) in the form
+
+
+
+
+                                                           W
+                                  1
+   F(eiα , eiθ )F(eiβ , eiθ ) =     F(ei(α+β) , eiθ ) + F(ei(α+β) , eiθ )(ρ1 (eiα ) + ρ1 (eiβ )).
+                                  i
+ Apply ∂/∂α − ∂/∂β to both sides. The result is
+                   ∂                                            ∂
+                     F(eiα , eiθ )F(eiβ , eiθ ) − F(eiα , eiθ ) F(eiβ , eiθ )
+                  ∂α                                           ∂β
+                                                                        
+
+
+
+                                  IE
+                     = F(ei(α+β), eiθ )
+
+ Rearranging this and using (69) gives
+
+
+   F(ei(α+β), eiθ ) =
+                       
+                         ∂
+                      i ∂α
+                                            dα
+                                              d
+                                                ρ1 (eiα ) −
+                                                             d
+                                                            dβ
+                                                                ρ1 (eiβ ) .
+
+
+
+                                                                       ∂
+                           F(eiα , eiθ )F(eiβ , eiθ ) − F(eiα , eiθ ) ∂β
+                                            f j2 (α) − f j2 (β)
+                                                                         F(eiβ , eiθ )
+                                                                                       
+
+                                                                                         , (77)
+ EV
+ which holds for j = 1, 2 or 3. Let θ = π, take j = 1 and apply (75) to get the addition
+ formula for f1 :
+                                     f1 (α) f 2 (β) f 3 (β) − f 1 (β) f 2 (α) f 3 (α)
+                   f 1 (α + β) =                                                      .
+                                                   f 12 (β) − f 12 (α)
+
+ Similarly, letting θ = π τ and θ = π + π τ in (77) leads to
+                                     f 2 (α) f 3 (β) f 1 (β) − f 2 (β) f 3 (α) f 1 (α)
+                   f 2 (α + β) =                                                       ,
+PR
+
+
+                                                    f22 (β) − f 22 (α)
+                                     f 3 (α) f 1 (β) f 2 (β) − f 3 (β) f 1 (α) f 2 (α)
+                   f 3 (α + β) =                                                       .
+                                                    f32 (β) − f 32 (α)
+
+   In summary, this efﬁcient approach to the Jacobian elliptic functions, due to
+ Venkatachaliengar, is quite different from any other theory that has been presented
+ before.
+
+
+ 9. Conclusions
+ Many of Ramanujan’s results relate to, or involve, elliptic functions. The usual way of
+ studying these is to use the theory of complex variables. Yet, it is generally agreed that
+ Ramanujan did not use the theory of complex variables. An interesting discussion on
+         A Review of Venkatachaliengar’s Book on Elliptic Functions                 xxxv
+
+ how Ramanujan may have studied elliptic functions has been given by B. C. Berndt
+ [3, p. 2]. The fact will always remain, that because Ramanujan’s notebooks generally
+ do not contain proofs, we will never know for sure what his methods were.
+    The book by A. Weil [41] shows how the theory of elliptic functions may be deve-
+ loped, without the theory of complex variables, by a process called Eisenstein sum-
+ mation. Weil’s book is based on the pioneering works of Eisenstein and Kronecker.
+ Venkatachaliengar’s book shows that it is also possible to use q-series to develop the
+ theory of elliptic functions in an efﬁcient, logical and systematic way. Thus, there
+
+
+
+
+                                                  W
+ are now two comprehensive answers, elucidated by Weil [41] and Venkatachaliengar
+ [39], to the question of how the theory of elliptic functions can be developed by series
+ manipulations and without using the theory of complex variables as the major tool.
+    Venkatachaliengar’s methods frequently make maximal use of symmetry. The proof
+ of Ramanujan’s 1 ψ1 summation formula (38) is one example of this. Moreover, the
+ statement of the 1 ψ1 identity is the same as the symmetric form given by Ramanujan in
+ his second notebook. Most proofs of this identity prove the non-symmetric version in
+
+
+
+                             IE
+ terms of the 1 ψ1 basic hypergeometric series, from which the symmetric form can be
+ deduced by a change of variable. The quintuple product identity in [39, Appendix B]
+ (not discussed in this review, but see [19]) is similarly presented in its most symmetric
+ form.
+    Many proofs of Ramanujan’s 1 ψ1 summation formula rely on functional equations
+ like (29). Since φ(z, α, β) and φ(q 2 z, α, β) converge in different annuli, the usual
+ approach is to make an additional assumption on the parameters to ensure that the two
+ EV
+ annuli of convergence overlap; the extra assumption is then removed at the end of the
+ proof by analytic continuation. In Venkatachlaliengar’s proof, the introduction of the
+ function  eliminates the need for any analytic continuation argument. The series
+ manipulations in the proof hold for all values of the parameters for which the identity
+ (38) is valid.
+    Unfortunately, the book was not carefully edited. There are many typographical
+ errors. Sometimes topics are repeated unnecessarily. Some of the proofs are incom-
+ plete, but most can be (and have been) ﬁxed.
+    Due to space limitations, several other topics in Venkatachaliengar’s book have not
+PR
+
+
+ been discussed in this review. These include the modular transformation τ → −1/τ ,
+ Landen’s transformation τ → 2τ , Picard’s theorem, modular equations, the quintuple
+ product identity, and the addition theorem for elliptic integrals.
+    In summary, a high degree of originality is present throughout the book. The suc-
+ cessive generalizations of Ramanujan’s identity (1) given by (11) and then by (43) are
+ wonderful achievements. The use of the Jordan-Kronecker function (39) along with
+ the fundamental multiplicative identity (43) to study the Jacobian elliptic functions is
+ also quite different from any other method that has been used to study these functions.
+    We end this review by mentioning three other published works on elliptic functions
+ by Venkatachaliengar: the research article [37], the presidential address [38], and the
+ survey [40].
+ xxxvi              Shaun Cooper
+
+ Acknowledgements
+ The reviewer thanks Drs. B. C. Berndt, M. Schlosser, W. L. Sweatman and P. C. Toh
+ for helpful comments and suggestions. The reviewer gratefully acknowledges the help
+ of Dr. G. N. Srinivasa Prasanna in conﬁrming the year of publication of [39].
+
+
+ References
+
+
+
+
+                                                      W
+  [1] R. P. Agarwal, Resonance of Ramanujan’s mathematics, Vol. III, New Age International
+      Publishers Limited, New Delhi (1999).
+  [2] G. E. Andrews and B. C. Berndt, Ramanujan’s Lost Notebook, Part II, Springer, New York
+      (2009).
+  [3] B. C. Berndt, Ramanujan’s Notebooks, Part III, Springer-Verlag, New York (1991).
+  [4] B. C. Berndt, Ramanujan’s Notebooks, Part V, Springer-Verlag, New York (1998).
+  [5] B. C. Berndt, Number theory in the spirit of Ramanujan, American Mathematical Society,
+      Providence, RI (2006).
+
+
+
+
+                                IE
+  [6] B. C. Berndt, S. Bhargava and F. G. Garvan, Ramanujan’s theories of elliptic functions to
+      alternative bases, Trans. Amer. Math. Soc., 347 (1995) 4163–4244.
+  [7] B. C. Berndt, H. H. Chan and W.-C. Liaw, On Ramanujan’s quartic theory of elliptic
+      functions, J. Number Theory, 88 (2001) 129–156.
+  [8] B. C. Berndt and A. J. Yee, Ramanujan’s contributions to Eisenstein series, especially
+      in his lost notebook. In: Number theoretic methods (Iizuka, 2001), 31–53, Dev. Math., 8
+      Kluwer, Dordrecht (2002).
+  [9] S. Bhargava, A look at Ramanujan’s work in elliptic function theory and further
+ EV
+      developments, Proc. Nat. Acad. Sci. India, Sect. A, 68 (1998) 299–347. Reprinted in
+      [1, pp. 168–216].
+ [10] J. M. Borwein and P. B. Borwein, A remarkable cubic mean iteration. In: Computational
+      methods and function theory (Valparaı́so, 1989), 27–31, Lecture Notes in Math., 1435,
+      Springer, Berlin (1990).
+ [11] J. M. Borwein and P. B. Borwein, A cubic counterpart of Jacobi’s identity and the AGM,
+      Trans. Amer. Math. Soc., 323 (1991) 691–701.
+ [12] J. M. Borwein, P. B. Borwein and F. G. Garvan, Hypergeometric analogues of the
+      arithmetic-geometric mean iteration, Constr. Approx., 9 (1993) 509–523.
+ [13] J. M. Borwein, P. B. Borwein and F. G. Garvan, Some cubic modular identities of
+      Ramanujan, Trans. Amer. Math. Soc., 343 (1994) 35–47.
+PR
+
+
+ [14] J. M. Burgers, Application of a model system to illustrate some points of the statistical
+      theory of free turbulence, Nederl. Akad. Wetensch., Proc., 43 (1940)
+                                                                            2–12.
+ [15] H. H. Chan, On Ramanujan’s cubic transformation for 2 F1 13 , 23 ; 1; z , Math. Proc.
+      Cambridge Phil. Soc., 124 (1998) 193–204.
+ [16] H. H. Chan, S. Cooper and P. C. Toh, Ramanujan’s Eisenstein series and powers of
+      Dedekind’s eta-function, J. London Math. Soc. (2), 75 (2007) 225–242.
+ [17] H. H. Chan and Y. L. Ong, On Eisenstein series and ∞    m,n=−∞ q
+                                                                        m 2 +mn+2n 2 , Proc. Amer.
+
+      Math. Soc., 127 (1999) 1735–1744.
+ [18] S. Cooper, The Development of Elliptic Functions According to Ramanujan and
+      Venkatachaliengar, Research Letters in the Information and Mathematical Sciences, 1
+      (2000) 65–78. http://iims.massey.ac.nz/research/letters/volume1number1/index.html
+ [19] S. Cooper, The quintuple product identity, Int. J. Number Theory, 2 (2006) 115–161.
+ [20] S. Cooper, Inversion formulas for elliptic functions, Proc. London Math. Soc., 99 (2009)
+      461–483.
+ [21] S. Cooper and H. Y. Lam, Sums of two, four, six and eight squares and triangular numbers:
+      an elementary approach, Indian J. Math., 44 (2002) 21–40.
+         A Review of Venkatachaliengar’s Book on Elliptic Functions                         xxxvii
+
+ [22] G. Darboux, Mémoire sur la théorie des coordonnées curvilignes, et des systèmes ortho-
+      gonaux, Annales scientiﬁques de l’École Normale Supérieure, Sér. 2, 7 (1878) 101–150.
+ [23] G.-H. Halphen, Traité des fonctions elliptiques et de leurs applications, Part 1, Gauthier-
+      Villars, Paris (1886).
+ [24] C. G. J. Jacobi, Note sur les fonctions elliptiques, Journal für die reine und angewandte
+      Mathematik, 3 (1828) 192–195. Reprinted in [26, pp. 251–254].
+ [25] C. G. J. Jacobi, Sur la rotation d’un corps. Extrait d’une lettre adressée à l’académie des
+      sciences de Paris, Journal für die reine und angewandte Mathematik, 39 (1850) 293–350.
+      Reprinted in [27, pp. 289–352].
+ [26] C. G. J. Jacobi, Gesammelte Werke, vol. 1, Chelsea, New York (1969).
+
+
+
+
+                                                       W
+ [27] C. G. J. Jacobi, Gesammelte Werke, vol. 2, Chelsea, New York (1969).
+ [28] W. P. Johnson, How Cauchy missed Ramanujan’s 1 ψ1 summation, Amer. Math. Monthly,
+      111 (2004) 791–800.
+ [29] C. Jordan, Cours d’Analyse, vol. 2, 3rd edition, Gauthier-Villars, Paris, 1913. Reprinted
+      by Jacques Gabay, Sceaux (1991).
+ [30] L. Kronecker, Zur Theorie der elliptischen Functionen, Monatsberichte der Königlich
+      Preussischen Akademie der Wissenschaften zu Berlin vom Jahre 1881, 1165–1172.
+      Reprinted in [31, 311–318].
+
+
+
+                                IE
+ [31] L. Kronecker, Leopold Kronecker’s Werke, vol. 4, Teubner, Leipzig, 1929. Reprinted by
+      Chelsea, New York (1968).
+ [32] S. Ramanujan, On certain arithmetical functions, Trans. Cambridge Philos. Soc., 22
+      (1916) 159–184. Reprinted in [33, pp. 136–162].
+ [33] S. Ramanujan, Collected Papers, Cambridge, University Press, 1927. Reprinted by AMS
+      Chelsea, Providence, RI (2000).
+ [34] S. Ramanujan, Notebooks (2 volumes), Tata Institute of Fundamental Research, Bombay
+ EV
+      (1957).
+ [35] S. Ramanujan, The lost notebook and other unpublished papers, Narosa, New Delhi
+      (1988).
+ [36] B. van der Pol, On a non-linear partial differential equation satisﬁed by the logarithm of
+      the Jacobian theta-functions, with arithmetical applications. I, II, Nederl. Akad. Wetensch.
+      Proc. Ser. A, 54 (Same as: Indagationes Math., 13 (1951)) 261–271, 272–284.
+ [37] K. Venkatachaliengar, Elliptic modular functions and Picard’s theorem, Hyperbolic
+      complex analysis (Proc. All India Sem., Ramanujan Inst., Univ. Madras, Madras, 1977)
+      pp. 21–41, Publ. Ramanujan Inst., 4, Univ. Madras, Madras (1979).
+ [38] K. Venkatachaliengar, Ramanujan manuscripts, II, Math. Student, 52 (1984) 215–233.
+ [39] K. Venkatachaliengar, Development of elliptic functions according to Ramanujan,
+PR
+
+
+      Madurai Kamaraj University, Madurai (1988).
+ [40] K. Venkatachaliengar, Ramanujan’s contributions to the theory of elliptic functions.
+      In: Wazir Hasan Abdi (ed.), Toils and triumphs of Srinivasa Ramanujan the man and the
+      mathematician, pp. 182–206. National Publishing House, Chaura Rasta, Jaipur (1992).
+ [41] A. Weil, Elliptic functions according to Eisenstein and Kronecker, Springer-Verlag,
+      Berlin-New York (1976).
+ [42] E. T. Whittaker and G. N. Watson, A Course of Modern Analysis, Cambridge University
+      Press, 4th edition (1927).
+ [43] W. Zudilin, The hypergeometric equation and Ramanujan functions, Ramanujan J., 7
+      (2003) 435–447.
+PR
+  EV
+     IE
+       W
+     List of Publications of K. Venkatachaliengar
+
+
+  [1] Weierstrass’ non-differentiable function, J. Indian Math. Soc. 19 (1931), 54–58.
+  [2] On the validity of the Raman-Banerjee analysis of the pianoforte hammer
+
+
+
+
+                                                W
+      problem, Proc. Indian Acad. 1 (1934), 60–66.
+  [3] On series whose terms as well as the sumfunction are continuous in an inteval,
+      and which converges non-uniformly in every sub-interval, J. Indian Math. Soc. 20
+      (1934), 173–175.
+  [4] Generalisation of Jacobi’s θ -function formulae, J. Indian Math. Soc. 1 (1934),
+      23–28.
+
+
+
+                            IE
+  [5] On the reducibility of the general elliptic integral into logarithms, J. Indian
+      Math. Soc. 1 (1934), 59–65.
+  [6] A note on Julia’s Lemma, Math. Student 2 (1934), 149–150.
+  [7] The method of ﬁnding the class-number and the structure of the class group of
+      any algebraic ﬁeld, Proc. Indian Acad. Sci., Sect. A, 1 (1935), 446–450.
+  [8] A simple proof of the Jordan-curve theorem, Quart. J. Math. (Oxford) 8 (1937),
+      241–244.
+ EV
+  [9] On a problem of the tetrahedron, Proc. Indian Acad. Sci., Sect. A 7 (1938),
+      257–260.
+ [10] (with K. S. K. Iyengar) On a problem relating to a tetrahedron, Proc. Indian
+      Acad. Sci. A 7 (1938), 305–311.
+ [11] (with B. S. Madhava Rao) On an inequality concerning lattice sums, Proc. Indian
+      Acad. Sci. A 8 (1938), 524–528.
+ [12] A note on Poncelet’s problem, J. Mysore Univ., Sect. B 3 (1942), 131–134.
+ [13] A deepening of the binomial inequality, J. Mysore Univ., Sect. B 3 (1942),
+      135–138.
+PR
+
+
+ [14] Pairs of symmetric and skew matrices in an arbitrary ﬁeld. I, Proc. Indian
+      Acad. Sci., Sect. A. 22 (1945), 243–264.
+ [15] (with B. S. Madhava Rao and V. R. Thiruvenkatachar) Algebra related to elemen-
+      tary particles of spin 32 , Proc. Roy. Soc. London, Ser. A. 187 (1946), 385–397.
+ [16] (with C. N. Srinivasiengar, H. Gupta, S. C. Chakrabarty, and V. R. Tiruvenkat-
+      achar) On Kemmer’s identity in combinatory functions, Math. Student 15 (1947),
+      93–100.
+ [17] (with K. N. Srinivasa Rao) The irreducible representations of the Lie-algebra
+      of the orthogonal group with spin 3/2, Proc. Nat. Inst. Sci. India 20 (1954),
+      509–523.
+ [18] (with S. K. Lakshmana Rao) On Turán’s inequality for ultraspherical poly-
+      nomials, Proc. Amer. Math. Soc. 8 (1957), 1075–1087.
+ [19] An elementary proof of Morley’s theorem, Amer. Math. Monthly 65 (1958),
+      612–613.
+ xl           List of Publications of K. Venkatachaliengar
+
+ [20] Elementary proofs of the inﬁnite product for Sin Z and allied formulae,
+      Amer. Math. Monthly 69 (1962), 541–545.
+ [21] The congruent reduction of a pencil of two skew symmetric matrices over a com-
+      mutative ﬁeld of characteristic 2, and the criteria for congruence of two such
+      given pencils, Math. Student 33 (1965), 33–35.
+ [22] (with T. A. Soundararajan) A covering theorem for skew ﬁelds, Nederl. Akad.
+      Wetensch. Proc. Ser. A 72 = Indag. Math. 31 (1969), 441–442.
+ [23] (with T. A. Soundararajan) Topologies for Galois groups of extension ﬁelds,
+
+
+
+
+                                                W
+      J. Reine Angew. Math. 242 (1970), 1–7.
+ [24] (with T. A. Soundararajan) On the Krull Galois theory for non-algebraic exten-
+      sion ﬁelds, Bull. Austral. Math. Soc. 4 (1971), 367–387.
+ [25] (with V. Ramamani) On a partition theorem of Sylvester, Michigan Math. J. 19
+      (1972), 137–140.
+ [26] Elliptic modular functions and Picard’s theorem, in Hyperbolic Complex
+      Analysis (Proc. All India Sem., Ramanujan Inst., Univ. Madras, Madras, 1977),
+
+
+
+                            IE
+      pp. 21–41; Publ. Ramanujan Inst., 4, Univ. Madras, Madras, 1979.
+ [27] Ramanujan manuscripts. II, Math. Student 52 (1984), 215–233.
+ [28] Development of Elliptic Functions According to Ramanujan, Technical Report,
+      No. 2, Department of Mathematics, Madurai Kamaraj University, Madurai, 1988.
+ [29] Ramanujan’s contributions to the theory of elliptic functions, in Toils and
+      Triumphs of Srinivasa Ramanujan the Man and the Mathematician, Wazir Hasan
+      Abdi, ed., National Publishing House Chaura Rasta, Jaipur, 1992, pp. 182–206.
+ EV
+ [30] (with T. Soundararajan) A variety of applications of a theorem of B. H. Neumann
+      on groups, Acta Math. Vietnam 19 (1994), 55–60.
+ [31] (with B. C. Berndt) On the transformation formula for the Dedekind eta-function,
+      in Symbolic Computation, Number Theory, Special Functions, Physics and Com-
+      binatorics, F. G. Garvan and M. E. H. Ismail, eds., Kluwer, Dordrecht, 2001,
+      pp. 73–77.
+ [32] Some features of Brahmagupta’s work in geometry, bibliographic data unknown.
+ [33] The development of mathematics in ancient India: role of Brahmagupta, biblio-
+      graphic data unknown.
+PR
+                                     Contents
+
+ Preface                                                                      iii
+
+
+ Foreword                                                                      v
+
+
+
+
+                                                W
+ Members of the Advisory Board                                                vi
+
+
+ K. Venkatachaliengar
+                         G. N. Srinivasa Prasanna and K. V. Venkataramu       vii
+
+
+ K. Venkatachaliengar
+
+
+                            IE                           Bruce C. Berndt
+
+
+ A Review of Venkatachaliengar’s Book on Elliptic Functions
+                                                         Shaun Cooper
+                                                                              xiii
+
+
+
+                                                                             xvii
+ EV
+ List of Publications of K. Venkatachaliengar                                xxxix
+
+
+ On a Generalized Basic Series and New Combinatorial Interpretations of
+ Göllnitz–Gordon Identities              S. Anand and A. K. Agarwal          1–8
+
+
+ Series for 1/π Arising from Certain Representations for Eisenstein Series
+ in Ramanujan’s Second Notebook
+                            Nayandeep Deka Baruah and Narayan Nayak           9–30
+PR
+
+
+ What is a q-Series?                                     Bruce C. Berndt     31–51
+
+
+ A Proof of the General Theta Transformation Formula
+                Bruce C. Berndt, Chadwick Gugg, Sarachai Kongsiriwong
+                                                     and Johann Thiel        53–62
+
+
+ Some Applications of Ramanujan’s Remarkable Summation Formula
+                                                       S. Bhargava           63–72
+ xlii          Contents
+
+ A New Proof of Winquist’s Identity                   Song Heng Chan       73–78
+
+
+ Theta Function Identities for Level 15                  Shaun Cooper      79–86
+
+
+ Biranks for Partitions into 2 Colors                     F. G. Garvan     87–111
+
+
+
+
+                                              W
+ The Number of Representations of a Number by Various Forms Involving
+ Triangles, Squares, Pentagons and Octagons    Michael D. Hirschhorn      113–124
+
+
+ On the 2-, 3-, 4- and 6-Dissections of Ramanujan’s Cubic Continued
+ Fraction and its Reciprocal        Michael D. Hirschhorn and Roselin     125–138
+
+
+
+
+                            IE
+ Coupled Systems of Differential Equations for Modular forms of Level n
+
+
+
+ The Overcubic Partition Function mod 3
+                                                             Tim Huber
+
+
+                                                       Byungchan Kim
+                                                                          139–156
+
+
+                                                                          157–163
+ EV
+ A Theta Function Identity and Applications                Zhi-Guo Liu    165–183
+
+
+ Some New Schläﬂi-Type Modular Equations in the Quartic Theory
+                        M. S. Mahadeva Naika and S. Chandan Kumar         185–199
+PR
+

@@ -1,0 +1,784 @@
+数理解析研究所講究録 1274 巻 2002 年 130-141
+
+
+                                                                                                                                                                                                                                                          130
+
+
+                                         ASURVEY ON EISENSTEIN SERIES
+                                        IN RAMANUJAN’S LOST NOTEBOOK
+
+                                                          BRUCE C. BERNDT 1 AND AEJAYEE 2
+
+
+
+
+                                                                                         1. INTRODUCTION
+      In contemporary notation, the Eisenstein series       and         of weight 2j on the full                                                           $G_{2j}(\tau)$                                     $E_{2j}(\tau)$
+
+
+
+     modular group    , where j is apositive integer exceeding one, are defined for ${\rm Im}\tau>0$ by
+                      $\Gamma(1)$
+
+
+
+
+                                                               $G_{2j}(\tau):=$
+                                                                                                     $m_{1\prime}m_{2} \neq(0,0’)\sum_{m_{1},m_{2}\in \mathrm{Z}}(m_{1}\tau+m_{2})^{-2j}$
+
+
+
+
+     and
+                                                                                                                                                                                              .
+                           $E_{2j}( \tau):=\frac{G_{2j}(\tau)}{2\zeta(2j)}=1-\frac{4j}{B_{2j}}\sum_{k=1}^{\infty}\frac{k^{2j-1}e^{2\pi|k\tau}}{1-e^{2\pi\dot{|}k\tau}}$
+
+
+
+
+                                                                                      $=1- \frac{4j}{B_{2j}}\sum_{r=1}^{\infty}\sigma_{2j-1}(r)q^{r}$                                                     ,          $q=e^{2\pi\dot{1}\mathcal{T}}$
+                                                                                                                                                                                                                                                      ,   (1.1)
+
+     where    , $n\geq 0$ , denotes the yzth Bernoulli number, and where
+            $B_{n}$                                                                     . The latter                                                                                                               $\sigma_{\nu}(n)=\sum_{d|n}d^{\nu}$
+
+
+     two representations in (1.1) can be established by using the Lipschitz summation formula or
+     Fourier analysis. For these and other basic properties of Eisenstein series, see, for example,
+     R. A. Rankin’s text [38, Chap. 6].
+        In Ramanujan’s notation, the three most relevant Eisenstein series are defined for $|q|<1$
+     by
+
+                                                                           $P(q):=1-24 \sum_{k=1}^{\infty}\frac{kq^{k}}{1-q^{k}}$                                                             ,                                                           (1.2)
+
+
+                                                                           $Q(q):=1+240$                                                            $\sum_{k=1}^{\infty}\frac{k^{3}q^{k}}{1-q^{k}}$
+                                                                                                                                                                                                      ,                                                   (1.3)
+
+     and
+
+                                                                            $R(q):=1-504 \sum_{k=1}^{\infty}\frac{k^{5}q^{k}}{1-q^{k}}$                                                                   .                                               (1.4)
+
+
+        Research partially supported by grant                                             $\mathrm{M}\mathrm{D}\mathrm{A}\Re \mathrm{I}4\alpha$
+                                                                                                                                                  )$- 1$ -0015from the National Security Agency.
+       2Research partially supported by agrant from the Number Theory Foundation
+                                                                                                                                                                                                                               131
+                                                                                                                        BERNDT AND YEE
+    Thus, for $q=\exp(2\pi i\tau)$ , $E_{4}(\tau)=Q(q)$ and $E_{6}(\tau\grave{)}=R(q)$ , which have weights 4and 6,
+    respectively. The function $P(q)$ is not amodular form. However, if $q=\exp(2\pi i\tau)$ , with
+    ${\rm Im}\tau---y$ , then $P(q)-3/(\pi y)$
+                                               satisfies the functional equation required of amodular form
+    of weight 2[38, p. 195]. In his notebooks [36], Ramanujan used the notations , $M$ , and $N$                                                                                                                   $L$
+
+   in place of $P$, , and $R$ , respectively.              $Q$
+
+
+        Ramanujan made many contributions to the theory and applications of Eisenstein series
+   in his paper [32], [35, pp. 136-162]. Applications were made to the theory of the divisor
+   functions ;the partition function $p(n)$ , the number of ways the positive integer can be
+                                          $\sigma_{\nu}$
+
+                                                                                                                                                                                                                         $n$
+
+   represented as asum of positive integers with the order of the summands irrelevant; and
+   $r_{k}(n)$ , the number
+                                 of representations of the positive integer as asum of squares. Since                                           $n$                                                          $k$
+
+
+   Ramanujan did not consider any further applications of Eisenstein series to $r_{k}(n)$ in his lost
+   notebook, we shall not further discuss his work on sums of squares.
+        Among the most useful results on Eisenstein series established by Ramanujan in [32] are
+   his differential equations                     (30) , [35, p. 142]        $[32, \mathrm{e}\mathrm{q}\mathrm{s}.$      $]$
+
+
+
+
+                         $q \frac{dP}{dq}=\frac{P^{2}(q)-Q(q)}{12}$
+                                                                         ,            $q \frac{dQ}{dq}=\frac{P(q)Q(q)-R(q)}{3}$       ,   and         $q \frac{dR}{dq}=\frac{P(q)R(q)-Q^{2}(q)}{2}$
+                                                                                                                                                                                                                                .
+                                                                                                                                                                                                                               (1.5)
+ Several results in the present paper depend upon the differential equations (1.5).
+    Ramanujan recorded numerous results on Eisenstein series in his notebooks as well. Chap-
+ ter 15 in his second notebook contains some of the results from [32] and other results not
+ recorded in [32]; see [2, pp. 326-333]. Chapter 21 in Ramanujan’s second notebook [36], [3,
+    . 454-488] is entirely devoted to Eisenstein series. Eisenstein series arise in Ramanujan’s
+$\mathrm{p}\mathrm{p}$
+
+
+
+
+ “cubic” theory of elliptic functions; see [5, pp. 105-108]. Our brief summary has been by no
+ means exhaustive; for further results of Ramanujan on Eisenstein series, consult $[2]-[5]$ .
+   The present survey of results on Eisenstein series found mostly in Ramanujan’s lost note-
+ book [37] comprises entries of different natures. In Section 2, we discuss Ramanujan’s for-
+ mulas for the coefficients of quotients of Eisenstein series. These were communicated to
+ G. H. Hardy from anursing home in 1918 and greatly extend the content of their last joint
+ paper [21], [35, pp. 310-321]. In Section 3, we examine the role of Eisenstein series in prov-
+ing congruences for the partition function $p(n)$ . This material is found in amanuscript of
+Ramanujan on the partition and tau functions first published in handwritten form in [37]
+and then in [10] with commentary. The results in these two sections bring us to the natu-
+ral investigation of possible congruences for the coefficients of quotients of Eisenstein series
+upon which we briefly focus in Section 4. At various places in his lost notebook, Ramanujan
+gives formulas for Eisenstein series in terms of quotients of Dedekind          functions Two                                                                             $\mathrm{e}\mathrm{t}\mathrm{a}$
+
+
+
+
+examples are given in Section 5. In [32], Ramanujan expresses families of Eisenstein series
+and related series as polynomials in , , and . Apage in the lost notebook [37, p. 188]                                $P$ $Q$   $R$
+
+is devoted to another family of series, which in this case is related to the pentagonal num-
+ber theorem; see Section 6for some of these series. On another page in the lost notebook
+            , Ramanujan cryptically relates some formulas for Eisenstein series, which yield
+$[37, \mathrm{p}.                 211]$
+
+approximations to in aspirit not unlike that for approximations to given in his famous
+                                                                 $\pi$
+                                                                                                                                                                  $\pi$
+
+
+
+paper on modular equations and approximations to $\pi[31]$ . We also indicate in Section 7
+how Ramanujan’s ideas lead to new series representations for          . In the final section, we                                                      $1/\pi$
+
+discuss integrals of Eisenstein series associated with Dirichlet characters
+                                                                                                                                                                                                                                                  132
+                                                                                  EISENSTEIN SERIES
+
+  Lastly, we introduce further notation that we use in the sequel. As usual, set
+
+                                                       $(a;q)_{\infty}:= \prod_{n=0}^{\infty}(1-aq^{n})$                 ,                    $|q|<1$        .
+
+Define, after Ramanujan,
+                      $f(-q):=(q;q)_{\infty}=:e^{-2\pi\dot{l}\mathcal{T}/24}\eta(\tau)$                         ,              $q=e^{2\pi\dot{|}\tau}$
+                                                                                                                                                         ,                  ${\rm Im}\tau>0$   ,                                                 (1.6)
+
+where   $\eta$
+                 denotes the Dedekind eta-function.
+
+
+       2. FORMULAS FOR THE COEFFICIENTS OF QUOTIENTS OF EISENSTEIN SERIES
+   In their famous paper [20], [35, pp. 276-309], Hardy and Ramanujan found an asymptotic
+formula for the partition function $p(n)$ , which arises from the power series coefficients of the
+reciprocal of the Dedekind      -function, amodular form of weight . As they indicated near
+                                               $\mathrm{e}\mathrm{t}\mathrm{a}$
+                                                                                                                                                                   $\frac{1}{2}$
+
+
+
+
+the end of their paper, their methods also apply to several analogues of the partition function
+generated by modular forms of negative weight that axe analytic in the upper half-plane. In
+their last published paper [21], [35, pp. 310-321], they considered asimilar problem for the
+coefficients of modular forms of negative weight having one simple pole in afundamental
+region, and, in particular, they applied their theorem to find interesting series representations
+for the coefficients of the reciprocal of the Eisenstein series         . The ideas in [21] have                                                         $E_{6}(\tau)$
+
+
+
+been greatly extended by H. Poincar\’e [29], H. Petersson [26], [27], [28], and J. Lehner [23],
+ [24].
+    While confined to nursing homes and sanitariums during his last two years in England, Ra-
+manujan wrote several letters to Hardy about the coefficients in the power series expansions
+of certain quotients of Eisenstein series. These letters are photocopied in [37, pp. 97-126]
+ and set to print with commentary in the book by Berndt and Rankin [11, pp. 175-191].
+The letters contain many formulas for the coefficients of quotients of Eisenstein series not
+ examined by Hardy and Ramanujan in [21]. Many of Ramanujan’s claims do not fall under
+ the purview of the main theorem in [21]. Ramanujan obviously wanted another example
+ to be included in their paper [21], for in his letter of 28 June 1918 [11, pp. 182-183], he
+ wrote, “I am sending you the analogous results in case of . Please mention them in the                                                            $g_{2}$
+
+
+
+
+ paper without proof. After all we have got only two neat examples to offer,          . and .                                                                                                      $\mathrm{v}\mathrm{i}\mathrm{z}$
+
+
+                                                                                                                                                                                                                                      $g_{2}$             $g_{3}$
+
+
+
+
+ So please don’t omit the results.” This letter was evidently written after galley proofs for
+ [21] were printed, because Ramanujan’s request went unheeded. The functions and are                                                                                                                                $g_{2}$                     $g_{3}$
+
+
+
+
+ the familiar invariants in the theory of elliptic functions and are constant multiples of the
+ Eisenstein series       and        , respectively.
+                            $E_{4}(\tau)$                       $E_{6}(\tau)$
+
+
+
+    Because the example from Hardy and Ramanujan’s paper [21] is necessary for us in our
+ examination of the deepest result from Ramanujan’s letters, we state it below.
+Theorem 2.1. Define the coefficients                                                      $p_{n}$   by
+
+                                                                                  $\frac{1}{R(q^{2})}=:\sum_{||=0}^{\infty}p_{n}q^{2n}$   ,
+                                                                                                                                                                                   133
+                                                                            BERNDT AND YEE
+
+where, say, $|q|<q_{0}<1$ . Let
+
+                                                                               $\mu=2^{a}\prod_{j=1}^{r}p_{j}^{a_{j}}$   ,                                                          (2.1)
+
+where $a=0$ or 1,               $p_{j}$   is a prime of the form $4m+1$ , and                                                    $a_{j}$       is a nonnegative integer, $1\leq j\leq r$ .
+Then, for $n\geq 0$ ,
+                                                                             $p_{n}= \sum T_{\mu}(n)$                        ,
+                                                                                               (u)
+
+where      $\mu$   runs over all integers of the form (2.1), and where
+                                                                     $T_{1}(n)= \frac{2}{Q^{2}(e^{-2\pi})}e^{2n\pi}$                       ,                                        (2.2)
+
+
+                                                              $T_{2}(n)= \frac{2}{Q^{2}(e^{-2\pi})}\frac{(-1)^{n}}{2^{4}}e^{n\pi}$               ,                                  (2.3)
+and for $\mu>2$ ,
+
+                        $T_{\mu}(n)= \frac{2}{Q^{2}(e^{-2\pi})}\frac{e^{2n\pi/\mu}}{\mu^{4}}\sum_{c,d}2\cos((ac+bd)\frac{2\pi n}{\mu}+8\tan^{-1}\frac{c}{d})$            ,          (2.4)
+
+       the sum is over all pairs $(c, d)$ , where $(c, d)$ is a distinct solution to $\mu=c^{2}+d^{2}$ and
+$w/iere$
+      is any solution to $ad-bc=1$ . Also, distinct solutions $(c, d)$ to $=c^{2}+d^{2}$ give rise to
+$(a, b)$                                                                                                                                                         $\mu$
+
+
+
+distinct terms in the sum in (2.4).
+   All of Ramanujan’s formulas for the coefficients of quotients of Eisenstein series were
+established in two papers by Berndt and Bialek [6] and by Berndt, Bialek, and Yee [7]. The
+results proved in the former paper require only amild extension of Hardy and Ramanujan’s
+principal theorem. However, those in the latter paper are more difficult to prove, and not
+only did the theorem of Hardy and Ramanujan [21] needed to be extended, but the theorems
+of Poincare’, Petersson, and Lehner needed to be extended to cover double poles.
+   As one can see from Theorem 2.1, the formulas for these coefficients have acompletely
+different shape from those arising from modular forms analytic in the upper half-plane.
+Moreover, these series are very rapidly convergent, more so than those arising from modular
+forms analytic in the upper half-plane, so that truncating aseries, even with asmall number
+of terms, provides aremarkable approximation. This is really very surprising, for when
+one examines the formulas for these coefficients, one would never guess how such amazingly
+accurate approximations could be obtained from just two terms.
+   Now define
+
+                                            $B(q):=1+24 \sum_{k=1}^{\infty}\frac{(2k-1)q^{2k-1}}{1-q^{2k-1}}$                        ,               $|q|<1$ .
+
+
+It is not difficult to see that $B(q)$ is the unique modular form of weight 2with multiplier
+system identically equal to 1on the modular group FO(2). It is also easy to show that $B(q)$
+is related to $P(q)$ by the simple formula
+                                                                   $B(q)=2P(q^{2})-P(q)$ .
+                                                                                                                                                                                                                                                                                                                 134
+                                                                                       EISENSTEIN SERIES
+
+We now state one of our principal theorems from [7].
+Theorem 2.2. Define the coefficients                                                              $b_{n}’$
+                                                                                                                   by
+
+                                                                                    $\frac{1}{B^{2}(q^{2})}=:\sum_{n=0}^{\infty}b_{n}’q^{2n}$                    ,
+
+where, say, $|q|<q0<1$ . Then,
+
+                                                             $b_{n}’=18 \sum_{(\mu_{\mathrm{e}})}(n+\frac{3\mu_{e}}{2\pi})T_{\mu_{\mathrm{e}}}(n)$                                                        ,                                                                                                      (2.5)
+
+where the sum is over all even integers                                                                $\mu_{e}$
+                                                                                                                   of the form (2.1), and where                                                                                                                        $T_{\mu_{\mathrm{e}}}(n\rangle$
+                                                                                                                                                                                                                                                                                                         is defined by
+(2.2)-(2.4).
+  Using Mathematica, we calculated                                                          $b_{n}’$
+                                                                                                       , $1\leq n\leq 10$ , and the first two terms in (2.5). The
+accuracy is remarkable.
+
+
+
+
+                         3. EISENSTEIN SERIES AND                                                                                                          $\mathrm{p}_{\mathrm{A}\mathrm{R}\mathrm{T}\mathrm{I}\mathrm{T}\mathrm{I}\mathrm{O}\mathrm{N}\mathrm{S}}$
+
+
+
+
+   Ramanujan utilized Eisenstein series to establish congruences for the partition function
+$p(n)$ . Among his most famous identities connected with partitions are the following four
+
+identities:
+                        $\sum_{n=1}^{\infty}(\frac{n}{5})\frac{q^{n}}{(1-q^{n})^{2}}=q\frac{(q^{5},q^{5})_{\infty}^{5}}{(q\cdot q)_{\infty}}.,$        ,                                                                                                                                                         (3.1)
+
+
+                  1-5                                                                                                                              ,
+                                  $\sum_{n=1}^{\infty}(\frac{n}{5})\frac{nq^{n}}{1-q^{n}}=\frac{(q\cdot q)_{\infty}^{5}}{(q^{5}’ q^{5})_{\infty}}.,$                                                                                                                                                             (3.2)
+
+
+                  $\sum_{n=1}^{\infty}(\frac{n}{7})q^{n}\frac{1+q^{n}}{(1-q^{n})^{3}}=q(q;q)_{\infty}^{3}(q^{7};q^{7})_{\infty}^{3}+8q^{2}\frac{(q^{7},q^{7})_{\infty}^{7}}{(q,q)_{\infty}}..$                                                                               ,                                   (3.3)
+
+and
+
+                  8-7              $\sum_{n=1}^{\infty}(\frac{n}{7})\frac{n^{2}q^{n}}{1-q^{n}}=49q(q;q)_{\infty}^{3}(q^{7};q^{7})_{\infty}^{3}+8\frac{(q,q)_{\infty}^{7}}{(q^{7}\cdot q^{7})_{\infty}}.,$                                                                      ,                                 (3.4)
+                                                                                                                                                                                              135
+                                                                          BERNDT AND YEE
+
+where $|q|<1$ and         denotes the Legendre symbol. Identity (3.1) can be utilized to prove
+                                   $( \frac{n}{p})$
+
+
+
+
+Ramanujan’s celebrated congruence                               , while (3.3) can be employed to
+                                                                         $p(5n+4)\equiv 0(\mathrm{m}\mathrm{o}\mathrm{d} 5)$
+
+
+establish Ramanujan’s equally famous congruence                                . The identities in                   $p(7n+5)\equiv 0(\mathrm{m}\mathrm{o}\mathrm{d} 7)$
+
+
+ (3.2) and (3.4) are Eisenstein series on the congruence subgroups             and      , respec-                                                         $\Gamma_{0}(5)$   $\Gamma_{0}(7)$
+
+
+
+tively. These four identities were first recorded in an unpublished manuscript of Ramanujan
+on the partition and tau functions, first published in handwritten form with Ramanujan’s
+lost notebook [37, pp. 135-177]. Equivalent forms of (3.1) and (3.3) are offered by Ramanu-
+jan in his first paper on congruences for $p(n)[33]$ , [35, pp. 210-213]. Hardy extracted some
+of the material from this unpublished manuscript for Ramanujan’s posthumously published
+paper [34],                      . Atyped version of Ramanujan’s unpublished manuscript,
+                    $[35, \mathrm{p}\mathrm{p}.       232-238]$
+
+
+together with proofs and commentary, has been prepared by Berndt and K. Ono [10]. The
+latter paper and the new edition of Ramanujan’s Collected Papers [35, pp. 372-375] contain
+several references to proofs of (3.1)-(3.4). H. H. Chan [18] has shown the equivalence of (3.1)
+and (3.2), as well as the equivalence of (3.3) and (3.4). For proofs of several congruences for
+     ) using Eisenstein series, see [34] and [10].
+$p\langle n$
+
+
+
+
+          4. CONGRUENCES FOR THE COEFFICIENTS OF QuoTIENTS OF EISENSTEIN SERIES
+   In calculating the coefficients of the quotients of the Eisenstein series which appear in [6]
+and [12], and which we briefly discussed in Section 2, we noticed that for some quotients
+the coefficients in certain arithmetic progressions are divisible by prime powers, usually a
+power of 3. In view of Ramanujan’s famous congruences for $p(n)$ , it seemed natural for us
+to systematically investigate congruences of this type for Eisenstein series. In some cases,
+it was very easy to establish our observations, but in other cases, the task was considerably
+more difficult. We summarize what we have accomplished [14] in the following table. For
+each quotient, set                      .
+                                 $F(q)= \sum_{n=0}^{\infty}a_{n}q^{n}$
+
+
+
+
+               5. REPRESENTATIONS OF EISENSTEIN SERIES AS QUOTIENTS OF DEDEKIND
+                                                                            $\mathrm{E}\mathrm{T}\mathrm{A}$
+
+
+                                                                                                               -FUNCTIONS
+   In Section 3, we offered some identities for Eisenstein series that are useful for the study
+of $p(n)$ . The identities we present in this section are examples of those found primarily
+on pages 44, 50, 51, and 53 in Ramanujan’s lost notebook [37] and were first proved by
+S. Raghavan and S. S. Rangachari [30]. Since they used the theory of modular forms, it
+seemed desirable to construct proofs in the spirit of Ramanujan to gain abetter insight into
+how Ramanujan originally discovered them and to also seek abetter understanding of the
+identities themselves. To that end, Berndt, Chan, J. Sohn, and S. H. Son [9] found proofs
+                                                                                                                                                                                                                                                                                                           136
+                                                                              EISENSTEIN SERIES
+
+which depend only on material found in Ramanujan’s notebooks [36]. All these identities
+for Eisenstein series are connected with modular equations of either degree 5or degree 7.
+Z.-G. Liu [25] has recently constructed proofs of Ramanujan’s septic identities and some
+new septic identities as well using the theory of elliptic functions, but employing methods
+from complex analysis. The methods in [9] do not use complex analysis.
+   We record only two examples of Ramanujan’s identities involving Eisenstein series. See
+the paper by Berndt, Chan, Sohn, and Son [9] for further results and proofs.
+Theorem 5.1 (p. 50). For $Q(q)$ and $f(-q)$ defined by (1.3) and (1.6), respectively,
+                             $Q(q)= \frac{f^{10}(-q)}{f^{2}(-q^{5})}+250qf^{4}(-q)f^{4}(-q^{5})+3125q^{2}\frac{f^{10}(-q^{5})}{f^{2}(-q)}$
+
+
+
+
+and
+                                 $Q(q^{5})= \frac{f^{10}(-q)}{f^{2}(-q^{5})}+10qf^{4}(-q)f^{4}(-q^{5})+5q^{2}\frac{f^{10}(-q^{5})}{f^{2}(-q)}$                                                                                      .
+
+                                      6. EISENSTEIN SERIES AND A SERIES RELATED
+                                         TO THE PENTAGONAL NUMBER THEOREM
+
+  Page 188 of Ramanujan’s lost notebook, in the pagination of [37], is devoted to the series
+
+   $T_{2k}$
+              $:=T_{2k}(q):=1+ \sum_{n=1}^{\infty}(-1)^{n}\{(6n-1)^{2k}q^{n(3n-1)/2}+(6n+1)^{2k}q^{n(3n+1)/2}\}$                                                                                                                                                                    ,             $|q|<1$   .
+
+
+Note that the exponents $n(3n\pm 1)/2$ are the generalized pentagonal numbers. Ramanujan
+recorded formulas for    , $k=1,2$ ,   , 6, in terms of the Eisenstein series, $P$, , and . The
+                                         $T_{2k}$
+                                                                         $\ldots$
+                                                                                                                                                                                                                                                                          $Q$                        $R$
+
+
+first three are given by
+                     (i)                                                                                       ,
+                                                                            $\frac{T_{2}(q)}{(q,q)_{\infty}}.=P$
+
+
+
+
+                    (ii)                                                    $\frac{T_{4}(q)}{(q\cdot q)_{\infty}},=3P^{2}-2Q$   ,
+
+                   (iii)                                                    $\frac{T_{6}(q)}{(q,q)_{\infty}}.=15P^{3}-30PQ+16R$                                                   .
+Ramanujan’s work on this page can be considered as acontinuation of his study of repre-
+senting certain kinds of series as polynomials in Eisenstein series in [32], [35, pp. 136-162].
+    The first formula, (i), has an interesting arithmetical interpretation. For $n\geq 1$ , let
+$\sigma(n)=\sum_{d|n}d$ , and define   . Let denote anonnegative integer. Then
+                                                    $\sigma(0)=-\frac{1}{24}$                       $n$
+
+
+
+
+                                                                                                                                                                                                                                                                                            ’
+
+                    -24    $\sum_{j+k(3k\pm 1)/2=n}(-1)^{k}\sigma(j)=\{\begin{array}{l}(-1).(6r-1)^{2}(-1).(6r+1)^{2}0\end{array}$   $\mathrm{o}\mathrm{t}\mathrm{h}\mathrm{e}\mathrm{r}\mathrm{w}i\mathrm{s}\mathrm{e}\mathrm{i}\mathrm{f}n=r(3,r\mathrm{i}\mathrm{f}n=r(3r +-1)/\cdot 21)/2,$
+                                                                                                                                                                                                                                                                                                           (6.1)
+
+
+where the sum is over all nonnegative pairs of integers $(j, k)$ such that $j+k(3k\pm 1)/2=n$ .
+   There are many identities involving the divisor sums $\sigma_{k}(n):=\sum_{d|n}d^{k}$ in the literature,
+but we have not previously seen (6.1). Besides (6.1), other identities of Ramanujan can be
+reformulated in terms of divisor sums. In particular, see [2, pp. 326-329] and the reference                                                                                                                                                                                                                    $\mathrm{s}$
+                                                                                                                                                                                                                                                               137
+                                                                                     BERNDT AND YEE
+
+ cited there. The most thorough study of identities of this sort has been undertaken by
+ J. G. Huard, Z. M. Ou, B. K. Spearman, and K. S. Williams [22], where many references to
+ the literature can also be found.
+    In general,        can be represented as apolynomial in terms of the form
+                          $T_{2k}(q)$
+                                                                                           ,                                                                                                                    $P^{2a}Q^{4b}R^{6c}$
+
+ where $2a+4b+6c=2k$ . It seems to be extremely difficult to find ageneral formula for this
+ polynomial, but on page 188, Ramanujan does give the “first” five terms. A         of this                                                                                                  $\mathrm{p}\overline{\mathrm{r}}\mathrm{o}\mathrm{o}\mathrm{f}$
+
+
+
+
+ result and all claims on this page of the lost notebook can be found in apaper by Berndt
+ and Yee [12].
+
+                                      7. EISENSTEIN SERIES AND APPROXIMATIONS To                                                                                      $\pi$
+
+
+
+
+   On page 211 in his lost notebook, in the pagination of [37], Ramanujan listed eight integers,
+11, 19, 27, 43, 67, 163, 35, and 51 at the left margin. To the right of each integer, Ramanujan
+recorded alinear equation in      and     . The arguments in these identities were not revealed
+                                                             $Q^{3}$             $R^{2}$
+                                                                                                                                  $q$
+
+
+by Ramanujan, but $q=-\exp(-\pi\sqrt{n})$ , where is the integer at the left margin. To the                    $n$
+
+
+right of each equation in      and     , Ramanujan entered an equality involving and square
+                                                   $Q^{3}$             $R^{2}$
+                                                                                                                                                                                           $\pi$
+
+
+
+
+roots. (For the integer 51, the linear equation and the equality involving , in fact, are not                                                                                  $\pi$
+
+
+
+
+recorded by Ramanujan.) The equalities in the third column lead to approximations of                                                                                                                                                                               $\pi$
+
+
+
+
+that are remindful of approximations given by Ramanujan in his famous paper on modular
+equations and approximations to $\pi[31]$ , [35, p. 33].
+   We offer ageneral theorem from which all the equalities in the third column follow.
+Considerable notation is first needed, however.
+   Let
+                    $P_{n}:=P(-e^{-\pi\sqrt{n}})$                ,     $Q_{n}:=Q(-e^{-\pi\sqrt{n}})$                    ,        and           &:            $R(-e^{-\pi\sqrt{n}})$
+                                                                                                                                                                                       .                                                                       (7.1)
+Recall that the modular -invariant                $j$                            $j(\tau)$    is defined by
+
+                                    $j( \tau)=1728\frac{Q^{3}(q)}{Q^{3}(q)-R^{2}(q)}$                ,               $q=e^{2\pi i\tau}$
+                                                                                                                                           ,            ${\rm Im}\tau>0$   .
+In particular, if             $n$   is apositive integer,
+
+                                                        $j_{n}:=j( \frac{3+\sqrt{-n}}{2})=1728\frac{Q_{n}^{3}}{Q_{n}^{3}-R_{n}^{2}}$                ,
+
+where   $Q_{n}$
+                  and    $R_{n}$
+                                    are defined by (7.1). Furthermore, set
+                                                                                     $J_{n}=- \frac{1}{32}\sqrt[3]{j_{n}}$
+                                                                                                                             .                                                                                                                                 (7.2)
+Next define
+                                                                        $b_{n}=\{n(1728-j_{n})\}^{1/2}$
+                                                                                                                                                                                                                                                               (7.3)
+and
+
+                                                         $a_{n}= \frac{1}{6}b_{n}\{1-\frac{Q_{n}}{R_{n}}(P_{n}-\frac{6}{\pi\sqrt{n}})\}$
+                                                                                                                                                .                                                                                                              (7.4)
+The numbers and arise in series representations for
+                    $a_{n}$             $b_{n}$
+                                                            proved by D. V. and G. V. Chud-                                      $1/\pi$
+
+novsky [19] and J. M. and P. B. Borwein [16].
+  We now have sufficient notation to state our first theorem
+                                                                                                                                                                                                           138
+                                                                                        EISENSTEIN SERIES
+
+Theorem 7.1. If             $P_{n}$
+                                      ,   $b_{n}$
+                                                    ,   $a_{n}$   , and   $J_{n}$
+                                                                                       are defined by (7.1), (7.3), (7.4), and (7.2), respectively,
+then
+                          $\frac{1}{\sqrt{Q_{n}}}(\sqrt{n}P_{n}-\frac{6}{\pi})=\sqrt{n}(1-6\frac{a_{n}}{b_{n}})(\frac{(\frac{8}{3}J_{n})^{3}+1}{(\frac{8}{3}J_{n})^{3}})1/2$
+                                                                                                                                                                                                           (7.5)
+
+ To illustrate Theorem 7.1, we offer three of Ramanujan’s eight examples.
+Corollary 7.2. We have
+                                                                     $\frac{1}{\sqrt{Q_{11}}}(\sqrt{11}P_{11}-\frac{6}{\pi})=\sqrt{2}$                                    ,
+
+                                                                     $\frac{1}{\sqrt{Q_{19}}}(\sqrt{19}P_{19}-\frac{6}{\pi})=\sqrt{6}$                                    ,
+
+                                                                     $\frac{1}{\sqrt{Q_{27}}}(\sqrt{27}P_{27}-\frac{6}{\pi})=3\sqrt{\frac{6}{5}}$
+                                                                                                                                                                              .
+
+  Theorem 7.1 leads to the following theorem giving approximations of .                                                                                                                            $\pi$
+
+
+
+
+Theorem 7.3. We have
+                                                                                                 $\pi\approx\frac{6}{\sqrt{n}-r_{n}}$                ,
+
+with the error approimately equal to
+                                                                                    $144 \frac{\sqrt{n}+5r_{n}}{(\sqrt{n}-r_{n})^{\mathrm{o}}\sim}e^{-\pi\sqrt{n}}$
+                                                                                                                                                                      ,
+
+where   $r_{n}$   is the algebraic expression on the right side in (7.5),                                                                                                             $i.e.$   ,
+
+                                                                        $r_{n}= \sqrt{n}(\frac{(\frac{8}{3}J_{n})^{3}+1}{(\frac{8}{3}J_{n})^{3}})1/2$
+
+
+
+
+  To see how exact these approximations are, consult either [8] or [13].
+  The results on this page of the lost notebook led Berndt and Chan [8] to anew general
+series representation for     . This in turn led them to anew “World Record” series yielding
+                                                        $1/\pi$
+
+
+73 or 74 digits of      per term.
+                            $1/\pi$
+
+
+
+
+                            8. INTEGRALS OF EISENSTEIN SERIES
+   At first glance, the next theorem does not appear to have any connection with Eisenstein
+series. Recall that the functions $f(-q)$ and    are defined in (1.6).                                                 $\eta(\tau)$
+
+
+
+
+Theorem 8.1. Suppose that $0<q<1$ . Then
+
+                             $q^{1/9} \prod_{n=1}^{\infty}(1-q^{n})^{\chi(n)n}=\exp(-C_{3}-\frac{1}{9}\int_{q}^{1}\frac{f^{9}(-t)}{f^{3}(-t^{3})}\frac{dt}{t})$                                      ,     (8.1)
+
+where
+                                                                     $C_{3}= \frac{3\sqrt{3}}{4\pi}L(2, \chi)=L’(-1, \chi)$
+                                                                                                                                                                                  .                        (8.2)
+                                                                                                                                                                                                                                                                             139
+                                                                                                                          BERNDT AND YEE
+
+Here, $L(s, \chi)$ denotes the Dirichlet                                                                      $L$
+                                                                                                                    -function defined for $Res>0$ by                                                                 $L(s, \chi)=\sum_{n=1}^{\infty}\mathrm{x}\{\mathrm{n})/\mathrm{n}\mathrm{S}$
+
+
+
+
+Furthermore, in (8.1) and (8.2),                                                                          $\mathrm{x}\mathrm{i}\mathrm{n})=(\frac{n}{3})$
+                                                                                                                                                            ,   the Legendre symbol.
+   This result, found on page 207 of Ramanujan’s lost notebook, was first proved by Son [39],
+except that he did not establish Ramanujan’s formula (8.2) for     . Berndt and Zaharescu                                                                                                         $C_{3}$
+
+
+
+[15] found another proof of Theorem 8.1, which included aproof of (8.2).
+   We now explain the connection of Theorem 8.1 with Eisenstein series. Akey to the proof
+of (8.1) is the identity
+
+                                                                                            $\frac{f^{9}(-q)}{f^{3}(-q^{3})}=1-9\sum_{n=1}^{\infty}\sum_{d|n}(\frac{d}{3})d^{2}q^{n}$   ,                                                                                      (8.3)
+
+which was first proved by L. Carlitz [17] and then by Son [39]. The series on the right side
+of (8.3) is an example of an Eisenstein series       of weight , defined on the congruence                                                              $E_{k,\chi}(\tau)$                  $k$
+
+
+
+subgroup          by                          $\Gamma_{0}(N)$
+
+
+
+
+                                                                   $E_{k,\chi}( \tau):=1-\frac{2k}{B_{k,\chi}}\sum_{n=1}^{\infty}\sum_{d|n}\chi(d)d^{k-1}q^{n}$                    ,    $q=e^{2\pi i\tau}$
+                                                                                                                                                                                                                                  ,                                           (8.4)
+
+where is aDirichlet character of modulus $N$ , and
+                                     $\chi$
+                                                      denotes the                                                                                                   $B_{k,\chi}$
+                                                                                                                                                                                                       $k\mathrm{t}\mathrm{h}$
+
+                                                                                                                                                                                                                                 generalized Bernoulli
+number associated with .                                                          $\chi$
+
+
+
+
+  Ramanujan’s identity (3.4), when written in the form,
+
+                                                            $E_{3,\chi}(z)=1- \frac{7}{8}\sum_{n=1}^{\infty}\sum_{d|n}\chi(d)d^{2}q^{n}=\frac{\eta^{7}(\tau)}{\eta(7\tau)}+\frac{49}{8}\eta^{3}(\tau)\eta^{3}(7\tau)$                  ,                                      (8.5)
+
+provides another example, where now $\chi(n)$ denotes the Legendre symbol modulo 7. Then
+(8.5) leads to the identity
+
+                 $q^{8/7} \prod_{n=1}^{\infty}(1-q^{n})^{\chi(n)n}=\exp(-C_{7}-\frac{8}{7}\int_{q}^{1}\{\frac{f^{7}(-t)}{f(-t^{7})}+\frac{49}{8}tf^{3}(-t)f^{3}(-t^{7})\}\frac{dt}{t})$
+                                                                                                                                                                                                                                                              ,               (8.6)
+
+where
+                                                                                                                          $C_{7}=L’(-1, \chi)$                               .                                                                                                (8.7)
+Clearly (8.6)and (8.7) are analogues of (8.1) and (8.2), respectively.
+  S. Ahlgren, Berndt, Yee, and Zaharescu [1] have proved ageneral theorem from which (8.1)
+and (8.6) follow as special cases. The integral appearing in these authors’ general theorem
+contains the Eisenstein series (8.4). It is only in certain instances that we have identities of
+the type (8.3) and (8.5), which enable us to reformulate the identities in terms of integrals
+of -functions, as we have in (8.1) and (8.6).
+  $\mathrm{e}\mathrm{t}\mathrm{a}$
+
+
+
+
+  Amore complete version of this paper can be found in [13].
+                                                                                                                              REFERENCES
+[1] S. Ahlgren, B. C. Berndt, A. J. Yee, and A. Zaharescu, Integrals of Eisenstein series, derivatives of
+      -functions, and the Dedekind $eta$ -function, International Mathematics Research Notices, to appear.
+                $L$
+
+
+[2] B. C. Berndt, Ramanujan’s Notebooks, Part I4 Springer-Verlag, New York, 1989.
+[3] B. C. Berndt, Ramanujan’s Notebooks, Part III, Springer-Verlag, New York, 1991.
+[4] B. C. Berndt, Ramanujan’s Notebooks, Part IV, Springer-Verlag, New York, 1989.
+                                                                                                               140
+                                              EISENSTEIN SERIES
+
+[5] B. C. Berndt, Ramanujan’s Notebooks, Part V, Springer-Verlag, New York, 1998.
+[6] B. C. Berndt and P. R. Bialek, On the power series coefficients of certain quotients of Eisenstein series,
+    submitted for publication.
+    B. C. Berndt, P. Bialek, and A. J. Yee, Formxdas of Ramanujan for the power series coefficients of certain
+ $[\overline{/}]$
+
+
+
+
+    quotients of Eisenstein series, International Mathematics Research Notices, 2002, No. 21,                .
+                                                                                                  $10\overline{/}7-1109$
+
+
+
+[8] B. C. Berndt and H. H. Chan, Eisenstein series and approimations to , Illinois J. Math. 45 (2001),
+                                                                              $\pi$
+
+
+
+
+                    75-90.
+  [9] B. C. Berndt, H. H. Chan, J. Sohn, and S. H. Son, Eisenstein series in Ramanujan’s lost notebook,
+      Ramanujan J. 4(2000), 81-114.
+[10] B. C. Berndt and K. Ono, Ramanujan’s unpublished manuscript on the partition and tau functions with
+      proofs and commentary, Sem. Lotharingien de Combinatoire 42 (1999), 63 pp;The Andrews Festschrift,
+      D. Foata and G.-N. Han, eds., Springer-Verlag, Berlin, 2001, PP. 39-110.
+[11] B. C. Berndt and R. A. Rankin, Ramanujan: Letters and Commentary, American Mathematical Society,
+      Providence, RI, 1995; London Mathematical Society, London, 1995.
+[12] B. C. Berndt and A. J. Yee, A page on Eisenstein series in Ramanujan’s lost notebook, Glasgow Math. J.,
+      to appear.
+[13] B. C. Berndt and A. J. Yee, Ramanujan’s contributions to Eisenstein series, especially in his lost note-
+      book, in Number Theoretic Methods -Future Trends, C. Jia and S. Kanemitsu, eds., Kluwer, Dordrecht,
+      to appear.
+[14] B. C. Berndt and A. J. Yee, Congruences for the coefficients of quotients of Eisenstein series, Acta
+      Arith., to appear.
+[15] B. C. Berndt and A. Zaharescu, An integral of Dedekind eta functions in Ramat ujan’s lost notebook,
+      J. Reine Angew. Math., to appear.
+[16] J. M. Borwein and P. M. Borwein, More Ramanujan-type series for $1/\pi$ , in Ramanujan Revisited,
+      G. E. Andrews, R. A. Askey, B. C. Berndt, K. G. Ramanathan, and R. A. Rankin, eds., Academic
+      Press, Boston, 1988, pp. 359-374
+ [17] L. Carlitz, Note on some partition formulae, Quart. J. Math. (Oxford) (2) 4(1953), 168-172.
+ [18] H. H. Chan, On the equivalence of Ramanujan’s partition identities and a connection with the Rogers-
+      Ramanujan continued fraction, J. Math. Anal. Applies. 198 (1996), 111-120.
+ [19] D.  V. Chudnovsky and G. V. Chudnovsky, Approimation and complex multiplication according to
+      Ramanujan, in Ramanujan Revisited, G. E. Andrews, R. A. Askey, B. C. Berndt, K. G. Ramanathan,
+      and R. A. Rankin, eds., Academic Press, Boston, 1988, pp. 375-472.
+ [20] G. H. Hardy and S. Ramanujan, Asymptotic formulae in combinatory analysis, Proc. London
+      Math. Soc. (2) 17 (1918), 75-118.
+ [21] G. H. Hardy and S. Ramanujan, On the coefficients in the expansions of certain modular functions,
+      Proc. Royal Soc. A95 (1918), 144-155.
+ [22] J. G. Huard, Z. M. Ou, B. K. Spearman, and K. S. Williams, Elementary evaluation of certain convO-
+      lution sums involving divisor functions, in Number Theory for the Millennium, Vol. 2: M. A. Bennett,
+      B. C. Berndt, N. Boston, H. G. Diamond, A. J. Hildebrand, and W. Philipp, eds., A. K. Peters, Natick,
+      MA, 2002, PP. 229-273.
+ [23] J. Lehner, The Fourier coefficients of automorphic forms on horocyclic groups, II, Mich. Math. J. 6
+                    (1959), $17\succ 193$ .
+[24] J. Lehner, The Fourier coefficients of automorphic forms on homyclic groups, III, Mich. Math. J. 7
+                    (1960), 65-74.
+[25] Z.-G. Liu, Some Eisenstein series identities related to modular equations of the seventfi order, Pacific
+     J. Math., to appear.
+[26] H. Petersson, Konstruktion der Modulformen und der zu gewissen Grenzkreisgruppen gehorigen                  $a\tau \mathrm{g}to-$
+
+
+
+
+     morphen Formen von positiver reeller Dimension und die vollstdndige Bestimmung ihrer Fourierkoef-
+     fzienten, S.-B. Heidelberger Akad. Wiss. Math. Nat. Kl. (1950), 415-474.
+[27] H. Petersson, Uber automorphe Orthogonalfunktionen und die Konstruktion der automorphen Formen
+     von positiver reeller Dimension, Math. Ann. 127 (1954), $3\succ 81$ .
+                                                                                                      141
+                                           BERNDT AND YEE
+
+[28] H. Petersson, Uber automorphe Formen mit Singularitdten im Diskontinuitdtsgebiet, Math. Ann. 129
+     (1955), 370-390.
+[29] H. Poincare’, Oeuvres, Vol. 2, Gauthiers-Villars, Paris, 1916.
+[30] S. Raghavan and S. S. Rangachari, On Ramanujan’s elliptic integrals and modular identities, in Number
+     Theory and Related Topics, Oxford University Press, Bombay, 1989, pp. 119-149.
+[31] S. Ramanujan, Modular equations and approimations to , Quart. J. Math. 45 (1914), 350-372.
+                                                              $\pi$
+
+
+
+
+[32] S. Ramanujan, On certain arithmetical functions, Trans. Cambridge Philos. Soc. 22 (1916), 15&-184.
+[33] S. Ramanujan, Some properties of $p(n)$ , the number of partitions of n Proc. Cambridge Philos. Soc. 19
+     (1919), 207-210.
+[34] S. Ramanujan, Congruence properties of partitions, Math. Z. 9(1921), 147-153.
+[35 S. Ramanujan, Collected Papers, Cambridge University Press, Cambridge, 1927; reprinted by Chelsea,
+     New York, 1962; reprinted by the American Mathematical Society, Providence, RI, 2000.
+[36 S. Ramanujan, Notebooks (2 volumes), Tata Institute of Fundamental Research, Bombay, 1957.
+[37] S. Ramanujan, The Lost Notebook and Other Unpublished Papers, Narosa, New Delhi, 1988.
+[38 R. A. Rankin, Modular Forms and Functions, Cambridge University Press, Cambridge, 1977.
+[39 S. H. Son, Some integrals of theta functions in Ramanujan’s lost notebook, in Fifth Conference of the
+     Canadian Number Theor y Association, R. Gupta and K. S. Williams, eds., CRM Proc. and Lecture
+     Notes, Vol. 19, American Mathematical Society, Providence, RI, 1999, pp. 323-332.
+
+  DEpARTMENT OF MATHEMATICS, UNIVERSITY OF ILLINOIS, 1409 WEST CR                  M STREET, URBANA, IL
+61801, USA
+    -mail address: berndtOmath. uiuc.edu
+  $E$
+
+
+
+
+  DEpARTMENT OF MATHEMATICS, UNIVERSITY OF ILLINOIS, 1409 WEST GREEN STREET, URBANA. IL
+61801, USA
+    -mail address: yeeOmath. uiuc.edu
+  $E$
+
