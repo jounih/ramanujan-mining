@@ -1,0 +1,17 @@
+case,N,n,t,metric,value,note
+exactness_small,8,all,2,max_diff_bessel_vs_dft,3.608224830031759e-16,should be ~1e-15
+exactness_small,8,all,2,max_diff_bessel_vs_verlet_dt1e-4,3.4211208033152474e-09,"Verlet sanity, ~1e-4 dt^2"
+diary_cell,2048,37,100,q_bessel,-0.04954556973216076,
+diary_cell,2048,37,100,q_dft,-0.049545569732160955,
+diary_cell,2048,37,100,diff_q_vs_diary,3.469446951953614e-17,diary 53 published value
+diary_cell,2048,37,100,diff_q_bessel_vs_dft,1.942890293094024e-16,
+energy_conservation,64,all,0.5,energy_drift,2.220446049250313e-16,H(t)=1.0000000000000002
+energy_conservation,64,all,1.0,energy_drift,8.881784197001252e-16,H(t)=1.0000000000000009
+energy_conservation,64,all,5.0,energy_drift,2.220446049250313e-16,H(t)=1.0000000000000002
+energy_conservation,64,all,10.0,energy_drift,2.220446049250313e-16,H(t)=1.0000000000000002
+benchmark_sparse_N2048,2048,37,100,t_bessel_s,4.0042001273832284e-05,
+benchmark_sparse_N2048,2048,37,100,t_dft_s,6.81670007907087e-05,
+benchmark_sparse_N2048,2048,37,100,t_verlet_s,0.23074404200087884,dt=0.01
+benchmark_sparse_N2048,2048,37,100,speedup_vs_dft,1.7023874587221566,
+benchmark_sparse_N2048,2048,37,100,speedup_vs_verlet_dt0.01,5762.550188810658,
+verdict,,,,overall,CONFIRMED,exact=True diary=True energy=True speedup>1=True
