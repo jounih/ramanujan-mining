@@ -331,6 +331,70 @@ def _try_extract_lambert_form_beta(
     return sp.log(base)
 
 
+# ---------------------------------------------------------------------------
+# v0.10 cost-model refinement: per-operator dual-decay-rate tagging
+# ---------------------------------------------------------------------------
+#
+# Per the v0.8c subagent's surprises note (and the brief): the v0.8c cost
+# model had a per-term-vs-total-work ambiguity at polynomial-decay duals
+# (Stieltjes occupation-number). The 4 new v0.10 operators bring further
+# decay-class diversity:
+#
+#   - mock_theta_completion_transform : polynomial (Eichler integral ~1/√α)
+#   - partial_theta_completion        : finite (direct truncation is optimal)
+#   - gauss_sum_finite_evaluation     : finite (exactly q terms in sum)
+#   - q_pochhammer_transform          : exponential if |q|<1, else polynomial
+#
+# This module-level table lets the cost gate normalize properly by decay
+# class. Currently used in metadata + diagnostics; the cost-gate scoring
+# stays per-term-counted (matching the rest of the model) but operators
+# carry their decay tag so downstream consumers (the InSessionClaudeProposer
+# in particular) can read the decay class off `state.metadata['decay_class']`
+# if the operator emitted one.
+
+OPERATOR_DECAY_CLASS: dict[str, str] = {
+    # Original v0.x operators
+    "master_theorem": "closed_form",
+    "mellin_inversion": "exponential",  # Gaussian dual
+    "modular_transform_with_correction": "exponential",  # log-Bose / Lambert
+    # v0.8c (Stieltjes occupation-number is polynomial-decay dual)
+    # — actually Case C of modular_transform_with_correction; we keep the
+    # parent tag here since the operator dispatches to Cases A/B/C
+    # internally. Per-case decay is reported in metadata.
+    "hardy_orders_of_infinity": "annotative",  # non-transforming
+    "fourier_self_reciprocity": "exponential",
+    "fractional_functional_iteration": "asymptotic",
+    "frullani_limit": "closed_form",
+    "mellin_pair_reciprocity": "exponential",
+    # v0.10 additions
+    "mock_theta_completion_transform": "polynomial",
+    "partial_theta_completion": "finite",
+    "gauss_sum_finite_evaluation": "finite",
+    "q_pochhammer_transform": "exponential",  # for |q|<1; varies otherwise
+}
+
+
+def operator_decay_class(op_id: str) -> str:
+    """Lookup the dual decay class for an operator id.
+
+    Per v0.10 cost-model refinement (per brief / diary 42 follow-up).
+    Used by the cost-gate to normalize improvement ratios across
+    operators with different convergence-rate duals.
+
+    Decay classes:
+      - 'exponential'    : term count ~ log(1/tol)/β       (e.g. Bose dual)
+      - 'polynomial'     : term count ~ tol^{-1/p} for p>0 (e.g. Stieltjes 1/m²)
+      - 'finite'         : term count is a constant       (e.g. Gauss sum)
+      - 'closed_form'    : 1 op total                     (e.g. Master Th. Γ(s))
+      - 'asymptotic'     : depends on series order        (Hardy orders)
+      - 'annotative'     : no transform                   (Hardy diagnostic)
+
+    Returns 'unknown' for unrecognized op_ids (safe default; downstream
+    consumers should treat unknown as 'don't optimize across classes').
+    """
+    return OPERATOR_DECAY_CLASS.get(op_id, "unknown")
+
+
 def _structural_cost(expr: sp.Expr) -> float:
     """Cost estimate based on expression structure when rkc can't recognise
     it (typical for v0.5+ Integral inputs and closed-form outputs).

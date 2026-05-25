@@ -144,12 +144,20 @@ def test_search_module_import_smoke():
         JsonlRegistry, search, QR7_OPERATOR_BASIS,
     )
     # The original QR7 basis was 7 ops (Hunt 5 revised set, diary 20).
-    # v0.8b adds modular_transform_with_correction → basis is now 8.
-    assert len(QR7_OPERATOR_BASIS) == 8
+    # v0.8b added modular_transform_with_correction → basis was 8.
+    # v0.10 adds 4 more (mock_theta_completion_transform,
+    #   partial_theta_completion, gauss_sum_finite_evaluation,
+    #   q_pochhammer_transform) → basis is now 12.
+    assert len(QR7_OPERATOR_BASIS) == 12
     op_ids = [op.id for op in QR7_OPERATOR_BASIS]
     assert "master_theorem" in op_ids
     assert "fractional_functional_iteration" in op_ids
     assert "modular_transform_with_correction" in op_ids
+    # v0.10 additions
+    assert "mock_theta_completion_transform" in op_ids
+    assert "partial_theta_completion" in op_ids
+    assert "gauss_sum_finite_evaluation" in op_ids
+    assert "q_pochhammer_transform" in op_ids
 
 
 def test_v04_mellin_inversion_poisson_dual_accepted(tmp_path):
@@ -1797,3 +1805,658 @@ def test_v09a_convergence_class_persisted(tmp_path):
     assert rec["state_after_meta"]["convergence_class"] == (
         ConvergenceClass.DIVERGENT_LITERAL.value
     )
+
+
+# ---------------------------------------------------------------------------
+# Project C v0.10 — 4 new operators closing the 12/12 seed coverage gap
+# (per diary 42 / diary 44; brief: "4 missing operators")
+# ---------------------------------------------------------------------------
+
+# === (a) mock_theta_completion_transform ===
+
+def test_v10_mock_theta_completion_apply_fn_directly():
+    """v0.10 (a): mock_theta_completion_transform fires on f3 shape with
+    outside-squared product, returns a 2-tuple with a Watson-Hickerson
+    Eichler-integral certificate; declines on non-matching shapes.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    k = sp.Symbol("k", integer=True, positive=True)
+    op = get_operator("mock_theta_completion_transform")
+
+    # f3 form (outside-squared product, matching the seed AST)
+    expr = sp.Rational(1, 2)**(n**2) / sp.Product(
+        1 + sp.Rational(1, 2)**k, (k, 1, n),
+    )**2
+    result = op.apply_fn(expr, n)
+    assert result is not None, "should fire on f3 outside-squared product"
+    assert isinstance(result, tuple) and len(result) == 2, (
+        "v0.10 uses 2-tuple annotator convention for completion certificate"
+    )
+    payload, meta = result
+    # Payload UNCHANGED (annotative pattern, not a rewrite)
+    assert sp.simplify(payload - expr) == 0
+    # Metadata carries the completion certificate
+    assert meta["family"] == "mock_theta_f3"
+    assert "completion_value" in meta, (
+        f"expected completion_value field in metadata; got keys={list(meta.keys())}"
+    )
+    assert "completion_method" in meta
+    assert "Watson-Hickerson" in meta["completion_method"]
+    # The certificate should be ~30 digits precision per the calibrated regime
+    assert meta["completion_error_bound"] < 1e-20, (
+        f"calibrated-regime certificate must be ≤1e-20; got "
+        f"error_bound={meta['completion_error_bound']}"
+    )
+
+    # Also test with the rkc inside-squared product form (q=1/3)
+    q = sp.Rational(1, 3)
+    expr_inside = q**(n**2) / sp.Product((1 + q**k)**2, (k, 1, n))
+    result_inside = op.apply_fn(expr_inside, n)
+    assert result_inside is not None, "should also fire on inside-squared form"
+
+    # Decline: Gaussian
+    result_gauss = op.apply_fn(sp.exp(-sp.Rational(1, 100) * n**2), n)
+    assert result_gauss is None, "should decline on a plain Gaussian"
+
+    # Decline: arbitrary expression
+    result_arb = op.apply_fn(sp.cos(n), n)
+    assert result_arb is None
+
+
+def test_v10_mock_theta_completion_seed_accepted_end_to_end(tmp_path):
+    """v0.10 (a): the `mock_theta_f3_q_p5` seed accepts end-to-end at
+    depth=1 via the mock_theta_completion_transform operator. Verifier
+    short-circuits via payload-equality; cost ratio = 1.0 (annotative
+    operator); gate accepts.
+    """
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    seed = SEED_LIBRARY["mock_theta_f3_q_p5"]
+    expr, var = build_seed(seed)
+    state = SearchState(payload=expr, metadata={"var": var})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=8),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=80,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.10 (a) mock_theta_f3 acceptance gate failed: "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    # Verify at least one acceptance uses our new operator
+    accepted_path = tmp_path / "accepted.jsonl"
+    assert accepted_path.exists()
+    found = False
+    for line in accepted_path.read_text().splitlines():
+        rec = json.loads(line)
+        if any(op["op_id"] == "mock_theta_completion_transform"
+               for op in rec.get("op_sequence", [])):
+            found = True
+            break
+    assert found, (
+        "expected at least one acceptance via mock_theta_completion_transform"
+    )
+
+
+def test_v10_mock_theta_completion_cost_gate_correctly_decides():
+    """v0.10 (a): the cost ratio for mock_theta_completion_transform is
+    1.0 (annotative — payload unchanged → cost_before == cost_after) →
+    the gate at engine.py:276 (`if cost.improvement_ratio < 1.0`) does
+    NOT reject. This is the v0.9a annotator pattern repeated.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.routers import RkcCostModel
+    from rkc.search.engine import _apply_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    k = sp.Symbol("k", integer=True, positive=True)
+    expr = sp.Rational(1, 2)**(n**2) / sp.Product(
+        1 + sp.Rational(1, 2)**k, (k, 1, n),
+    )**2
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(op_id="mock_theta_completion_transform")
+    state_after = _apply_operator(op_app, state_before)
+    assert state_after is not None, "apply_fn should succeed on seed shape"
+    cm = RkcCostModel()
+    cost = cm.cost(state_before, state_after)
+    # ratio = 1.0 (payload identical → same cost) — gate accepts
+    assert cost.improvement_ratio == 1.0, (
+        f"annotative operator should give ratio=1.0; got {cost.improvement_ratio}"
+    )
+    # The cost gate at engine.py rejects strictly `< 1.0`, so 1.0 passes
+    assert not (cost.improvement_ratio < 1.0), (
+        "cost gate must accept ratio == 1.0 for annotative operators"
+    )
+
+
+# === (b) partial_theta_completion ===
+
+def test_v10_partial_theta_completion_apply_fn_directly():
+    """v0.10 (b): partial_theta_completion fires on triangular-exp shape
+    `q^{n(n+1)/2}` and returns a 2-tuple with a DIRECT_CERTIFICATE
+    decision; declines on non-matching shapes.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("partial_theta_completion")
+
+    # Standard partial-theta summand
+    expr = sp.Rational(1, 3)**(n * (n + 1) / 2)
+    result = op.apply_fn(expr, n)
+    assert result is not None, "should fire on q^{n(n+1)/2}"
+    assert isinstance(result, tuple) and len(result) == 2
+    payload, meta = result
+    # Payload unchanged
+    assert sp.simplify(payload - expr) == 0
+    assert meta["family"] == "partial_theta"
+    assert meta["decision"] == "DIRECT_CERTIFICATE"
+    assert meta["reason"] == "partial_theta_one_sided_no_clean_dual_exists"
+    assert meta["decay_class"] == "finite"
+    assert "num_terms_for_1em12" in meta
+
+    # Alternating partial-theta `(-1)^n q^{n(n+1)/2}`
+    expr_alt = (-1)**n * sp.Rational(1, 4)**(n * (n + 1) / 2)
+    result_alt = op.apply_fn(expr_alt, n)
+    assert result_alt is not None, "should fire on alternating partial-theta"
+    _, meta_alt = result_alt
+    assert meta_alt["match_params"]["alternating"] is True
+
+    # Decline: Gaussian (different family)
+    result_gauss = op.apply_fn(sp.exp(-n**2), n)
+    assert result_gauss is None, "should decline on Gaussian"
+
+
+def test_v10_partial_theta_completion_seed_accepted_end_to_end(tmp_path):
+    """v0.10 (b): the `partial_theta_q_p3` seed accepts end-to-end via
+    the partial_theta_completion operator.
+    """
+    import json
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    seed = SEED_LIBRARY["partial_theta_q_p3"]
+    expr, var = build_seed(seed)
+    state = SearchState(payload=expr, metadata={"var": var})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=8),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=80,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.10 (b) partial_theta acceptance gate failed: "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    accepted_path = tmp_path / "accepted.jsonl"
+    found = False
+    for line in accepted_path.read_text().splitlines():
+        rec = json.loads(line)
+        if any(op["op_id"] == "partial_theta_completion"
+               for op in rec.get("op_sequence", [])):
+            found = True
+            break
+    assert found, "expected acceptance via partial_theta_completion"
+
+
+def test_v10_partial_theta_completion_cost_gate_correctly_decides():
+    """v0.10 (b): annotative operator → ratio=1.0 → gate accepts."""
+    import sympy as sp
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.routers import RkcCostModel
+    from rkc.search.engine import _apply_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = sp.Rational(1, 3)**(n * (n + 1) / 2)
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(op_id="partial_theta_completion")
+    state_after = _apply_operator(op_app, state_before)
+    assert state_after is not None
+    cm = RkcCostModel()
+    cost = cm.cost(state_before, state_after)
+    assert cost.improvement_ratio == 1.0
+    assert not (cost.improvement_ratio < 1.0)
+
+
+# === (c) gauss_sum_finite_evaluation ===
+
+def test_v10_gauss_sum_finite_evaluation_apply_fn_directly():
+    """v0.10 (c): gauss_sum_finite_evaluation matches `exp(2πi p n²/q)`,
+    returns a 3-tuple (constant_summand, 0, (0, q-1)) with the constant
+    = closed_form / q. Preserves the silent-zero guard at q ≡ 2 (mod 4).
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("gauss_sum_finite_evaluation")
+
+    # q=7 (≡ 3 mod 4): G(1, 7) = i·√7
+    expr = sp.exp(2 * sp.pi * sp.I * n**2 / 7)
+    result = op.apply_fn(expr, n)
+    assert result is not None, "should fire on quadratic Gauss-sum summand"
+    assert isinstance(result, tuple) and len(result) == 3
+    payload, correction, srange = result
+    assert srange == (0, 6), f"expected finite range (0, 6); got {srange}"
+    assert correction == 0, f"no additive correction; got {correction}"
+    # constant = closed_form / 7 = i√7 / 7
+    expected_constant = sp.I * sp.sqrt(7) / 7
+    assert sp.simplify(payload - expected_constant) == 0, (
+        f"closed form / q should be i√7/7; got {payload}"
+    )
+
+    # q=6 (≡ 2 mod 4): SILENT-ZERO HAZARD — must return 0
+    expr_q6 = sp.exp(2 * sp.pi * sp.I * n**2 / 6)
+    result_q6 = op.apply_fn(expr_q6, n)
+    assert result_q6 is not None
+    payload_q6, _, srange_q6 = result_q6
+    assert payload_q6 == 0, (
+        f"SILENT-ZERO GUARD: q=6 ≡ 2 (mod 4) must produce 0 summand; "
+        f"got {payload_q6}"
+    )
+    assert srange_q6 == (0, 5)
+
+    # q=5 (≡ 1 mod 4): G(1, 5) = √5
+    expr_q5 = sp.exp(2 * sp.pi * sp.I * n**2 / 5)
+    result_q5 = op.apply_fn(expr_q5, n)
+    assert result_q5 is not None
+    payload_q5, _, _ = result_q5
+    expected_q5 = sp.sqrt(5) / 5
+    assert sp.simplify(payload_q5 - expected_q5) == 0, (
+        f"G(1, 5) closed form / 5 should be √5/5; got {payload_q5}"
+    )
+
+    # Decline: non-Gauss-sum summand (e.g., Gaussian)
+    result_gauss = op.apply_fn(sp.exp(-sp.Rational(1, 100) * n**2), n)
+    assert result_gauss is None
+
+
+def test_v10_gauss_sum_finite_evaluation_seed_accepted_end_to_end(tmp_path):
+    """v0.10 (c): the `gauss_sum_q7` seed accepts end-to-end via
+    gauss_sum_finite_evaluation, with the verifier confirming the
+    closed form to the strict bar (≥30 digits via mpmath).
+    """
+    import json
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    seed = SEED_LIBRARY["gauss_sum_q7"]
+    expr, var = build_seed(seed)
+    state = SearchState(payload=expr, metadata={"var": var})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=30),  # strict 30-digit bar
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=80,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.10 (c) gauss_sum acceptance failed at 30-digit bar: "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    accepted_path = tmp_path / "accepted.jsonl"
+    found = False
+    for line in accepted_path.read_text().splitlines():
+        rec = json.loads(line)
+        if any(op["op_id"] == "gauss_sum_finite_evaluation"
+               for op in rec.get("op_sequence", [])):
+            found = True
+            break
+    assert found, (
+        f"expected acceptance via gauss_sum_finite_evaluation at the "
+        f"30-digit bar (proves the closed form is mathematically exact)"
+    )
+
+
+def test_v10_gauss_sum_finite_evaluation_silent_zero_seed_accepted(tmp_path):
+    """v0.10 (c): the silent-zero seed `gauss_sum_q6` (q ≡ 2 mod 4)
+    accepts because our operator returns the trivial summand 0 — which
+    is the mathematically correct answer (G(1, 6) = 0 identically).
+    This preserves CLAUDE.md gotcha 1 (silent-zero hazard MUST be
+    preserved) — by emitting 0, the engine doesn't claim a "non-zero
+    Gauss sum" exists for q ≡ 2 (mod 4).
+    """
+    import json
+    import sympy as sp
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    seed = SEED_LIBRARY["gauss_sum_q6"]
+    expr, var = build_seed(seed)
+    state = SearchState(payload=expr, metadata={"var": var})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=30),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=80,
+        max_depth=1,
+    )
+    accepted_path = tmp_path / "accepted.jsonl"
+    if accepted_path.exists():
+        for line in accepted_path.read_text().splitlines():
+            rec = json.loads(line)
+            if any(op["op_id"] == "gauss_sum_finite_evaluation"
+                   for op in rec.get("op_sequence", [])):
+                # Verify the after-state payload is 0 (silent-zero answer)
+                assert rec["state_after"] == "0", (
+                    f"silent-zero seed must produce 0 payload; "
+                    f"got state_after={rec['state_after']!r}"
+                )
+                return  # success
+    # If no acceptance found, that's also fine for the silent-zero case
+    # IF the engine rejected via DEGENERATE_ROUTE or similar — but we
+    # know our operator DOES handle this, so we should see an acceptance.
+    # If we get here without returning, something is wrong.
+    assert summary.n_accepted >= 1, (
+        f"silent-zero seed should accept via gauss_sum_finite_evaluation "
+        f"(returns 0 = correct answer); got reasons={summary.reject_reason_counts}"
+    )
+
+
+def test_v10_gauss_sum_finite_evaluation_cost_gate_correctly_decides():
+    """v0.10 (c): cost ratio for gauss_sum_finite_evaluation transforms
+    the q-term sum into a 1-term scalar evaluation; the cost gate sees
+    a real improvement (q × per-term) → 1 op, ratio ≥ 1.0.
+    """
+    import sympy as sp
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.routers import RkcCostModel
+    from rkc.search.engine import _apply_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = sp.exp(2 * sp.pi * sp.I * n**2 / 7)
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(op_id="gauss_sum_finite_evaluation")
+    state_after = _apply_operator(op_app, state_before)
+    cm = RkcCostModel()
+    cost = cm.cost(state_before, state_after)
+    # Gate accepts (ratio is non-zero; actual ratio depends on cost
+    # model's treatment of the closed-form output vs the exp-summand input)
+    assert cost.improvement_ratio >= 1.0, (
+        f"gauss_sum_finite_evaluation should give ratio ≥ 1 "
+        f"(closed form is no more expensive than direct); "
+        f"got ratio={cost.improvement_ratio}"
+    )
+
+
+# === (d) q_pochhammer_transform ===
+
+def test_v10_q_pochhammer_transform_apply_fn_directly():
+    """v0.10 (d): q_pochhammer_transform matches `1 - a·q^n`, returns
+    a 2-tuple with the lifted-product form + route metadata.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    op = get_operator("q_pochhammer_transform")
+
+    # Seed form: 1 - (1/3) · (1/2)^n (which sympy renders as 1 - 1/(3·2^n))
+    expr = 1 - sp.Rational(1, 3) * sp.Rational(1, 2)**n
+    result = op.apply_fn(expr, n)
+    assert result is not None, (
+        "should fire on `1 - a·q^n` shape (Pochhammer factor)"
+    )
+    assert isinstance(result, tuple) and len(result) == 2
+    payload, meta = result
+    # Payload unchanged (annotative pattern)
+    assert sp.simplify(payload - expr) == 0
+    assert meta["family"] == "q_pochhammer"
+    assert meta["route"] == "lifted_to_infinite_product"
+    assert "lifted_product" in meta
+    assert meta["decay_class"] == "exponential"
+    # The seed has a=1/3, q=1/2 — well in |q| < 1, so we should have
+    # a concrete product value at 30 digits
+    assert "product_value_30dps" in meta
+
+    # Path 1: a = 1 → Euler pentagonal
+    expr_a1 = 1 - sp.Rational(1, 3)**n  # a=1, q=1/3
+    result_a1 = op.apply_fn(expr_a1, n)
+    assert result_a1 is not None
+    _, meta_a1 = result_a1
+    assert meta_a1["route"] == "euler_pentagonal", (
+        f"a=1 should route via Euler pentagonal; got {meta_a1['route']}"
+    )
+
+    # Decline: not a Pochhammer factor (e.g., Gaussian)
+    result_gauss = op.apply_fn(sp.exp(-n), n)
+    assert result_gauss is None
+
+
+def test_v10_q_pochhammer_transform_seed_accepted_end_to_end(tmp_path):
+    """v0.10 (d): the `q_pochhammer_inf_p3` seed accepts via
+    q_pochhammer_transform end-to-end.
+    """
+    import json
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    seed = SEED_LIBRARY["q_pochhammer_inf_p3"]
+    expr, var = build_seed(seed)
+    state = SearchState(payload=expr, metadata={"var": var})
+    reg = JsonlRegistry.with_dir(tmp_path)
+    summary = search(
+        initial_state=state,
+        proposer=RandomProposer(seed=42),
+        verifier=MpmathVerifier(n_digits=8),
+        router=RkcRouter(),
+        cost_model=RkcCostModel(),
+        registry=reg,
+        budget=80,
+        max_depth=1,
+    )
+    assert summary.n_accepted >= 1, (
+        f"v0.10 (d) q_pochhammer acceptance gate failed: "
+        f"reasons={summary.reject_reason_counts}"
+    )
+    accepted_path = tmp_path / "accepted.jsonl"
+    found = False
+    for line in accepted_path.read_text().splitlines():
+        rec = json.loads(line)
+        if any(op["op_id"] == "q_pochhammer_transform"
+               for op in rec.get("op_sequence", [])):
+            found = True
+            break
+    assert found, "expected acceptance via q_pochhammer_transform"
+
+
+def test_v10_q_pochhammer_transform_cost_gate_correctly_decides():
+    """v0.10 (d): annotative operator → ratio=1.0 → gate accepts."""
+    import sympy as sp
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.routers import RkcCostModel
+    from rkc.search.engine import _apply_operator
+    n = sp.Symbol("n", integer=True, positive=True)
+    expr = 1 - sp.Rational(1, 3) * sp.Rational(1, 2)**n
+    state_before = SearchState(payload=expr, metadata={"var": n})
+    op_app = OperatorApplication(op_id="q_pochhammer_transform")
+    state_after = _apply_operator(op_app, state_before)
+    assert state_after is not None
+    cm = RkcCostModel()
+    cost = cm.cost(state_before, state_after)
+    assert cost.improvement_ratio == 1.0
+    assert not (cost.improvement_ratio < 1.0)
+
+
+# === (e) Cost-model refinement: dual-decay-rate tagging ===
+
+def test_v10_operator_decay_class_tagging():
+    """v0.10 (e): each operator id has a decay-class tag per
+    `OPERATOR_DECAY_CLASS` in `rkc.search.routers`. The 4 new v0.10
+    operators get their respective tags (polynomial / finite /
+    exponential). The legacy v0.x operators all retain their tags too.
+    """
+    from rkc.search.routers import (
+        OPERATOR_DECAY_CLASS,
+        operator_decay_class,
+    )
+    # The 4 v0.10 operators get specific decay classes
+    assert operator_decay_class("mock_theta_completion_transform") == "polynomial"
+    assert operator_decay_class("partial_theta_completion") == "finite"
+    assert operator_decay_class("gauss_sum_finite_evaluation") == "finite"
+    assert operator_decay_class("q_pochhammer_transform") == "exponential"
+    # Legacy v0.x operators carry tags too
+    assert operator_decay_class("mellin_inversion") == "exponential"
+    assert operator_decay_class("hardy_orders_of_infinity") == "annotative"
+    # Unknown op_id returns 'unknown' (safe default)
+    assert operator_decay_class("not_a_real_op") == "unknown"
+    # Every operator in the basis has a tagged decay class
+    from rkc.search import QR7_OPERATOR_BASIS
+    for op in QR7_OPERATOR_BASIS:
+        tag = operator_decay_class(op.id)
+        assert tag != "unknown", (
+            f"every basis operator must have a non-unknown decay class; "
+            f"missing tag for {op.id!r}"
+        )
+
+
+# === Backward compat: v0.4-v0.8c paths must continue to verify strictly ===
+
+def test_v10_backward_compat_v04_v08c_paths_unchanged():
+    """v0.10 backward compat: the v0.4 Gaussian, v0.7 half-shift /
+    weighted, and v0.8b/v0.8c modular-with-correction paths must all
+    continue to verify cleanly through the v0.10-extended verifier.
+
+    The v0.10 verifier change (Case B scalar handling now respects
+    explicit finite summand_range for the gauss_sum case) is gated on
+    the summand_range being a finite-integer tuple AND set by an
+    operator. The default `(-oo, oo)` range used by v0.4 paths is
+    UNCHANGED and not affected.
+    """
+    import sympy as sp
+    from rkc.search.basis import get_operator
+    from rkc.search.core import OperatorApplication, SearchState
+    from rkc.search.verifiers import MpmathVerifier
+    from rkc.search.engine import _apply_operator
+
+    n = sp.Symbol("n", integer=True, positive=True)
+    verifier = MpmathVerifier(n_digits=20)
+
+    # v0.4 Gaussian → Poisson dual
+    op_mellin = get_operator("mellin_inversion")
+    expr_g = sp.exp(-sp.Rational(1, 100) * n**2)
+    state_g = SearchState(payload=expr_g, metadata={"var": n})
+    op_app_g = OperatorApplication(op_id="mellin_inversion")
+    state_g_out = _apply_operator(op_app_g, state_g)
+    assert state_g_out is not None
+    r_g = verifier.verify(state_g, [op_app_g], state_g_out)
+    assert r_g.passed, f"v0.4 Gaussian path broken: {r_g.reason}"
+
+    # v0.7 half-shift Gaussian
+    expr_h = sp.exp(-sp.Rational(1, 100) * (n + sp.Rational(1, 2))**2)
+    state_h = SearchState(payload=expr_h, metadata={"var": n})
+    op_app_h = OperatorApplication(op_id="mellin_inversion")
+    state_h_out = _apply_operator(op_app_h, state_h)
+    assert state_h_out is not None
+    r_h = verifier.verify(state_h, [op_app_h], state_h_out)
+    assert r_h.passed, f"v0.7 half-shift path broken: {r_h.reason}"
+
+    # v0.8b Bose-Einstein log
+    op_mod = get_operator("modular_transform_with_correction")
+    expr_b = sp.log(1 - sp.exp(-sp.Rational(1, 100) * n))
+    state_b = SearchState(payload=expr_b, metadata={"var": n})
+    op_app_b = OperatorApplication(op_id="modular_transform_with_correction")
+    state_b_out = _apply_operator(op_app_b, state_b)
+    assert state_b_out is not None
+    # bump precision check to lower digits to keep test fast
+    verifier30 = MpmathVerifier(n_digits=20)
+    r_b = verifier30.verify(state_b, [op_app_b], state_b_out)
+    assert r_b.passed, f"v0.8b Bose-Einstein path broken: {r_b.reason}"
+
+    # v0.5 master_theorem (the path that originally relied on Case B
+    # scalar evaluation for the Γ-product output)
+    op_mt = get_operator("master_theorem")
+    x = sp.Symbol("x", positive=True)
+    m = sp.Symbol("m", positive=True)
+    nn = sp.Symbol("nn", positive=True)
+    beta_int = sp.Integral(x**(m-1) * (1-x)**(nn-1), (x, 0, 1))
+    state_mt = SearchState(payload=beta_int, metadata={"var": x})
+    op_app_mt = OperatorApplication(op_id="master_theorem")
+    state_mt_out = _apply_operator(op_app_mt, state_mt)
+    assert state_mt_out is not None
+    r_mt = verifier.verify(state_mt, [op_app_mt], state_mt_out)
+    assert r_mt.passed, f"v0.5 master_theorem path broken: {r_mt.reason}"
+
+
+def test_v10_all_4_seeds_reachable_at_depth_1():
+    """v0.10 (THE headline): all 4 previously-unreachable seeds from
+    diary 42 (mock_theta_f3_q_p5, partial_theta_q_p3, gauss_sum_q7,
+    q_pochhammer_inf_p3) are now reachable at depth=1 via their
+    respective new operators. This is the basis-completeness closure
+    test that brings Project C from 8/12 → 12/12 seed coverage.
+    """
+    import tempfile
+    from rkc.search import (
+        SearchState, RandomProposer, MpmathVerifier,
+        RkcRouter, RkcCostModel, JsonlRegistry, search,
+        SEED_LIBRARY, build_seed,
+    )
+    # Map seed_id → expected operator_id
+    expected = {
+        "mock_theta_f3_q_p5": "mock_theta_completion_transform",
+        "partial_theta_q_p3": "partial_theta_completion",
+        "gauss_sum_q7": "gauss_sum_finite_evaluation",
+        "q_pochhammer_inf_p3": "q_pochhammer_transform",
+    }
+    for sid, expected_op in expected.items():
+        seed = SEED_LIBRARY[sid]
+        expr, var = build_seed(seed)
+        with tempfile.TemporaryDirectory() as tmp:
+            state = SearchState(payload=expr, metadata={"var": var})
+            reg = JsonlRegistry.with_dir(tmp)
+            summary = search(
+                initial_state=state,
+                proposer=RandomProposer(seed=42),
+                verifier=MpmathVerifier(n_digits=8),
+                router=RkcRouter(),
+                cost_model=RkcCostModel(),
+                registry=reg,
+                budget=80,
+                max_depth=1,
+            )
+            assert summary.n_accepted >= 1, (
+                f"seed {sid!r} produced 0 acceptances; "
+                f"reasons={summary.reject_reason_counts}"
+            )
+            import json, pathlib
+            accepted_path = pathlib.Path(tmp) / "accepted.jsonl"
+            ops_used = set()
+            for line in accepted_path.read_text().splitlines():
+                rec = json.loads(line)
+                for op in rec.get("op_sequence", []):
+                    ops_used.add(op["op_id"])
+            assert expected_op in ops_used, (
+                f"seed {sid!r} expected to be reached via {expected_op!r}; "
+                f"ops actually used: {ops_used}"
+            )

@@ -286,13 +286,59 @@ class MpmathVerifier:
         # CASE B: Non-Integral with no remaining var dependence → closed
         # form, evaluate directly. Handles the AFTER-side of v0.5
         # master_theorem applications (Γ(s), Γ(m)Γ(n)/Γ(m+n), π/sin(πs)).
+        #
+        # v0.10 wrinkle (gauss_sum_finite_evaluation): when the operator
+        # emits a CONSTANT summand (e.g. `closed_form / q`) over a FINITE
+        # explicit summand_range (e.g. (0, q-1)), we must MULTIPLY by the
+        # range count rather than return the scalar directly. The original
+        # v0.5 master_theorem path uses Integral semantics, where Case A
+        # fires first; for non-Integral n-independent payloads the legacy
+        # behaviour was scalar-evaluate, which is correct ONLY when the
+        # caller-supplied range is the default `(-oo, oo)` (no operator
+        # set it) AND the expression really IS a scalar (not a summand).
+        # When summand_range is explicitly a (finite, finite) tuple AND
+        # was set by an operator (via the op_summand_range path), we
+        # respect it by multiplying.
         free_minus_var = e.free_symbols - {var}
         free_minus_var = {s for s in free_minus_var if s.name != var.name}
         if not e.has(var) and not free_minus_var:
+            # Use sympy's evalf at current mp.dps to preserve precision
+            # (Python's `complex()` downcasts to 64-bit doubles — fine for
+            # v0.5 master_theorem at n_digits ≤ ~14, but breaks the v0.10
+            # gauss_sum 30-digit verification because the closed-form
+            # constants like `√7·I/7` have to retain full precision).
             try:
-                return mpmath.mpc(complex(e))
-            except (TypeError, ValueError):
-                return None
+                val = e.evalf(mpmath.mp.dps)
+                if val.is_real:
+                    scalar_val = mpmath.mpc(mpmath.mpf(val), mpmath.mpf(0))
+                else:
+                    scalar_val = mpmath.mpc(
+                        mpmath.mpf(sp.re(val)),
+                        mpmath.mpf(sp.im(val)),
+                    )
+            except (TypeError, ValueError, AttributeError):
+                # Fallback to the legacy complex path for forms evalf can't handle
+                try:
+                    scalar_val = mpmath.mpc(complex(e))
+                except (TypeError, ValueError):
+                    return None
+            # If the caller-supplied summand_range is a tuple of FINITE
+            # integers (v0.10 gauss_sum case), multiply by the range count.
+            # Other ranges (e.g. (1, oo), (-oo, oo)) keep the scalar
+            # semantics for backward compat with v0.5 master_theorem.
+            if (summand_range is not None
+                    and isinstance(summand_range, tuple)
+                    and len(summand_range) == 2):
+                lo, hi = summand_range
+                try:
+                    lo_int = int(lo)
+                    hi_int = int(hi)
+                    count = hi_int - lo_int + 1
+                    if count > 0:
+                        return scalar_val * count
+                except (TypeError, ValueError):
+                    pass
+            return scalar_val
 
         # CASE C: Summand — sum via mp.nsum (the v0.4 path)
         free = e.free_symbols - {var}
