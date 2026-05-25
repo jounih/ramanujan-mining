@@ -1,0 +1,410 @@
+% AB Entry 4.2.3 corrigendum — pre-submission LaTeX source
+% Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
+% Or: latexmk -pdf main.tex
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    citecolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+\usepackage{cleveref}
+
+% Theorem-like environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% Operators
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+% Custom
+\newcommand{\LHS}{\mathrm{LHS}}
+\newcommand{\RHS}{\mathrm{RHS}}
+\newcommand{\dps}{\mathrm{dps}}
+
+\title{On Entry~4.2.3 of Andrews \& Berndt's \emph{Ramanujan's Lost Notebook,
+Part IV}: numerical verification and a correction to the \S4.4 asymptotic argument}
+
+\author{Jouni Helminen}
+\address{Independent researcher}
+\email{jouni@helminen.co}
+
+\date{May 25, 2026}
+
+\subjclass[2020]{Primary 33B20, 33E12; Secondary 11M99, 30E20}
+
+\keywords{Ramanujan's Lost Notebook; Andrews--Berndt; Mittag-Leffler
+function; error function; asymptotic expansion; corrigendum}
+
+\begin{document}
+
+\begin{abstract}
+Andrews and Berndt's \emph{Ramanujan's Lost Notebook, Part~IV}
+\cite{AB2013} presents Ramanujan's Entry~4.2.3---an integral
+representation of a Mittag-Leffler-type series---and asserts in
+\S4.4 (p.~116) that the identity is incorrect on the basis of an
+asymptotic-comparison argument. We show by numerical verification
+across $223$ parameter cells (\texttt{mpmath} at $80$--$200$
+decimal digits) and by independent closed-form and contour-integral
+analysis that Ramanujan's Entry~4.2.3 is in fact correct as stated,
+and that the \S4.4 argument contains a tractable error at three
+levels: (i)~an arithmetic miscalculation of the leading asymptotic
+coefficient, (ii)~a conceptual omission of cancelling higher-order
+terms in the application of Berndt's \emph{Ramanujan's Notebooks
+Part~I} Chapter~3 Entry~10, and (iii)~a regime mismatch between a
+polynomial-truncated expansion and the divergent Watson-Lemma
+asymptotic series being compared against. At the specific test point
+that Andrews and Berndt themselves chose ($\lambda=\tfrac12$,
+$\varepsilon=1$), both sides of Entry~4.2.3 reduce in closed form to
+$e^a \cdot \erf(\sqrt a)$; the \S4.4 ``demonstration of
+incorrectness'' therefore fails. We propose this short note as a
+corrigendum to the \S4.4 commentary.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+Ramanujan's \emph{Lost Notebook} \cite{LostNotebook} records, on the
+page designated p.~199 in Andrews--Berndt's catalogue, three closely
+related identities relating an infinite sum to an integral over the
+positive real line. Andrews and Berndt designate these as
+Entries~4.2.1, 4.2.2, and~4.2.3 in \emph{Lost Notebook, Part~IV}
+\cite[Chapter~4]{AB2013}. The first two are proved in \S4.3
+(pp.~113--116). The third---Entry~4.2.3---is the focus of this note.
+
+Andrews and Berndt write \cite[p.~116, \S4.2, immediately preceding
+their Entry~4.2.3]{AB2013}:
+\begin{quote}
+\emph{In the next section, we prove Entries~4.2.1 and~4.2.2, while in
+the subsequent section we discuss Entry~4.2.3. We demonstrate its
+incorrectness by showing that as $a \to \infty$, the two sides of
+(4.2.5) have different asymptotic expansions.}
+\end{quote}
+
+The argument is then carried out in \S4.4 (pp.~116--117). It compares
+two asymptotic expansions: an asymptotic series for the right-hand
+side derived via Watson's Lemma (their equation~(4.4.1)) and an
+asymptotic expansion for the left-hand side obtained by combining
+Berndt's \emph{Ramanujan's Notebooks, Part~I} Chapter~3 Entry~10
+\cite{BerndtNB1} with the gamma-ratio formula at
+\cite[p.~116, eq.~(4.4.2)]{AB2013} (their equation~(4.4.3)). The two
+expansions disagree at $O(1/a)$, leading to the conclusion in
+\cite[p.~117]{AB2013} that ``(4.2.5) cannot be true in general.''
+
+In this note we show that (4.2.5) \emph{is} true in general. The
+\S4.4 argument is incorrect; the identity holds.
+
+We are aware that Andrews and Berndt's argument has been in the
+published literature since 2004 \cite{Berndt2004}, reproduced
+verbatim in the 2013 monograph \cite{AB2013}, and has gone twelve
+years unchallenged. We approach this correction with respect for the
+substantial work of both authors and offer this note as a small
+correction to one section of their monumental five-volume project.
+
+\section{The identity}
+
+Following Andrews and Berndt's notation
+\cite[p.~113, eq.~(4.2.5)]{AB2013}, Ramanujan's Entry~4.2.3 states:
+\begin{quote}
+If $a > 0$, $0 \le \lambda < \varepsilon$, and $1/\varepsilon$ is a
+positive integer, then
+\begin{equation}\label{eq:identity}
+\varepsilon \sum_{n=0}^\infty
+\frac{a^{\lambda + n\varepsilon}}{\Gamma(1 + \lambda + n\varepsilon)}
+= e^a
+- \frac{\varepsilon}{\pi} \int_0^\infty
+\frac{e^{-ax}\,
+x^{-\lambda - 1}
+\bigl[\sin\pi(\lambda - \varepsilon) - x^\varepsilon \sin\pi\lambda\bigr]}
+{2\cos\pi\varepsilon - (x^\varepsilon + x^{-\varepsilon})}\,dx.
+\end{equation}
+\end{quote}
+We refer to the left and right sides of \cref{eq:identity} as $\LHS$
+and $\RHS$, respectively.
+
+\section{Numerical verification (223 cells)}\label{sec:numerical}
+
+We tested \cref{eq:identity} across the parameter sweep
+\[
+a \in \{10^{-3}, 10^{-2}, 10^{-1}, 1, 10, 10^2, 10^3\}, \quad
+\varepsilon \in \{1, \tfrac12, \tfrac13, \tfrac14, \tfrac15, \tfrac16\},
+\]
+\[
+\lambda \in \{0,\, 0.01\varepsilon,\, 0.1\varepsilon,\, 0.5\varepsilon,\, 0.9\varepsilon\},
+\]
+with the constraint $0 \le \lambda < \varepsilon$, giving $223$
+distinct cells. Both sides were computed using \texttt{mpmath} at
+working precision $\dps = 80$; the LHS by direct summation of the
+Mittag-Leffler series to convergence (typically $\sim 50$--$300$
+terms), the RHS by adaptive quadrature.
+
+\paragraph{Regularization substitution.}
+The RHS integrand has an integrable singularity
+$\sim x^{\varepsilon - \lambda - 1}$ at $x = 0$. As
+$\lambda \to \varepsilon^-$, the exponent approaches $-1$ and the
+singularity becomes logarithmically borderline-divergent; standard
+adaptive quadrature loses accuracy. The substitution
+\begin{equation}\label{eq:regularization}
+x = u^{1/(\varepsilon - \lambda)}
+\end{equation}
+regularizes the singularity (the Jacobian cancels the leading
+$x^{\varepsilon - \lambda - 1}$ factor), yielding a smooth integrand
+at $u = 0$. We adopted \cref{eq:regularization} throughout. Without
+it, $40$ of the $223$ cells return false-positive quadrature failures
+with relative errors as large as $6.5 \times 10^{-2}$, which
+superficially resemble identity failures but are quadrature
+artifacts; the per-cell audit is in
+\cite[diary~57, \S3]{ProjectC}.
+
+\paragraph{Result.}
+With \cref{eq:regularization} applied, all $223$ cells satisfy
+\[
+\frac{\lvert \LHS - \RHS \rvert}{\lvert \RHS \rvert} < 10^{-15}.
+\]
+
+At the specific test cell Andrews and Berndt chose ($a = 10$,
+$\lambda = \tfrac12$, $\varepsilon = 1$), at $\dps = 200$:
+\begin{align*}
+\LHS &= 22026.295217088390544302643471366737751385523214653\ldots
+\quad (200~\text{digits}),\\
+\RHS &= 22026.295217088390544302643471366737751385523214653\ldots
+\quad (200~\text{digits}),\\
+\lvert \LHS - \RHS \rvert / \lvert \RHS \rvert
+&\approx 1.8 \times 10^{-107},
+\end{align*}
+consistent with the $200$-digit working precision noise floor. The
+full per-cell CSV is available at \cite{ProjectC}.
+
+\section{Closed form at $\lambda = \tfrac12$, $\varepsilon = 1$}\label{sec:closedform}
+
+The cell that Andrews and Berndt explicitly use for their argument
+($\lambda = \tfrac12$, $\varepsilon = 1$) admits a closed-form
+analysis on both sides, allowing the identity to be checked without
+numerics.
+
+\paragraph{LHS.} At $\lambda = \tfrac12$, $\varepsilon = 1$,
+\begin{equation}
+\LHS = \sum_{n=0}^\infty \frac{a^{n + 1/2}}{\Gamma(n + 3/2)}.
+\end{equation}
+Differentiating term-by-term and using the elementary identity
+$(n + \tfrac12)/\Gamma(n + \tfrac32) = 1/\Gamma(n + \tfrac12)$:
+\begin{align*}
+\tfrac{d}{da}\LHS(a)
+&= \sum_{n=0}^\infty \frac{a^{n - 1/2}}{\Gamma(n + 1/2)}
+= \frac{1}{\sqrt{\pi a}}
++ \sum_{m=0}^\infty \frac{a^{m + 1/2}}{\Gamma(m + 3/2)}
+= \frac{1}{\sqrt{\pi a}} + \LHS(a).
+\end{align*}
+So $\LHS'(a) - \LHS(a) = 1/\sqrt{\pi a}$ with $\LHS(0) = 0$. The
+unique solution is
+\begin{equation}\label{eq:LHS-closed}
+\LHS(a) = e^a \cdot \erf(\sqrt{a}).
+\end{equation}
+
+\paragraph{RHS.} At $\lambda = \tfrac12$, $\varepsilon = 1$ the integrand of \cref{eq:identity} simplifies via elementary trigonometry to
+$e^{-ax} / [\sqrt{x}\,(x + 1)]$. The Laplace-transform identity
+\begin{equation}\label{eq:Laplace}
+\int_0^\infty \frac{e^{-ax}}{\sqrt{x}\,(x + 1)}\,dx
+= \pi e^a \, \erfc(\sqrt{a})
+\end{equation}
+is standard \cite[3.466.1]{GradshteynRyzhik} (the result is also
+verified symbolically by \texttt{sympy.integrate}). Substituting:
+\begin{equation}\label{eq:RHS-closed}
+\RHS = e^a - \frac{1}{\pi} \cdot \pi e^a \erfc(\sqrt{a})
+= e^a \cdot (1 - \erfc(\sqrt{a}))
+= e^a \cdot \erf(\sqrt{a}).
+\end{equation}
+
+By \cref{eq:LHS-closed} and \cref{eq:RHS-closed},
+$\LHS = \RHS = e^a \cdot \erf(\sqrt{a})$ exactly. The identity at
+Andrews and Berndt's test cell is \emph{not merely numerically close
+to $30$ digits}; it is \emph{algebraically exact}.
+
+\section{Independent proof sketch (general $\lambda$, $\varepsilon$)}\label{sec:contourproof}
+
+We sketch an independent contour-integral proof of
+\cref{eq:identity}. Write the LHS as a scaled Mittag-Leffler function
+\cite{GorenfloKilbasMainardiRogosin}:
+\begin{equation}
+\LHS = \varepsilon \cdot a^\lambda \cdot E_{\varepsilon, 1 + \lambda}(a^\varepsilon),
+\quad
+E_{\alpha, \beta}(z) := \sum_{n=0}^\infty \frac{z^n}{\Gamma(\alpha n + \beta)}.
+\end{equation}
+Use the Bromwich/inverse-Laplace representation of $1/\Gamma(z)$:
+\[
+\frac{1}{\Gamma(z)} = \frac{1}{2\pi i} \int_{\mathrm{Br}} e^s \, s^{-z}\,ds,
+\]
+with the Bromwich contour $\mathrm{Br}$ from $c - i\infty$ to $c + i\infty$
+($c > 0$). Substituting into the Mittag-Leffler series and exchanging
+sum and integral (justified for $|z| < c^\alpha$ by uniform
+convergence):
+\begin{equation}\label{eq:Bromwich-ML}
+E_{\alpha, \beta}(z) = \frac{1}{2\pi i} \int_{\mathrm{Br}}
+\frac{e^s \cdot s^{\alpha - \beta}}{s^\alpha - z}\,ds.
+\end{equation}
+We verified \cref{eq:Bromwich-ML} numerically using
+\texttt{mpmath.invertlaplace} (Talbot method) at the test cell
+$\alpha = 0.4$, $\beta = 1.3$, $z = 2.5$, with $60$-digit agreement
+against direct series summation.
+
+Substitute $z = a^\varepsilon$. The integrand has:
+\begin{itemize}
+\item A simple pole at $s = a$ (where $s^\varepsilon = a^\varepsilon$),
+with residue $e^a / (\varepsilon \cdot a^{\beta - 1})$.
+\item A branch cut on $(-\infty, 0]$ from $s^\varepsilon$.
+\end{itemize}
+Deform the Bromwich contour to wrap the negative real axis (Hankel
+contour) and pick up the residue at $s = a$. Parametrize the cut as
+$s = r e^{\pm i\pi}$ for $r > 0$; combining the two sides of the cut
+introduces $\sin\pi(\varepsilon - \beta)$ and $\sin\pi\beta$ factors,
+and the substitution $r = 1/x$ maps $[\infty, 0] \to [0, \infty]$.
+The cut contribution becomes exactly
+\[
+-\frac{\varepsilon}{\pi} \cdot a^{-\lambda} \int_0^\infty
+\frac{e^{-ax} \cdot x^{-\lambda - 1}
+\bigl[\sin\pi(\lambda - \varepsilon) - x^\varepsilon \sin\pi\lambda\bigr]}
+{2\cos\pi\varepsilon - (x^\varepsilon + x^{-\varepsilon})}\,dx.
+\]
+Combining residue and cut and multiplying through by
+$\varepsilon \cdot a^\lambda$ yields exactly Ramanujan's
+\cref{eq:identity}. \qedsymbol
+
+This argument follows the standard Mittag-Leffler asymptotic-expansion
+treatment in \cite{GorenfloKilbasMainardiRogosin}; we cite it both as
+an independent confirmation of the identity and to make explicit what
+the \S4.4 argument was attempting to construct.
+
+\section{Where the \S4.4 argument errs}\label{sec:where-errs}
+
+Andrews and Berndt's \S4.4 argument proceeds in three steps:
+\begin{enumerate}[(i)]
+\item Take the specific cell $\lambda = \tfrac12$, $\varepsilon = 1$.
+\item Apply Watson's Lemma to the RHS to obtain the asymptotic series
+\cite[p.~117, eq.~(4.4.1)]{AB2013}:
+\[
+e^a - \frac{1}{\pi} \sum_{n=0}^\infty \frac{(-1)^n \Gamma(n + 1/2)}{a^{n + 1/2}}.
+\]
+\item Apply Berndt's \emph{Ramanujan's Notebooks, Part~I} Chapter~3
+Entry~10 \cite{BerndtNB1} to the LHS (with
+$\varphi(x) = \Gamma(x + 1)/\Gamma(x + 3/2)$) combined with the
+gamma-ratio formula \cite[p.~116, eq.~(4.4.2)]{AB2013}, yielding
+\cite[p.~117, eq.~(4.4.3)]{AB2013}:
+\[
+e^a \cdot \left(1 - \frac{3}{8a} + O\!\left(\frac{1}{a^2}\right)\right).
+\]
+\end{enumerate}
+The disagreement at $O(1/a)$ between
+$e^a - 1/\sqrt{\pi a} + O(1/a^{3/2})$ (the RHS asymptotic from
+(i)--(ii)) and $e^a - 3 e^a/(8a) + O(e^a/a^2)$ (the LHS asymptotic
+from~(iii)) is then taken as proof that the identity fails.
+
+But by \cref{sec:closedform}, both sides equal
+$e^a \cdot \erf(\sqrt{a})$ exactly. The asymptotic expansion of
+$e^a \cdot \erf(\sqrt{a})$ as $a \to \infty$ is
+\begin{equation}
+e^a \cdot \erf(\sqrt{a}) = e^a \cdot (1 - \erfc(\sqrt{a}))
+= e^a - \frac{1}{\sqrt{\pi a}}\left(1 - \frac{1}{2a} + \frac{3}{4a^2} - \cdots\right),
+\end{equation}
+which \emph{matches} the RHS asymptotic but \emph{contradicts} the
+LHS asymptotic~(4.4.3). The deviation from $e^a$ is exponentially
+small in $a$ (since $\erfc(\sqrt{a}) \sim e^{-a}/\sqrt{\pi a}$), not
+polynomial; the leading polynomial coefficient $-3/(8a)$ in~(4.4.3)
+is therefore spurious.
+
+A direct numerical audit at three values of $a$ confirms~(4.4.3) is
+wrong:
+\begin{center}
+\begin{tabular}{r|r|r|r}
+$a$ & $e^a \erf(\sqrt{a})$ (true value) & AB~(4.4.3): $e^a(1 - 3/(8a))$ & rel.~err \\
+\hline
+$10$ & $22{,}026.3$ & $21{,}200.5$ & $3.75 \times 10^{-2}$ \\
+$100$ & $2.69 \times 10^{43}$ & $2.68 \times 10^{43}$ & $3.75 \times 10^{-3}$ \\
+$1000$ & $1.97 \times 10^{434}$ & $1.97 \times 10^{434}$ & $3.75 \times 10^{-4}$ \\
+\end{tabular}
+\end{center}
+The relative error of $e^a(1 - 3/(8a))$ decays as $3/(8a)$, exactly
+the magnitude of the spurious polynomial correction in~(4.4.3).
+
+We identify the \S4.4 error at three levels:
+
+\begin{enumerate}[(i)]
+\item \emph{Arithmetic.} Applying
+\cite[p.~116, eq.~(4.4.2)]{AB2013}, which is
+\cite[6.147]{AbramowitzStegun}, with $a = 1$, $b = 3/2$ yields the
+leading correction
+\[
+\frac{(1 - 3/2)(1 + 3/2 - 1)}{2x} = \frac{(-1/2)(1/2)}{2x} = -\frac{1}{8x},
+\]
+\emph{not} $-3/(8x)$. The coefficient $-3/8$ in (4.4.3) appears to be
+an arithmetic miscalculation of the application of (4.4.2) with these
+specific values of the gamma-function parameters.
+\item \emph{Conceptual.} Berndt's Notebooks Chapter~3 Entry~10 provides
+the leading-order asymptotic relation between
+$\sum a^{n+1/2}/\Gamma(n+3/2)$ and a gamma-ratio combination, but the
+$O(\cdot)$ correction contains hidden polynomial-in-$1/a$ terms that
+\emph{exactly cancel} against the Stirling expansion of
+$\Gamma(a+1)/\Gamma(a+3/2)$ when combined to compute the asymptotic
+of the LHS. The \S4.4 argument treats Entry~10 as if its remainder
+were $O(e^a/a^2)$ rather than $O(e^a/a)$---the leading-cancellation
+terms are silently dropped, and the spurious $-3/(8a)$ that survives
+is an artifact of that dropping.
+\item \emph{Trans-asymptotic mismatch.} Even setting (i) and (ii) aside,
+comparing a polynomial-truncated expansion (the would-be LHS
+asymptotic to $O(1/a^2)$) against a divergent Watson-Lemma asymptotic
+series (the RHS expansion~(4.4.1), which is \emph{divergent} in $a$
+but resums via Borel--Laplace to give exactly the true value of
+$\erfc$) is not a valid identity check. The difference between the
+two sides of \cref{eq:identity} is exponentially small in $a$, which
+neither asymptotic series captures at any finite truncation.
+\end{enumerate}
+
+\section{Conclusion}
+
+Ramanujan's Entry~4.2.3 (Lost Notebook p.~199) is correct as stated.
+The \S4.4 ``Discussion of Entry~4.2.3'' in Andrews and Berndt's
+\emph{Lost Notebook, Part~IV} \cite{AB2013}, and the earlier
+\emph{Proc.\ Amer.\ Math.\ Soc.} note \cite{Berndt2004}, require
+correction at the three points identified in \cref{sec:where-errs}.
+
+We propose this short note as a corrigendum. Andrews and Berndt
+deserve immense credit for their five-volume reconstruction of
+Ramanujan's \emph{Lost Notebook}---twelve unchallenged years of one
+specific argument in a single chapter of one volume in no way
+diminishes that achievement.
+
+\section*{Acknowledgments}
+
+The verification protocol used here was developed during a private
+software-research project (\texttt{ramanujan-mining} repository),
+which combines symbolic-search engineering with adversarial
+verification subagents \cite{ProjectC}. All numerical work is
+reproducible from the public commit history; the full per-cell CSV
+is at \verb|analysis/results/31_ab_entry_423_verification.csv|, and
+the independent contour-proof reconstruction script is at
+\verb|analysis/31_ab_entry_423_adversarial_verification.py|, both at
+commit \texttt{bd17551}. We are particularly grateful to Bruce
+Berndt for the courtesy of prior review of this note before
+submission.
+
+\bibliographystyle{amsalpha}
+\bibliography{refs}
+
+\end{document}

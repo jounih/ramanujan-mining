@@ -1,0 +1,81 @@
+% Bibliography for the AB Entry 4.2.3 corrigendum.
+% Compile with: bibtex main (after first pdflatex main pass).
+
+@book{AB2013,
+  author    = {Andrews, George E. and Berndt, Bruce C.},
+  title     = {Ramanujan's Lost Notebook, Part IV},
+  publisher = {Springer},
+  address   = {New York},
+  year      = {2013},
+  isbn      = {978-1-4614-4080-2}
+}
+
+@article{Berndt2004,
+  author  = {Berndt, Bruce C.},
+  title   = {Some integrals in Ramanujan's lost notebook},
+  journal = {Proceedings of the American Mathematical Society},
+  volume  = {132},
+  number  = {10},
+  pages   = {2983--2988},
+  year    = {2004},
+  doi     = {10.1090/S0002-9939-04-07310-9}
+}
+
+@book{BerndtNB1,
+  author    = {Berndt, Bruce C.},
+  title     = {Ramanujan's Notebooks, Part I},
+  publisher = {Springer},
+  address   = {New York},
+  year      = {1985},
+  isbn     = {978-1-4612-9598-6}
+}
+
+@book{LostNotebook,
+  author    = {Ramanujan, Srinivasa},
+  title     = {The Lost Notebook and Other Unpublished Papers},
+  publisher = {Narosa},
+  address   = {New Delhi; Springer-Verlag, Berlin},
+  year      = {1988}
+}
+
+@book{GorenfloKilbasMainardiRogosin,
+  author    = {Gorenflo, Rudolf and Kilbas, Anatoly A. and Mainardi, Francesco and Rogosin, Sergei V.},
+  title     = {Mittag-Leffler Functions, Related Topics and Applications},
+  series    = {Springer Monographs in Mathematics},
+  edition   = {2},
+  publisher = {Springer},
+  address   = {Berlin},
+  year      = {2020},
+  isbn      = {978-3-662-61549-1},
+  note      = {Chapter 3 treats the Bromwich/Hankel-contour representation used in Section \ref{sec:contourproof}.}
+}
+
+@book{GradshteynRyzhik,
+  author    = {Gradshteyn, I. S. and Ryzhik, I. M.},
+  title     = {Table of Integrals, Series, and Products},
+  edition   = {8},
+  editor    = {Zwillinger, Daniel and Moll, Victor},
+  publisher = {Academic Press},
+  year      = {2014},
+  isbn      = {978-0-12-384933-5},
+  note      = {Formula 3.466.1 used in Equation \ref{eq:Laplace}.}
+}
+
+@book{AbramowitzStegun,
+  editor    = {Abramowitz, Milton and Stegun, Irene A.},
+  title     = {Handbook of Mathematical Functions, with Formulas, Graphs, and Mathematical Tables},
+  publisher = {National Bureau of Standards},
+  address   = {Washington, D.C.},
+  year      = {1964},
+  series    = {Applied Mathematics Series},
+  number    = {55},
+  note      = {Formula 6.147 used as \cite[(4.4.2)]{AB2013}; the corrected leading coefficient is identified in Section \ref{sec:where-errs}.}
+}
+
+@misc{ProjectC,
+  author       = {Helminen, Jouni},
+  title        = {Project C / \texttt{ramanujan-mining}: a private symbolic-search and adversarial-verification research run},
+  howpublished = {GitHub repository},
+  year         = {2026},
+  note         = {\url{https://github.com/jounih/ramanujan-mining}; diary entry 57 documents the adversarial verification of Entry 4.2.3 at commit \texttt{bd17551}; per-cell CSV at \texttt{analysis/results/31\_ab\_entry\_423\_verification.csv}}
+}
