@@ -1,0 +1,67 @@
+% Bibliography for the methodology-workflow paper.
+% Compile with: bibtex main (after first pdflatex main pass).
+
+@misc{ProjectC,
+  author       = {Helminen, Jouni},
+  title        = {Project C / \texttt{ramanujan-mining}: source code,
+                  diary record, prompt templates, and adversarial
+                  verification subagents},
+  howpublished = {GitHub repository},
+  year         = {2026},
+  note         = {\url{https://github.com/jounih/ramanujan-mining};
+                  full methodology documentation, prompt-template
+                  catalogue, diary entries, ``did not pan out'' log,
+                  and per-cell CSVs}
+}
+
+@misc{OpenAIErdos2026,
+  author       = {{OpenAI}},
+  title        = {Demonstration: \texttt{ChatGPT-o3} chain-of-thought
+                  on an Erd\H{o}s unit-distance combinatorics problem},
+  year         = {2026},
+  howpublished = {Public-release demonstration; local archival copy at
+                  \texttt{downloaded-pdfs/openai\_2026\_unit\_distance\_erdos\_remarks.pdf}
+                  in~\cite{ProjectC}},
+  note         = {Referenced in Section~\ref{sec:prompt-template}
+                  for the open T/F prompt template inspiration}
+}
+
+@book{AB2013,
+  author    = {Andrews, George E. and Berndt, Bruce C.},
+  title     = {Ramanujan's Lost Notebook, Part IV},
+  publisher = {Springer},
+  address   = {New York},
+  year      = {2013},
+  isbn      = {978-1-4614-4080-2},
+  note      = {Source corpus for the Entry~4.2.3 corrigendum case
+               study described in Section~\ref{sec:taxonomy}}
+}
+
+@book{BerndtNB,
+  author    = {Berndt, Bruce C.},
+  title     = {Ramanujan's Notebooks, Parts I--V},
+  publisher = {Springer},
+  address   = {New York},
+  year      = {1985--2005},
+  note      = {Five-volume series; Part~I (1985), Part~II (1989),
+               Part~III (1991), Part~IV (1994), Part~V (1998); also
+               later printings through 2005. Source corpus for the
+               toolkit-split / domain-routing findings underlying
+               Section~\ref{sec:machinery}}
+}
+
+@article{CauxKonnoSorrellWeston2012,
+  author  = {Caux, Jean-S\'ebastien and Konno, Hitoshi and Sorrell,
+             Mark and Weston, Robert},
+  title   = {Tracking the exact identification of two-spinon
+             longitudinal structure factor of gapless {XXZ} model},
+  journal = {Journal of Statistical Mechanics: Theory and Experiment},
+  volume  = {2012},
+  number  = {01},
+  pages   = {P01007},
+  year    = {2012},
+  doi     = {10.1088/1742-5468/2012/01/P01007},
+  note    = {Structural-obstruction reference for the
+             calibrated-honest cycle on the XXZ chain real-time
+             correlator (Section~\ref{sec:honest-cycles})}
+}
