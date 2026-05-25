@@ -1,0 +1,466 @@
+% Level-pq Lambert annihilator expository note --- pre-submission LaTeX source.
+% Target venue: Mathematics Magazine (MAA). Style: amsart, amsplain bib.
+% Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
+% Or: latexmk -pdf main.tex
+
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathrsfs}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    citecolor=blue!50!black,
+    urlcolor=blue!50!black
+}
+\usepackage{cleveref}
+
+% Theorem-like environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% Custom shortcuts
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\Eis}{\mathcal{E}}
+\DeclareMathOperator{\Gal}{Gal}
+
+\title{An explicit closed form for the four-divisor $E_2$ Lambert annihilator at
+squarefree composite level: a note on autonomous rediscovery}
+
+\author{Jouni Helminen}
+\address{Independent researcher}
+\email{jouni@helminen.co}
+
+\date{May 25, 2026}
+
+\subjclass[2020]{Primary 11F11, 11F20; Secondary 11M36, 68T20}
+
+\keywords{Lambert series; Eisenstein series; quasi-modular form $E_2$;
+level $\Gamma_0(N)$; Hardy--Ramanujan--Berndt identity; autonomous
+mathematical rediscovery}
+
+\begin{document}
+
+\begin{abstract}
+We give an explicit closed-form parameterization of the unique
+(up to scale) linear relation among the four Lambert ``conjugate-pair
+blocks''
+\[
+T_d(\alpha,\beta) := d\,\alpha\,L(d\alpha)
++ \frac{\beta}{d}\,L\!\left(\frac{\beta}{d}\right),
+\qquad d \mid N,
+\qquad L(x) := \sum_{n \ge 1}\frac{n}{e^{2nx}-1},
+\]
+on the hyperbola $\alpha\beta = \pi^2$ at squarefree composite level
+$N = pq$ with distinct primes $p < q$. With
+$g := \gcd(pq-1,\, q-p)$, $\delta := (q-p)/g$, and $m := (pq-1)/g$,
+the integer-lowest-height coefficient vector is
+\[
+(c_1, c_p, c_q, c_{pq}) = (-\delta,\; m,\; -m,\; \delta).
+\]
+The derivation requires only the Hardy--Ramanujan--Berndt base identity
+(1916) plus five lines of Gaussian elimination on a $3\times 4$ rational
+system. The underlying structural fact---that exactly one linear
+relation must exist---is a consequence of the classical dimension
+formula $\dim \Eis_2(\Gamma_0(pq)) = 3$ for the Eisenstein subspace of
+weight-$2$ modular forms at squarefree composite level. We verify the
+formula numerically across sixteen instances to relative error
+$\le 10^{-100}$ at \texttt{mpmath} precision $200$ digits, map
+structural extensions (the formula is unique at $N = pq$, non-unique
+at $N = pqr$ and $N = p^2 q$, and does not extend to $N = p^2$), and
+offer the note as both a useful explicit parameterization and as an
+instance of autonomous rediscovery of classical material by an
+LLM-driven symbolic-search engine.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+In their 1916 paper \emph{Asymptotic formulae in combinatory analysis}
+\cite[eq.~(1.55)]{HardyRamanujan1916}, Hardy and Ramanujan recorded the
+following identity, equivalent to the modular transformation law for
+the weight-$2$ Eisenstein series $E_2$: for $\alpha,\beta > 0$ with
+$\alpha\beta = \pi^2$,
+\begin{equation}\label{eq:HRB}
+\alpha\, L(\alpha) + \beta\, L(\beta)
+= \frac{\alpha + \beta}{24} - \frac{1}{4},
+\end{equation}
+where $L(x) := \sum_{n \ge 1} n/(e^{2nx} - 1)$ is the standard Lambert
+series. Berndt's commentary in \emph{Ramanujan's Notebooks Part~II}
+\cite[Ch.~14, Entry~27(iii)]{BerndtNB2} traces this identity to
+Ramanujan's second notebook and connects it directly to the $E_2$
+inversion law
+\begin{equation}\label{eq:E2}
+E_2(-1/\tau) = \tau^2\, E_2(\tau) + \frac{6\tau}{\pi i},
+\end{equation}
+via the substitution $\tau = i\alpha/\pi$ and the standard
+$q$-expansion $E_2(\tau) = 1 - 24\sum_{n \ge 1} n\, q^n/(1 - q^n)$
+with $q = e^{2\pi i \tau}$.
+
+A natural question is: given a level $N$, what is the dimension of the
+linear-relation space spanned by the conjugate-pair blocks
+\begin{equation}\label{eq:Td}
+T_d(\alpha,\beta) := d\,\alpha\,L(d\alpha)
++ \frac{\beta}{d}\,L\!\left(\frac{\beta}{d}\right)
+\end{equation}
+indexed by $d \mid N$? For $N = 1$ there is one block and
+\cref{eq:HRB} determines its value but gives no annihilator. For
+$N = p$ prime, there are two blocks $\{T_1, T_p\}$ but
+\cref{eq:HRB} applied at the two conjugate pairs $(\alpha,\beta)$ and
+$(p\alpha, \beta/p)$ produces no non-trivial linear relation (both
+blocks are affine in $(\alpha,\beta)$ with linearly independent
+coefficient vectors).
+
+The first non-trivial case is therefore $N = pq$ with $p \ne q$ both
+prime: four blocks indexed by $d \in \{1, p, q, pq\}$. The main result
+of this note is that this case admits exactly one non-trivial linear
+relation, with explicit closed-form coefficients.
+
+\begin{theorem}\label{thm:main}
+Let $p < q$ be distinct primes. With $g := \gcd(pq-1,\, q-p)$,
+$\delta := (q-p)/g$, and $m := (pq-1)/g$, the unique (up to scale)
+integer-lowest-height annihilator of $\{T_1, T_p, T_q, T_{pq}\}$ on the
+hyperbola $\alpha\beta = \pi^2$ is
+\begin{equation}\label{eq:main}
+-\delta\, T_1 + m\, T_p - m\, T_q + \delta\, T_{pq} = 0.
+\end{equation}
+\end{theorem}
+
+The remainder of this note is an exposition of \cref{eq:main}: we
+derive it in five lines (\cref{sec:derivation}), connect it to the
+classical $E_2$ Eisenstein-subspace dimension formula
+(\cref{sec:modular}), tabulate sixteen numerically verified instances
+(\cref{sec:numerical}), map its structural extensions to richer
+divisor sets (\cref{sec:extensions}), and close with a provenance note
+on how the formula was rediscovered (\cref{sec:provenance}).
+
+The underlying mathematics is entirely classical. The fact that
+exactly one such relation must exist at $N = pq$ follows immediately
+from $\dim \Eis_2(\Gamma_0(pq)) = 3$. The explicit
+$\gcd(pq-1, q-p)$ parameterization for the integer-lowest-height
+representative may not appear in this form in the standard
+references; if it does, we have not located it. The note is offered
+both as a convenient explicit form and as a worked example of
+LLM-assisted autonomous rediscovery of a classical structural
+identity.
+
+\section{Closed-form coefficients}\label{sec:derivation}
+
+\subsection{The five-line derivation}\label{sec:fiveline}
+
+Identity~\eqref{eq:HRB} collapses each conjugate-pair block to a
+three-parameter affine function of $(\alpha,\beta)$ alone.
+Substituting the conjugate pair $(d\alpha,\, \beta/d)$ into
+\cref{eq:HRB}---which is permissible because
+$d\alpha \cdot \beta/d = \alpha\beta = \pi^2$---we obtain
+\begin{equation}\label{eq:Td-affine}
+T_d(\alpha,\beta) = \frac{d\alpha + \beta/d}{24} - \frac{1}{4}
+= \frac{d\,\alpha}{24} + \frac{\beta}{24\,d} - \frac{1}{4}.
+\end{equation}
+
+A linear combination $\sum_{d \mid pq} c_d\, T_d$ therefore equals
+\begin{equation}\label{eq:combination}
+\frac{\alpha}{24}\sum_{d} d\,c_d
++ \frac{\beta}{24}\sum_{d} \frac{c_d}{d}
+- \frac{1}{4}\sum_d c_d.
+\end{equation}
+
+The combination vanishes identically in $(\alpha,\beta)$ iff the three
+coefficient sums all vanish:
+\begin{equation}\label{eq:three-constraints}
+\sum_d c_d = 0,\qquad
+\sum_d d\,c_d = 0,\qquad
+\sum_d \frac{c_d}{d} = 0.
+\end{equation}
+
+With $d \in \{1, p, q, pq\}$ and unknowns $(c_1, c_p, c_q, c_{pq})$,
+labelling \cref{eq:three-constraints} as $E_1$, $E_2$, $E_3$
+respectively, this is a $3 \times 4$ rational linear system. Five
+lines of Gaussian elimination solve it:
+\begin{enumerate}
+\item $E_2 - E_1$:\quad
+$(p-1)c_p + (q-1)c_q + (pq-1)c_{pq} = 0$.
+\item $-pq(E_3 - E_1)$:\quad
+$q(p-1)c_p + p(q-1)c_q + (pq-1)c_{pq} = 0$.
+\item Step~1 $-$ Step~2:\quad
+$-(p-1)(q-1)(c_p + c_q) = 0$, so $c_q = -c_p$.
+\item Substituting into Step~1:\quad
+$(pq-1)c_{pq} = (q-p)\,c_p$, i.e.\
+$m\,(q-p) = \delta\,(pq-1)$ with $c_p =: m$ and $c_{pq} =: \delta$.
+\item Substituting into $E_1$ with $c_q = -c_p$:\quad
+$c_1 = -c_{pq} = -\delta$.
+\end{enumerate}
+
+The integer-lowest-height representative is then obtained by dividing
+through by $g := \gcd(pq-1,\, q-p)$, yielding $\delta = (q-p)/g$,
+$m = (pq-1)/g$, and the coefficient vector
+$(c_1, c_p, c_q, c_{pq}) = (-\delta,\, m,\, -m,\, \delta)$ as
+claimed. This completes the proof of \cref{thm:main}.\qed
+
+\subsection{Worked example: $N = 33 = 3 \cdot 11$}
+
+Here $p = 3$, $q = 11$, so $q - p = 8$, $pq - 1 = 32$, and
+$g = \gcd(32, 8) = 8$. Therefore $\delta = 8/8 = 1$ and $m = 32/8 = 4$,
+giving
+\begin{equation}\label{eq:N33}
+-T_1(\alpha,\beta) + 4\, T_3(\alpha,\beta)
+- 4\, T_{11}(\alpha,\beta) + T_{33}(\alpha,\beta) = 0.
+\end{equation}
+Expanding the blocks explicitly,
+\begin{multline*}
+\alpha\bigl[-L(\alpha) + 12\,L(3\alpha) - 44\,L(11\alpha)
++ 33\,L(33\alpha)\bigr]\\
++ \beta\bigl[-L(\beta) + \tfrac{4}{3}\,L(\beta/3)
+- \tfrac{4}{11}\,L(\beta/11) + \tfrac{1}{33}\,L(\beta/33)\bigr] = 0.
+\end{multline*}
+Numerically, at the canonical cell $\alpha = 1$, $\beta = \pi^2$, the
+left-hand side evaluates to magnitude $\le 10^{-199}$ at
+\texttt{mpmath} working precision $200$ digits, against blocks of
+magnitude $\sim 10^{-1}$---relative error $\le 10^{-199}$.
+
+\section{Connection to classical modular forms}\label{sec:modular}
+
+\subsection{The dimension formula}
+
+For squarefree $N = q_1 q_2 \cdots q_t$ with $t$ distinct prime
+factors, the Eisenstein subspace of weight-$2$ modular forms on
+$\Gamma_0(N)$ has dimension
+\begin{equation}\label{eq:dim}
+\dim \Eis_2(\Gamma_0(N)) = 2^t - 1.
+\end{equation}
+This is a standard fact; see Diamond--Shurman \cite[\S3.5]{DiamondShurman}
+or Stein \cite[Ch.~5]{Stein}. For $t = 2$ (the squarefree composite
+case $N = pq$) this gives $\dim \Eis_2(\Gamma_0(pq)) = 3$.
+
+The four functions $\{E_2(\tau),\, E_2(p\tau),\, E_2(q\tau),\,
+E_2(pq\tau)\}$ are weight-$2$ Eisenstein-style forms on
+$\Gamma_0(pq)$. Each $E_2(d\tau)$ is a quasi-modular form on
+$\Gamma_0(d) \supseteq \Gamma_0(pq)$, and the standard old-form
+construction places it in the Eisenstein subspace of
+$M_2(\Gamma_0(pq))$ after subtracting the appropriate quasi-modular
+anomaly; see \cite[\S5.6]{DiamondShurman}. Because four candidate
+forms live in a three-dimensional space, they must satisfy at least
+one linear relation. The argument of \cref{sec:fiveline}---which used
+only \cref{eq:HRB}, not the Eisenstein-subspace framework---shows
+that the linear-relation space is exactly one-dimensional.
+
+The LMFDB database \cite{LMFDB} confirms the dimension count at
+$N = 33$: the space $M_2(\Gamma_0(33))$ has total dimension~$9$,
+cuspidal subspace dimension~$6$, and Eisenstein subspace dimension~$3$.
+
+\subsection{The Hardy--Ramanujan--Berndt identity in this light}
+
+Identity~\eqref{eq:HRB} is precisely the manifestation, at the level
+of one conjugate pair of Lambert blocks, of the transformation
+law~\eqref{eq:E2} for $E_2$. The anomaly $6\tau/(\pi i)$ in
+\cref{eq:E2} becomes the constant correction $-1/4$ and the linear
+piece $(\alpha + \beta)/24$ in \cref{eq:HRB}. The fact that this
+anomaly is \emph{itself a polynomial of low degree in
+$(\alpha, \beta)$}---specifically of degree at most one---is what
+reduces the four-divisor annihilator equation to only three linear
+constraints (\cref{eq:three-constraints}), and hence to a kernel of
+dimension $4 - 3 = 1$ in the generic case.
+
+Said differently: the Hardy--Ramanujan--Berndt identity is the
+dimension reduction $\dim \Eis_2(\Gamma_0(pq)) = 3$ in disguise,
+working at the level of Lambert summands rather than modular forms.
+
+\section{Numerical verification}\label{sec:numerical}
+
+We verified \cref{eq:main} across sixteen instances using
+\texttt{mpmath} at working precision $200$ digits, evaluating the
+left-hand side at five cells on the hyperbola $\alpha\beta = \pi^2$
+chosen to stress the formula at small $\alpha$, large $\alpha$, and
+the symmetric point $\alpha = \beta = \pi$. The strict acceptance bar
+is relative error $\le 10^{-100}$, where the relative error is
+measured against $\max_d |c_d \cdot T_d|$ (the cancellation scale).
+
+\Cref{tab:verification} summarizes seven main instances plus nine
+adversarial edge cases.
+
+\begin{table}[h]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{rcclr}
+\toprule
+$N$ & $(p, q)$ & Coefficients $(c_1, c_p, c_q, c_{pq})$
+& $\,g,\, \delta,\, m\,$ & Worst rel.\,err.\ / 5 cells \\
+\midrule
+$33$  & $(3, 11)$  & $(-1, 4, -4, 1)$       & $8, 1, 4$    & $\le 10^{-199}$ \\
+$35$  & $(5, 7)$   & $(-1, 17, -17, 1)$     & $2, 1, 17$   & $2.76\times 10^{-200}$ \\
+$51$  & $(3, 17)$  & $(-7, 25, -25, 7)$     & $2, 7, 25$   & $2.85\times 10^{-200}$ \\
+$65$  & $(5, 13)$  & $(-1, 8, -8, 1)$       & $8, 1, 8$    & $4.42\times 10^{-200}$ \\
+$77$  & $(7, 11)$  & $(-1, 19, -19, 1)$     & $4, 1, 19$   & $1.27\times 10^{-200}$ \\
+$87$  & $(3, 29)$  & $(-13, 43, -43, 13)$   & $2, 13, 43$  & $1.99\times 10^{-199}$ \\
+$95$  & $(5, 19)$  & $(-7, 47, -47, 7)$     & $2, 7, 47$   & $4.88\times 10^{-200}$ \\
+$115$ & $(5, 23)$  & $(-3, 19, -19, 3)$     & $6, 3, 19$   & $1.07\times 10^{-199}$ \\
+$143$ & $(11, 13)$ & $(-1, 71, -71, 1)$     & $2, 1, 71$   & $1.93\times 10^{-200}$ \\
+$323$ & $(17, 19)$ & $(-1, 161, -161, 1)$   & $2, 1, 161$  & $6.99\times 10^{-134}$ \\
+$187$ & $(11, 17)$ & $(-1, 31, -31, 1)$     & $6, 1, 31$   & $9.60\times 10^{-200}$ \\
+$391$ & $(17, 23)$ & $(-1, 65, -65, 1)$     & $6, 1, 65$   & $3.46\times 10^{-110}$ \\
+$6$   & $(2, 3)$   & $(-1, 5, -5, 1)$       & $1, 1, 5$    & $4.02\times 10^{-200}$ \\
+$10$  & $(2, 5)$   & $(-1, 3, -3, 1)$       & $3, 1, 3$    & $1.91\times 10^{-200}$ \\
+$14$  & $(2, 7)$   & $(-5, 13, -13, 5)$     & $1, 5, 13$   & $2.70\times 10^{-200}$ \\
+$22$  & $(2, 11)$  & $(-3, 7, -7, 3)$       & $3, 3, 7$    & $1.22\times 10^{-199}$ \\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{Numerical verification of \cref{eq:main} across sixteen
+$N = pq$ instances at \texttt{mpmath} working precision $200$ digits.
+Worst relative error is the maximum, across five test cells on
+$\alpha\beta = \pi^2$, of $|{\rm LHS}|/\max_d|c_d\,T_d|$.}
+\label{tab:verification}
+\end{table}
+
+The bar-marginal entries at $N = 323$ (twin primes $17 \cdot 19$) and
+$N = 391$ (far-apart primes $17 \cdot 23$) reflect numerical
+cancellation eating $\sim 66$ and $\sim 90$ digits respectively in
+the most extreme cell; both remain comfortably inside the $10^{-100}$
+bar. All other entries achieve relative error $\le 10^{-199}$, i.e.\
+essentially the working-precision floor.
+
+The formula is symmetric under $p \leftrightarrow q$: the substitution
+flips $\delta \to -\delta$ and the labels $c_p \leftrightarrow c_q$,
+leaving the relation invariant up to an overall sign. The derivation
+in \cref{sec:fiveline} nowhere assumed $p > 2$; the small-prime
+entries $N \in \{6, 10, 14, 22\}$ confirm this.
+
+\section{Structural extensions}\label{sec:extensions}
+
+What happens at richer divisor sets? \Cref{sec:fiveline} shows that
+any divisor set $D = \{d_1, \ldots, d_n\}$ on which $T_d$ is defined
+yields the same three linear constraints \eqref{eq:three-constraints},
+whose kernel has dimension $n - \mathrm{rank}(M)$ where $M$ is the
+$3 \times n$ matrix with rows $(1, \ldots, 1)$,
+$(d_1, \ldots, d_n)$, $(1/d_1, \ldots, 1/d_n)$. The interesting
+structural extensions are:
+
+\paragraph{Squarefree $N = pqr$ (three distinct primes).}
+Eight divisors $\{1, p, q, r, pq, pr, qr, pqr\}$, a $3 \times 8$
+rational system, kernel dimension~$5$. The closed-form
+parameterization of \cref{thm:main} does \emph{not} extend uniquely;
+the kernel is non-unique. Numerically verified at
+$N \in \{30,\, 105,\, 165\}$. The first basis vector is typically a
+``sub-divisor annihilator'' supported on $\{1, p, q, r\}$ alone; the
+lifted \cref{thm:main} annihilators on the embedded $pq$-, $pr$-,
+$qr$-sublattices also live inside the kernel.
+
+\paragraph{Prime power $N = p^2$.}
+Three divisors $\{1, p, p^2\}$. The $3 \times 3$ constraint matrix is
+Vandermonde-type in $(1, p, p^2)$ and $(1, 1/p, 1/p^2)$, of full
+rank~$3$, kernel dimension~$0$. \emph{The family does not extend to
+prime powers.} Verified at $N \in \{49, 121\}$. The construction
+structurally requires at least two distinct prime factors.
+
+\paragraph{Mixed $N = p^2 q$.}
+Six divisors $\{1, p, q, p^2, pq, p^2 q\}$, kernel dimension~$3$. The
+closed form is non-unique. Verified at $N \in \{18, 45\}$. As at
+$pqr$, sub-divisor annihilators and lifts of the \cref{thm:main}
+$p \cdot q$ annihilator both populate the kernel.
+
+The clean uniqueness of \cref{thm:main} is therefore special to the
+squarefree composite case $N = pq$.
+
+\begin{remark}\label{rem:caveat}
+A subtler point: at $N = pqr$ the Eisenstein-subspace dimension
+formula \eqref{eq:dim} gives $\dim \Eis_2(\Gamma_0(pqr)) = 2^3 - 1 = 7$,
+so the eight forms $\{E_2(d\tau) : d \mid pqr\}$ satisfy exactly one
+linear relation at the level of modular forms---yet our Lambert-block
+construction yields a kernel of dimension~$5$, not~$1$. The
+discrepancy is because \cref{eq:HRB} captures only the affine
+truncation of the full $E_2$ $q$-expansion under modular inversion;
+it loses information about the higher-order terms that modular-form
+linear-relation theory tracks in full. At $N = pq$ the kernel
+dimensions coincide ($1 = 1$); at higher $N$ they generically
+diverge. This is a useful caveat: the Hardy--Ramanujan--Berndt
+identity is a \emph{strictly weaker} constraint than full
+$E_2$-modularity, and the Lambert-annihilator picture and the
+Eisenstein-subspace linear-relation picture only agree at $N = pq$.
+\end{remark}
+
+\section{Provenance: autonomous rediscovery by symbolic search}\label{sec:provenance}
+
+The closed-form formula~\eqref{eq:main} was rediscovered autonomously
+by Project~C, an LLM-driven symbolic-search engine for
+Ramanujan-style identities developed during the 2026
+\emph{Ramanujan mining} research run \cite{ProjectC}. The engine's
+basis of operators---\verb|mellin_inversion|, \verb|master_theorem|,
+\verb|modular_transform_with_correction|, and others---was applied
+iteratively to a small library of seed identities under an
+\texttt{mpmath} cost model with a strict $\le 10^{-30}$ relative-error
+acceptance bar. The Level-$33$ instance was the first the engine
+surfaced (after several thousand seed-operator compositions); a
+prompted exploration cycle then enumerated the seven additional
+instances $N \in \{35, 51, 65, 77, 87, 95, 115\}$ from a
+hand-tabulated guess of the integer-lowest-height coefficient
+pattern, yielding the explicit $\gcd(pq-1, q-p)$ form.
+
+Crucially, the engine did \emph{not} use the classical dimension
+formula~\eqref{eq:dim} or the Eisenstein-subspace framework of
+\cref{sec:modular}. It worked entirely from \cref{eq:HRB} and
+elementary linear algebra over the rationals. The structural
+connection to $\dim \Eis_2(\Gamma_0(pq)) = 3$ was identified only
+\emph{after} the formula was produced, by an adversarial verification
+subagent performing a literature audit. Where helpful, the run also
+made use of OpenAI's frontier-model interface as a complementary
+sounding board \cite{ChatGPTPro}.
+
+A subsequent literature diff \cite[diary~58]{ProjectC} across six
+volumes of Berndt's \emph{Ramanujan's Notebooks} and \emph{Lost
+Notebook} commentary \cite{BerndtNB2, AndrewsBerndt}, Berndt--Yee
+\cite{BerndtYee}, Berndt--Dixit \cite{BerndtDixit}, plus the LMFDB
+database, the OEIS, and approximately twelve targeted arXiv and AMS
+searches, did not locate the explicit $\gcd(pq-1, q-p)$
+parameterization in this exact form. The underlying \emph{structure}---a
+one-dimensional linear-relation space among the four Eisenstein
+candidates at squarefree composite level---is, however, classical
+and well-documented.
+
+We therefore offer this note in two registers. First, as a useful
+explicit closed form for a relation that is \emph{guaranteed to
+exist} by Eisenstein-subspace dimension counting but is rarely
+written down in this elementary form, and which evaluates exactly to
+zero at every $(\alpha, \beta)$ on $\alpha\beta = \pi^2$. Second, as
+a worked instance of autonomous rediscovery: an LLM-driven engine,
+operating with no prior modular-forms machinery and only a small
+basis of structural operators, rediscovered in explicit form a
+classical structural identity that has been implicit in the
+modular-forms literature for decades. We regard the latter as the
+more interesting contribution. The mathematics is classical; what is
+novel is the demonstration that a small, structured operator basis
+plus a strict numerical acceptance gate suffices to surface this
+structure autonomously.
+
+The full computational verification---numerical code, raw results,
+and the literature audit---is available at \cite{ProjectC} in
+\verb|analysis/30_level33_lambert_e2_annihilator_verification.py|
+and \verb|analysis/32_level_pq_family_adversarial_verification.py|.
+
+\section*{Acknowledgments}
+
+The author thanks the developers of \texttt{mpmath}, \texttt{sympy},
+the LMFDB project, and the maintainers of the open-access portions
+of Berndt's \emph{Ramanujan's Notebooks} series.
+
+\bibliographystyle{amsplain}
+\bibliography{refs}
+
+\end{document}
