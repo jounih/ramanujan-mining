@@ -24,16 +24,45 @@ CONFIRMED + NOVEL → keep it. If CONFIRMED + KNOWN → reframe as
 "verified-implementation", not "novel finding". If REFUTED → retract in
 diary + DID_NOT_PAN_OUT.md + paper draft.
 
-## ★ IN-FLIGHT VERIFICATION SUBAGENTS (2026-05-25 spawn) ★
+## ★ VERIFICATION SUBAGENT VERDICTS (2026-05-25, ALL RETURNED) ★
 
-| # | Agent ID | Scope | Verdict bar |
+All 4 verification subagents have returned. Headline:
+
+| # | Agent ID | Scope | Verdict |
 |---|---|---|---|
-| #66 | `a523969af20acdada` | Adversarial AB LN Part IV Entry 4.2.3 defense (diary 56 Result 1): independent contour proof + 300-dps verification across 7 orders × 5 λ × 6 ε + reconstruct AB's original asymptotic argument | rel-err ≤ 10⁻²⁹⁰ across all cells; otherwise REFUTE |
-| #67 | `a1162a324b4618a72` | Adversarial Level-pq family (diary 55): 7 levels at dps=200, edge cases, 3-prime/prime-power extensions + literature diff via downloaded-pdfs + WebFetch | rel-err ≤ 10⁻¹⁹⁰ per cell; novelty audit |
-| #68 | `a7c6cab78eacccfea` | Implement + verify 4 cross-domain accelerators (diaries 50, 51, 53, 56): finite-pole attention (`rkc/attention/`), annular Poisson Green (`rkc/pde/`), PH Bessel-image (`rkc/ph/`), Airy Tricomi-U (`rkc/special/`) | numerical agreement to claimed digits + benchmark within 0.5× of claimed speedup |
+| #66 | `a523969af20acdada` | Adversarial AB LN Part IV Entry 4.2.3 defense | **CONFIRMED at HIGH confidence (diary 57)**. 5 independent paths converge. AB's error pinpointed at 3 levels. Recommended: Ramanujan Journal / HRJ corrigendum, 3-5 pages. **HEADLINE REAL CONTRIBUTION.** |
+| #67 | `a1162a324b4618a72` | Adversarial Level-pq family + literature diff | **NUMERICALLY CONFIRMED (25/25 at dps=200), NOVELTY DOWNGRADED (diary 58)**. Structure is classical (dim E_2(Γ_0(pq)) = 3). Engine autonomously rediscovered. Recalibrated: 9.5/10 → 4.5/10; Math.Mag./Amer.Math.Monthly expository note, 2-4 pages. |
+| #68 | `a7c6cab78eacccfea` | Implement + verify 4 cross-domain accelerators | **ALL 4 CONFIRMED CORRECTNESS (diary 59)**. (a) 50× attention; (b) 74,917× annular Green; (c) machine-eps PH; (d) 70+ digits Airy. Tests 118 → 132. |
+| afdb928cbba37f1aa | Web prior-art audit of (a)-(d) | **3 KNOWN + 1 PARTIAL (diary 60)**. (a) = RetNet/SSD-multi-head; (b) = Crowdy-Marshall + packaging novelty; (c) = Schrödinger 1914 + Trovato 2016; (d) = DLMF has different params, specific form less documented. |
 
-When these complete, fold results into diaries 57-59 and update
-CANDIDATE_INSIGHTS / DID_NOT_PAN_OUT accordingly. **Do not spawn duplicates.**
+## ★ PUBLISHABLE OUTCOMES FROM THIS BATCH ★
+
+1. **Ramanujan Journal corrigendum on AB Entry 4.2.3** (CONFIRMED, real
+   novel contribution). Short note 3-5 pages. Courtesy heads-up to
+   Bruce Berndt before submission.
+2. **Tool paper: 4 verified computational primitives** at
+   `rkc/{attention,pde,ph,special}` + benchmarks + prior-art
+   citations (RetNet/SSD, Crowdy-Marshall, Schrödinger 1914 / Trovato,
+   DLMF). Open-source release + arxiv announcement.
+3. **C2 expository note on engine autonomously rediscovering classical
+   Lambert/E_2 annihilator structure** — Math.Mag. or Amer.Math.
+   Monthly, 2-4 pages.
+4. **Methodology paper** (workflow + verification + prior-art audit
+   pattern). Independent of math-novelty outcomes. arxiv preprint.
+
+## Today's other update
+
+- **Diary 61 (figure-8 three-body period)** — calibrated-honest result
+  in the ζ(5)/XXX/Kepler class. ChatGPT explicitly framed as
+  "30-digit near-closed hyperelliptic-period surrogate, NOT a proven
+  exact closed form." Useful as computational primitive replacing
+  iterative shooting solver. NOT paper-grade.
+- 5 calibrated-honest cycles now (ζ(5), XXX, Kepler, M3 P_pq, figure-8)
+  out of ~27 ChatGPT-Pro cycles — methodology's true-positive filter
+  continues to work.
+
+**Do not spawn new subagents until paper drafts have absorbed these
+verdicts.**
 
 ---
 

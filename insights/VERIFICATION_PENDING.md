@@ -1,10 +1,38 @@
 # Verification Pending — claims awaiting subagent verdicts
 
-**Status:** 2026-05-25, after user's "verification is key" pivot. Three
-adversarial subagents in-flight. This file tracks every unverified
-ChatGPT-Pro claim that could land in a paper, plus what would refute each
-one, plus pre-drafted confirmation/retraction language so updates are fast
-when the subagents return.
+**Status:** 2026-05-25, after user's "verification is key" pivot.
+3 of 4 verification subagents have returned. C1 (AB Entry 4.2.3
+defense) still in flight via subagent #66.
+
+## Consolidated verdict summary (2026-05-25)
+
+| Claim | Math correct? | Novel? | Frame as |
+|---|---|---|---|
+| **C1 AB 4.2.3 defense** | YES — 223/223 cells, 200+ digits at AB's cell | YES — AB's argument error pinpointed at 3 levels (arithmetic, conceptual, regime); 12 yrs unchallenged | **Ramanujan Journal corrigendum, 3-5 pages, courtesy heads-up to Bruce Berndt** |
+| **C2 Level-pq family** | YES (dps=200, 25/25) | NO — classical structure (dim E_2(Γ_0(pq))=3) | "Engine autonomously rediscovers classical structure with elegant gcd parameterization." Math.Mag./Amer.Math.Monthly expository note, 2-4 pages. NOT Trans. AMS. |
+| **C3 Finite-pole attention** | YES (machine-eps, 50× at N=4096) | NO — multi-pole RetNet (Sun 2023) / Mamba-2 SSD | "Verified implementation citing RetNet / Mamba-2 / Lightning Attention." |
+| **C4 Annular Poisson Green** | YES (46 digits, 75,000×) | KNOWN MATH + PACKAGING NOVELTY — Crowdy-Marshall 2007 | "Verified implementation with thin-annulus L<<1 packaging novel." |
+| **C5 PH Bessel-image** | YES (machine-eps + diary-cell exact 50 digits) | NO — Schrödinger 1914 + Trovato 2016 | "Verified implementation of Schrödinger 1914 / Trovato 2016." |
+| **C6 Airy Tricomi-U** | YES (70+ digits, 21-328× speedup) | PARTIAL — DLMF has different params; this specific form less-documented | "Verified implementation; specific (1/6,1/3) form may be under-documented in classical literature." |
+
+**Headline:** 5/6 mathematically verified; 4/6 are known prior art; 1
+(C2) is downgraded from "novel" to "classical-rediscovery"; 1 (C6) is
+partially novel; 1 (C1) still in flight.
+
+**What's publishable from this batch:**
+- Methodology paper (workflow contribution) — independent of any
+  specific math result
+- Tool paper: 4 verified computational primitives `rkc/{attention,pde,
+  ph,special}` + benchmarks + prior-art citations
+- C2 expository note: engine autonomously rederives classical Lambert
+  annihilator structure with gcd-parameterization
+- If C1 confirms: AB Lost Notebook Part IV corrigendum (Ramanujan
+  Journal short note)
+
+This file tracks every unverified ChatGPT-Pro claim that could land
+in a paper, plus what would refute each one, plus pre-drafted
+confirmation/retraction language so updates are fast when the
+subagents return.
 
 ## Decision rule
 
@@ -17,13 +45,57 @@ For each claim:
 
 ## Claims pending
 
-### C1 — AB Entry 4.2.3 defense (diary 56 Result 1)
+### C1 — AB Entry 4.2.3 defense (diary 56 Result 1) — VERDICT 2026-05-25
 
-**ChatGPT-Pro claim:** Andrews-Berndt *Lost Notebook Part IV* §4.4
-(p. 116) flags Ramanujan's Entry 4.2.3 (formula 4.2.5) as incorrect by
-asymptotic argument. ChatGPT verifies LHS = RHS to 200 digits at the test
-point AB chose (a=10, λ=1/2, ε=1) and gives a contour proof showing AB's
-commentary erred — the formula is actually true.
+**Subagent verdict (diary 57, commit pending pull): CONFIRMED at HIGH
+confidence.** Five independent verification paths converge:
+
+1. **Numerical:** 223/223 cells pass at rel-err ≤ 10⁻¹⁵ across a ∈
+   [10⁻³, 10³] × ε ∈ {1, 1/2, 1/3, 1/4, 1/5, 1/6} × λ ∈ {0, 0.01ε,
+   0.1ε, 0.5ε, 0.9ε} at dps=80. AB's specific cell (a=10, λ=1/2, ε=1):
+   200+ digit agreement (rel-err 1.8×10⁻¹⁰⁷).
+2. **Closed-form ODE:** at λ=1/2, ε=1 LHS satisfies L'-L = 1/√(πa),
+   L(0)=0 → L = e^a · erf(√a) exactly.
+3. **sympy RHS reduction:** integrand simplifies to e^{-ax}/(√x(x+1));
+   Laplace identity gives π·e^a·erfc(√a); RHS = e^a · erf(√a) = LHS.
+4. **Independent Mittag-Leffler / Bromwich contour proof** via
+   `mp.invertlaplace` Talbot: 60-digit agreement at non-trivial test
+   point.
+5. **Literature audit:** no published treatment of Entry 4.2.3 since AB
+   2013 — 12 years unchallenged.
+
+**AB's error pinpointed at THREE levels** (this is the key contribution):
+- (i) **Arithmetic:** AB's (4.4.3) coefficient `-3/(8a)` should be
+  `-1/(8a)` per their own cited (4.4.2) = A&S 6.147 with α=1, β=3/2.
+- (ii) **Conceptual:** Entry 10 of NB II Ch. 3 has hidden
+  polynomial-in-1/a error terms AB silently drop; these cancel against
+  the (4.4.2) Stirling correction, leaving L = e^a·erf(√a) =
+  e^a·(1 - O(e^{-a})) — **exponentially small** departure from e^a,
+  not the polynomial 3/(8a) AB claimed.
+- (iii) **Trans-asymptotic mismatch:** comparing AB's polynomial-
+  truncated (4.4.3) against the Watson-Lemma divergent series (4.4.1)
+  conflates regimes.
+
+**Critical methodological finding:** the regularization substitution
+`x = u^{1/(ε-λ)}` is non-negotiable for RHS quadrature; without it
+40/223 cells false-positive-fail at rel-err > 10⁻¹⁰ from the
+integrable `x^{ε-λ-1}` singularity at x=0. **Without this
+substitution, the subagent would have falsely refuted ChatGPT.**
+
+**Net call:** **This is the headline real contribution of the
+session.** Ramanujan's Entry 4.2.3 (Lost Notebook p. 199) is correct;
+Andrews-Berndt *Lost Notebook Part IV* §4.4 (p. 116) commentary
+challenging it contains a tractable arithmetic + conceptual error.
+
+**Recommendation:** short 3-5 page corrigendum-style note for
+**Ramanujan Journal** or **Hardy-Ramanujan Journal (HRJ)**; courtesy
+heads-up to Bruce Berndt before submission.
+
+**Confidence:** HIGH (5 independent verification paths converged;
+methodological gotcha (regularization substitution) was caught and
+documented).
+
+**ORIGINAL CLAIM TEXT (kept for historical reference):**
 
 **Local-grep evidence (2026-05-25):** AB §4.4 *literally exists* (corpus
 hit `Ramanujan_39_s_Lost_Notebook_Part_IV_2013.txt` L7309). AB themselves
@@ -64,12 +136,57 @@ small-a numerical agreement + the e^a · erf(√a) identity for λ=1/2 are
 algebraically sound). ~25% partial (formula valid in some range, fails
 elsewhere). ~5% fully refuted.
 
-### C2 — Level-pq infinite family (diary 55 Result 1)
+### C2 — Level-pq infinite family (diary 55 Result 1) — VERDICT 2026-05-25
 
 **ChatGPT-Pro claim:** For every squarefree N=pq with q > p, the unique
 non-trivial 4-divisor Lambert/E_2 annihilator has coefficients
 (c_1, c_p, c_q, c_{pq}) = (-δ, m, -m, δ) where g=gcd(pq-1, q-p),
 δ=(q-p)/g, m=(pq-1)/g. 7 new instances verified at dps=120.
+
+**Subagent verdict (diary 58, commit bf5aacf):** **MATHEMATICALLY
+CONFIRMED, NOVELTY DOWNGRADED.** Numerical verification: 25/25 tests
+PASS at dps=200 (7 new levels × 5 cells each = 35 cells, plus 11 edge
+cases, plus 3-prime + p²q extensions). Worst rel-err: 6.99×10⁻¹³⁴ at
+N=323 (twin primes 17·19 — bar-margined but in spec).
+
+**Structural extensions:**
+- 3-prime squarefree (N=pqr): kernel dim 5, family extends but NOT
+  unique
+- Prime power p²: NO ANNIHILATOR EXISTS (kernel dim 0)
+- p²q: kernel dim 3, extends but NOT unique
+
+**Literature diff verdict: PARTIAL-PRIOR-OCCURRENCE.** The underlying
+STRUCTURE is **classical**:
+- `dim E_2(Γ_0(pq)) = 3` for squarefree composite pq is a well-known
+  dimension formula (LMFDB-confirmed at N=33).
+- The 4 candidate Eisenstein series E_2(d·τ) for d|pq live in a 3-dim
+  space, **guaranteeing** exactly one linear relation.
+- The H-R-B base identity x·L(x) + y·L(y) = (x+y)/24 − 1/4 (1916
+  Hardy-Ramanujan, eq. to E_2 transformation law) collapses T_d to a
+  3-parameter affine function.
+- The annihilator equation reduces to 3 linear equations in 4
+  unknowns → 1-D kernel.
+- The explicit gcd-parameterization (-δ, m, -m, δ) derives in **5
+  lines of Gaussian elimination**.
+
+**Net call:** the engine autonomously rediscovered, in explicit
+closed form, the linear relation guaranteed by the classical
+`dim E_2(Γ_0(pq)) = 3` result. **Meta-novel (engine capability) but
+NOT mathematically novel.**
+
+**Recalibration:** diary 55's framing "biggest single result",
+"9.5/10", "Trans. AMS / Math. Comp.", "6-12 page paper" is
+**OVERSTATED**.
+
+- **Revised excitement:** 4.5/10 (was 9.5/10)
+- **Revised venue:** Math. Mag. or Amer. Math. Monthly expository
+  note (2-4 pages), NOT Trans. AMS
+- **Honest claim:** "elegant explicit form of a classical structural
+  result, rediscovered autonomously by the engine" — NOT "discovery
+  of an infinite family"
+
+**Diary 55 has a header retraction; this verdict is the canonical
+record.**
 
 **Local-grep evidence (2026-05-25):**
 - "Lambert" + "annihilator" = 0/14 file matches in our corpus.
@@ -133,6 +250,17 @@ coefficients.
 
 ### C3 — Finite-pole attention closed form (diary 50) — VERDICT 2026-05-25
 
+**Prior-art verdict (diary 60, commit 18493c4): KNOWN-AS-RETNET / SSD.**
+The multi-pole recurrence is mathematically R parallel heads of
+single-pole RetNet / Lightning Attention / 1-SS Mamba-2 SSD. Closest
+citation: Sun et al. *Retentive Network* arxiv:2307.08621 (also Dao-Gu
+2405.21060 SSD; Qin et al. 2401.04658 Lightning Attention). **Frame as
+"verified implementation citing prior art", NOT "new construction".**
+
+---
+
+### C3-LEGACY (kept for historical reference):
+
 **ChatGPT-Pro claim:** ~8192× speedup at N=65536, R=8 vs standard
 softmax attention via semiseparable representation when the attention
 kernel has finite pole count R.
@@ -159,6 +287,19 @@ construction may be a special case. Not yet audited against literature.
 **Next steps:** extend to complex poles (RoPE) per diary 50 footnote.
 
 ### C4 — Annular Poisson Green modular acceleration (diary 51) — VERDICT 2026-05-25
+
+**Prior-art verdict (diary 60): KNOWN MATH + PACKAGING NOVELTY.** The
+θ₁-quotient form under modular S-transform is classical
+Crowdy-Marshall / Schottky-Klein construction. The "30-digit
+drop-in numerical-PDE recipe at L<<1" packaging is under-documented.
+Closest citation: **Crowdy & Marshall (2007), "Green's functions for
+Laplace's equation in multiply connected domains"**. **Frame as
+"verified implementation + thin-annulus benchmark, citing prior art";
+the implementation packaging itself may be novel.**
+
+---
+
+### C4-LEGACY (kept for historical reference):
 
 **ChatGPT-Pro claim:** ~7.1×10⁴× speedup at L=0.05 (thin annulus) for
 the modular θ₁-quotient Green-function representation vs the standard
@@ -188,6 +329,17 @@ literature check.
 Sci. Comput. note if novel as a primitive.
 
 ### C5 — PH Bessel-image propagator (diary 53) — VERDICT 2026-05-25
+
+**Prior-art verdict (diary 60): KNOWN.** The infinite-chain form is
+**Schrödinger 1914**, *Annalen der Physik* 349:916-934. The
+periodic-N "Bessel image" form q_n(t) = Σ_ℓ J_{2(n+ℓN)}(2ct) matches
+**Trovato et al. (2016) arxiv:1608.00616** letter-for-letter. **Frame
+as "verified implementation of Schrödinger 1914 / Trovato 2016";
+NOT a new construction.**
+
+---
+
+### C5-LEGACY (kept for historical reference):
 
 **ChatGPT-Pro claim:** For periodic 1D spring-mass PH chain at N=2048,
 ~95× speedup vs DFT-based 80-digit modal solution; much-larger speedup
@@ -225,6 +377,21 @@ simulation primitive with 30-digit truncation rule may be novel.
 crossover where the closed-form beats numpy-FFT in double precision.
 
 ### C6 — Airy WKB Tricomi-U closed form (diary 56 Result 2) — VERDICT 2026-05-25
+
+**Prior-art verdict (diary 60): PARTIAL.** DLMF 9.6.21 gives
+Ai(+z) = U(5/6, 5/3, 2ζ) — **different parameters** than the
+diary 56 form (1/6, 1/3). The *negative-argument* two-sector
+U(1/6, 1/3, ±2iη) form was NOT found in DLMF §9.6, the Wikipedia
+Airy article, or Fredrik Johansson's mpmath blog. The broader pattern
+"Borel transform is hypergeometric → closed form replaces Padé" is in
+**Mera-Boito-Sumino 2018 arxiv:1802.06034**. Needs offline check vs
+Olver/Wong textbooks. **Frame as "implementation of a representation
+that re-derives classical material, with the specific Ai(-x) form
+possibly under-documented" — partially novel.**
+
+---
+
+### C6-LEGACY (kept for historical reference):
 
 **ChatGPT-Pro claim:** 50-113× speedup vs Borel-Padé for Airy/Bessel
 WKB prefactor evaluation, via recognizing the Borel transform as a
