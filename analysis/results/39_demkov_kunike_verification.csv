@@ -1,0 +1,61 @@
+case,cell,metric,value,note
+matrix_values_-3_+3,"(-3,+3)",max_abs_error_vs_claimed_matrix,2.786372073425412e-11,10.6 digits
+vs_dop853,"(-3.0,3.0)",abs_frob_diff_cf_vs_dop853,3.9994282050212266e-15,14.4 digits agreement
+vs_dop853,"(-3.0,3.0)",rel_frob_diff_cf_vs_dop853,2.8280228046392575e-15,
+unitarity,"(-3.0,3.0)",closed_form_unitarity_residual,3.9805811907580457e-17,||U^dag U - I||_F
+vs_dop853,"(-2.2,-0.4)",abs_frob_diff_cf_vs_dop853,7.257499230731914e-15,14.1 digits agreement
+vs_dop853,"(-2.2,-0.4)",rel_frob_diff_cf_vs_dop853,5.131826920506708e-15,
+unitarity,"(-2.2,-0.4)",closed_form_unitarity_residual,2.0805008911206942e-18,||U^dag U - I||_F
+vs_dop853,"(-0.7,1.6)",abs_frob_diff_cf_vs_dop853,5.0334872210429784e-15,14.3 digits agreement
+vs_dop853,"(-0.7,1.6)",rel_frob_diff_cf_vs_dop853,3.559212947015316e-15,
+unitarity,"(-0.7,1.6)",closed_form_unitarity_residual,7.879387843177463e-17,||U^dag U - I||_F
+magnus_self_consistency,"(-3.0,3.0)",magnus_32_vs_64_change,6.457335951196534e-06,order-6 Magnus
+magnus_vs_cf,"(-3.0,3.0)",magnus_32_vs_cf,6.888839358248189e-06,
+magnus_vs_cf,"(-3.0,3.0)",magnus_64_vs_cf,4.315038488351881e-07,
+magnus_self_consistency,"(-2.2,-0.4)",magnus_32_vs_64_change,1.0369048917779659e-08,order-6 Magnus
+magnus_vs_cf,"(-2.2,-0.4)",magnus_32_vs_cf,1.1060708984043642e-08,
+magnus_vs_cf,"(-2.2,-0.4)",magnus_64_vs_cf,6.916602443937138e-10,
+magnus_self_consistency,"(-0.7,1.6)",magnus_32_vs_64_change,1.6630023013211185e-07,order-6 Magnus
+magnus_vs_cf,"(-0.7,1.6)",magnus_32_vs_cf,1.7738888042038212e-07,
+magnus_vs_cf,"(-0.7,1.6)",magnus_64_vs_cf,1.1088650677660914e-08,
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_32_vs_cf,6.888839358248189e-06,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_64_vs_cf,4.315038488351881e-07,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_128_vs_cf,2.6983875253853066e-08,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_256_vs_cf,1.6867251048391527e-09,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_512_vs_cf,1.0542378544165938e-10,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_1024_vs_cf,6.588868865974145e-12,order 6
+magnus_convergence_cell1,"(-3.0,3.0)",magnus_2048_vs_cf,4.129431926166175e-13,order 6
+omega_zero_fallback,"(-3.0,3.0)",cf_vs_exact_diagonal,0.0,should be ~0
+omega_zero_fallback,"(-3.0,3.0)",cf_vs_dop853,2.3212026220081975e-15,
+omega_zero_fallback,"(-2.2,-0.4)",cf_vs_exact_diagonal,0.0,should be ~0
+omega_zero_fallback,"(-2.2,-0.4)",cf_vs_dop853,3.510833468576701e-16,
+omega_zero_fallback,"(-0.7,1.6)",cf_vs_exact_diagonal,1.5700924586837752e-16,should be ~0
+omega_zero_fallback,"(-0.7,1.6)",cf_vs_dop853,2.7465400791133423e-15,
+wall_clock,"(-3.0,3.0)",t_cf_mpmath_dps18_ms,3.445832997385878,
+wall_clock,"(-3.0,3.0)",t_cf_mpmath_dps40_ms,5.290542001603171,
+wall_clock,"(-3.0,3.0)",t_magnus6_32cells_ms,0.8888750016922131,"ORDER-6, not the claimed order-12"
+wall_clock,"(-3.0,3.0)",t_dop853_ms,6.426374995498918,rtol=1e-13
+wall_clock,"(-3.0,3.0)",speedup_cf18_vs_magnus6_32,0.25795649480591276,"BASELINE: order-6 Magnus, NOT the claimed order-12"
+wall_clock,"(-2.2,-0.4)",t_cf_mpmath_dps18_ms,1.137375002144836,
+wall_clock,"(-2.2,-0.4)",t_cf_mpmath_dps40_ms,2.061416002106853,
+wall_clock,"(-2.2,-0.4)",t_magnus6_32cells_ms,0.8537080066162162,"ORDER-6, not the claimed order-12"
+wall_clock,"(-2.2,-0.4)",t_dop853_ms,2.144750003935769,rtol=1e-13
+wall_clock,"(-2.2,-0.4)",speedup_cf18_vs_magnus6_32,0.7505950148423458,"BASELINE: order-6 Magnus, NOT the claimed order-12"
+wall_clock,"(-0.7,1.6)",t_cf_mpmath_dps18_ms,3.689709003083408,
+wall_clock,"(-0.7,1.6)",t_cf_mpmath_dps40_ms,6.021375003911089,
+wall_clock,"(-0.7,1.6)",t_magnus6_32cells_ms,0.8817089983494952,"ORDER-6, not the claimed order-12"
+wall_clock,"(-0.7,1.6)",t_dop853_ms,2.814541003317572,rtol=1e-13
+wall_clock,"(-0.7,1.6)",speedup_cf18_vs_magnus6_32,0.2389643729661799,"BASELINE: order-6 Magnus, NOT the claimed order-12"
+time_to_1e-12,"(-3.0,3.0)",magnus_N_for_1e-12,2048,err=4.129e-13
+time_to_1e-12,"(-3.0,3.0)",magnus_time_ms,52.35954199451953,
+time_to_1e-12,"(-3.0,3.0)",cf_time_ms,3.5153329954482615,
+time_to_1e-12,"(-3.0,3.0)",speedup_cf_vs_magnus,14.894617967150179,fair: both at 1e-12 accuracy
+time_to_1e-12,"(-2.2,-0.4)",magnus_N_for_1e-12,512,err=1.679e-13
+time_to_1e-12,"(-2.2,-0.4)",magnus_time_ms,12.985250003112014,
+time_to_1e-12,"(-2.2,-0.4)",cf_time_ms,1.0762499950942583,
+time_to_1e-12,"(-2.2,-0.4)",speedup_cf_vs_magnus,12.065272996330895,fair: both at 1e-12 accuracy
+time_to_1e-12,"(-0.7,1.6)",magnus_N_for_1e-12,1024,err=1.689e-13
+time_to_1e-12,"(-0.7,1.6)",magnus_time_ms,26.062625001941342,
+time_to_1e-12,"(-0.7,1.6)",cf_time_ms,3.7796250035171397,
+time_to_1e-12,"(-0.7,1.6)",speedup_cf_vs_magnus,6.8955584158980585,fair: both at 1e-12 accuracy
+verdict,,overall,CONFIRMED,"matrix_match=True, math_all_cells=True, unitarity=True, speedup_ok=True"
