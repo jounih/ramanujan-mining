@@ -71,10 +71,35 @@ non-trivial 4-divisor Lambert/E_2 annihilator has coefficients
 (c_1, c_p, c_q, c_{pq}) = (-δ, m, -m, δ) where g=gcd(pq-1, q-p),
 δ=(q-p)/g, m=(pq-1)/g. 7 new instances verified at dps=120.
 
-**Local-grep evidence (2026-05-25):** "Lambert" + "annihilator" = 0/14
-file matches in our corpus. "Eisenstein" appears in 8 files (broad
-context but not this specific construction). "level 33" specifically:
-zero matches. **This is the strongest novelty signal we have so far.**
+**Local-grep evidence (2026-05-25):**
+- "Lambert" + "annihilator" = 0/14 file matches in our corpus.
+- "Eisenstein" appears in 8 files (broad context but not this construction).
+- "level 33" specifically: 0 matches.
+- "Lambert series" appears in 4 files (KSR + AB LN I, II, III).
+- AB LN III §10.75 (line 22701-22735) has *adjacent* material — Lambert
+  series expressions for ϕ²(q)·ϕ²(q²) at levels that are powers of 2
+  (10.75.409), and 18.2.9-18.2.11 of Chapter 18 of Berndt's NB Part [?]
+  has Lambert-series formulas from Ramanujan's lost notebook fragments.
+- **Berndt 1999** *"Fragments by Ramanujan on Lambert series"* in
+  Kanemitsu-Győry Number Theory and Its Applications (Kluwer) is the
+  highest-risk overlap candidate — exactly the kind of Lambert-series
+  paper where a divisor-annihilator pattern might have been published.
+  Subagent #67 should specifically check this. (Cited as [59] in AB LN
+  III bibliography line 23453.)
+- **S.H. Chan thesis (2005)** "On Cranks of Partitions, Generalized
+  Lambert Series, and Basic Hypergeometric Series" — another high-risk
+  overlap. Subagent should check.
+
+**Patterns NOT in our corpus (supports novelty):**
+- "L(q^d)" sum patterns explicitly: 0 hits
+- "P_1 - n·P_n" Ramanujan-style annihilator language: 0 hits
+- "level 33" / "level pq" explicit: 0 hits
+
+**This is the strongest novelty signal we have so far** — the
+*language* of the construction (Lambert annihilator, level-pq with
+explicit (-δ, m, -m, δ) coefficients) does not appear in the standard
+Andrews-Berndt + Berndt corpus. The risk is in the Berndt 1999 +
+S.H. Chan 2005 work that is cited but not in our local PDFs.
 
 **Subagent:** #67 (`a1162a324b4618a72`). All 7 levels at dps=200, 5
 cells each, edge cases (twin primes, far-apart, p=2), 3-prime
