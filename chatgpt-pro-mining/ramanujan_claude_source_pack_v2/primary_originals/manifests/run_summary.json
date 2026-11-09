@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-05-24T09:38:59.666936+00:00",
+  "scope": "Best-effort local corpus of publicly accessible Ramanujan scans/facsimiles and published-paper PDFs, plus initial mining notes.",
+  "counts": {
+    "notebook_pdfs": 4,
+    "published_paper_pdfs": 37,
+    "notebook_page_images_extracted": 1149,
+    "published_text_files": 37,
+    "trinity_archival_urls_inventoried": 19
+  },
+  "limitations": [
+    "The four notebooks are saved as PDF facsimiles and extracted page images from ramanujan.sirinudi.org; they are not guaranteed to be the highest-resolution color archival originals.",
+    "Trinity College lists digitized originals for Add.MS a/94.1-18 and Add.MS a/396; this run inventoried those URLs but did not bulk-download every Wren/UV high-resolution page image.",
+    "Notebook pages are image-only; no OCR/HTR transcription was attempted, because mathematical handwriting OCR would be high-risk. Mining notes are therefore source/theme-level plus page-image inventory, not a full symbolic extraction of every formula."
+  ]
+}

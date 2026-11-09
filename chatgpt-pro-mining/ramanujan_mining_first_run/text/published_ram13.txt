@@ -1,0 +1,222 @@
+                         Summation of a certain series
+
+                   Messenger of Mathematics, XLIV, 1915, 157 – 160
+
+1. Let
+                                     n=∞
+                                     X p                 p
+                       Φ(s, x) =           { (x + n) +       (x + n + 1)}−s
+                                     n=0
+                                     n=∞
+                                     X p                      p
+                                 =         { (x + n + 1) −        (x + n)}s .
+                                     n=0
+
+The object of this paper is to give a finite expression of Φ(s, 0) in terms of Riemann ζ-
+functions, when s is an odd integer greater than 1.
+Let ζ(s, x), where x > 0, denote the function expressed by the series
+
+                              x−s + (x + 1)−s + (x + 2)−s + · · · ,
+
+and its analytical continuations. Then
+
+                          ζ(s, 1) = ζ(s), ζ(s, 12 ) = (2s − 1)ζ(s),                           (1)
+
+where ζ(s) is the Riemann ζ-function;
+
+                                ζ(s, x) − ζ(s, x + 1) = x−s ;                                 (2)
+
+                                                                                   )
+           1s + 2s + 3s + · · · + ns = ζ(−s) − ζ(−s, n + 1),
+                                                                                       ,      (3)
+           1s + 3s + 5s + · · · + (2n − 1)s = (1 − 2s )ζ(−s) − 2s ζ(−s, n + 12 )
+
+if n is a positive integer; and
+                                  1−s
+                          1 −s     x          s              s(s + 1)(s + 2) −s−3
+          lim ζ(s, x) − 2 x +            − B2 x−s−1 + B4                    x
+         x→∞                       1−s        2!                    4!
+                                                                          
+                 s(s + 1)(s + 2)(s + 3)(s + 4) −s−5
+             −B6                              x     + · · · to n terms        = 0,            (4)
+                               6!
+
+if n is a positive integer, −(2n − 1) < s < 1, and B2 = 61 , B4 = 30
+                                                                   1          1
+                                                                      , B6 = 42         1
+                                                                                , B8 = 30 , . . .,
+are Bernoulli’s numbers.
+Suppose now that                                        √
+                          Ψ(x) = 6ζ(− 12 , x) + (4x − 3) x + Φ(3, x).
+Then from (2) we see that
+                        √        √                                  √
+ Ψ(x) − Ψ(x + 1) = 6 x + (4x − 3) x − (4x + 1) (x + 1) + { (x + 1) − x}3 = 0;
+                                              p           p
+88                                                                                       Paper 13
+
+
+     and from (4) that Ψ(x) → 0 as x → ∞. It follows that Ψ(x) = 0. That is to say,
+                                                   √
+                            6ζ(− 21 , x) + (4x − 3) x + Φ(3, x) = 0.                          (5)
+
+     Similarly, we can shew that
+                              3                       √
+                         40ζ(− , x) + (16x2 − 20x + 5) x + Φ(5, x) = 0.                       (6)
+                              2
+
+     2. Remembering the functional equation satisfied by ζ(s), viz.,
+                                ζ(1 − s) = 2(2π)−s Γ(s)ζ(s) cos 21 πs,                        (7)
+
+     we see from (3) and (5) that
+                √   √   √           √   2 3      √     1 3    1
+                 1 + 2 + 3 + · · · + n = n 2 + 12 n −   ζ( ) + Φ(3, n);                       (8)
+                                        3             4π 2    6
+     and
+                 √   √   √           p
+                  1 + 3 + 5 + · · · + (2n − 1)
+                                                        √
+                        1         3                         2−1 3     1
+                       = (2n − 1) 2 + 21 (2n − 1) +            ζ( ) + √ Φ(3, n − 21 ).
+                                        p
+                                                                                              (9)
+                        3                                   4π   2   3 2
+     Similarly from (6), we have
+                          √      √      √          √
+                         1 1 + 2 2 + 3 3 + ··· + n n
+                               2 5        3   1√      3     5    1
+                             = n 2 + 12 n 2 +    n−     2
+                                                          ζ( ) + Φ(5, n);                    (10)
+                               5              8     16π     2   40
+     and
+                             √      √      √                  p
+                            1 1 + 3 3 + 5 5 + · · · + (2n − 1) (2n − 1)
+                                  1          5             3  1p
+                               = (2n − 1) 2 + 21 (2n − 1) 2 +    (2n − 1)
+                                  5                           4
+                                       √
+                                    3(2 2 − 1 5          1
+                                 +         2
+                                               ζ( 2 ) + √ Φ(5, n − 12 ).                     (11)
+                                       16π             10 2
+     It also follows from (5) and (6) that
+                      p           p          p                  p
+                        (a + d) + (a + 2d) + (a + 3d) + · · · + (a + nd)
+                                  2        3                  1√
+                          = C + (a + nd) 2 + 12 (a + nd) +
+                                               p
+                                                                 dΦ(3, n + a/d);             (12)
+                                 3d                           6
+     and
+                   3            3             3                   3
+           (a + d) 2 + (a + 2d) 2 + (a + 3d) 2 + · · · + (a + nd) 2
+Summation of a certain series                                                                     89
+
+
+                    2          5               3  1 p           1 √
+          = C′ +      (a + nd) 2 + 12 (a + nd) 2 + d (a + nd) + d dΦ(5, n + a/d), (13)
+                   5d                             8            40
+where C and C ′ are independent of n.
+Putting n = 1 in (8) and (10), we obtain
+
+                                    3    3             15   5
+                       Φ(3, 0) =      ζ ( ), Φ(5, 0) = 2 ζ ( ).                            (14)
+                                   2π 2               2π    2
+
+
+3. The preceding results may be generalised as follows. If s be an odd integer greater than
+1, then
+                          √   p                √   p
+            Φ(s, x) + 21 { x + (x − 1)}s + 21 { x − (x − 1)}s
+                     s s−2                 s(s − 4)(s − 5) s−6
+                   +    2 ζ(1 − 21 s, x) +                2 ζ(3 − 21 s, x)
+                     1!                           3!
+                     s(s − 6)(s − 7)(s − 8)(s − 9) s−10
+                   +                               2    ζ(5 − 12 s, x)
+                                   5!
+                     s(s − 8)(s − 9)(s − 10)(s − 11)(s − 12)(s − 13) s−14
+                   +                                                   2
+                                            7!
+                                     ×ζ(7 − 12 s, x) + · · · to [ 14 (s + 1)] terms = 0,   (15)
+
+where [x] denotes, as usual, the integral part of x. This can be proved by induction, using
+the formula
+                √     p               √      p
+              { x + (x ± 1)}s + { x − (x ± 1)}s
+                        √       s √          s(s − 3) √ s−4
+                    = (2 x)s ± (2 x)s−2 +              (2 x)
+                                1!              2!
+                        s(s − 4)(s − 5) √ s−6
+                      ±                (2 x)    + · · · to [1 + 12 s] terms,               (16)
+                               3!
+which is true for all positive integral values of s.
+Similarly, we can shew that if s is a positive even integer, then
+            s s−2
+               2 {ζ(1 − 21 s) − ζ(1 − 12 s, x)}
+            1!
+                  s(s − 4)(s − 5) s−6
+                +                    2 {ζ(3 − 12 s) − ζ(3 − 21 s, x)}
+                          3!
+                  s(s − 6)(s − 7)(s − 8)(s − 9) s−10
+                +                                 2    {ζ(5 − 12 s) − ζ(5 − 21 s, x)}
+                                   5!
+                + · · · to [ 14 (s + 2)] terms
+                         √        p               √     p
+                   = 21 { x + (x − 1)}s + 12 { x − (x − 1)}s − 1.                          (17)
+90                                                                                                          Paper 13
+
+
+     Now, remembering (7) and putting x = 1 in (15), we obtain
+                            s    1
+               Φ(s, 0) = − √ π − 2 (1+s) cos 14 πs{1 · 3 · 5 · · · (s − 2)πζ( 21 s)
+                             2
+                            − 3 · 5 · 7 · · · (s − 4) 21 (s − 5) 13 π 3 ζ( 12 s − 2)
+                            + 5 · 7 · 9 · · · (s − 6) 21 (s − 7) 14 (s − 9) 15 π 5 ζ( 12 s − 4)
+                            − 7 · 9 · 11 · · · (s − 8) 12 (s − 9) 14 (s − 11) 16 (s − 13) 17 π 7 ζ( 12 s − 6)
+                            + 9 · 11 · 13 · · · (s − 10) 21 (s − 11) 14 (s − 13) 16 (s − 15) 18 (s − 17)
+                            × 19 π 9 ζ( 12 s − 8) − · · · to [ 41 (s + 1)] terms },                             (18)
+
+     If s is an odd integer greater than 1. Similarly, putting x = 12 in (15), we can express
+     Φ(s, 12 ) in terms of ζ-functions, if s is an odd integer greater than 1.
+
+     4. It is also easy to shew that, if
+                                             p
+                                            n=∞         p
+                                            { (x + n) + (x + n + 1)}−s
+                                            X
+                              Ψ(s, x) =        p                       ,
+                                        n=0      {(x + n)(x + n + 1)}
+
+     then
+                                √        p                √   p
+                               {    x+       (x − 1)}s − { x − (x − 1)}s
+                  Ψ(s, x) − 12                   p
+                                                   {x(x − 1)}
+                          s − 2 s−2                (s − 4)(s − 5)(s − 6) s−6
+                      =         2 ζ(2 − 21 s, x) +                       2 ζ(4 − 12 s, x)
+                            1!                               3!
+                             (s − 6)(s − 7)(s − 8)(s − 9)(s − 10) s−10
+                          +                                      2     ζ(6 − 21 s, x)
+                                              5!
+                          + · · · to [ 14 (s + 1)] terms,                                                       (19)
+
+     provided that s is a positive odd integer. For example
+
+                           Ψ(1, x) = √1x ,
+                                                                         
+                                                                         
+                                                                         
+                                      √
+                                                                         
+                                                                         
+                                             1     1
+                           Ψ(3, x) = 4 x − x + 2ζ( 2 , x),
+                                            √                                                                   (20)
+                                          √    √
+                                                                         
+                                                                         
+                           Ψ(5, x) = 16x x − 12 x + √1x + 24ζ(− 21 , x), 
+                                                                         
+
+
+     and so on.
+

@@ -1,0 +1,26 @@
+{
+  "version": "0.1",
+  "purpose": "Seed taxonomy for Hunt 5 operator tagging.",
+  "tags": [
+    {"tag": "MODULAR_TRANSFORM", "definition": "Maps a parameter to reciprocal/cusp/dual modular regime.", "examples": ["tau -> -1/tau", "eta/theta modular changes"]},
+    {"tag": "POISSON_THETA_DUAL", "definition": "Lattice or theta reciprocal summation / Gaussian duality.", "examples": ["sum exp(-beta n^2) -> sqrt(pi/beta) sum exp(-pi^2 k^2/beta)"]},
+    {"tag": "PRODUCT_TO_SERIES", "definition": "Product/q-product converted to additive or coefficient series."},
+    {"tag": "SERIES_TO_PRODUCT", "definition": "Series or recurrence recognized as product/eta/q-product."},
+    {"tag": "SERIES_TO_CONTINUED_FRACTION", "definition": "Function or constant represented as continued fraction."},
+    {"tag": "CONTINUED_FRACTION_TO_SERIES", "definition": "Continued fraction expanded to verify or generate sequence terms."},
+    {"tag": "ASYMPTOTIC_EXTRACTION", "definition": "Extracts leading asymptotic plus correction/tail structure."},
+    {"tag": "CONGRUENCE_SIEVE", "definition": "Uses residue classes as checksum, selection rule, or simplification."},
+    {"tag": "FINITE_GAUSS_COLLAPSE", "definition": "Oscillatory/infinite object collapses under rational phase or finite character sum."},
+    {"tag": "PARAMETER_SPECIALIZATION", "definition": "Identity becomes tractable at special values of parameters."},
+    {"tag": "PARAMETER_LIFTING", "definition": "Special identity generalized by parameter family."},
+    {"tag": "RECURRENCE_COMPILER", "definition": "Coefficient family computed by recurrence rather than direct expansion."},
+    {"tag": "PARTIAL_FRACTION_LATENTS", "definition": "Moments/traces decomposed into hidden poles and weights via rational generating functions."},
+    {"tag": "RAMANUJAN_SUM_PERIODICITY", "definition": "Arithmetic periodic basis / divisor-indexed trigonometric sum."},
+    {"tag": "ELLIPTIC_AGM_ACCELERATION", "definition": "Elliptic/modular/AGM route to faster convergence."},
+    {"tag": "MOCK_MODULAR_COMPLETION", "definition": "Mock/false/partial theta object plus correction/shadow/completion."},
+    {"tag": "COMBINATORIAL_BIJECTION_OR_REINDEX", "definition": "Reindexing/repartitioning that reduces dimension or exposes equality."},
+    {"tag": "NUMERICAL_VERIFIER", "definition": "Compact identity used mainly as a check/certificate rather than primary computation."},
+    {"tag": "UNKNOWN_OPERATOR", "definition": "Manipulation visible but not yet classifiable."},
+    {"tag": "NOT_A_TRANSFORM", "definition": "Definitions/prose/formula with no visible computational transform."}
+  ]
+}

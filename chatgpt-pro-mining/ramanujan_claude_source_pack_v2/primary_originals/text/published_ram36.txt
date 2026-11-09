@@ -1,0 +1,2127 @@
+                Asymptotic formulæ in combinatory analysis∗
+
+       Proceedings of the London Mathematical Society, 2, XVII, 1918, 75 — 115
+
+
+                           1. Introduction and summary of results
+1.1 The present paper is the outcome of an attempt to apply to the principal problems of
+the theory of partitions the methods, depending upon the theory analytic functions, which
+have proved so fruitful in the theory of the distribution of primes and allied branches of
+the analytic theory of numbers.
+The most interesting functions of the theory of partitions appear as the coefficients in the
+power-series which represents certain elliptic modular functions. Thus p(n), the number of
+unrestricted partitions of n, is the coefficient of xn in the expansion of the function
+                                         ∞
+                                         X                               1
+(1.11)                    f (x) = 1 +          p(n)xn =                                      .†
+                                                             (1 − x)(1 − x2 )(1 − x3 ) · · ·
+                                           1
+
+If we write
+
+(1.12)                                         x = q 2 = e2πiτ ,
+
+where the imaginary part of τ is positive, we see that f (x) is substantially the reciprocal
+of the modular function called by Tannery and Molk‡ h(τ ); that, in fact,
+                                                                  ∞                  1
+                                                 1            1   Y               x 24
+ (1.13)                             h(τ ) = q 12 q0 = q 12          (1 − q 2n ) =       .
+                                                                                  f (x)
+                                                                   1
+
+The theory of partitions has, from the time of Euler onwards, been developed from an almost
+exclusively algebraical point of view. It consists of an assemblage of formal identities – many
+of them, it need hardly be said, of an exceedingly ingenious and beautiful character. Of
+asymptotic formluæ, one may fairly say, there are none§ . So true is this, in fact, that we
+   ∗
+      A short abstract of the contents of part of this paper appeared under the title “Une formule asymptotique
+pour le nombre des partitions de n, ” in the Comptes Rendus, January 2nd, 1917 [No. 31 of this volume].
+    †
+      P. A. MacMahon, Combinatory Analysis, Vol. II, 1916, p. 1.
+    ‡
+      J. Tannery and J. Molk, Fonctions elliptiques, Vol. II, 1896, pp, 31 et seq. We shall follow the notation
+of this work whenever we have to quote formulæ from the theory of elliptic functions.
+    §
+      We should mention one exception to this statement, to which our attention was called by Major MacMa-
+hon. The number of partitions of n into parts none of which exceed r is the coefficient pr (n) in the series
+                                    ∞
+                                    X                              1
+                               1+        pr (n)xn =                                    .
+                                     1
+                                                      (1 − x)(1 − x2 ) · · · (1 − xr )
+
+This function has been studied in much detail, for various special values of r, by Cayley, Sylvester and
+Glaisher: we may refer in particular to J. J. Sylvester, “On a discovery in the theory of partitions,” Quarterly
+Journal, Vol. I, 1857, pp. 81 – 85, and “On the partition of numbers,” ibid., pp. 141 – 152 (Sylvester’s
+Asymptotic formulæ in combinatory analysis                                                                       343
+
+
+have been unable to discover in the literature of the subject any allusion whatever to the
+question of the order of magnitude of p(n).
+1.2 The function p(n) may, of course, be expressed in the form of an integral
+
+                                      1    f (x)
+                                        Z
+ (1.21)                     p(n) =               dx,
+                                    2πi Γ xn+1
+
+by means of Cauchy’s theorem, the path Γ enclosing the origin and lying entirely inside the
+unit circle. The idea which dominates this paper is that of obtaining asymptotic formulæ
+for p(n) by a detailed study of the integral (1.21). This idea is an extremely obvious one;
+it is the idea which has dominated nine-tenths of modern research in analytic theory of
+numbers: and it may seem very strange that it should never have been applied to this
+particular problem before. Of this there are no doubt two explanations. The first is that
+the theory of partitions has received its most important developments, since its foundation
+by Euler, at the hands of a series of mathematicians whose interests have lain primarily in
+algebra. The second and more fundamental reason is to be found in the extreme complexity
+of the behavior of the generating function f (x) near a point of the unit circle.
+It is instructive to contrast this problem with the corresponding problems which arise
+for the arithmetical functions π(n), ϑ(n), Ψ(n), µ(n), d(n), . . . which have their genesis in
+Riemann’s Zeta-function and the functions allied to it. In the latter problems we are
+dealing with functions defined by Dirichlet’s series. The study of such functions presents
+difficulties far more fundamental than any which confront us in the theory of the modular
+functions. These difficulties, however, relate to the distribution of the zeros of the functions
+and their general behavior at infinity: no difficulties whatever are occasioned by the crude
+singularities of the functions in the finite part of the plane. The single finite singularity
+of ζ(s), for example, the pole at s = 1, is a singularity of the simplest possible character.
+Works, Vol. II, pp. 86 – 89 and 90 – 99); J. W. L. Glaisher, “On the number of partitions of a number into a
+given number of parts”, Quarterly Journal, Vol. XL, 1909, pp. 57 – 143; “Formulæ for partitions into given
+elements, derived from Sylvester’s Theorem”, ibid., pp. 275 – 348; “Formulæ for the number of partitions
+of a number into the elements 1, 2, 3, . . . , n upto n = 9”, ibid., Vol. XLI, 1910, pp. 94 – 112; and further
+references will be found in MacMahon, loc. cit., pp. 59 – 71, and E. Netto, Lehrbuch der Combinatorik,
+1901, pp. 146 – 158. Thus, for example, the coefficient of xn in
+                                                      1
+                                           (1 − x)(1 − x2 )(1 − x3 )
+is
+                                                                                  2nπ
+                                       1
+                              p3 (n) = 12 (n + 3)2 − 72
+                                                      7
+                                                        + 18 (−1)n + 29 cos            ;
+                                                                                     3
+as is easily found by separating the function into partial fractions. This function may also be expressed in
+the forms
+                                  1
+                                  12
+                                     (n + 3)2 + ( 12 cos 21 πn)2 − ( 32 sin 31 πn)2 ,
+                                                                 (n + 3)2 },
+                                           1               1
+                                       1 + 12  n(n + 6) , { 12
+where [n] and {n} denote the greatest integer contained in n and the integer nearest to n. These formulæ
+do, of course, furnish incidentally asymptotic formulæ for the functions in question. But they are, from this
+point of view, of a very trivial character: the interest which they possess is algebraical.
+344                                                                                               Paper 36
+
+
+      It is this pole which gives rise to the dominant terms in the asymptotic formulæ for the
+      arithmetical functions associated with ζ(s). To prove such a formula rigorously is often
+      exceedingly difficult; to determine precisely the order of the error which it involves is in
+      many cases a problem which still defies the utmost resources of analysis. But to write
+      down the dominant terms involves, as a rule, no difficulty more formidable than that of
+      deforming a path of integration over a pole of the subject of integration and calculating the
+      corresponding residue.
+      In the theory of partitions, on the other hand, we are dealing with functions which do not
+      exist at all outside the unit circle. Every point of the circle is an essential singularity of the
+      function, and no part of the contour of integration can be deformed in such a manner as to
+      make its contribution obviously negligible. Every element of the contour requires special
+      study; and there is no obvious method of writing down a “dominant term”.
+      The difficulties of the problem appear then, at first sight, to be very serious. We possess,
+      however, in the formulæ of the theory of linear transformation of the elliptic functions, an
+      extremely powerful analytical weapon by means of which we can study the behavior of f (x)
+      near any assigned point of the unit circle∗ . It is to an appropriate use of these formulæ that
+      the accuracy of our final results, an accuracy which will, we think, be found to be quite
+      startling, is due.
+      1.3 It is very important, in dealing with such a problem as this, to distinguish clearly the
+      various stages to which we can progress by arguments of progressively “deeper” and less
+      elementary character. The earlier results are naturally (so far as the particular problem
+      is concerned) superseded by the later. But the more elementary methods are likely to be
+      applicable to other problems in which the more subtle analysis is impracticable.
+      We have attacked this particular problem by a considerable number of different methods,
+      and cannot profess to have reached any very precise conclusions as to the possibilities of
+      each. A detailed comparison of the results to which they lead would moreover expand this
+      paper to a quite unreasonable length. But we have thought it worth while to include a
+      short account of two of them. The first is quite elementary; it depends only on Euler’s
+      identity
+
+                                  1                            x            x4
+      (1.31)                                          = 1 +         +                    + ···
+                      (1 − x)(1 − x2 )(1 − x3 ) · · ·       (1 − x)2 (1 − x)2 (1 − x2 )2
+
+      – an identity capable of wide generalisation – and on elementary algebraical reasoning. By
+      these means we shew, in section 2, that
+                                                   √                 √
+       (1.32)                                    eA n < p(n) < eB n ,
+
+      where A and B are positive constants, for all sufficiently large values of n.
+        ∗
+          See G. H. Hardy and J. E. Littlewood, “Some problems of Diophantine approximation (II: The trigono-
+      metrical series associated with the elliptic Theta-functions),” Acta Mathematica, Vol. XXXVII, 1914, pp.
+      193 – 238, for applications of the formulæ to different but not unrelated problems.
+Asymptotic formulæ in combinatory analysis                                                                  345
+
+
+It follows that
+                                               √                √
+ (1.33)                                       A n < log p(n) < B n;
+
+and the next question which arises is the question whether a constant C exists such that
+                                                               √
+(1.34)                                             log p(n) ∼ C n.
+
+We prove that this is so in section 3. Our proof is still, in a sense, “elementary.” It does not
+appeal to the theory of analytic functions, depending only on a general arithmetic theorem
+concerning infinite series; but this theorem is of the difficult and delicate type which Messrs
+Hardy and Littlewood have called “Tauberian.” The actual theorem required was proved
+by us in a paper recently printed in these Proceedings∗ . It shews that
+
+                                                          2π
+ (1.35)                                                 C=√ ;
+                                                           6
+
+in other words that
+                                                            ( s              )
+                                                                   2n
+(1.36)                                    p(n) = exp π                  (1 + ǫ) ,
+                                                                    3
+
+where ǫ is small when n is large. This method is one of very wide application. It may
+be used, for example, to prove that, if p(s) (n) denotes the number of partitions of n into
+perfect s-th powers, then
+                                                               s/(s+1)
+                        (s)                       1      1       1
+                log p         (n) ∼ (s + 1)         Γ 1+    ζ 1+             n1/(s+1) .
+                                                  s      s       s
+
+It is certainly possible to obtain, by means of arguments of this general character, informa-
+tion about p(n) more precise than that furnished by the formula (1.36). And it is equally
+possible to prove (1.36) by reasoning of a more elementary, though more special, character:
+we have a proof, for example, based on the identity
+                                                      n
+                                                      X
+                                         np(n) =            σ(ν)p(n − ν),
+                                                      ν=1
+
+where σ(ν) is the sum of divisors of ν, and a process of induction. But we are at present
+unable to obtain, by any method which does not depend upon Cauchy’s theorem, a result
+as precise as that which we state in the next paragraph, a result, that is to say, which is
+“vraiment asymptotique.”
+  ∗
+    G. H. Hardy and S. Ramanujan, “Asymptotic formulæ for the distribution of integers of various types,”
+Proc. London Math. Soc., Ser. 2, Vol. XVI, 1917, pp. 112 – 132 [No. 34 of this volume].
+346                                                                                                           Paper 36
+
+
+      1.4 Our next step was to replace (1.36) by the much more precise formula
+                                                         ( s )
+                                                     1       2n
+      (1.41)                                 p(n) ∼ √ exp π      .
+                                                   4n 3       3
+
+      The proof of this formula appears to necessitate the use of much more powerful machinery,
+      Cauchy’s integral (1.21) and the functional relation
+                                                       s
+                                           x1/24                                      π2
+                                                                                             
+                                                                1
+      (1.42)                       f (x) = p                log         exp                        f (x′ ),
+                                             (2π)               x                 6log (1/x)
+
+      where
+                                                          4π 2
+                                                                
+                                                   ′
+      (1.43)                                     x = exp −         .
+                                                       log (1/x)
+      This formula is a merely a statement in different notation of the relation between h(τ ) and
+      h(T ) where
+                                     c + dτ
+                                T =         , a = d = 0, b = 1, c = −1;
+                                     a + bτ
+      viz.                                              s 
+                                                          i
+                                                h(τ ) =      h(T ).∗
+                                                          τ
+
+      It is interesting to observe the correspondence between (1.41) and the results of numerical
+      computation. Numerical data furnished to us by Major MacMahon gave the following
+      results: we denote the right-had side of (1.41) by ̟(n).
+
+                                      n       p(n)               ̟(n)               ̟/p
+                                      10       42               48.104              1.145
+                                      20       627             692.385              1.104
+                                      50     204226          217590.499             1.065
+                                      80    15796476        16606781.567            1.051
+
+      It will be observed that the progress of ̟/p towards its limit unity is not very rapid, and
+      that ̟ − p is always positive and appears to tend rapidly to infinity.
+      1.5 In order to obtain more satisfactory results it is necessary to construct some auxiliary
+      function F (x) which is regular at all points of the unit circle save x = 1, and has there a
+      singularity of a type as near as possible to that of the singularity of f (x). We may then
+      hope to obtain a much more precise approximation by applying Cauchy’s theorem to f − F
+      instead of to f . For although every point of the circle is a singular point of f , x = 1 is, to
+        ∗
+            Tannery and Molk, loc. cit., p. 265 (Table XLV, 5).
+Asymptotic formulæ in combinatory analysis                                                                            347
+
+
+put it roughly, much the heaviest singularity. When x −→ 1 by real values, f (x) tends to
+infinity like an exponential
+                                              π2
+                                                   
+                                     exp              ;
+                                           6(1 − x)
+when
+                                                 x = re2pπi/q ,
+p and q being co-prime integers, and r −→ 1, |f (x)| tends to infinity like an exponential
+
+                                                             π2
+                                                                     
+                                             exp                          ;
+                                                       6q 2 (1 − r)
+
+while, if
+                                                   x = re2θπi ,
+where θ is irrational, |f (x)| can become infinite at most like an exponential of the type
+                                                  
+                                                 1
+                                      exp o            .∗
+                                               1−r
+
+The function required is
+                                                                ∞
+                                               1 X
+(1.51)                                F (x) = √       Ψ(n)xn ,
+                                              π 2 1
+where                                                        
+                                             d cosh Cλn − 1
+(1.52)                              Ψ(n) =                      ,
+                                            dnq      λn q
+                                      √
+(1.53)                        C = 2π/ 6 = π 23 , λn = (n − 24     1
+                                                                    ).
+This function may be transformed into an integral by means of a general formula given by
+Lindelöf† ; and it is then easy to prove that the “principal branch” of F (x) is regular all
+over the plane except at x = 1‡ ; and that
+
+                                                 F (x) − χ(x),
+
+where
+   ∗
+      The statements concerning the “rational” points are corollaries of the formulæ of the transformation
+theory, and proofs of them are contained in the body of the paper. The proposition concerning “irrational”
+points may be proved by arguments similar to those used by Hardy and Littlewood in their memoir already
+quoted. It is not needed for our present purpose. As      pa matter of fact it is generally true that f (x) −→ 0
+when θ is irrational, and very nearly as rapidly as 4 (1 − r). It is in reality owing to this that our final
+method is so successful.
+    †
+      E. Lindelöf, Le calcul de résidus et ses applications à la théorie des fonctions, (Gauthier-Villars, Col-
+lection Borel, 1905), p. 111.
+    ‡
+      We speak, of course, of the principal branch of the function, viz., that represented by the series (1.51)
+when x is small. The other branches are singular at the origin.
+348                                                                                       Paper 36
+
+                                             s
+                                      x1/24                           π2
+                                                                              
+                                                      1
+      (1.54)                  χ(x) = p           log        exp                −1
+                                        (2π)          x           6log (1/x)
+      is regular for x = 1. If we compare (1.42) and (1.54), and observe that f (x′ ) tends to unity
+      with extreme rapidity when x tends to 1 along any regular path which does not touch the
+      circle of convergence, we can see at once the very close similarity between the behaviour of
+      f and F inside the unit circle and in the neighbourhood of x = 1.
+      It should be observed that the term −1 in (1.52) and (1.54) is-so far as our present assertions
+      are concerned-otiose: all that we have said remains true if it is omitted; the resemblance
+      between the singularities of f and F becomes indeed even closer. The term is inserted
+      merely in order to facilitate some of our preliminary analysis, and will prove to be without
+      influence on the final result.
+      Applying Cauchy’s theorem to f − F , we obtain
+                                                1 d eCλn                 √
+                                                              
+      (1.55)                         p(n) = √                    + O(eD n ),
+                                             2π 2 dn      λn
+      where D is any number greater than
+                                                        q
+                                              1      1     2
+                                              2 C = 2 π ( 3 ).
+
+
+      1.6 The formula (1.55) is an asymptotic formula of a type far more precise than that of
+      (1.41). The error term is, however, of an exponential type, and may be expected ultimately
+      to increase with very great rapidity. It was therefore with considerable surprise that we
+      found what exceedingly good results the formula gives for fairly large values of n. For
+      n = 61, 62, 63 it gives
+
+                              1121538.972,       1300121.359,    1505535.606,
+
+      while the correct values are
+
+                                     1121505,     1300156,      1505499.
+
+      The errors
+                                       33.972,     −34.641,     36.606
+      are relatively very small, and alternate in sign.
+      The next step is naturally to direct our attention to the singular point of f (x) next in
+      importance after that at x = 1, viz., that at x = −1; and to subtract from f (x) a second
+      auxiliary function, related to this point as F (x) is to x = 1. No new difficulty of principle
+      is involved, and we find that                              1      
+                                           Cλn           n         Cλn           √
+                                  1 d e               (−1) d  e 2        + O(eD n ),
+      (1.61)            p(n) = √                   +
+                                2π 2 dn      λn         2π dn       λn
+      where D is now any number greater than 31 C. It now becomes obvious why our earlier
+      approximation gave errors alternately of excess and of defect.
+Asymptotic formulæ in combinatory analysis                                                       349
+
+
+It is obvious that this process may be repeated indefinitely. The singularities next in
+                              2              4
+importance are those at x = e 3 πi and x = e 3 πi ; the next those at x = i and x = −i; and
+so on. The next two terms in the approximate formula are found to be
+                              √                               1
+                                                                     !
+                                3      2      1
+                                                   d      e 3 Cλn
+                              √ cos    3 nπ − 18 π dn
+                             π 2                              λn
+
+and
+                             √                            1
+                                                                   !
+                               2       1      1
+                                                  d     e 4 Cλn
+                                 cos   2 nπ − 8 π dn                   .
+                              π                             λn
+
+As we proceed further, the complexity of the calculations increases. The auxiliary function
+associated with the point x = e2pπi/q involves a certain 24q-th root of unity, connected with
+the linear transformation which must be used in order to elucidate the behaviour of f (x)
+near the point; and the explicit expression of this root in terms of p and q, though known,
+is somewhat complex. But it is plain that, by taking a sufficient number of terms, we can
+find a formula in which the error is
+
+                                         O(eCλn /ν ),
+
+where ν is a fixed but arbitrarily large integer.
+1.7 A final question remains. We have still the resource of making ν a function of n, that
+is to say of making the number of terms in our approximate formula itself a function of n.
+In this way we may reasonably hope, at any rate, to find a formula in which the error is
+of order less than that of any exponential of the type ean ; of the order of a power of n, for
+example, or even bounded.
+When, however, we proceeded to test this hypothesis by means of the numerical data most
+kindly provided for us by Major MacMahon, we found a correspondence between the real
+and the approximate values of such astonishing accuracy as to lead us to hope for even
+more. Taking n = 100, we found that the first six terms of our formula gave
+
+                                        190568944.783
+                                            +348.872
+                                               −2.598
+                                                +.685
+                                                +.318
+                                                −.064
+
+                                        190569291.996,
+
+while p(100) = 190569292; so that the error after six terms is only .004. We then proceeded
+to calculate p(200) and found
+350                                                                                                   Paper 36
+
+
+
+                                                3, 972, 998, 993, 185.896
+                                                            +36, 282.978
+                                                                 −87.555
+                                                                   +5.147
+                                                                   +1.424
+                                                                   +0.071
+                                                                 +0.000 ∗
+                                                                   +0.043
+
+                                                3, 972, 999, 029, 388.004,
+      and Major MacMahon’s subsequent calculations shewed that p(200) is, in fact,
+
+                                                3, 972, 999, 029, 388.
+
+      These results suggest very forcibly that it is possible to obtain a formula for p(n), which
+      not only exhibits its order of magnitude and structure, but may be used to calculate its
+      exact value for any value of n. That this is in fact so is shewn by the following theorem.
+                                         Statement of the main theorem.
+      THEOREM. Suppose that
+                                                        √                     !
+                                                          q d eCλn /q
+      (1.71)                               φq (n) = √                           ,
+                                                      2π 2 dn          λn
+      where C and λn are defined by the equations (1.53), for all positive integral values of q; that
+      p is a positive integer less than and prime to q; that ωp,q is a 24q-th root of unity, defined
+      when p is odd by theformula
+                                       h n                                                        o i
+      (1.721)       ωp,q = −q p     exp  −   1
+                                             4 (2 −  pq −  p) +   1
+                                                                 12   q −   1
+                                                                            q   (2p −   p ′ + p2 p′ ) πi ,
+
+      and when q is odd by the   formulah n                                                  o i
+      (1.722)          ωp,q = −p  q   exp  −    1
+                                                4 (q −  1) +  1
+                                                              12   q −  1
+                                                                        q   (2p   − p ′ + p2 p′ ) πi ,
+
+      where ab is the symbol of Legendre and Jacobi† , and p′ is any positive integer such that
+                
+
+      1 + pp′ is divisible by q; that
+                                            Aq (n) = (p) ωp,q e−2npπi/q ;
+                                                        P
+      (1.73)
+                                                                                  √
+      and that α is any positive constant, and ν the integral part of α n.
+      Then
+                                                                            1
+                                            p(n) = ν1 Aq φq + O(n− 4 ),
+                                                      P
+      (1.74)
+      so that p(n) is, for all sufficiently large values of n, the integer nearest to
+                                                      Pν
+      (1.75)                                             1 Aq φq .
+         ∗
+           This term vanishes identically.
+         †
+           See Tannery and Molk, loc. cit., pp. 104 – 106, for a complete set of rules for the calculation of the
+      value of ab , which is, of course, always 1 or −1. When both p and q are odd it is indifferent which formula
+                  
+
+      is adopted.
+Asymptotic formulæ in combinatory analysis                                                                  351
+
+
+It should be observed that all the numbers Aq are real. A table of Aq from q = 1 to q = 18
+is given at the end of the paper (Table II).
+The proof of this main theorem is given in section 5; section 4 being devoted to a number
+of preliminary lemmas. The proof is naturally somewhat intricate; and we trust that we
+have arranged it in such a form as to be readily intelligible. In section 6 we draw attention
+to one or two questions which our theorem, in spite of its apparent completeness, still
+leaves open. In section 7 we indicate some other problems in combinatory analysis and
+the analytic theory of numbers to which our method may be applied; and we conclude
+by giving some functional and numerical tables: for the latter we are indebted to Major
+MacMahon and Mr. H. B. C. Darling. To Major MacMahon in particular we owe many
+thanks for the amount of trouble he has taken over very tedious calculations. It is certain
+that, without the encouragement given by the results of these calculations, we should never
+have attempted to prove theoretical results at all comparable in precision with those which
+we have enunciated.
+
+                                         √                   √
+2. Elementary proof that eA n < p(n) < eB n for sufficiently large values of n.
+
+2.1 In this section we give the elementary proof of the inequalities (1.32). We prove, in
+fact, rather more, viz., that positive constants H and K exist such that
+                                      H 2√n           K √
+(2.11)                                  e    < p(n) < e2 2n
+                                      n               n
+for n ≥ 1∗ . We shall use in our proof only Euler’s formula (1.31) and a debased form of
+Stirling’s theorem, easily demonstrable by quite elementary methods: the proposition that
+                                                              1
+                                                    n!en /nn+ 2
+
+lies between two positive constants for all positive integral values of n.
+2.2 The proof of the first of the two inequalities is slightly the simpler. It is obvious that
+if                      X                            1
+                            pr (n)xn =
+                                       (1 − x)(1 − x2 ) · · · (1 − xr )
+so that pr (n) is the number of partitions of n into parts not exceeding r, then
+(2.21)                  pr (n) = pr−1 (n) + pr−1 (n − r) + pr−1 (n − 2r) + · · ·
+We shall use this equation to prove, by induction, that
+                                                     rnr−1
+(2.22)                                     pr (n) ≥         .
+                                                      (r!)2
+  ∗
+      Somewhat inferior inequalities, of the type
+                                                √                 √
+                                             2A[ n] < p(n) < nB[ n] ,
+
+may be proved by entirely elementary reasoning; by reasoning, that is to say, which depends only on the
+arithmetical definition of p(n) and on elementary finite algebra, and does not presuppose the notion of a
+limit or the definition of the logarithmic or exponential functions.
+352                                                                                            Paper 36
+
+
+      It is obvious that (2.22) is true for r = 1. Assuming it to be true for r = s, and using
+      (2.21), we obtain
+                               s
+             ps+1 (n) ≥            {ns−1 + (n − s − 1)s−1 + (n − 2s − 2)s−1 + · · ·}
+                             (s!)2
+                                    s
+                                      n − (n − s − 1)s (n − s − 1)s − (n − 2s − 2)s
+                                                                                           
+                               s
+                       ≥                                +                            + ···
+                             (s!)2        s(s + 1)                 s(s + 1)
+                                   ns         (s + 1)ns
+                       =                  =              .
+                             (s + 1)(s!)2    {(s + 1)!}2
+      This proves (2.22). Now p(n) is obviously not less than pr (n), whatever the value of r.
+                √
+      Take r = [ n]: then
+                                                √      √
+                                     √
+                                               [ n] n[ n]      H 2√n
+                            p(n) ≥ p[ n] (n) ≥       √      >     e   ,
+                                                 n {[ n]!}2    n
+      by a simple application of the degenerate form of Stirling’s theorem mentioned above.
+      2.3 The proof of the second inequality depends upon Euler’s identity. If we write
+                           X                           1
+                              qr (n)xn =                                     ,
+                                         (1 − x) (1 − x2 )2 · · · (1 − xr )2
+                                                2
+
+      we have
+      (2.31)                qr (n) = qr−1 (n) + 2qr−1 (n − r) + 3qr−1 (n − 2r) + · · ·,
+      and
+      (2.32)                     p(n) = q1 (n − 1) + q2 (n − 4) + q3 (n − 9) + · · ·
+      We shall first prove by induction that
+                                                        (n + r 2 )2r−1
+      (2.33)                                  qr (n) ≤                 .
+                                                       (2r − 1)!(r!)2
+      This is obviously true for r = 1. Assuming it to be true for r = s, and using (2.31), we
+      obtain
+                                  1
+               qs+1 (n) ≤                  {(n + s2 )2s−1 + 2(n + s2 − s − 1)2s−1
+                            (2s − 1)!(s!)2
+                                                         + 3(n + s2 − 2s − 2)2s−1 + · · ·}.
+
+      Now
+                              m(m − 1)am−2 b2 ≤ (a + b)m − 2am + (a − b)m ,
+      if m is a positive integer, and a, b, and a − b are positive, while if a − b ≤ 0, and m is odd,
+      the term (a − b)m may be omitted. In this inequality write
+
+                   m = 2s + 1,     a = n + s2 − ks − k    (k = 0, 1, 2, . . .),   b = s + 1,
+
+      and sum with respect to k. We find that
+
+        (2s + 1)2s(s + 1)2 {(n + s2 )2s−1 + 2(n + s2 − s − 1)2s−1 + · · ·} ≤ (n + s2 + s + 1)2s+1 ;
+Asymptotic formulæ in combinatory analysis                                                                   353
+
+
+and so
+                                  (n + s2 + s + 1)2s+1            {n + (s + 1)2 }2s+1
+                qs+1 (n) ≤                                     ≤                      .
+                             (2s + 1)2s(s + 1)2 (2s − 1)!(s!)2   (2s + 1)!{(s + 1)!}2
+Hence (2.33) is true generally.
+It follows from (2.32) that
+                                                                     ∞
+                                                                     X        n2r−1
+                       p(n) = q1 (n − 1) + q2 (n − 4) + · · · ≤                          .
+                                                                          (2r − 1)!(r!)2
+                                                                     1
+
+But, using the degenerate form of Stirling’s theorem once more, we find without difficulty
+that
+                                        1          26r K
+                                                <        ,
+                                 (2r − 1)!(r!)2     4r!
+where K is a constant. Hence
+                                    ∞                       ∞      1
+                                    X (8n)2r−1              X (8n) 2 r−1         K 2√2n
+                       p(n) < 8K                    < 8K                     <     e    .
+                                            4r!                      r!          n
+                                      1                         1
+
+This is the second of the inequalities (2.11).
+
+
+3. Application of a Tauberian theorem to the determination of the constant
+                                    C.
+
+3.1 The value of the constant
+                                                        log p(n)
+                                              C = lim      √     ,
+                                                             n
+is most naturally determined by the use of the following theorem.
+                n
+          P
+If g(x) =   an x is a power-series with positive coefficients, and
+
+                                                             A
+                                              log g(x) ∼
+                                                            1−x
+when x → 1, then                                                       √
+                               log sn = log (a0 + a1 + · · · + an ) ∼ 2 An
+when n → ∞.
+This theorem is a special case∗ of Theorem C in our paper already referred to.
+Now suppose that
+                                    X                                                1
+          g(x) = (1 − x)f (x) =      {p(n) − p(n − 1)}xn =                                               .
+                                                                     (1 − x2 )(1 − x3 )(1 − x4 ) · · ·
+  ∗
+      Loc. cit., p. 129 (with α = 1) [p. 321 of this volume].
+354                                                                                                Paper 36
+
+
+      Then
+                                                an = p(n) − p(n − 1)
+      is plainly positive. And
+                                  ∞                    ∞
+                                                      X 1 x2ν                          ∞
+                                  X            1                      1 X 1          π2
+      (3.11)         log g(x) =         log       µ
+                                                    =           ν
+                                                                  ∼           2
+                                                                                =          ,
+                                   2
+                                              1−x     1
+                                                        ν 1 − x     1 − x 1
+                                                                            ν     6(1 − x)
+      when x → 1∗ . Hence                                          √
+      (3.12)                    log p(n) = a0 + a1 + · · · + an ∼ C n,
+                    √     q
+      where C = 2π/ 6 = π 23 , as in (1.53).
+
+      3.2 There is no doubt that it is possible, by “Tauberian” arguments, to prove a good
+      deal more about p(n) than is asserted by (3.12). The functional equation satisfied by f (x)
+      shews, for example, that
+
+                                              (1 − x)3/2               π2
+                                                                              
+                                       g(x) ∼    √       exp                       ,
+                                                   2π               6(1 − x)
+
+      a relation far more precise than (3.11). From this relation, and the fact that the coefficients
+      in g(x) are positive, it is certainly possible to deduce more than (3.12). But it hardly
+      seems likely that arguments of this character will lead us to a proof of (1.41). It would
+      be exceedingly interesting to know exactly how far they will carry us, since the method
+      is comparatively elementary, and has a much wider range of application than the more
+      powerful methods employed later in this paper. We must, however, reserve the discussion
+      of this question for some future occasion.
+
+
+                  4. Lemmas preliminary to the proof of the main theorem.
+
+      4.1 We proceed now to the proof of our main theorem. The proof is somewhat intricate,
+      and depends on a number of subsidiary theorems which we shall state as lemmas.
+
+         ∗
+           This is a special case of a much more general theorems: see K. Knopp, “Grenzwerte von Reihen bei
+      der Annäherung an die Konvergenzgrenze,” Inaugural Dissertation, Berlin, 1907, pp. 25 et seq.; K. Knopp,
+      “Über Lambertsche Reihen,” Journal für Math., Vol. CXLII, 1913, pp. 283 – 315; G. H. Hardy, “Theorems
+      connected with Abel’s Theorem on the continuity of power series,” Proc. London Math. Soc., Ser. 2, Vol.
+      IV, 1906, pp. 247 – 265 (pp. 252, 253); G. H. Hardy, “Some theorems concerning infinite series,” Math.
+      Ann., Vol. LXIV, 1907, pp. 77 – 94; G. H. Hardy, “Note on Lambert’s series,” Proc. London Math. Soc.,
+      Ser. 2, Vol. XIII, 1913, pp. 192 – 198.
+        A direct proof is very easy: for
+
+                                          νxν−1 (1 − x) < 1 − xν < ν(1 − x),
+
+                                        1 X x2ν               1 X xν+1
+                                              2
+                                                < log g(x) <           .
+                                       1−x  ν                1−x   ν2
+Asymptotic formulæ in combinatory analysis                                                                     355
+
+
+                                 Lemmas concerning Farey’s series.
+4.21    The Farey’s series of order m is the aggregate of irreducible rational fractions
+
+                                        p/q    (0 ≤ p ≤ q ≤ m),
+
+arranged in ascending order of magnitude. Thus
+                        0 1 1 1 1 2 1 2 3 1 4 3 2 5 3 4 5 6 1
+                         , , , , , , , , , , , , , , , , , ,
+                        1 7 6 5 4 7 3 5 7 2 7 5 3 7 4 5 6 7 1
+is the Farey’s series of order 7.
+Lemma 4.21. If p/q, p′ /q ′ are two successive terms of a Farey’s series, then
+(4.211)                                        p′ q − pq ′ = 1.
+This is, of course, a well-known theorem, first observed by Farey and first proved by
+Cauchy∗ . Th following exceedingly simple proof is due to Hurwitz† .
+The result is plainly true when m = 1. Let us suppose it true for m = k; and let p/q, p′ /q ′
+be two consecutive terms in the series of order k.
+Suppose now that p′′ /q ′′ is a term of the series of order k + 1 which falls between p/q, p′ /q ′ .
+Let
+                           p′′ q − pq ′′ = λ > 0, p′ q ′′ − p′′ q ′ = µ > 0.
+Solving these equations for p′′ , q ′′ and observing that p′ q − pq ′ = 1, we obtain
+
+                                   p′′ = µp + λp′ ,    q ′′ = µq + λq ′ .
+
+Consider now the aggregate of fractions
+
+                                        (µp + λp′ )/(µq + λq ′ ),
+
+where λ and µ are positive integers without common factor. All of these fractions lie between
+p/q and p′ /q ′ ; and all are in their lowest terms, since a factor common to numerator and
+denominator would divide
+
+                                   λ = q(µp + λp′ ) − p(µq + λq ′ ),
+
+and                            µ = p′ (µq + λq ′ ) − q ′ (µp + λp′ ).
+Each of them first makes its appearance in the Farey’s series of order µq + λq ′ , and the first
+of them to make its appearance must be that for which λ = 1, µ = 1. Hence
+
+                                      p′′ = p + p′ ,   q ′′ = q + q ′ ,
+   ∗
+     J. Farey, “On a curious property of vulgar fraction,” Phil. Mag., Ser. 1, Vol. XLVII, 1816, pp. 385,
+386; A. L. Cauchy, “Démonstration d’un théorème curieux sur les nombres,” Exercices de mathématiques,
+Vol. I, 1826, pp. 114 – 116. Cauchy’s proof was first published in the Bulletin de la Société Philomatique
+in 1816.
+   †
+     A. Hurwitz, “Ueber die angenäherte Darstellung der Zahlen durch rationale Brüche,” Math. Ann., Vol.
+XLIV, 1894, pp 417-436.
+356                                                                                                         Paper 36
+
+
+                                             p′′ q − pq ′′ = p′ q ′′ − p′′ q ′ = 1.
+      The lemma is consequently proved by induction.
+      Lemma 4.22. Suppose that p/q is a term of the Farey’s series of order m, and p′′ /q ′′ , p′ /q ′
+      the adjacent terms on the left and right: and let jp,q denote the interval
+                                           p     1                p     1
+                                             −            ,         +           .∗
+                                           q q(q + q ′′ )         q q(q + q ′ )
+       Then (i) the intervals jp,q exactly fill up the continuum (0, 1), and (ii) the length of each
+      of the parts into which jp,q is divided by p/q † is greater than 1/2mq and less than 1/mq.
+      (i) Since
+                               1               1        1     p′ q − pq ′   p′ p
+                                      +              =      =             =    − ,
+                           q(q + q ′ ) q ′ (q ′ + q)   qq ′       qq ′      q′  q
+      the intervals just fill up the continuum.
+      (ii) Since neither q nor q ′ exceeds m, and one at least must be less than m, we have
+                                                        1          1
+                                                                >     .
+                                                    q(q + q ′ )   2mq
+      Also q + q ′ > m, since otherwise (p + p′ )/(q + q ′ ) would be a term in the series between p/q
+      and p′ /q ′ . Hence
+                                                  1           1
+                                                         <      .
+                                             q(q + q ′ )     mq
+
+                                     Standard dissection of a circle.
+      4.22 The following mode of dissection of a circle, based upon Lemma 4.22, is of fundamental
+      importance for our analysis.
+      Suppose that the circle is defined by
+
+                                               x = Re2πiθ       (0 ≤ θ ≤ 1).
+
+      Construct the Farey’s series of order m, and the corresponding intervals jp,q . When these
+      intervals are considered as intervals of variation of θ, and the two extreme intervals, which
+      correspond to abutting arcs on the circle, are regarded as constituting a single interval ξ1,1 ,
+      the circle is divided into a number of arcs
+
+                                                             ξp,q ,
+
+      where q ranges from 1 to m and p through the numbers not exceeding and prime to q ‡ . We
+      call this dissection of the circle the dissection Ξm .
+
+        ∗
+           When p/q is 0/1 or 1/1, only the part of this interval inside (0, 1) is to be taken; thus j0,1 is 0, 1/(m + 1)
+      and j1,1 is 1 − 1/(m + 1), 1.
+         †
+           See the preceding footnote
+         ‡
+           p = 0 occurring with q = 1 only.
+Asymptotic formulæ in combinatory analysis                                                          357
+
+
+                Lemmas from the theory of the linear transformation of the
+                              elliptic modular functions.
+
+4.3 Lemma 4.31. Suppose that q is a positive integer; that p is a positive integer not
+exceeding and prime to q; that p′ is a positive integer such that 1 + pp′ is divisible by q; that
+ωp,q is defined by the formulæ (1.721) or (1.722) ; that
+
+                                                              2π 2p′ πi
+                                                                       
+                              2πz 2pπi            ′
+                   x = exp −       +          , x = exp −         +          ,
+                               q        q                     qz       q
+
+where the real part of z is positive; and that
+                                                   1
+                             f (x) =                                   .
+                                       (1 − x)(1 − x2 )(1 − x3 ) · · ·
+
+Then
+                                       √
+                                                                        
+                                                          π    πz
+                          f (x) = ωp,q z exp                 −               f (x′ ).
+                                                         12qz 12q
+
+This lemma is merely a restatement in a different notation of well-known formulæ in the
+transformation theory.
+Suppose, for example, that p is odd. If we take
+
+                                                         1 + pp′
+                             a = p, b = −q, c =                  , d = −p′ ,
+                                                            q
+
+so that ad − bc = 1; and write
+
+                              x = q 2 = e2πiτ ,      x′ = Q2 = e2πiT ,
+
+so that
+                                       p iz                   p′   i
+                                  τ=     + ,         T =         + ;
+                                       q  q                   q   qz
+then we can easily verify that
+                                           c + dτ
+                                            T =   .
+                                           a + bτ
+Also, in the notation of Tanner and Molk, we have
+                                              1                         1
+                                           q 12                      Q 12
+                                 f (x) =         ,       f (x′ ) =         ;
+                                           h(τ )                     h(T )
+
+and the formula for the linear transformation of h(τ ) is
+                
+                 b
+                                           [a(b − c) + bd(a2 − 1)]}πi
+                                                                     p
+                     exp { 14 (a − 1) − 12
+                                        1
+                         
+       h(T ) =                                                          (a + bτ ) h(τ ),
+                 a
+358                                                                                           Paper 36
+
+
+      where (a + bτ ) has its real part positive∗ . A little elementary algebra will shew the
+             p
+
+      equivalence of this result and ours.
+      The other formula for ωp,q may be verified similarly, but in this case we must take
+
+                                                                1 + pp′
+                                         a = −p, b = q, c =             , d = p′ .
+                                                                   q
+      We have included in the Appendix (Table I) a short table of some values of ωp,q , or rather
+      of (log ωp,q )/πi.
+      Lemma 4.32. The function        sf (x) satisfies the equation
+                                                                                  π2
+                                                           1                            
+                                           q          1
+      (4.321)            f (x) = ωp,q         log              24
+                                                              xp,q exp                        f (x′p,q ),
+                                          2π         xp,q                6q 2 log(1/xp,q )
+      where
+                                                                         4π 2           2p′ πi
+                                                                                              
+                                      −2pπi/q      ′
+      (4.322)                xp,q = xe        , xp,q = exp − 2                       +           .
+                                                                    q log(1/xp,q )        q
+      This is an immediate corollary from Lemma 4.31, since
+                                                        
+                                          q          1                         1
+                                     z=      log            , e−πz/12q = xp,q  24
+                                                                                  ,
+                                         2π        xp,q
+
+                                        π2                            2π 2p′ πi
+                                                                                    
+                           π                             ′
+                                = 2               , x = exp −             +            = x′p,q .
+                         12qz     6q log(1/xp,q )                     qz        q
+      If we observe that
+                                            f (x′p,q ) = 1 + p(1)x′p,q + · · · ,
+      we see that, if x tends to e2pπi/q along a radius vector, or indeed any regular path which
+      does not touch the circle of convergence, the difference
+                                    s
+                                                                         π2
+                                                     1                          
+                                        q        1       24
+                       f (x) − ωp,q       log          xp,q exp
+                                       2π       xp,q              6q 2 log(1/xp,q )
+
+      tends to zero with great rapidity. It is on this fact that our analysis is based.
+
+                                Lemmas concerning the auxiliary function Fa (x).
+
+      4.41.      The auxiliary function Fa (x) is defined by the equation
+                                                           ∞
+                                                           X
+                                                Fa (x) =        Ψa (n)xn ,
+                                                            1
+
+      where
+                                                          d cosh aλn − 1
+                                              Ψa (n) =                   ,
+                                                         dn      λn
+        ∗
+            Tannery and Molk, loc. cit., pp. 113, 267.
+Asymptotic formulæ in combinatory analysis                                                                                     359
+
+                                                   q
+                                                             1
+                                            λn =       (n − 24 ),         a > 0.
+
+Lemma 4.41.        Suppose that a cut is made along the segment (1, ∞) in the plane f x.
+Then Fa (x) is regular at all points inside the region thus defined.
+This lemma is an immediate corollary of a general theorem proved by Lindelöf on pp. 109
+et seq. of his Calcul des residus∗ .
+The function                                     q
+                                                              1
+                                               d cosh a (z − 24 ) − 1
+                                      Ψa (z) =        q
+                                               dz       (z − 1 )              24
+
+satisfies the conditions imposed upon it by Lindelöf, if the number which he calls α is
+               1
+greater than 24  ; and
+                                          Z a+i∞
+                                                   xz
+(4.411)                            Fa (x)            2πiz
+                                                          φ(z) dz,
+                                           a−i∞ 1 − e
+if
+                      x = reiθ , 0 < θ < 2π, xz = exp{z(log r + iθ)}.
+
+4.42. Lemma 4.42. Suppose that D is the region defined by the inequalities
+
+                           −π < −θ0 < θ < θ0 < π,                   r0 < r,            0 < r0 < 1,
+
+and that log(1/x) has its principal value, so that log(1/x) is one-valued, and its square root
+two-valued, in D. Further, let
+
+                                                                                  a2
+                                                                                               
+                                      p                     1
+                         χa (x) =         {π log(1/x)}x    24       exp                         −1 ,
+                                                                              4 log(1/x)
+
+that value of the square root being chosen which is positive when 0 < x < 1. Then
+
+                                                   Fa (x) − χa (x)
+
+is regular inside D † .
+We observe first that, whenθ has fixed value between 0 and 2π, the integral on the right-
+                                                 1                                     1
+hand side of (4.411) is uniformly convergent for 24 ≤ α ≤ α0 . Hence we may take α = 24
+in (4.411). We thus obtain
+                     Z ∞                                                           Z ∞
+                 1              xit             1                1                            x−it               1
+  Fa (x) = ix   24
+                                 1        Ψa ( 24 + it) dt + ix 24                              1          Ψa ( 24 − it) dt,
+                                   πi−2πt
+                     0     1 − e 12                                                0     1 − e 12 πi+2πt
+   ∗
+     Lindelöf gives references to Mellin and Le Roy, who had previously established the theorem in less
+general forms.
+   †
+     Both Fa (x) and χa (x) are two-valued in D. The value of Fa (x) contemplated is naturally that repre-
+sented by the power series.
+360                                                                                                                   Paper 36
+
+                  √         √                             1                    1
+      where the it and −it which occur in Ψa ( 24            + it) and Ψa ( 24   − it) are to be interpreted
+          (1/4)πi
+                  √        −(1/4)πi
+                                    √
+      as e          t and e           t respectively. We write this in the form
+                                                       Z ∞
+                                                     1             xit               1
+       (4.421)           Fa (x) = Xa (x) + ix       24
+                                                                 1             Ψa ( 24 + it) dt
+                                                        0   e− 12 πi+2πt − 1
+                                                 Z ∞
+                                              1             x−it             1
+                                          +ix 24              1        Ψa ( 24 − it) dt
+                                                                πi+2πt
+                                                  0    1 − e 12
+                                  = Xa (x) + Θ1 (x) + Θ2 (x),
+
+      say, where                                          Z ∞
+                                                     1
+                                     Xa (x) = ix     24                xit Ψa ( 24
+                                                                                 1
+                                                                                   + it) dt.
+                                                              0
+      Now, since
+                                           |xit | = e−θt ,              |x−it | = eθt ,
+      the functions Θ are regular throughout the angle of Lemma 4.42. And
+                                            1   Z ∞                                 √      
+                                        x 24              −λt d                cosh µ t − 1
+                               Xa (x) = √                 e                         √         dt,
+                                           i     0                 dt                 t
+      where
+                                                  1        √
+                                        λ = i log , µ = a i.
+                                                  x
+      The form of this integral may be calculated by supposing λ and µ positive, when we obtain
+               Z ∞                                      Z ∞
+                     −λw 2 d    cosh µw − 1                        2
+                    e                           dw = 2λ       e−λw (cosh µw − 1) dw
+                0          dw        w                     0
+                                                                 2
+                                                         (λπ)(eµ /4λ − 1).
+                                                       p
+                                                    =
+
+      Hence
+                                                                                         a2
+                                                                                                      
+                                     p                            1
+      (4.422)             Xa (x) =       {π log(1/x)}x            24       exp                        − 1 = χa (x),
+                                                                                     4 log(1/x)
+      and the proof of the lemma is completed.
+      Lemmas 4.41 and 4.42 shew that x = 1 is the sole finite singularity of the principal branch
+      of Fa (x).
+      4.43 Lemma 4.43 Suppose that P, θ1 , and A are positive constants, θ1 being less than π.
+      Then
+                                 |Fa (x)| < K = K(P, θ1 , A),
+      for
+                               0 ≤ r ≤ P,       θ1 ≤ θ ≤ 2π − θ1 ,                      0 < a ≤ A.
+Asymptotic formulæ in combinatory analysis                                                  361
+
+
+We use K generally to denote a positive number independent of x and of a. We may employ
+the formula (4.411). It is plain that
+
+                                       xz
+                                                < Ke−θ1 |η| ,
+                                    1 − e2πiz
+                                           q                 
+                                                     1               √
+                                d   cosh a   (z −  24  ) − 1 
+                     |Ψa (z)| =           q                     < KeK |η| ,
+                                dz                1
+                                             (z − 24  )       
+
+where η is the imaginary part of z. Hence
+                                      Z ∞   √
+                         |Fa (x)| < K     eK |η|−θ1 |η| dη < K.
+                                                −∞
+
+
+4.44 Lemma 4.44. Let c be a circle whose centre is x = 1, and whose radius δ is less than
+unity. Then
+                               |Fa (x) − χa (x)| < Ka2 ,
+is x lies in c and 0 < a ≤ A, K = K(δ, A) being as before independent of x and of a.
+If we refer back to (4.421) and (4.422), we see that it is sufficient to prove that
+
+                               |Θ1 (x)| < Ka2 ,        |Θ2 (x)| < Ka2 ;
+
+and we may plainly confine ourselves to the first of these inequalities. We have
+                           1 Z
+                                                    (                  )
+                        x 24 ∞
+                                                             p
+                                       xit       d cosh a (it) − 1
+              Θ1 (x) = √            1                       p             dt.
+                           i 0 e− 12 πi+2πt − 1 dt            (t)
+
+Rejecting the extraneous factor, which is plainly without importance, and integrating by
+parts, we obtain
+                                  Z ∞             p
+                                            cosh a (it) − 1
+                          Θ(x) =      Φ(t)        p         dt,
+                                   0                (t)
+where                                                                1
+                                         ixit log x        2πxit e− 12 πi+2πt
+                         Φ(t) = −        1             +        1                .
+                                    e− 12 πi+2πt − 1       (e− 12 πi+2πt − 1)2
+                                1
+Now |θ| < 12 π and |xit | < Ke 2 πt . It follows that
+
+                                             |Φ(t)| < Ke−πt ;
+
+and
+                                    Z ∞
+                                             e−πt
+                                              √ | sinh2 21 a (it)| dt
+                                                            p
+                   |Θ(x)| < K
+                                     0         t
+362                                                                                       Paper 36
+
+                                       Z ∞
+                                        e−πt
+                                                     q             q
+                                < K      √   {cosh a ( 2 t) − cos a ( 12 t)} dt
+                                                        1
+                                     0     t
+                                    Z ∞                            
+                                         −πw 2        aw        aw
+                                < K     e        cosh √ − cos √       dw
+                                     0                 2          2
+                                          2         2
+                                = K(ea /8π − e−a /8π ) < Ka2 .
+
+                                  5. Proof of the main theorem.
+      5.1 We write                                   √
+                                                       q
+      (5.11)                         Fp,q (x) = ωp,q √ FC/q (xp,q ),
+                 q                                  π 2
+                   2           −2pπi/q
+      where C = π 3 , xp,q = xe        ; and
+                                                     XX
+      (5.12)                         Φ(x) = f (x) −       Fp,q (x),
+                                                         q   p
+      where the summation applies to all values of p not exceeding q and prime to q, and to all
+      values of q such that                                         √
+      (5.13)                                    1 ≤ q ≤ ν = [α n],
+      α being positive and independent of n. If then X
+      (5.14)                                  Fp,q (x) =         cp,q,n xn ,
+      we have
+                                                                   1       Φ(x)
+                                             XX                        Z
+      (5.15)                          p(n) −          cp,q,n =                  dx,
+                                              q    p
+                                                                  2πi Γ xn+1
+      where Γ is a circle whose centre is the origin and whose radius R is less than unity. We
+      take
+                                                                  β
+      (5.16)                                         R=1− ,
+                                                                  n
+      where β also is positive and independent of n.
+      Our object is to shew that the integral on the right-hand side of (5.15) is of the form
+            1
+      O(n− 4 ); the constant implied in the O will of course be a function of α and β. It is to
+      be understood throughout that O’s are used in this sense; O(1), for instance, stands for
+      a function of x, n, p, q, α, and β (or some only of these variables) which is less in absolute
+      value than a number K = K(α, β) independent of x, n, p, and q.
+      We divide up the circle Γ by means of dissection Ξν of 4.22, into arcs ξp,q each associated
+      with a point Re2pπi/q ; and we denote by ηp,q the arc of Γ complementary to ξp,q . This being
+      so, we have
+                             Φ(x)                  f (x) − Fp,q (x)                   Fp,q (x)
+                        Z                XZ                                  XZ
+      (5.17)                   n+1
+                                    dx =                   n+1
+                                                                        dx −             n+1
+                                                                                               dx
+                          Γ  x                ξp,q       x                        ηp,q x
+                                         X           X
+                                       =     Jp,q −       jp,q ,
+                                                                            1
+       say. We shall prove that each of these sums is of the form O(n− 4 ); and we shall begin
+      with the second sum, which only involves the auxiliary functions F .
+Asymptotic formulæ in combinatory analysis                                                                             363
+
+
+                                                                       1
+                                                   jp,q = O(n− 4 ).
+                                              P
+                                 Proof that
+5.21.     We have, by Cauchy’s theorem,
+                                          Fp,q (x)             Fp,q (x)
+                                   Z                     Z
+(5.211)                      jp,q =          n+1
+                                                   dx =           n+1
+                                                                        dx,
+                                      ηp,q x               ζp,q x
+where ζp,q consists of the contour LM N M ′ L′ shewn in the figure. Here L and L′ are the
+ends of ξp,q , LM and M ′ L′ are radii vectors, and M N M ′ is part of a circle Γ1 whose radius
+R1 is greater than 1. P is the point e2pπi/q ; and we suppose that R1 is small enough to
+ensure that all points of LM and M ′ L′ are at a distance from P less than 12 . The other
+circle c shewn in the figure has P as its centre and radius 21 . We denote LM by ̟p,q , M ′ L′
+      ′
+by ̟p,q   and M N M ′ by γp,q : and we write Z         Z        Z       Z
+                                                                                                 1      2      3
+(5.212)                                   jp,q =           =           +           +          = jp,q + jp,q + jp,q .
+                                                    ζp,q        γp,q        ̟p,q        ′
+                                                                                       ̟p,q
+
+
+
+
+                                                                                M
+                                                                   ̟                            c
+
+                                                                            P               M′
+                                                                L ξ
+                                      Γ                                                ̟′
+                                                                           L′
+                                                                                                    Γ1
+
+
+             N               η                 O                            R           l           R1
+
+
+
+
+                                                               P 1
+                                 The contribution of            jp,q .
+5.22. Suppose first that x lies on γp,q and outside c. Then, in virtue of (5.11) and Lemma
+4.43, we have
+                                                         √
+(5.221)                                    Fp,q (x) = O( q).
+If on the other hand x lies on γp,q , but inside c, we have, by (5.11) and Lemma 4.44,
+                                                                 3
+(5.222)                              Fp,q (x) − χp,q (x) = O(q − 2 ),
+364                                                                                                 Paper 36
+
+
+      where                                                √
+                                                             q
+      (5.2221)                             χp,q (x) = ωp,q √ χC/q (xp,q ).
+                                                          π 2
+      But, if we refer to the definition of χa (x) in Lemma 4.42, and observe that
+                                          a2               a2 log(1/r)
+                                exp              = exp                       <1
+                                      4 log(1/x)       4[{log(1/r)}2 + θ 2 ]
+      if x = reiθ and r > 1, we see that
+                                                                √
+      (5.223)                                    χp,q (x) = O( q)
+      on the part of γp,q in question. Hence (5.221) holds for all γp,q . It follows that
+                                                           √
+                                             1
+                                            jp,q = O(R1−n q),
+                                    X                   X 3            5
+      (5.224)                          jp,q = O(R1−n       q 2 ) = O(n 4 R1−n ) ∗
+                                                                q
+      This sum tends to zero more rapidly than any power of n, and is therefore completely
+      trivial.
+                                                           P 2         P 3
+                                  The contributions of        jp,q and     jp,q .
+      5.231. We must now consider the sums which arise from the integrals along ̟p,q and
+        ′ ; and it is evident that we need consider in detail only the first of these two lines. We
+      ̟p,q
+      write
+                                      Fp,q (x) − χp,q (x)              χp,q (x)
+                               Z                                 Z
+                         2                                                              ′      ′′
+      (5.2311)          jp,q =                 n+1
+                                                           dx +           n+1
+                                                                                  dx = jp,q + jp,q ,
+                                 ̟p,q        x                    ̟p,q  x
+      say.
+      In the first place we have, from (5.222),
+                                                  Z R1       
+                                  ′           − 23        dr             3
+                                 jp,q = O q               n+1
+                                                                = O(q − 2 n−1 ),
+                                                    R   r
+      since
+                                                      β −n
+                                                        
+                                                        
+                                                 −n
+      (5.2312)                                R = 1−        = O(1).
+                                                      n
+      Thus                             X              X       1          3
+                                          ′
+      (5.2313)                           jp,q = O{n−1     q − 2 } = O(n− 4 ).
+                                                                √
+                                                            q<O( n)
+      5.232. In the second place we have
+                                                     √ Z
+                                       ′′             q      χC/q (xp,q )
+                                      jp,q = ωp,q    √                    dx.
+                                                    π 2 ̟p,q   xn+1
+         ∗
+           Here, and in many passages in our subsequent argument, it is to be remembered that the number    √ of
+      values of p, corresponding to a given q is less than q, and that the number of values of q is of order n.
+      Thus we have generally                                        
+                                     X      s
+                                                         X       s+1         1
+                                         O(q ) = O            q      = O(n 2 s+1 ).
+                                                          √
+                                                      q<O( n)
+Asymptotic formulæ in combinatory analysis                                                        365
+
+
+It is plain that, if we substitute y for xe−2pπi/q , then write x again for y, and finally
+substitute for χC/q its explicit expression as an elementary function, given in Lemma 4.42,
+we obtain                                        s         
+                              √                           1 −n− 23           √
+                                   Z
+                      ′′
+(5.2321)             jp,q = O( q) {E(x) − 1}         log      x    24 dx = O( q)J,
+                                                          x
+say, where
+                                                          π2
+                                                                 
+(5.23211)                            E(x) = exp                     ,
+                                                    6q 2 log(1/x)
+and the path of integration is now a line related to x = 1 as ̟p,q is to x = e2pπi/q : the line
+defined by x = reiθ , where R ≤ r ≤ R1 , and θ is fixed and (by Lemma 4.22) lies between
+1/2qν and 1/qν.
+Integrating J by parts, we find
+                                   "               s               #r=R1
+                      1                                     1 −n+ 1
+(5.2322)        (n − 24 )J   = − {E(x) − 1}             log     x 24
+                                                            x
+                                                                           r=R
+                                                      − 1
+                                                     1
+                                     Z
+                                                          2 −n− 23
+                                 − 21 {E(x) − 1} log        x   24 dx
+                                                     x
+                                                         3
+                                  π2                  1 − 2 −n− 23
+                                         Z       
+                                 + 2         E(x) log       x   24 dx = J1 + J2 + J3 ,
+                                  6q                  x
+say.
+5.233. In estimating J1 , J2 , and J3 , we must bear the following facts in mind.
+(1) Since |x| ≥ R, it follows from (5.2312) that |x|−n = O(1) throughout the range of
+integration.
+                                                              √
+(2) Since 1 − R = β/n and 1/2qν < θ < 1/qν, where ν = [α n], we have
+                                                    
+                                         1          1
+                                   log      =O      √     ,
+                                         x         q n
+
+when r = R, and
+                                           1         √
+                                                = O(q n),
+                                       log(1/x)
+throughout the range of integration.
+(3) Since
+                                                    π 2 log(1/r)
+                             |E(x)| = exp                              ,
+                                             6q 2 [{log(1/r)}2 + θ 2 ]
+E(x) is less than 1 in absolute value when r > 1. And, on the part of the path for which
+r < 1, it is of the form                    
+                                        1
+                            exp O              = exp O(1) = O(1).
+                                    q 2 nθ 2
+366                                                                                                                   Paper 36
+
+
+      It is accordingly of the form O(1) throughout the range of integration.
+      5.234. Thus we have, first
+                                                                               1       1                     1    1
+      (5.2341)           J1 = O(1)O(1)O(R1−n ) + O(1)O(q − 2 n− 4 )O(1) = O(q − 2 n− 4 ),
+      secondly
+                                                                Z R1
+                                               1 1                          dr                      1   3
+      (5.2342)                    J2 = O(1)O(q 2 n 4 )                         23       = O(q 2 n− 4 ),
+                                                                    R     r n+ 24
+      and thirdly
+                                                                        Z R1
+                                         −2                 3   3                  dr           −2 −4
+                                                                                                        1    1
+      (5.2343)                J3 = O(q        )O(1)O(q n )  2   4
+                                                                                       23 = O(q   n ).
+                                                        R   r n+ 24
+      From (5.2341), (5.2342), (5.2343), and (5.2322), we obtain
+                                                    1       5               1       7
+                                     J = O(q − 2 n− 4 ) + O(q 2 n− 4 );
+                                                5                   7
+                                 ′′
+      and, from (5.2321),       jp,q = O(n− 4 ) + O(qn− 4 ).
+      Summing, we obtain
+                                 X                      5       X                           7           X
+                                      ′′
+      (5.2344)                       jp,q = O(n− 4                        q) + O(n− 4                       q2)
+                                                                √                                   √
+                                                            q<O( n)                             q<O( n)
+                                                        1                  1                    1
+                                          = O(n− 4 ) + O(n− 4 ) = O(n− 4 ).
+
+
+
+      5.235. From (5.2311), (5.2313), and (5.2344), we obtain
+                                              X               1
+                                                   2
+      (5.2351)                                    jp,q = O(n− 4 );
+      and in exactly the same way we can proveX               1
+                                                   3
+      (5.2352)                                    jp,q = O(n− 4 ).
+      And from (5.212), (5.224), (5.2351), and (5.2352), we obtain, finally,
+                                              X               1
+      (5.2353)                                    jp,q = O(n− 4 ).
+                                                                                   1
+                                                            Jp,q = O(n− 4 ).
+                                                        P
+                                      Proof that
+      5.31. We turn now to the discussion of
+                                         f (x) − Fp,q (x)
+                                  Z
+             (5.311)    Jp,q =                            dx
+                                    ξp,q       xn+1
+                                         f (x) − Xp,q (x)             Fp,q (x) − χp,q (x)
+                                  Z                            Z
+                              =                   n+1
+                                                          dx −                            dx
+                                    ξp,q       x                 ξp,q        xn+1
+                                            ρp,q (x)
+                                     Z
+                                  +           n+1
+                                                      dx
+                                       ξp,q x
+                                     1      2      3
+                                  = Jp,q + Jp,q + Jp,q ,
+Asymptotic formulæ in combinatory analysis                                                       367
+
+
+say, where                                          s                1
+                                                          q      1     24
+                             ρp,q (x) = ωp,q                log       xp,q ,
+                                                         2π     xp,q
+
+                        Xp,q (x) = χp,q (x) + ρp,q (x) = ρp,q (x)E(xp,q ),
+E(x) being defined as in (5.23211).
+                                                          2 and                3 .
+                                                    P                   P
+                              Discussion of              Jp,q                 Jp,q
+5.32. The discussion of these two sums is, after the analysis which precedes, a simple
+                                                                  √
+matter. The arc ξp,q is less than a constant multiple of 1/q n; and x−n = O(1) on ξp,q .
+Also
+                                                             3
+                               |Fp,q (x) − χp,q (x)| = O(q − 2 ),
+by (5.222); and                     s               
+                                                 1             1    1
+(5.321)                                     log        = O(q − 2 n− 4 ),
+                                                xp,q
+since        |xp,q | = R = 1 − (β/n),       |amxp,q | < 1/qν.
+Hence
+                                                           5       1
+                                         2
+                                        Jp,q = O(q − 2 n− 2 ),
+                                                     1                    3              1
+                                      = O(n− 2                         q − 2 ) = O(n− 2 );
+                             X                             X
+                                  2
+(5.322)                          Jp,q
+                                                             √
+                                                         q<O( n)
+and
+                                                                   3
+                                     3
+                                   Jp,q = O(q −1 n− 4 ),
+                              X             3    X                 1
+                                 3
+(5.323)                         Jp,q = O(n− 4            1) = O(n− 4 ).
+                                                              √
+                                                          q<O( n)
+                                                                    1 .
+                                                               P
+                                     Discussion of                 Jp,q
+5.33. From (4.321) and (5.2221), we haves
+                                                                     1
+                                                          q      1
+(5.331)              f (x) − Xp,q (x) = ωp,q                log        24
+                                                                      xp,q E(xp,q )Ω(x′p,q ),
+                                                         2π     xp,q
+where
+                                             ∞                               ∞
+                                             Y         1                       X
+                     Ω(z) = f (z) − 1 =                                −1=           p(ν)z ν ,
+                                                1
+                                                     1 − zν                      1
+
+if |z| < 1 and
+                                            4π 2         2πip′
+                                                              
+                           x′p,q = exp − 2             +         .
+                                        q log(1/xp,q )     q
+Now
+                                                     4π 2 log(1/R)
+                                                                       
+                           |x′p,q | = exp       − 2                       ,
+                                                 q {[log(1/R)]2 + θ 2 }
+368                                                                                                   Paper 36
+
+
+      where θ is the amplitude of xp,q . Also
+                                                                
+                          2             2     2   2 1     1         1
+                        q {[log(1/R)] + θ } = O q     2
+                                                        + 2     =O     ,
+                                                    n    q n        n
+
+      while log(1/R) is greater than a constant multiple of 1/n. There is therefore a positive
+      number δ, less than unity and independent of n and of q, such that
+
+                                                     |x′p,q | < δ;
+
+      and we may write             Ω(x′p,q ) = O(|x′p,q |).
+      We have therefore
+                                                          1                              23
+                      E(xp,q )Ω(x′p,q ) = O(|x′p,q |− 24 )O(|x′p,q |) = O(|x′p,q | 24 ) = O(1);
+
+      and so, by (5.321),
+                                                               s               !
+                                            √                            1                      1
+                       f (x) − χp,q (x) = O( q)O                    log            O(1) = O(n− 4 ).
+                                                                        xp,q
+                                                           √
+      And hence, as the length of ξp,q is of the form O(1/q n), we obtain
+                                                                         3
+                                                1
+                                               Jp,q = O(q −1 n− 4 ),
+                                        X                       3    X                    1
+                                             1
+      (5.332)                               Jp,q = O(n− 4                      1) = O(n− 4 ).
+                                                                        √
+                                                                    q<O( n)
+      5.34. From (5.311), (5.322), (5.323), and
+                                             X(5.332), we obtain
+                                                            1
+      (5.341)                                   Jp,q = O(n− 4 ).
+                                            Completion of the proof.
+      5.4. From (5.15), (5.17), (5.2353), and X
+                                              (5.341),
+                                                  X we obtain 1
+      (5.41)                          p(n) −         cp,q,n = O(n− 4 ).
+                                                      q        p
+      But                                    √
+                                  X            q  d cosh(Cλn /q) − 1
+                                    cp,q,n = √ Aq                    ,
+                                  p         π 2 dn        λn
+
+      where                                         X
+                                            Aq =              ωp,q e−2npπi/q .
+                                                     p
+
+      All that remains, in order to complete the proof of the theorem, is to shew that
+
+                                                  cosh(Cλn /q) − 1
+
+      may be replaced by 12 eCλn /q ;
+Asymptotic formulæ in combinatory analysis                                                           369
+
+
+and in order to prove this it is only necessary to shew that
+                       X         3    d 12 eCλn /q − cosh(Cλn /q) + 1        1
+                                q2                                    = O(n− 4 ).
+                          √          dn                λn
+                      q<O( n)
+
+On differentiating we find that the sum is of the form
+                                                                           
+                                    
+              X      3       1          1           1            X       1
+                                                                                         1
+                   q 2  O        +O      3     =O                        q2       = O(n− 4 ).
+                √           qn         n2           n             √          
+            q<O( n)                                            q<O( n)
+
+Thus the theorem is proved.
+
+                         6. Additional remarks on the theorem.
+6.1. The theorem which we have proved gives information about p(n) which is in some
+ways extraordinarily exact. We are for this reason the more anxious to point out explicitly
+two respects in which the results of our analysis are incomplete.
+6.21. We have proved that
+                                       X                 1
+                                p(n) =     Aq φq + O(n− 4 ),
+
+where the summation extends over the values of q specified in the theorem, for every fixed
+value of α; that is to say that, when α is given, a number K = K(α) can be found such
+that                                     X                1
+                                 |p(n) −    Aq φq | < Kn− 4
+for every value of n. It follows that               X
+(6.211)                                   p(n) = {       Aq φq },
+where {x} denotes the integer nearest to x, for n ≥ n0 , where n0 = n0 (α) is a certain
+function of α.
+The question remains whether we can, by an appropriate choice of α, secure the truth of
+(6.211) for all values of n, and not merely for all sufficiently large values. Our opinion is that
+this is possible, and that it could be proved to be possible without any fundamental change
+in our analysis. Such a proof would however involve a very careful revision of our argument.
+It would be necessary to replace all formulæ involving O’s by inequalities, containing only
+numbers expressed explicitly as functions of the various parameters employed. This process
+would certainly add very considerably to the length and the complexity of our argument. It
+is, as it stands, sufficient to prove what is, from our point of view, of the greatest interest;
+and we have not thought it worth while to elaborate it further.
+6.22. The second point of incompleteness of our results is of much greater interest and
+importance. We have not proved either that the series
+                                                ∞
+                                                X
+                                                      Aq φq
+                                                  1
+370                                                                                                    Paper 36
+
+
+      is convergent, or that, if it is convergent, it represents p(n). Nor does it seem likely that
+      our method is one intrinsically capable of proving these results, if they are true – a point
+      on which we are not prepared to express any definite opinion.
+      It should be observed in this connection that we have not even discovered anything definite
+      concerning the order of magnitude of Aq for large values of q. We can prove nothing better
+      than the absolutely trivial equation Aq = O(q). On the other hand we can assert that Aq
+      is, for an infinity of values of q, effectively of an order as great as q, or indeed even that it
+      does not tend to zero (though of course this is most unlikely).
+      6.3. Our formula directs us, if we wish to obtain the exact value of p(n) for a large value of
+                                            √
+      n, to take a number of terms of order n. The numerical data suggest that a considerably
+      smaller number of terms will be equally effective; and it is easy to see that this conjecture
+      is correct.
+      Let us write                                            √ 
+                                                              β n
+                                         q 
+                                             2
+                                 β = 4π      3 = 4C,     µ=           ,
+                                                              log n
+      and let us suppose that α < 2. Then
+                                                                                                  
+                   ν               ν                                  √                ν     √
+                   X               X         3           1                             1 X √ C n/q 
+                         Aq φq =         O(q 2 )O                O(eC       n/q
+                                                                                ) = O      qe
+                                                        qn                             n
+                   µ+1             µ+1                                                 µ+1
+                                    Z ν
+                                         √ C √n/x
+                                                    
+                                    1
+                               = O        xe      dx ,
+                                    n µ
+           √       √
+      since qeC n/q decreases steadily throughout the range of summation∗ .
+                √
+      Writing n/y for x, we obtain
+                 Z √n/µ          !       (        √ − 5 √ )
+            − 41         − 25 Cy            − 41    n   2                 1        5 1
+       O n              y e dy     = O n                  eC n/µ = O{n− 4 (log n)− 2 e 4 log n }
+                  1/α                              µ
+                                                                 5
+                                           = O(log n)− 2 = o(1).
+
+      It follows that it is enough, when n is sufficiently large, to take
+                                                  √ 
+                                                   β n
+                                                   log n
+
+      terms of the series. It is probably also necessary to take a number of terms of order
+      √
+        n/(log n); but it is not possible to prove this rigorously without a more exact knowledge
+      of the properties of Aq than we possess.
+      6.4. We add a word on certain simple approximate formulæ for log p(n) found empirically
+      by Major MacMahon and by ourselves. Major MacMahon found that if
+        ∗                                                 √
+            The minimum occurs when q is about equal to 2C n.
+Asymptotic formulæ in combinatory analysis                                                                    371
+
+                                                   p
+(6.41)                               log10 p(n) = (n + 4) − an ,
+then an is approximately equal to 2 within the limits of his table of values of p(n) (Table
+IV). This suggested to us that we should endeavour to find more accurate formulæ of the
+same type. The most striking that we have found    p is
+                                                10
+(6.42)                            log10 p(n) = 9 { (n + 10) − an };
+the mode of variation of an is shewn in Table III.
+In this connection it is interesting to observe that the function
+                                                        √
+                                                    13− n p(n)
+
+(which ultimately tends to infinity with exponential rapidity) is equal to .973 for n =
+30000000000.
+
+                               7. Further applications of the method.
+7.1. We shall conclude with a few remarks concerning actual or possible applications of our
+method to other problems in Combinatory Analysis or the Analytic Theory of Numbers.
+The class of problems in which the method gives the most striking results may be defined
+as follows. Suppose that q(n) is the coefficient of xn in the expansion of F (x), where F (x)
+is a function of the form                               ′      ′
+                                     {f (±xa )}α {f (±xa )}α · · · ∗
+(7.11)                                                                ;
+                                     {f (±xb )}β {f (±xb′ )}β ′ · · ·
+f (x) being the function considered in this paper, The a’s, b’s, α’s, and β’s being positive
+integers, and the number of factors in numerator and denominator being finite; and suppose
+that |F (x)| tends exponentially to infinity when x tends in an appropriate manner to some
+or all the points e2pπi/q . Then our method may be applied in its full power to the asymptotic
+study of q(n), and yields results very similar to those which we have found concerning p(n).
+Thus, if
+
+                         f (x)                                                  1
+               F (x) =       2
+                                = (1 + x)(1 + x2 )(1 + x3 ) · · · =                                 ,
+                         f (x )                                     (1 − x)(1 − x3 )(1 − x5 ) · · ·
+
+so that q(n) is the number of partitions of n into odd parts, or into unequal parts† , we find
+that
+                        1 d
+                                    q
+             q(n) = √                           1
+                              J0 [iπ { 13 (n + 24 )}]
+                         2 dn
+                             √                      d
+                                                          q
+                            + 2 cos( 3 nπ − 9 π) J0 [ 3 iπ { 31 (n + 24
+                                      2       1       1               1
+                                                                        )}] + · · · .
+                                                   dn
+   ∗
+       Since
+                                                     {f (x2 )}3
+                                                f (−x) =         ,
+                                                    f (x)f (x4 )
+the arguments with a negative sign may be eliminated if this is desired.
+   †
+     Cf. MacMahon, loc. cit, p. 11. We give at the end of the paper a table (Table V) of the values of q(n)
+up to n = 100. This table was calculated by Mr. Darling.
+372                                                                                                    Paper 36
+
+                         √
+      The error after [α n] terms is of the form O(1). We are not in a position to assert that
+      the exact value of q(n) can always be obtained from the formula (though this is probable);
+      but the error is certainly bounded.
+      If
+                                 f (x2 )   f (x)f (x4 )
+                        F (x) =          =              = (1 + x)(1 + x3 ) + x5 ) · · · ,
+                                 f (−x)     {f (x2 )}2
+      so that q(n) is a number of partitions of n into parts which are both odd and unequal, then
+
+                               d
+                                       q
+                    q(n) =       J0 [iπ { 16 (n − 24
+                                                   1
+                                                      )}]
+                              dn
+                                                          d
+                                                                   q
+                                   +2 cos( 23 nπ − 92 π) J0 [ 13 iπ { 61 (n − 24
+                                                                              1
+                                                                                 )}] + · · · .
+                                                        dn
+      The error is again bounded (and probably tends to zero).
+      If
+                                    {f (x)}2              1
+                            F (x) =          =                            ,
+                                     f (x2 )   1 − 2x + 2x4 − 2x9 + · · ·
+      q(n) has no very simple arithmetical interpretation; but the series is none the less, as the
+      direct reciprocal of simple ϑ-function, of particular interest. In this case we find
+                                        √     √                         1 √
+                                1 d eπ n         3      2      1     d e3π n
+                        q(n) =         √ +         cos( 3 nπ − 6 π)     √    + ···.
+                               4π dn n         2π                   dn    n
+                                                                                  1
+      The error here is (as in the partition problem) of order O(n− 4 ), and the exact value can
+      always be found from the formula.
+      7.2. The method also be applied to product of form (7.11) which have (to put the matter
+      roughly) no exponential infinities. In such cases the approximation is of much less exact
+      character. On the other hand the problems of this character are of even greater arithmetical
+      interest.
+      The standard problem of this category is that of the representation of a number as a sum
+      of s squares, s being any positive integer odd or even∗ . We must reserve the application of
+      our method to this problem for another occasion; but we can indicate the character of our
+      main result as follows.
+      If rs (n) is the number of representations of n as the sum of s squares we have
+                        X                                             {f (x2 )}s   {f (x)}2s {f (x4 )}2s
+              F (x) =       rs (n)xn = (1 + 2x + 2x4 + · · ·)s =                 =                       .
+                                                                     {f (−x)}2s         {f (x2 )}5s
+
+      We find that
+                                                       1
+                                                   π 2 s 1 s−1 X cq      1
+                                                                           s
+      (7.21)                             rs (n) =    1 n
+                                                          2
+                                                                  1 + O(n ),
+                                                                         4
+                                                  Γ( 2 s)       q2 s
+
+        ∗
+            As is well known, the arithmetical difficulties of the problem are much greater when s is odd.
+Asymptotic formulæ in combinatory analysis                                                          373
+
+
+where cq is a function of q and of n of the same general type as the function Aq of this
+paper. The series                              X cq
+(7.22)                                               1
+                                                   q 2s
+is absolutely convergent for sufficiently large values of s, and the summation in (7.21) may
+                                                                                            √
+be regarded indifferently as extended over all values of q or only over a range 1 ≤ q ≤ α n.
+It should be observed that the series (7.22) is quite different in form from any of the infinite
+series which are already known to occur in connection with this problem.
+7.3. There is also a wide range of problems to which our methods are partly applicable.
+Suppose, for example, that
+                               X                              1
+                     F (x) =         p2 (n)xn =                                   ,
+                                                  (1 − x)(1 − x4 )(1 − x9 ) · · ·
+
+so that p2 (n) is the number of partitions of n into squares. Then F (x) is not an elliptic
+modular function; it possesses no general transformation theory: and the full force of our
+method can not be applied. We can still, however, apply some of our preliminary methods.
+Thus the “Tauberian” argument shews that
+                                                   4       1           2    1
+                                log p2 (n) ∼ 2− 3 3π 3 {ζ( 32 )} 3 n 3 .
+
+And although there is no general transformation theory, there is a formula which enables
+us to specify the nature of the singularity at x = 1. This formula is
+                       r                    
+            1               π        2π      1
+                   = 2         exp √ ζ(− 2 )
+        f (e−πz )           z          z
+                                  Y∞            √                        √
+                                × {1 − 2e−2π (n/z) cos 2π (n/z) + e−4π (n/z) }.
+                                                             p
+
+                                         1
+
+By the use of this formula, in conjunction with Cauchy’s theorem, it is certainly possible
+to obtain much more precise information about p2 (n) and in particular the formula
+                                 1                                                      2 1
+                                             7         2       −(4/3) 3π (1/3) {ζ( 3 )} 3 n 3
+                    p2 (n) ∼ 3− 2 (4πn)− 6 {ζ( 32 )} 3 e2                          2            .
+
+The corresponding formula for ps (n), the number of partitions of n into perfect s-th powers,
+is                                      s     
+                                1            s       1    3          1/(s+1)
+                   s
+                 p (n) ∼ (2π) − 2 (s+1)
+                                                 kn s+1 − 2 e(s+1)kn         ,
+                                           s+1
+where                                                  s
+                                         1      1       1   s+1
+                             k=            Γ 1+    ζ 1+         .
+                                         s      s       s
+374                                                                                                Paper 36
+
+
+      The series (7.21) may be written in the form
+                                            1
+                                                            s
+                                          π 2 s 1 s−1 X ωp,q    −npπi/q
+                                                  n 2
+                                                            1 e         ,
+                                         Γ( 21 s)     p,q q 2
+                                                              s
+
+                                                             1       1        1         1
+      where ωp,q is always one of the five numbers 0, e 4 πi , e− 4 πi , −e 4 πi , −e− 4 πi . When s is even
+      it begins
+                  1
+                π 2 s 1 s−1 − 1 s                         1                             1
+                  1 n
+                       2   {1 2 + 2 cos( 12 nπ − 41 sπ)2− 2 s + 2 cos( 32 nπ − 12 sπ)3− 2 s + · · ·}.
+               Γ( 2 s)
+
+      It has been proved by Ramanujan that the series gives an exact representation of rs (n)
+      when s = 4, 6, 8; and by Hardy that this also true when s = 3, 5, 7. See Ramanujan, “On
+      certain trigonometrical sums and their applications in the Theory of Numbers”; Hardy,
+      “On the expression of a number as the sum of any number of squares, and in particular of
+      five or seven∗ ”.
+
+
+
+
+          ∗
+            [Ramanujan’s paper referred to is No. 21 of this volume. That of Hardy was published, in the first
+      instance, in Proc. National Acad. of Sciences, (Washington), Vol. IV, 1918, pp. 189 – 193, and later (in
+      fuller form and with a slightly different title) in Trans. American Math. Soc., Vol. XXI, 1920, pp. 255 –
+      284.]
+Asymptotic formulæ in combinatory analysis                                            375
+
+
+                                        Table I: ωp,q .
+
+           p    q   log ωp,q /πi    p     q   log ωp,q /πi    p    q   log ωp,q /πi
+           1    1              0    3    11         3/22      8   15         7/18
+           1    2              0    4    11         3/22     11   15       -19/90
+           1    3         1/18      5    11        −5/22     13   15        -7/18
+           2    3        −1/18      6    11         5/22     14   15        -1/90
+           1    4           1/8     7    11        −3/22      1   16       -29/32
+           3    4         −1/8      8    11        −3/22      3   16       -27/32
+           1    5           1/5     9    11        −5/22      5   16        -5/32
+           2    5              0   10    11      −15/22       7   16        -3/32
+           3    5              0    1    12        55/72      9   16         3/32
+           4    5         −1/5      5    12        −1/72     11   16         5/32
+           1    6         5/18      7    12         1/72     13   16        27/32
+           5    6        −5/18     11    12      −55/72      15   16        29/32
+           1    7         5/14      1    13        11/13      1   17       -14/17
+           2    7         1/14      2    13         4/13      2   17         8/17
+           3    7        −1/14      3    13         1/13      3   17         5/17
+           4    7         1/14      4    13        −1/13      4   17              0
+           5    7        −1/14      5    13              0    5   17         1/17
+           6    7        −5/14      6    13        −4/13      6   17         5/17
+           1    8         7/16      7    13         4/13      7   17         1/17
+           3    8         1/16      8    13              0    8   17        -8/17
+           5    8        −1/16      9    13         1/13      9   17         8/17
+           7    8        −7/16     10    13        −1/13     10   17        -1/17
+           1    9        14/27     11    13        −4/13     11   17        -5/17
+           2    9         4/27     12    13      −11/13      12   17        -1/17
+           4    9        −4/27      1    14        13/14     13   17              0
+           5    9         4/27      3    14         3/14     14   17        -5/17
+           7    9        −4/27      5    14         3/14     15   17        -8/17
+           8    9      −14/27       9    14        −3/14     16   17        14/17
+           1   10           3/5    11    14        −3/14      1   18       -20/27
+           3   10              0   13    14      −13/14       5   18         2/27
+           7   10              0    1    15         1/90      7   18        -2/27
+           9   10         −3/5      2    15         7/18     11   18         2/27
+           1   11        15/22      4    15        19/90     13   18        -2/27
+           2   11         5/22      7    15        −7/18     17   18        20/27
+376                                                                                                Paper 36
+
+
+                                                  Table II: Aq .
+
+
+       A1 = 1.
+       A2 = cos nπ.
+       A3 = 2 cos( 23 nπ − 18
+                            1
+                              π).
+       A4 = 2 cos( 12 nπ − 18 π).
+       A5 = 2 cos( 25 nπ − 15 π) + 2 cos 54 nπ.
+                            5
+       A6 = 2 cos( 13 nπ − 18 π).
+       A7 = 2 cos( 27 nπ − 14
+                            5
+                              π) + 2 cos( 74 nπ − 14
+                                                   1
+                                                     π) + 2 cos( 76 nπ + 14
+                                                                         1
+                                                                            π).
+                            7
+       A8 = 2 cos( 14 nπ − 16 π) + 2 cos( 43 nπ − 16
+                                                   1
+                                                     π).
+       A9 = 2 cos( 29 nπ − 14             4       4             8      4
+                           27 π) + 2 cos( 9 nπ − 27 π) + 2 cos( 9 nπ + 27 π).
+      A10 = 2 cos( 15 nπ − 35 π) + 2 cos 53 nπ.
+                    2
+      A11 = 2 cos( 11 nπ − 15              4      5               6      3
+                           22 π) + 2 cos( 11 nπ − 22 π) + 2 cos( 11 nπ − 22 π)
+                                             8       3             10       5
+                                    +2 cos( 11 nπ − 22 π) + 2 cos( 11 nπ + 22 π).
+      A12 = 2 cos( 16 nπ − 55             5       1
+                           72 π) + 2 cos( 6 nπ + 72 π).
+                    2
+      A13 = 2 cos( 13 nπ − 11              4      4               6      1
+                           13 π) + 2 cos( 13 nπ − 13 π) + 2 cos( 13 nπ − 13 π)
+                                              8       1            10             12       4
+                                     +2 cos( 13 nπ + 13 π) + 2 cos 13 nπ + 2 cos( 13 nπ + 15 π).
+      A14 = 2 cos( 71 nπ − 13             3       3             5      3
+                           14 π) + 2 cos( 7 nπ − 14 π) + 2 cos( 7 nπ − 14 π).
+                    2      1               4      7               8      19
+      A15 = 2 cos( 15 nπ − 90 π) + 2 cos( 15 nπ − 18 π) + 2 cos( 15 nπ − 90 π) + 2 cos( 14      7
+                                                                                        15 nπ + 18 π).
+      A16 = 2 cos( 18 nπ + 29             3      27             5      5              7       3
+                           32 π) + 2 cos( 8 nπ + 32 π) + 2 cos( 8 nπ + 32 π) + 2 cos( 8 nπ + 32 π).
+                    2
+      A17 = 2 cos( 17 nπ + 14              4      8               6      5              8
+                           17 π) + 2 cos( 17 nπ − 17 π) + 2 cos( 17 nπ − 17 π) + 2 cos 17 nπ
+                      10       1             12       5             14       1             16       8
+              +2 cos( 17 nπ − 17 π) + 2 cos( 17 nπ − 17 π) + 2 cos( 17 nπ − 17 π) + 2 cos( 17 nπ + 17 π).
+      A18 = 2 cos( 91 nπ + 20             5       2             7      2
+                           27 π) + 2 cos( 9 nπ − 27 π) + 2 cos( 9 nπ + 27 π).
+
+      It may be observed that
+       A5 = 0 (n ≡ 1, 2 (mod 5)),                      A7 = 0 (n ≡ 1, 3, 4     (mod 7)),
+
+       A10 = 0 (n ≡ 1, 2     (mod 5)),                 A11 = 0 (n ≡ 1, 2, 3, 5, 7     (mod 11)),
+
+       A13 = 0 (n ≡ 2, 3, 5, 7, 9, 10    (mod 13)),    A14 = 0 (n ≡ 1, 3, 4       (mod 7)),
+
+       A16 = 0 (n ≡ 0 (mod 2)),                            A17 = 0 (n ≡ 1, 3, 4, 6, 7, 9, 13, 14 (mod 17));
+      while A1 , A2 , A3 , A4 , A6 , A8 , A9 , A12 , A15 and A18 never vanish.
+Asymptotic formulæ in combinatory analysis                                                                      377
+
+
+                            Table III: log10 p(n) = 10
+                                                        p
+                                                     9 { (n + 10) − an }.
+
+                                        n    an             n                an
+                                        1    3.317        10000           4.148
+                                        3    3.176        30000           4.364
+                                       10    3.011       100000           4.448
+                                       30    2.951       300000           4.267
+                                      100    3.036      1000000           3.554
+                                      300    3.237      3000000           2.072
+                                     1000    3.537     10000000          -1.188
+                                     3000    3.838     30000000          -6.796
+                                                              ∞            −∞
+
+                                              Table IV∗ : p(n).
+
+                        1       1     21      792     41     44583        61       1121505
+                        2       2     22     1002     42     53174        62       1300156
+                        3       3     23     1255     43     63261        63       1505499
+                        4       5     24     1575     44     75175        64       1741630
+                        5       7     25     1958     45     89134        65       2012558
+                        6      11     26     2436     46    105558        66       2323520
+                        7      15     27     3010     47    124754        67       2679689
+                        8      22     28     3718     48    147273        68       3087735
+                        9      30     29     4565     49    173525        69       3554345
+                       10      42     30     5604     50    204226        70       4087968
+                       11      56     31     6842     51    239943        71       4697205
+                       12      77     32     8349     52    281589        72       5392783
+                       13     101     33    10143     53    329931        73       6185689
+                       14     135     34    12310     54    386155        74       7089500
+                       15     176     35    14883     55    451276        75       8118264
+                       16     231     36    17977     56    526823        76       9289091
+                       17     297     37    21637     57    614154        77      10619863
+                       18     385     38    26015     58    715220        78      12132164
+                       19     490     39    31185     59    831820        79      13848650
+                       20     627     40    37338     60    966467        80      15796476
+
+                                                                                                 . . . contd.
+   ∗
+    The numbers in this table were calculated by Major MacMahon, by means of the recurrence formulæ
+obtained by equating the coefficients in the identity
+                                                                         ∞
+                                                                         X
+                            (1 − x − x2 + x5 + x7 − x12 − x15 + · · ·)        p(n)xn = 1.
+                                                                          0
+
+We have verified the table by direct calculation up to n = 158. Our calculation of p(200) from the asymptotic
+formula then seemed to render further verification unnecessary.
+378                                                                           Paper 36
+
+
+
+
+                                   Table IV (Contd.)
+
+       81    18004327   111     679903203   141    16670689208   171    301384802048
+       82    20506255   112     761002156   142    18440293320   172    330495499613
+       83    23338469   113     851376628   143    20390982757   173    362326859895
+       84    26543660   114     952050665   144    22540654445   174    397125074750
+       85    30167357   115    1064144451   145    24908858009   175    435157697830
+       86    34262962   116    1188908248   146    27517052599   176    476715857290
+       87    38887673   117    1327710076   147    30388671978   177    522115831195
+       88    44108109   118    1482074143   148    33549419497   178    571701605655
+       89    49995925   119    1653668665   149    37027355200   179    625846753120
+       90    56634173   120    1844349560   150    40853235313   180    684957390936
+       91    64112359   121    2056148051   151    45060624582   181    749474411781
+       92    72533807   122    2291320912   152    49686288421   182    819876908323
+       93    82010177   123    2552338241   153    54770336324   183    896684817527
+       94    92669720   124    2841940500   154    60356673280   184    980462880430
+       95   104651419   125    3163127352   155    66493182097   185   1071823774337
+       96   118114304   126    3519222692   156    73232243759   186   1171432692373
+       97   133230930   127    3913864295   157    80630964769   187   1280011042268
+       98   150198136   128    4351078600   158    88751778802   188   1398341745571
+       99   169229875   129    4835271870   159    97662728555   189   1527273599625
+      100   190569292   130    5371315400   160   107438159466   190   1667727404093
+      101   214481126   131    5964539504   161   118159068427   191   1820701100652
+      102   241265379   132    6620830889   162   129913904637   192   1987276856363
+      103   271248950   133    7346629512   163   142798995930   193   2168627105469
+      104   304801365   134    8149040695   164   156919475295   194   2366022741845
+      105   342325709   135    9035836076   165   172389800255   195   2580840212973
+      106   384276336   136   10015581680   166   189334822579   196   2814570987591
+      107   431149389   137   11097645016   167   207890420102   197   3068829878530
+      108   483502844   138   12292341831   168   228204732751   198   3345365983698
+      109   541946240   139   13610949895   169   250438925115   199   3646072432125
+      110   607163746   140   15065878135   170   274768617130   200   3972999029388
+Asymptotic formulæ in combinatory analysis                                         379
+
+
+                                            Table V ∗ : q(n).
+
+                           n     cn     n     cn        n      cn     n       cn
+                           1      1    26    165       51    4097    76    53250
+                           2      1    27    192       52    4582    77    58499
+                           3      2    28    222       53    5120    78    64234
+                           4      2    29    256       54    5718    79    70488
+                           5      3    30    296       55    6378    80    77312
+                           6      4    31    340       56    7108    81    84756
+                           7      5    32    390       57    7917    82    92864
+                           8      6    33    448       58    8808    83   101698
+                           9      8    34    512       59    9792    84   111322
+                          10     10    35    585       60   10880    85   121792
+                          11     12    36    668       61   12076    86   133184
+                          12     15    37    760       62   13394    87   145578
+                          13     18    38    864       63   14848    88   159046
+                          14     22    39    982       64   16444    89   173682
+                          15     27    40   1113       65   18200    90   189586
+                          16     32    41   1260       66   20132    91   206848
+                          17     38    42   1426       67   22250    92   225585
+                          18     46    43   1610       68   24576    93   245920
+                          19     54    44   1816       69   27130    94   267968
+                          20     64    45   2048       70   29927    95   291874
+                          21     76    46   2304       71   32992    96   317788
+                          22     89    47   2590       72   36352    97   345856
+                          23    104    48   2910       73   40026    98   376256
+                          24    122    49   3264       74   44046    99   409174
+                          25    142    50   3658       75   48446   100   444793
+
+
+
+
+  ∗
+      We are indebted to Mr. Darling for this table.
+

@@ -1,0 +1,503 @@
+                                 Some definite integrals
+
+                     Messenger of Mathematics, XLIV, 1915, 10 – 18
+
+
+1. Consider the integral
+                    Z∞
+                                               cos 2mx dx
+                                                                                     ,
+                         {1 + x2 /a2 }{1 + x2 /(a + 1)2 }{1 + x2 /(a + 1)2 } · · ·
+                    0
+
+where m and a are positive.
+It can be easily proved that
+      (     2 ) (            2 ) (        2 ) (             2 )
+              t              t              t                  t
+        1−            1−              1−           ··· 1 −
+              a             a+1            a+2               a+n−1
+
+                                                        Γ(a + n − t)Γ(a + n + t){Γ(a)}2
+                                                    =                                   ,
+                                                          Γ(a − t)Γ(a + t){Γ(a + n)}2
+
+where n is any positive integer. Hence, by splitting
+                                                   1
+                    {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · · {1 + x2 /(a + n − 1)2 }
+
+into partial fractions, we see that it is equal to
+
+                   2Γ(2a){Γ(a + n)}2
+                                         
+                                              a      2a n − 1      a+1
+                                                   −
+                 {Γ(a)}2 Γ(n)Γ(2a + n) a2 + x2       1! n + 2a (a + 1)2 + x2
+                                                                           
+                        2a(2a + 1)    (n − 1)(n − 2)        a+2
+                     +                                                − ··· .
+                            2!     (n + 2a)(n + 2a + 1) (a + 2)2 + x2
+
+Multiplying both sides by cos 2mx and integrating from 0 to ∞ with respect to x, we have
+           Z∞
+                                         cos 2mx dx
+                {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · · {1 + x2 /(a + n − 1)2 }
+           0
+
+                    πΓ(2a){Γ(a + n)}2
+                                                                              
+                                                        2a n − 1 −2(a+1)m
+                 =                              e−2am
+                                                      −           e       + ··· .
+                   {Γ(a)}2 Γ(n)Γ(2a + n)                1! n + 2a
+
+The limit of the right-hand side, as n → ∞, is
+                                                                                    
+                            πΓ(2a)      −2am   2a −2(a+1)m 2a(2a + 1) −2(a+2)m
+                                       e     − e          +          e         − ···
+                            {Γ(a)}2            1!              2!
+Some definite integrals                                                                                          67
+
+
+                                                         √ Γ(a + 12 )
+                                                     = 21 π           sech2a m.
+                                                             Γ(a)
+
+Hence
+              Z∞
+                               cos 2mx dx                   1
+                                                              √ Γ(a + 12 ) 2a
+                                                          = 2 π Γ(a) sech m.                               (1)
+                   {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · ·
+              0
+
+Since
+                     (         2 ) (         2 )
+                                                              {Γ(a)}2
+            x 2                    
+                            x              x
+         1+           1+             1+            ··· =                    ,
+              a            a+1            a+2            Γ(a + ix)Γ(a − ix)
+
+the formula (1) is equivalent to
+                   Z∞
+                                                          √
+                              |Γ(a + ix)|2 cos 2mx dx = 12 πΓ(a)Γ(a + 12 )sech2a m.                        (2)
+                      0
+
+
+
+2. In a similar manner we can prove that
+          Z∞ 
+                 1 + x2 /b2              1 + x2 /(b + 1)2        1 + x2 /(b + 2)2
+                                                                                
+                                                                                        · · · cos mx dx
+                 1 + x2 /a2              1 + x2 /(a + 1)2        1 + x2 /(a + 2)2
+          0
+
+                                       πΓ(2a){Γ(b)}2
+                                                           
+                                                                     2a b − a − 1 −(a+2)m
+                               =                             e−am −              e
+                                   {Γ(a)}2 Γ(b + a)Γ(b − a)          1! b + a
+                                                                                        
+                                        2a(2a + 1) (b − a − 1)(b − a − 2) −(a+2)m
+                                      +                                  e         − ··· ,
+                                            2!       (b + a)(b + a + 1)
+
+where m is positive and 0 < a < b. When 0 < a < b − 12 , the integral and the series remain
+convergent for m = 0, and we obtain the formulæ
+                  Z∞ 
+                              1 + x2 /b2        1 + x2 /(b + 1)2        1 + x2 /(b + 2)2
+                                                                                        
+                                                                                                · · · dx
+                              1 + x2 /a2        1 + x2 /(a + 1)2        1 + x2 /(a + 2)2
+                  0
+
+                                                                √ Γ(a + 21 )Γ(b)Γ(b − a − 12 )
+                                                            = 12 π                             ,           (3)
+                                                                    Γ(a)Γ(b − 21 )Γ(b − a)
+
+
+                          Z∞
+                                Γ(a + ix) 2        √ Γ(a)Γ(a + 21 )Γ(b − a − 12 )
+                                            dx = 12 π                             .                        (4)
+                                Γ(b + ix)              Γ(b − 12 )Γ(b)Γ(b − a)
+                          0
+68                                                                                                 Paper 11
+
+
+     If a1 , a2 , a3 , . . . , an be n positive numbers in arithmetical progression, then
+                                Z∞
+                                                               dx
+                                     (a21 + x2 )(a22 + x2 )(a23 + x2 ) · · · (a2n + x2 )
+                                 0
+
+     is a particular case of the above integral, and its value can be written down at once. Thus,
+     for example, by putting a = 11             61
+                                    10 and b = 10 , we obtain
+
+                       Z∞
+                                                             dx
+                            (x2 + 112 )(x2 + 212 )(x2 + 312 )(x2 + 412 )(x2 + 512 )
+                        0
+                                                                  5π
+                                     =                                                        .
+                                         12 · 13 · 16 · 17 · 18 · 22 · 23 · 24 · 31 · 32 · 41
+
+     3. It follows at once from equation (1), by applying Fourier’s theorem
+                                     Z∞              Z∞
+                                          cos nydy        φ(x) cos xy dx = 12 πφ(n),
+                                     0               0
+
+     that, when a and n are positive,
+               Z∞
+                    sech2a x cos 2nx dx
+               0
+                         √      Γ(a)                             1
+                     = 12 π          1 {1 + n2 /a2 }{1 + n2 /(a + 1)2 }{1 + n2 /(a + 2)2 } · · ·
+                              Γ(a + 2 )
+                         √ |Γ(a + in)|2
+                     = 12 π                .                                                            (5)
+                            Γ(a)Γ(a + 21 )
+
+     Hence the function
+                                               Z∞
+                                     φ(a) =         secha x cos nx dx (0 < a < 2)
+                                                0
+     satisfies the functional equation
+                                                                   π sin πa
+                                 φ(a)φ(2 − a) =                                      .
+                                                          2(1 − a)(cosh πn − cos πa)
+
+     4. Let
+                                               Zb
+                                                    f (x)F (nx) dx = Ψ(n),
+                                               a
+Some definite integrals                                                                                   69
+
+
+and
+                                         Zβ
+                                              φ(x)F (nx) dx = χ(n).
+                                         α
+Then, if we suppose the functions f, φ, and F to be such that the order of integration is
+indifferent, we have
+
+                                Zb                         Zβ           Zb
+                                     f (x)χ(nx) dx =               dy        f (x)φ(y)F (nxy) dx
+                                a                          α            a
+
+                                                           Zβ
+                                                       =           φ(y)Ψ(ny)dy.                     (6)
+                                                           α
+
+A number of curious relations between definite integrals may be deduced from this result.
+We have, for example, the formulæ
+                                     Z∞
+                                          cos 2nx          1
+                                                  dx =          ,                                   (7)
+                                          cosh πx      2 cosh n
+                                     0
+
+
+                           Z∞                           √
+                                  cos 2nx dx               3
+                                           2    =                  ,                                (8)
+                                1 + 2 cosh 3 πx   2(1 + 2 cosh 2n)
+                            0
+
+
+                                Z∞
+                                        2               √    2
+                                     e−x cos 2nx dx = 21 πe−n .                                     (9)
+                                0
+
+By applying the general result (6) to the integrals (7) and (8), we obtain
+                     ∞                                         Z∞
+                √ Z                dx                                         dx
+                 3                               =                                            ;
+                         cosh πx(1 + 2 cosh 2nx)                    cosh nx(1 + 2 cosh 32 πx)
+                    0                                          0
+
+or, in other words, if αβ = 34 π 2 , then
+                                     Z∞
+                                √                   dx
+                                 α
+                                          cosh αx(1 + 2 cosh πx)
+                                     0
+                                         ∞
+                                      p Z                     dx
+                                     = β                                   .                       (10)
+                                                    cosh βx(1 + 2 cosh πx)
+                                                0
+70                                                                                                         Paper 11
+
+
+     In the same way, from (8) and (9), we obtain
+                                      Z∞                  2                     Z∞            2
+                              √                  e−x dx      p                          e−x dx
+                                  α                         = β                                    ,           (11)
+                                              1 + 2 cosh αx                          1 + 2 cosh βx
+                                      0                                         0
+
+     with the condition αβ = 34 π; and, from (7) and (9),
+                                          Z∞                  2                 Z∞        2
+                                  √                    e−x        p                   e−x
+                                      α                       dx = β                         dx,               (12)
+                                                      cosh αx                        cosh βx
+                                              0                                 0
+
+     with the conditions αβ = π. ∗
+     Similarly, by taking the two integrals
+                                      Z∞                                                          
+                                                    sin nx                        1        1
+                                                   2πx
+                                                           dx = 12              n
+                                                                                    + 12 −             ,
+                                                  e     −1                     e −1        n
+                                      0
+
+     and
+                                                  Z∞
+                                                              2                     1√     1 2
+                                                       xe−x sin nx dx =               πne− 4 n ,
+                                                                                    4
+                                                  0
+
+     we can prove that, if αβ = π 2 , then
+                                                             
+                                              Z∞
+                                1                 e−αx       
+                               √       1 + 2α       √      dx
+                               4
+                                 α              e2π x − 1    
+                                                                    0
+                                                                                   
+                                                                    Z∞
+                                                         1               e−βx      
+                                                      = √    1 + 2β        √     dx   ;                        (13)
+                                                        4
+                                                          β           e2π x − 1    
+                                                                           0
+
+     and so on.
+
+     5. Suppose now that a, b and n are positive, and
+                                              Z∞
+                                                                   cos
+                                                      φ(a, x)          nx dx = Ψ(a, n).                        (14)
+                                                                   sin
+                                              0
+
+     Then, if the conditions of Fourier’s double integral theorem are satisfied, we have
+                                          Z∞
+                                                                  cos
+                                                  Ψ(b, x)             nx dx = 12 πφ(b, n).                     (15)
+                                                                  sin
+                                          0
+       ∗
+           Formulæ equivalent to (11) and (12) were given by Hardy, Quarterly Journal, XXXV, p.193
+ Some definite integrals                                                                                        71
+
+
+Applying the formula (6) to (14) and (15), we obtain
+                               Z∞                              Z∞
+                          1
+                          2π        φ(a, x)φ(b, nx) dx =              Ψ(b, x)Ψ(a, nx) dx.                (16)
+                               0                                  0
+
+Thus, when a = b, we have the formula
+                                         Z∞                           Z∞
+                                    1
+                                    2π        φ(x)φ(nx) dx =               Ψ(x)Ψ(nx) dx,
+                                         0                            0
+
+where
+                                                        Z∞
+                                                                      cos
+                                               ψ(t) =        φ(x)         tx dx;
+                                                                      sin
+                                                        0
+and, in particular, if n = 1, then
+                                              Z∞           Z∞
+                                         1
+                                         2π
+                                                      2
+                                                {φ(x)} dx = {Ψ(x)}2 dx.
+                                              0                       0
+
+if
+                                                              1
+                          φ(a, x) =                                                       (a > 0),
+                                         {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · ·
+then, by (1),
+                                                     √ Γ(a + 12 )
+                                         Ψ(a, x) = 21 π           sech2a 12 x.
+                                                         Γ(a)
+Hence, by (16),
+                     Z∞                                                        Z∞
+                                             Γ(a + 12 )Γ(b + 21 )
+                          φ(a, x)φ(b.x) dx =                                        sech2a+2b 21 x dx;
+                                                2Γ(a)Γ(b)
+                     0                                                         0
+
+and so
+              Z∞
+                                                                  dx
+                   {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · · {1 + x2 /b2 }{1 + x2 /(b + 1)2 } · · ·
+              0
+
+                                                                   √ Γ(a + 12 )Γ(b + 21 )Γ(a + b)
+                                                               = 12 π                             ,      (17)
+                                                                       Γ(a)Γ(b)Γ(a + b + 12 )
+a and b being positive: or
+         Z∞
+                                           √ Γ(a)Γ(a + 21 )Γ(b)Γ(b + 12 )Γ(a + b)
+              |Γ(a + ix)Γ(b + ix)|2 dx = 12 π                                     .                      (18)
+                                                       Γ(a + b + 12 )
+         0
+72                                                                                             Paper 11
+
+
+     As particular cases of the above result, we have, when b = 1,
+                         Z∞
+                                 x                  dx                         a
+                                            2  2       2        2
+                                                                         =           ;
+                              sin hπx {1 + x /a }{1 + x /(a + 1) } · · ·   2(1 + 2a)
+                         0
+
+     when b = 2,
+                   Z∞
+                           x3                   dx                              a2
+                                                                       =                   ;
+                        sin hπx {1 + x2 /a2 }{1 + x2 /(a + 1)2 } · · ·   2(1 + 2a)(3 + 2a)
+                   0
+
+     and so on. Since Π{1+ x2 /(a+ n)2 } can be expressed in finite terms by means of hyperbolic
+     functions when 2a is an integer, we can deduce a large number of special formulæ from the
+     preceding results.
+
+     6. Another curious formula is the following. If 0 < r < 1, n > 0, and 0 < a < r n−1 , then
+                                     Z∞
+                                             (1 + arx)(1 + ar 2 x) · · ·
+                                                                           xn−1 dx
+                                          (1 + x)(1 + rx)(1 + r 2 x) · · ·
+                                     0
+                                                        m=∞
+                                                         Y (1 − r m−n )(1 − ar m )
+                                                    π
+                                             =                                      ,              (19)
+                                                 sin nπ     (1 − r m )(1 − ar m−n )
+                                                         m=1
+
+     unless n is an integer or a is of the form r p , where p is a positive integer.
+     If a = r p , the formula reduces to
+                               Z∞
+                                              xn−1 dx
+                                    (1 + x)(1 + rx) · · · (1 + r p x)
+                               0
+
+                                             π (1 − r 1−n )(1 − r 2−n ) · · · (1 − r p−n )
+                                     =                                                     .       (20)
+                                          sin nπ   (1 − r)(1 − r 2 ) · · · (1 − r p )
+     If n is an integer, the value of the integral is in any case
+
+                                             log r (1 − r)(1 − r 2 ) · · · (1 − r n−1 )
+                                         −                                              .
+                                             1 − a (r − a)(r 2 − a) · · · (r n−1 − a)
+     My own proofs of the above results make use of a general formula, the truth of which de-
+     pends on conditions which I have not yet investigated completely. A direct proof depending
+     on Cauchy’s theorem will be found in Mr Hardy’s note which follows this paper. The final
+     formula used in Mr Hardy’s proof can be proved as follows. Let
+                                m=∞
+                                 Y  1 − btxm 
+                        f (t) =                    = A0 + A1 t + A2 t2 + · · · .
+                                      1 − atxm
+                                         m=0
+Some definite integrals                                                                               73
+
+
+Then it is evident that
+                                          (1 − at)f (t) = (1 − bt)f (tx).
+That is
+           (1 − at)(A0 + A1 t + A2 t2 + · · ·) = (1 − bt)(A0 + A1 tx + A2 t2 x2 + · · ·).
+Equating the coefficients of tn , we obtain
+                                                          1 − bxn−1
+                                             An = An−1              ;
+                                                            1 − xn
+and A0 is evidently 1. Hence we have
+                                            a−b      (a − b)(a − bx)
+                          f (t) = 1 + t         + t2                  + ···.                   (21)
+                                            1−x      (1 − x)(1 − x2 )
+
+7. As a particular case of (19), we have, when a = 0,
+            Z∞
+                           xn−1 dx                     π 1 − r 1−n 1 − r 2−n
+                                                  =                          ···.              (22)
+                 (1 + x)(1 + rx)(1 + r 2 x) · · ·   sin nπ 1 − r    1 − r2
+             0
+
+When n is an integer, the value of the integral reduces to
+                                  1
+                            −r − 2 n(n−1) (1 − r)(1 − r 2 ) · · · (1 − r n−1 ) log r.
+When we put n = 12 in (19), we have
+                          Z∞
+                                   1 1 + ar 2 x2 1 + ar 4 x2
+                                                             · · · dx
+                                1 + x2 1 + r 2 x2 1 + r 4 x2
+                            0
+
+                                          1 − ar 2 1 − ar 4        1 − r 1 − r3
+                                 = 12 π                     · · ·                 ···.         (23)
+                                           1 − r2 1 − r4          1 − ar 1 − ar 3
+If, in particular, n = 12 in (22), or a = 0 in (23), then
+             Z∞
+                                      dx
+                  (1 + x2 )(1 + r 2 x2 )(1 + r 4 x2 ) · · ·
+             0
+
+                            1 − r 1 − r3 1 − r5                       π
+                   = 12 π                        ··· =                                     ,   (24)
+                            1 − r2 1 − r4 1 − r6       2(1 + r + r 3 + r 6 + r 10 + · · ·)
+                                                      1
+the nth term in the denominator being r 2 n(n−1) . Thus, for example, when r = e−5π , we
+have
+                  Z∞
+                                      dx
+                           2
+                     (1 + x )(1 + e−10π x2 )(1 + e−20x2 ) · · ·
+                      0
+74                                                                                                Paper 11
+
+                                                      π
+                                  =
+                                    2(1 + e−5π + e−15π + e−30π + · · ·)
+                                      3      √ √         √           √ 1
+                                  = π 4 Γ 43   5 2 12 (1 + 5){ 21 (1 + 5)} 2 e−5π/8 .
+                                                8         4
+
+
+
+
+     Similarly
+                           Z∞
+                                                      dx
+                                (1 + x2 )(1 + e−20π x2 )(1 + e−40π x2 ) · · ·
+                           0
+                                      3        √ √         √             √
+                                           3
+                                                 5 2 12 (1 + 5)2 { 12 (1 + 5)} 52 e−5π/4 ;
+                                                  4         4
+                                 = π4Γ     4
+
+     and
+                 Z∞
+                                           dx                                10 1110 111110
+                                                                    = 12 π                  ···
+                      (1 + x2 )(1 + .001x2 )(1 + .00001x2 ) · · ·            11 1111 111111
+                 0
+                                                                        π
+                                                     =                                       .
+                                                         2.202 002 000 200 002 000 002 . . .
+

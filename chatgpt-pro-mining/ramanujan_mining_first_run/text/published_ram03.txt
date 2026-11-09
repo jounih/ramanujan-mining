@@ -1,0 +1,89 @@
+                 Note on a set of simultaneous equations∗
+             Journal of the Indian Mathematical Society, IV, 1912, 94 – 96
+
+1. Consider the equations
+                                       x1 + x2 + x3 + · · · +xn = a1 ,
+                               x1 y1 + x2 y2 + x3 y3 + · · · +xn yn = a2 ,
+                               x1 y12 + x2 y22 + x3 y32 + · · · +xn yn2 = a3 ,
+                               x1 y13 + x2 y23 + x3 y33 + · · · +xn yn3 = a4 ,
+                               ...    ...   ...    ...      ...      ...      ...
+                    x1 y12n−1 + x2 y22n−1 + x3 y32n−1 +     ···   +xn yn2n−1 = a2n ,
+where x1 , x2 , x3 , . . . , xn and y1 , y2 , y3 , . . . , yn are 2n unknown quantities.
+Now, let us take the expression
+                                   x1             x2             x3             xn
+                      φ(θ) ≡              +                 +         + ··· +                    (1)
+                                 1 − θy1 1 − θy2 1 − θy3                      1 − θyn
+and expand it in ascending powers of θ. Then we see that the expression is equal to
+                          a1 + a2 θ + a3 θ 2 + · · · + a2n θ 2n−1 + · · · .                      (2)
+But (1), when simplified, will have for its numerator an expression of the (n − 1)th degree
+in θ, and for its denominator an expression of the nth degree in θ.
+Thus we may suppose that
+                                   A1 + A2 θ + A3 θ 2 + · · · + An θ n−1
+                        φ(θ) =                                                                   (3)
+                                 1 + B1 θ + B2 θ 2 + B3 θ 3 + · · · + Bn θ n
+                               = a1 + a2 θ + a3 θ 2 + · · · a2n θ 2n−1 + · · · ;
+and so             (1 + B1 θ + · · ·)(a1 + a2 θ + · · ·) = A1 + A2 θ + · · ·.
+Equating the coefficients of like powers of θ, we have
+                       A1 = a1 ,
+                       A2 = a2 + a1 B1 ,
+                       A3 = a3 + a2 B1 + a1 B2 ,
+                       An = an + an−1 B1 + an−2 B2 + · · · + a1 Bn−1 ,
+                         0 = an+1 + an B1 + · · · + a1 Bn ,
+                         0 = an+2 + an+1 B1 + · · · + a2 Bn ,
+                         0 = an+3 + an+2 B1 + · · · + a3 Bn ,
+                         ..            ..
+                          .             .
+                         0 = a2n + a2n−1 B1 + · · · + an Bn .
+  ∗
+   For a solution, by determinants, of a similar set of equations, see Burnside and Panton, Theory of
+Equations, Vol, II, p.106, Ex.3. [Editor, J.Indian Math. Soc.]
+20                                                                                            Paper 3
+
+
+     From these B1 , B2 , . . . Bn can easily be found, and since A1 , A2 , . . . , An depend upon these
+     values they can also be found.
+     Now, splitting (3) into partial fractions in the form
+                                  p1         p2         p3              pn
+                                        +          +         + ··· +              ,
+                                1 − q1 θ 1 − q2 θ 1 − q3 θ            1 − qn θ
+     and comparing with (1), we see that
+                                           x1 = p 1 , y 1 = q 1 ;
+                                           x2 = p 2 , y 2 = q 2 ;
+                                           x3 = p 3 , y 3 = q 3 ;
+                                                   ...    ...
+     2. As an example we may solve the equations:
+                                            x + y + z + u + v = 2,
+                                      px + qy + rz + su + tv = 3,
+                                p x + q 2 y + r 2 z + s2 u + t2 v = 16,
+                                 2
+
+                                p3 x + q 3 y + r 3 z + s3 u + t3 v = 31,
+                                p4 x + q 4 y + r 4 z + s4 u + t4 v = 103,
+                                p5 x + q 5 y + r 5 z + s5 u + t5 v = 235,
+                                p6 x + q 6 y + r 6 z + s6 u + t6 v = 674,
+                                p7 x + q 7 y + r 7 z + s7 u + t7 v = 1669,
+                                p8 x + q 8 y + r 8 z + s8 u + t8 v = 4526,
+                                p9 x + q 9 y + r 9 z + s9 u + t9 v = 11595,
+     where x, y, z, u, v, p, q, r, s, t are the unknowns. Proceeding as before, we have
+                                     x          y      z        u        v
+                                          +        +       +         +
+                                 1 − θp 1 − θq 1 − θr 1 − θs 1 − θt
+        = 2 + 3θ + 16θ 2 + 31θ 3 + 103θ 4 + 235θ 5 + 674θ 6 + 1669θ 7 + 4526θ 8 + 11595θ 9 + · · ·
+     By the method of indeterminate coefficients, this can be shewn to be equal to
+                                         2 + θ + 3θ 2 + 2θ 3 + θ 4
+                                                                       .
+                                       1 − θ − 5θ 2 + θ 3 + 3θ 4 − θ 5
+     Splitting this into partial fractions, we get the values of the unknowns, as follows :
+                                  x=     − 35 √,             p=     −1√
+                                         18+ 5                      3+ 5
+                                  y=       10√ ,             q=       2√
+                                         18− 5                      3− 5
+                                  z=       10 √ ,            r=     √2
+                                           8+√ 5                     5−1
+                                  u=     − 2 5 ,             s=       2 ,
+                                            √                         √
+                                         8−√ 5
+                                  v=      2 5
+                                               ,             t=     − 5+1
+                                                                        2 .
+

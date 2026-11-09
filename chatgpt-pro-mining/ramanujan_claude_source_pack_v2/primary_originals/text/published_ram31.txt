@@ -1,0 +1,157 @@
+ Une formule asymptotique pour le nombre des partitions de n
+
+                                   Comptes Rendus, 2 Jan. 1917
+
+
+1. Les divers Problèmes de la théorie de la partition des nombres ont été étudiés surtout
+par les mathématiciens anglais, Cayley, Sylvester et Macmahon∗ , qui les ont abordés d’un
+point de vue purement algébrique. Ces auteurs n’y ont fait aucune application des méthodes
+de la théorie des fonctions, de sorte qu’on ne trouve pas, dans la théorie en question, de
+formules asymptotiques, telles qu’on en rencontre, par exemple, dans la théorie des nombres
+premiers. Il nous semble donc que les résultats que nous allons faire connaı̂tre peuvent
+présenter quelque nouveauté.
+
+2. Nous nous sommes occupés surtout de la fonction p(n), nombre des partitions de n. On
+a
+                                                                           ∞
+                                         1                   X
+                   f (x) =                2       3
+                                                           =   p(n)xn           (|x| < 1).
+                             (1 − x)(1 − x )(1 − x ) · · ·
+                                                                           0
+
+Nous avons pensé d’abord à faire usage de quelque théorème de caractère Taubérien: on
+désigne ainsi les théorèmes réciproques du théorème classique d’Abel et de ses générali-
+sations. A cette catégorie appartient l’énoncé suivant:
+                an xn une série de puissances à coefficients POSITIFS, telle qu’on ait
+             P
+Soit g(x) =
+
+                                                                A
+                                            log g(x) ∼             ,
+                                                               1−x
+quand x tend vers un par valeurs positives. Alors on a
+                                                                   p
+                             log sn = log (a0 + a1 + · · · an ) ∼ 2 (An),
+
+quand n tend vers l’infini† .
+En posant g(x) = (1 − x)f (x), on a
+                                                            π2
+                                                  A=           ;
+                                                            6
+et nous en tirons
+                                                      q
+                                        p(n) = e
+                                                  π       ( 23 n)(1+ǫ) ,                                   (1)
+
+où ǫ tend vers zéro avec 1/n.
+    ∗
+    Voir le grand traité Combinatory Analysis de M. P. A. Macmahon (Cambridge, 1915-16).
+    †
+    Nous avons donné des généralisations étendues de ce théorẽme dans un mémoire qui doit paraı̂tre dans
+un autre recueil. [The paper referred to is No. 34 of this volume; see, in particular, pp. 314 – 322.]
+300                                                                                       Paper 31
+
+
+      3. Pour pousser l’approximation plus loin, il faut recourir au théorème de Cauchy. Des
+      formules
+                                                     1          f (x)
+                                                            Z
+                                             p(n) =                   dx,
+                                                    2πi         xn+1
+      avec un chemin d’intégration convenable intérieur au cercle re rayon un, et
+                          1
+                             s
+                                                   π2                       4π 2
+                                                                              
+                       x 24          1
+              f (x) = p          log     exp                f exp −                             (2)
+                        (2π)         x         6log (1/x)                log (1/x)
+
+      (fournie par la théorie de la transformation linéaire des fonctions elliptiques), nous avons
+      tiré, en premier lieu, la formule vraiment asymptotique
+
+                                                   1
+                                                                   q
+                                   p(n) ∼ P (n) = √ e ( 3 ) .
+                                                        2
+                                                      π   n
+                                                                                                (3)
+                                                 4n 3
+      On a
+                  p(10) = 42, p(20) = 627, p(50) = 204226, p(80) = 15796476;
+                  P (10) = 48, P (20) = 692, P (50) = 217590, P (80) = 16606781.
+      Les valeurs correspondantes de P (n) : p(n) sont
+
+                                         1.145; 1.104; 1.065; 1.051 :
+
+      la valeur approximative est toujours en excès.
+
+      4. Mais nous avòns abouti plus tard à des résultats beaucoup plus satisfaisants. Nous
+      considérons la fonction
+                                               q                      
+                                  ∞                 2        1
+                               1 X   d  cosh[π   { 3 (n −  24 )}] − 1 
+                       F (x) = √                q                        xn .                   (4)
+                              π 2 1 dn                   1
+                                                   (n − 24 )           
+
+      En faisant usage des formules sommatoires que démontre M. E. Lindelöf dans son beau
+      livre Le calcul des résidus, on trouve aisément que F (x) (on parle, il va sans dire, de la
+      branche principale) a pour seul point singulier le point x = 1, et que la fonction
+                                       1
+                                           s
+                                                                  π2
+                                                                         
+                                     x 24          1
+                          F (x) − p           log       exp                −1
+                                      (2π)         x          6log (1/x)
+
+      est régulière pour x = 1. On est conduit naturellement à appliquer le théorème de Cauchy
+      à la fonction f (x) − F (x), et l’on trouve
+                                         q
+                                     π       { 2 (n− 1 )}
+                                                  √                 √
+                           1 d e    3   24
+                   p(n) = √      q          + O(ek n ) = Q(n) + O(ek n ),                       (5)
+                         2π 2 dn   (n − 1 )        24
+Une formule asymptotique pour le nombre des partitions de n                                                 301
+
+                                                    √
+où k désigne un nombre quelconque supérieur à π/ 6. L’apporoximation, pour des valeurs
+assez grandes de n, est très bonne: on trouve, en effet,
+
+                 p(61) = 1121505, p(62) = 1300156, p(63) = 1505499;
+                 Q(61) = 1121539, Q(62) = 1300121, Q(63) = 1505536.
+
+La valeur approximative est, pour les valeurs suffsamment grandes de n, alternativement
+en excès et en défaut.
+
+5. On peut pousser ces calculs beaucoup plus loin. On forme des foncttions, analogues à
+F (x), qui présentent, pour les valeurs
+                                           2        2             2
+                            x = −1, e 3 πi , e− 3 πi , i, −i, e 5 πi , . . . ,
+
+des singularités d’un type très analogue à celles que présente f (x). On soustrait alors
+de f (x) une somme d’un nombre fini convenable de ces fonctions. On trouve ainsi, par
+exemple,
+                                         q                                         q
+                                     π             1
+                                          { 23 (n− 24 )}                     1
+                                                                               π       { 2 (n− 1 )}
+                          1 d e                            (−1)n  d e     3  224
+              p(n) =      √     q          +                          q
+                        2π 2 dn   (n − 1 )                    2π dn     (n − 1 )
+                                                  24                                        24
+                         √
+                                                                 q
+                                              1
+                                                         1
+                                                π { 23 (n− 24 )}       √
+                          3      2nπ   π   d e3
+                    +    √ cos       −         q                 + O(ek n ),                          (6)
+                        π 2       3    18 dn     (n − 1 )                   24
+                                                                   q
+où k désigne un nombre quelconque plus grand que 14 π                2
+                                                                       3.
+

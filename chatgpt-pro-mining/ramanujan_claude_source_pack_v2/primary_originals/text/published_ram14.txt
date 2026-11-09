@@ -1,0 +1,535 @@
+      New expressions for Riemann’s functions ξ(s) and Ξ(t)
+
+                 Quarterly Journal of Mathematics, XLVI, 1915, 253 – 260
+
+
+1. The principal object of this paper is to prove that if the real parts of α and β are
+positive, and αβ = π 2 , and t is real, then
+                                                                                
+                        Z∞                  2     2      4
+                                                                      
+       1
+            1                  1       α x       α     x                 x dx 
+   α− 4           + 4α               −          +             − · · ·
+          1 + t2            32 + t2 1! 72 + t2   2! 112 + t2           e2πx − 1 
+                             0
+                                                                                                                      
+                                       Z∞ 
+                                                                        x2          β2   x4
+                                                                                                          
+                     1
+                         1                       1     β                                                       x dx 
+             − β− 4            + 4β                   −           +             − ···
+                       1 + t2                 32 + t2 1! 72 + t2   2! 112 + t2                               e2πx − 1 
+                                       0
+              − 34                                         
+             π            −1 + it     −1 − it    t        t     β
+         =       Γ                 Γ           Ξ    sin     log     .                                                      (1)
+              4t            4           4        2        8     α
+
+Consider the integral
+                                                          Z∞                2
+                                                               xe−πux
+                                           J(u) =                       dx,
+                                                               e2πx − 1
+                                                          0
+
+where the real part of u is positive. Since
+
+                                 Z∞
+                                      sin πnx        1     1  1
+                                       πx
+                                              dx = 2πn    + −    ,
+                                      e −1        e    − 1 2 2πn
+                                 0
+
+we have
+                                           Z∞                                                
+                 1    1                             −πux2               1   1  1
+         J(u) +    − √                =         xe                  2πx
+                                                                           + −                    dx
+                4πu 4π u                                           e    − 1 2 2πx
+                                           0
+                                           Z∞ Z∞                                                  Z∞          2
+                                                           2 sin πxy            3                      xe−πx /u
+                                      =              xe−πux πy       dx dy = u− 2                               dx;        (2)
+                                                             e −1                                      e2πx − 1
+                                           0    0                                                 0
+
+and so
+                                                Z∞                                       
+                             1     3
+                                                       −πx2 /u                  1 1
+                     J(u) − √ = u− 2                 xe                  2πx
+                                                                                −                 dx.                      (3)
+                           4π u                                         e    − 1 2πx
+                                                0
+92                                                                                                                                                                         Paper 14
+
+
+     Suppose now that s = σ + it, where 0 < σ < 1. Then, from (3), we have
+                  Z1          (                )
+                      1
+                        (s−1)              1
+                     u2        J(nu) − p           du
+                                       4π (nu)
+                        0
+
+                                                   Z1                                   Z∞                                                           
+                                            − 23                1
+                                                                  (s−4)                                       2                    1             1
+                                    =n                   u      2                 du           xe−πx /nu                                   −               dx.                  (4)
+                                                                                                                           e2πx − 1             2πx
+                                                     0                                  0
+
+     Changing u into 1/v, we obtain
+                        Z∞                       Z∞                                                                       
+                 − 23              − 12 s                                2                       1                  1
+             n                v             dv           xe−πvx /n                                            −                    dx
+                                                                                        e2πx − 1                   2πx
+                        1                          0
+                                                                   ∞
+                                                                                                         Z∞                                                  
+                                                                 3
+                                                                   Z
+                                                                                      − 21 s                      −πvx2 /n                  1    1
+                                                   =n       −2
+                                                                                  v              dv           xe                        2πx
+                                                                                                                                               −                   dx
+                                                                                                                                      e    − 1 2πx
+                                                                          0                              0
+
+                                                                Z1
+                                                                                                                                                                   
+                                                                                             Z∞                                                          
+                                                                              1                                    2                   1             1             
+                                                         −              v − 2 s dv                   xe−πvx /n                                  −             dx       .
+                                                                                                                               e2πx − 1             2πx            
+                                                                 0                           0
+     But
+              Z1                        (                                                )
+                        1
+                          (s−1)                       1
+                    u   2                   J(nu) − p                                              du
+                                                   4π (nu)
+              0
+
+                              Z1
+                                        1                                               1
+                        =            u 2 (s−1) J(nu) du −                                √
+                                                                                      2πs n
+                              0
+
+                                                         Z1                                    Z∞                      2
+                             1                                          1
+                                                                          (s−1)                       xe−πnux
+                        =−    √ +                                   u   2              du                      dx
+                           2πs n                                                                      e2πx − 1
+                                                            0                                  0
+
+                                                         Z∞                              Z1
+                             1                                        x dx                           1                         2
+                        =−    √ +                                    2πx
+                                                                                                 u 2 (s−1) e−πnux du
+                           2πs n                                    e    −1
+                                                            0                            0
+                                                                Z∞ 
+                                                                                  πnx2     (πnx2 )2
+                                                                                                                                                     
+                             1                                              1                                                                              x dx
+                        =−    √ +2                                             −         +          − ···                                                              .        (5)
+                           2πs n                                          1 + s 1!(3 + s) 2!(5 + s)                                                       e2πx − 1
+                                                                0
+     Also
+                                   Z∞                       Z∞                                                                        
+                            − 23            − 21 s                       −πvx2 /n                            1
+                                                                                                             1
+                        n               v              dv            xe                             2πx
+                                                                                                           −                               dx
+                                                                                                   e    − 1 2πx
+                                    0                       0
+New expressions for Riemann’s functions ξ(s) and Ξ(t)                                                                                                                  93
+
+
+                                                Z∞                 Z∞
+                                         − 23          1      1           1        2
+                                   =n             x 2πx     −      dx v − 2 s e−πvx /n dv
+                                                     e   − 1 2πx
+                                                0                                                    0
+                                                                                          Z∞                                             
+                                       1          1            1                                                       1             1
+                                   = π 2 (s−2) n− 2 (s+1) Γ(1 − s)                             xs−1                             −             dx
+                                                               2                                              e2πx − 1              2πx
+                                                                                          0
+                                              − 21 (s+1)
+                                             s s − 1
+                                      n
+                                   =−    √ Γ − Γ         ξ(s),                                                                                                   (6)
+                                       4π π   2     2
+
+where
+                                                                             1      1
+                                                          ξ(s) = (s − 1)Γ(1 + s)π − 2 s ζ(s).
+                                                                             2
+Finally
+
+                 Z1                      Z∞                                                         
+          − 23            − 21 s                            2               1              1
+     n                v            dv         xe−πvx /n                               −                   dx
+                                                                        e2πx − 1          2πx
+                 0                       0
+
+                               3    Z1                     Z∞                                        Z1                     Z∞            2
+                    n− 2                     − 12 s              −πvx2 /n                     − 23            − 12 s             xe−πvx /n
+                 =−                      v            dv        e                   dx + n                v            dv                  dx
+                     2π                                                                                                           e2πx − 1
+                                    0                      0                                         0                      0
+
+                                    Z1                                          Z∞                   Z1
+                     1                       − 21 (1+s)                  − 32          x dx                      1              2
+                 =−                      v                  dv + n                    2πx
+                                                                                                          v − 2 s e−πvx /n dv
+                    4πn                                                              e    −1
+                                    0                                           0                    0
+                                                                 Z∞ 
+                                                                                 πx2 /n     (πx2 /n)2
+                                                                                                                                              
+                        1            3                                      1                                                                      x dx
+                 =−            + 2n− 2                                         −          +           − ···                                                  .   (7)
+                    2πn(1 − s)                                            2 − s 1!(4 − s)   2!(6 − s)                                             e2πx − 1
+                                                                    0
+
+All the inversions of the order of integration, effected in the preceding argument, are easily
+justified, since every integral remains convergent when the subject of integration is replaced
+by its modulus.
+It follows from (4) - (7) that, if the real parts of α and β are positive, and αβ = π 2 , then
+                                                                                
+                              Z∞               2       2    4
+                                                                       
+              1
+                   1                1      α x       α x                  x dx 
+           α− 4         − 4α             −          +           − · · · 2πx
+                1 − s             1 + s 1! 3 + s      2! 5 + s          e    − 1
+                                                      0
+                                                                                                                                            
+                                                      Z∞ 
+                                                                                     x2          β2       x4
+                               1                                                                                               
+                             1                                    1    β                                                              x dx 
+                     +β − 4              − 4β                        −         +          − ···
+                                   s                           2 − s 1! 4 − s   2! 6 − s                                           e2πx − 1 
+                                                      0
+                                                                                     1−1s          
+                                                                     1 3             α 8 4    s   s−1
+                                                                    = π− 4                 Γ − Γ         ξ(s).                                                   (8)
+                                                                     2               β        2     2
+94                                                                                                         Paper 14
+
+
+     Changing s to 21 (1 + it) in (8), and writing as usual
+                                                          1 1        1
+                                                        ξ( + it) = Ξ( t),
+                                                          2 2        2
+     and equating the real and imaginary parts, we obtain the formula (1), and also the formula
+                                                                                    
+                            Z∞                 2      2       4
+                                                                          
+           1
+                1                  3     α 7x        α 11x                   x dx 
+        α− 4          − 4α              −           +             − · · ·
+              1 + t2            32 + t2 1! 72 + t2   2! 112 + t2           e2πx − 1 
+                                0
+                                                                                                               
+                                           Z∞ 
+                                                                        7x2   β2   11x4
+                                                                                                 
+                     1
+                          1                               3     β                                       x dx 
+              + β− 4            − 4β                           −           +             − ···
+                        1 + t2                         32 + t2 1! 72 + t2   2! 112 + t2               e2πx − 1 
+                                               0
+                                                                   
+                 1 −3         −1 + it     −1 − it     1         t     α
+             =     π 4Γ                Γ            Ξ( t) cos     log     .                                         (9)
+                 4              4           4         2         8     β
+
+     2. We have proved (8) on the assumption that 0 < σ < 1. But it can be shewn that the
+     formula is true for all values of s other than integral values.
+     Suppose first that −1 > σ < 0. The formula (3) is equivalent to
+                                           Z∞                                      
+                                    − 32            −πx2 /u         1       1   1
+                        J(u) = u                   xe              2πx
+                                                                          −   +         dx.                     (10)
+                                                                  e    − 1 2πx 2
+                                           0
+
+     Using this formula as we used (3) in the previous section, we can shew that (8) is true in
+     the strip −1 < σ < 0 also. In the right-hand side of (3), the first term in the expansion
+     of 1/(e2πx − 1), viz. 1/(2πx), is removed, and in that of (10) two terms are removed. By
+     considering the corresponding formulæ in which more and more terms in the expansion of
+     1/(e2πx − 1), viz.
+
+                            1  1 πx π 3 x3 π 5 x5 π 7 x7   π 9 x9
+                              − +   −     +      −       +        − ···,
+                           2πx 2  6   90    945    9450 93555
+     are removed,we can shew that the formula (8) is true in the strips −2 < σ < 1, −3 < σ < −2,
+     and so on. That it is also true in the strips 1 < σ < 2, 2 < σ < 3, . . . is easily deduced from
+     the functional equation ξ(s) = ξ(1 − s).
+     The formula also holds on the lines which divide the strips, except at the special points
+     s = k, where k is an integer. This follows at once from the continuity of ξ(s) and the
+     uniform convergence of the integrals in question.
+
+     3. As a particular case of (9) we have, when α = β = π,
+                               Z∞ 
+                                               π 7x2       π 2 11x4
+                                                                                        
+                   1                     3                                                    x dx
+                        − 4π                 −           +             − ···
+                 1 + t2               32 + t2 1! 72 + t2   2! 112 + t2                      e2πx − 1
+                                0
+New expressions for Riemann’s functions ξ(s) and Ξ(t)                                                          95
+
+                                                                                          
+                                                   1                  −1 + it        −1 − it     1
+                                                 = √ Γ                            Γ            Ξ( t).   (11)
+                                                  8 π                   4              4         2
+But the left-hand side of (11) is equal to
+                                                                    
+       Z∞            Z∞             2      2  4          
+                                   πx −7z π x −11z             x dx 
+             e − 4π
+              −z
+                           e−3z
+                                −       e  +      e − · · · 2πx        cos tz dz.
+                                   1!       2!              e    − 1
+         0               0
+
+Hence,
+                                                                           
+                 Z∞                       Z∞                 2 −4z
+                                                xe−3z−πx e                  
+                         e−z − 4π                                      dx       cos tz dz
+                                                 e2πx − 1                  
+                 0                         0
+                                                                                     
+                                                 1                −1 + it       −1 − it     1
+                                               = √ Γ                         Γ            Ξ( t).        (12)
+                                                8 π                 4             4         2
+It follows from this and Fourier’s theorem that
+                                       Z∞                2 −4n
+                                               xe−πx e
+                e−n
+                      − 4πe      −3n
+                                                                  dx
+                                                e2πx − 1
+                                       0
+                            Z∞                    
+                         1       −1 + it     −1 − it     1
+                      = √     Γ           Γ            Ξ( t) cos nt dt.                                 (13)
+                       4π π        4           4         2
+                                       0
+
+But it is easily seen from (2) that, if α and β are positive and αβ = π 2 , then
+                                                                        
+                          Z∞ −αx2                           Z∞ −βx2
+                1
+                             xe                1
+                                                               xe         
+            α− 4 1 + 4α                dx   = β −4
+                                                     1 + 4β             dx    .                         (14)
+                            e2πx − 1                        e2πx − 1    
+                             0                                                      0
+
+From this it follows that the left-hand side of (13) is an even function of n. and so the
+formula (13) is true for all real values of n.
+
+4. It can easily be shewn that, if αβ = 4π 2 and R(s), where R(s) is the real part of s, is
+greater than -1, then
+                        ζ(1 − s) 1 (s−1)     ζ(−s) 1 (s+1)
+                              1    α2    +             α2
+                        4 cos 2 πs         8 sin 12 πs
+                                                     Z∞ Z∞
+                                           1
+                                             (s+1)                 xs sin αxy
+                                 +α        2                                       dx dy
+                                                              (e2πx − 1)(e2πy − 1)
+                                                     0    0
+
+                      ζ(1 − s) 1 (s−1)     ζ(−s) 1 (s+1)
+                =           1    β2    +             β2
+                      4 cos 2 πs         8 sin 12 πs
+96                                                                                                             Paper 14
+
+
+                                                             Z∞ Z∞
+                                                   1
+                                                     (s+1)                xs sin βxy
+                                              +β   2                                      dx dy.                     (15)
+                                                                     (e2πx − 1)(e2πy − 1)
+                                                             0   0
+
+     From this we can shew, by arguments similar to those of §§ 1- 2, that if αβ = 4π 2 and
+     R(s) > −1 then
+                        1                             1                     Z∞Z∞ 
+     ζ(1 − s) α 2 (s−1)     ζ(−s) α 2 (s+1)        1                                      αxy         (αxy)3
+           1             +      1              + α 2 (s+1)                                        −
+     4 cos 2 πs s − 1 − t 8 sin 2 πs s + 1 − t                                       1!(s + 3 − t) 3!(s + 7 − t)
+                                                                             0 0
+                                                                                        1                        1
+            (αxy)5                                 xs dx dy        ζ(1 − s) β 2 (s−1)                 β 2 (s+1)
+                                         
+                                                                                          ζ(−s)
+      +                − ···                                     +                     +
+        5!(s + 11 − t)                       (e2πx − 1)(e2πy − 1) 4 cos 12 πs s − 1 + t 8 sin 12 πs (s + 1 + t)
+                      Z∞Z∞ 
+                                                     (βxy)3         (βxy)5                                 xs dx dy
+                                                                                                 
+           1
+             (s+1)                       βxy
+      +β   2                                     −             +               − ···
+                                    1!(s + 3 + t) 3!(s + 7 + t) 5!(s + 11 + t)                       (e2πx − 1)(e2πy − 1)
+                       0 0
+               1 t 1 (s−3) 1
+              α 4 22        Γ{ 4 (s − 1 + t)}Γ{ 14 (s − 1 − t)}
+                                                                                  
+                                                                     1+s+t     1+s−t
+           =                                                    ×ξ          ξ          . (16)
+              β                  π (s + 1)2 − t2                       2         2
+
+     From this we deduce that, if αβ = 4π 2 and R(s) > −1, then
+
+      ζ(1 − s)       s−1           1           1             ζ(−s)        s+1           1           1
+            1           2     2
+                                {α 2 (s−1) + β 2 (s−1) } +       1           2     2
+                                                                                     {α 2 (s+1) + β 2 (s+1) }
+      4 cos 2 πs (s − 1)  + t                              8 sin 2 πs (s + 1)  + t
+                            Z∞ Z∞ 
+                                                          (αxy)3                                        xs dx dy
+                                                                                              
+                1
+                  (s+1)               αxy     s+3                  s+7
+           +α   2
+                                                 2    2
+                                                        −                    + ···
+                                       1! (s + 3) + t       3! (s + 7)2 + t2                      (e2πx − 1)(e2πy − 1)
+                            0   0
+                            Z∞ Z∞ 
+                                                          (βxy)3                                        xs dx dy
+                                                                                             
+                1
+                  (s+1)               βxy     s+3                  s+7
+           +β   2
+                                                 2    2
+                                                        −                    + ···
+                                       1! (s + 3) + t       3! (s + 7)2 + t2                      (e2πx − 1)(e2πy − 1)
+                            0   0
+                     1
+                 2   2   Γ{ 14 (s − 1 + it)}Γ{ 41 (s − 1 − it)}
+                       (s−3)
+            =
+                      π               (s + 1)2 + t2
+                                                                  
+                                 t + is       t − is         1       α
+                        × Ξ               Ξ            cos     t log     ;                                           (17)
+                                   2             2           4       β
+
+     and
+      ζ(1 − s)         1          1           1             ζ(−s)          1          1           1
+            1           2    2
+                               {α 2 (s−1) − β 2 (s−1) } +       1           2    2
+                                                                                   {α 2 (s+1) − β 2 (s+1) }
+      4 cos 2 πs (s − 1) + t                              8 sin 2 πs (s + 1) + t
+                            Z∞ Z∞ 
+                                                           (αxy)3                                       xs dx dy
+                                                                                              
+                1
+                  (s+1)                αxy       1                    1
+           +α   2
+                                                  2    2
+                                                         −                    + ···
+                                        1! (s + 3) + t       3! (s + 7)2 + t2                     (e2πx − 1)(e2πy − 1)
+                            0   0
+New expressions for Riemann’s functions ξ(s) and Ξ(t)                                                                                      97
+
+
+                   Z∞ Z∞ 
+                                                   (βxy)3                                                         xs dx dy
+                                                                                                       
+         1
+           (s+1)               βxy       1                    1
+    −β   2
+                                           2   2
+                                                 −                    + ···
+                                1! (s + 3) + t       3! (s + 7)2 + t2                                       (e2πx − 1)(e2πy − 1)
+                   0   0
+                 1
+             2   2
+                   (s−3)   Γ{ 41 (s − 1 + it)}Γ{ 14 (s − 1 − it)}
+         =
+                   π                    (s + 1)2 + t2
+                                                                     
+                                    t + is       t − is         1       α
+                           × Ξ              Ξ             sin     t log     .                                                       (18)
+                                      2             2           4       β
+
+
+5. Proceeding as in § 3 we can shew that, if n is real, and
+                       Z∞
+                            Γ{ 14 (s − 1 + it)}Γ{ 41 (s − 1 − it)}
+                                                                                                                 
+                                                                                      t + is               t − is
+         F (n) =                                                   Ξ                               Ξ                    cos ntdt,
+                                        (s + 1)2 + t2                                   2                    2
+                       0
+
+then, if R(s) > 1,
+                            ∞                                              
+             1      1
+                            Z       x s dx                                 
+      F (n) = (4π)− 2 (s−3)                        − 2Γ(s)ζ(s) cosh n(1 − s)  ;                                                     (19)
+             8               (exen − 1)(exe−n −1)                          
+                                          0
+
+if −1 < R(s) < 1,
+                                          Z∞                                                                     
+                1      1                                        1     1                   1        1
+         F (n) = (4π)− 2 (s−3)                 x   s
+                                                            xe
+                                                                    − n                xe
+                                                                                                − −n                     dx;        (20)
+                8                                          e   n
+                                                                 − 1 xe               e
+                                                                                          −n
+                                                                                             − 1 xe
+                                          0
+
+if −3 < R(s) < −1,
+                                          ∞
+                                                                                         
+                1      1
+                                          Z                           1     1   1
+         F (n) = (4π)− 2 (s−3)                         x   s
+                                                                           −   +
+                8                                                 exen − 1 xen 2
+                                               0
+                                                                                                          
+                                  1         1   1
+                       ×        xe
+                                         − −n +                          dx − Γ(1 + s)ζ(1 + s) cosh n(1 + s) ;                      (21)
+                               e   −n
+                                      − 1 xe    2
+
+and so on. If, in particular, we put s = 0 in (20), we obtain
+                       Z∞                    
+                            −1 + it     −1 − it      1     cos nt
+                         Γ           Γ            {Ξ( t)}2        dt
+                              4           4          2     1 + t2
+                       0
+                                      Z∞ 
+                                  √
+                                                                                                           
+                                                   1     1                            1              1
+                               =π π                    −                                       −                 dx.                (22)
+                                               exen − 1 xen                     exe−n − 1          xe−n
+                                      0
+

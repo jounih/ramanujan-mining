@@ -1,0 +1,73 @@
+                                     Squaring the circle
+              Journal of the Indian Mathematical Society, V, 1913, 132
+Let P QR be a circle with center O, of which a diameter is P R. Bisect P O at H and let
+T be the point of trisection of OR nearer R. Draw T Q perpendicular to P R and place the
+chord RS = T Q.
+Join P S, and draw OM and T N parallel to RS. Place a chord P K = P M, and draw the
+tangent P L = M N . Join RL, RK and KL. Cut off RC = RH. Draw CD parallel to KL,
+meeting RL at D.
+
+
+
+
+                                                               Q
+                                                                   S
+                                                       N
+
+                                     M
+
+
+
+
+         P                 H              O                T           R
+
+
+
+                   D
+
+         L
+                                 C
+
+                       K
+
+
+
+Then the square on RD will be equal to the circle P QR approximately. For
+                                                5 2
+                                              RS 2 =
+                                                  d ,
+                                               36
+where d is the diameter of the circle. Therefore
+                                               31
+                                        P S 2 = d2 .
+                                               36
+But P L and P K are equal to M N and P M respectively. Therefore
+                                          31 2               31 2
+                               P K2 =        d , and P L2 =     d .
+                                         144                324
+Squaring the circle                                                                         25
+
+
+Hence
+                                                      113 2
+                             RK 2 = P R2 − P K 2 =        d ,
+                                                      144
+and
+                                                     355 2
+                              RL2 = P R2 + P L2 =        d .
+                                                     324
+But                                              r
+                                 RK   RC   3         113
+                                    =    =               ,
+                                 RL   RD   2         355
+and
+                                           3
+                                       RC = d.
+                                           4
+Therefore                          r
+                                  d 355      √
+                           RD =           = r π, very nearly
+                                  2 113
+Note: If the area of the circle be 140,000 square miles, then RD is greater than the true
+length by about an inch.
+

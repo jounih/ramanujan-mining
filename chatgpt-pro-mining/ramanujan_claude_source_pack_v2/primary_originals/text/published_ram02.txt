@@ -1,0 +1,167 @@
+                   On question 330 of Professor Sanjana
+            Journal of the Indian Mathematical Society, IV, 1912, 59 – 61
+
+1. Prof. Sanjana remarks that it is not easy to evaluate the series
+                      1    1 1   1·3 1       1·3·5 1
+                      n
+                        +    n
+                               +        n
+                                          +               + · · · ad inf.,
+                     1     23    2·45        2 · 4 · 6 7n
+if n > 3. In attempting to sum the series for a⁀ ll values of n, I have arrived at the following
+results:
+Let
+                               1    1 1    1·3 1
+                    f (p) =       +      +            + ···
+                             1+p 23+p 2·45+p
+                             Z1                        
+                                      1    1·3 4
+                           =   xp 1 + x2 +     x + · · · dx
+                                      2    2·4
+                                  0
+                                  Z1              Z1
+                                    xp                 1              1
+                           =     √         dx = 21 x 2 (p−1) (1 − x)− 2 dx
+                                   1−x   2
+                             0                    0
+                                                           
+                                   p+1      1             p+1
+                                Γ 2 Γ( 2 )        π2
+                                                    1
+                                                      Γ    2
+                           = 12           =                .
+                                  Γ p+2           2 Γ p+2
+                                                2                2
+                                                     1
+                                  
+                                      p+1
+                                                   π Γ(p + 1)
+                                                     2
+But                           Γ        2        =
+                                                    2p Γ p+2
+                                                            
+                                                             2
+(vide Williamson, Integral Calculus, p. 164).
+                                      π   Γ(p + 1)
+Therefore                   f (p) = p+1         .
+                                    2    {Γ p+2 }2       2
+Therefore
+                 log{f (p)} = log( 21 π) − p log 2
+                                p2                  p3
+                                                            
+                                           1                 1
+                              +        1−      S2 −      1 − 2 S3 + · · · ,                 (1)
+                                 2         2        3       2
+where Sn ≡ 11n + 21n + 31n + · · · ad inf. (vide Carr’s Synopsis, 2295).
+Again, by expanding f (p) in ascending powers of p, we have
+                                                                              
+                             11 1·31                         1 1     1·3 1
+           f (p) =      1+         +        + ··· − p 1 +         +        + ···
+                             23 2·45                         2 32 2 · 4 52
+                                                       
+                          2         1 1    1·3 1
+                      +p 1 +            +         + ··· − ···
+                                    2 33 2 · 4 53
+                      π
+                  =      {φ(0) − pφ(1) + p2 φ(2) − p3 φ(3) + · · ·},
+                      2
+On question 330 of Professor Sanjana                                                   17
+
+
+where
+                           1        1 1     1·3 1            π
+                                +         +         + · · · ≡ φ(n).
+                         1n+1       23n+1   2·45n+1          2
+Hence (1) may be written
+          log 21 π + log{φ(0) − p · φ(1) + p2 · φ(2) − · · ·}
+                                             p2                p3
+                                                                       
+                          1                           1                 1
+                   = log( 2 π) − p log 2 +        1−      S2 −      1 − 2 S3 + · · ·
+                                             2        2        3       2
+                                         p 2      p 3
+                   = log( 21 π) − pσ1 + σ2 − σ3 + · · · ,
+                                         2         3
+where
+                                          1    1     1
+                                σn ≡ 1 −  n
+                                            + n − n + ···.
+                                         2    3     4
+Differentiating with respect to p, and equating the coefficients of pn−1 , we have
+             nφ(n) ≡ σ1 φ(n − 1) + σ2 φ(n − 2) + σ3 φ(n − 3) + · · · to n terms.
+Thus we see that
+           π            11     1·31                  π
+             φ(0) ≡ 1 +      +          + ···    =     ,
+           2            23     2·45                  2
+           π            1 1    1·3 1                 π
+             φ(1) ≡ 1 +    2
+                             +          + ···    =     (log 2),
+           2            23     2 · 4 52              2
+           π            1 1    1·3 1                 π3 π
+             φ(2) ≡ 1 +    3
+                             +          + ···    =       + (log 2)2 ,
+           2            23     2 · 4 53              48     4
+           π            1 1    1·3 1                 π3         π3         π
+             φ(3) ≡ 1 +    4
+                             +          + ···    =       log 2 + (log 2)3 + σ3
+           2            23     2 · 4 54              48         12         6
+                                                     π3         π3         π
+                                                 =       log 2 + (log 2)3 + S3 ,
+                                                     48         12         8
+and so on.
+
+2. More generally, consider the series
+                          1    a      1      a(a − 1)     1
+                           n
+                             −           n
+                                           +                   − ···.
+                         b     1! (b + 1)       2!    (b + 2)n
+Writing
+                                      Γ(b)Γ(a + 1)
+                                                   φ(n − 1)
+                                      Γ(a + b + 1)
+for this, and taking the identity
+                      1     a    1       a(a − 1)     1
+                          −            +                   − ···
+                    b + p 1! b + 1 + p      2!    b+2+p
+                         Z1
+                                               Γ(b + p)Γ(a + 1)
+                       = xb+p−1 (1 − x)a dx =                   ,
+                                               Γ(a + b + p + 1)
+                          0
+18                                                                                          Paper 2
+
+
+     we find
+                      nφ(n) = σ1 φ(n − 1) + σ2 φ(n − 2) + σ3 φ(n − 3) + · · · to n terms,
+     where
+                                 1      1           1         1
+                         σn ≡      −           +        −             + ··· .
+                                bn (a + b + 1)n (b + 1)n (a + b + 2)n
+     Examples: Put a = − 12 , b = 41 . Then we see that
+
+                          11   1·31   1·3·5 1             {Γ( 41 )}2
+               (i)     1+    +      +              + ··· = p         ,
+                          25   2·49   2 · 4 · 6 13        4 (2π)
+                         1 1   1·3 1    1·3·5 1                {Γ( 14 )}2 π
+               (ii)    1+    +        +              + · · · =              ,
+                         2 52 2 · 4 92 2 · 4 · 6 132
+                                                                p
+                                                               4 (2π) 4
+                                                               {Γ( 14 )}2 π 2 1 ′
+                                                                                  
+                         1 1   1·3 1    1·3·5 1
+               (iii) 1 +     +        +              + · · · =                + S 2 ,
+                         2 53 2 · 4 93 2 · 4 · 6 133
+                                                                p
+                                                               4 (2π) 32 2
+                                                               {Γ( 14 )}2 5π 3 π ′
+                                                                                         
+                         1 1   1·3 1    1·3·5 1                                       1 ′
+               (iv) 1 +      +        +              + ··· = p                 + S2 + S3 ,
+                         2 54 2 · 4 94 2 · 4 · 6 134           4 (2π) 384       8     3
+
+                      1    1   1   1
+     where Sr′ =         − r + r − r + ···.
+                      1r  3   5   7
+

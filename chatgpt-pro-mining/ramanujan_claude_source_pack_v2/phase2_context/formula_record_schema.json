@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ramanujan Phase 2 Formula Record",
+  "type": "object",
+  "required": [
+    "formula_id",
+    "page_id",
+    "source_collection",
+    "image_sha256",
+    "transcription_latex",
+    "transcription_confidence",
+    "operator_tags",
+    "verification_status",
+    "claim_label",
+    "evidence_level"
+  ],
+  "properties": {
+    "formula_id": {"type": "string", "description": "Stable formula/block identifier."},
+    "page_id": {"type": "string", "description": "Stable page identifier."},
+    "source_collection": {"type": "string"},
+    "source_url": {"type": "string"},
+    "manifest_url": {"type": "string"},
+    "image_path": {"type": "string"},
+    "image_sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+    "crop_box": {
+      "type": "object",
+      "properties": {
+        "x": {"type": "number"},
+        "y": {"type": "number"},
+        "width": {"type": "number"},
+        "height": {"type": "number"}
+      },
+      "additionalProperties": false
+    },
+    "transcription_latex": {"type": "string"},
+    "transcription_plaintext": {"type": "string"},
+    "transcription_confidence": {"type": "string", "enum": ["low", "medium", "high", "verified"]},
+    "uncertainty_notes": {"type": "string"},
+    "operator_tags": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "input_representation": {"type": "string"},
+    "output_representation": {"type": "string"},
+    "computational_gain_hypothesis": {"type": "string"},
+    "verification_status": {"type": "string", "enum": ["not_attempted", "ocr_only", "numeric_checked", "symbolic_checked", "proved", "disproved", "ambiguous"]},
+    "known_reference_status": {"type": "string", "enum": ["unknown", "classical", "modern_reference_found", "possible_new_variant", "not_a_claim"]},
+    "modern_references": {"type": "array", "items": {"type": "string"}},
+    "executable_test_path": {"type": "string"},
+    "claim_label": {
+      "type": "string",
+      "enum": [
+        "classical_known",
+        "rediscovered",
+        "software_packaging_novelty",
+        "benchmark_novelty",
+        "corpus_novelty",
+        "proof_novelty",
+        "failure_mode_novelty",
+        "speculative"
+      ]
+    },
+    "evidence_level": {"type": "integer", "minimum": 0, "maximum": 7},
+    "review_notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

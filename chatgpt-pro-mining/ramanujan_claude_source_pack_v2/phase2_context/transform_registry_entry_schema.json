@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ramanujan Kernel Compiler Transform Registry Entry",
+  "type": "object",
+  "required": [
+    "transform_id",
+    "name",
+    "operator_tags",
+    "input_fingerprint",
+    "output_representation",
+    "validity_conditions",
+    "degeneracy_modes",
+    "certificate_type",
+    "direct_baseline",
+    "benchmark_cases",
+    "tests",
+    "status"
+  ],
+  "properties": {
+    "transform_id": {"type": "string"},
+    "name": {"type": "string"},
+    "operator_tags": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "input_fingerprint": {"type": "string"},
+    "output_representation": {"type": "string"},
+    "validity_conditions": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "degeneracy_modes": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "certificate_type": {"type": "string"},
+    "error_bound": {"type": "string"},
+    "direct_baseline": {"type": "string"},
+    "benchmark_cases": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "known_implementations": {"type": "array", "items": {"type": "string"}},
+    "sota_notes": {"type": "string"},
+    "source_examples": {"type": "array", "items": {"type": "string"}},
+    "tests": {
+      "type": "object",
+      "required": ["positive", "negative", "degenerate"],
+      "properties": {
+        "positive": {"type": "array", "items": {"type": "string"}},
+        "negative": {"type": "array", "items": {"type": "string"}},
+        "degenerate": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "status": {"type": "string", "enum": ["idea", "seeded", "implemented", "tested", "audited", "deprecated"]}
+  },
+  "additionalProperties": false
+}

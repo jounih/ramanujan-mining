@@ -1,0 +1,345 @@
+                                   Some definite integrals
+               Journal of the Indian Mathematical Society, XI, 1919, 81 – 87
+I have shewn elsewhere∗ that the definite integrals
+                                                 Z∞
+                                                      cos πtx −πwx2
+                                     φw (t) =                 e     dx,
+                                                      cosh πx
+                                                 0
+
+                                                 Z∞
+                                                      sin πtx −πwx2
+                                      ψw (t) =                e     dx
+                                                      sinh πx
+                                                 0
+can be evaluated in finite terms if w is any rational multiple of i.
+In this paper I shall shew, by a much simpler method, that these integrals can be evaluated
+not only for these values but also for many other values of t and w.
+Now we have
+                                  Z ∞Z ∞
+                                               cos 2πxz               2
+                      φw (t) = 2                        cos πtxe−πwx dxdz
+                                    0     0     cosh πz
+                                    1   2  ′
+                                 e− 4 πt w      ∞
+                                                  cosh πtxw′ −πx2 w′
+                                             Z
+                             =     √                         e       dx
+                                      w       0     cosh πx
+where w′ stands for 1/w.
+It follows that
+                                            1   1   2 ′
+                                  φw (t) = √ e− 4 πt w φw′ (itw′ ).                      (1)
+                                             w
+Again
+                          1     1     2 ′
+         φw (t + w) =    √ e− 4 π(t+w) w
+                           w
+                           Z ∞
+                                cosh(πtx/w) cosh πx + sinh πtx/w sinh πx −πx2 /w
+                         ×                                               e       dx
+                            0                   cosh πx
+                          1     1     2
+                       = √ e− 4 π(t+w) /w
+                           w
+                                             Z ∞Z ∞
+                               √ 1 πt2 /w
+                                                                                    
+                             1                        sin 2πxz      πtx −πx2 /w
+                         × 2 we 4         +2                   sinh    e        dxdz
+                                              0   0    sinh πz       w
+
+                           1   1       2
+                     =    √ e− 4 π(t+w) /w
+                            w
+  ∗
+      Messenger of Mathematics, Vol,44, 1915, pp. 75 – 85 [No.12 of this volume].
+258                                                                                                             Paper 23
+
+                                                                                    Z ∞
+                                            √                  √
+                                                                                                          
+                                                   1   2              1       2            sin πtx −πwx2
+                                ×       1
+                                        2       we 4 πt /w +       we 4 πt /w                      e     dx .
+                                                                                     0     sinh πx
+
+      In other words
+                                    1   2                             1             2/w
+                                e 4 πt /w { 12 + ψw (t)} = e 4 π(t+w)                     φw (t + w).                (2)
+
+      It is obvious that
+                                                                                      )
+                                                   φw (t) = φw (−t)
+                                                                                          .                          (3)
+                                                   ψw (t) = −ψw (−t)
+
+      From (1), (2) and (3) we easily find that
+                                                                                                     
+                                               i   1   2                                          it
+                             1
+                             2 + ψw (t + i) =
+                                              √ e− 4 πt /w                        1
+                                                                                  2 − ψw
+                                                                                         ′           +i   .          (4)
+                                                w                                                 w
+      It is easy to see that
+                                          1                i                1
+                             φw (i) = √ ; ψw (i) = √ ; φw (w) = 21 e− 4 πw ;
+                                        2 w             2 w
+                                                                      
+                                 − 14 πw                         1   i      1
+                   1
+                   2 − ψw (w) = e        φw (0); φw (w ± i) =    √ +     e− 4 πw ;
+                                                                2 w 2
+                                                i    1
+                              ψw (w ± i) = 12 ± √ e− 4 πw ; φw ( 12 w) + ψw ( 12 w) = 21 .
+                                               2 w
+      Again we see that
+                                                                   1   1   2
+                                        φw (t + i) + φw (t − i) = √ e− 4 πt /w ;                                     (5)
+                                                                    w
+      and
+                                                                   i   1   2
+                                        ψw (t + i) − ψw (t − i) = √ e− 4 πt /w .                                     (6)
+                                                                    w
+
+      From (1) and (5) we deduce that
+                         1          2                          1              2                        1   2
+                       e 4 π(t+w) /w φw (t + w) + e 4 π(t−w) /w φw (t − w) = e 4 πt /w .                             (7)
+
+      Similarly from (4) and (6) we obtain
+                     1          2                                         1           2
+                   e 4 π(t+w) /w                                   = e 4 π(t−w) /w { 21 + ψw (t − w)}.
+                                        1
+                                            2 − ψw (t + w)                                                           (8)
+
+      It is easy to deduce from (5) that if n is a positive integer, then
+
+              φw (t) + (−1)n+1 φw (t ± 2ni)
+Some definite integrals                                                                            259
+
+              n 1         2        1        2        1        2
+                                                                                    o
+         = √1w e− 4 π(t±i) /w − e− 4 π(t±3i) /w + e− 4 π(t±5i) /w − · · · to n terms .       (9)
+
+Similarly from (6) we have
+
+      ψw (t) − ψw (t ± 2ni)
+                n 1         2      1        2        1        2
+                                                                                    o
+       = ∓ √iw e− 4 π(t+i) /w + e− 4 π(t+3i) /w + e− 4 π(t+5i) /w + · · · to n terms .
+
+                                                                                            (10)
+
+Again from (7) we have
+               1     2                       1               2
+            e 4 πt /w φw (t) + (−1)n+1 e 4 π(t+2nw) /w φw (t + 2nw)
+                         1       2       1           2           1           2
+                   = e 4 π(t+w) /w − e 4 π(t+3w) /w + e 4 π(t+5w) /w − · · · to n terms;    (11)
+
+and from (8)
+               1    2                                    1           2
+           e 4 πt /w { 12 + ψw (t)} + (−1)n+1 e 4 π(t+2nw) /w { 12 + ψw (t + 2nw)}
+                    1        2       1           2           1           2
+            = e 4 π(t+2w) /w − e 4 π(t+4w) /w + e 4 π(t+6w) /w − · · · to n terms.          (12)
+
+Now, combining (9) and (11), we deduce that, if m and n are positive integers and s =
+t + 2mw ± 2ni, then
+                                         1
+      φw (s) + (−1)(m+1)(n+1) e− 2 πm(s+t) φw (t)
+               1 2
+                     n 1        2       1         2     1        2
+                                                                                        o
+        = e− 4 πs /w e 4 π(s−w) /w − e 4 π(s−3w) /w + e 4 π(s−5w) /w − · · · to m terms
+
+             (−1)(m+1)(n+1) − 1 πm(s+t)
+            +      √         e 2
+                      w
+             n 1         2        1        2        1        2
+                                                                                   o
+            × e− 4 π(t±i) /w − e− 4 π(t±3i) /w + e− 4 π(t±5i) /w − · · · to n terms .       (13)
+
+Similarly, combining (10) and (12), we obtain
+                                1
+      1                mn+m+1 − 2 πm(s+t) 1
+      2 − ψw (s) + (−1)      e           { 2 − ψw (t)}
+            1   2
+                   n 1         2       1        2       1        2
+                                                                                        o
+       = e− 4 πs /w e 4 π(s−2w) /w − e 4 π(s−4w) /w + e 4 π(s−6w) /w − · · · to m terms
+                            i    1
+           ±(−1)mn+m+1 √ e− 2 πm(s+t)
+                             w
+            n 1         2        1        2        1        2
+                                                                                  o
+           × e− 4 π(t±i) /w + e− 4 π(t±3i) /w + e− 4 π(t±5i) /w + · · · to n terms ,        (14)
+
+where s and t have the same relation as in (13).
+260                                                                                              Paper 23
+
+
+      Suppose now that s = t in (13) and (14). Then we see that, if w = in/m, then
+
+              φw (t){1 + (−1)(m+1)(n+1) e−πmt }
+                      1  2
+                             n 1        2      1        2        1       2
+                                                                                                o
+                = e− 4 πt /w e 4 π(t−w) /w − e 4 π(t−3w) /w + e 4 π(t−5w) /w − · · · to m terms
+                         (m+1)(n+1)
+                                          n 1        2        1        2
+                                                                                             o
+                  + (−1) √w         e−πmt e− 4 π(t−i) /w − e− 4 π(t−3i) /w + · · · to n terms ;      (15)
+
+
+
+              { 21 − ψw (t)}{1 + (−1)mn+m+1 e−πmt }
+                       1   2
+                              n 1         2       1        2
+                                                                                  o
+                  = e− 4 πt /w e 4 π(t−2w) /w − e 4 π(t−4w) /w + · · · to m terms
+                                            n 1         2        1        2
+                                                                                           o
+                    +(−1)mn+m √iw e−πmt e− 4 π(t−i) /w − e− 4 π(t−3i) /w + · · · to n terms .        (16)
+              √
+      where       w should be taken as                             r
+                                                            1
+                                                              πi        n
+                                                        e   4             .
+                                                                        m
+      In (15) and (16) there is no loss of generality in supposing that one of the two numbers m
+      and n is odd.
+      Now equating the real and imaginary parts in (15), we deduce that, if m and n are positive
+      integers of which one is odd, then
+                     Z ∞
+                                       πmx2
+                                            
+                         cos 2tx
+           2 cosh nt             cos           dx
+                      0  cosh πx         n
+              = [cosh{(1 − n)t} cos(πm/4n) − cosh{(3 − n)t} cos(9πm/4n) + · · · to n terms]
+                                                         nt2
+                   r                                         
+                      n                1            π           πn
+                +          cosh     1−     nt cos     −      +
+                      m                m            4 πm 4m
+                                                nt2
+                                                                         
+                               3            π         9πn
+                − cosh    1−       nt cos     −     +        + · · · to m terms ;           (17)
+                               m            4 πm       4m
+      and
+                               Z ∞
+                                                       πmx2
+                                                              
+                                     cos 2tx
+                   2 cosh nt                 sin                   dx
+                               0     cosh πx            n
+                     = −[cosh{(1 − n)t} sin(πm/4n) − cosh{(3 − n)t} sin(9πm/4n)
+                         + cosh{(5 − n)t} sin(25π/4n) − · · · to n terms]
+                                                                     nt2
+                           r                                              
+                               n                1               π           πn
+                         +         cosh     1−      nt sin        −      +
+                              m                 m               4 πm 4m
+                                                           nt2
+                                                                                      
+                                       3             π             9πn
+                         − cosh    1−       nt sin     −        +         + · · · to n terms .       (18)
+                                       m             4 πm          πm
+Some definite integrals                                                                              261
+
+
+Equating the real and imaginary parts in (16), we can find similar expressions for the
+integrals
+               Z ∞                          Z ∞
+                                 πmx2                         πmx2
+                                                                
+                    sin tx                       sin tx
+                           sin          dx,             cos          dx.
+                0  sinh πx        n          0  sinh πx        n
+From these formulæ we can evaluate a number of definite integrals, such as
+                    Z ∞                              √
+                        cos 2πtx        2       1 + 2 sin πt2
+                                  cos πx dx =      √           ,
+                     0   cosh πx                 2 2 cosh πt
+                    Z ∞                                √
+                        cos 2πtx        2       −1 + 2 cos πt2
+                                  sin πx dx =       √             ,
+                     0   cosh πx                   2 2 cosh πt
+                    Z ∞
+                        sin 2πtx                cosh πt − cos πt2
+                                  cos πx2 dx =                     ,
+                     0   sinh πx                     2 sinh πt
+                    Z ∞
+                         sin 2πtx                sin πt2
+                                  sin πx2 dx =            ,
+                      0   sinh πx               2 sinh πt
+
+and so on.
+Again supposing that s = −t in (13), we deduce that if t = mw ± ni, where m and n are
+positive integers of which one at least is odd, then
+                          1   2
+                                 n 1        2       1        2
+                                                                                    o
+           φw (t) = 12 e− 4 πt /w e 4 π(t−w) /w − e 4 π(t−3w) /w + · · · to m terms
+                       1 n − 1 π(t∓i)2 /w      1        2
+                                                                              o
+                     + √  e 4             − e− 4 π(t∓3i) /w + · · · to n terms .             (19)
+                      2 w
+
+This formula is not true when both m and n are even.
+If t = mw ± ni, where m and n are both even, then
+                       1         1   1
+      φw (t) + (−1)(1+ 2 m)(1+ 2 n) e− 4 πmt φw (0)
+                1 2
+                     n 1          2        1        2
+                                                                          o
+        = e− 4 πt /w e 4 π(t−w) /w − e 4 π(t−3w) /w + · · · to 12 m terms
+                      1      1
+              (−1)1+ 2 m)(1+ 2 n) − 1 πmt n 1 π/w     9        25
+                                                                                           o
+            +       √            e 4       e4     − e 4 π/w + e 4 π/w − · · · to 21 n terms . (20)
+                       w
+
+This is easily obtained by putting t = 0 and then changing s to t in (13). Similarly from
+(14) we deduce that if t = mw ± ni, where m and n are both even, or both odd, or m is
+even and n is odd, then
+                           1   2
+                                  n 1         2       1        2
+                                                                                      o
+          ψw (t) = − 12 e− 4 πt /w e 4 π(t−2w) /w − e 4 π(t−4w) /w + · · · to m terms
+                        i n − 1 π(t∓i)2 /w      1        2
+                                                                               o
+                      ± √  e 4             + e− 4 π(t∓3i) /w + · · · to n terms .            (21)
+                       2 w
+262                                                                                               Paper 23
+
+
+      If t = mw ± ni, where m is odd and n is even, then
+                   1                 1+ 14 (m−1)(n+2) − 14 π{(m−1)t+mw}
+                   2 − ψw (t) + {(−1)                e                  φw (0)
+                          1   2
+                                 n 1         2       1        2
+                                                                                              o
+                     = e− 4 πt /w e 4 π(t−2w) /w − e 4 π(t−4w) /w · · · + to 12 (m − 1) terms
+                                  1            i     1
+                         ±(−1)1+ 4 (m−1)(n+2) √ e− 4 π(m−1)(t+w)
+                                                w
+                          n 1         2        1        2
+                                                                                 o
+                         × e− 4 π(w±i) /w − e− 4 π(w±3i) /w + · · · to 12 n terms .                   (22)
+
+      This is obtained by putting t = w in (14). A number of definite integrals such as the
+      following can be evaluated with the help of the above formulæ:
+                     Z ∞                                         (                 )
+                           cos πtx −π(t+i)x2        1 + i − 1 πt              i
+                                   e         dx =     √ e 4       1− p               ,
+                       0  cosh πx                   2 2                    (t + i)
+                      Z ∞                                             1
+                           sin πtx −π(t+i)x2        1 1+i          e− 4 πt
+                                   e         dx =     − √ ·p                ,
+                       0   sinh πx                  2    2 2        (t + i)
+
+      and so on.
+

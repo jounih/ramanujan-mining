@@ -1,0 +1,185 @@
+                    On the number of divisors of a number
+
+           Journal of the Indian Mathematical Society, VII, 1915, 131 – 133
+
+1. If δ be a divisor of N , then there is a conjugate divisor δ′ such that δδ′ = N . Thus we
+see that                         √                                        √
+the number of divisors from 1 to N is equal to the number of divisors from N to N . (1)
+From this it evidently follows that
+                                             √
+                                    d(N ) < 2 N ,                                   (2)
+
+where d(N ) denotes the number of divisors of N (including √  unity and the number itself).
+This is only a trivial result, as all the numbers from 1 to N cannot be divisors of N .
+So let us try to find the best possible superior limit for d(N ) by using purely elementary
+reasoning.
+
+2. First let us consider the case in which all the prime divisors of N are known. Let
+
+                                       N = pa11 · pa22 · pa33 · · · pann ,
+where p1 , p2 , p3 . . . pn are a given set of n primes . Then it is easy to see that
+
+                        d(N ) = (1 + a1 )(1 + a2 )(1 + a3 ) · · · (1 + an ).                        (3)
+
+But
+                  1
+                    {(1 + a1 ) log p1 + (1 + a2 ) log p2 + · · · + (1 + an ) log pn }
+                  n
+                                                                                          1
+                       > {(1 + a1 )(1 + a2 ) · · · (1 + an ) log p1 log p2 · · · log pn } n ,       (4)
+
+since the arithmetic mean of unequal positive numbers is always greater than their geometric
+mean. Hence
+         1                                                                                    1
+           {log p1 + log p2 + · · · + log pn + log N } > {log p1 log p2 · · · log pn · d(N )} n .
+         n
+In other words
+                                         1                                  n
+                                           n log(p1 p2 p3 · · · pn N )
+                              d(N ) <                                            ,                  (5)
+                                        log p1 log p2 log p3 · · · log pn
+for all values of N whose prime divisors are p1 , p2 , p3 , . . . , pn .
+
+3. Next let us consider the case in which only the number of prime divisors of N is known.
+Let
+                                         N = pa11 pa22 pa33 · · · pann ,
+56                                                                                         Paper 8
+
+
+     where n is a given number; and let
+
+                                              N ′ = 2a1 · 3a2 · 5a3 · · · pan ,
+
+     where p is the natural nth prime. Then it is evident that
+
+                                                      N′ ≤ N;                                  (6)
+
+     and
+
+                                                  d(N ′ ) = d(N ).                             (7)
+
+     But
+                                                                             ′ n
+                                                1
+                                      ′           n log(2 · 3 · 5 · · · p · N )
+                               d(N ) <                                             ,           (8)
+                                                  log 2 log 3 log 5 · · · log p
+
+     by virtue of (5). It follows from (6) to (8) that, if p be the natural nth prime, then
+                                         1                             n
+                                          n log(2 · 3 · 5 · · · p · N )
+                                d(N ) <                                   ,                    (9)
+                                          log 2 log 3 log 5 · · · log p
+     for all values of N having n prime divisors.
+
+     4. Finally, let us consider the case in which nothing is known about N . Any integer N can
+     be written in the form
+                                            2a2 · 3a3 · 5a5 · · · ,
+     where aλ ≥ 0. Now let
+
+                                                       xh = 2,                                (10)
+
+     where h is any positive number. Then we have
+
+                                 d(N )  1 + a2 1 + a3 1 + a5
+                                    h
+                                       = ha2 · ha3 · ha5                                      (11)
+                                  N      2      3      5
+     But from (10) we see that, if q be any prime greater than x, then
+                                     1 + aq  1 + aq 1 + aq
+                                            ≤ haq =        ≤ 1.                               (12)
+                                      q haq   x       2aq
+
+     It follows from (11) and (12) that, if p be the largest prime not exceeding x, then
+
+                             d(N )              1 + a2 1 + a3 1 + a5   1 + ap
+                                          ≤           · ha3 · ha5 · · · hap
+                              Nh                 2ha2   3      5        p
+                                                1 + a2 1 + a3 1 + a5   1 + ap
+                                          ≤           · ha3 · ha5 · · · hap .                 (13)
+                                                 2ha2   2      2        2
+On the number of divisors of a number                                                           57
+
+
+                                                                                         h
+But it is easy to shew that the maximum value of (1 + a)2−ha for the variable a is he2log 2 .
+Hence
+                                                            ω(x)
+                                                 2h
+                                           
+                                 d(N )
+                                       ≤                            ,                   (14)
+                                  Nh           he log 2
+
+where ω(x) denotes the number of primes not exceeding x. But from (10) we have
+
+                                                    log 2
+                                           h=             .
+                                                    log x
+
+Substituting this in (14), we obtain
+                                               (    log 2          )ω(x)
+                                     log 2         2 log x log x
+                           d(N ) ≤ N                                       .            (15)
+                                     log x          e(log 2)2
+
+But it is easy to verify that, if x ≥ 6.05, then
+
+                                         2h < e(log 2)2 .
+
+From this and (15) it follows that, if x ≥ 6.05, then
+
+                             d(N ) < 2(log N )/(log x) (log x)ω(x)                      (16)
+
+for all values of N , ω(x) being the number of primes not exceeding x.
+
+5. The symbol “O” is used in the following sense:
+
+                                       φ(x) = O{(Ψ(x)}
+
+means that there is a positive constant K such that
+
+                                            φ(x)
+                                                 ≤K
+                                            Ψ(x)
+
+for all sufficiently large values of x (see Hardy, Orders of Infinity, pp. 5 et seq.). For
+example:
+
+                       1                         √
+             5x = O(x); x = O(x); x sin x = O(x); x = O(x); log x = O(x);
+                       2
+
+but                                 x2 6= O(x); x log x 6= O(x).
+Hence it is obvious that
+
+                                       ω(x) = O(x).                                     (17)
+58                                                                                               Paper 8
+
+
+     Now, let us suppose that
+                                                        log N
+                                                x=
+                                                     (log log N )2
+     in (16). Then we have
+                                   log x = log log N + O(log log log N );
+     and so
+                                                                               
+                           log N      log N               log N log log log N
+                                  =           +O                                    .               (18)
+                            log x   log log N                 (log log N )2
+
+     Again
+                                                                                        
+                                                                   log N log log log N
+                     ω(x) log log x = O(x log log x) = O                                     .      (19)
+                                                                       (log log N )2
+
+     It follows from (16), (18) and (19), that
+                                                                                   
+                                     log 2 log N              log N log log log N
+                         log d(N ) <             +O                                                 (20)
+                                      log log N                   (log log N )2
+
+     for all sufficiently large values of N .
+

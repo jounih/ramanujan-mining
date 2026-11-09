@@ -1,0 +1,1178 @@
+ Asymptotic formulæ for the distribution of integers of various
+                           types∗
+
+       Proceedings of the London Mathematical Society, 2, XVI, 1917, 112 – 132
+
+                                  1.    Statement of the problem.
+
+1.1 We denote by q a number of the form
+
+(1.11)                                         2a2 3a3 5a5 · · · pap ,
+
+where 2, 3, 5, . . . , p are primes and
+
+
+(1.111)                                    a2 ≥ a3 ≥ a5 ≥ . . . ≥ ap ;
+
+
+and by Q(x) the number of such numbers which do not exceed x: and our problem is that
+of determining the order of Q(x). We prove that
+
+                                             "                  s                   #
+                                                      2π                   log x
+(1.12)                          Q(x) = exp {l + o(l)} √                                   ,
+                                                        3                log log x
+
+that is to say that to every positive ǫ corresponds an x0 = x0 (ǫ), such that
+                           s                                    s            
+                    2π             log x                    2π              log x
+(1.121)             √ −ǫ                     < log Q(x) < √ + ǫ                       ,
+                      3          log log x                   3            log log x
+
+for x > x0 . The function Q(x) is thus of higher order than any power of log x, but of lower
+order than any power of x.
+The interest of the problem is threefold. In the first place the result itself, and the method
+by which it is obtained, are curious and interesting in themselves. Secondly, the method of
+proof is one which, as we shew at the end of the paper, may be applied to a whole class of
+problems in the analytic theory of numbers: it enables us, for example, to find asymptotic
+formulæ for the number of partitions of n into positive integers, or into different positive
+integers, or into primes. Finally , the class of numbers q includes as a sub-class the “highly
+composite” numbers recently studied by Mr.Ramanujan in an elaborate memoir in these
+Proceedings† The problem of determining, with any precision, the number H(x) of highly
+  ∗
+    This paper was originally communicated under the title “A problem in the Analytic Theory of Numbers.”
+   †
+    Ramanujan, “Highly Composite Numbers,” Proc. London Math. Soc., Ser.2, Vol.XIV 1915, pp. 347 –
+409 [No. 15 of this volume].
+306                                                                                                  Paper 34
+
+
+      composite numbers not exceeding x appears to be one of extreme difficulty. Mr Ramanujan
+      has proved, by elementary methods, that the order of H(x) is at any rate greater than that
+      of log x∗ : but it is still uncertain whether or not the order of H(x) is greater than that of
+      any power of log x. In order to apply transcendental methods to this problem, it would be
+      necessary to study the properties of the function
+                                                                      X 1
+                                                             H(s) =           ,
+                                                                         hs
+      where h is a highly composite number, and we have not been able to make any progress
+      in this direction. It is therefore very desirable to study the distribution of wider classes of
+      numbers which include the highly composite numbers and possess some at any rate of their
+      characteristic properties. The simplest and most natural such class is that of the numbers
+      q; and here progress is comparatively easy, since the function
+                                                                         X 1
+      (1.13)                                                    Q(s) =
+                                                                                  qs
+       possesses a product expression analogous to Euler’s product expression for ζ(s), viz.
+                                                   ∞            
+                                                   Y       1
+      (1.14)                               Q(s) =                  ,
+                                                    1
+                                                        1 − ln−s
+
+       where ln = 2 · 3 · 5 · · · pn is the product of the first n primes.
+      We have not been able to apply to this problem the methods, depending on the theory of
+      functions of a complex variable, by which the Prime Number Theorem was proved. The
+      function Q(s) has the line σ = 0† as a line of essential singularities, and we are not able to
+      obtain sufficiently accurate information concerning the nature of these singularities. But
+      it is easy enough to determine the behaviour of Q(s) as a function of the real variable s;
+      and it proves sufficient for our purpose to determine an asymptotic formula for Q(s) when
+      s → 0, and then to apply a “Tauberian” theorem similar to those proved by Messrs Hardy
+      and Littlewood in a series of papers published in these Proceedings and elsewhere‡ .
+      This “Tauberian” theorem is in itself of considerable interest as being (so far as we are
+      aware) the first such theorem which deals with functions or sequences tending to infinity
+      more rapidly than any power of the variable.
+
+                                                         2. Elementary results.
+      2.1 Let us consider, before proceeding further, what information concerning the order of
+      Q(x) can be obtained by purely elementary methods.
+                                           p
+         ∗                         log x       (log log x)
+             As great as that of                  3 : see p.385 of his memoir [p. 139 of this volume].
+                                  (log log log x) 2
+          †
+            We write as usual s = σ + it.
+          ‡
+            See, in particular, Hardy and Littlewood, “Tauberian theorems concerning power series and Dirichlet’s
+      series whose coefficients are positive,” Proc. London Math. Soc., Ser.2, Vol XIII, 1914, pp. 174 – 191; and
+      “Some theorems concerning Dirichlet’s series,” Messenger of Mathematics, Vol.XLIII, 1914, pp. 134 – 147.
+Asymptotic formulæ for the distribution of integers of various types                           307
+
+
+Let
+
+(2.11)                                 ln = 2 · 3 · 5 · · · pn = eϑ(pn ) ,
+
+where ϑ(x) is Tschebyshef’s function
+                                                        X
+                                        ϑ(x) =                  log p .
+                                                        p≤x
+
+The class of numbers q is plainly identical with the class of numbers of the form
+
+(2.12)                                             l1b1 l2b2 · · · lnbn ,
+
+where                             b1 ≥ 0, b2 ≥ 0, . . . , bn ≥ 0.
+Now every b can be expressed in one and only one way in the form
+
+(2.13)                          bi = ci,m 2m + ci,m−1 2m−1 + · · · + ci,0 ,
+
+where every c is equal to zero or to unity. We have therefore
+                                       P
+                                        m               
+                                n             ci,j 2j            m Y
+                                                                   n            m
+                                                                      ci,j 2j        j
+                                Y                                Y              Y
+(2.14)                     q=         lj=0
+                                        i
+                                                        =           li       =   rj2 ,
+                                i=1                              j=0 i=1            j=0
+
+say, where
+                                                        c        c          c
+(2.141)                                     rj = l11,j l22,j · · · lnn,j .
+
+
+Let r denote , generally, a number of the form
+
+(2.15)                                        r = l1c1 l2c2 · · · lncn ,
+
+ where every c is zero or unity : and R(x) the number of such numbers which do not exceed
+x. If q ≤ x, we have
+                                  r0 ≤ x, r12 ≤ x, r24 ≤ x, . . .
+The number of possible values of r0 , in formula (2.14), cannot therefore exceed R(x); the
+                                                  1
+number of possible values of r1 cannot exceed R(x 2 ); and so on. The total number of values
+of q can therefore not exceed
+                                                            1         1             −̟
+(2.16)                          S(x) = R(x)R(x 2 )R(x 4 ) · · · R(x2                     ),
+
+where ̟ is the largest number such that
+                                                 −̟                             ̟
+(2.161)                                     x2          ≥ 2, x ≥ 22 .
+308                                                                                          Paper 34
+
+
+      Thus
+
+      (2.17)                                                 Q(x) ≤ S(x).
+
+
+      2.2 We denote by f and g the largest numbers such that
+
+      (2.211)                                                     lf ≤ x ,
+
+
+      (2.212)                                                 l1 l2 · · · lg ≤ x .
+       It is known∗ (and may be proved by elementary methods ) that constants A and B exist,
+      such that
+
+      (2.221)                                            ϑ(x) ≥ Ax         (x ≥ 2) ,
+
+      and
+
+      (2.222)                                         pn ≥ Bn log n (n ≥ 1) .
+
+      We have therefore                         eAp f ≤ x ,
+
+                                                     f log f = O(log x) ,
+
+      (2.23)                                            log f = O(log log x) ;
+                        g
+                        P                       g
+                                                P
+      and                    ϑ(pν ) ≤ log x ,         pν = O(log x) ,
+                         1                       1
+
+                                    g
+                                    X
+                                          ν log ν = O(log x) , g 2 log g = O(log x) ,
+                                      1
+                                                                s                   
+                                                                        log x
+      (2.24)                                            g=O                              .
+                                                                      log log x
+       But it is easy to obtain an upper bound for R(x) in terms of f and g. The number of
+      numbers l1 , l2 , . . . , not exceeding x, is not greater than f ; the number of products not
+      exceeding x, of pairs of such numbers, is a fortiori not greater than 12 f (f − 1); and so on.
+      Thus
+                                             f (f − 1) f (f − 1)(f − 2)
+                                  R(x) ≤ f +           +                  + ··· ,
+                                                 2!             3!
+      where the summation need be extended to g terms only, since
+
+                                                     l1 l2 · · · lg lg+1 > x .
+        ∗
+            See Landau, Handbuch, pp. 79, 83, 214.
+Asymptotic formulæ for the distribution of integers of various types                              309
+
+
+A fortiori, we have
+                                            f2         fg
+                   R(x) ≤ 1 + f +              + ··· +    < (1 + f )g = eg log(1+f ) .
+                                            2!         g!
+Thus
+                                                                     √
+(2.25)                              R(x) = eO(g log f ) = eO( log x log log x) ,
+by (2.23) and (2.24). Finally, since
+                                    √               √        1
+                              log       x log log       x<     log x log log x ,
+                                                             2
+it follows from (2.16) and (2.17) that
+                                                                        
+                                              1 1     1 p
+(2.26)             Q(x) = exp O         1 + + + ··· + ̟   ( log x log log x)
+                                              2 4    2
+                               √
+                         = eO{ ( log x log log x)} .
+
+
+2.3 A lower bound for Q(x) may be found as follows. If g is defined as in 2.2, we have
+
+                                    l1 l2 · · · lg ≤ x < l1 l2 · · · lg lg+1 .
+It follows from the analysis of 2.2 that
+                                     lg+1 = eϑ(pg+1 ) = eO(g log g) ,
+                                   ( g        )
+                                                        2
+                                    X
+and           l1 l2 · · · lg = exp      ϑ(pν ) = eO(g log g) .
+                                      1
+                                        2
+Thus                     x < eO(g log g) ;
+which is only possible if g is greater than a constant positive multiple of
+                                        s            
+                                              log x
+                                                        .
+                                            log log x
+Now the numbers l1 , l2 , . . . , lg can be combined in 2g different ways, and each such combi-
+nation gives a number q not greater than x. Thus
+                                                    ( s               )
+                                                               log x
+(2.31)                               Q(x) ≥ 2g > exp K                    ,
+                                                             log log x
+
+ where K is a positive constant. From (2.26) and (2.31) it follows that there are positive
+constants K and L such that
+                         s            
+                               log x                   p
+(2.32)                 K                 < log Q(x) < L ( log x log log x) .
+                             log log x
+310                                                                                         Paper 34
+
+
+       The inequalities (2.32) give a fairly accurate idea as to the order of magnitude of Q(x).
+      But they are much less precise than the inequalities (1.121). To obtain these requires the
+      use of less elementary methods.
+
+                      3. The behaviour of Q(s) when s → 0 by positive values.
+      3.1. From the fact, already used in 2.1, that the class of numbers q is identical with the
+      class of numbers of the form (2.12), it follows at once that
+
+                                                    X 1           ∞                
+                                                                  Y        1
+      (1.14)                               Q(s) =             =                         .
+                                                         qs
+                                                                  1
+                                                                        1 − ln−s
+
+      Both series and product are absolutely convergent for σ > 0, and
+                                                   1       1
+      (3.11)                      log Q(s) = φ(s) + φ(2s) + φ(3s) + · · · ,
+                                                   2       3
+      where
+                                                                  ∞
+                                                                  X
+      (3.111)                                         φ(s) =          ln−s .
+                                                                  1
+
+      We have also
+                        1 − 2−s     −s 1 − 3
+                                             −s
+                                                   −s −s 1 − 5
+                                                               −s
+      (3.12)      φ(s) =         + 2            + 2   3           + ···
+                         2s − 1         3s − 1            5s − 1
+                                                                                 
+                           1       −s      1        1         −s −s      1      1
+                       = s      +2              −         +2 3              −         + ···
+                        2 −1            3s − 1 2s − 1                 5s − 1 3s − 1
+                                 ∞              Z pn+1                    
+                           1 X −sϑ(pn )                   d          1
+                       = s     e                                   s
+                                                                               dx
+                        2 −1 1                   pn      dx       x −1
+                                      Z ∞
+                           1                   xs−1
+                       = s   −s                        e−sϑ(x) dx .
+                        2 −1           2     (xs − 1)2
+
+
+      3.2. Lemma. If x > 1, s > 0, then
+                                          1        1       xs          1
+      (3.21)                                  2
+                                                −    <   s    2
+                                                                <            .
+                                     (s log x)    12   (x − 1)    (s log x)2
+
+      Write xs = eu : then we have to prove that
+                                             1     1       eu     1
+      (3.22)                                  2
+                                                −    <   u    2
+                                                                < 2
+                                             u    12   (e − 1)   u
+Asymptotic formulæ for the distribution of integers of various types                                        311
+
+
+
+for all positive values of u ; or (writing w for 21 u) that
+                                                1    1     1     1
+(3.23)                                            2
+                                                    − <     2  < 2
+                                                w    3  sinh w  w
+
+for all positive values of w. But it is easy to prove that the function
+                                                        1        1
+                                          f (w) =           −
+                                                        w 2   sinh2 w
+is a steadily decreasing function of w, and that its limit when w → 0 is 31 ; and this establishes
+the truth of the lemma.
+
+3.3. We have therefore
+                                            1                         1
+(3.31)                          φ(s) =              − φ1 (s) =             − φ1 (s) + O(1) ,
+                                         2s − 1                    s log 2
+
+where
+                            Z ∞                                                    Z ∞
+                                             s2                                           e−sϑ(x) dx
+                                                    
+                        1             1                           dx            1
+(3.311)                                    −            e−sϑ(x)      < φ1 (s) <                      .
+                        s   2      (log x)2 12                    x             s   2     (log x)2 x
+
+From the second of these inequalities, and (2.221), it follows that
+                       1 ∞ e−Asx dx
+                                                         Z ∞ −Asx
+                                             e−2As            e
+                         Z
+              φ1 (s) <               2
+                                          =          −A               dx
+                       s 2 (log x) x         s log 2       2   log x
+                                                         Z ∞ −Asx
+                                                1             e
+                                          =          −A              dx + O(1) ;
+                                             s log 2       2   log x
+
+and so that
+                                                         Z ∞
+                                                               e−Asx
+(3.32)                                   φ(s) > A                    dx + O(1) .
+                                                          2    log x
+
+On the other hand there is a positive constant B, such that
+                                          ϑ(x) < Bx           (x ≥ 2)∗ .
+Thus
+                    Z ∞                                                 Z ∞
+                                       s2                                     e−Bsx dx
+                                            
+                1               1               −Bsx dx              1
+       φ1 (s) >                      −          e              =                         + O(1)
+                s   2        (log x)2 12                 x           s   2   (log x)2 x
+                                                                                  Z ∞ −Bsx
+                                                                        1              e
+                                                               =             −B               dx + O(1) ;
+                                                                     s log 2       2    log x
+  ∗
+      Landau, Handbuch, loc.cit
+312                                                                                                  Paper 34
+
+
+      and so
+                                                          Z ∞
+                                                                e−Bsx
+      (3.33)                                   φ(s) < B                dx + O(1) .
+                                                          2      log x
+
+
+      3.4. Lemma. If H is any positive number, then
+                                        Z ∞ −Hsx
+                                           e                1
+                             J(s) = H             dx ∼            ,
+                                         2  log x      s log(1/s)
+      when s → 0.
+      Given any positive number ǫ, we can choose ξ and X, so that
+                             Z ξ                  Z ∞
+                                    −Hx
+                                 He     dx < ǫ ,      He−Hx dx < ǫ .
+                                   0                            X
+
+      Now
+                                 Z ∞                       Z √s Z ξ Z X Z ∞
+                                     He−Hu log(1/s)
+                       
+                       1
+                s log     J(s) =                      du =     + √ +   +
+                       s          2s log u + log(1/s)       2s     s ξ   X
+                                  = j1 (s) + j2 (s) + j3 (s) + j4 (s) ,
+
+      say. And we have
+                                         Z √s
+                                log(1/s)                   √
+                   0 < j1 (s) <               He−Hu du = O{ s log(1/s)} = o(1) ,
+                                   log 2  2s
+                                  Z ξ
+                   0 < j2 (s) < 2     He−Hu du < 2ǫ ,
+                                    0
+                                Z X
+                       j3 (s) =       He−Hu du + o(1) ,
+                                  ξ
+                                Z ∞
+                   0 < j4 (s) <       He−Hu du < ǫ ;
+                                       X
+
+      and so
+                                              Z ∞
+                           1
+                1 − s log     J(s)         =          He−Hu du − j1 (s) − j2 (s) − j3 (s) − j4 (s)
+                           s                     0
+                                           < 5ǫ + o(1) < 6ǫ ,
+
+      for all sufficiently small values of s.
+
+      3.5. From (3.32), (3.33), and lemma just proved, it follows that
+                                                         X                  1
+      (3.51)                                    φ(s) =        ln−s ∼              .
+                                                                       s log(1/s)
+Asymptotic formulæ for the distribution of integers of various types                                       313
+
+
+ From this formula we can deduce an asymptotic formula for log Q(s). We choose N so
+that
+                                                    X 1
+(3.52)                                                   < ǫ,
+                                                      n2
+                                                   N <n
+
+and we write
+                                  X1                X            X                   X             X
+(3.53)               log Q(s) =          φ(ns) =           +                  +                +
+                                     n                                √             √
+                                                   1≤n≤N       N <n<1/ s          1/ s≤n≤1/s       1/s<n
+
+                             = Φ1 (s) + Φ2 (s) + Φ3 (s) + Φ4 (s) ,
+
+ say.
+In the first place
+                                                                      N
+                                                     1 + o(1) X 1
+(3.541)                                    Φ1 (s) =                 .
+                                                    s log(1/s) 1 n2
+
+In the second place                                                  
+                                                          1
+                                   φ(ns) = O                              ,
+                                                    ns log(1/ns)
+and
+                                                      1
+                                     log(1/ns) >        log(1/s),
+                                                      2
+             √
+if N < n < 1/ s. It follows that a constant K exists such that
+
+                                                 K      X 1        Kǫ
+(3.542)                           Φ2 (s) <                   <            .
+                                             s log(1/s)   n2   s log(1/s)
+                                                          N <n
+           √
+Thirdly,       s ≤ ns ≤ 1 in Φ3 (s), and a constant L exists such that
+
+                                                         L
+                                         φ(ns) < √              .
+                                                     s log(1/s)
+
+Thus
+                                                                 1/s
+                                                    L      X1  2L
+(3.543)                              Φ3 (s) < √               <√ ,
+                                                s log(1/s)  n   s
+                                                                  1
+
+ for all sufficiently small values of s.
+Finally, in Φ4 (s) we have ns > 1, and a constant M exists such that
+
+                                           φ(ns) < M 2−ns .
+314                                                                                               Paper 34
+
+
+      Thus
+                                         X 2−ns                X                 sM
+      (3.544)               Φ4 (s) < M                < sM            2−ns <           = O(1) .
+                                                  n                            1 − 2−s
+                                         1/s<n                1/s<n
+
+       From (3.53), (3.541)–(3.544), and (3.52) it follows that
+                                                                   2        
+                                               1                    π        ′
+      (3.55)                   log Q(s) =               {1 + o(1)}     +ρ +ρ
+                                          s log(1/s)                 6
+                                                             
+                                                       1
+                                          +O √                  + O(1) ,
+                                                   s log(1/s)
+
+      where
+                                             |ρ| < ǫ , |ρ′ | < Kǫ.
+      Thus
+                                                                   π2
+      (3.56)                                     log Q(s) ∼               ,
+                                                              6s log(1/s)
+      or
+                                                                π2
+                                                                      
+      (3.57)                         Q(s) = exp {1 + o(1)}               .
+                                                           6s log(1/s)
+
+
+
+                                         4. A Tauberian theorem.
+      4.1. The passage from (3.57) to (1.12) depends upon a theorem of the “Tauberian” type.
+      Theorem A. Suppose that
+
+       (1) λ1 ≥ 0 ,   λn > λn−1 ,   λn → ∞ ;
+
+       (2) λn /λn−1 → 1 ;
+
+       (3) an ≥ 0 ;
+
+       (4) A > 0 , a > 0 ;
+
+              an e−λn s is convergent for s > 0 ;
+           P
+       (5)
+                                      h                     i
+                                                         −β
+       (6) f (s) = an e−λn s = exp {1 + o(1)}As−α log 1s
+                   P                              
+                                                              ,
+
+      when s → 0. Then
+
+                An = a1 + a2 + · · · + an = exp[{1 + o(1)}Bλα/(1+α)
+                                                            n       (log λn )−β/(1+α) ] ,
+Asymptotic formulæ for the distribution of integers of various types                                                 315
+
+
+where
+                               B = A1/(1+α) α−α/(1+α) (1 + α)1+[β/(1+α)] ,
+when n → ∞.
+We are given that
+                                                   −β                                                   −β
+                                   −α           1                                       −α             1
+(4.11)                 (1 − δ)As            log           < log f (s) < (1 + δ)As                  log           ,
+                                                s                                                      s
+
+for every positive δ and all sufficiently small values of s; and we have to shew that
+
+(4.12)             (1 − ǫ)Bλnα/(1+α) (log λn )−β/(1+α) < log An
+                                                               < (1 + ǫ)Bλα/(1+α)
+                                                                          n       (log λn )−β/(1+α) ,
+
+ for every positive ǫ and all sufficiently large values of n.
+In the argument which follows we shall be dealing with three variables, δ, s and n (or m),
+the two latter variables being connected by an equation or by inequalities, and with an
+auxiliary parameter ζ. We shall use the letter η, without a suffix, to denote generally a
+function of δ, s and n (or m)∗ , which is not the same in different formulæ , but in all cases
+tends to zero when δ and s tend to zero and n (or m) to infinity; so that, given any positive
+ǫ, we have
+                                           0 < |η| < ǫ ,
+for               0 < δ < δ0 , 0 < s < s0 , n > n0 .
+We shall use the symbol ηζ to denote a function of ζ only which tends to zero with ζ, so
+that
+                                     0 < |ηζ | < ǫ ,
+if ζ is small enough. It is to be understood that the choice of a ζ to satisfy certain conditions
+is in all cases prior to that of δ, s and n (or m). Finally, we use the letters H, K, . . . to
+denote positive numbers independent of these variables and of ζ.
+The second of the inequalities (4.12) is very easily proved. For
+
+(4.131)                        An e−λn s < a1 e−λ1 s + a2 e−λ2 s + · · · + an e−λn s
+                                                        (                        −β )
+                                                                                1
+                                         < f (s) < exp (1 + δ)As−α log                  ,
+                                                                                s
+
+(4.132)                                                    An < exp χ ,
+where
+                                                                              −β
+                                                              −α           1
+(4.1321)                                    χ = (1 + δ)As              log           + λn s.
+                                                                           s
+  ∗
+      η may, of course, in some cases be a function of some of these variables only.
+316                                                                                                    Paper 34
+
+
+      We can choose a value of s, corresponding to every large value of n, such that
+
+                                             1 −β                           1 −β
+                                                                           
+      (4.14)              (1 − δ)Aαs−1−α log      < λn < (1 + δ)Aαs−1−α log      .
+                                             s                              s
+
+      From these inequalities we deduce, by an elementary process of approximation,
+
+                                                                1 β/(1+α)
+                                                                 
+      (4.151)                 (1 − η)(Aα)−1/(1+α) λn1/(1+α) log
+                                                                s
+                                                                               1 β/(1+α)
+                                                                                
+                                       1                −1/(1+α) 1/(1+α)
+                                    < < (1 + η)(Aα)             λn         log           ,
+                                       s                                       s
+
+                                             1−η             1  1+η
+      (4.152)                                    log λn < log <     log λn ,
+                                             1+α             s  1+α
+
+                                            αB −1/(1+α)
+      (4.153)                      (1 − η)      λ         (log λn )−β/(1+α)
+                                           1+α n
+                                                         αB −1/(1+α)
+                                          < s < (1 + η)       λ         (log λn )−β/(1+α) ,
+                                                        1+α n
+
+      (4.154)                               χ < (1 + η)Bλα/(1+α)
+                                                         n       (log λn )−β/(1+α) .
+      We have therefore
+
+      (4.16)                           log An < (1 + ǫ)Bλα/(1+α)
+                                                         n       (log λn )−β/(1+α) ,
+
+      for every positive ǫ and all sufficiently large values of n∗ .
+
+      4.2. We have
+                                             X          X
+      (4.21)                      f (s) =   an e−λn s =    An (e−λn s − ǫ−λn+1 s )
+                                           ∞
+                                           X     Z λn+1             Z ∞
+                                                         −sx
+                                        =s   An         e dx = s         A(x)e−sx dx ,
+                                               1       λn                    0
+
+
+      where A(x) is the discontinuous function defined by
+
+                                         A(x) = An       (λn ≤ x < λn+1 )† ,
+         ∗
+           We use the second inequality (4.12) in the proof of the first. It would be sufficient for our purpose to
+      begin by proving a result cruder than (4.16), with any constant K on the right-hand side instead of (1 + ǫ)B.
+      But it is equally easy to obtain the more precise inequality. Compare the argument in the second of the
+      two papers by Hardy and Littlewood quoted on p.114 [p. 306 of this volume] (pp. 143 et seq.)
+         †
+           Compare Hardy and Riesz, “The General Theory of Dirichlet’s Series,” Cambridge Tracts in Mathe-
+      matics, No.18, 1915, p.24.
+Asymptotic formulæ for the distribution of integers of various types                             317
+
+
+so that, by (4.16),
+
+(4.22)                      log A(x) < (1 + ǫ)Bxα/(1+α) (log x)−β/(1+α)
+
+ for every positive ǫ and all sufficiently large values of x. We have therefore
+                      (                        )
+                                            1 −β
+                                                        Z ∞
+                                   −α
+(4.23)            exp (1 − δ)As         log         <s        A(x)e−sx dx
+                                            s             0
+                                                            (                  −β )
+                                                                              1
+                                                    < exp (1 + δ)As−α log
+                                                                              s
+
+ for every positive δ and all sufficiently small values of s.
+We define λx , a steadily increasing and continuous function of the continuous variable x,
+by the equation
+                      λx = λn + (x − n)(λn+1 − λn ) (n ≤ x ≤ n + 1) .
+We can then choose m so that
+                                   1   1 + α 1/(1+α)
+(4.24)                               =      λ        (log λm )β/(1+α) .
+                                   s    αB m
+ We shall now shew that the limits of the integral in (4.23) may be replaced by (1 − ζ)λm
+and (1 + ζ)λm , where ζ is an arbitrary positive number less than unity.
+We write
+                           Z ∞
+(4.25)            J(s) = s      A(x)e−sx dx
+                            0
+                           (Z                                                  )
+                                   λm /H
+                                       Z        (1−ζ)λm
+                                                   Z           (1+ζ)λm
+                                                               Z          Z   Hλm          ∞
+                       =s                  +              +              +             +
+                               0               λm /H          (1−ζ)λm        (1+ζ)λm       Hλm
+
+                       = J1 + J2 + J3 + J4 + J5 ,
+
+ where H is a constant, in any case greater than 1, and large enough to satisfy certain
+further conditions which will appear in a moment; and we proceed to shew that J1 , J2 , J4
+and J5 are negligible in comparison with the exponentials which occur in (4.23), and so in
+comparison with J3 .
+
+4.3 The integrals J1 and J5 are easily disposed of. In the first place we have
+                             Z λm /H                          
+                                                 −sx λm
+(4.31)                J1 = s       A(x)e dx < A
+                             0                       H
+                               (             α/(1+α)                  )
+                                                            λm −β/(1+α)
+                                                             
+                                          λm
+                         < exp (1 + δ)B                 log               ,
+                                          H                 H
+318                                                                                             Paper 34
+
+
+       by (4.22)∗ . It will be found, by a straightforward calculation, that this expression is less
+      than
+                                    (                                      −β )
+                                                                          1
+      (4.32)                    exp (1 + η)A(1 + α)H −α/(1+α) s−α log             ,
+                                                                          s
+
+      and is therefore certainly negligible if H is sufficiently large.
+      Thus J1 is negligible. To prove that J5 is negligible we prove first that
+
+                                          sx > 4Bxα/(1+α) (log x)−β/(1+α) ,
+
+      if x > Hλm and H is large enough† . It follows that
+                      Z ∞                           Z∞
+                                   −sx
+             J5 = s         A(x)e        dx < s          exp{(1 + δ)Bxα/(1+α) (log x)−β/(1+α) − sx}dx
+                      Hλm
+                                                  Hλm
+                                                   Z ∞
+                                                            1           1
+                                             < s         e− 2 sx dx =     ,
+                                                     0                  2
+      and is therefore negligible.
+
+      4.4 The integrals J2 and J4 may be discussed in practically the same way, and we may
+      confine ourselves to the latter. We have
+                                          Z Hλm                 Z Hλm
+      (4.41)                   J4 (s) = s       A(x)e−sx dx < s        eψ dx ,
+                                                  (1+ζ)λm                       (1+ζ)λm
+
+      where
+
+      (4.411)                             ψ = (1 + δ)Bxα/(1+α) (log x)−β/(1+α) − sx .
+
+      The maximum of the function ψ occurs for x = x0 , where
+                                          1           1 + α 1/(1+α)
+      (4.42)                                = (1 + η)      x        (log x0 )β/(1+α) .
+                                          s            αB 0
+      From this equation, and (4.24), it plainly results that
+
+      (4.43)                                     (1 − η)λm < x0 < (1 + η)λm ,
+
+       and that x0 falls (when δ and s are small enough) between (1 − ζ)λm and (1 + ζ)λm .
+      Let us write x = x0 + ξ in J4 . Then
+
+                                         1            d2  α/(1+α)
+                          ψ(x) = ψ(x0 ) + (1 + δ)Bξ 2 2 {x1       (log x1 )−β/(1+α) } ,
+                                         2           dx1
+        ∗
+            With δ in the place of ǫ.
+        †
+            We suppress the details of the calculation, which is quite straightforward.
+Asymptotic formulæ for the distribution of integers of various types                                              319
+
+
+where x0 < x1 < x and a fortiori
+
+                                      (1 − ζ)λm < x1 < Hλm .
+
+It follows that
+                    d2    α/(1+α)
+(4.44)                2 {x1       (log x1 )−β/(1+α) } < −Kλm
+                                                           α/(1+α)−2
+                                                                     (log λm )−β/(1+α) .
+                   dx1
+ On the other hand, an easy calculation shews that
+
+                                     1 −β                               1 −β
+                                                                       
+                            −α                                 −α
+(4.45)            (1 − η)As      log      < ψ(x0 ) < (1 + η)As      log      .
+                                     s                                  s
+Thus
+                           (                                −β )
+                                           −α            1
+(4.46)            J4 < exp (1 + η)As                 log
+                                                         s
+                          Z ∞
+                      ×              exp{−Lξ 2 λm
+                                                α/(1+α)−2
+                                                          (log λm )−β/(1+α) }dξ
+                           (ζ−η)λm
+                           (                                −β                                              )
+                                           −α            1
+                    < exp (1 + η)As                  log           − M ζ 2 λα/(1+α)
+                                                                            m       (log λm )−β/(1+α)
+                                                         s
+                           (                                            −β )
+                                                                     1
+                    < exp (1 + η − N ζ 2 )As−α                   log             .
+                                                                     s
+
+ Since ζ is independent of δ and s, this inequality shews that J4 is negligible; and a similar
+argument may be applied to J2 .
+
+4.5 We may therefore replace the inequalities (4.23) by
+                  (                    −β )
+                                      1
+(4.51)        exp (1 − δ)As−α log
+                                      s
+                                                      (                                               −β )
+                                 (1+ζ)λm                                                  
+                                                                                                  1
+                         Z
+                                                      −sx                            −α
+                          <s               A(x)e            dx < exp (1 + δ)As                log             .
+                                (1−ζ)λm                                                           s
+
+ Since A(x) is a steadily increasing function of x, it follows that
+                     (                    −β )                    Z (1+ζ)λm
+                                −α       1
+(4.521)         exp (1 − δ)As        log         < sA{(1 + ζ)λm }             e−sx dx ,
+                                         s                           (1−ζ)λm
+
+                      (                              −β )                          Z (1+ζ)λm
+                                     −α           1
+(4.522)           exp (1 + δ)As               log                > sA{(1 − ζ)λm }                 e−sx dx ;
+                                                  s                                   (1−ζ)λm
+320                                                                                                    Paper 34
+
+
+      or
+                                                              (                              −β            )
+                       ζsλm    −ζsλm                                         −α           1
+      (4.531)      (e         −e       )A{(1 − ζ)λm } < exp (1 + δ)As                 log           + λm s       ,
+                                                                                          s
+                                                              (                              −β            )
+                                                                                          1
+      (4.532)      (eζsλm − e−ζsλm )A{(1 + ζ)λm } > exp (1 − δ)As−α                   log           + λm s       .
+                                                                                          s
+       If we substitute for s, in terms of λm , in the right-hand sides of (4.531) and (4.532), we
+      obtain expressions of the form
+
+                                   exp{(1 + η)Bλα/(1+α)
+                                                m       (log λm )−β/(1+α) } .
+
+      On the other hand
+                                                eζsλm − e−ζsλm
+      is of the form
+                                      exp{ηζ λα/(1+α)
+                                              m       (log λm )−β/(1+α) }.
+      We have thus
+
+      (4.541)             A{(1 − ζ)λm } < exp{(1 + ηζ + η)Bλα/(1+α)
+                                                            m       (log λm )−β/(1+α) } ,
+
+
+      (4.542)             A{(1 + ζ)λm } > exp{(1 − ηζ − η)Bλα/(1+α)
+                                                            m       (log λm )−β/(1+α) } .
+      Now let ν be any number such that
+
+      (4.55)                                (1 − ζ)λm ≤ λν ≤ (1 + ζ)λm .
+
+       Since λn /λn−1 → 1, it is clear that all numbers n from a certain point onwards will fall
+      among the numbers ν. It follows from (4.541) and (4.542) that
+
+      (4.56)              exp{(1 − ηζ − η)(1 − ηζ )Bλα/(1+α)
+                                                     ν       (log λν )−β/(1+α) } < A(λν )
+                                   < exp{(1 + ηζ + η)(1 + ηζ )Bλα/(1+α)
+                                                                ν       (log λν )−β/(1+α) } ;
+
+      and therefore that, given ǫ we can choose first ζ and then n0 so that
+
+      (4.57)                       exp{(1 − ǫ)Bλα/(1+α)
+                                                n       (log λn )−β/(1+α) } < A(λn )
+                                         < exp{(1 + ǫ)Bλα/(1+α)
+                                                        n       (log λn )−β/(1+α) } ,
+
+      for n ≥ n0 . This completes the proof of the theorem.
+
+      4.6 There is of course a corresponding “Abelian” theorem, which we content ourselves with
+      enunciating. This theorem is naturally not limited by the restriction that the coefficients
+      an are positive.
+Asymptotic formulæ for the distribution of integers of various types                               321
+
+
+Theorem B. Suppose that
+
+ (1) λ1 ≥ 0 ,     λn > λn−1 ,     λn → ∞ ;
+
+ (2) λn /λn−1 → 1 ;
+
+ (3) A > 0 , 0 < α < 1 ;
+
+ (4) An = α1 + α2 + · · · + αn = exp {1 + o(1)}Aλαn (log λn )−β ,
+                                                               
+
+                                 an e−λn s is convergent for s > 0, and
+                               P
+when n → ∞. Then the series
+                                                                                 −β/(1−α)
+                       X
+                              −λn s                        −α/(1−α)           1
+            f (s) =        an e       = exp[{1 + o(1)}Bs                  log                 ],
+                                                                              s
+
+where
+                             B = A1/(1−α) αα/(1−α) (1 − α)1+[β/(1−α)] ,
+when s → 0.
+The proof of this theorem, which is naturally easier than that of the correlative Taube-
+rian theorem, should present no difficulty to anyone who has followed the analysis which
+precedes.
+
+4.7 The simplest and most interesting cases of Theorems A and B are those in which
+
+                                          λn = n ,   β = 0.
+
+It is then convenient to write x for e−s . We thus obtain
+
+Theorem C. If A > 0, 0 < α < 1, and
+
+                             log An = log(a1 + a2 + · · · + an ) ∼ Anα ,
+
+                      an xn is convergent for |x| < 1, and
+                  P
+then the series
+                                           X
+                           log f (x) = log(  an xn ) ∼ B(1 − x)−α/(1−α) ,
+
+where
+                                  B = (1 − α)αα/(1−α) A1/(1−α) ,
+when x → 1 by real values.
+If the coefficients are positive the converse inference is also correct. That is to say, if
+
+                                            A > 0,α > 0,
+
+and
+                                       log f (x) ∼ A(1 − x)−α ,
+322                                                                                                    Paper 34
+
+
+      then
+                                                log An ∼ Bnα/(1+α) ,
+      where
+                                         B = (1 + α)α−α/(1+α) A1/(1+α) .
+
+
+
+
+             5. Application to our problem, and to other problems in the Theory of Numbers.
+
+      5.1 We proved in 3 that
+
+                                                                         π2
+      (3.56)                                       log Q(s) ∼                    .
+                                                                    6s log (1/s)
+
+      In Theorem A take
+                                                             π2
+                                   λn = log n ,     A=          ,     α = 1,     β = 1.
+                                                             6
+      Then all the conditions of the theorem are satisfied. And An is Q(n), the number of numbers
+      q not exceeding n. We have therefore
+                                                         s            
+                                                               log n
+      (5.11)                               log Q(n) ∼ B                  ,
+                                                             log log n
+
+      where
+                                                                 s
+                                                                      π2
+                                                                           
+                                                             3                  2π
+      (5.12)                                       B=2       2                 =√ .
+                                                                      6          3
+
+
+      5.2 The method which we have followed in solving this problem is one capable of many
+      other interesting applications.
+      Suppose, for example, that Rr (n) is the number of ways in which n can be represented as
+      the sum of any number of r th powers of positive integers∗ .
+      We shall prove that
+                                                                         r/(r+1)
+                                                       1         1       1
+      (5.21)                log Rr (n) ∼ (r + 1)         Γ         +1 ζ    +1          n1/(r+1) .
+                                                       r         r       r
+         ∗
+          Thus 28 = 33 + 13 = 3 · 23 + 4 · 13 = 2 · 23 + 12 · 13 = 23 + 20 · 13 = 28 · 13 : and R3 (28) = 5.
+      The order of the powers is supposed to be indifferent, so that (e.g.) 33 + 13 and 13 + 33 are not reckoned as
+      separate representations.
+Asymptotic formulæ for the distribution of integers of various types                                         323
+
+
+ In particular, if P (n) = R1 (n) is the number of partitions of n, then
+                                                         r
+                                                           2n
+(5.22)                                     log P (n) ∼ π      .
+                                                            3
+
+We need only sketch the proof, which is in principle similar to the main proof of this paper.
+We have
+                           ∞                                 
+                          X                             1
+                               Rr (n)e−ns = Π∞ 1                ,
+                                                   1 − e−sν r
+                                     1
+
+and so
+                                  ∞                                                                
+                                  X
+                                                          −ns    ∞                         1
+(5.23)                    f (s) =   {Rr (n) − Rr (n − 1)}e    = Π2                                      .∗
+                                                                                       1 − e−sν r
+                                     1
+
+ It is obvious that Rr (n) increases with n and that all the coefficients in f (s) are positive.
+Again,
+                                         ∞                                  ∞
+                                         X                   1                X      r 1     r
+(5.24)                    log f (s) =          log                r       =     (e−sν + e−2sν + · · ·)
+                                         2
+                                                         1 − e−sν             2
+                                                                                       2
+                                         ∞
+                                         X     1
+                                    =            φ(ks) ,
+                                               k
+                                         k=1
+
+where
+                                                                      ∞
+                                                                               r
+                                                                      X
+(5.241)                                                    φ(s) =         e−sν .
+                                                                      2
+
+But
+                                                                        
+                                                                    1
+(5.25)                                               φ(s) ∼ Γ         + 1 s−1/r ,
+                                                                    r
+
+ when s → 0; and we can deduce, by an argument similar to that of 3.5, that
+                                                      
+                                           1       1
+(5.26)                     log f (s) ∼ Γ     +1 ζ    + 1 s−1/r .
+                                           r       r
+
+We now obtain (5.21) by an application of Theorem A, taking
+                                                             
+                             1                     1        1
+              λn = n , α = , β = 0 , A = Γ           +1 ζ     +1 .
+                             r                     r        r
+  ∗
+      Rr (0) is to be interpreted as zero.
+324                                                                                             Paper 34
+
+
+      In a similar manner we can shew that, if S(n) is the number of partitions of n into different
+      positive integers, so that
+                          X
+                              S(n)e−ns = (1 + e−s )(1 + e−2s )(1 + e−3s ) + · · ·
+                                                                   1
+                                         =                                                 ,
+                                                 (1 − e−s )(1 − e−3s )(1 − e−5s ) · · ·
+      then
+                                                                   r
+                                                                        n
+      (5.27)                                        log S(n) ∼ π          ;
+                                                                        3
+
+       that if Tr (n) is the number of representations of n as the sum of r th powers of primes,
+      then
+                                                       r/(r+1)
+                                            1         1
+      (5.28)        log Tr (n) ∼ (r + 1) Γ    +2 ζ      +1           n1/(r+1) (log n)−r/(r+1) ;
+                                            r         r
+
+       and, in particular, that if T (n) = T1 (n) is the number of partitions of n into primes, then
+                                                             s       
+                                                          2π      n
+      (5.281)                                log T (n) ∼ √              .
+                                                           3    log n
+
+      Finally, we can shew that if r and s are positive integers, a > 0, and 0 ≤ b ≤ 1, and
+                                 X                 {(1 + ax)(1 + ax2 )(1 + ax3 ) · · ·}r
+      (5.291)                        φ(n)xn =                                            ,
+                                                   {(1 + bx)(1 + bx2 )(1 + bx3 ) · · ·}s
+      then
+                                                                p
+      (5.292)                                       log φ(n) ∼ 2 (cn) ,
+
+      where
+                                           Z a                         Z b
+                                                  log(1 + t)                  log(1 − t)
+      (5.2921)                       c=r                     dt − s                      dt .
+                                             0        t                 0         t
+       In particular, if a = 1, b = 1 , and r = s, we have
+                                     X
+      (5.293)                            φ(n)xn = (1 − 2x + 2x4 − 2x9 + · · ·)−r ,
+
+                                                                  p
+      (5.294)                                      log φ(n) ∼ π        (rn) .
+
+
+      [Added March 28th , 1917. – Since this paper was written M.G.Valiron (“Sur la croissance
+      du module maximum des séries entières,” Bulletin de la Société mathématique de France,
+Asymptotic formulæ for the distribution of integers of various types                              325
+
+
+Vol.XLIV, 1916, pp. 45 – 64) has published a number of very interesting theorems con-
+cerning power-series which are more or less directly related to ours. M.Valiron considers
+power-series only, and his point of view is different from ours, in some respects more re-
+stricted and in others more general.
+He proves in particular that the necessary and sufficient conditions that
+                                               A
+                                           log M (r) ∼
+                                                     ,
+                                            (1 − r)α
+
+                                                 an xn for |x| = r, are that
+                                              P
+where M (r) is the maximum modulus of f (x) =
+                                                                     n α/(1+α)
+                             log |an | < (1 + ǫ)(1 + α)A1/(1+α)
+                                                                     α
+for n > n0 (ǫ), and
+                                                                     n α/(1+α)
+                             log |an | > (1 − ǫp )(1 + α)A1/(1+α)
+                                                                      α
+for n = np (p = 1, 2, 3, . . .), where np+1 /np → 1 and ǫp → 0 as p → ∞.
+M.Valiron refers to previous, but less general or less precise, results given by Borel (Leçons
+sur les séries à termes posı́tifs, 1902, Ch. V) and by Wiman (“Über dem Zusammen-
+hang zwischen dem Maximal-betrage einer analytischen Funktion und dem grössten Gliede
+der zugehörigen Taylor’schen Reihe,” Acta Mathematica, Vol.XXXVII, 1914, pp. 305 –
+326). We may add a reference to Le Roy, “Valeurs asymptotiques de certaines séries
+procédant suivant les puissances entières et positives d’une variable réelle,” Bulletin des
+sciences mathématiques, Ser.2, Vol. XXIV, 1900, pp.245 – 268.
+We have more recently obtained results concerning P (n), the number of partitions of n, far
+more precise than (5.22). A preliminary account of these researches has appeared, under
+the title “Une formule asymptotique pour le nombre des partitions de n,” in the Comptes
+Rendus of January 2nd , 1917∗ ; and a fuller account has been presented to the Society. See
+Records of Proceedings at Meetings, March 1st , 1917† .]
+
+
+
+
+  ∗
+      [No. 31 of this volume.]
+  †
+      [No. 33 of this volume; see also No. 36.]
+

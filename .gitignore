@@ -1,7 +1,14 @@
-# ===== Local-only working material (large primary sources, ~350 MB) =====
-# Source pack from ChatGPT pro mining: PDFs, page images, OCR text.
-# Useful as offline corpus for Hunt 5 / Hunt 1 etc.; NOT committed.
-chatgpt-pro-mining/
+# ===== ChatGPT pro mining source pack =====
+# The corpus itself is public domain - Ramanujan's notebooks, his own published
+# papers (ram01-37), and the 1927 Collected Papers - fetched from
+# ramanujan.sirinudi.org and archive.org. It is committed so the mining runs
+# stay reproducible.
+#
+# These third-party papers are still in copyright and must NOT be redistributed
+# from a public repo. They are fetchable from the manifests if you need them.
+chatgpt-pro-mining/**/quarterly_reports/
+chatgpt-pro-mining/**/open_access_context_pdfs/*
+!chatgpt-pro-mining/**/open_access_context_pdfs/collected_papers_of_srinivasa_ramanujan_1927_internet_archive_scan.pdf
 
 # ===== Secrets / API keys =====
 # Datalab Chandra 2 API key etc. NEVER commit.

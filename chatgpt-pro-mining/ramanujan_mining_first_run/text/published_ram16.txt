@@ -1,0 +1,286 @@
+                                   On certain infinite series
+
+                          Messenger of Mathematics, XLV, 1916, 11 – 15
+
+
+1. This paper is merely a continuation of the paper on “Some definite integrals” published
+in this Journal∗ . It deals with some series which resemble those definite integrals not merely
+in form but in many other respects. In each case there is a functional relation. In the case
+of the integrals there are special values of a parameter for which the integrals may be
+evaluated in finite terms. In the case of the series the corresponding results involve elliptic
+functions.
+
+2. It can be shewn, by the theory of residues, that if α and β are real and αβ = 14 π 2 , then
+
+                                α              3α               5α
+                                        −                +                  − ···
+                          (α + t) cosh α (9α + t) cosh 3α (25α + t) cosh 5α
+                                β              3β               5β
+                     +                  −                +                  − ···
+                          (β − t) cosh β (9β − t) cosh 3β (25β − t) cosh 5β
+                                     π
+                     =         p          p    .                                                     (1)
+                          4 cos (αt) cosh (βt)
+
+Now let
+
+                                      αeinα    3αe9inα    5αe25inα
+                                                                        
+                         F (n) =            −          +           − ···
+                                     cosh α cosh 3α       cosh 5α
+                                        −inβ                                   
+                                         βe        3βe−9inβ    5βe−25inβ
+                                     −          −           +             − ···                      (2)
+                                         cosh β     cosh 3β     cosh 5β
+
+Then we see that, if t is positive,
+                 Z∞
+                                                          πi
+                      e−2tn F (n)dn =                 p                  p                           (3)
+                                        4 cosh{(1 − i) (αt)} cosh{(1 + i) (βt)}
+                 0
+
+in virtue of (1). Again, let
+                            r
+                        1        π XX      1                √
+                                       (−1) 2 (µ+ν) {µ(1 + i) α − ν(1 − i) β}
+                                                                          p
+             f (n) = −
+                       2n        2n
+                                        2     2
+                            ×e−(πµν−iµ α+iν β)/4n       (µ = 1, 3, 5, . . . ; ν = 1, 3, 5, . . .).   (4)
+  ∗
+      [No. 11 of this volume (pp. 66 – 74); see also No.12 (pp. 75 – 86).]
+On certain infinite series                                                                                  165
+
+
+Then it is easy to shew that
+                 Z∞
+                                                          πi
+                      e−2tn f (n)dn =                 p                  p      .                    (5)
+                                        4 cosh{(1 − i) (αt)} cosh{(1 + i) (βt)}
+                 0
+
+Hence, by a theorem due to Lerch∗ , we obtain
+                                             F (n) = f (n)                                           (6)
+for all positive values of n, provided that αβ = 14 π 2 . In particular, when α = β = 21 π, we
+have
+                 sin 12 πn 3 sin 29 πn 5 sin 25  2 πn
+                        1 −        3    +              − ···
+                 cosh 2 π     cosh 2 π     cosh 25 π
+                             1 XX             1
+                      =− √               (−1) 2 (µ+ν) e−πµν/4n
+                          4n n
+                                        π(µ2 − ν 2 )               π(µ2 − ν 2 )
+                                                                               
+                            (µ + ν) cos              + (µ − ν) sin
+                                            8n                        8n
+                                                        (µ = 1, 3, 5, . . . ; ν = 1, 3, 5, . . .)    (7)
+for all positive values of n. As particular cases of (7), we have
+                       sin( 12 π/a) 3 sin( 29 π/a) 5 sin( 25
+                                                           2 π/a)
+                                1  −          3   +               − ···
+                        cosh 2 π      cosh 2 π        cosh 52 π
+                                                                                       !
+                            1 √             1         3         5
+                           = a a                 −         +           − ···
+                            4           cosh 4 πa cosh 4 πa cosh 45 πa
+                                              1         3
+
+                            1 √      1          9         25         49
+                           = a a(e− 16 πa − e− 16 πa − e− 16 πa + e− 16 πa + · · ·)4 ,               (8)
+                            2
+if a is a positive even integer; and
+           sin( 12 π/a) 3 sin( 92 π/a)
+                       −               + ···
+            cosh 21 π     cosh 32 π
+                                                                                     !
+                  1 √         cosh 41 πa 3 cosh 34 πa 5 cosh 45 πa 7 cosh 74 πa
+                 = a a                   +            −            −            + ··· ,              (9)
+                  2           cosh 12 πa   cosh 32 πa   cosh 25 πa   cosh 72 πa
+
+if a is a positive odd integer; and so on.
+
+3. It is also easy to shew that if αβ = π 2 , then
+                                                                                     
+                       α              2α               3α
+                               −                +                 − ···
+                 (α + t) sinh α (4α + t) sinh 2α (9α + t) sinh 3α
+  ∗
+      See Mr. Hardy’s note at the end of my previous paper [Messenger of Mathematics, XLIV, pp. 18 – 21].
+166                                                                                                     Paper 16
+
+                                                                                                 
+                                        β              2β               3β
+                          −                     −                +                 − ···
+                                  (β − t) sinh β (4β − t) sinh 2β (9β − t) sinh 3β
+                          1           π
+                      =     −     p         p     .                                                          (10)
+                          2t 2 sin (αt) sinh (βt)
+
+      From this we can deduce, as in the previous section, that if αβ = π 2 , then
+
+             αeinα    2αe4inα 3αe9inα           βe−inβ   2βe−4inβ   3βe−9inβ
+                    −         +         − ··· +        −          +          − ···
+             sinh α   sinh 2α   sinh 3α         sinh β    sinh 2β    sinh 3β
+                      r
+                1 1  π  XX                    √                          2   2
+                                       {µ(1 − i) α + ν(1 + i) β}e−(2πµν−iµ α+iν β)/4n
+                                                             p
+             = −              ×
+                2 n       2n
+                                                                 (µ = 1, 3, 5, . . . ; ν = 1, 3, 5, . . .)   (11)
+
+      for all positive values of n. If, in particular, we put α = β = π, we obtain
+            1   cos πn 2 cos 4πn 3 cos 9πn
+              −        +          −           + ···
+           4π   sinh π   sinh 2π     sinh 3π
+                                                    π(µ2 − ν 2 )                  π(µ2 − ν 2 )
+                                                                                               
+                  1    XX
+                               −πµν/2n
+            = p               e         (µ + ν) cos              +(µ − ν) sin
+              2n (2n)                                  4n                              4n
+                                                      (µ = 1, 3, 5, . . . ; ν = 1, 3, 5, . . .)   (12)
+
+      for all positive values of n. Thus, for example, we have
+                           1   cos(2π/a) 2 cos(8π/a) 3 cos(18π/a)
+                             −          +           −             + ···
+                          4π     sinh π     sinh 2π     sinh 3π
+                                                                                       !
+                               1 √              1         3         5
+                              = a a                  +         +           + ...
+                               8            sinh 4 πa sinh 4 πa sinh 54 πa
+                                                 1         3
+
+                               1 √      1          9         25         49
+                              = a a(e− 16 πa + e− 16 πa + e− 16 πa + e− 16 πa + · · ·)4 ,                    (13)
+                               4
+      if a is a positive even integer; and
+                 1   cosh(2π/a) 2 cosh(8π/a)
+                   −           +             − ···
+                4π     sinh π      sinh 2π
+                                                                                                    !
+                     1 √             sinh 41 πa 3 sinh 43 πa 5 sinh 45 πa 7 sinh 74 πa
+                    = a a                       −            −            +            + ···                 (14)
+                     4               cosh 12 πa   cosh 32 πa   cosh 25 πa   cosh 72 πa
+
+      if a is a positive odd integer.
+
+      4. In a similar manner we can shew that, if αβ = π 2 , then
+                 αeinα    2αe4inα   3αe9inα           βe−inβ    2βe−4inβ   3βe−9inβ
+                        +         +         + · · · +         +          +          + ···
+                e2α − 1   e4α − 1   e6α − 1           e2β − 1    e4β − 1    e6β − 1
+On certain infinite series                                                                                           167
+
+
+                    Z∞      2        Z∞ inβx2
+                    xe−inαx              xe           1
+              =α     2πx
+                              dx + β
+                                ∗
+                                          2πx
+                                                 dx −
+                    e    −1             e     −1      4
+                 0                    0
+                   r  ∞ ∞
+                 1    π XX                 √                         2    2
+                                  {µ(1 − i) α + ν(1 + i) β}e−(2πµν−iµ α+iν β)/n
+                                                        p
+               +                                                                                              (15)
+                 n    2n
+                                 µ=1 ν=1
+
+for all positive values of n. Putting α = β = π in (15) we see that, if n > 0, then
+                1   cos πn    2 cos 4πn 3 cos 9πn
+                  + 2π      + 4π        + 6π      + ···
+               8π e − 1        e −1       e −1
+                    Z∞                          ∞ X ∞
+                       x cos πnx2         1    X
+                  =               dx +                 e−2πµν/n
+                        e2πx − 1
+                                         p
+                                       2n (2n) µ=1 ν=1
+                         0
+
+                                               π(µ2 − ν 2 )                           π(µ2 − ν 2 )
+                                                                                                 
+                      × (µ + ν) cos                               + (µ − ν) sin                           .   (16)
+                                                   n                                      n
+
+As particular cases of (16) we have
+
+         1   cos(π/a) 2 cos(4π/a) 3 cos(9π/a)
+           + 2π         +            +                + ···
+        8π    e −1           e4π − 1       e6π − 1
+              Z∞
+                 x cos(πx2 /a)
+                                                                              
+                                                  1         2       3
+                                     q
+                                        1
+           =                   dx + a ( 2 a) 2πa        +       +         + ··· ,                             (17)
+                    e2πx − 1                  e     − 1 e4πa − 1 e6πa − 1
+                0
+
+If a is a positive even integer;
+         1   cos(π/a) 2 cos(4π/a) 3 cos(9π/a)
+           + 2π         +            +                + ···
+        8π    e −1           e4π − 1       e6π − 1
+              Z∞
+                 x cos(πx2 /a)
+                                                                              
+                                                  1         2       3
+                                     q
+                                        1
+           =                   dx + a ( 2 a) 2πa        −       +         − ··· ,                             (18)
+                    e2πx − 1                  e     + 1 e4πa + 1 e6πa + 1
+                0
+
+if a is a positive odd integer; and
+                                                                         Z∞
+  1  cos(2π/a) 2 cos(8π/a) 3 cos(18π/a)                                       x cos(2πx2 /a)          √
+    + 2π      +           +             + ··· =                                              dx + 14 a aS
+ 8π   e −1        e4π − 1     e6π − 1                                            e2πx −1
+                                                                         0
+                                                    ∞
+                                                            (−1)n−1 n
+                                                                                         ∞
+                                                    X                          X        n
+                                   where S =               nπa        n
+                                                                        or S =    nπa
+                                                                                                (19)
+                                                          e    + (−1)            e    + (−1)n−1
+                                                    n=1                                 n=1
+
+according as a ≡ 1 or a ≡ 3 (mod 4).
+   ∗
+    I shewed in my former paper [No.12 of the present volume] that this integral can be calculated in finite
+terms whenever nα is a rational multiple of π.
+168                                                                                                         Paper 16
+
+
+      It may be interesting to note that different functions dealt with in this paper have the same
+      asymptotic expansion for small values of n. For example, the two different functions
+                                       1   cos n  2 cos 4n 3 cos 9n
+                                         + 2π    + 4π     + 6π      + ···
+                                      8π e − 1    e −1     e −1
+      and
+                                                      Z∞
+                                                           x cos nx2
+                                                                     dx
+                                                           e2πx − 1
+                                                       0
+
+      have the same asymptotic expansion, viz.
+
+                                         1   n2   n4   n6
+                                           −    +    −     + ···∗                                               (20)
+                                        24 1008 6336 17280
+
+
+
+
+        ∗
+            This series (in spite of the appearance of the first few terms) diverges for all values of n.
+

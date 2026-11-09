@@ -1,0 +1,1570 @@
+ On certain trigonometrical sums and their applications in the
+                     theory of numbers
+
+Transactions of the Cambridge Philosophical Society, XXII, No.13, 1918, 259 – 276
+
+
+1. The trigonometrical sums with which this paper is concerned are of the type
+                                                      X         2πλn
+                                          cs (n) =        cos        ,
+                                                                  s
+                                                      λ
+
+where λ is prime to s and not greater than s. It is plain that
+                                              X
+                                     cs (n) =     αn ,
+
+where α is a primitive root of the equation
+
+                                                 xs − 1 = 0.
+
+These sums are obviously of very great interest, and a few of their properties have been
+discussed already∗ . But, so far as I know, they have never been considered from the point
+of view which I adopt in this paper; and I believe that all the results which it contains are
+new.
+My principal object is to obtain expressions for a variety of well-known arithmetical func-
+tions of n in the form of a series       X
+                                             as cs (n).
+                                                  s
+
+A typical formula is
+
+                                   π2n
+                                                                   
+                                               c1 (n) c2 (n) c3 (n)
+                            σ(n) =                   + 2 + 2 + ··· ,
+                                    6            12     2      3
+
+where σ(n) is the sum of the divisors of n. I give two distinct methods for the proof of this
+and a large variety of similar formulæ. The majority of my formulæ are “elementary” in
+the technical sense of the word — they can (that is to say) be proved by a combination
+of processes involving only finite algebra and simple general theorems concerning infinite
+series. These are however some which are of a “deeper” character, and can only be proved
+by means of theorems which seem to depend essentially on the theory of analytic functions.
+A typical formula of this class is
+
+                                   c1 (n) + 12 c2 (n) + 13 c3 (n) + · · · = 0,
+  ∗
+      See, e.g., Dirichlet-Dedekind, Vorlesungen über Zahlentheorie, ed. 4, Supplement VII, pp. 360 – 370.
+230                                                                                                    Paper 21
+
+
+      a formula which depends upon, and is indeed substantially equivalent to, the “Prime Num-
+      ber Theorem” of Hadamard and de la Vallée Poussin.
+      Many of my formulæ are intimately connected with those of my previous paper “On certain
+      arithmetical functions”, published in 1916 in these Transactions∗ . They are also connected
+      (in a manner pointed out in § 15) with a joint paper by Mr Hardy and myself, “Asymptotic
+      Formulæ in Combinatory Analysis”, in course of publication in the Proceedings of the
+      London Mathematical Society† .
+
+      2. Let F (u, v) be any function of u and v, and let
+                                                           X
+      (2.1)                                    D(n) =              F (δ, δ′ ),
+                                                               δ
+
+      where δ is a divisor of n and δδ′ = n. For instance
+       D(1) = F (1, 1);            D(2) = F (1, 2) + F (2, 1);
+       D(3) = F (1, 3) + F (3, 1);      D(4) = F (1, 4) + F (2, 2) + F (4, 1);
+       D(5) = F (1, 5) + F (5, 1); D(6) = F (1, 6) + F (2, 3) + F (3, 2) + F (6, 1); . . . . . .
+      It is clear that D(n) may also be expressed in the form
+                                                  X
+      (2.2)                              D(n) =      F (δ′ , δ).
+                                                            δ
+
+      Suppose now that
+                                                          s−1
+                                                          X              2πνn
+      (2.3)                                   ηs (n) =             cos        ,
+                                                           0
+                                                                           s
+
+      so that ηs (n) = s if s is a divisor of n and ηs (n) = 0 otherwise. Then
+                                                   t
+                                                   X 1             n
+      (2.4)                              D(n) =            ην (n)F ν,   ,‡
+                                                    1
+                                                         ν            ν
+
+      where t is any number not less than n. Now let
+                                                          X              2πλn
+      (2.5)                                   cs (n) =             cos        ,
+                                                                           s
+                                                           λ
+
+      where λ is prime to s and does not exceed s; e.g.
+
+                 c1 (n) = 1;    c2 (n) = cos nπ;        c3 (n) = 2 cos 32 nπ;
+        ∗
+          [No.18 of this volume].
+        †
+          [No. 36 of this volume].
+          Xt                                 X
+                                             [t]
+        ‡
+              is to be understood as meaning     , where [t] denotes as usual the greatest integer in t.
+            1                                  1
+On certain trigonometrical sums and their applications in the theory of numbers                            231
+
+
+             c4 (n) = 2 cos 21 nπ;     c5 (n) = 2 cos 25 nπ + 2 cos 54 nπ;
+             c6 (n) = 2 cos 31 nπ;     c7 (n) = 2 cos 27 nπ + 2 cos 74 nπ + 2 cos 76 nπ;
+             c8 (n) = 2 cos 41 nπ + 2 cos 34 nπ;       c9 (n) = 2 cos 92 nπ + 2 cos 94 nπ + 2 cos 89 nπ;
+             c10 (n) = 2 cos 51 nπ + 2 cos 35 nπ; . . . .
+
+It follows from (2.3) and (2.5) that
+                                                           X
+(2.6)                                         ηs (n) =           cδ (n),
+                                                            δ
+
+where δ is a divisor of s; and hence∗ that
+                                                      X
+(2.7)                                      cs (n) =         µ(δ′ )ηδ (n),
+                                                       δ
+
+where δ is a divisor of s, δδ′ = s, and
+                                              X µ(ν)               1
+(2.8)                                                       =          ,
+                                                      νs          ζ(s)
+
+ζ(s) being the Riemann Zeta-function. In particular
+
+                c1 (n) = η1 (n); c2 (n) = η2 (n) − η1 (n); c3 (n) = η3 (n) − η1 (n);
+                           c4 (n) = η4 (n) − η2 (n); c5 (n) = η5 (n) − η1 (n); . . . . . .
+
+But from (2.3) we know that ηδ (n) = 0 if δ is not a divisor of n; and so we can suppose
+that, in (2.7), δ is a common divisor of n and s. It follows that
+                                                  X
+                                       |cs (n)| ≤   δ,
+
+where δ is a divisor of n; so that
+
+(2.9)                                            cν (n) = O(1)
+
+if n is fixed and ν → ∞. Since
+
+                                 ηs (n) = ηs (n + s);           cs (n) = cs (n + s),
+
+the values of cs (n) for n = 1, 2, 3, . . . can be shewn conveniently by writing
+
+                   c1 (n) = 1;       c2 (n) = −1, 1;       c3 (n) = −1, −1, 2;
+                   c4 (n) = 0, −2, 0, 2;      c5 (n) = −1, −1, −1, −1, 4;
+  ∗
+      See Landau, Handbuch der Lehre von der Verteilung der Primzahlen, p. 577.
+232                                                                                                                            Paper 21
+
+
+                       c6 (n) = 1, −1, −2, −1, 1, 2 :                     c7 (n) = −1, −1, −1, −1, −1, −1, 6;
+                       c8 (n) = 0, 0, 0, −4, 0, 0, 0, 4;                  c9 (n) = 0, 0, −3, 0, 0, −3, 0, 0, 6;
+                       c10 (n) = 1, −1, 1, −1, −4, −1, 1, −1, 1, 4; . . . . . .
+
+      the meaning of the third formula, for example, being that c3 (1) = −1, c3 (2) = −1, c3 (3) = 2,
+      and that these values are then repeated periodically.
+      It is plain that we have also
+
+      (2.91)                                            cν (n) = O(1).
+
+      when ν is fixed and n → ∞.
+
+      3. Substituting (2.6) in (2.4) and collecting the coefficients of c1 (n), c2 (n), c3 (n) . . . , we
+      find that
+
+      (3.1)
+                                                         1                                           1
+                       t                       2t                      3t
+                       X 1       n           X   1      n          X   1      n
+       D(n) = c1 (n)           F ν,   + c2 (n)       F 2ν,    + c3 (n)       F 3ν,    + ···,
+                             ν      ν             2ν       2ν             3ν       3ν
+                        1                                1                                            1
+
+
+      where t is any number not less than n. If we use (2.2) instead of (2.1) we obtain another
+      expression, viz.
+
+      (3.2)
+                                                         1                                            1
+                       t                                2    t                                      3     t
+                       X 1          n                 X 1                n                      X 1                n       
+       D(n) = c1 (n)            F        , ν + c2 (n)                 F            , 2ν , +c3 (n)                  F        , 3ν + · · · ,
+                       1
+                            ν        ν                   1
+                                                                 2ν          2ν                       1
+                                                                                                              3ν       3ν
+
+      where t is any number not less that n.
+      Suppose now that
+
+                                F1 (u, v) = F (u, v) log u, F2 (u, v) = F (u, v) log v.
+
+      Then we have
+                                                   X                                 X
+                            D(n) log n =                F (δ, δ′ ) log n =                 F (δ, δ′ ) log(δδ′ )
+                                                   δ                                   δ
+                                                   X                          X
+                                                                      ′
+                                               =        F1 (δ, δ ) +                F2 (δ, δ′ ),
+                                                   δ                           δ
+
+
+      where δ is a divisor of n and δδ′ = n.
+On certain trigonometrical sums and their applications in the theory of numbers                                                                       233
+
+
+Now for δ F1 (δ, δ′ ) we shall write the expression corresponding to (3.1) and for δ F2 (δ, δ′ )
+        P                                                                         P
+
+the expression corresponding to (3.2). Then we have
+                                                                                          1
+                                 r                              2r
+                                 X log ν          n           X  log 2ν     n
+(3.3)      D(n) log n = c1 (n)                  F ν,   + c2 (n)          F 2ν,
+                                              ν      ν               2ν        2ν
+                                     1                                                        1
+                                     1
+                                 3       r                                 t
+                                 X log 3ν             n                  X log ν  n 
+                      + c3 (n)                   F 3ν,    + · · · + c1 (n)        F    ,ν
+                                     1
+                                              3ν       3ν                  1
+                                                                               ν     ν
+                                 1                                                                        1
+                                 2t                                                                   3       t
+                                 X           log 2ν            n                                    X log 3ν                n         
+                      + c2 (n)                      F                  , 2ν + c3 (n)                                     F           , 3ν + · · · ,
+                                               2ν               2ν                                                 3ν           3ν
+                                     1                                                                    1
+
+ where r and t are any two numbers not less than n. If, in particular, F (u, v) = F (v, u),
+then (3.3) reduces to
+                                               t
+                1
+                                               X log ν             n
+(3.4)           2 D(n) log n = c1 (n)                            F ν,
+                                                   1
+                                                               ν      ν
+                            1                                                         1
+                            2t                           3                                t
+                            X    log 2ν     n          X log 3ν     n
+                 + c2 (n)              F 2ν,    + c3 (n)         F 3ν,    + ···,
+                                   2ν        2ν              3ν        3ν
+                            1                                                         1
+
+where t is any number not less than n.
+
+4. We may also write D(n) in the form
+                                                   u
+                                                   X                         r
+                                                                             X
+(4.1)                            D(n) =                    F (δ, δ′ ) +              F (δ′ , δ),
+                                                   δ=1                       δ=1
+
+where δ is a divisor of n, δδ′ = n, and u, v are may two positive numbers such that uv = n,
+it being understood that, if u and v are both integral, a term F (u, v) is to be subtracted
+from the right-hand side. Hence (with the same conventions)
+                                u                         v
+                                X 1                n X    1         n 
+                    D(n) =                 ην (n)F ν,   +     ην (n)F    ,ν ,
+                                         ν            ν     ν          ν
+                                 1                                               1
+
+Applying to this formula transformations similar to those of §3, we obtain
+                                                                                                  1
+                                             u                            2                           u
+                                             X 1              n
+                                                                         X   1      n
+(4.2)            D(n)       = c1 (n)                     F ν,    + c2 (n)       F 2ν,    + ···
+                                               1
+                                                       ν      ν            1
+                                                                             2ν       2ν
+                                                                                                  1
+                                             v                                                2       v
+                                             X 1               n                            X 1                      n        
+                             + c1 (n)                      F           , ν + c2 (n)                                F         , 2ν + · · · ,
+                                                       ν           ν                                          2ν        2ν
+                                               1                                                  1
+234                                                                                                                           Paper 21
+
+
+       where u and v are positive numbers such that uv = n. If u and v are integers then a term
+      F (u, v) should be subtracted from the right-hand side.
+      If we suppose that 0 < u ≤ 1 then (4.2) reduces to (3.2), and if 0 < v ≤ 1 it reduces to
+      (3.1). Another particular case of interest is that in which u = v. Then
+                                                           √
+                                                 n
+                                                X  1 n  n      n o
+      (4.3)                 D(n)       = c1 (n)       F ν,   +F     ,ν
+                                                   ν       ν      ν
+                                                            1
+                                                           1√
+                                                           2Xn
+                                                                   1 n     n    n       o
+                                           + c2 (n)                   F 2ν,    +F     , 2ν    + ···.
+                                                            1
+                                                                  2ν        2ν     2ν
+                                       √ √
+      If n is a perfect square then F ( n, n) should be subtracted from the right hand side.
+
+      5. We shall now consider some special forms of these general equations. Suppose that
+      F (u, v) = v s , so that D(n) is the sum σs (n) of the sth powers of the divisors of n. Then
+      from (3.1) and (3.2) we have
+                                                                      1                               1
+                                   t                                  2   t                       3       t
+                σs (n)             X1                 1               X  1                        X
+      (5.1)            = c1 (n)         + c2 (n)           + c3 (n)           + ···,
+                 ns             1
+                                  ν s+1
+                                                 1
+                                                   (2ν)s+1
+                                                                    1
+                                                                      (3ν)s+1
+
+
+
+                                                                      1                           1
+                                       t                      2           t      3                    t
+                                       X                      X                  X
+      (5.2)       σs (n) = c1 (n)              ν s−1 + c2 (n)   (2ν)s−1 + c3 (n)   (3ν)s−1 + · · · ,
+                                       1                              1                           1
+
+      where t is any number not less than n: from (3.3)
+                                                                                                  1
+                                                                r                          2          r
+                                                                X                          X
+      (5.3)             σs (n) log n           =     c1 (n)           ν s−1 log ν + c2 (n)   (2ν)s−1 log 2ν + · · ·
+                                                                  1                               1
+                                                                               1
+                                                                                                  
+                                                             t                2 t                 
+                                                      s
+                                                             X log ν          X log 2ν            
+                                                   + n c1 (n)         + c2 (n)             + · · ·   ,
+                                                        
+                                                             1
+                                                                ν s+1          1
+                                                                                   (2ν)s+1         
+                                                                                                   
+
+      where r and t are two numbers not less than n: and from (4.2)
+                                                                          1                           1
+                                       u                              2       u                    3          u
+                                       X                              X                            X
+                                                    s−1
+      (5.4)    σs (n)      = c1 (n)             ν         + c2 (n)                (2ν)s−1 + c3 (n)   (3ν)s−1 + · · ·
+                                           1                                  1                           1
+                                                                                    1                             1
+                                                                                                                                  
+                                                  v                                2v                            3v               
+                                                  X       1                        X       1                     X       1        
+                            + ns       c1 (n)                     + c2 (n)                       + c3 (n)                      + ··· ,
+                                                         ν s+1                          (2ν)s+1                       (3ν)s+1      
+                                                   1                                1                            1                 
+On certain trigonometrical sums and their applications in the theory of numbers                                                           235
+
+
+ where uv = n. If u and v are integers then us should be subtracted from the right-hand
+side.
+Let d(n) = σ0 (n) denote the number of divisors of n and σ(n) = σ1 (n) the sum of the
+divisors of n. Then from (5.1) – (5.4) we obtain
+                                                           1                                   1
+                                    t                      2   t                              3    t
+                                    X 1                    X 1                                X 1
+(5.5)               d(n) = c1 (n)               + c2 (n)                       + c3 (n)                     + ···,
+                                       1
+                                            ν               1
+                                                                       2ν                      1
+                                                                                                       3ν
+
+
+(5.6)                    σ(n) = c1 (n)[t] + c2 (n)[ 12 t] + c3 (n)[ 31 t] + · · · ,
+
+                                                                1                                       1
+                                  t                         2       t                                  3    t
+         1
+                                  X log ν                   X log 2ν                                   X log 3ν
+(5.7)    2 d(n) log n = c1 (n)                   + c2 (n)                                  + c3 (n)                    + ···,
+                                   1
+                                            ν                      1
+                                                                               2ν                       1
+                                                                                                                3ν
+                                                                                                        1                 1
+                                                                                                                                    
+                                                                                                          2u               2v
+                                                    ( u                 v
+                                                                                       )                                           
+                                                     X1                 X          1                    X   1             X       1
+(5.8)        d(n)            =             c1 (n)               +                          + c2 (n)                   +
+                                                           ν                       ν                     1 2ν
+                                                                                                                                  2ν 
+                                                      1                    1                                               1          
+                                                    1                     1
+                                                                               
+                                                     3u                   3v  
+                                                    X   1                 X  1
+                                       + c3 (n)                        +                      + ···
+                                                     1 3ν
+                                                    
+                                                                               1
+                                                                                       3ν 
+                                                                                          
+
+ where t ≥ n and uv = n. If u and v are integers then 1 should be subtracted from the
+                                         √
+right-hand side of (5.8). Putting u = v = n in (5.8) we obtain
+                                       √                   1√                                  1√
+                                     n                     2Xn                      3X           n
+                 1
+                                    X  1                                 1              1
+(5.9)            2 d(n) = c1 (n)                + c2 (n)                   + c3 (n)       + ···,
+                                       1
+                                            ν               1
+                                                                        2ν           1
+                                                                                       3ν
+
+unless n is a perfect square, when 12 should be subtracted from the right-hand side. It may
+be interesting to note that, if we replace the left-hand side in (5.9) by
+                                        1 1        
+                                          2 + 2 d(n) ,
+
+then the formula is true without exception.
+
+6. So far our work has been based on elementary formal transformations, and no questions
+of convergence have arisen. We shall now consider the equation (5.1) more carefully. Let
+us suppose that s > 0. Then
+           t/k                ∞                                                                                         
+           X        1      X    1                           1                          1                              1
+                     s+1
+                         =           +O                                    =                ζ(s + 1) + O                       .
+                 (kν)        (kν)s+1                       kts                     ks+1                              kts
+            1                 1
+236                                                                                                               Paper 21
+
+
+      The number of terms in the right-hand side of (5.1) is [t]. Also we know that cν (n) = O(1)
+      as n → ∞. Hence
+                              t                 t                    ∞
+                                          (          )                                   
+            σs (n)            X cν (n)       1 X1                    X  cν (n)      log t
+                   = ζ(s + 1)          +O s             = ζ(s + 1)             +O           .
+             ns                 ν s+1       t      ν                    ν s+1        ts
+                                ν=1                             ν=1                       1
+
+      Making t → ∞, we obtain
+                                                                                       
+                                           s                   c1 (n) c2 (n) c3 (n)
+      (6.1)                 σs (n) = n ζ(s + 1)                      + s+1 + s+1 + · · · ,
+                                                               1s+1    2     3
+
+      if s > 0. Similarly, if we make t → ∞ in (5.3), we obtain
+                                                                               1
+                                               r                            2      r
+                                               X                            X
+                                                         s−1
+                 σs (n) log n = c1 (n)                 ν     log ν + c2 (n)   (2ν)s−1 log 2ν + · · ·
+                                                1                               1
+                                                           ∞                  ∞
+                                               (                                             )
+                                                           X   log ν          X  log 2ν
+                                    +ns         c1 (n)               + c2 (n)           + ··· .
+                                                           1
+                                                               ν s+1          1
+                                                                                (2ν)s+1
+
+      But
+                               ∞
+                               X log kν                    log k             1
+                                                       =         ζ(s + 1) − s+1 ζ ′ (s + 1).
+                                      (kν)s+1              k s+1           k
+                                1
+
+      It follows from this and (6.1) that
+                            ′                        t
+                            ζ (s + 1)                  X
+      (6.2)       σs (n)              + log n = c1 (n)   ν s−1 log ν
+                            ζ(s + 1)                   1
+                                       1
+                                       2   t
+                                       X
+                            + c2 (n)           (2ν)s−1 log 2ν + · · ·
+                                       1
+                                                                                                  
+                                s                      c1 (n) log 1 c2 (n) log 2 c3 (n) log 3
+                            + n ζ(s + 1)                           +            +             + ··· ,
+                                                           1s+1         2s+1         3s+1
+
+       where s > 0 and t ≥ n. Putting s = 1 in (6.1) and (6.2) we obtain
+
+                                    π2
+                                                                     
+                                           c1 (n) c2 (n) c3 (n)
+      (6.3)                 σ(n) =     n         + 2 + 2 + ··· ,
+                                    6        12     2        3
+
+                                                                   π2
+                            ′                                                                                  
+                            ζ (2)                                             c1 (n)        c2 (n)
+      (6.4)           σ(n)        + log n                      =      n           2
+                                                                                     log 1 + 2 log 2 + · · ·
+                            ζ(2)                                   6            1             2
+                                                                + c1 (n)[t] log 1 + c2 (n)[ 12 t] log 2 + · · ·
+                                                                + c1 (n) log[t]! + c2 (n) log[ 21 t]! + · · · ,
+On certain trigonometrical sums and their applications in the theory of numbers                       237
+
+
+where t ≥ n.
+
+7. Since
+
+(7.1)                                      σs (n) = ns σ−s (n),
+
+we may write (6.1) in the form
+
+                              σ−s (n)   c1 (n) c2 (n) c3 (n)
+(7.2)                                  = s+1 + s+1 + s+1 + · · · ,
+                              ζ(s + 1)   1     2      3
+
+where s > 0. This result has been proved by purely elementary methods. But in order
+to know whether the right-hand side of (7.2) is convergent or not for values of s less than
+or equal to zero we require the help of theorems which have only been established by
+transcendental methods.
+Now the right-hand side of (7.2) is an ordinary Dirichlet’s series for
+                                                           1
+                                          σ−s (n) ×             .
+                                                       ζ(s + 1)
+
+The first factor is a finite Dirichlet’s series and so an absolutely convergent Dirichlet’s series.
+It follows that the right-hand side of (7.2) is convergent whenever the Dirichlet’s series for
+1/ζ(s + 1), viz.
+                                                  X µ(n)
+(7.3)                                                       ,
+                                                     n1+s
+is convergent. But it is known∗ that the series (7.3) is convergent when s = 0 and that its
+sum is 0.
+It follows from this that
+
+(7.4)                            c1 (n) + 12 c2 (n) + 13 c3 (n) + · · · = 0.
+
+Nothing is known about the convergence of (7.3) when − 12 < s < 0. But with the assump-
+tion of the truth of the hitherto unproved Riemann hypothesis it has been proved† that
+(7.3) is convergent when s > − 12 . With this assumption we see that (7.2) is true when
+s > − 21 . In other words, if − 12 < s < 12 , then
+                                                                          
+                                               c1 (n) c2 (n) c3 (n)
+(7.5)                   σs (n) = ζ(1 − s)              + 1−s + 1−s + · · ·
+                                                11−s     2     3
+                                                                            
+                                    s             c1 (n) c2 (n) c3 (n)
+                               = n ζ(1 + s)             + 1+s + 1+s + · · · .
+                                                   11+s    2     3
+
+  ∗
+      Landau, Handbuch, p. 591.
+  †
+      Littlewood, Comptes Rendus, 29 Jan. 1912.
+238                                                                                                   Paper 21
+
+
+      8. It is known∗ that all the series obtained from (7.3) by term-by-term differentiation with
+      respect to s are convergent when s = 0, and it is obvious that the derivatives of σ−s (n)
+      with respect to s are all finite Dirichlet’s series and so absolutely convergent. It follows
+      that all the derivatives of the right-hand side of (7.2) are convergent when s = 0; and so
+      we can equate the coefficients of like powers of s from the two sides of (7.2). Now
+                                                   1
+      (8.1)                                             = s − γs2 + · · · ,
+                                               ζ(s + 1)
+      where γ is Euler’s constant. And
+                                                X            X              X
+                                   σ−s (n) =        δ−s =             1−s           log δ + · · · ,
+                                                δ             δ             δ
+
+      where δ is a divisor of n. But
+                           X           X             X
+                               log δ =   log δ′ = 12   log(δδ′ ) = 12 d(n) log n,
+                               δ            δ                     δ
+
+      where δδ′ = n. Hence
+
+      (8.2)                            σ−s (n) = d(n) − 21 sd(n) log n + · · · .
+
+      Now equating the coefficients of s and s2 from the two sides of (7.2) and using (8.1) and
+      (8.2), we obtain
+
+      (8.3)                 c1 (n) log 1 + 12 c2 (n) log 2 + 31 c3 (n) log 3 + · · · = −d(n),
+
+      (8.4)         c1 (n)(log 1)2 + 12 c2 (n)(log 2)2 + 13 c3 (n)(log 3)2 + · · · = −d(n)(2γ + log n).
+
+      9. I shall now find an expression of the same kind for φ(n), the number of numbers prime
+      to and not exceeding n. Let p1 , p2 , p3 , . . . be the prime divisors of n, and let
+
+      (9.1)                        φs (n) = ns (1 − p−s       −s       −s
+                                                     1 )(1 − p2 )(1 − p3 ) · · · ,
+
+      so that φ1 (n) = φ(n). Suppose that
+
+                                                    F (u.v) = µ(u)v s .
+
+      Then it is easy to see that
+                                                        D(n) = φs (n).
+      Hence, from (3.1), we have
+                                                                            1
+                                                    t          2                t
+                              φs (n)          X µ(ν)           X  µ(2ν)
+      (9.2)                       s
+                                     = c1 (n)     s+1
+                                                      + c2 (n)           + ···,
+                               n              1
+                                                ν              1
+                                                                 (2ν)s+1
+        ∗
+            Landau, Handbuch, p.594
+On certain trigonometrical sums and their applications in the theory of numbers                    239
+
+
+where t is any number not less than n. If s > 0 we can make t → ∞, as in §6. Then we
+have
+                                           ∞                  ∞
+                       φs (n)          X µ(ν)           X µ(2ν)
+(9.3)                      s
+                              = c1 (n)     s+1
+                                               + c2 (n)          + ···.
+                        n                ν               (2ν)s+1
+                                           1                   1
+
+But it can easily be shewn that
+                       ∞
+                       X µ(nν)                            µ(n)
+(9.4)                              =                                         ,
+                        1
+                             νs        ζ(s)(1 − p−s       −s       −s
+                                                 1 )(1 − p2 )(1 − p3 ) · · ·
+
+where p1 , p2 , p3 , . . . are the prime divisors of n. In other words
+                                       ∞
+                                       X µ(nν)           µ(n)ns
+(9.5)                                               =              .
+                                               νs       φs (n)ζ(s)
+                                       1
+
+It follows from (9.3) and (9.5) that
+
+                  φs (n)ζ(s + 1)   µ(1)c1 (n) µ(2)c2 (n) µ(3)c3 (n)
+(9.6)                     s
+                                 =           +          +           + ···.
+                        n           φs+1 (1)   φs+1 (2)   φs+1 (3)
+
+In particular
+
+
+                   π2                 c2 (n)   c3 (n)     c5 (n)
+(9.7)                 φ(n) = c1 (n) − 2      − 2       − 2
+                   6n                 2 −1 3 −1 5 −1
+                                     c6 (n)        c7 (n)        c10 (n)
+                             + 2               − 2        + 2            − ···.
+                                (2 − 1)(3 − 1) 7 − 1 (2 − 1)(52 − 1)
+                                          2
+
+
+
+
+10. I shall now consider an application of the main formulæ to the problem of the number
+of representations of a number as the sum of 2, 4, 6, 8, . . . squares. We require the following
+preliminary results.
+  (1) Let
+                     X                         1s−1 x 2s−1 x2 3s−1 x3
+(10.1)                   D(n)xn = X1 =               +        +        + ···.
+                                               1+x     1 − x2   1 + x3
+We shall choose
+                            F (u, v) = v s−1 ,              u ≡ 1( mod 2),
+                            F (u, v) = −v s−1 ,             u ≡ 2( mod 4),
+                            F (u, v) = (2s − 1)v s−1 ,      u ≡ 0( mod 4).
+240                                                                                                 Paper 21
+
+
+      Then from (3.1) we can shew, by arguments similar to those used in §6, that
+
+                      D(n) = ns−1 (1−s + 3−s + 5−s + · · ·){1−s c1 (n) + 2−s c4 (n) + 3−s c3 (n)
+      (10.11)
+                      +4−s c8 (n)5−s c5 (n) + 6−s c12 (n) + 7−s c7 (n) + 8−s c16 (n) + · · ·}.
+
+      if s > 1.
+        (2) Let
+                           X                      1s−1 x 2s−1 x2 3s−1 x3
+      (10.2)                   D(n)xn = X2 =            +        +        + ···.
+                                                  1−x     1 + x2   1 − x3
+      We shall choose
+                                  F (u, v) = v s−1 ,            u ≡ 1( mod 2),
+                                  F (u, v) = v s−1 ,            u ≡ 2( mod 4),
+                                  F (u, v) = (1 − 2s )v s−1 ,   u ≡ 0( mod 4).
+      Then we obtain as before
+                      D(n) = ns−1 (1−s + 3−s + 5−s + · · ·){1−s c1 (n) − 2−s c4 (n) + 3−s c3 (n)
+      (10.21)
+                      −4−s c8 (n) + 5−s c5 (n) − 6−s c12 (n) + 7−s c7 (n) − 8−s c16 (n) + · · ·}.
+
+       (3) Let
+                          X                       1s−1 x   2s−1 x2 3s−1 x3
+      (10.3)                   D(n)xn = X3 =             +        +        + ···.
+                                                  1 + x2   1 + x4   1 + x6
+      We shall choose
+                                     F (u, v) = 0,            u ≡ 0( mod 2),
+                                     F (u, v) = v s−1 ,       u ≡ 1( mod 4),
+                                     F (u, v) = −v s−1 ,      u ≡ 3( mod 4).
+      Then we obtain as before
+
+      (10.31)     D(n) = ns−1 (1−s − 3−s + 5−s − · · ·){1−s c1 (n) − 3−s c3 (n) + 5−s c5 (n) − · · ·}.
+
+      (4) We shall also require a similar formula for the function D(n) defined by
+                           X                      1s−1 x 3s−1 x3 5s−1 x5
+      (10.4)                   D(n)xn = X4 =            −        +        − ···.
+                                                  1−x     1 − x3   1 − x5
+      The formula required is not a direct consequence of the preceding analysis, but if, instead
+      of starting with the function
+                                                 X     2πnλ
+                                        cr (n) =   cos       ,
+                                                         r
+                                                          λ
+On certain trigonometrical sums and their applications in the theory of numbers                          241
+
+
+we start with the function
+                                                    1             2πnλ
+                                               (−1) 2 (λ−1) sin
+                                           X
+                                sr (n) =                               ,
+                                                                    r
+                                           λ
+
+where λ is prime to r and does not exceed r, and proceed as in §§2–3, we can shew that
+
+(10.41)   D(n) = 21 ns−1 (1−s − 3−s + 5−s − · · ·){1−s s4 (n) + 2−s s8 (n) + 3−s s12 (n) + · · ·}.
+
+It should be observed that there is a correspondence between cr (n) and the ordinary ζ-
+function of the one hand and sr (n) and the function
+
+                                   η(s) = 1−s − 3−s + 5−s − · · ·
+
+on the other. It is possible to define an infinity of systems of trigonometrical sums such as
+cr (n), sr (n), each corresponding to one of the general class of “L-functions∗ ” of which ζ(s)
+and η(s) are the simplest members.
+We have shewn that (10.31) and (10.41) are true when s > 1. But if we assume that the
+Dirichlet’s series for 1/η(s) is convergent when s = 1, a result which is precisely of the
+same depth as the prime number theorem and has only been established by transcendental
+methods, then we can shew by arguments similar to those of §7 that (10.31) and (10.41)
+are true when s = 1.
+
+11. I have shewn elsewhere† that if s is a positive integer and
+                              X
+                         1+       rs (n)xn = (1 + 2x + 2x4 + 2x9 + · · ·)s ,
+
+then
+                                     r2s (n) = δ2s (n) + e2s (n),
+where e2s (n) = 0 when s = 1, 2, 3 or 4 and is of lower order ‡ than δ2s (n) in all cases; that
+if s is a multiple of 4 then
+                                                X                πs
+(11.1)                (1−s + 3−s + 5−s + · · ·)   δ2s (n)xn =          X1 ;
+                                                              (s − 1)!
+if s is of the form 4k + 2 then
+                                                  X                      πs
+(11.2)                (1−s + 3−s + 5−s + · · ·)         δ2s (n)xn =            X2 ;
+                                                                      (s − 1)!
+if s is of the form 4k + 1 then
+                                           X                     πs
+(11.3)         (1−s − 3−s + 5−s − · · ·)        δ2s (n)xn =            (X3 + 21−s X4 );
+                                                              (s − 1)!
+  ∗
+     See Landau, Handbuch, pp. 414 et seq.
+  †
+     Transactions of the Cambridge Philosophical Society Vol.XXII, 1916, pp. 159 – 184. [No.18 of this
+volume; see in particular §§ 24 – 28, pp. 202 – 208].
+   ‡
+     For a more precise result concerning the order of e2s (n) see § 15.
+242                                                                                              Paper 21
+
+
+      except when s = 1; and if s is of the form 4k + 3 then
+                                                X                     πs
+      (11.4)        (1−s − 3−s + 5−s − · · ·)        δ2s (n)xn =            (X3 − 21−s X4 ),
+                                                                   (s − 1)!
+
+      X1 , X2 , X3 , X4 being the same as in §10.
+      In the case in which s = 1 it is well known that
+
+                                                        x3     x5
+                                                                         
+                           P         n            x
+                              δ2 (n)x = 4            −      +      − ···
+                                               1 − x 1 − x3 1 − x5
+      (11.5)
+                                                         x2     x3
+                                                                           
+                                                  x
+                                       = 4            +      +      + · · ·
+                                               1 + x2 1 + x4 1 + x6
+
+      It follows from §10 that, if s is a multiple of 4 then
+
+                                     π s ns−1 −s
+                         δ2s (n) =            {1 c1 (n) + 2−s c4 (n) + 3−s c3 (n) + 4−s c8 (n)
+      (11.11)                        (s − 1)!
+                         +5−s c5 (n) + 6−s c12 (n) + 7−s c7 (n) + 8−s c16 (n) + · · ·};
+
+      if s is of the form 4k + 2 then
+
+                                     π s ns−1 −s
+                         δ2s (n) =            {1 c1 (n) − 2−s c4 (n) + 3−s c3 (n) − 4−s c8 (n)
+      (11.21)                        (s − 1)!
+                         +5−s c5 (n) − 6−s c12 (n) + 7−s c7 (n) − 8−s c16 (n) + · · ·};
+
+      if s is of the form 4k + 1 then
+
+                                     π s ns−1 −s
+                         δ2s (n) =            {1 c1 (n) + 2−s s4 (n) − 3−s c3 (n) + 4−s s8 (n)
+      (11.31)                        (s − 1)!
+                         +5−s c5 (n) + 6−s s12 (n) − 7−s c7 (n) + 8−s s16 (n) + · · ·};
+
+      except when s = 1; and if s is of the form 4k + 3 then
+
+                                     π s ns−1 −s
+                         δ2s (n) =            {1 c1 (n) − 2−s s4 (n) − 3−s c3 (n) − 4−s s8 (n)
+      (11.41)                        (s − 1)!
+                         +5−s c5 (n) − 6−s s12 (n) − 7−s c7 (n) − 8−s s16 (n) + · · ·};
+
+      From (11.5) and the remarks at the end of the previous section, it follows that
+
+                        r2 (n) = δ2 (n) = π{c1 (n) − 13 c3 (n) + 15 c5 (n) − · · ·}
+      (11.51)
+                                           = π{ 21 s4 (n) + 41 s8 (n) + 61 s12 (n) + · · ·},
+
+      but this of course not such an elementary result as the preceding ones.
+On certain trigonometrical sums and their applications in the theory of numbers                                               243
+
+
+We can combine all the formulæ (11.11) – (11.41) in one by writing
+
+                                 π s ns−1 −s
+                   δ2s (n) =              {1 c1 (n) + 2−s c4 (n) + 3−s c3 (n) + 4−s c8 (n)
+(11.6)                           (s − 1)!
+                   +5−s c5 (n) + 6−s c12 (n) + 7−s c7 (n) + 8−s c16 (n) + · · ·},
+
+where s is an integer greater than 1 and
+
+                             cr (n) = cr (n) cos 12 πs(r − 1) − sr (n) sin 21 πs(r − 1).
+
+
+12. We can obtain analogous results concerning the number of representations of a number
+as the sum of 2, 4, 6, 8, . . . triangular numbers. Equation (147) of my former paper∗ is
+equivalent to
+                                                                     ∞
+                                                                     X
+(12.1)             (1 − 2x + 2x4 − 2x9 + · · ·)2s = 1 +                     δ2s (n)(−x)n
+                                                                        1
+
+                                                                   f 4s (x)         X                         f 24n (x2 )
+                                                               +                                 Kn (−x)n                 ,
+                                                                   f 2s (x2 )                                 f 24n (x)
+                                                                                     1
+                                                                                1≤n≤ 4 (s−1)
+
+
+where Kn is a constant and
+
+                                         f (x) = (1 − x)(1 − x2 )(1 − x3 ) · · · .
+
+Suppose now that
+                                               x = e−πα , x′ = e−2π/α .
+Then we know that
+                   √                                                 ′1                ′          ′
+(12.2)                 α(1 − 2x + 2x4 − 2x9 + · · ·) = 2x 8 (1 + x′ + x 3 + x 6 + · · ·),
+
+                         q
+                                     1             ′ 1     ′       √        1              ′ 1
+(12.3)                       ( 21 α)x 24 f (x) = x 12 f (x 2 ),        αx 12 f (x2 ) = x 24 f (x′ ).
+                P∞
+Finally 1 +        1   δ2s (n)(−x)n can be expressed in powers of x′ by using the formula
+
+                                            12s−1     22s−1     32s−1
+                                                                                                
+                             1
+                    αs       2 ζ(1 − 2s) + e2α − 1 + e4α − 1 + e6α − 1 + · · ·
+(12.4)
+                                                    12s−1   22s−1   32s−1
+                                                                                                     
+                                     1
+                    = (−β)s          2 ζ(1 − 2s) +        +       +        + ···                          ,
+                                                   e2β − 1 e4β − 1 e6β − 1
+  ∗
+      Loc. cit., p.181 [p. 204 of this volume].
+244                                                                                                                                       Paper 21
+
+
+      where αβ = π 2 and s is an integer greater than 1; and
+                                  12s        22s           32s
+                                                                      
+                          1
+                       s+ 2
+                 (2α)                   +             +          + ···
+                               eα + e−α e2α + e−2α e3α + e−3α
+      (12.5)
+                                                  12s      32s     52s
+                                                                             
+                           s          1
+                             p
+                 = (−β) (2β) 2 η(−2s) + β              −       +         − ··· ,
+                                                e − 1 e3β − 1 e5β − 1
+      where αβ = π 2 , s is any positive integer, and η(s) is the function represented by the series
+      1−s − 3−s + 5−s − · · · and its analytical continuations.
+      It follows from all these formulæ that, if s is a positive integer and
+                                                  X              X               X
+      (12.6)        (1 + x + x3 + x6 + · · ·)2s =     ′
+                                                     r2s (n)xn =      ′
+                                                                     δ2s (n)xn +   e′2s (n)xn ,
+
+      then
+                          X                          f 4s (x2 )               X                            f 24n (x)
+                                 e′2s (n)xn =                                           Kn (−x)−n                      ,
+                                                     f 2s (x)                                              f 24n (x2 )
+                                                                         1
+                                                                    1≤n≤ 4 (s−1)
+
+      where Kn is a constant, and f (x) is the same as in (12.1);
+                                                                                    ( 21 π)s − 1 s
+                  (1−s + 3−s + 5−s + · · ·)                  δ2s (n)xn =
+                                                            P ′
+                                                                                             x 4
+                                                                                   (s − 1)!
+      (12.61)                                                                       s−1
+                                                                                                2s−1 x2 3s−1 x3
+                                                                                                                       
+                                                                                     1 x
+                                                                                              +         +        + ···
+                                                                                     1 − x2      1 − x4   1 − x6
+      if s is a multiple of 4;
+                                                                                  2( 14 π)s − 1 s
+                 (1−s + 3−s + 5−s + · · ·)            δ2s (n)xn =
+                                                     P ′
+                                                                                           x 4
+                                                                                  (s − 1)!
+      (12.62)                                                                             1           3      5
+                                                                                                                
+                                                                                       s−1         s−1    s−1
+                                                                                   1 x + 3 x + 5 x + · · ·
+                                                                                           2           2      2
+
+                                                                                      1−x         1 − x3 1 − x5
+
+      if s is of the form 4k + 2;
+                                                            X                      2( 18 π)s − 1 s
+      (12.63)     (1−s − 3−s + 5−s − · · ·)                       ′
+                                                                 δ2s (n)xn =                x 4
+                                                                                   (s − 1)!
+                                  1                  3                5                        1                   3                  5
+                                                                                                                                                  !
+                         1s−1 x 4             3s−1 x 4          5−s x 4                 1s−1 x 4           3s−1 x 4            5s−1 x 4
+                    ×             1       +         3       +         5       + ··· +          1       −           3       +         5    − ···
+                         1 + x2               1 + x2            1 + x2                  1 − x2             1 − x2              1 − x2
+      if s is of the form 4k + 1 (except when s = 1); and
+                                                            X                      2( 18 π)s − 1 s
+      (12.64)      (1−s − 3−s + 5−s − · · ·)                      ′
+                                                                 δ2s (n)xn =                x 4
+                                                                                   (s − 1)!
+                                      1                 3             5                            1                   3              5
+                                                                                                                                                  !
+                         1s−1 x 4             3s−1 x 4          5−s x 4                  1s−1 x 4           3s−1 x 4           5−s x 4
+                     ×            1       +          3      +             5   + ··· −          1       +            3      −          5   + ···
+                         1 + x2               1 + x2            1 + x2                   1 − x2             1 − x2             1 − x2
+On certain trigonometrical sums and their applications in the theory of numbers                        245
+
+
+if s is of the form 4k + 3. In the case in which s = 1 we have
+                                                     1              3              5
+                                                                                                   !
+                                 1                 x4             x4             x4
+                   δ2 (n)xn = x− 4
+                  P ′
+                                                         1   +          3   +          5   + ···
+                                                 1 + x2          1 + x2         1 + x2
+(12.65)                                              1              3              5
+                                                                                                   !
+                                         − 14      x4             x4             x4
+                                 = x                     1   −          3   +          5   − ··· .
+                                                 1 + x2          1 + x2         1 + x2
+
+It is easy to see that the principal results proved about e2s (n) in my former paper are also
+true of e′2s (n), and in particular that
+
+                                                  e′2s (n) = 0
+
+when s = 1, 2, 3 or 4, and
+                                                 ′         ′
+                                                r2s (n) ∼ δ2s (n)
+for all values of s.
+
+13. It follows from (12.62) that, if s is of the form 4k + 2, then
+
+                                   (1−s + 3−s + 5−s + · · ·)δ2s
+                                                             ′
+                                                                (n)
+
+is the coefficient of xn in
+                                                 1                   3
+                                                                            !
+                       2( 14 π)s − 1 s    1s−1 x 2   2s−1 x   3s−1 x 2
+(13.1)                          x 4                +        +          + ··· .
+                       (s − 1)!            1−x       1 − x2   1 − x3
+
+Similarly from (12.63) and (12.64) it follows that, if s is an odd integer greater than 1, then
+                           ′ (n) is the coefficient of xn in
+(1−s − 3−s + 5−s − · · ·)δ2s
+                                             1           1          3
+                                                                           !
+                    4( 18 π)s − 1 s 1s−1 x 4      2s−1 x 2   3s−1 x 4
+(13.2)                        x 4            1 +           +       3 + ···   .
+                    (s − 1)!          1 + x2       1+x       1 + x2
+
+Now by applying our main formulæ to (12.61) and (13.1) and (13.2) we obtain:
+
+                               ( 12 π)s
+                  ′ (n) =
+                 δ2s                    (n + 41 s)s−1
+(13.3)                        (s − 1)!
+                              {1−s c1 (n + 14 s) + 3−s c3 (n + 14 s) + 5−s c5 (n + 14 s) + · · ·}
+
+if s is a multiple of 4;
+
+                             ( 21 π)s
+                ′ (n) =
+               δ2s                    (n + 14 s)s−1
+(13.4)                      (s − 1)!
+                            {1−s c1 (2n + 12 s) + 3−s c3 (2n + 21 s) + 5−s c5 (2n + 12 s) + · · ·}
+246                                                                                          Paper 21
+
+
+      if s is twice an odd number; and
+                                        ( 12 π)s
+                            ′
+                           δ2s (n) =             (n + 41 s)s−1
+      (13.5)                           (s − 1)!
+                           {1−s c1 (4n + s) − 3−s c3 (4n + s) + 5−s c5 (4n + s) − · · ·}
+      if s is an odd number greater than 1.
+      Since the coefficient of xn in (1 + x + x3 + · · ·)2 is that of x4n+1 in
+                                            1           4
+                                                               2
+                                            2 + x + x + ··· ,
+
+      it follows from (11.51) that
+                                  π
+      (13.6)                        {c1 (4n + 1) − 31 c3 (4n + 1) + 15 c5 (4n + 1) − · · ·}.
+                     r2′ (n) = δ2′ (n) =
+                                  4
+      This result however depends on the fact that the Dirichlet’s series for 1/η(s) is convergent
+      when s = 1.
+                                                      ′ (n) may be arrived at by another method.
+      14. The preceding formulæ for σs (n), δ2s (n), δ2s
+      We understand by
+                                                        sin nπ
+      (14.1)
+                                                     k sin(nπ/k)
+      the limit of
+                                                        sin xπ
+                                                     k sin(xπ/k)
+      when x → n. It is easy to see that, if n and k are positive integers, and k odd, then (14.1)
+      is equal to 1 if k is a divisor of n and to 0 otherwise.
+      When k is even we have (with similar conventions)
+                                                  sin nπ
+      (14.2)                                               = 1 or 0
+                                               k tan(nπ/k)
+      according as k is a divisor of n or not. It follows that
+                                          (                                !
+                                                  sin nπ            sin nπ
+                       σs−1 (n) = ns−1 1−s                 + 2−s
+                                                  sin nπ           tan 12 nπ
+      (14.3)                                          !                   !      )
+                                             sin nπ              sin nπ
+                                     +3−s               + 4−s               + ··· .
+                                            sin 31 nπ           tan 14 nπ
+                                                     ′ (n) we find that
+      Similarly from the definitions of δ2s (n) and δ2s
+                                                                π s ns−1
+                                                                                       
+                 −s       −s      −s         −s                             −s sin nπ
+      (14.4) {1 + (−3) + 5 + (−7) + · · ·}δ2s (n) =                        1
+                                                                (s − 1)!        sin nπ
+                                          !                        !                             !       )
+                             sin nπ                     sin nπ                      sin nπ
+               +2−s                         +3−s                      + 4−s                        + ···
+                      sin( 21 nπ + 12 sπ)         sin( 13 nπ + sπ)           sin( 14 nπ + 32 sπ)
+On certain trigonometrical sums and their applications in the theory of numbers                                          247
+
+
+
+if s is an integer greater than 1;
+                                 (                                            !                        !           )
+                                               sin nπ                sin nπ                   sin nπ
+               r2 (n) = δ2 (n) = 4                          − 13                    + 51                     − ···
+                                               sin nπ               sin 13 nπ                sin 51 nπ
+(14.5)              (                    !                      !                          !        )
+                        1     sin nπ                 sin nπ                 sin nπ
+               =4       2                    − 41                   + 16                     − ··· ;
+                             cos 12 nπ              cos 14 nπ              cos 16 nπ
+
+                                                                 ( 21 π)s
+                     (1−s + 3−s + 5−s + · · ·)δ2s
+                                               ′ (n) =                    (n + 14 s)s−1
+                                                                (s − 1)!
+                     (                             !                             !
+                                  sin(n + 41 s)π               sin(n   +  1
+                                                                          4 s)π
+(14.6)                      1−s                      + 3−s
+                                  sin(n + 41 s)π              sin 13 (n + 41 s)π
+                                                     !       )
+                                   sin(n + 14 s)π
+                        +5−s                           + ···
+                                  sin 15 (n + 41 s)π
+if s is a multiple of 4;
+                                                                ( 12 π)s
+                     (1−s + 3−s + 5−s + · · ·)δ2s
+                                               ′ (n) =                   (n + 14 s)s−1
+                                                               (s − 1)!
+                     (                              !                              !
+                                  sin(2n + 12 s)π               sin(2n + 12 s)π
+(14.7)                      1−s                       +3 −s
+                                  sin(2n + 12 s)π              sin 31 (2n + 12 s)π
+                                                      !       )
+                                   sin(2n + 21 s)π
+                        +5−s                            + ···
+                                  sin 15 (2n + 21 s)π
+if s is twice an odd number;
+(14.8)
+                                                     ( 12 π)s
+     (1−s − 3−s + 5−s − · · ·)δ2s
+                               ′ (n) =                        (n + 14 s)s−1
+                                                    (s − 1)!
+                                                    (                                                  !
+                                                              sin(4n   + s)π             sin(4n   + s)π
+                                                      1−s                      − 3−s
+                                                              sin(4n + s)π              sin 13 (4n + s)π
+                                                                               !       )
+                                                         −s    sin(4n + s)π
+                                                    +5                           − ···
+                                                              sin 15 (4n + s)π
+if s is an odd number greater than 1; and
+                                                                                                 !
+                                       sin(4n + 1)π                          sin(4n + 1)π
+                  ′          ′
+                 r2 (n) = δ2 (n) =                    − 13
+                                       sin(4n + 1)π                         sin 31 (4n + 1)π
+(14.9)                                   !      )
+                         sin(4n   + 1)π
+                  + 15                     − ··· .
+                        sin 51 (4n + 1)π
+248                                                                                              Paper 21
+
+
+      In all these equations the series on the right hand are finite Dirichlet’s series and therefore
+      absolutely convergent.
+      But the series (14.3) is (as easily shewn by actual multiplication) the product of the two
+      series
+                                        1−s c1 (n) + 2−s c2 (n) + · · ·
+      and
+                                        ns−1 (1−s + 2−s + 3−s + · · ·).
+      We thus obtain an alternative proof of the formulæ (7.5). Similarly taking the previous
+      expression of δ2s (n). viz. the right-hand side of (11.6), and multiplying it by the series
+
+                                     1−s + (−3)−s + 5−s + (−7)−s + · · ·
+
+      we can shew that the product is actually the right-hand side of (14.4). The formulæ for
+       ′ (n) can be disposed off similarly.
+      δ2s
+
+      15. The formulæ which I have found are closely connected with a method used for another
+      purpose by Mr. Hardy and myself∗ . The function
+                                                                   X
+      (15.1)                    (1 + 2x + 2x4 + 2x9 + · · ·)2s =       r2s (n)xn
+
+      has every point of the unit circle as a singular point. If x approaches a “rational point”
+      exp(−2pπi/q) on the circle, the function behaves roughly like
+
+                                                 π s (ωp,q )s
+      (15.2)                                                     ,
+                                            {−(2pπi/q) − log x}s
+
+      where ωp,q = 1, 0, or −1 according as q is of the form 4k + 1, 4k + 2 or 4k + 3, while if q is
+      of the form 4k then ωp,q = −2i or 2i according as p is of the form 4k + 1 or 4k + 3.
+      Following the argument of our paper referred to, we can construct simple functions of x
+      which are regular except at one point of the circle of convergence, and there behave in a
+      manner very similar to that of the function (15.1); for example at the point exp(−2pπi/q)
+      such a function is
+                                                    ∞
+                                         π s (ωp,q )s X s−1 2npπi/q n
+      (15.3)                                           n e         x .
+                                          (s − 1)!
+                                                     1
+
+      The method which we used, with particular reference to the function
+
+                                              1                     X
+      (15.4)                                                      =   p(n)xn ,
+                                  (1 − x)(1 − x2 )(1 − x3 ) · · ·
+        ∗
+          “Asymptotic formulæ in Combinatory Analysis”, Proc. London Math. Soc., Ser.2, Vol. XVII, 1918, pp.
+      75 – 115 [No.36 of this volume].
+On certain trigonometrical sums and their applications in the theory of numbers                              249
+
+
+was to approximate to the coefficients by means of a sum of a large number of the coefficients
+of these auxiliary functions. This method leads, in the present problem, to formulæ of the
+type
+                                                                1
+                                     r2s (n) = δ2s (n) + O(n 2 s ),
+the first term on the right-hand side presenting itself precisely in the form of the series
+(11.11) etc.
+It is a very interesting problem to determine in such cases whether the approximate formula
+gives an exact representation of such an arithmetical function. The results proved here shew
+that, in the case of r2s (n), this is in general not so. The formula represents not r2s (n) but
+(except when s = 1) its dominant term δ2s (n), which is equal to r2s (n) only when s = 1, 2, 3
+or 4. When s = 1 the formula gives 2δ2 (n)∗ .
+
+16. We shall now consider the sum
+(16.1)                              σs (1) + σs (2) + · · · + σs (n).
+
+Suppose that
+                                           X  sin{(2n + 1)πλ/r}          
+                             Tr (n) = 12                                −1 ,
+                                                    sin(πλ/r)
+                                            λ
+(16.2)
+                                           X sin{(2n + 1)πλ/r}
+                             Ur (n) = 21                            ,
+                                                   sin(πλ/r)
+                                            λ
+
+where λ is prime to r and does not exceed r, so that
+
+                                Tr (n) = cr (1) + cr (2) + · · · + cr (n)
+
+and
+                                       Ur (n) = Tr (n) + 21 φ(r),
+where φ(n) is the same as in §9. Since cr (n) = O(1) as r → ∞, it follows that
+
+(16.21)                            Tr (n) = O(1), Ur (n) = O(r),
+
+as r → ∞. It follows from (7.5) that, if s > 0, then
+
+             σ−s (1) + σ−s (2) + · · · + σ−s (n) = ζ(s + 1)
+(16.3)
+                                                                               
+                                                         T2 (n) T3 (n) T4 (n)
+                                                     n + s+1 + s+1 + s+1 + · · · .
+                                                          2     3      4
+   ∗
+     The method is also applicable to the problem of the representation of a number by the sum of an odd
+number of squares, and gives an exact result when the number of squares is 3, 5, or 7. See G.H. Hardy, “On
+the representation of a number as the sum of any number of squares, and in particular of five or seven,”
+Proc. London Math. Soc. (Records of proceedings at meetings, March 1918). A fuller account of this paper
+will appear shortly in the Proceedings of the National Academy of Sciences (Washington, D.C.) [loc. cit.,
+Vol.IV, 1918, 189-193].
+250                                                                                                   Paper 21
+
+
+      Since
+                                              ∞
+                                              X φ(n)               ζ(s)
+                                                             =
+                                                1
+                                                     ν s+1       ζ(s + 1)
+      if s > 1, (16.3) can be written as
+      (16.31)
+           σ−s (1)σ−s (2) + · · · + σ−s (n) = ζ(s + 1)
+                                                                              
+                                                       U2 (n) U3 (n) U4 (n)
+                                                    1
+                                                n + 2 + s+1 + s+1 + s+1 + · · · − 12 ζ(s),
+                                                        2     3      4
+      if s > 1. Similarly from (8.3), (8.4) and (11.51) we obtain
+
+                          d(1) + d(2) + · · · + d(n)
+      (16.4)
+                          = − 21 T2 (n) log 2 − 13 T3 (n) log 3 − 14 T4 (n) log 4 − · · · ,
+
+                      d(1) log 1 + d(2) log 2 + · · · + d(n) log n
+      (16.5)
+                      = 21 T2 (n){2γ log 2 − (log 2)2 } + 31 T3 (n){2γ log 3 − (log 3)2 } + · · · ,
+
+      (16.6)       r2 (1) + r2 (2) + · · · + r2 (n) = π{n − 13 T3 (n) + 15 T5 (n) − 71 T7 (n) + · · ·}.
+
+      Suppose now that
+                                 X           2πλ          4πλ                  2nπλ
+                                                                                              
+                                         s
+                    Tr,s (n) =          1 cos     + 2s cos     + · · · + ns cos                   ,
+                                               r            r                     r
+                                  λ
+
+      where λ is prime to r and does not exceed r, so that
+
+                                 Tr,s (n) = 1s cr (1) + 2s cr (2) + · · · + ns cr (n).
+
+      Then it follows from (7.5) that
+
+                   σs (1) + σs (2) + · · · + σs (n)
+      (16.7)
+                                                                                
+                                   s       s        s T2,s (n) T3,s (n) T4,s (n)
+                   = ζ(s + 1) (1 + 2 + · · · + n ) + s+1 + s+1 + s+1 + · · ·
+                                                       2        3        4
+      if s > 0. Putting s = 1 in (16.3) and (16.7), we find that
+
+                         (n − 1)σ−1 (1) + (n − 2)σ−1 (2) + · · · + (n − n)σ−1 (n)
+      (16.8)                π 2 n(n − 1) ν2 (n) ν3 (n) ν4 (n)
+                                                                           
+                         =                +       +          +         + ··· ,
+                            6        2        22       32         42
+      where
+                                                    X  sin2 (πnλ/r)          
+                                      νr (n) = 12                           −n ,
+                                                     λ
+                                                             sin2 (πλ/r)
+On certain trigonometrical sums and their applications in the theory of numbers                        251
+
+
+λ being prime to r and not exceeding r.
+It has been proved by Wigert ∗ , by less elementary methods, that the left-hand side of
+(16.8) is equal to
+                                                     √ X∞
+                  π2 2 1                         1    n   σ−1 (ν)  p
+(16.9)               n − 2 n(γ − 1 + log 2nπ) − 24 +       √ J1 {4π (νn)},
+                  12                                 2π 1     ν
+
+where J1 is the ordinary Bessel’s function.
+
+17. We shall now find a relation between the functions (16.1) and (16.3) which enables us
+to determine the behaviour of the former for large values of n. It is easily shewn that this
+function is equal to
+                    √                                       √                   √
+                      n                   h n is  X  n    h i √ X     n
+                                                           s n
+                    X
+                          s   s   s
+(17.1)                   1 + 2 + 3 + ··· +         +     ν     − [ n]     ν s.
+                    ν=1
+                                             ν       ν=1
+                                                             ν        ν=1
+
+Now
+                                                          (k + 12 )s+1
+                         1s + 2s + · · · + ks = ζ(−s) +                + O(ks−1 )
+                                                             s+1
+for all values of s, it being understood that
+
+                                                     (k + 12 )s+1
+                                           ζ(−s) +
+                                                        s+1
+
+denotes γ + log(k + 21 ) when s = −1. Let
+                        hni n                         √        √
+                            = − 21 + ǫν ,            [ n] = t = n − 12 + ǫ.
+                          ν    ν
+Then we have
+                                                                                        ns−1
+                               h n is                                                          
+              s      s                             1  n s+1       n s
+             1 + 2 + ··· +              = ζ(−s) +             + ǫν        +O
+                                ν                 s+1 ν              ν                  ν s−1
+
+and                                      hni
+                                    νs= nν s−1 − 12 ν s + ǫν ν s .
+                                  ν
+It follows from these equations and (17.1) that
+                                                  t 
+                                                  X                  1  n s+1
+             σs (1) + σs (2) + · · · + σs (n) =         ζ(−s) +                  + nν s−1
+(17.2)                                                            s+1 ν
+                                                  ν=1
+                                                                    s − (√n + ǫ)ν s + O ns−1
+                                                                                               o
+                                                        n s
+                                                          
+                                                  +ǫν   ν   + ǫ ν ν                       ν s−1    .
+  ∗
+      Acta Mathematica, Vol.XXXVII, 1914, pp. 113 – 140(p.140).
+252                                                                                             Paper 21
+
+
+      Changing s to −s in (17.2) we have
+      (17.21)                  ns {σ−s (1) + σ−s (2) + · · · + σ−s (n)}
+                                    t 
+                                   X               nν s−1  n s+1                     n s
+                                =        ns ζ(s) +           +          + ǫν ν s + ǫν
+                                                    1−s         ν                       ν
+                                   ν=1
+                                                                      s+1 
+                                              √          n s         ν
+                                           − ( n + ǫ)           +O               .
+                                                           ν             n
+      It follows that
+      (17.3)          ns {σ−s (1) + σ−s (2) + · · · + σ−s (n)} − {σs (1) + σs (2) + · · · + σs (n)}
+                            t 
+                          X                             s  n s+1       s                √
+                       =        ns ζ(s) − ζ(−s) +                    +       nν s−1 + ( n + ǫ)ν s
+                          ν=1
+                                                      1+s ν            1−s
+                                                     s−1       s+1
+                              √
+                                                                    
+                                       n  s         n       ν
+                           −( n + ǫ)          +O        s−1
+                                                            +          .
+                                         ν            ν         n
+
+      Suppose now that s > 0. Then, since ν varies from 1 to t, it is obvious that
+                                                    ν s+1  ns−1
+                                                          < s−1
+                                                      n    ν
+      and so                                s+1      s+1 
+                                            ν          n
+                                         O         =O         .
+                                              n        ν s−1
+      . Also
+                              t
+                              X                      √
+                                {ns ζ(s) − ζ(−s)} = ( n − 12 + ǫ){ns ζ(s) − ζ(−s)};
+                              ν=1
+                  t
+                  X      s  n s+1 sns+1            ns+1 √               1
+                                   =      ζ(1 + s) −     ( n + ǫ)−s + O(n 2 s );
+                        1+s ν        1+s             s+1
+                  ν=1
+                        t
+                             s            ns             n √                1
+                                                            ( n + ǫ)s + O(n 2 s );
+                        X
+                                nν s−1 =     ζ(1 − s) +
+                        ν=1
+                            1−s          1−s            1−s
+                           t                               √
+                               √           √              ( n + ǫ)2+s       1
+                                                                      + O(n 2 s );
+                          X
+                                       s
+                              ( n + ǫ)ν = ( n + ǫ)ζ(−s) +
+                          ν=1
+                                                             1+s
+                t
+                   √        n s       √              ns √                 1
+                                                          ( n + ǫ)2−s + O(n 2 s );
+                X
+                  ( n + ǫ)        = ns ( n + ǫ)ζ(s) +
+                             ν                        1−s
+                ν=1
+
+      and
+                                          t
+                                                        ns−1
+                                          X                    
+                                                O                   = O(m),
+                                                        ν s−1
+                                          ν=1
+On certain trigonometrical sums and their applications in the theory of numbers                              253
+
+
+where
+                            1
+(17.4)                m = n 2 s (s < 2), m = n log n(s = 2), m = ns−1 (s > 2).
+
+It follows that the right-hand side of (17.3) is equal to
+                                                     √                  √
+       sn1+s              sn             1 s        ( n + ǫ)2+s − ns+1 ( n + ǫ)−s
+             ζ(1 + s) +      ζ(1 − s) − 2 n ζ(s) +
+        1+s             1−s                                     1+s
+                                                √             √
+                                             n( n + ǫ) − n ( n + ǫ)2−s
+                                                        s   s
+                                           +                              + O(m).
+                                                          1−s
+But
+                    √                  √
+                   ( n + ǫ)2+s − ns+1 ( n + ǫ)−s       1             1
+                                                 = 2ǫn 2 (1+s) + O(n 2 s );
+                               1+s
+                      √             √
+                    n( n + ǫ) − ns ( n + ǫ)2−s
+                             s                         1             1
+                                               = −2ǫn 2 (1+s) + O(n 2 s ).
+                               1−s
+It follows that
+                  σs (1) + σs (2) + · · · + σs (n) = ns {σ−s (1) + σ−s (2) + · · · + σ−s (n)}
+(17.5)                sn1+s                          sn
+                  −         ζ(1 + s) + 12 ns ζ(s) −     ζ(1 − s) + O(m)
+                      1+s                           1−s
+if s > 0, m being the same as in (17.4). If s = 1, (17.5) reduces to
+
+                       (n − 1)σ−1 (1) + (n − 2)σ−1 (2) + · · · + (n − n)σ−1 (n)
+(17.6)                     2                                  √
+                       = π12 n2 − 12 n(γ − 1 + log 2nπ) + O( n)∗ .
+
+From (16.2) and (17.5) it follows that
+
+                                              n1+s
+(17.7)          σs (1) + σs (2) + · · · + σs (n) = ζ(1 + s) + 21 ns ζ(s)
+                                              1+s
+                                                                        
+                     sn             s          T2 (n) T3 (n) T4 (n)
+                  +     ζ(1 − s) + n ζ(1 + s)         + s+1 + s+1 + · · · + O(m),
+                    s−1                         2s+1     3          4
+for all positive values of s. If s > 1, the right-hand side can be written as
+                       ns
+                           ζ(1 − s) + ns ζ(1 + s)
+                      s−1
+(17.8)                                                 
+                         n      1 U2 (n) U3 (n) U4 (n)
+                             + + s+1 + s+1 + s+1 + · · · + O(m).
+                        1+s 2        2         3  4
+   ∗
+    This result has been proved by Landau. See his report on Wigert’s memoir in the Göttingische gelehrte
+                                                                                                      √
+Anzeigen, 1915, pp. 377 – 414 (p.402). Landau has also, by a more transcendental method, replaced O( n)
+       2
+by O(n 5 ) (loc.cit., p.414).
+254                                                                                           Paper 21
+
+
+      Putting s = 1 in (17.7) we obtain
+
+                                                            π2 2 1
+                        σ1 (1) + σ1 (2) + · · · + σ1 (n) =     n + 2 n(γ − 1 + log 2nπ)
+                                                            12
+      (17.9)
+                          π 2 n T2 (n) T3 (n) T4 (n)                        √
+                                                                     
+                        +               +           +         + · · ·   + O(  n).
+                            6      22          32        42
+
+
+                                        Additional note to §7 (May 1, 1918).
+      From (7.2) it follows that
+                                                             ∞                       ∞
+            1                                               X                  X
+                {1−s σ1−r (1) + 2−s σ1−r (2) + · · ·} = 1−s   m−r cm (1) + 2−s   m−r cm (2) + · · · ,
+           ζ(r)
+                                                             1                       1
+
+      or
+                                                              ∞   ∞
+                                         ζ(s)ζ(r + s − 1) X X cm (n)
+                                                         =       r ns
+                                                                      ,
+                                               ζ(r)        1 1
+                                                               m
+      from which we deduce
+                                   X                   cm (1) cm (2) cm (3)
+                            ζ(s)         µ(δ)δ′1−s =         +      +       + ···,
+                                                        1s     2s     3s
+                                    δ
+
+      δ being a divisor of m and δ′ its conjugate. The series on the right-hand side is convergent
+      for s > 0 (except when m = 1, when it reduces to the ordinary series for ζ(s)).
+      When s = 1, m > 1 we have to replace the left-hand side by its limit as s → 1. We find
+      that
+
+      (18)                         cm (1) + 21 cm (2) + 13 cm (3) + · · · = −Λ(m),
+
+      Λ(m) being the well-known arithmetical function which is equal to log p if m is a power of
+      a prime p and to zero otherwise.
+

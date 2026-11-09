@@ -1,0 +1,95 @@
+                        A proof of Bertrand’s postulate
+
+           Journal of the Indian Mathematical Society, XI, 1919, 181 – 182
+
+1. Landau in his Handbuch, pp. 89 – 92, gives a proof of a theorem the truth of which was
+conjectured by Bertrand: namely that there is at least one prime p such that x < p ≤ 2x,
+if x ≥ 1. Landau’s proof is substantially the same as that given by Tschebyschef. The
+following is a much simpler one.
+Let ν(x) denote the sum of the logarithms of all the primes not exceeding x and let
+                                                  1         1
+                             Ψ(x) = ν(x) + ν(x 2 ) + ν(x 3 ) + · · · ,                (1)
+
+
+                         log[x]! = Ψ(x) + Ψ( 12 x) + Ψ( 31 x) + · · · ,               (2)
+
+where [x] denotes as usual the greatest integer in x.
+From (1) we have
+                              √                1         1
+                    Ψ(x) − 2Ψ( x) = ν(x) − ν(x 2 ) + ν(x 3 ) − · · · ,                (3)
+
+and from (2)
+
+                  log[x]! − 2 log[ 12 x]! = Ψ(x) − Ψ( 12 x) + Ψ( 31 x) − · · · .      (4)
+
+Now remembering that ν(x) and Ψ(x) are steadily increasing functions, we find from (3)
+and (4) that
+                                  √
+                        Ψ(x) − 2Ψ( x) ≤ ν(x) ≤ Ψ(x);                               (5)
+
+and
+
+            Ψ(x) − Ψ( 12 x) ≤ log[x]! − 2 log[ 21 x]! ≤ Ψ(x) − Ψ( 12 x) + Ψ( 31 x).   (6)
+
+But it is easy to see that
+
+                    log Γ(x) − 2 log Γ( 12 x + 21 ) ≤ log[x]! − 2 log[ 12 x]!
+                                      ≤ log Γ(x + 1) − 2 log Γ( 12 x + 12 ).          (7)
+
+Now using Stirling’s approximation we deduce from (7) that
+
+                             log[x]! − 2 log[ 21 x]! < 43 x, if x > 0;                (8)
+
+and
+
+                          log[x]! − 2 log[ 12 x]! > 32 x, if x > 300.                 (9)
+264                                                                                                Paper 24
+
+
+      It follows from (6), (8) and (9) that
+
+                                       Ψ(x) − Ψ( 12 x) < 43 x, if x > 0;                               (10)
+
+      and
+
+                                Ψ(x) − Ψ( 12 x) + Ψ( 31 x) > 32 x, if x > 300.                         (11)
+
+      Now changing x to 12 x, 41 x, 18 x, . . . in (10) and adding up all the results, we obtain
+
+                                             Ψ(x) < 23 x, if x > 0.                                    (12)
+
+      Again we have
+                                                             √
+                      Ψ(x) − Ψ( 21 x) + Ψ( 31 x) ≤ ν(x) + 2Ψ( x) − ν( 21 x) + Ψ( 31 x)
+                                                                                   √
+                                                       < ν(x) − ν( 12 x) + 21 x + 3 x,                 (13)
+
+      in virtue of (5) and (12).
+      It follows from (11) and (13) that
+                                                            √
+                                  ν(x) − ν( 12 x) > 61 x − 3 x, if x > 300.                            (14)
+                                     √
+      But it is obvious that 61 x − 3 x ≥ 0, if x ≥ 324. Hence
+
+                                        ν(2x) − ν(x) > 0, if x ≥ 162.                                  (15)
+
+      In other words there is at least one prime between x and 2x if x ≥ 162. Thus Bertrand’s
+      Postulate is proved for all values of x not less than 162; and, by actual verification, we find
+      that it is true for smaller values.
+
+      2. Let π(x) denote the number of primes not exceeding x. Then, since π(x) − π( 12 x) is the
+      number of primes between x and 12 x, and ν(x) − ν( 12 x) is the sum of logarithms of primes
+      between x and 12 x, it is obvious that
+
+                                   ν(x) − ν( 12 x) ≤ {π(x) − π( 21 x)} log x,                          (16)
+
+      for all values of x. It follows from (14) and (16) that
+                                                    1 1          √
+                             π(x) − π( 12 x) >          ( 6 x − 3 x), if x > 300.                      (17)
+                                                  log x
+      From this we easily deduce that
+
+                      π(x) − π( 21 x) ≥ 1, 2, 3, 4, 5, . . . , if x ≥ 2, 11, 17, 29, 41, . . . ,       (18)
+
+      respectively.
+

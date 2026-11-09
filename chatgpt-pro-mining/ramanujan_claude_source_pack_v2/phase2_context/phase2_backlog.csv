@@ -1,0 +1,31 @@
+id,priority,workstream,title,status,next_action,acceptance_criteria,blocked_by,notes
+P2-001,P0,State,Commit Phase 2 TODO pack,ready,Copy RAMANUJAN_PHASE2_TODO.md into repo docs and commit,TODO is versioned and linked from README,,Preserves strategy outside chat context
+P2-002,P0,State,Create PROJECT_LEDGER.md,ready,List all artifacts scripts manifests and branches,Ledger includes ChatGPT packs Claude branch and current source manifests,,Make this the durable project map
+P2-003,P0,State,Create CLAIMS.md with evidence ladder,ready,Extract all candidate claims and assign evidence levels,Each claim has label evidence level sources and next verification,,Prevents overclaiming
+P2-004,P1,Corpus,Run Wren bulk downloader externally,blocked,Run wren_ramanujan_downloader.py on internet-enabled machine,All manifests page images logs failures and checksums saved,External machine with network access,ChatGPT sandbox could not bulk download manifests
+P2-005,P1,Corpus,Build page image manifest,blocked,Run make_page_index.py after downloads,page_image_manifest.csv has source URL local path sha256 dimensions rights note,P2-004,Needed before OCR/tagging
+P2-006,P1,Corpus,Calibrate OCR pipeline,blocked,Run Chandra GPT and manual/edited comparison on sample,Tool outputs saved with params and confidence notes,P2-005,Do not run full OCR before calibration
+P2-007,P1,Schemas,Adopt formula record schema,ready,Add JSON schema and validation script,Formula records fail validation if provenance or uncertainty missing,,Schema included in this pack
+P2-008,P1,Schemas,Adopt operator taxonomy,ready,Add operator_tag_taxonomy.json and docs,Tags are stable enough for calibration sample,,Refine after real disagreements
+P2-009,P1,Schemas,Adopt transform registry schema,ready,Add schema and validator,Registry entries require validity degeneracy certificate and tests,,Degeneracy cannot be optional
+P2-010,P1,Hunt5,Select 25-page calibration sample,blocked,Choose diverse pages from notebooks lost notebook Wren manuscripts and letters,Sample manifest includes page IDs source rationale and image checksums,P2-005,Use dense pages plus thematic pages
+P2-011,P1,Hunt5,Segment formula blocks on calibration sample,blocked,Crop or mark formula blocks and assign formula IDs,Each block has page ID crop box transcription confidence,P2-010,Can be manual first
+P2-012,P1,Hunt5,Tag calibration sample by operator taxonomy,blocked,Assign 1-3 tags per formula block with notes,operator_tags.jsonl exists and disagreement notes recorded,P2-011,Core test of speedrun hypothesis
+P2-013,P1,Hunt5,Measure operator concentration,blocked,Compute tag distribution and entropy on calibration sample,Report says whether small operator basis seems plausible,P2-012,Do not overinterpret sample
+P2-014,P1,Registry,Implement registry loader,ready,Create YAML/JSON loader and schema validator,Invalid entries fail loudly missing degenerate cases/tests,,Can proceed before full corpus
+P2-015,P1,Registry,Seed 10 registry entries,ready,Encode seed_registry YAML entries into runnable package,10 entries validated each with degeneracy modes and tests,,This pack includes seed descriptions
+P2-016,P1,Registry,Add positive negative degenerate tests,ready,Write tests for each seed entry,Each transform reports recognized not_recognized or unsafe,,No silent routing allowed
+P2-017,P1,Benchmarks,Create benchmark harness,ready,Standardize metrics and output CSV,Records term count wall-clock precision memory setup correctness certificate,,Use hardware/env metadata
+P2-018,P2,Experiments,Ramanujan-Prony latent decomposer,ready,Compare sequence recovery vs Padé Berlekamp-Massey matrix pencil,Report compression extrapolation residual and novelty classification,,Closest to latent-representation intuition
+P2-019,P2,Experiments,Ramanujan-sum periodicity layer,ready,Test noisy missing mixed integer periods vs Fourier,Report regimes where Ramanujan basis wins/ties/loses,,Useful signal-processing route
+P2-020,P2,Experiments,q-series representation compiler,blocked,Select 20 corpus q-series identities and encode forms,Router chooses product/sum/recurrence/CF/modular/asymptotic per query,P2-012,Most corpus-aligned compiler test
+P2-021,P2,Experiments,Congruence checksum validator,ready,Inject errors into partition-like computations,Detection rate false negatives false positives and overhead reported,,Good practical validator idea
+P2-022,P2,Experiments,Continued-fraction approximant explorer,ready,Compare Ramanujan-style CF approximants vs Padé/minimax,Report convergence failures and successes,,Ramanujan Machine-adjacent
+P2-023,P2,Experiments,Gauss-sum rational snapping note,ready,Formalize silent-zero denominator-class failure,Proof or derivation plus literature audit and tests,,Potential short note if novel
+P2-024,P3,Experiments,Mock-theta bias diagnostic moonshot,waiting,Find non-contrived model with mock/false/partial theta partition,Empirical bias demo before any FEP/EBM claim,,High-upside fragile
+P2-025,P3,Experiments,Divisor-lattice scheduler as autotuning prior,waiting,Equal-budget search-prior benchmark vs random/grid/planner,Only continue if specific workload improves,,Do not claim general FFT wins
+P2-026,P1,SOTA,Create prior-art audit template,ready,Template exact claim weakest claim prior art novelty label evidence level,Each candidate has an audit record before publishability decisions,,Central guardrail
+P2-027,P1,Docs,Write DEGENERACY_CATALOGUE.md v0,ready,For seed registry entries write when not to use transform,Each entry has failure modes detection and router behavior,,Do before optimistic abstract
+P2-028,P2,Publication,Architecture/software paper outline,waiting,Draft after registry MVP and first benchmark suite,Outline includes novelty scope failure modes benchmarks,,Do not draft as pure identity discovery
+P2-029,P2,Publication,Corpus/operator-basis paper outline,blocked,Draft after 500 formula blocks tagged,Outline includes tag statistics examples methodology,P2-012,Potential cog-sci/math-history angle
+P2-030,P2,Publication,Short Gauss-sum failure note,blocked,Draft only after proof and SOTA audit,Narrow note has formal statement examples proof prior art,P2-023,Potential fast deliverable

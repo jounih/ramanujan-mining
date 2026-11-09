@@ -1,0 +1,254 @@
+# Seed transform registry for Ramanujan Phase 2.
+# These are not all novel. They are starter entries for a degeneracy-aware recognizer/registry.
+
+- transform_id: theta_gaussian_jacobi_dual
+  name: Gaussian theta reciprocal transform
+  operator_tags: [POISSON_THETA_DUAL, MODULAR_TRANSFORM]
+  input_fingerprint: "sum over integers of exp(-beta*(n+a)^2) or close theta kernel"
+  output_representation: "dual theta series with reciprocal beta"
+  validity_conditions:
+    - "Gaussian/quadratic lattice kernel recognized exactly or with bounded perturbation"
+    - "Positive real beta for simplest route; complex cases require domain checks"
+  degeneracy_modes:
+    - "Direct series may be faster for intermediate beta"
+    - "Complex beta or shifts can cause cancellation/precision loss"
+    - "Approximate recognition of a non-quadratic kernel is unsafe"
+  certificate_type: "tail bound on direct and dual Gaussian series"
+  error_bound: "Use monotone Gaussian tail / erfc-style bound in selected domain"
+  direct_baseline: "Truncated direct integer sum"
+  benchmark_cases:
+    - "Small beta where dual is short"
+    - "Large beta where direct is short"
+    - "Intermediate beta where router must compare costs"
+  known_implementations: ["mpmath theta functions", "Arb/FLINT style ball arithmetic where available"]
+  sota_notes: "Classical identity; novelty only in safe routing and registry integration."
+  source_examples: ["Ramanujan theta/q-series motifs; notebook/lost notebook pages TBD"]
+  tests:
+    positive: ["beta=1e-8", "beta=0.01", "beta=100"]
+    negative: ["kernel exp(-beta*n^4)"]
+    degenerate: ["complex beta near imaginary axis", "beta near transition where direct and dual tie"]
+  status: seeded
+
+- transform_id: dedekind_eta_s_transform
+  name: Dedekind eta S-transform / q-product reciprocal switch
+  operator_tags: [MODULAR_TRANSFORM, SERIES_TO_PRODUCT, PRODUCT_TO_SERIES]
+  input_fingerprint: "eta-like infinite q-product or partition generating function"
+  output_representation: "reciprocal modular parameter product/series with prefactor"
+  validity_conditions:
+    - "Input is eta or eta-product with known modular weight/multiplier"
+    - "q inside unit disk or analytically continued with domain metadata"
+  degeneracy_modes:
+    - "Multiplier/cusp data missing for high-level eta-products"
+    - "Bad cusp makes transformed representation not cheaper"
+    - "Precision loss from prefactor or cancellation"
+  certificate_type: "q-product truncation bound plus modular validity check"
+  error_bound: "Product tail bound in chosen q-domain"
+  direct_baseline: "Direct q-product expansion/truncation"
+  benchmark_cases: ["Partition generating function", "Eta-products at near-boundary q", "High-level eta-product control"]
+  known_implementations: ["Sage modular forms", "PARI/GP eta/q-series", "Arb/FLINT where applicable"]
+  sota_notes: "Classical; useful as registry entry with cusp/failure metadata."
+  source_examples: ["Ramanujan q-products and partition identities"]
+  tests:
+    positive: ["q close to 1 on real axis", "simple eta"]
+    negative: ["generic product not eta-like"]
+    degenerate: ["high-level cusp without multiplier table"]
+  status: seeded
+
+- transform_id: partition_pentagonal_recurrence
+  name: Partition coefficient recurrence via pentagonal theorem
+  operator_tags: [RECURRENCE_COMPILER, PRODUCT_TO_SERIES, CONGRUENCE_SIEVE]
+  input_fingerprint: "1/prod_{n>=1}(1-q^n) coefficient query"
+  output_representation: "Euler pentagonal recurrence for p(n)"
+  validity_conditions:
+    - "Exact partition generating function recognized"
+    - "Integer n >= 0"
+  degeneracy_modes:
+    - "Specialized H-R-R algorithms dominate for huge n"
+    - "Generic partition variants require different recurrence"
+  certificate_type: "integer recurrence equality and optional congruence checks"
+  error_bound: "Exact integer recurrence; no truncation error if computed exactly"
+  direct_baseline: "Coin-change dynamic programming or product expansion"
+  benchmark_cases: ["n=250", "n=1000", "n=10000"]
+  known_implementations: ["many CAS", "Sage", "PARI/GP", "FLINT/Arb for advanced partition methods"]
+  sota_notes: "Known; use as baseline for representation-switching compiler."
+  source_examples: ["Ramanujan partition papers and congruences"]
+  tests:
+    positive: ["p(0)..p(1000)"]
+    negative: ["restricted partitions with different product"]
+    degenerate: ["very large n where H-R-R should be preferred"]
+  status: seeded
+
+- transform_id: hardy_ramanujan_rademacher_partition
+  name: H-R-R coefficient reconstruction
+  operator_tags: [MODULAR_TRANSFORM, ASYMPTOTIC_EXTRACTION, RECURRENCE_COMPILER]
+  input_fingerprint: "partition p(n) or modular-form coefficient with circle-method route"
+  output_representation: "convergent Rademacher-type series with Kloosterman sums/Bessel terms"
+  validity_conditions:
+    - "Target coefficient family has known modular/circle-method formula"
+    - "Parameters and precision allow rigorous truncation"
+  degeneracy_modes:
+    - "Setup overhead dominates for small n"
+    - "Wrong modular data invalidates result"
+    - "Kloosterman/Bessel evaluation precision can dominate"
+  certificate_type: "rigorous tail bound / interval enclosure / unique integer recovery"
+  error_bound: "Family-specific Rademacher truncation bound"
+  direct_baseline: "Pentagonal recurrence or DP"
+  benchmark_cases: ["medium n", "huge n", "small n control"]
+  known_implementations: ["Arb/FLINT partition function", "Sage/PARI variants"]
+  sota_notes: "Very mature for p(n); opportunity is exporting pattern to other coefficient families."
+  source_examples: ["Ramanujan partition/asymptotic motifs"]
+  tests:
+    positive: ["p(1000)", "p(100000)"]
+    negative: ["non-modular sequence"]
+    degenerate: ["small n where recurrence is faster"]
+  status: seeded
+
+- transform_id: ramanujan_sum_periodic_basis
+  name: Ramanujan-sum periodicity basis
+  operator_tags: [RAMANUJAN_SUM_PERIODICITY, FINITE_GAUSS_COLLAPSE]
+  input_fingerprint: "integer-indexed signal with arithmetic/divisor periodic structure"
+  output_representation: "finite expansion in Ramanujan sums c_q(n)"
+  validity_conditions:
+    - "Signal domain is integer-indexed or can be mapped cleanly to integer periods"
+    - "Candidate periods q are bounded or sparse"
+  degeneracy_modes:
+    - "Ordinary Fourier basis may dominate for non-arithmetic periods"
+    - "Noisy/missing data may break exact orthogonality"
+    - "Large q dictionary can be expensive"
+  certificate_type: "projection residual / held-out reconstruction error"
+  error_bound: "Empirical for noisy signals; exact for clean finite dictionary cases"
+  direct_baseline: "DFT/Fourier feature regression"
+  benchmark_cases: ["clean hidden q atoms", "noisy integer-period signal", "non-integer-period control"]
+  known_implementations: ["Ramanujan filter bank literature", "custom implementation"]
+  sota_notes: "Existing signal-processing field; novelty must be benchmark/integration/corpus link."
+  source_examples: ["Ramanujan finite trigonometric sums paper"]
+  tests:
+    positive: ["signals from c_6, c_10, c_15"]
+    negative: ["irrational-period sinusoid"]
+    degenerate: ["heavy noise with sparse observations"]
+  status: seeded
+
+- transform_id: finite_gauss_sum_rational_phase
+  name: Finite Gauss-sum collapse under rational phase
+  operator_tags: [FINITE_GAUSS_COLLAPSE, CONGRUENCE_SIEVE, PARAMETER_SPECIALIZATION]
+  input_fingerprint: "quadratic exponential phase with rational coefficient"
+  output_representation: "finite Gauss sum / character sum with residue-class structure"
+  validity_conditions:
+    - "Phase is exactly rational or approximation error is bounded"
+    - "Denominator class and parity handled explicitly"
+  degeneracy_modes:
+    - "Rational snapping changes the problem outside tolerance"
+    - "Certain denominator classes produce cancellation/silent zero"
+    - "Aliasing if residue-period not handled"
+  certificate_type: "exact finite sum plus perturbation bound for snapping"
+  error_bound: "Problem-specific snapping residual bound"
+  direct_baseline: "Direct oscillatory sum/integral or generic quadrature"
+  benchmark_cases: ["safe rational phase", "near-rational phase", "q ≡ 2 mod 4 style failure control"]
+  known_implementations: ["number theory/CAS Gauss sum routines"]
+  sota_notes: "Potential short note only if failure-mode framing is not already standard."
+  source_examples: ["Ramanujan sums and modular equation motifs"]
+  tests:
+    positive: ["small rational quadratic phases"]
+    negative: ["irrational phase with no safe approximation"]
+    degenerate: ["denominator-class silent cancellation"]
+  status: seeded
+
+- transform_id: rogers_ramanujan_cf_product_series_switch
+  name: Rogers-Ramanujan continued-fraction/product/series switch
+  operator_tags: [SERIES_TO_CONTINUED_FRACTION, SERIES_TO_PRODUCT, PRODUCT_TO_SERIES]
+  input_fingerprint: "Rogers-Ramanujan type q-series/product/continued fraction"
+  output_representation: "alternative CF/product/series representation chosen by query"
+  validity_conditions:
+    - "Identity family recognized"
+    - "q-domain and convergence known"
+  degeneracy_modes:
+    - "CF convergence may be slow or misleading"
+    - "Product expansion may be cheaper for coefficient queries"
+    - "Near roots of unity requires care"
+  certificate_type: "cross-representation numerical check plus truncation bounds"
+  error_bound: "Representation-specific q-tail/CF convergence bound"
+  direct_baseline: "Direct q-series truncation"
+  benchmark_cases: ["evaluation query", "coefficient query", "near-boundary q query"]
+  known_implementations: ["CAS q-series", "custom"]
+  sota_notes: "Classical; useful as multi-representation routing exemplar."
+  source_examples: ["Ramanujan notebooks/lost notebook Rogers-Ramanujan entries"]
+  tests:
+    positive: ["known RR q values"]
+    negative: ["generic CF not RR"]
+    degenerate: ["q near root of unity"]
+  status: seeded
+
+- transform_id: prony_rational_generating_function_latents
+  name: Moment sequence to rational generating function / latent poles
+  operator_tags: [PARTIAL_FRACTION_LATENTS, RECURRENCE_COMPILER]
+  input_fingerprint: "sequence/moments plausibly generated by small rational generating function"
+  output_representation: "poles/weights or low-order linear recurrence"
+  validity_conditions:
+    - "Enough initial terms available"
+    - "Noise model specified if data are approximate"
+  degeneracy_modes:
+    - "Overfitting small samples"
+    - "Nearly repeated poles cause instability"
+    - "Noisy sequences require regularized methods"
+  certificate_type: "residual, extrapolation test, recurrence verification"
+  error_bound: "Exact for rational/integer exact data; empirical/condition-number bound for noisy data"
+  direct_baseline: "Store/compute sequence term-by-term"
+  benchmark_cases: ["Ramanujan example sequence", "random rational GF", "noisy moment control"]
+  known_implementations: ["Prony", "Berlekamp-Massey", "Padé", "matrix pencil methods"]
+  sota_notes: "Classical methods; opportunity is corpus-driven explanation search."
+  source_examples: ["Ramanujan paper 3 motif from previous pass"]
+  tests:
+    positive: ["low-order rational sequence"]
+    negative: ["partition numbers without small rational GF"]
+    degenerate: ["near-repeated poles"]
+  status: seeded
+
+- transform_id: congruence_checksum_partition_like
+  name: Congruence checksum validator for coefficient pipelines
+  operator_tags: [CONGRUENCE_SIEVE, NUMERICAL_VERIFIER]
+  input_fingerprint: "integer coefficient sequence with known congruences"
+  output_representation: "cheap modular invariant/checksum"
+  validity_conditions:
+    - "Congruence theorem applies to exact target sequence"
+    - "Modulus and residue class match"
+  degeneracy_modes:
+    - "Checksum has false negatives for errors preserving congruence"
+    - "Wrong sequence variant invalidates congruence"
+    - "Sparse residue classes provide limited coverage"
+  certificate_type: "modular invariant; probabilistic/error-detection coverage if randomized"
+  error_bound: "Detection probability from injected-error model, not proof of correctness"
+  direct_baseline: "No runtime invariant or full recomputation"
+  benchmark_cases: ["partition congruences", "eta-product coefficients", "random error injection"]
+  known_implementations: ["custom; congruence theorems in literature"]
+  sota_notes: "Practical validator idea; novelty depends on systematized compiler/checksum framing."
+  source_examples: ["Ramanujan partition congruences"]
+  tests:
+    positive: ["p(5n+4) mod 5"]
+    negative: ["nonmatching residue class"]
+    degenerate: ["errors that preserve checksum"]
+  status: seeded
+
+- transform_id: mock_false_partial_theta_warning
+  name: Mock/false/partial theta correction-aware router
+  operator_tags: [MOCK_MODULAR_COMPLETION, ASYMPTOTIC_EXTRACTION, MODULAR_TRANSFORM]
+  input_fingerprint: "mock theta / false theta / partial theta-like q-series near boundary or root of unity"
+  output_representation: "leading modular/theta-like term plus correction/shadow warning"
+  validity_conditions:
+    - "Function class identified with known completion/correction"
+    - "Boundary/root-of-unity regime specified"
+  degeneracy_modes:
+    - "Treating mock object as modular gives biased/asymptotically wrong result"
+    - "Correction term dominates in target regime"
+    - "No known completion for the object"
+  certificate_type: "residual check against direct summation and known completion where available"
+  error_bound: "Function-specific; often requires literature/theorem rather than generic bound"
+  direct_baseline: "Direct q-series truncation"
+  benchmark_cases: ["known mock theta examples", "false theta control", "ordinary theta control"]
+  known_implementations: ["research code; CAS support uneven"]
+  sota_notes: "Moonshot; avoid FEP/EBM claims until concrete model exists."
+  source_examples: ["Ramanujan lost notebook mock theta entries"]
+  tests:
+    positive: ["known mock theta function with completion"]
+    negative: ["ordinary modular theta"]
+    degenerate: ["near root of unity where correction matters"]
+  status: seeded

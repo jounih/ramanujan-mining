@@ -1,0 +1,642 @@
+      On the coefficients in the expansions of certain modular
+                              functions
+
+                Proceedings of the Royal Society, A, XCV, 1919, 144 – 155
+
+
+1. A very large proportion of the most interesting arithmetical functions – of the functions,
+for example, which occur in the theory of partitions, the theory of the divisors of numbers,
+or the theory of the representation of numbers by sums of squares – occur as the coefficients
+in the expansions of elliptic modular functions in powers of the variable q = eπiτ . All of
+these functions have a restricted region of existence, the unit circle |q| = 1 being a “natural
+boundary” or line of essential singularities. The most important of them, such as the
+functions∗
+
+
+  (1.1)                        (ω1 /π)12 ∆ = q 2 {(1 − q 2 )(1 − q 4 ) · · ·}24 ,
+
+  (1.2)                                 ϑ3 (0) = 1 + 2q + 2q 4 + 2q 9 + · · · ,
+
+                                                                  13 q 2   23 q 4
+                                    ω 4                                             
+                                     1
+  (1.3)                       12            g2 = 1 + 240                 +        + ··· ,
+                                    π                            1 − q2 1 − q4
+
+                                                                  15 q 2   25 q 4
+                                    ω 6                                             
+                                     1
+  (1.4)                      216            g3 = 1 − 504                 +        + ··· ,
+                                    π                            1 − q2 1 − q4
+
+are regular inside the unit circle; and many, such as the functions (1.1) and (1.2), have the
+additional property of having no zeros inside the circle, so that their reciprocals are also
+regular.
+In a series of recent papers† we have applied a new method to the study of these arithmetical
+functions. Our aim has been to express them as series which exhibit explicitly their order
+of magnitude, and the genesis of their irregular variations as n increases. We find, for
+example, for p(n), the number of unrestricted partitions of n, and for rs (n), the number of
+representations of n as the sum of an even number s of squares, the series
+   ∗
+      We follow, in general, the notation of Tannery and Molk’s Éléments de la théorie des fonctions ellip-
+tiques. Tannery and Molk, however, write 16G in place of the more usual ∆.
+    †
+      (1) G. H. Hardy and S. Ramanujan, “Une formule asymptotique pour le nombre des partitions de n,”
+Comptes Rendus, January 2, 1917 [No. 31 of this volume]; (2) G. H. Hardy and S. Ramanujan, “Asymptotic
+Formulæ in Combinatory Analysis,” Proc. London Math.Soc., Ser. 2, Vol. XVII, 1918, pp. 75 – 115 [No.
+36 of this volume]; (3) S. Ramanujan, “On Certain Trigonometrical Sums and their Applications in the
+Theory of Numbers,” Trans. Camb. Phil. Soc., Vol.XXII, 1918, pp. 259 – 276 [No. 21 of this volume]; (4)
+G. H. Hardy, “On the Expression of a Number as the Sum of any Number of Squares, and in particular of
+Five or Seven,” Proc. National Acad. of Sciences, Vol.IV, 1918, pp. 189 – 193: [and G. H. Hardy, “On the
+expression of a number as the sum of any number of squares, and in particular of five,” Trans. American
+Math. Soc., Vol.XXI, 1920, pp. 255 – 284].
+On the coefficients in the expansions of certain modular functions                                      381
+
+
+
+
+                                                        1
+                                                                !
+                                             (−1)n d e 2 Cλn /2
+                                  Cλn 
+                       1 d        e
+ (1.5)                 √                 +
+                     2π 2 dn       λn          2π dn      λn
+                                               s                                         !
+                                                                                 eCλn /3
+                                                                    
+                                                  3       2        1    d
+                                           + π      cos     nπ − π                             + ···,
+                                                  2       3       18   dn          λn
+             s                        s 
+                     1                    2
+where λn =        n−          and C = π      , and
+                     24                   3
+
+               π s/2 s −1 −s          1    1    −s         2    1    −s
+  (1.6)              n 2 {1 2 + 2 cos( nπ − sπ)2 2 + 2 cos( nπ − sπ)3 2 + · · ·};
+              Γ(s/2)                  2    4               3    2
+and our methods enable us to write down similar formulæ for a very large variety of other
+arithmetical functions.
+The study of series such as (1.5) and (1.6) raises a number of interesting problems, some of
+which appear to be exceedingly difficult. The first purpose for which they are intended is
+that of obtaining approximations to the functions with which they are associated. Some-
+times they give also an exact representation of the functions, and sometimes they do not.
+Thus the sum of the series (1.6) is equal to rs (n)if s is 4, 6, or 8, but not in any other
+case. The series (1.5) enables us, by stopping after an appropriate number of terms, to
+find approximations to p(n) of quite startling accuracy; thus six terms of the series give
+p(200) = 3972999029388, a number of 13 figures, with an error of 0.004. But we have never
+been able to prove that the sum of the series is p(n) exactly, nor even that it is convergent.
+There is one class of series, of the same general character as (1.5) or (1.6), which lends
+itself to comparatively simple treatment. These series arise when the generating modular
+function f (q) of φ(τ ) satisfies an equation
+                                                               
+                                                         c + dτ
+                                  φ(τ ) = (a + bτ )n φ            ,
+                                                         a + bτ
+where n is a positive integer, and behaves, inside the unit circle, like a rational function;
+that is to say, possesses no singularities but poles. The simplest examples of such functions
+are the reciprocals of the functions (1.3) and (1.4). The coefficients in their expansions are
+integral, but possess otherwise no particular arithmetical interest. The results, however,
+are very remarkable from the point of view of approximation; and it is in any case, well
+worthwhile, in view of the many arithmetical applications of this type of series, to study in
+detail any example in which the results can be obtained by comparatively simple analysis.
+We begin by proving a general theorem (Theorem 1) concerning the expression of a modular
+function with poles as a series of partial fractions. This series is (as appears in Theorem
+2) a “Poincaré’s series”: what our theorem asserts is, in effect, that the sum of a certain
+Poincaré’s series is the only function which satisfies certain conditions. It would, no doubt,
+be possible to obtain this result as a corollary from propositions in the general theory
+382                                                                                                     Paper 37
+
+
+      of automorphic functions; but we thought it best to give an independent proof, which is
+      interesting in itself and demands no knowledge of this theory.
+
+      2. Theorem 1. Suppose that
+      (2.1)                                   f (q) = f (eπiτ ) = φ(τ )
+      is regular for q = 0, has no singularities save poles within the unit circle, and satisfies the
+      functional equation                                      
+                                                        c + dτ
+      (2.2)                     φ(τ ) = (a + bτ )n φ              = (a + bτ )n φ(T ),
+                                                        a + bτ
+      n being a positive integer and, a, b, c, d any integers such that ad − bc = 1. Then
+      (2.3)                                         f (q) = ΣR,
+      where R is a residue of f (x)/(q − x) at a pole of f (x), if |q| < 1; while if |q| > 1 the sum
+      of the series on the right hand side of (2.3) is zero.
+      The proof requires certain geometrical preliminaries.
+
+      3. The half-plane I(τ ) > 0, which corresponds to the inside of the unit circle in the plane
+      of q, is divided up, by the substitutions of the modular group, into a series of triangles
+      whose sides are arcs of circles and whose angles are π/3, π/3, and 0∗ . One of these, which
+      is called the fundamental polygon (P )† , has its vertices at the points ρ, ρ2 , and i∞, where
+      ρ = eπi/3 , and its sides are parts of the unit circle |τ | = 1 and the lines R(τ ) = ± 21 .
+      Suppose that Fm is the “Farey’s series” of order m, that is to say the aggregate of the
+      rational fractions between 0 and 1, whose denominators are not greater than m, arranged
+      in order of magnitude‡ , and that h′ /k′ and h/k, where 0 < h′ /k′ < h/k < 1, are two
+      adjacent terms in the series. We shall consider what regions in the τ -plane correspond to
+      P in the T -plane, when
+                                  h′ − k′ τ                                      h − kτ
+      (3.1)                T =−             ,                 (3.2)       T = ′           .
+                                   h − kτ                                        h − k′ τ
+                                                                               ′    ′
+      Both of these substitutions belong to the modular group, since hk − h k = 1. The points
+      i∞, 1/2, −1/2, in the T -plane correspond to h/k, (h + 2h′ )/(k + 2k′ ), (h − 2h′ )/(k − 2k′ ) in
+      the τ -plane. Thus the lines R(T ) = 21 , R(T ) = − 21 correspond to semicircles described on
+      the segments
+                                          h h + 2h′       h h − 2h′
+                                                                   
+                                            ,         ,     ,
+                                          k k + 2k′       k k − 2k′
+      respectively as diameters. Similarly the upper half of the unit circle corresponds to a
+      semicircle on the segment
+
+                                           h + h′ h − h′
+                                                        
+                                                 ,         .
+                                           k + k′ k − k′
+         ∗
+           It is for many purposes necessary to divide each triangle into two, whose angles are π/2, π/3, and 0;
+      but this further subdivision is not required for our present purpose. For the detailed theory of the modular
+      group, see Klien-Fricke, Vorlesungen über die Theorie der Elliptischen Modulfunktionen, 1890-1892.
+         †
+           See Fig. 1.
+         ‡
+           The first and last terms are 0/1 and 1/1. A brief account of the properties of Farey’s series is given in
+      §4.2 of our paper (2)[pp. 355 – 356 of this volume].
+On the coefficients in the expansions of certain modular functions                                                  383
+
+
+
+
+                                                       P
+
+
+
+
+                                       p2                              p
+
+
+
+
+                 −1                − 21                 0                  1
+                                                                           2
+                                                                                             1
+                                                      Fig 1
+
+The polygon P corresponds to the region bounded by these three semicircles. In particular,
+the right hand edge of P corresponds to a circular arc stretching from h/k (where it cuts
+the real axis at right angles) to the point                         √
+                                 h′ k′ + hk + 21 (hk′ + h′ k) + 12 i 3
+(3.3)
+                                             k2 + kk′ + k′2
+corresponding to τ = ρ.
+Similarly we find that the substitution (3.2) correlates to P a triangle bounded by semicir-
+cles on the segments
+                      ′ ′           ′ ′             ′
+                                                           h − h h′ + h
+                                                                         
+                        h h − 2h         h h + 2h
+                          ,           ,    ,           ,           ,       .
+                        k′ k′ − 2k       k′ k′ + 2k        k′ − k k′ + k
+
+In particular, the left hand edge of P corresponds to a circular arc from h′ /k′ to the point
+(3.3). These two arcs, meeting at the point (3.3), form a continuous path ω, connecting h/k
+and h′ /k′ , every point of which corresponds, in virtue of one or other of the substitutions
+(3.1) and (3.2), to a point on one of the rectilinear boundaries of P ∗ .
+Performing a similar construction for every pair of adjacent fractions of Fm , we obtain a
+continuous path from τ = 0 to τ = 1. This path, and its reflexion in the imaginary axis,
+   ∗
+    Fig. 2 illustrates the case in which h/k = 35 , h′ /k′ = 21 . These fractions are adjacent in F5 and F6 , but
+not in F7 .
+384                                                                                                     Paper 37
+
+
+      give a continuous path from τ = −1 to τ = 1, which we shall denote by Ωm . To Ωm
+      corresponds a path in the q-plane, which we call Hm ; Hm is a closed path, formed entirely
+      by arcs of circles which cut the unit circle at right angles.
+
+
+
+
+                   1                      5     4       7    3         5                2
+                   2                      9     7      12    5         8                3
+                                                           Fig 2
+                    The region shaded horizontally corresponds to P for the substitution (3.1), that
+                    shaded vertically for the substitution (3.2). The thickest lines shew the path ω;
+                    the line of medium thickness shews the semicircle which corresponds (for either
+                    substitution) to the unit semicircle in the plane of T . The large incomplete
+                    semicircle passes through τ = 1.
+
+
+      Since
+                                              h′   h′ + 2h h + 2h′  h
+                                                 <        ,        < ,
+                                              k′   k′ + 2k k + 2k′  k
+      the path ω from h′ /k′ to h/k is always passing from left to right, and its length is less than
+      twice that of the semicircle on (h′ /k′ , h/k), i.e., than π/kk ′ . The total length of Ωm is less
+      than 2π; and, since
+                                            dq
+                                                  = πieπiτ ≤ π,
+                                            dτ
+      the length of Hm is less than 2π 2 . Finally, we observe that the maximum distance of Ωm
+      from the real axis is less than half the maximum distance between two adjacent terms of
+      Fm , and so less than 1/2m∗ . Hence Ωm tends uniformly to the real axis, and Hm to the
+      unit circle, when m −→ ∞.
+
+      4. The function φ(τ ) can have but a finite number of poles in P ; we suppose, for simplicity,
+      that none of them lie on the boundary. There is then a constant K such that |f (q)| < K
+      on the boundary of P .
+        ∗
+            See Lemma 4.22 of our paper (2) [p. 356 of this volume].
+On the coefficients in the expansions of certain modular functions                                             385
+
+
+We now consider the integral
+                                         1      f (x)
+                                             Z
+(4.1)                                                 dx,
+                                        2πi     x−q
+where |q| < 1 and the contour of integration is Hm ∗ . By Cauchy’s Theorem, the integral is
+equal to
+                                        f (q) − ΣR,
+where R is a residue of f (x)/(q − x) at a pole of f (x) inside Hm † . To prove our theorem,
+then, we have merely to shew that the integral (4.1) tends to zero when m −→ ∞.
+Let ω1′ and ω1 be the left- and right-hand parts of ω, and ζ1′ , ζ1 and ζ the corresponding
+arcs of Hm . The length of ω1 is, as we have seen, less than 21 π/kk′ , and that of ζ1 than
+1 2     ′
+2 π /kk . Further, we have, on ζ1 ,
+                                                                   n
+                                                            h h′
+                                                        
+                                           n                               K
+              |f (x)| = |φ(τ )| = |h − kτ | |φ(T )| < K k     − ′       = ′n .
+                                                            k   k          k
+Thus the contribution of ζ1 to the integral is numerically less than C/(kk′n+1 ), where C is
+independent of m; and the whole integral (4.1)  is numerically
+                                                                less than
+                                           1      1    1
+(4.2)                                2CΣ ′          +       ,
+                                          kk kn k′n
+where the summation extends to all pairs of adjacent terms of Fm .
+When ν is fixed and m > ν, the number of terms of Fm whose denominators are less than
+ν is a function of ν only, say N (ν). If h/k is one of these, and h′ /k′ is adjacent to it,
+k + k′ > m‡ , and so k′ > m − ν. Thus the terms of (4.2) in which either k or k′ is less than
+ν contribute less than 8CN (ν)/(m − ν). The remaining terms contribute less than
+                                     4C X 1         4C
+                                       n        ′
+                                                  = n.
+                                     ν       kk      ν
+Hence the sum (4.2) is less than
+                                         8CN (ν) 4C
+                                                  + n,
+                                          m−ν        ν
+and it is plain that, by choice of first ν and then m, this may be made as small as we
+please. Thus (4.1) tends to zero and the theorem is proved. It should be observed that ΣR
+must, for the present at any rate, be interpreted as meaning the limit of the sum of terms
+corresponding to poles inside Hm ; we have not established the absolute convergence of the
+series.
+We supposed that no pole of φ(τ ) lies on the boundary of P . This restriction, however,
+is in no way essential; if it is not satisfied, we have only to select our “fundamental poly-
+gon” somewhat differently. The theorem is consequently true independently of any such
+restriction.
+   ∗
+     Strictly speaking, f (x) is not defined at the points where Hm meets the unit circle, and we should
+integrate round a path just inside Hm and proceed to the limit. The point is trivial, as f (x), in virtue of
+the functional equation, tends to zero when we approach a cusp of Hm from inside.
+   †
+     We suppose m large enough to ensure that x = q lies inside Hm .
+   ‡
+     See our paper (2), loc. cit., [p. 356]
+386                                                                                          Paper 37
+
+
+      So far we have supposed |q| < 1. It is plain that, if |q| > 1, the same reasoning proves that
+      (4.3)                                        ΣR = 0.
+
+      5. Suppose in particular that φ(τ ) has one pole only, and that a simple pole at τ = α, with
+      residue A. The complete system of poles is then given by
+                                                   c + dα
+      (5.1)                             τ =a=               (ad − bc = 1),
+                                                   a + bα
+      If a and b are fixed, and (c, d) is one pair of solutions of ad − bc = 1, the complete system
+      of solutions is (c + ma, d + mb), where m is an integer. To each pair (a, b) correspond an
+      infinity of poles in the plane of τ ; but these poles correspond to two different poles only in
+      the plane of q, viz,
+      (5.2)                                      q = ±q = ±eπia ,
+      the positive and negative signs corresponding to even and odd values of m respectively. It
+      is to be observed, moreover, that different pairs (a, b) may give rise to the same pole q.
+      The residue of φ(τ ) for τ = a is , in virtue of the functional equation (2.2),
+                                                     A
+                                                            ;
+                                                (a + bα)n+2
+
+      and the residue of f (q) for q = q is
+                                                        
+                                       A            dq                     πiAq
+                                                                    =               .
+                                  (a + bα)n+2       dτ       τ =a       (a + bα)n+2
+
+      Thus the sum of the terms of our series which correspond to the poles (5.2) is
+
+                                                                        q2
+                                                   
+                           πiA         q        q           2πiA
+                               n+2
+                                            −         =          n+2
+                                                                            .
+                       (a + bα)       q−q q+q            (a + bα)    q − q2
+                                                                      2
+
+
+      We thus obtain:
+      Theorem 2. If φ(τ ) has one pole only in P , viz., a simple pole at τ = α with residue A,
+      and |q| < 1, then
+                                             X          1         q2
+      (5.3)                     f (q) = 2πiA                           ,
+                                                  (a + bα)n+2 q 2 − q2
+      where                                             
+                                                c + dα
+                                      q = exp              πi;
+                                                a + bα
+      c, d being any pair of solutions of ad − bc = 1, and the summation extending over all pairs
+      a, b, which give rise to distinct values of q. If |q| > 1, the sum of the series on the right-hand
+      side of (5.3) is zero.
+      If φ(τ ) has several poles in P , f (q), of course, will be the sum of a number of series such
+      as (5.3). Incidentally, we may observe that it now appears that the series in question are
+      absolutely convergent.
+
+      6. As an example, we select the function
+On the coefficients in the expansions of certain modular functions                                              387
+
+
+                                                                                   ∞
+                                       π6               1              X
+(6.1)                      f (q) =             =                     =   p n xn ,
+                                     216ω16 g3   1 − 504 ∞  r 5 q 2r
+                                                        P
+                                                          1       2r   0  1−q
+say, where x = q 2 . It is evident that pn is always an integer; the values of the first 13
+coefficients are
+  p0 = 1,
+  p1 = 504,
+  p2 = 270648,
+  p3 = 144912096,
+  p4 = 77599626552,
+  p5 = 41553943041744,
+  p6 = 22251789971649504,
+  p7 = 11915647845248387520,
+  p8 = 6380729991419236488504,
+  p9 = 3416827666558895485479576,
+ p10 = 1829682703808504464920468048,
+ p11 = 979779820147442370107345764512,
+ p12 = 524663917940510191509934144603104;
+so that p12 is a number of 33 figures.
+By means of the formulæ∗
+
+                                   8                          1
+                           g3 =      (e1 − e3 )2 (1 + k2 )(1 − k2 )(1 − 2k2 ),
+                                  27                          2
+                                                   2
+                                               π                       2K
+                           e1 − e3 =                     {ϑ3 (0)}4 ,      = {ϑ3 (0)}2 ,
+                                              2ω1                       π
+we find that
+                                              6
+                              1           2K                     1
+                                  =                 (1 + k2 )(1 − k2 )(1 − 2k2 ).
+                            f (q)          π                     2
+
+The value of n is 6. The poles of f (q) correspond to the value of τ which make K = k2
+equal to −1, 2 or 12 . It is easily verified† that these values are given by the general formula
+
+                                               c + di
+                                         τ=                 (ad − bc = 1),
+                                               a + bi
+
+so that                                                                    
+                                         c + di            ac + bd        π
+(6.2)                     q = exp               πi = exp           πi − 2       .
+                                         a + bi            a2 + b2     a + b2
+   ∗
+     All the formulæ which we quote are given in Tannery and Molk’s Tables; see in particular Tables XXXVI
+(3), LXXI (3), XCVI, CX (3).
+   †
+     A full account of the problem of finding τ when κ if given will be found in Tannery and Molk, loc. cit.,
+Vol. III, ch. 7 (“On donne k2 ou g2 , g3 ; trouver τ ou ω1 , ω3 ”).
+388                                                                                                              Paper 37
+
+
+      The value of α is i∗ . In order to determine A we observe that
+                       5 2
+                                    25 q 4                     16 q 2      26 q 4
+                                                                                       
+                   d      1 q                        1008
+             −504                +         + ··· = −                   +            + ··· .
+                   dq 1 − q 2 1 − q 4                  q    (1 − q 2 )2 (1 − q 4 )2
+
+      The series in curly brackets is the function called by Ramanujan† Φ1,6 and‡
+
+                                                 1008Φ1,6 = Q2 − P R,
+
+      where
+                                  12η1 ω1                      ω 4
+                                                                 1
+                                                                                              ω 6
+                                                                                                 1
+                            P =           ,     Q = 12g2                 ,    R = 216g3               .
+                                    π2                          π                               π
+      Here R = 0, so that
+
+                                                                                   17 q 2   27 q 4
+                                                                                                          
+                    1008Φ1,6 = Q2 = 1 + 480Φ0,7 § = 1 + 480                               +        + · · ·   .
+                                                                                  1 − q2 1 − q4
+
+      Hence we find that
+                                              A = i/πC,        2πiA = −2/C,
+      where
+                                                                17      27
+                                                                                 
+      (6.3)                            C = 1 + 480                  +        + ··· .
+                                                             e2π − 1 e4π − 1
+      Another expression for C is
+                                                                             8
+                                                                         K0
+      (6.4)                                             C = 144                    ,
+                                                                         π
+      where                                     Z π/2
+                                                                dθ                     {Γ(1/4)}2
+      (6.41)                           K0 =             q                          =      √      .
+                                                 (1 − 21 sin2 θ)
+                                                 0                                       4 π
+      We have still to consider more closely the values of a and b, over which the summation is
+      effected. Let us fix k, and suppose that (a, b) is a pair of positive solutions of the equation
+      a2 + b2 = k. This pair gives rise to a system of eight solutions, viz.,
+
+                                                     (±a, ±b), (±b, ±a).
+
+      But it is obvious that, if we change the signs of both a and b, we do not affect the aggregate
+      of values of a. Thus we need only consider the four pairs
+
+                                              (a, b), (a, −b), (b, a), (b, −a).
+         ∗
+           It will be observed that in this case α is on the boundary of P ; see the concluding remarks of §4. As it
+      happens, τ = i lies on that edge of P (the circular edge) which was not used in the construction of Hm , so
+      that our analysis is applicable as it stands.
+         †
+           S. Ramanujan, “On Certain Arithmetical Functions,” Trans. Camb. Phil. Soc., Vol. XXII, pp. 159 –
+      184 (p. 163) [No. 18 of this volume, p. 179].
+         ‡
+           Ramanujan, loc. cit., p. 164 [p. 181].
+         §
+           Ramanujan, loc. cit., p. 163 [p. 180].
+On the coefficients in the expansions of certain modular functions                                              389
+
+
+If a or b is zero, or if a = b, these four pairs reduce to two.
+It is easily verified that, if (a, b) leads to the pair of poles
+                                                                    
+                                                 ac + bd         π
+                            q = ±q = ± exp               πi − 2        ,
+                                                 a2 + b2      a + b2
+
+then (a, −b) and (b, a) each lead to q = ±q̄, where q̄ is the conjugate of q. Thus, in general
+(a, b) and the solutions derived from it lead to four distinct poles, viz., ±q and ±q̄. These
+four reduce to two in two cases, when q is real, so that q = q̄, and when q is purely
+imaginary, so that q = −q̄. It is easy to see that the first case can occur only when k = 1,
+and the second when k = 2∗ .
+If k = 1 we take a = 1, b = 0, c = 0, d = 1; and q = q̄ = e−π . If k = 2 we take
+a = 1, b = 1, c = 0, d = 1; and q = −q̄ = ie−π/2 . The corresponding terms in our series are
+                                              1             1
+                                                     ,              .
+                                          1 − q 2 e2π 24 (1 + qeπ )
+
+If k > 2, and is a sum of two coprime squares a2 and b2 , it gives rise to terms
+                                1         1           1         1
+                                    8         2
+                                                +         8
+                                                                       .
+                            (a + bi) 1 − (q/q)    (a − bi) 1 − (q/q̄)2
+There is, of course, a similar pair of terms corresponding to every other distinct represen-
+tation of k as a sum of coprime squares. Thus finally we obtain the following result:
+Theorem 3. If
+                                                                                 ∞
+                                π6                  1             X
+                      f (q) =           =                       =   pn q 2n ,
+                              216ω16 g3
+                                                   P∞ r5 q2r 
+                                            1 − 504        2r     0
+                                                              1 1−q
+
+and |q| < 1, then
+               1              1                         1
+(6.5)            Cf (q) =                  +
+               2          1 − q 2 e2π           24 (1 + q 2 eπ )
+                                                X         1         1           1         1
+                                                                                                        
+                                           +                   8         2
+                                                                           +         8
+                                                                                                            ;
+                                                       (a + bi) 1 − (q/q)    (a − bi) 1 − (q/q̄)2
+   ∗
+     When a and b are given, we can always choose c and d so that |ac + bd| ≤ 12 (a2 + b2 ). If q is real, we
+have ad − bc = 1 and ac + bd = 0 simultaneously; whence
+
+                                            (a2 + b2 )(c2 + d2 ) = 1.
+
+If q is purely imaginary, we have
+
+                                       ad − bc = 1, 2|ac + bd| = a2 + b2 ,
+
+whence
+                                    (c2 + d2 )2 = (|ac + bd| − c2 − d2 )2 + 1.
+This is possible only if c2 + d2 = 1 and |ac + bd| = 1, whence a2 + b2 = 2.
+390                                                                                                    Paper 37
+
+
+      where
+                                         17         27                    9π 4
+                                                               
+                        C = 1 + 480 2π         + 4π       + ··· =                  ,
+                                       e −1 e −1                      16{Γ(3/4)}16
+                                                                            
+                                     c + di              ac + bd          π
+                           q = exp          πi = exp              πi −           ,
+                                     a + bi              a 2 + b2      a2 + b2
+      and q̄ is the conjugate of q. The summation applies to every pair of coprime positive
+      numbers a and b, such that k = a2 + b2 ≥ 5, such pairs, however, only being counted
+      as distinct if they correspond to independent representations of k as a sum of squares. If
+      |q| > 1, then the sum of the series on the right-hand side of (6.5) is zero.
+
+      7. It follows that
+                             (−1)n nπ X
+                                                                                       
+              1                                          1                1                     X cλ (n)
+      (7.1)     Cpn = e2nπ +      e +                          q−2n +           q̄−2n       =              e2nπ/λ ,
+              2                24                    (a + bi)8        (a − bi)8                       λ4
+                                                                                                (λ)
+      say. Here λ is the sum of two coprime squares, so that
+                                            λ = 2a2 5a5 13a13 17a17 · · · ,
+      where a2 is 0 or 1 and 5, 13, 17, . . . are the primes of the form 4k + 1; and the first few
+      values of cλ (n) are
+                        c1 (n) = 1, c2 (n) = (−1)n , c5 (n) = 2 cos 45 nπ + 8 arctan 2 ,
+                                                                                       
+
+                  c10 (n) = 2 cos 35 nπ − 8 arctan 2 , c13 (n) = 2 cos 13 10
+                                                                                           
+                                                                             nπ + 8 arctan 5 .
+      The approximations to the coefficients given by the formula (7.1) are exceedingly remark-
+      able. Dividing by 21 C, and taking n = 0, 1, 2, 3, 6, and 12, we find the following results:
+
+                           (0) 0.944            (1) 505.361                   (2) 270616.406
+                              +0.059                −1.365                          +31.585
+                              −0.003                +0.004                           +0.009
+                       p0 = 1.000              p1 = 504.000               p2 = 270648.000
+                           (3) 144912827.002              (6) 22251789962592450.237
+                                   −730.900                            +9057051.688
+                                      −0.101                                 +2.081
+                                      −0.001                                 −0.006
+                           p3 = 144912096.000            p6 = 22251789971649504.000
+                             (12)      524663917940510190119197271938395.329
+                                                       +1390736872662028.140
+                                                                   +2680.418
+                                                                      +0.130
+                                                                      −0.014
+                                                                      −0.003
+                               p12 = 524663917940510191509934144603104.000
+On the coefficients in the expansions of certain modular functions                                          391
+
+
+An alternative expression for C is
+
+                           C = 962 e−8π/3 {(1 − e−4π )(1 − e−8π ) · · ·}16 ,
+
+by means of which C may be calculated with great accuracy∗ . To five places we have
+2/C = 0.94373, which is very nearly equal to 352/373 = 0.94370.
+It is easy to see directly that pn lies between the coefficients of xn in the expansions of
+                                  1                          1 − 7.5x
+                                             ,                              ,
+                         (1 − 535x)(1 + 31x)          (1 − 535.5x)(1 + 24x)
+
+and so that
+                     (535)n+1 − (−31)n+1        352(535.5)n + 21(−24)n
+                                         ≤ pn ≤                        .
+                             566                          373
+The function
+                                                X cλ (x)
+                                      Ω(x) =               e2xπ/λ
+                                                      λ4
+                                                (λ)
+
+has very remarkable properties. It is an integral function of x, whose maximum modulus is
+less than a constant multiple of e2π|x| . It is equal to pn , an integer, when x = n, a positive
+integer; and to zero when x = −n. But we must reserve the discussion of these peculiarities
+for some other occasion.
+
+
+
+
+  ∗
+    Gauss, Werke, Vol. III, pp. 418 – 419, gives the values of various powers of e−π to a large number of
+figures.
+

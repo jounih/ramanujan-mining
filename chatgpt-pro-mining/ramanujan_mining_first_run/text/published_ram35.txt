@@ -1,0 +1,894 @@
+        The normal number of prime factors of a number n
+
+              Quarterly Journal of Mathematics, XLVIII, 1917, 76 – 92
+
+
+                                           I.
+                                Statement of the problem.
+
+1.1. The problem with which we are concerned in this paper may be stated roughly as
+follows: What is the normal degree of compositeness of a number n? We shall prove a
+number of theorems the general result of which is to shew that n is, as a rule, composed of
+about log log n factors.
+These statements are vague, and we must define our problem more precisely before we
+proceed further.
+1.2. There are two ways in which it is natural to measure the “degree of compositeness”
+of n, viz.
+
+    (1) by its number of divisors,
+    (2) by its number of prime factors.
+
+In this paper we adopt the second point of view. A distinction arises according as multiple
+factors are or are not counted multiply. We shall denote the number of different prime
+factors by f (n), and the total number of prime factors by F (n), so that (e.g.)
+
+                               f (23 32 5) = 3, F (23 32 5) = 6.
+
+With regard to these functions (or any other arithmetical functions of n) four questions
+naturally suggest themselves.
+(1) In the first place we may ask what is the minimum order of the function considered. We
+wish to determine an elementary function of n, with as low a rate of increase as possible,
+such that (e.g.)
+                                         f (n) ≤ φ(n)
+for an infinity of values of n. This question is, for the functions now under consideration,
+trivial; for it is plain that
+                                      f (n) = F (n) = 1
+when n is a prime.
+(2) Secondly, we may ask what is the maximum order of the function. This question also
+is trivial for F (n) : we have
+                                             log n
+                                     F (n) =
+                                             log 2
+whenever n is of the form 2k ; and there is no φ(n) of slower increase which satisfies the
+conditions. The answer is less obvious in the case of f (n) : but, supposing n to be the
+The normal number of prime factors of a number n                                                           327
+
+
+product of the first k primes, we can shew (by purely elementary reasoning) that, if ǫ is
+any positive number, we have
+                                                            log n
+                                      f (n) < (1 + ǫ)
+                                                          log log n
+for all sufficiently large values of n, and
+                                                            log n
+                                      f (n) > (1 − ǫ)
+                                                          log log n
+
+for an infinity of values; so that the maximum order of f (n) is
+
+                                                  log n
+                                                          .
+                                                log log n
+
+It is worth mentioning, for the sake of comparison, that the minimum order of d(n), the
+number of divisors of n, is 2, while the maximum order lies between
+
+                              2(1−ǫ) log n/ log log n , 2(1+ǫ) log n/ log log n
+
+for every positive value of ǫ.∗
+(3) Thirdly, we may ask what is the average order of the function. It is well known – to
+return for a moment to the theory of d(n) – that
+
+(1.21)                               d(1) + d(2) + · · · + d(n) ∼ n log n.
+
+This result, indeed, is almost trivial, and far more is known; it is known in fact that
+                                                                                      1
+(1.22)               d(1) + d(2) + · · · + d(n) = n log n + (2γ − 1)n + O(n 3 log n),
+
+ this result being one of the deepest in the analytic theory of numbers. It would be natural,
+then, to say that the average order of d(n) is log n.
+A similar problem presents itself for f (n) and F (n); and it is easy to shew that, in this
+sense, the average order of f (n) and F (n) is log log n. In fact it may be shewn, by purely
+elementary methods, that
+                                                                                 
+                                                                              n
+(1.23)               f (1) + f (2) + · · · + f (n) = n log log n + An + O           ,
+                                                                            log n
+                                                                                             
+                                                                                        n
+(1.24)                F (1) + F (2) + · · · + F (n) = n log log n + Bn + O                        ,
+                                                                                      log n
+where A and B are certain constants.
+  ∗
+    Wigret, “Sur l’ordre de grandeur du nombre des diviseurs d’un entier,” Arkiv for matematik, Vol. III
+(1907), No. 18, pp. 1 – 9. See Ramanujan, “Highly Composite Numbers,” Proc. London math. soc., Ser.
+2, Vol. XIV (1915), pp. 347 – 409 [No. 15 of this volume] for more precise results.
+328                                                                                      Paper 35
+
+
+      This problem, however, we shall dismiss for the present, as results still more precise than
+      (1.23) and (1.24) can be found by transcendental methods.
+      (4) Fourthly, we may ask what is the normal order of the function. This phrase requires a
+      little more explanation.
+      Suppose that N (x) is the number of numbers, not exceeding x, which possess a certain
+      property P . This property may be a function of n only, or of x only, of both n and x:
+      we shall be concerned only with cases in which it is a function of one variable alone. And
+      suppose further that
+
+      (1.25)                                       N (x) ∼ x
+
+       when x → ∞. Then we shall say, if P is a function of n only, that almost all numbers
+      possess the property, and, if P is a function of x only, that almost all numbers less than x
+      possess the property. Thus, to take a trivial example, almost all numbers are composite.
+      If then g(n) is an arithmetical function of n and φ(n) an elementary increasing function,
+      and if, for every positive ǫ, we have
+
+      (1.26)                           (1 − ǫ)φ(n) < g(n) < (1 + ǫ)φ(n)
+
+       for almost all values of n, we shall say that the normal order of g(n) is φ(n).
+      It is in no way necessary that a function should possess either a determinate average order
+      or a determinate normal order, or that one should be determinate when the other is, or
+      that, if both are determinate, they should be the same. But we shall find that each of the
+      functions f (n) and F (n) has both the average order and the normal order log log n.
+      The definitions just given may be modified so as to apply only to numbers of a special class.
+      If Q(x) is the number of numbers of the class not exceeding x, and N (x) the number of
+      these numbers which possess the property P , and
+
+      (1.27)                                     N (x) ∼ Q(x),
+
+       then we shall say that almost all of the numbers (or almost all of the numbers less than
+      x) possess the property.
+
+
+
+                                                  II.
+                                        “Quadratfrei” numbers.
+
+      2.1. It is most convenient to begin by confining our attention to quadratfrei numbers,
+      numbers, that is to say, which contain no prime factor raised to a power higher than the
+      first. It is well known that the number Q(x) of such numbers, not exceeding x, satisfies the
+      relation
+The normal number of prime factors of a number n                                             329
+
+
+
+
+                                                               6 ∗
+(2.11)                                                Q(x) ∼      x
+                                                               π2
+  We shall denote by πν (x) the number of numbers which are products of just ν different
+prime factors and do not exceed x, so that π1 (x) = π(x) is the number of primes not
+exceeding x, and
+                                   ∞
+                                   X
+                                      πν (x) = Q(x).
+                                            1
+
+It has been shewn by Landau† that
+
+                                                         x (log log x)ν−1
+(2.12)                                   πν (x) ∼
+                                                       log x  (ν − 1)!
+
+ for every fixed value of ν. In what follows we shall require, not an asymptotic equality,
+but an inequality satisfied for all values of ν and x.
+
+2.2. Lemma A. There are absolute constants C and K such that
+                                                        Kx (log log x + C)ν
+(2.21)                                πν+1 (x) <
+                                                       log x       ν!
+
+for
+                                        ν = 0, 1, 2, . . . , x ≥ 2.
+The inequality (2.21) is certainly true when ν = 0, whatever the value of C. It is known
+(and may be proved by elementary methods‡ ) that
+                                                X 1
+(2.221)                                                    < log log x + B
+                                                       p
+                                                p≤x
+
+and
+                                                X log p
+(2.222)                                                        < H log x,
+                                                           p
+                                                p≤x
+
+where B and H are constants. We shall prove by induction that (2.21) is true if
+
+(2.223)                                                C > B + H.
+
+
+  ∗
+    Landau, Handbuch, p. 581.
+  †
+    Landau, Handbuch, pp. 203 et seq.
+  ‡
+    In applying (2.21) we assume that x/p ≥ 2. If x/p < 2, πν (x/p) is zero.
+330                                                                                                Paper 35
+
+
+      Consider the numbers which do not exceed x and are comprised in the table
+                                                   2 · p1 · p2 · · · pν ,
+                                                   3 · p1 · p2 · · · pν ,
+                                                   5 · p1 · p2 · · · pν ,
+                                                              ······,
+                                                   P · p1 · p2 · · · pν ,
+      where p1 , p2 , . . . , pν are, in each row, different primes arranged in ascending order of mag-
+      nitude, and where pν ≥ 2 in the first row, pν ≥ 3 in second, pν ≥ 5 in the third, and so on.
+                                  √
+      It is plain that P ≤ x. The total number of numbers in the table is plainly not greater
+      than                                                    
+                                                    X         x
+                                                          πν     .
+                                                    2
+                                                              p
+                                                      p ≤x
+
+      If now ω1 , ω2 , . . . are primes and
+                                          ω1 < ω2 · · · < ων+1, ω1 ω2 · · · ων+1≤x,
+
+      the number ω1 ω2 · · · ων+1 will occur at least ν times in the table, once in the row in which
+      the first figure is ω1 once in that in which it is ω2 , . . ., once in that in which it is ων . We
+      have therefore
+                                                                       
+                                                          X            x
+      (2.23)                                νπν+1 (x) ≤           πν       .
+                                                          2
+                                                                       p
+                                                                     p ≤x
+
+       Assuming, then, that (2.21) is true when ν is replaced by ν − 1, we obtain∗
+                                                                          ν−1
+                                        Kx X         1                x
+      (2.24)                πν+1 (x) <                       log log     +C
+                                         ν! 2 p log(x/p)              p
+                                                      p ≤x
+
+                                                  Kx(log log x + C)ν−1 X      1
+                                              <                                     .
+                                                           ν!          2
+                                                                         p log(x/p)
+                                                                            p ≤x
+
+      But
+                                                                                
+                                1           1     log p               log p           1    2 log p
+      (2.25)                            =      +                   1+       + ··· ≤      +         ,
+                          log x − log p   log x (log x)2              log x         log x (log x)2
+      since log p ≤ 21 log x; and so
+                                   X           1         1 X 1      2     X log p
+      (2.26)                                         ≤          +
+                                          p log(x/p)   log x 2 p (log x)2 2   p
+                                  p2 ≤x                          p ≤x              p ≤x
+
+                                                         log log x + B     H     log log x + C
+                                                     <                 +       <               .
+                                                              log x      log x        log x
+        ∗
+            It may be well to observe explicitly that log log 2 + C is positive.
+The normal number of prime factors of a number n                                                                        331
+
+
+Substituting in (2.24), we obtain (2.21).
+
+2.3. We can now prove one of our main theorems.
+Theorem A. Suppose that φ is a function of x which tends steadily to infinity with x.
+Then
+                                        √                                   √
+(2.31)                     log log x − φ (log log x) < f (n) < log log x + φ (log log x)
+
+ for almost all quadratfrei numbers n less than x.
+It is plainly enough to prove that
+                                            X
+(2.321)                          S1 =              πν+1 (x) = o(x),
+                                              √
+                                                    ν<llx−φ      (llx)
+
+                                                         X
+(2.322)                                     S2 =                       πν+1 (x) = o(x).∗
+                                                             √
+                                                   ν>llx+φ     (llx)
+
+  It will be sufficient to consider one of the two sums S1 , S2 , say the latter; the discussion
+of S1 proceeds on the same lines and is a little simpler. We have
+
+                                                     x            X            (llx + C)ν
+(2.33)                                   S2 < K                                           .
+                                                   log x          √                 ν!
+                                                           ν>llx+φ (llx)
+
+Write
+                                                 log log x + C = ξ.
+Then the condition that                                    p
+                                          ν > log log x + φ log log x,
+where φ is some function of x which tends steadily to infinity with x, is plainly equivalent
+to the condition that
+                                               √
+                                     ν > ξ + Ψ ξ,
+where Ψ is some function of ξ which tends steadily to infinity with ξ; and so what we have
+to prove is that
+                                                           X             ξν
+(2.34)                                           S=                         = o(eξ ).
+                                                            √            ν!
+                                                       ν>ξ+Ψ ξ
+
+We choose a positive number δ so small that
+
+                                                δ   δ2   δ3
+(2.35)                                            +    +    + · · · < 14 ,
+                                               2·3 3·4 4·5
+  ∗
+      We shall sometimes write lx, llx, . . . , instead of log x, log log x, . . . , in order to shorten our formulæ.
+332                                                                                            Paper 35
+
+
+      and write
+                                              X          ξν       X        ξν
+      (2.36)                    S=                          +                 = S ′ + S ′′ ,
+                                           √             ν!                ν!
+                                        ξ+Ψ ξ<ν≤(1+δ)ξ          ν>(1+δ)ξ
+
+      say. In the first place we have
+                                   ξν                           ξ2
+                                                                                 
+                                                    ξ
+      (2.371)                  S < 1
+                                 ′′
+                                             1+         +                   + ···
+                                  ν1 !           ν1 + 1 (ν1 + 1)(ν1 + 2)
+                                        ξ1ν                                  1 + δ ξ ν1
+                                                                        
+                                                   1      1
+                                      <       1+       +         + · · ·   =            ,
+                                        ν1 !     1 + δ (1 + δ)2                δ ν1 !
+
+      where ν1 is the smallest integer greater than (1 + δ)ξ. It follows that
+                                                      K
+      (2.372)                                  S ′′ < √ eν1 (log ξ−log ν1 +1)
+                                                     δ ν1
+                                                      K
+                                                    < √ e∆ξ,
+                                                     δ ξ
+      where the K’s are absolute constants and
+
+                                          ∆ = (1 + δ) log(1 + δ) − δ.
+
+      And since
+
+                    (1 + δ) log(1 + δ) − δ > (1 + δ)(δ − 12 δ2 ) − δ = 12 δ2 (1 − δ) = η,
+
+      say, we obtain
+                                                           K
+      (2.373)                                       S ′′ < √ e(1−η)ξ ,
+                                                          δ ξ
+      where η is positive: so that
+
+      (2.374)                                          S ′′ = o(eξ ).
+                                            √
+      In S ′ , we write ν = ξ + µ, so that Ψ ξ < µ ≤ δξ. Then
+
+                             ξν     ξ ξ+µ
+      (2.381)                   =
+                             ν!   (ξ + µ)!
+                                   K
+                                < √ exp{(ξ + µ) log ξ − (ξ + µ) log(ξ + µ) + ξ + µ}
+                                    ξ
+                                                             µ2
+                                                                    
+                                   K                   µ
+                                = √ exp (ξ + µ) 1 − + 2 − · · ·
+                                    ξ                  ξ    2ξ
+                                   K       2
+                                < √ eξ−(µ /4ξ) .∗
+                                    ξ
+The normal number of prime factors of a number n                                            333
+
+
+
+Thus
+                                                                             
+                                                                δξ
+                                                           eξ   X        2
+(2.382)                                      S′ = O  √               e−µ /4ξ  ∗
+                                                            ξ    √
+                                                                Ψ ξ
+                                                       (                 )
+                                                    eξ
+                                                       Z ∞
+                                                              −t2 /4ξ
+                                                =O √         e        dt
+                                                      ξ Ψ√ ξ
+                                                   Z ∞           
+                                                    ξ     −u2
+                                                =O e     e du = o(eξ ),
+                                                                Ψ
+
+  since Ψ → ∞. From (2.36), (2.374), and (2.382) follows the truth of (2.34), and so that
+of (2.322). As (2.321) may be proved in the same manner, the proof of Theorem A is
+completed.
+
+2.4. Theorem A′ . If φ is a function of n which tends steadily to infinity with n, then
+almost all quadratfrei numbers have between
+                                p                           p
+                   log log n − φ log log n and log log n + φ log log n
+
+prime factors.
+This theorem is a simple corollary of Theorem A. Consider the numbers not exceeding x.
+                                          √
+We may plainly neglect numbers less than x; so that
+                                              1
+                                              2 log x ≤ log n ≤ log x,
+
+
+
+(2.41)                                  log log x − log 2 ≤ log log n ≤ log log x.
+
+Given φ, we can determine a function Ψ(x) such that Ψ tends steadily to infinity with x
+and
+                                                  √
+(2.42)                                Ψ(x) < 21 φ( x).
+
+Then
+                                                        √
+                                        Ψ(x) < 12 φ(n) ( x ≤ n ≤ x).
+   ∗
+       Since the exponent is equal to
+                                                        µ2           µ3
+                                                                                  
+                                              µ
+                                 ξ−µ              −            +            − · · ·  ,
+                                            1·2·ξ   2 · 3 · ξ2   3 · 4 · ξ3
+and
+                                              µ2          µ3             µ
+                                                  2
+                                                    +            + ··· <
+                                            2·3·ξ     3 · 4 · ξ3         4ξ
+in virtue of (2.35)
+   ∗
+     In this sum the values of µ are not, in general, integral: ξ + µ is integral.
+334                                                                                        Paper 35
+
+
+      In the first place                p             p
+                                       φ log log n > Ψ log log x
+      if
+                                          log log n > 14 log log x,
+      which is certainly true, in virtue of (2.41), for sufficiently large values of x. Thus
+                                           p                              p
+      (2.43)                  log log n − φ (log log n) < log log x − Ψ (log log x).
+
+
+      In the second place the corresponding inequality
+                                          p                           p
+      (2.44)                 log log n + φ (log log n) > log log x + Ψ (log log x)
+
+       is certainly true if         p             p
+                                   φ log log n > Ψ log log x + log 2;
+      and this also is true, in virtue of (2.41) and (2.42), for sufficiently large values of x. From
+      (2.43), (2.44), and Theorem A, Theorem A′ follows at once.
+      As a corollary we have
+      Theorem A′′ . The normal order of the number of prime factors of a quadratfrei number
+      is log log n.
+
+                                                III.
+                                       The normal order of f (n).
+
+      3.1. So far we have confined our attention to numbers which have no repeated factors.
+      When we remove this restriction, the functions f (n) and F (n) have to be distinguished
+      from one another.
+      We shall denote by ̟ν (x) the number of numbers, not exceeding x, for which
+
+                                                 f (n) = ν.
+
+      It is obvious that
+                                              ̟ν (x) ≥ πν (x).
+      We require an inequality for ̟ν (x) similar to that for πν (x) given by Lemma A.
+      Lemma B. There are absolute constants D and L such that
+                                                       Lx (log log x + D)ν
+      (3.11)                            ̟ν+1 (x) <
+                                                      log x       ν!
+
+       for
+                                          ν = 0, 1, 2, . . . , x ≥ 2.
+The normal number of prime factors of a number n                                                        335
+
+
+It is plain that
+                                          √       √
+                                                                                               
+                                                                                          x
+                        ̟1 (x) = π(x) + π( x) + π( 3 x) + · · · = O                                 .
+                                                                                        log x
+The inequality is therefore true for ν = 0, whatever the value of D. We shall prove by
+induction that it is true in general if
+
+(3.12)                                              D > B + H + J,
+
+where B and H have the same values as in 2.2, and
+                                           ∞
+                                           X
+(3.13)                               J=      (s + 1)(2−s + 3−s + 5−s + · · ·).
+                                            2
+
+
+Consider the numbers which do not exceed x and are comprised in the table
+
+                                         2a · pa11 · pa22 · · · paνν ,
+                                         3a · pa11 · pa22 · · · paνν ,
+                                            ...............,
+                                         P · pa11 · pa22 · · · paνν ,
+                                          a
+
+
+
+
+where p1 , p2 , . . . , pν satisfy the same conditions as in the table of 2.2. It is plain that
+     √                       √
+P ≤ x if a = 1, P ≤ 3 x if a = 2, and so on, so that the total number of numbers in the
+table does not exceed                                
+                                            X          x
+                                                 ̟ν        .
+                                                      pa
+                                             p
+                                           a+1     ≤x
+
+If now ω1 , ω2 , . . . are primes and
+                                                                                a
+                            ω1 < ω2 < · · · < ων+1 ,         ω1a1 ω2a2 · · · ων+1
+                                                                               ν+1
+                                                                                   ≤ x,
+                              a
+the number ω1a1 ω2a2 · · · ων+1
+                             ν+1
+                                 will occur at least ν times in one of the tables which correspond
+to different values of a. We have therefore
+                                                      X             
+                                           X          x                 x
+(3.14)                       ν̟ν+1 (x) ≤        ̟ν        +      ̟ν         + ···.
+                                            2
+                                                      p      3
+                                                                       p2
+                                                 p ≤x                    p ≤x
+
+ Now let us suppose that (3.11) is true when ν − 1 is substituted for ν. Then it is plain∗
+that
+                                                                                        
+                    Lx(log log x + D) ν−1   X        1        X         1               
+(3.15)   ̟ν+1 (x) <                                         +                    + · · ·   .
+                              ν!           2 p log(x/p)       3
+                                                                   p2 log(x/p2 )         
+                                                           p ≤x                     p ≤x
+
+  ∗
+      See the footnote to p. 81 [footnote * on 330].
+336                                                                                           Paper 35
+
+
+      Now
+                                        X            1       log log x + B + H
+      (3.16)                                               <                   ,
+                                                p log(x/p)          log x
+                                        p2 ≤x
+
+
+      as we have already seen in 2.2. Also, if ps+1 ≤ x, we have
+
+                                      x                          x     log x
+                                         ≥ x1/(s+1) ,      log       ≥       ;
+                                      ps                         p s   s+1
+
+      and so
+                               X                1          s + 1 −s
+      (3.17)                                           ≤         (2 + 3−s + 5−s + · · ·),
+                                       ps log(x/ps )       log x
+                             ps+1 ≤x
+
+      if s ≥ 2. Hence
+                        X    X             1              log log x + B + H + J   log log x + D
+      (3.18)                                          <                         <               .
+                        s
+                                      ps log(x/ps )                 log x              log x
+                            ps+1 ≤x
+
+      From (3.15) and (3.18) the truth of (3.11) follows immediately.
+
+      3.2. We can now argue with ̟ν (x) as we argued with πν (x) in 2.3 and the paragraphs
+      which follow; and we may, without further preface, state the following theorems.
+      Theorem B. If φ is a function x which tends steadily to infinity to x, then
+                                p                                   p
+                   log log x − φ (log log x) < f (n) < log log x + φ (log log x)
+
+      for almost all numbers n less than x.
+      Theorem B′ . If φ is a function of n which tends steadily to infinity with n, then almost
+      all numbers have between
+                                    p                             p
+                       log log n − φ (log log n) and log log n + φ (log log n)
+
+      different prime factors.
+      Theorem B′′ . The normal order of the number of different prime factors of a number is
+      log log n.
+
+
+                                                   IV.
+                                         The normal order of F (n).
+
+      4.1. We have now to consider the corresponding theorems for F (n), the number of prime
+      factors of n when multiple factors are counted multiply. These theorems are slightly more
+The normal number of prime factors of a number n                                                   337
+
+
+difficult. The additional difficulty occurs, however, only in the first stage of the argument,
+which requires the proof of some inequality analogous to those given by Lemmas A and B.
+We denote by
+                                             Πν (x)
+the number of numbers, not exceeding x, for which
+
+                                               F (n) = ν.
+
+It would be natural to expect an inequality of the same form as those of Lemmas A and B,
+though naturally with different values of the constants. It is easy to see, however, that no
+such inequality can possibly be true.
+For, if ν is greater than a constant multiple of log x, the function
+
+                                         x (log log x + C)ν
+                                       log x       ν!
+is — as may be seen at once by a simple approximation based upon Stirling’s theorem —
+exceedingly small; and Πν+1 (x), being an integer, cannot be small unless it is zero. Thus
+such an inequality as is suggested would shew that F (n) cannot be of order as high as log x
+for any n less than x; and this is false, as we can see by taking
+                                                                    log n
+                                 x = 2k + 1, n = 2k , F (n) =             .
+                                                                    log 2
+the inequality required must therefore be of a less simple character.
+
+4.2. Lemma C. Suppose that K and C have the same meaning as in Lemma A, and that
+                                                   9
+(4.21)                                             10 ≤ λ < 1.
+
+Then
+            Y             Kx
+(4.22)          (x) <
+            ν+1
+                         log x
+
+                      (log log x + C)ν    (log log x + C)ν−1                    ν−2
+                                                                                        
+                                                               2 (log log x + C)
+              ×                        +λ                    +λ                     + ··· ,
+                              ν!                (ν − 1)!               (ν − 2)!
+
+ the series being continued to the term λν .
+                                                            9
+It is plainly sufficient to prove this inequality when λ = 10 . In what follows we shall suppose
+that λ has this particular value.
+We require a preliminary inequality analogous to (2.23) and (3.14). Consider the numbers
+which do not exceed x and are comprised in the table
+
+
+                                      2a · p1 · p2 · · · pν+1−a ,
+338                                                                                          Paper 35
+
+
+                                          3a · p1 · p2 · · · pν+1−a ,
+                                                     ............,
+                                          P a · p1 · p2 · · · pν+1−a ,
+
+
+      where now p1 , p2 , . . . , pν+1−α are primes, arranged in ascending order of magnitude, but
+      not necessarily different, and where pν+1−α ≥ 2 in the first row, pν+1−α ≥ 3 in the second,
+      and so forth. Arguing as in 2.2. and 3.1, we now find
+                                                X               X              
+                                        X       x                 x                 x
+      (4.23)          νΠν+1 (x) <          Πν       +     Πν−1      2
+                                                                      +     Πν−2       + ···.
+                                        2
+                                                p      2
+                                                                  p      2
+                                                                                    p3
+                                   p ≤x                  p ≤x                p ≤x
+
+       This inequality differs formally from (3.14) in that the suffixes of the functions on the
+      right-hand side sink by one from term to term.
+      We can now prove (4.22) by a process of induction similar in principle to that of 2.2 and
+      3.1. Let us suppose that the inequality is true when ν is replaced by ν − 1, and let us write
+
+                                               log log x + C = ξ,
+
+      as in 2.3. Substituting in (4.23), and observing that
+                                                        x
+                                              log log      + C ≤ ξ,
+                                                        ps
+
+      we obtain
+                                                       ν−1
+                                                                      ξ ν−2
+                                                                                     
+                               Kx X             1         ξ
+      (4.24)        Πν+1 (x) <                                 +λ              + ···
+                                ν          p log(x/p) (ν − 1)!      (ν − 2)!
+                                    p2 ≤x
+                                                           ν−2
+                                                                           ξ ν−3
+                                                                                            
+                                 Kx X              1         ξ
+                               +                                    +  λ          +   · · ·
+                                  ν          p2 log(x/p2 ) (ν − 2)!      (ν − 3)!
+                                       p3 ≤x
+                                                           ν−3
+                                                                           ξ ν−4
+                                                                                            
+                                 Kx X              1         ξ
+                               +                                    +λ            + ··· + ···
+                                  ν     4
+                                             p3 log(x/p3 ) (ν − 3)!      (ν − 4)!
+                                          p ≤x
+
+
+      Now, as we have seen already,
+                                            X            1       log log x + C
+      (4.251)                                                  <               ;
+                                                    p log(x/p)        log x
+                                            p2 ≤x
+
+      and
+                                X              1             s + 1 −s
+      (4.252)                                            <         (2 + 3−s + 5−s + · · ·)
+                                         ps log(x/ps )       log x
+                               ps+1 ≤x
+The normal number of prime factors of a number n                                                              339
+
+
+if s ≥ 2. It is moreover easy to prove that
+
+(4.2531)                        (s + 1)(2−s + 3−s + 5−s + · · ·) < 2λs = 2( 10
+                                                                             9 s
+                                                                               )
+
+if s = 2, and
+
+(4.2532)                          (s + 1)(2−s + 3−s + 5−s + · · ·) < λs = ( 10
+                                                                             9 s
+                                                                               )
+
+ if s > 2.∗ From (4.24) – (4.2532) it follows that
+
+                                             ξν         ξ ν−1          ν−2
+                                                                                  
+                                 Kx                                2 ξ
+(4.25)             Πν+1 (x) <                     +λ            +λ           + ···
+                               ν log x (ν − 1)!       (ν − 2)!      (ν − 3)!
+                                             ν−2
+                                                            ξ ν−3
+                                                                         
+                                2Kx 2          ξ
+                            +           λ             +λ           + ···
+                               ν log x       (ν − 2)!     (ν − 3)!
+                                             ν−3
+                                                            ξ ν−4
+                                                                         
+                                 Kx       3    ξ
+                            +           λ             +λ           + ···
+                               ν log x       (ν − 3)!     (ν − 4)!
+                                + · · · †.
+
+ When we collect together the various terms on the right-hand side which involve the same
+powers of ξ, it will be found that the coefficient of ξ ν−p is exactly
+                                              Kx      λp
+                                                            ,
+                                             log x (ν − p)!
+except when p = 1, when it is
+                                                 
+                                              1        Kx      λ
+                                           1−                        .
+                                              ν       log x (ν − 1)!
+
+We thus obtain (4.22).
+
+4.3. We may now argue substantially as in 2.3. We have to shew, for example, that
+                                                  X
+(4.31)                               S2 =                     Πν+1 (x) = o(x);
+                                                    √
+                                             ν>llx+φ (llx)
+
+and this is equivalent to proving that
+                                                  X
+(4.32)                                  S=                  Πν+1 (x) = o(x),
+                                                   √
+                                              ν>ξ+Ψ ξ
+
+where Ψ is any function of x which tends to infinity with x.
+   ∗
+     The inequalities may be verified directly for s = 2 and s = 3, and then proved to be true generally by
+induction
+   †
+     The factor 2 occurs in the second line only.
+340                                                                                                             Paper 35
+
+
+      We choose δ so that
+                                                              1
+      (4.33)                                                           − 1 < δ < 91 , ∗
+                                                        9 log(1 + 91 )
+       and write
+                                                    X                        X
+      (4.34)                        S=                        Πν+1 (x) +              Πν+1 (x) = S ′ + S ′′ ,
+                                             √
+                                          ξ+Ψ ξ<ν≤(1+δ)ξ                   ν>(1+δ)ξ
+
+
+      say. In S ′ , we have
+                                                 Kx ξ ν                                            K1 x ξ ν
+                                                                                              
+                                                                9 ν       9 2 ν(ν − 1)
+      (4.351)                  Πν+1 (x) <                   1 + 10   + ( 10 )          + · · ·   <          ,
+                                                log x ν!           ξ             ξ2                log x ν!
+      where
+                                                                           K
+      (4.352)                                                 K1 =        9         ;
+                                                                     1 − 10 (1 + δ)
+      and by means of this inequality we can shew, just as in 2.3, that
+      (4.353)                                                       S ′ = o(x).
+       In discussing S ′′ we must use (4.22) in a different manner. We have
+                                                                    2
+                                                                          
+                                      Kx      ν    ν−1 ξ      ν−2 ξ            Kx ν ξ/λ
+      (4.361)             Πν+1 (x) <         λ +λ          +λ         + ··· <       λ e ;
+                                     log x              1!        2!          log x
+      and so
+                                                                                                                    
+                               ′′ Kx ξ/λ                X
+                                                                ν    K     x ξ/λ (1+δ)ξ                      x
+      (4.362)                S <       e                       λ <             e λ      =O                               ,
+                                 log x                             1 − λ log x                            (log x)η
+                                                    ν>(1+δ)ξ
+
+      where
+      (4.363)                          η = 1 − (1/λ) + (1 + δ) log(1/λ) = (1 + δ) log 10   1
+                                                                                       9 − 9 > 0,
+
+      by (4.33). Hence
+      (4.364)                                                       S ′′ = o(x).
+      From (4.34), (4.353), and (4.364), it follows that S = o(x).
+
+      4.4. We have therefore the following theorems.
+      Theorem C. The result of Theorem B remains true when F (n) is substituted for f (n).
+      Theorem C′ , The result of Theorem B′ remains true when the word “different” is omitted.
+      Theorem C′′ . The normal order of the total number of prime factors of a number is
+      log log n.
+
+                 1               1
+        ∗
+                     1 ) − 1 < 1− 1
+            9 log(1+ 9
+                                       − 1 < 19 .
+                                  18
+The normal number of prime factors of a number n                                              341
+
+
+                                             V.
+                                   The normal order of d(n).
+
+5.1. It is natural to ask whether similar theorems cannot be proved with regard to some
+of the other standard arithmetical functions of n, such as d(n).
+If
+                                        n = pa11 pa22 · · · paνν ,
+we have
+                              d(n) = (1 + a1 )(1 + a2 ) · · · (1 + aν ).
+Since
+                                            2 ≤ 1 + a ≤ 2a
+if a ≥ 1, we obtain at once
+                                   2ν ≤ d(n) ≤ 2a1 +a2 +···+aν ,
+or
+
+(5.11)                                      2f (n) ≤ d(n) ≤ 2F (n) .
+
+
+From (5.11), and Theorems B ′ and C ′ , we obtain at once
+Theorem D′ . The inequalities
+                                        √                              √
+(5.12)                    2log log n−φ (log log n) < d(n)2log log n+φ (log log n) ,
+
+ where φ is any function of n which tends to infinity with n, are satisfied for almost all
+numbers n.
+The inequalities (5.12) are of a much less precise type than (1.26): we cannot say that the
+normal order of d(n) is 2log log n . We can however say that (to put it roughly) the normal
+order of d(n) is about
+                            2log log n = (log n)log 2 = (log n)0.69... .
+It should be observed that this order is far removed from log n, the average order f d(n).
+The explanation of this apparent paradox is simple. The majority of numbers have about
+(log n)log 2 divisors. But those which have an abnormal number may have a very much
+larger number indeed: the excess of the maximum order over the normal order is so great
+that, when we compute the average order, it is the numbers with an abnormal number
+of divisors which dominate the calculation. The maximum order of the number of prime
+factors is not large enough to give rise to a similar phenomenon.
+

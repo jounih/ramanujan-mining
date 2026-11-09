@@ -1,0 +1,112 @@
+           Proof of certain identities in combinatory analysis
+
+      Proceedings of the Cambridge Philosophical Society, XIX, 1919,214 – 216
+
+Let
+
+                                                                (1 − xq)(1 − xq 2 ) · · · (1 − xq ν−1 )
+                          ∞
+                          X             1
+      G(x) = 1 +            (−1)ν x2ν q 2 ν(5ν−1) (1 − xq 2ν )
+                                                               (1 − q)(1 − q 2 )(1 − q 3 ) · · · (1 − q ν )
+                            1
+                                             1                           1 − xq
+              = 1 − x2 q 2 (1 − xq 2 )          + x4 q 9 (1 − xq 4 )                   − ···.                 (1)
+                                            1−q                      (1 − q)(1 − q 2 )
+If we write
+                                      1 − xq 2ν = 1 − q ν + q ν (1 − xq ν ),
+every term in (1) is split up into two parts. Associating the second part of each term with
+the first part of the succeeding term, we obtain
+
+                                               1 − xq                          (1 − xq)(1 − xq 2 )
+G(x) = (1 − x2 q 2 ) − x2 q 3 (1 − x2 q 6 )           + x4 q 11 (1 − x2 q 10 )                     − · · · . (2)
+                                                1−q                             (1 − q)(1 − q 2 )
+
+Now consider
+                                                     G(x)
+                                         H(x) =            − G(xq).                                           (3)
+                                                    1 − xq
+Substituting for the first term from (2) and for the second term from (1), we obtain
+
+                      x2 q 3                                x4 q 11 (1 − xq 2 )
+H(x) = xq −                  {(1 − q) + xq 4 (1 − xq 2 )} +                     {(1 − q 2 ) + xq 7 (1 − xq 3 )}
+                      1−q                                   (1 − q)(1 − q 2 )
+                  x6 q 24 (1 − xq 2 )(1 − xq 3 )
+              −                                  {(1 − q 3 ) + xq 10 (1 − xq 4 )} + · · · .
+                  (1 − q)(1 − q 2 )(1 − q 3 )
+Associating, as before, the second part of each term with the first part of the succeeding
+term, we obtain
+
+                                                                                   1 − xq 3
+                            
+                                                    1
+    H(x) = xq(1 − xq 2 ) 1 − x2 q 6 (1 − xq 4 )          + x4 q 17 (1 − xq 6 )
+                                                  1−q                          (1 − q)(1 − q 2 )
+                                    (1 − xq 3 )(1 − xq 4 )
+                                                                  
+                   6 33        8
+                −x q (1 − xq )                                ···
+                                 (1 − q)(1 − q 2 )(1 − q 3 )+
+              = xq(1 − xq 2 )G(xq 2 ).                                                                        (4)
+
+If now we write
+                                                            G(x)
+                                            K(x) =                   ,
+                                                       (1 − xq)G(xq)
+270                                                                                                          Paper 26
+
+
+      we obtain, from (3) and (4),
+                                                                   xq
+                                                 K(x) = 1 +             ,
+                                                                  K(xq)
+      and so
+                                                            xq xq 2 xq 3
+                                          K(x) = 1 +                        .                                          (5)
+                                                            1+ 1+ 1 + · · ·
+      In particular we have
+                                    1 q    q2         1     (1 − q)G(q)
+                                                   =      =             ;                                              (6)
+                                   1+ 1+ 1 + · · ·   K(1)      G(1)
+      or
+                          1 q     q2       1 − q − q 4 + q 7 + q 13 − · · ·
+                                         =                                    .                                        (7)
+                         1+ 1+ 1 + · · ·   1 − q 2 − q 3 + q 9 + q 11 − · · ·
+      This equation may also be written in the form
+                      1 q    q2         (1 − q)(1 − q 4 )(1 − q 6 )(1 − q 9 )(1 − q 11 ) · · ·
+                                     =                                                           .                     (8)
+                     1+ 1+ 1 + · · ·   (1 − q 2 )(1 − q 3 )(1 − q 7 )(1 − q 8 )(1 − q 12 ) · · ·
+      If we write
+                                                           G(x)
+                                     F (x) =                                        ,
+                                               (1 − xq)(1 − xq 2 )(1 − xq 3 ) · · ·
+      then (4) becomes
+                                             F (x) = F (xq) + xqF (xq 2 ),
+      from which it readily follows that
+                                 xq        x2 q 4              x3 q 9
+                  F (x) = 1 +        +               +                            + ···.                               (9)
+                                1 − q (1 − q)(1 − q ) (1 − q)(1 − q 2 )(1 − q 3 )
+                                                   2
+
+      In particular we have
+                   q         q4                                          G(1)
+            1+        +                  + ··· =
+                 1 − q (1 − q)(1 − q 2 )                     (1 − q)(1 − q 2 )(1 − q 3 ) + · · ·
+                                                             1 − q 2 − q 3 + q 9 + q 11 − · · ·
+                                                        =
+                                                              (1 − q)(1 − q 2 )(1 − q 3 ) · · ·
+                                                                                        1
+                                                        =                                                             ,(10)
+                                                             (1 − q)(1 − q 4 )(1 − q 6 )(1 − q 9 )(1 − q 11 ) · · ·
+      and
+                  q2        q6                      (1 − q)G(q)
+           1+        +             2
+                                      + ··· =                             ···
+                1 − q (1 − q)(1 − q )         (1 − q)(1 − q 2 )(1 − q 3 )
+                                                        1 − q − q 4 + q 7 + q 13 − · · ·
+                                                    =
+                                                        (1 − q)(1 − q 2 )(1 − q 3 ) · · ·
+                                                                                    1
+                                                    =                                                               . (11)
+                                                        (1 − q 2 )(1 − q 3 )(1 − q 7 )(1 − q 8 )(1 − q 12 ) · · ·
+

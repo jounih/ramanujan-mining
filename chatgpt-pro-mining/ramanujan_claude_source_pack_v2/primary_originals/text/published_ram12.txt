@@ -1,0 +1,998 @@
+       Some definite integrals connected with Gauss’s sums
+
+                         Messenger of Mathematics, XLIV, 1915, 75 – 85
+
+
+1. If n is real and positive, and |I(t)|, where I(t) is the imaginary part of t, is less than
+either n or 1, we have
+       Z∞                                  Z∞ Z∞
+            cos πtx −iπnx2                          cos πtx cos 2πxy −iπnx2
+                    e      dx = 2                                   e       dxdy
+            cosh πx                                      cosh πy
+       0                                   0   0
+
+                                                                 2
+                                                                    Z∞
+                                         √
+                                                         
+                                                               t          cos πtx iπnx2
+                                     =       n exp − 14 iπ 1 −                    e     dx.         (1)
+                                                               n         cosh πnx
+                                                                                    0
+
+When n = 1 the above formula reduces to
+                Z∞                                                       Z∞
+                     cos πtx                                                  cos πtx
+                             sin πx2 dx = tan{ 18 π(1 − t2 )}                         cos πx2 dx.   (2)
+                     cosh πx                                                  cosh πx
+                0                                                        0
+
+if t = 0, and
+                                                                
+                                               Z∞
+                                                    cos πnx2    
+                                                                
+                                     φ(n) =                 dx, 
+                                                                
+                                                    cosh πx
+                                                                
+                                                                
+                                                                
+                                                                
+                                               0
+                                                                                                    (3)
+                                               Z∞
+                                                    sin πnx2
+                                                                 
+                                                                 
+                                                                 
+                                     Ψ(n) =                  dx, 
+                                                                 
+                                                    cosh πx
+                                                                 
+                                                                 
+                                                                 
+                                               0
+
+then                                           q                                
+                                                    2           1
+                                                                   
+                                     φ(n) =         n       Ψ   n       + Ψ(n), 
+                                                                                
+                                               q                                                    (3′ )
+                                                    2           1
+                                                                 
+                                     Ψ(n) =                 φ           − φ(n). 
+                                                                                
+                                                    n           n
+
+                1
+                  √
+Similarly, if 2 3|I(t)| is less than either 1 or n, we have
+
+            Z∞
+                           cos πtx        2
+                                   √ eiπnx dx
+                    1 + 2 cosh(2πx/ 3)
+            0
+                                            Z∞
+                      √                 t2
+                                  
+                               1                        cos πtx          2
+                     = n exp − 4 iπ 1 −                          √ e−iπnx dx.                       (4)
+                                        n        1 + 2 cosh(2πnx/ 3)
+                                                            0
+76                                                                                                       Paper 12
+
+
+     If in (4) we suppose n = 1, we obtain
+             Z∞                                           Z∞
+                   cos πtx sin πx2           1        2         cos πtx cos πx2
+                                 √ dx = tan{ 8 π(1 − t )}                     √ dx;                             (5)
+                1 + 2 cosh(2πx/ 3)                           1 + 2 cosh(2πx/ 3)
+             0                                                              0
+     and if t = 0, and
+                                                                    
+                                          Z∞
+                                                       cos πnx2     
+                                                                    
+                                 φ(n) =                       √ dx, 
+                                                                    
+                                                                    
+                                               1 + 2 cosh(2πx/ 3)   
+                                                                    
+                                                                    
+                                          0
+                                                                                                                (6)
+                                          Z∞
+                                                       sin πnx2
+                                                                    
+                                                                    
+                                                                    
+                                 Ψ(n) =                       √ dx, 
+                                                                    
+                                               1 + 2 cosh(2πx/ 3)
+                                                                    
+                                                                    
+                                                                    
+                                          0
+     then                                          q                               
+                                                       2           1
+                                                                      
+                                      φ(n) =           n       Ψ   n       + Ψ(n), 
+                                                                                   
+                                                   q                                                            (6′ )
+                                                       2           1
+                                                                    
+                                      Ψ(n) =                   φ           − φ(n). 
+                                                                                   
+                                                       n           n
+     In a similar manner we can prove that
+            Z∞                                           Z∞
+                                     √               t2
+                                               
+                sin πtx −iπnx2               1                 sin πtx iπnx2
+                       e       dx = − n exp 4 iπ 1 +                   e     dx.                                (7)
+               tanh πx                               n        tanh πnx
+            0                                                                    0
+     If we put n = 1 in (7), we obtain
+                Z∞                                      Z∞
+                    sin πtx       2         1       2       sin πtx
+                            cos πx dx = tan{ π(1 + t )}             sin πx2 dx.                                 (8)
+                   tanh πx                  8              tanh πx
+                    0                                                       0
+     Now
+                    Z∞                                 Z∞                                Z∞
+                1        sin atx icx2          1               2 sin atx icx2                 sin atx icx2
+            lim                  e    dx = lim                          e     dx + lim               e     dx
+            t→0 t        tanh bx           t→0 t               e2bx − 1            t→0           t
+                    0                                  0                                 0
+                                               Z∞
+                                                      aeicx        ia
+                                          =            √      dx +    .                                         (9)
+                                                    e2b x − 1      2c
+                                               0
+     Hence, dividing both sides of (7) by t, and making t → 0, we obtain the result corresponding
+     to (3) and (6), viz.: if
+                                                                    
+                                        Z∞
+                                             cos πnx                
+                                                                    
+                                φ(n) =                   dx,
+                                                √
+                                                                    
+                                                                    
+                                            e2π   x −1
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                        0
+                                                                                             (10)
+                                                  Z∞
+                                           1           sin πnx
+                                                                    
+                                                                    
+                                                                    
+                                Ψ(n) =        +          √      dx, 
+                                                                    
+                                         2πn         e2π   x −1
+                                                                    
+                                                                    
+                                                                    
+                                                       0
+Some definite integrals connected with Gauss’s sums                                                    77
+
+
+then                                              q                                 
+                                      φ(n) = n1        2            1
+                                                                       
+                                                       n       Ψ    n       − Ψ(n), 
+                                                                                    
+                                                  q                                           (10′ )
+                                      Ψ(n) = n1         2           1
+                                                                       
+                                                                φ           + φ(n). 
+                                                                                    
+                                                        n           n
+
+
+2. I shall now shew that the integral (1) may be expressed in finite terms for all rational
+values of n. Consider the integral
+                                                  Z∞
+                                                         cos tx      dx
+                                       J(t) =                             .
+                                                       cosh 21 πx a2 + x2
+                                                  0
+
+If R(a) and t are positive, we have
+                                 Z∞ r=∞
+                             4      X      (−1)r (2r + 1) cos tx
+                J(t) =                                            dx
+                             π         r=0
+                                           x2 + (2r + 1)2 a2 + x2
+                                  0
+                              r=∞
+                                            (−1)r
+                                                                                         
+                              X
+                                                                  −(2r+1)t  1         −at
+                     = 2                                         e         − (2r + 1)e
+                                        a2 − (2r + 1)2                      a
+                                 r=0
+                                            r=∞
+                                            X (−1)r e−(2r+1)t
+                               πe−at
+                     =              1    +2                     ,                             (11)
+                             2a cos 2 πa     r=0
+                                                 a2 − (2r + 1)2
+
+and it is easy to see that this last equation remains true when t is complex, provided
+R(t) > 0 and |I(t)| ≤ 12 π. Thus the integral J(t) can be expressed in finite terms for all
+rational values of a. Thus, for example, we have
+                                                                                
+             Z∞
+                  cos tx    dx                                                  
+                                                                                
+                                  =  cosh t log(2 cosh t) − t sinh t,
+                                                                                
+                                                                                
+                      1         2
+                cosh 2 πx 1 + x
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+             0
+                                                                                      (12)
+             Z∞
+                cos 2tx dx
+                                                                                
+                                                                                
+                                 = 2 cosh t − (e2t tan−1 e−t + e−2t tan−1 et ), 
+                                                                                
+                                                                                
+                cosh πx 1 + x2
+                                                                                
+                                                                                
+                                                                                
+            0
+
+and so on. Now let
+                                            Z∞
+                                                  cos 2tx −iπnx2
+                                  F (n) =                 e      dx.                          (13)
+                                                  cosh πx
+                                             0
+
+Then, if R(a) > 0,
+                         Z∞                            Z∞
+                                 −an                           cos 2tx    dx
+                              e        F (n)dn =                                .             (14)
+                                                               cosh πx a + iπx2
+                         0                             0
+78                                                                                                                 Paper 12
+
+
+     Now let
+                      r=∞
+                      X
+         f (n) =             (−1)r exp{−(2r + 1)t + 14 (2r + 1)2 iπn}
+                       r=0
+                                          r=∞
+                                      t2
+                                                                                  
+                        1       1
+                                            X
+                                                     r             t 1          2 iπ
+                     + √ exp −i 4 π −            (−1) exp −(2r + 1) − 4 (2r + 1)       . (15)
+                         n            πn                           n               n
+                                             r=0
+
+     Then
+        Z∞                            r=∞                                                  p
+                                              (−1)r e−(2r+1)t
+                                                                         r
+             −an
+                                      X                                       π  exp{− (2a/π)(1 − i)t}
+             e       f (n)dn =                                   +
+                                             a − 41 (2r + 1)2 iπ
+                                                                                                     q
+                                         r=0
+                                                                              2a (1 + i) cosh{(1 + i) ( 1 πa)}
+        0                                                                                                      2
+
+                                      Z∞
+                                           cos 2tx    dx
+                                  =                         ,                                                          (16)
+                                           cosh πx a + iπx2
+                                      0
+
+     in virtue of (11); and therefore
+
+                                               Z∞
+                                                    e−an {F (n) − f (n)}dn = 0.                                        (17)
+                                               0
+
+     Now it is known that, if φ(n) is continuous and
+
+                                                         Z∞
+                                                              e−an φ(n)dn = 0,
+                                                          0
+
+     for all positive values of a (or even only for an infinity of such values in arithmetical
+     progression), then
+                                             φ(n) = 0,
+     for all positive values of n. Hence
+
+                                                          F (n) = f (n).                                               (18)
+
+     Equating the real and imaginary parts in (13) and (15) we have
+
+             Z∞                                                                                                   
+                     cos 2tx                                       πn            9πn            25πn
+                             cos πnx2 dx =               e−t cos      − e−3t cos     + e−5t cos      − ···
+                     cosh πx                                        4             4               4
+                 0
+
+                                                       t2                                      t2
+                                                                                                              
+                        1         −t/n             π        π            −3t/n             π        9π
+                      +√          e      cos         −    +             −e       cos         −    +          + ··· ,   (19)
+                         n                         4   πn 4n                               4 πn 4n
+Some definite integrals connected with Gauss’s sums                                                                       79
+
+
+       Z∞                                                                 
+            cos 2tx        2        −t   πn    −3t  9πn    −5t  25πn
+                    sin πnx dx = − e sin    − e sin     + e sin      − ···
+            cosh πx                       4          4            4
+       0
+
+                                                   t2                                      t2
+                                                                                                        
+                1           −t/n               π        π            −3t/n             π        9π
+              +√           e         sin         −    +             −e       sin         −    +          + ··· .   (20)
+                 n                             4   πn 4n                               4 πn 4n
+
+We can verify the results (18), (19) and (20) by means of the equation (1). This equation
+can be expressed as a functional equation in F (n), nd it is easy to see that f (n) satisfies
+the same equation.
+The right-hand side of these equations can be expressed in finite terms if n is any rational
+number. For let n = a/b, where a and b are any two positive integers and one of them is
+odd. Then the results (19) and (20) reduce to
+
+                       Z∞
+                                                    πax2
+                                                          
+                            cos 2tx
+           2 cosh bt                cos                        dx
+                            cosh πx                  b
+                       0
+
+                  = [cosh{(1 − b)t} cos(πa/4b) − cosh{(3 − b)t} cos(9πa/4b)
+                       + cosh{(5 − b)t} cos(25πa/4b) − · · · to b terms]
+                         s  
+                                                             π bt2 πb
+                                                                        
+                              b               1
+                       +          cosh    1−     bt cos        −     +
+                             a                a              4    πa 4a
+                                                  π bt2 9πb
+                                                                                 
+                                     3
+                       − cosh    1−      bt cos     −       +        + · · · to a terms ,                          (21)
+                                     a            4   πa       4a
+
+
+                       Z∞
+                                                    πax2
+                                                          
+                               cos 2tx
+           2 cosh bt                   sin                     dx
+                               cosh πx               b
+                       0
+
+                   = −[cosh{(1 − b)t} sin(πa/4b) − cosh{(3 − b)t} sin(9πa/4b)
+                           + cosh{(5 − b)t} sin(25πa/4b) − · · · to b terms]
+                             s  
+                                                                 π bt2 πb
+                                                                            
+                                  b                1
+                           +          cosh     1−      bt sin      −     +
+                                 a                 a             4    πa 4a
+                                                       π bt2 9πb
+                                                                                     
+                                         3
+                           − cosh    1−       bt sin     −      +        + · · · to a terms .                      (22)
+                                         a             4   πa      4a
+
+Thus, for example, we have, when a = 1 and b = 1,
+
+                                 Z∞                           √
+                                      cos πx2              1 + 2 sin πt2
+                                              cos 2πtx dx = √            ,                                         (23)
+                                      cosh πx               2 2 cosh πt
+                                 0
+80                                                                                       Paper 12
+
+
+                            Z∞                              √
+                                 sin πx2               −1 + 2 cos πt2
+                                         cos 2πtx dx =    √           .                       (24)
+                                 cosh πx                2 2 cosh πt
+                            0
+
+     It is easy to verify that (23) and (24) satisfy the relation (2).
+     The values of the integrals
+                                       Z∞                     Z∞
+                                               cos πnx2            sin πnx2
+                                                        dx,                 dx
+                                                cosh πx            cosh πx
+                                       0                      0
+
+     can be obtained easily from the preceding results by putting t = 0, and need no special
+     discussion. By successive differentiations of the results (19) and (20) with respect to t and
+     n, we can evaluate the integrals
+                                                                  
+                                Z∞
+                                           sin tx   cos
+                                                                  
+                                   x2m−1                πnx2 dx, 
+                                                                  
+                                                                  
+                                          cosh πx sin
+                                                                  
+                                                                  
+                                                                  
+                                                                  
+                                0
+                                                                                              (25)
+                                Z∞
+                                         cos tx cos
+                                                                  
+                                                                  
+                                   x2m                πnx2 dx, 
+                                                                  
+                                                                  
+                                       cosh πx sin
+                                                                  
+                                                                  
+                                                                  
+                                   0
+
+     for all rational values of n and all positive integral values of m. Thus, for example, we have
+                                                                     
+                                   Z∞           2
+                                         cos πx           1     1 
+                                      x2
+                                                                     
+                                                  dx = √ −         , 
+                                                                     
+                                         cosh πx        8 2 4π 
+                                                                     
+                                                                     
+                                                                     
+                                   0
+                                                                                               (26)
+                                   Z∞           2
+                                         sin πx         1     1
+                                                                     
+                                                                     
+                                      x2
+                                                                     
+                                                  dx = − √ .        
+                                         cosh πx        8 8 2 
+                                                                     
+                                                                     
+                                   0
+
+
+
+     3. We can get many interesting results by applying the theory of Cauchy’s reciprocal
+     functions to the preceding results. It is known that, if
+                                           Z∞
+                                                φ(x) cos knx dx = Ψ(n),                       (27)
+                                           0
+
+     then (i) 12 α{ 12 φ(0) + φ(α) + φ(2α) + φ(3α) + · · ·}
+                                = 21 Ψ(0) + Ψ(β) + Ψ(2β) + Ψ(3β) + · · · ,                    (27)
+     with the
+           √ condition αβ = 2π/k;
+     (ii) α 2{φ(α) − φ(3α) − φ(5α) + φ(7α) + φ(9α) − · · ·}
+                                = Ψ(β) − Ψ(3β) − Ψ(5β) + Ψ(7β) + Ψ(9β) − · · · ,              (27)
+     with the condition αβ = π/4k;
+Some definite integrals connected with Gauss’s sums                                                           81
+
+       √
+(iii) α 3{φ(α) − φ(5α) − φ(7α) + φ(11α) + φ(13α) − · · ·}
+                       = Ψ(β) − Ψ(5β) − Ψ(7β) + Ψ(11β) + Ψ(13β) − · · · ,         (27)
+with the condition αβ = π/6k, where 1, 5, 7, 11, 13, . . . are the odd natural numbers
+without the multiples of 3.
+There are of course corresponding results for the function
+                                   Z∞
+                                        φ(x) sin knx dx = Ψ(n),                                        (28)
+                                   0
+
+such as
+               α{φ(α) − φ(3α) + φ(5α) − · · ·} = Ψ(β) − Ψ(3β) + Ψ(5β) − · · · ,
+with the condition αβ = π/2k.
+Thus from (23) and (27) (i) we obtain the following results. If
+                                  r=∞                p r=∞
+                            (                   )
+                       √      1 X cos r 2 πα2             X sin r 2 πβ 2
+             F (α, β) = α       +                 − β                    ,                             (29)
+                              2        cosh rπα                 cosh rπβ
+                                          r=1                         r=1
+
+then
+                                                   1
+                                              (2α){ + e−πα + e−4πα + e−9πα + · · ·}2 ,
+                                          p
+               F (α, β) = F (β, α) =
+                                                   2
+provided that αβ = 1.
+
+4. If, instead of starting with the integral (11), we start with the corresponding sine inte-
+gral, we can shew that, when R(a) and R(t) are positive and |I(t)| ≤ π,
+                 Z∞                                     r=∞
+                                                        X (−1)r e−rt
+                       sin tx    dx      1   πe−at
+                                      =    −          +               .                                (30)
+                      sinh πx a2 + x2   2a2 2a sin πa    r=1
+                                                             a 2 − r2
+                  0
+
+Hence the above integral can be expressed in finite terms for all rational values of a. For
+example, we have
+                      Z∞
+                             sin tx    dx
+                                 1          = et tan−1 e−t − e−t tan−1 et .                            (31)
+                           sinh 2 πx 1 + x2
+                      0
+
+From (30) we can deduce that
+       Z∞
+            sin 2tx −iπnx2     1
+                    e      dx = − e−2t+iπn + e−4t+4iπn − e−6t+9iπn + · · ·
+            sinh πx            2
+       0
+
+                                                   t2
+                                                       
+                              1                                   1                9
+                           − √ exp           1
+                                             4 π +       i {e−(t+ 4 iπ)/n + e−(3t+ 4 iπ)/n + · · ·},   (32)
+                               n                   πn
+82                                                                                       Paper 12
+
+
+     R(t) being positive and |I(t)| ≤ 12 π. The right-hand side can be expressed in finite terms
+     for all rational values of n. Thus, for example, we have
+                            Z∞
+                                 cos πx2                        cosh πt − cos πt2
+                                         sin 2πtx dx =                            ,            (33)
+                                 sinh πx                            2 sinh πt
+                            0
+                            Z∞
+                                 sin πx2                         sin πt2
+                                         sin 2πtx dx =                    ,                    (34)
+                                 sinh πx                        2 sinh πt
+                            0
+
+     and so on.
+     Applying the formula (28) to (33) and (34), we have, when αβ = 41 ,
+
+       √ r=∞                                    p r=∞
+                                                                                           
+          X         cos{(2r + 1)2 πα2 }            X         cos{(2r + 1)2 πβ 2 }
+              (−1)r                                    (−1)r
+                                                                                           
+        α                                     +  β                                         
+                                                                                           
+                    sinh{(2r + 1)πα}                         sinh{(2r + 1)πβ}
+                                                                                           
+                                                                                           
+          r=0                                      r=0
+                                                                                           
+                                                                                           
+                                                                                           
+                                                                                           
+                                                 √ 1                                       
+                                              = 2 α{ + e−2πα + e−8πα + e−18πα + · · ·}2 ;   (35)
+                                                    2                                     
+                                                                                          
+       √ r=∞                                    p r=∞
+                                                                                          
+                  sin{(2r + 1)2 πα2 }                                   2  2
+                                                                                          
+                                                          r sin{(2r + 1) πβ }
+          X                                         X                                     
+            (−1)r
+                                                                                          
+        α                                     =   β   (−1)                    .
+                                                                                          
+                                                                                          
+                  sinh{(2r + 1)πα}                          sinh{(2r + 1)πβ}
+                                                                                          
+                                                                                          
+           r=0                                        r=0
+
+     By successive differentiation of (32) with respect to t and n we can evaluate the integrals
+                                                                 
+                                 Z∞
+                                            cos tx cos           
+                                    x2m−1               πnx2 dx, 
+                                                                 
+                                                                 
+                                           sinh πx sin
+                                                                 
+                                                                 
+                                                                 
+                                                                 
+                                 0
+                                                                                             (36)
+                                 Z∞
+                                         sin tx
+                                                                 
+                                                  cos            
+                                    x2m               πnx2 dx
+                                                                 
+                                                                 
+                                                                 
+                                        sinh πx sin
+                                                                 
+                                                                 
+                                                                 
+                                  0
+
+     for all rational values of n and all positive integral values of m. Thus, for example, we have
+                                                                                     
+                   Z∞          2                         Z∞          2
+                        cos πx          1                     sin πx           1     
+                                                                                     
+                      x            dx = ,                   x            dx =    , 
+                                                                                     
+                        sinh πx         8                     sinh πx         4π
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                   0                                     0
+                                                                                               (37)
+                   Z∞            2
+                                                     Z∞              2
+                         cos πx           1       3            sin πx            1
+                                                                                     
+                                                                                     
+                      x3                      1
+                                                            x3
+                                                                                     
+                                    dx =        −     ,                   dx =     , 
+                                         16 4 π 2
+                                                                                     
+                         sinh πx                               sinh πx         16π 
+                                                                                     
+                                                                                     
+                  0                                         0
+
+     and so on.
+     The denominators of the integrands in (25) and (36) are cosh πx and sinh πx. Similar
+     integrals having the denominators of their integrands equal to
+                                         r
+                                         Y
+                                              cosh πar x sinh πbr x
+                                          1
+Some definite integrals connected with Gauss’s sums                                                            83
+
+
+can be evaluated, if ar and br are rational, by splitting up the integrand into partial frac-
+tions.
+
+
+5. The preceding formulæ may be generalised. Thus it may be shewn that, if R(a) and
+R(t) are positive, |I(t)| ≤ π, and −1 < R(θ) < 1, then
+
+                Z∞
+                             cos tx         dx
+       sin πθ
+                        cosh πx + cos πθ a2 + x2
+                0
+                                             r=∞
+                                                    (                                           )
+             π e−at sin πθ        X                        e−(2r+1−θ)t        e−(2r+1+θ)t
+           =                    +                                         −                         .   (38)
+             2a cos πa + cos πθ                         a2 − (2r + 1 − θ)2 a2 − (2r + 1 + θ)2
+                                              r=0
+
+
+From (38) it can be deduced that, if n and R(t) are positive, |I(t)| ≤ π, and −1 < θ < 1,
+then
+
+                Z∞
+                             cos tx            2
+       sin πθ                            e−iπnx dx
+                        cosh πx + cos πθ
+                    0
+                             r=∞
+                             X
+                         =         {e−(2r+1−θ)t+(2r+1−θ)2iπn − e−(2r+1+θ)t+(2r+1+θ)2iπn }
+                             r=0
+                                                   r=∞
+                                               t2
+                                         
+                                1                    X                           2
+                                       1
+                             + √ exp − 4 i π −            (−1)r−1 sin rπθe−(2rt+r iπ)/4n .              (39)
+                                 n             πn
+                                                      r=1
+
+
+The right-hand side can be expressed in finite terms if n and θ are rational. In particular,
+when θ = 13 , we have
+
+             Z∞
+                               cos tx          2
+                                       √ e−iπnx dx
+                        1 + 2 cosh(2πx/ 3)
+                0
+                          1    1
+                                   √            1
+                                                     √             1
+                                                                        √
+                         = {e− 3 (t 3−iπn) − e− 3 (2t 3−4iπn) + e− 3 (4t 3−16iπn) − · · ·}
+                          2
+                                                     t2
+                                                      
+                             1            1
+                          +  √    exp − 4 i π −
+                            2 n                     πn
+                                    √                   √                √
+                             {e−(t 3+iπ)/3n − e−(2t 3+4iπ)/3n + e−(4t 3+16iπ)/3n − · · ·},              (40)
+
+where 1,2,4,5, . . . are the natural numbers without the multiples of 3.
+84                                                                                                     Paper 12
+
+
+     As an example, when n = 1, we have
+                                                                                                  
+                      Z∞
+                                cos πx2 cos πtx              1 − 2 sin{(π − 3πt2 )/12}            
+                                                                                                  
+                                             √ dx =                        √               ,
+                                                                                                  
+                                                                                                  
+                                                                                                  
+                              1 + 2 cosh(2πx/ 3)                 8 cosh(πt/ 3) − 4                
+                                                                                                  
+                                                                                                  
+                      0
+                                                                 √                                         (41)
+                      Z∞
+                                sin πx2 cos πtx              −       3 + 2 cos{(π − 3πt2 )/12}
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                             √ dx =                             √                . 
+                                                                                                   
+                              1 + 2 cosh(2πx/ 3)                      8 cosh(πt/ 3) − 4
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                      0
+
+
+
+     6. The formula (32) assumes a neat and elegant form when t is changed to t + 12 iπ. We
+     have then
+                 Z∞
+                       sin tx −iπnx2
+                              e      dx             (n > 0, t > 0)
+                      tanh πx
+                 0
+                             1
+                          = { + e−t+iπn + e−2t+4iπn + e−3t+9iπn + · · ·}
+                             2
+                                               t2
+                                                
+                               1      1                1
+                           − √ exp 4 i π +           { + e−(t+iπ)/n + e−(2t+4iπ)/n + · · ·}.               (42)
+                                n             πn       2
+
+     In particular, when n = 1, we have
+                                                                                     
+                          Z∞
+                               cos πx2              1                                
+                                       sin 2πtx dx = tanh πt{1 − cos( 41 π + πt2 )}, 
+                                                                                     
+                                                                                     
+                               tanh πx              2
+                                                                                     
+                                                                                     
+                                                                                     
+                                                                                     
+                          0
+                                                                                                           (43)
+                          Z∞
+                               sin πx2                     1
+                                                                                                 
+                                                                                                 
+                                                             tanh πt sin( 14 π + πt2 ).
+                                                                                                 
+                                           sin 2πtx dx =                                         
+                                                                                                 
+                               tanh πx                     2
+                                                                                                 
+                                                                                                 
+                                                                                                 
+                          0
+
+     We shall now consider an important special case of (42). It can easily be seen from (9) that
+     the left-hand side of (42), when divided by t, tends to
+                                                                      
+                         Z∞                            Z∞
+                              cos πnx           1         sin πnx     
+                                √      dx − i        +       √      dx                       (44)
+                             e2π x − 1         2πn       e2π x − 1    
+                                 0                                     0
+
+     as t → 0. But the limit of the right-hand side of (42) divided by t can be found when n is
+     rational. Let then n = a/b, where a and b are any two positive integers, and let
+
+                                       Z∞                                       Z∞
+                                             cos πnx               1                  sin πnx
+                              φ(n) =            √      dx, Ψ(n) =     +                 √      dx.
+                                            e2π   x −1            2πn                e2π x − 1
+                                       0                                        0
+Some definite integrals connected with Gauss’s sums                                               85
+
+
+The relation between φ(n) and Ψ(n) has been stated already in (10′ ). From (42) and (44)
+it can easily be deduced that, if a and b are both odd, then
+
+                                         s 
+             r=b                                r=a
+                               2                                                  
+                                                                        r 2 bπ
+    a                                                                       
+           1
+             X                 r πa    b    b X                   1
+                                                                                    
+  φ       =4     (b − 2r) cos       −               (a − 2r) sin 4 π +           , 
+                                                                                    
+     b                           b    4a    a                              a
+                                                                                    
+                                                                                    
+                                                                                    
+           r=1                                  r=1
+                                           s                                        (45)
+    a        r=b               2              r=a                       2    
+               X                 r πa    b    b   X                         r πb    
+  Ψ     = − 14     (b − 2r) sin       +               (a − 2r) cos 41 π +         , 
+                                                                                    
+                                                                                    
+     b                             b    4a    a                               a     
+                r=1                                     r=1
+
+
+It can easily be seen that these satisfy the relation (10′ ). Similarly, when one of a and b is
+odd and the other even, it can be shewn that
+
+                                         Pr=b           2              
+                   a             σ√
+                                          1 − rb cos r bπa
+                                     − 21 r=1
+                                                
+               φ   b       =   4πa a
+                                              r                          
+                                                                         
+                                                                         
+                                                                         
+                                                                         
+                              q P                                     
+                           b    b   r=a        r
+                                                        1       2
+                                                                r πb
+                                                                         
+                        + 2a            r 1 −      sin     π +         ,
+                                                                         
+                                                                         
+                                a   r=1       a          4        a      
+                                                                                        (46)
+                            ′      Pr=b                   2
+               Ψ ab   = 4πaσ√a + 21 r=1 r 1 − rb sin r bπa
+                                                                       
+                                                                         
+                                                                         
+                                                                         
+                                                                         
+                              q P                                     
+                                                                         
+                           b    b   r=a        r
+                                                        1       2
+                                                                r πb
+                                                                         
+                        − 2a            r 1 −      cos     π +         ,
+                                                                         
+                                                                         
+                                a   r=1       a          4        a
+
+
+where
+
+                        √ Pa             2
+                                               √ P       2  
+                   σ=    b 1 cos 14 π + r aπb = a b1 sin r bπa , 
+                        √ P                   √ P       2                             (47)
+                                          2
+                   σ ′ = b a1 sin 41 π + r aπb = a b1 cos r bπa . 
+                                                                  
+
+
+
+Thus, for example, we have
+
+                                         √                           √     
+                           1
+                   φ(0) = 12 , φ(1) = 2−8 2 , φ(2) = 161
+                                                         , φ(4) = 3−32 2 , 
+                                √                      8−3√5                             (48)
+                   φ(6) = 13−4    3   1       1     2
+                                        
+                             144 , φ 2 = 4π , φ 5 =          16 ,
+                                                                           
+
+
+and so on.
+By differentiating (42) with respect to n, we can evaluate the integrals
+
+                                  Z∞
+                                           xm     cos
+                                         √            πnx dx                              (49)
+                                       e2π  x − 1 sin
+                                  0
+86                                                                                     Paper 12
+
+
+     for all rational values of n and positive integral values of m. Thus, for example, we have
+                            Z∞                                             
+                                xcos 21 πx         13 − 4π                 
+                                           dx =              ,
+                                                                           
+                                    √                                      
+                                 2π   x                8π 2                
+                               e        −1                                 
+                                                                           
+                                                                           
+                            0                                              
+                                                                           
+                                                                           
+                             ∞
+                                                                           
+                                                                        
+                                x cos 2πx                1     3   5
+                            Z                                              
+                                                    1
+                                    √      dx  =   64       −    +      ,                    (50)
+                               e2π x − 1                 2 π π2            
+                            0
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                            Z∞ 2
+                                                                           
+                                                                       
+                               x cos 2πx                       5   5
+                                                                           
+                                                                           
+                                                     1                     
+                                    √      dx  =   256    1 −    +   2
+                                                                         , 
+                                                                           
+                                e2π   x −1                     π   π       
+                                                                           
+                          0
+
+     and so on.
+

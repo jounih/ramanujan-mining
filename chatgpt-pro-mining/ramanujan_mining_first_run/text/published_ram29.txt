@@ -1,0 +1,45 @@
+         Algebraic relations between certain infinite products
+
+           Proceedings of the London Mathematical Society, 2, XVIII, 1920,
+                              Records for 13 March 1919
+
+It was proved by Prof. L. J. Rogers∗ that
+
+                              1             x4                       x9
+           G(x) = 1 +             +                    +                            + ···
+                            1 − x (1 − x)(1 − x2 ) (1 − x)(1 − x2 )(1 − x3 )
+                                   1                                    1
+                   =                               ··· ×                                    ,
+                        (1 − x)(1 − x6 )(1 − x11 )       (1 − x4 )(1 − x9 )(1 − x14 ) · · ·
+
+and
+                              x2           x6                    x12
+           H(x) = 1 +             +                 +                          + ···
+                            1 − x (1 − x)(1 − x2 ) (1 − x)(1 − x2 )(1 − x3 )
+                                    1                                1
+                   =           2      7       12
+                                                 ··· ×                                   .
+                        (1 − x )(1 − x )(1 − x )       (1 − x )(1 − x8 )(1 − x13 ) · · ·
+                                                             3
+
+
+Simpler proofs were afterwards found Prof. Rogers and myself.†
+I have now found an algebraic relation between G(x) and H(x), viz.:
+
+                   H(x){G(x)}11 − x2 G(x){H(x)}11 = 1 + 11x{G(x)H(x)}6 .
+
+Another noteworthy formula is
+
+                                 H(x)G(x11 ) − x2 G(x)H(x11 ) = 1.
+
+Each of these formulæ is the simplest of a large class.
+
+
+
+
+   ∗
+     Proc. London Math. Soc., Ser. 1, Vol. XXV, 1894, pp. 318 – 343.
+   †
+     Proc. Camb. Phil. Soc., Vol. XIX, 1919, pp. 211 – 216. A short account of the history of the theorems
+is given by Mr. Hardy in a note attached to this paper. [For Ramanujan’s proofs see No. 26 of this volume.]
+

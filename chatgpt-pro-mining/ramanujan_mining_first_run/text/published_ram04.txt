@@ -1,0 +1,116 @@
+                                     Irregular numbers
+
+            Journal of the Indian Mathematical Society, V, 1913, 105 – 106
+
+
+1. Let a2 , a3 , a5 , a7 , . . . denote numbers less than unity, where the subscripts 2,3,5,7, . . .
+are the series of prime numbers. Then
+           1      1      1
+               ·      ·       . . . = 1 + a2 + a3 + a2 · a2 + a5
+         1 − a2 1 − a3 1 − a5
+                                      +a2 · a3 + a7 + a2 · a2 · a2 + a3 · a3 + . . . ,          (1)
+
+the terms being so arranged that the products obtained by multiplying the subscripts are
+the series of natural numbers 2, 3, 4, 5, 6, 7, 8, 9, . . . .
+The above result is easily got if we remember that the natural numbers are formed by
+multiplying primes and their powers.
+
+2. Similarly, we have
+           1      1      1
+               ·      ·       . . . = 1 − a2 − a3 + a2 · a2 − a5
+         1 + a2 1 + a3 1 + a5
+                                      +a2 · a3 − a7 − a2 · a2 · a2 + a3 · a3 + . . . ,          (2)
+
+where the sign is negative whenever a term contains an odd number of prime subscripts.
+
+3. Put a2 = 1/2n , a3 = 1/3n , a5 = 1/5n , . . . in (1), and we get
+                                                       
+                          1           1           1         1        1
+                       1− n        1− n        1− n     1 − n ... =    ,                        (3)
+                         2           3           5         7        Sn
+
+where Sn denotes 1/1n + 1/2n + 1/3n + 1/4n + . . ..
+Changing n into 2n in (3) and dividing by the original, we obtain
+                                                  
+                       1         1          1         1          Sn
+                  1+ n      1+ n      1+ n       1 + n ... =        .                           (4)
+                      2         3          5         7          S2n
+
+Examples:
+
+                                                            
+                                     1           1           1               15
+                        (i)       1+ 2        1+ 2        1+ 2       ... =      ,               (5)
+                                    2           3           5                π2
+
+                                                            
+                                     1           1           1               105
+                       (ii)       1+ 4        1+ 4        1+ 4       ... =       ,              (6)
+                                    2           3           5                π4
+22                                                                                               Paper 4
+
+
+     since
+                                     S2 = π 2 /6, S4 = π 4 /90, S8 = π 8 /9450.
+
+     4. Subtract (2) from (1) and put a2 = 2−n . . . ; then
+                         1   1   1   1   1   1   1           Sn2 − S2n
+                           +   +   +   +   +   +   + . . . =           ,
+                        2n 3n 5n 7n 8n 11n 12n                  2Sn
+     where the numbers 2, 3, 5, 7, 8, . . . contain an odd number of prime divisors.
+     Examples:
+
+                                      1   1   1   1   1           π2
+                               (i)      +   +   +   +   + · · · =    ,                                 (7)
+                                      22 32 52 72 82              20
+
+                                      1   1   1   1   1            π4
+                             (ii)       +   +   +   +   + · · · =      .                               (8)
+                                      24 34 54 74 84              1260
+
+     5. Again (2,3,5,7, . . . being the prime numbers)
+
+            (1 + a2 )(1 + a3 )(1 + a5 )(1 + a7 ) · · · = 1 + a2 + a3 + a5
+                                                          +a2 · a3 + a7 + a2 · a5 + a11 + a13 + · · · , (9)
+
+     where the product of the subscripts in any term is a natural number containing dissimilar
+     prime divisors; and
+
+                (1 − a2 )(1 − a3 )(1 − a5 )(1 − a7 ) . . . = 1 − a2 − a3 − a5 + a2 · a3 − a7 ,        (10)
+
+     where the signs are negative whenever the number of factors is odd.
+
+     6. Replacing as before a2 , a3 , a5 , . . . by the values given in § 3 and using (4), we deduce
+     that
+                                           1   1   1   1         Sn
+                                     1+      + n + n + n + ... =     ,                                (11)
+                                          2n  3   5   6          S2n
+     where 2, 3, 5, 6, 7, . . . are the numbers containing dissimilar prime divisors.
+
+     7. Also taking half the difference between (3) and (4),
+                      1   1             1     1    1      1      1     1  1  1
+                        + n      +         + n+ n+ n+ n+ n+ n+ n
+                     2n  3             5n    7    11     13     17    19 23 29
+                                         1      1         Sn2 − S2n
+                                 +          +     + ... =           ,                                 (12)
+                                       30n 31n             2Sn S2n
+     where 2, 3, 5, . . . are numbers containing an odd number of dissimilar prime divisors.
+Irregular numbers                                                                             23
+
+
+Examples:
+                                   1    1   1         9
+                            (i)     2
+                                      + 2 + 2 + ... = 2,                               (13)
+                                   2   3   5         2π
+
+                                   1   1   1         15
+                            (ii)     +   +   + ... = 4.                                (14)
+                                   24 34 54         2π
+
+8. Subtracting (11) from Sn , we have
+                       1   1   1   1         Sn (S2n − 1)
+                         + n + n + n + ... =              ,                            (15)
+                      4n  8   9   12             S2n
+where 4, 8, 9, . . . are composite numbers having at least two equal prime divisors.
+

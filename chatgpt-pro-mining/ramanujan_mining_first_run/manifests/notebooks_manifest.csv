@@ -1,0 +1,5 @@
+slug,title,source_url,local_pdf,pages,bytes,sha256,extracted_image_dir,extracted_image_count,notes
+notebook1,Notebook 1,https://ramanujan.sirinudi.org/Volumes/01/01.pdf,pdfs/notebooks/notebook1.pdf,380,22037504,830f978f69908eb8aad4c938c40c18d4edf3a08104e009492302b50e65c1fcb4,scans_pages/notebook1,380,photocopy facsimile PDF; pages extracted as images
+notebook2,Notebook 2,https://ramanujan.sirinudi.org/Volumes/02/02.pdf,pdfs/notebooks/notebook2.pdf,355,27219861,1e44ea7b36483a24a23792f42c9edab8f3caa372b11259578f9118371a5ad9c1,scans_pages/notebook2,355,photocopy facsimile PDF; pages extracted as images
+notebook3,Notebook 3,https://ramanujan.sirinudi.org/Volumes/03/03.pdf,pdfs/notebooks/notebook3.pdf,35,1832713,1fc77123af900bd4915facd19f22a0b598a3fdc0eed0205c2ae58ea3c41cb739,scans_pages/notebook3,35,photocopy facsimile PDF; pages extracted as images
+lost_notebook,The Lost Notebook,https://ramanujan.sirinudi.org/Volumes/04/04.pdf,pdfs/notebooks/lost_notebook.pdf,379,32770462,a1349578e7bcc25c9a2ff2034b14f4de88f666380437f65fa8f01e4c3dd0ee11,scans_pages/lost_notebook,379,photocopy facsimile PDF; pages extracted as images

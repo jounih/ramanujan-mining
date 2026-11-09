@@ -1,0 +1,259 @@
+                                                n=∞
+                                                       "                    3#
+                                                Y                      x
+                      On the product                       1+
+                                                n=0
+                                                                    a + nd
+
+           Journal of the Indian Mathematical Society, VII, 1915, 209 – 211
+
+1. Let
+                                      (              3 ) (          )
+                                                                α+β 3
+                                                             
+                                               α+β
+                          φ(α, β) =   1+                   1+           .                        (1)
+                                               1+α              2+α
+
+It is easy to see that
+        (              )(                )
+                α+β 3            α+β 3
+                              
+          1+                1+
+                n+α              n+β
+                                                                            √ )2
+                                                                            
+                           1 + α+2β      1 + β+2α         (
+                        =
+                                 n             n
+                                               3    1 − (α − β) + i(α + β) 3 
+                                                                    2n
+                                       
+                                     3
+                             1 + αn     1 + βn
+                                    
+
+                                                            √ )2
+                                     (                          
+                                        (α −  β)  − i(α + β) 3
+                             × 1 −                              ;                              (2)
+                                                   2n
+
+                                         
+           n=∞
+            Y      1 + α+2β
+                          n        1 + β+2α 
+                                         n
+                                                   {Γ(1 + α)Γ(1 + β)}3
+                                           3    =                          ;                     (3)
+                                               Γ(1 + α + 2β)Γ(1 + β + 2α)
+                              3        
+                       1 + αn     1 + βn
+                                             
+               n=1 
+
+
+and
+                                            √ )2                          √ )2
+                                                                            
+         n=∞
+                      (                               (
+          Y
+               1 −       (α − β) + i(α + β) 3        (α − β) − i(α + β) 3 
+                                                   1−
+         n=1
+                                   2n                            2n
+                                                                     √
+                                                       cosh π(α + β) 3 − cos π(α − β)
+                                                     =                                .          (4)
+                                                             2π 2 (α2 + αβ + β 2 )
+
+It follows from (1) - (4) that
+
+      φ(α, β)φ(β, α)
+                                                        (                 √                )
+                         {Γ(1 + α)Γ(1 + β)}3                cosh π(α + β) 3 − cos π(α − β)
+                   =                                                                         .   (5)
+                     Γ(1 + α + 2β)Γ(1 + β + 2α)                   2π 2 (α2 + αβ + β 2 )
+                     Qn=∞ h                x
+                                              3   i
+On the product        n=0  1+            a+nd
+                                                                                                          63
+
+
+But it is evident that, if α − β be any integer, then φ(α, β)/φ(β, α) can be expressed in
+finite terms. From this and (5) it follows that φ(α, β) can be expressed in finite terms, if
+α − β be any integer. That is to say
+                                 (          3 ) (              3 )
+                          x 3       
+                                          x
+                                                        
+                                                            x
+                    1+             1+               1+                ···
+                           a             a+d              a + 2d
+
+can be expressed in finite terms if x − 2a be a multiple of d.
+
+2. Suppose now that α = β in (5). We obtain
+                 (                  3 ) (          )(              )
+                                                2α 3           2α 3
+                                                          
+                              2α
+                    1+                    1+             1+              ···
+                             1+α               2+α            3+α
+                                                                          √
+                                                       {Γ(1 + α)}3 sinh πα 3
+                                                     =                  √    .                      (6)
+                                                        Γ(1 + 3α)     πα 3
+
+Similarly, putting β = α + 1 in (5), we obtain
+                (              )(                )
+                       2α + 1 3            2α + 1 3
+                                        
+                 1+                  1+              ···
+                        1+α                 2+α
+                                                                                    √
+                                                         {Γ(1 + α)}3 cosh π( 21 + α) 3
+                                                       =                               .            (7)
+                                                          Γ(2 + 3α)           π
+
+Again, since
+                                                                                    2     4
+                                                                                              
+                                                                    1 + αn      1 + αn2 + αn4
+                                   (                    2 )
+                          α 3            
+                                                  α
+                    1+               1+3                        =                               ,
+                          n                     2n + α                             α 2
+                                                                                     
+                                                                              1 + 2n
+
+it is easy to see that
+                                             "(              2 ) (            2 ) #
+               α3           α3
+                                                                  
+                                                        α                   α
+             1+ 3         1+ 3          ···     1+3                 1+3             ...
+               1            2                         2+α                  4+α
+                                                                            √           !
+                                                         Γ( 21 α)    cosh πα 3 − cos πα
+                                                  =                             √         .         (8)
+                                                     Γ{ 12 (1 + α)}      2α+2 πα π
+
+
+3. It is known that, if the real part of α is positive, then
+                                                                      Z∞
+                                                                           tan−1 (x/α)
+               log Γ(α) = (α − 21 ) log α − α + 12 log 2π + 2                          dx.          (9)
+                                                                             e2πx − 1
+                                                                      0
+64                                                                                     Paper 10
+
+
+     From this we can shew that, if the real part of α is positive, then
+
+                                               α3          α3          α3
+                                                                     
+                  1            πα
+                  2 log 2πα +
+                               √ + log     1+ 3       1+ 3        1 + 3 ...
+                                3              1           2           3
+                                        √             !      ∞
+                                 cosh πα 3 − cos πα             tan−1 (x/α)3
+                                                            Z
+                          = log                         +2                   dx.            (10)
+                                         πα                       e2πx − 1
+                                                                   0
+
+     From this and the previous section it follows that
+                                               Z∞
+                                                    tan−1 x3
+                                                              dx
+                                                    e2πnx − 1
+                                               0
+
+     can be expressed in finite terms if n is a positive integer. Thus, for example,
+                         Z∞
+                              tan−1 x3      1           π   1
+                                                                         √
+                                                                       −π 3
+                                       dx =   log 2π −  √ −   log(1 + e     );              (11)
+                              e2πx − 1      4          4 3 2
+                         0
+
+
+
+                     Z∞
+                             tan−1 x3     1          π  1            √
+                              4πx
+                                      dx = log 12π − √ − log(1 − e−2π 3 );                  (12)
+                             e    −1      8         4 3 4
+                     0
+
+     and so on.
+
+     4. It is also easy to see that
+                  12        22       32      42
+                       −         +       −        + ···
+               13 + n3 23 + n3 33 + n3 43 + n3
+                                                          
+                     1     1       1     1      1
+                   =           −      +     −        + ...
+                     3 1+n 2+n 3+n 4+n
+                                                                           
+                        4       2−n           4−n            6−n
+                     +                  −               +              − ... .              (13)
+                        3 (2 − n)2 + 3n2 (4 − n)2 + 3n2 (6 − n)2 + 3n2
+
+     Since
+                                    π          1       3       5
+                                      1    = 2   2
+                                                   − 2   2
+                                                           + 2     − ...,
+                               4 cosh 2 πx  1 +x    3 +x    5 + x2
+     it is clear that the left-hand side of (13) can be expressed in finite terms if n is any odd
+     integer. For example,
+
+               12    22    32    42          1                        √
+              3
+                  − 3
+                        + 3
+                              − 3
+                                    + . . . = (1 − log 2 + π sech 12 π 3).                  (14)
+             1 +1 2 +1 3 +1 4 +1             3
+                   Qn=∞ h              x
+                                          3   i
+On the product      n=0  1+          a+nd
+                                                                                                     65
+
+
+The corresponding integral in this case is
+                  Z∞                               Z∞ (         ν=∞
+                                                                X (−1)ν
+                                                                               )
+                             x5      dx     2              1                        x6 dx
+                                   6    6
+                                          =                   +
+                          sinh πx n + x     π             2x2   ν=1
+                                                                    ν 2 + x2       n 6 + x6
+                  0                                0
+                                                                    
+                                    1    11     1        1
+                                      −=     +       −       + ...
+                                         3
+                                    n n+1 n+2 n+3
+                                                                   
+             4     n+2            n+4            n+6
+           −                 −              +               − . . .   ;                       (15)
+             3 (n + 2)2 + 3n2 (n + 4)2 + 3n2 (n + 6)2 + 3n2
+
+and so the integral on the left-hand side of (15) can be expressed in finite terms if n is any
+odd integer. For example,
+                      Z∞                                             √
+                              x5     dx     1
+                                         6
+                                           = (log 2 − 1 + π sech 12 π 3).                     (16)
+                           sinh πx 1 + x    3
+                      0
+

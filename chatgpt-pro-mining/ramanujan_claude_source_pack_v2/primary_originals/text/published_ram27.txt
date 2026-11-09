@@ -1,0 +1,978 @@
+                               A class of definite integrals
+
+             Quarterly Journal of Mathematics, XLVIII, 1920, 294 – 310
+
+
+1. It is well known that
+               Z 1π
+                    2                          π              Γ(1 + m)
+(1.1)                    (cos x)m einx dx =
+                − 21 π                        2m Γ{1 + 21 (m + n)}Γ{1 + 12 (m − n)}
+
+if R(m) > −1. It follows from this and Fourier’s Theorem that, if n is any real number
+except ±π and R(α + β) > 1, or if n = ±π and R(α + β) > 2, then
+
+                         einx            (2 cos 21 n)α+β−2 1 in(β−α)
+              Z ∞
+(1.2)                               dx =                  e2                      or   0,
+                −∞ Γ(α + x)Γ(β − x)       Γ(α + β − 1)
+
+according as |n| < π or |n| ≥ π. In particular we have
+
+                                                         2α+β−2
+                               Z ∞
+                                           dx
+(1.21)                                               =
+                                 −∞ Γ(α + x)Γ(β − x)   Γ(α + β − 1)
+
+if R(α + β) > 1; and
+
+                                                            22α−3
+                                 Z ∞
+                                              dx
+(1.22)                                                  =
+                                  0    Γ(α + x)Γ(α − x)   Γ(2α − 1)
+
+if R(α) > 12 . If α is an integer n + 1, (1.22) reduces to
+
+                                                                                   π 22n (n!)2
+               Z ∞
+                                             sin πx
+(1.23)                                                                        dx =             .
+                0       x{1 − (x2 /12 )}{1 − (x2 /22 )} · · · {1 − (x2 /n2 )}      2 (2n)!
+
+Again, if m is a positive integer, we have
+
+                       1 + 2 cos 2πx + 2 cos 4πx + · · · to 21 (m + 1) terms
+                   (
+        sin mπx                                                                             or
+                 =                                                                               ,
+         sin πx        2 cos πx + 2 cos 3πx + · · · to 1 m terms
+                                                              2
+
+according as m is odd or even. It follows from this and (1.2) that, if R(α) > 1,
+
+                                                       22α−3
+                  Z ∞
+                       sin mπx          dx
+                                                   =              or 0,
+                   0    sin πx Γ(α + x)Γ(α − x)      Γ(2α − 1)
+
+according as m is odd or even. Hence, if m and n are positive integers, we have
+
+                                                                          π 22n (n!)2
+           Z ∞
+                                   sin mπx
+(1.24)                                                               dx =             or 0,
+            0  x{1 − (x2 /12 )}{1 − (x2 /22 )} · · · {1 − (x2 /n2 )}      2 (2n)!
+272                                                                                          Paper 27
+
+
+      according as m is odd or even. From this we easily deduce that, if l, m, and n are positive
+      integers,
+      (1.25)
+                                                                                   2
+                            (sin mπx)2l+1
+        Z ∞
+                                                                   2(n−l)−1 (2l)!  n!
+                     2  2         2  2                2  2
+                                                             dx = 2                    π or 0,
+          0  x{1 − (x /1 )}{1 − (x /2 )} · · · {1 − (x /n )}                (2n)! l!
+      according as m is odd or even. It follows that
+                                         (sin mπx)2n+1
+                  Z ∞
+                                                                                   π
+      (1.26)                    2 /12 )}{1 − (x2 /22 )} · · · {1 − (x2 /n2 )}
+                                                                              dx =   or 0,
+                   0   x{1 − (x                                                    2
+      according as m is odd or even. Similarly we can shew that
+                                             (sin mπx)2l
+                      Z ∞
+      (1.27)                                                                    dx = 0
+                        0  {1 − (x2 /12 )}{1 − (x2 /22 )} · · · {1 − (x2 /n2 )}
+      for all positive integral values of l, m, and n.
+      In this connection it is interesting to note the following results:
+      (i) If R(α + β) > 1 and R(γ + δ) > 1, then
+                              Z 1
+                                 2 (2 cos πx)γ+δ−2 eiπ(γ−δ)x
+      (1.3)     Γ(α + β − 1)                                  dx
+                                − 12   Γ(α + x)Γ(β − x)
+                                                   Z 1
+                                                     2 (2 cos πx)α+β−2 eiπ(α−β)x
+                                    = Γ(γ + δ − 1)                               dx.
+                                                    −1     Γ(γ + x)Γ(δ − x)
+                                                      2
+
+      This is easily proved by writing
+                                  Z 1
+                                     2
+                                       (2 cos πz)α+β−2 eiπz(α−β+2x) dz
+                                        − 12
+
+      instead of
+                                                 Γ(α + β − 1)
+                                               Γ(α + x)Γ(β − x)
+      in the left-hand side of (1.3).
+      (ii) If m and n are integers of which one is odd and the other even, and m ≥ 0 and
+      R(α + β) > 2, then
+                                                           Z ξ+1
+                                      (cos πx)m einπx               (cos πx)m einπx
+                               Z ∞
+      (1.4)        (α + β − 2)                        dx =                            dx
+                                ξ   Γ(α + x)Γ(β − x)        ξ    Γ(α − 1 + x)Γ(β − x)
+      where ξ is any real number. This is proved as follows: Suppose that the left-hand side,
+      minus the right-hand side, is f (ξ). Then
+                                    (α + β − 2)(cos πξ)m inπξ
+                      f ′ (ξ) = −                       e
+                                      Γ(α + ξ)Γ(β − ξ)
+                                    (−1)m+n (cos πξ)m einπξ      (cos πξ)m einπξ
+                               −                            +                      = 0.
+                                     Γ(α + ξ)Γ(β − ξ − 1)     Γ(α − 1 + ξ)Γ(β − ξ)
+A class of definite integrals                                                                      273
+
+
+Hence f (ξ) is a constant which is easily seen to be zero.
+
+2. Before proceeding further I shall give a few general rules for generalising the results in
+the previous and the following sections. If
+                              Z η
+                                  (x + ǫ1 )(x + ǫ2 ) · · · (x + ǫr )
+                     fr (ζ) =                                        F (x) dx,
+                               ξ            Γ(ζ ± x)
+
+where r is zero or a positive integer, and the ǫ’s, ξ, η, ζ and F (x) are all arbitrary, then it
+is easy to see that
+
+(2.1)                    fr+1 (ζ + 1) = ±{fr (ζ) − (ζ ∓ ǫr+1 )fr (ζ + 1)},
+
+provided the necessary convergence conditions are satisfied.
+Similarly if             Z         η
+                    fr (ζ) =           (x + ǫ1 )(x + ǫ2 ) · · · (x + ǫr )Γ(ζ ± x)F (x) dx,
+                               ξ
+
+then
+
+(2.2)                      fr+1 (ζ) = ±{fr (ζ + 1) − (ζ ∓ ǫr+1 )fr (ζ)}.
+
+Thus we see that, if f0 (ζ) is known, fr (ζ) can be easily determined.
+Suppose now that P (x) is a polynomial of the rth degree and N any integer greater than
+or equal to r. Let D, E and ∆ denote the usual operators so that
+
+                                                E = 1 + ∆ = eD .
+
+Then, if                                                   Z η
+                                                                    F (x)
+                                            f (ζ) =                         dx,
+                                                               ξ   Γ(ζ ± x)
+
+              Z η                           N
+                    P (x)F (x)      X f (ζ − ν)
+                                                (±∆)ν P − 12 ν ± 1 − ζ + 12 ν ,
+                                                                            
+(2.3)                          dx =
+               ξ    Γ(ζ ± x)        0
+                                          ν!
+
+as easily seen by replacing P (x) by
+                                                   1       1
+                                   (1 ± ∆E − 2 ± 2 )ζ±x−1 P {±(1 − ζ)} .
+
+Similarly using the equation
+                                                                   1   1
+                               P (x) = (1 ∓ ∆E − 2 ∓ 2 )−(ζ±x) P (±ζ),
+
+we find that, if                                   Z η
+                                         f (ζ) =               Γ(ζ ± x)F (x) dx,
+                                                       ξ
+274                                                                                                  Paper 27
+
+
+      then
+                 Z η                              N
+                                                  X f (ζ + ν)
+                                                                       (±∆)ν P − 12 ν ∓ ζ + 12 ν .
+                                                                                               
+      (2.4)            Γ(ζ ± x)P (x)F (x) dx =
+                  ξ                                0
+                                                              ν!
+
+      As an illustration let us apply (2.3) to (1.2). We find that if n is any real number except
+      ±π, and R(α + β) > 1 + r, or if n = ±π, and R(α + β) > 2 + r, and N is any positive
+      integer greater than or equal to r, where r is the degree of the polynomial P (x), then
+                                                
+                                                  0     or
+                           P (x)einx
+                 Z ∞                            
+                                                
+      (2.5)                               dx =      N
+                                                       kν (2 cos 12 n)α+β−ν−2 1 in(β−α) ,
+                   −∞ Γ(α + x)Γ(β − x)
+                                                   X
+                                                                            e2
+                                                       ν! Γ(α + β − ν − 1)
+                                                
+                                                
+                                                          0
+
+                                                                   1
+      according as |n| ≥ π or |n| < π, kν being either e 2 inν ∆ν P (1 − α) or
+                                            1
+                                       e− 2 inν (−∆)ν P (β − ν − 1).
+
+      It is immaterial which value of kν we take.
+      If
+                                                          Γ(ζ1 + x)
+                                                P (x) =             ,
+                                                          Γ(ζ2 + x)
+      where ζ1 − ζ2 is a positive integer, then it is well known that
+
+                                                  (ζ1 − ζ2 )!    Γ(ζ1 + x)
+      (2.6)                      ∆ν P (x) =                                  .
+                                                (ζ1 − ζ2 − ν)! Γ(ζ2 + x + ν)
+
+      This affords a very good example for the previous formulæ.
+      It is easy to see that (1.2) can be restated as
+
+                                                einx
+                                      Z ∞
+      (2.7)                                                dx = 0
+                                       −∞ Γ(α + x)Γ(β − x)
+
+      or
+                                                                           ∞
+                                          einx                  ein(ν−α)
+                                Z ∞                       X
+      (2.71)                                         dx =
+                                 −∞ Γ(α + x)Γ(β − x)        Γ(ν)Γ(α + β − ν)
+                                                                           1
+                                                                           ∞
+                                                                           X       ein(β−ν)
+                                                                       =                        ,
+                                                                           1
+                                                                               Γ(ν)Γ(α + β − ν)
+
+      according as |n| ≥ π or |n| < π (n being of course real). But
+
+                                 P (x)einx                          e(D+in)x P (0)
+                         Z ∞                                  Z ∞
+                                              dx =                                 dx.
+                          −∞ Γ(α + x)Γ(β − x)                  −∞ Γ(α + x)Γ(β − x)
+A class of definite integrals                                                                     275
+
+
+Hence, if the conditions stated for (2.5) are satisfied,
+
+                                         P (x)einx
+                                 Z ∞
+(2.8)                                                 dx = 0
+                                  −∞ Γ(α + x)Γ(β − x)
+
+or
+                                                              ∞
+                                   P (x)einx         X ein(ν−α) P (ν − α)
+                           Z ∞
+(2.81)                                          dx =
+                            −∞ Γ(α + x)Γ(β − x)        Γ(ν)Γ(α + β − ν)
+                                                              1
+                                                              ∞
+                                                              X   ein(β−ν) P (β − ν)
+                                                          =                          ,
+                                                                  Γ(ν)Γ(α + β − ν)
+                                                              1
+
+according as |n| ≥ π or |n| < π.
+
+3. We shall now consider an important extension of (1.2). Let [x] denote the greatest
+integer not exceeding x, so that (e.g.) [−5 12 ] = −6. Let us agree further that
+                                            ν
+                                            X
+                                                 = 0,
+                                             µ
+
+if ν < µ. Then if n and s are real and φ(z) is a function that can be expanded in the form
+                                            ∞
+                                            X
+                                                 Cν z ν
+                                            −∞
+
+when |z| = 1, we have
+              Z ∞
+                     φ(eisx )einx       X {2 cos 1 (n + νs)}α+β−2 1
+(3.1)                              dx =  Cν      2
+                                                                 e 2 i(β−α)(n+νs) ,
+               −∞ Γ(α + x)Γ(β − x)             Γ(α + β − 1)
+
+where the summation is bounded by
+                                                    
+                                π    n          π    n
+                           −       +     ≤ν≤       −     ,
+                               |s|   s         |s|   s
+
+provided that either
+     (i) π + n and π − n are not multiples of s, and R(α + β) > 1,
+or      (ii) π + n and π − n are multiples of s, and R(α + β) > 2,
+or      (iii) C(π−n)/s = 0 and C−(π+n)/s = 0, whenever one or the other or both of the suffixes
+             of C happen to be integral, and R(α + β) > 1,
+or   (iv) π + n and π − n are multiples of s, α + β is an integer greater than 1, and
+          C(π−n)/s = e2iπα C−(π+n)/s .
+276                                                                                                   Paper 27
+
+
+      The formula (3.1) is easily obtained by substituting the series for φ and integrating term-
+      by-term, using (1.2).
+      It should be remembered that (3.1) is not true if n or s ceases to be real, though the
+      integral may be convergent. In such cases, generally, the integral cannot be evaluated in
+      finite terms.
+      The following integrals can be evaluated at once, with the help of (3.1):
+                                Z ∞
+                                                     dx
+      (3.11)                            imx     inx
+                                                                       ,
+                                  −∞ (pe    + qe )Γ(α + x)Γ(β − x)
+      where m and n are real and |p| =
+                                     6 |q|;
+                                                        m
+                                                  cos
+                                           Z ∞        sx    einx
+                                                  sin
+      (3.12)                                                     dx,
+                                            −∞ Γ(α + x)Γ(β − x)
+
+      where n and s are real and m is a positive integer;
+                                           (1 + ǫeisx )m einx
+                                     Z ∞
+      (3.13)                                                  dx,
+                                      −∞ Γ(α + x)Γ(β − x)
+
+      where m is real and |ǫ| < 1;
+
+                                               ep cos sx+iq sin sx+inx
+                                       Z ∞
+      (3.14)                                                           dx.
+                                            −∞ Γ(α + x)Γ(β − x)
+
+      For instance the value of (3.14) is
+
+                X q + p2ν
+                             1
+                                      np             o 2 cos 1 (n + νs) α+β−2    1
+                                 Jν        (q 2 − p2 )           2
+                                                                                 e 2 i(β−α)(n+νs) ,
+                      q−p                                    Γ(α + β − 1)
+                                                                                                      1
+      where Jν (x) is the ordinary Bessel function of the νth order, and {(q + p)/(q − p)} 2 ν should
+      be interpreted so that the first term in the expansion of
+                                                    1
+                                                           np             o
+                                  {(q + p)/(q − p)} 2 ν Jν    (q 2 − p2 )
+
+      is                                           1            ν
+                                                     2 (p + q)
+                                                           .
+                                                      ν!
+      Putting s = 2π in (3.1) we obtain the following corollary. If φ is the same function as in
+      (3.1), and n is any real number, then
+
+                                  φ(e2iπx )
+                       Z ∞
+      (3.2)                                      einx dx
+                        −∞  Γ(α  +  x)Γ(β   − x)
+                                                           α+β−2
+                                2 cos 12 n − π[(π + n)/2π]
+                              
+                                                                           1
+                                                                         n                o
+                                                                   i(β−α) 2 n−π[(π+n)/2π]
+                        = Cλ                                      e                         ,
+                                            Γ(α + β − 1)
+A class of definite integrals                                                               277
+
+
+where                                                 
+                                                   π+n
+                                       λ=−               ,
+                                                    2π
+provided that either
+     (i) n is not an odd multiple of π, and R(α + β) > 1,
+or   (ii) n is an odd multiple of π , and R(α + β) > 2,
+or   (iii) n is an odd multiple of π, C(π−n)/2π = 0 and C−(π+n)/2π = 0, and R(α + β) > 1,
+or    (iv) n is an odd multiple of π, α + β is an integer greater than 1, and
+         C(π−n)/2π = e2iπα C−(π+n)/2π .
+Thus we see that the value of each integrals (3.12) – (3.14), when s = 2π, reduces to a
+single term.
+The next section will be denoted to the application of (3.2) in evaluating some special
+integrals.
+
+4. Suppose that α is not real and
+
+                     φ(z) = 1 + e−2iπα z + e−4iπα z 2 + · · ·   (I(α) < 0),
+
+and                     φ(z) = −e2iπα z −1 − e4iπα z −2 + · · · (I(α) > 0),
+so that φ(z) is convergent when |z| = 1. Then it is easy to see that
+
+                                                         φ(e2iπx )
+         Z ∞                                Z ∞
+               Γ(α + x) inx
+                        e   dx = 2iπe−iπα                                 eix(π−n) dx.
+          −∞   Γ(β + x)                      −∞  Γ(1   − α  +  x)Γ(β − x)
+
+It follows from (3.2) that if α is not real, n real, and
+
+     (i) n is neither 0 nor any multiple of 2π, and R(α − β) < 0,
+or   (ii) n has the same sign as I(α) and R(α − β) < 0,
+or   (iii) n is 0, or a multiple of 2π, having the sign opposite to that of I(α), and
+       R(α − β) < −1,
+or   (iv) n is not 0 and α − β is a negative integer, then
+           Z ∞
+                 Γ(α + x) inx
+(4.1)                    e    dx = 0           or
+             −∞ Γ(β + x)
+
+                                           2iπ
+                                                         
+                                                            π−n    h n iβ−α−1
+                                 = ±                2 cos       +π
+                                        Γ(β − α)             2      2π
+                                                                          h n i
+                                                                    π−n
+                                       × exp −inα + i(β − α − 1)         +π         ,
+                                                                      2      2π
+
+ the zero value being taken when n and I(α) have the same sign, the plus sign when n ≥ 0
+and I(α) < 0, and the minus sign when n ≤ 0 and I(α) > 0.
+278                                                                                       Paper 27
+
+
+      As a particular cases of (4.1) we have
+                                          Z ∞
+                                              Γ(α + x)
+      (4.11)                                           dx = 0,
+                                           −∞ Γ(β + x)
+
+      if α is not real and R(α − β) < −1. If α is not real, n real, and (i) r is a positive integer,
+      or (ii) r = 0 and n 6= 0, then
+
+                                                           einx dx
+                                       Z ∞
+      (4.12)                                                                     =0
+                                         −∞ (x + α)(x + α + 1) · · · (x + α + r)
+                                               2iπ           r 1
+                                         or ±      2 sin 21 n e 2 ir(π−n)−inα ,
+                                                r!
+       the different values being selected as in (4.1).
+      Similarly we can shew that if α and β are not real and n is real, and
+
+              (i) n is not an odd multiple of π and R(α + β) < 1,
+      or   (ii) n is an odd multiple of π which has either the sign of I(β) or the sign opposite
+               to that of I(α), and R(α + β) < 0,
+      or   (iii) n is an odd multiple of π which has neither the sign of I(β) nor the sign opposite
+               to that of I(α), and R(α + β) < 1, then
+                Z ∞
+                                               2iπΓ(α + β) 1 in(β−α)
+      (4.2)           Γ(α + x)Γ(β − x)einx dx =               e2
+                 −∞                           |2 cos 21 n|α+β
+                                                                                  
+                                          (π + n)                                (π + n)
+                 × ηn (β) exp iπ(α + β)               − ηn (−α) exp −iπ(α + β)               ,
+                                            2π                                     2π
+
+       where ηn (ζ) is equal to 0 when π − n and I(ζ) have the same sign, to 1 when n ≤ π and
+      I(ζ) < 0, and to −1 when n ≥ π and I(ζ) > 0.
+      It should be remembered that for real values of n
+                                                                   
+                                       1            1        (π + n)
+                                 2 cos 2 n = 2 cos 2 n − π              .
+                                                               2π
+
+      It follows, in particular, that if α and β are not real, and R(α + β) < 1, then
+                       Z ∞
+      (4.21)                 Γ(α + x)Γ(β − x) dx = 0 or ± 21−α−β iπΓ(α + β),
+                         −∞
+
+      the zero value being chosen when I(α) and I(β) have different signs, the plus sign when
+      I(α) and I(β) are both negative, and the minus sign when I(α) and I(β) are both positive.
+      The following results can either be deduced from (1.5) or be proved independently in the
+      same way as (1.4).
+A class of definite integrals                                                                          279
+
+
+If n is zero or any multiple of 2π, ξ real, α any number except the real numbers less than
+or equal to −ξ, and β is any number such that R(β − α) > 1, then
+                                  Z ∞                           Z ξ+1
+                                        Γ(α + x) inx                      Γ(α + x) inx
+(4.3)             (β − α − 1)                    e   dx =                            e dx.
+                                   ξ    Γ(β + x)                 ξ      Γ(β − 1 + x)
+
+If n is any odd multiple of π, α and ξ are the same as in (4.3), and β is not real and
+R(α + β) < 0, then
+                       Z ∞                                      Z ξ+1
+                                                   inx
+(4.4)        (α + β)         Γ(α + x)Γ(β − x)e           dx =           Γ(α + x)Γ(β + 1 − x)einx dx.
+                        ξ                                        ξ
+
+
+
+5. We now proceed to consider an application of (1.2) to some other functions. Suppose
+that Us (x), Vs (x) and Ws (x) are many-valued functions of x defined by
+
+                                   u0 x s    u1 xs+ǫ      u2 xs+2ǫ
+                       Us (x) =           +            +              + ···,
+                                  Γ(1 + s) Γ(1 + s + ǫ) Γ(1 + s + 2ǫ)
+
+                                    v0 x s   v1 xs+ǫ       v2 xs+2ǫ
+                       Vs (x) =            +           +              + ···,
+                                  Γ(1 + s) Γ(1 + s + ǫ) Γ(1 + s + 2ǫ)
+                                    w0 xs     w1 xs+ǫ      w2 xs+2ǫ
+                      Ws (x) =             +            +              + ···,
+                                   Γ(1 + s) Γ(1 + s + ǫ) Γ(1 + s + 2ǫ)
+where R(ǫ) ≥ 0, the u’s, v’s and w’s are any numbers connected by the relation to be found
+by equating the coefficients of the various powers of k in the equation
+
+            w0 + w1 k + w2 k2 + · · · = (u0 + u1 k + u2 k2 + · · ·)(v0 + v1 k + v2 k2 + · · ·)∗ ,
+
+ and the series Us (x), Vs (x) and Ws (x) are convergent at least for the values of s and x
+that appear in the equation (5.2).
+The functions U, V and W are many valued. If |x/y| = 1 and | arg(x/y)| < π, then one
+value of arg(x + y) is given by the equation
+
+(5.1)                                   arg x + arg y = 2 arg(x + y).
+
+If we choose arg x and arg y arbitrarily, and agree that
+
+                                  xs+µǫ = exp{(s + µǫ)(log |x| + i arg x)},
+
+and that of y s+µǫ and (x + y)s+µǫ are to be interpreted similarly, that value of arg(x + y)
+being chosen which is given by (5.1), then a definite branch of W is associated with any
+arbitrary pair of branches of U and V .
+  ∗
+      These series need not, of course, be convergent for any value of k.
+280                                                                                    Paper 27
+
+
+      If α, β, x, y are any numbers such that |x/y| = 1, and R(α + β) > 0 when | arg(x/y)| = π
+      and R(α + β) > −1 otherwise, then
+                          Z ∞
+      (5.2)                   Uα+ξ (x)Vβ−ξ (y)(x/y)ξ dξ = 0 or Wα+β (x + y),
+                         −∞
+
+      according as | arg(x/y)| ≥ π or | arg(x/y)| < π, whatever be the branches of U (x) and
+      V (y), provided that the corresponding branch of W (x + y) is fixed in accordance with the
+      conventions explained above. This is proved as follows. Suppose that
+                                                 1                1
+                                         x = te 2 in ,   y = te− 2 in ,
+
+      where t is arbitrary and n is any real number. Then the integral becomes
+                                 Z ∞
+                                               1               1
+                                      Uα+ξ (te 2 in )Vβ−ξ (te− 2 in )einξ dξ.
+                                    −∞
+
+      If we expand the integral in powers of t, and integrate term by term with the help of (1.2)
+      and then make use of the relations between the u’s, v’s and w’s, the result will be
+
+                                    Wα+β 2t cos 12 n = Wα+β (x + y),
+                                                    
+
+
+      or zero, according to the conditions stated with regard to (5.2).
+      In particular, if R(α + β) > −1, we have
+                                 Z ∞
+      (5.21)                          Uα+ξ (x)Vβ−ξ (x)dξ = Wα+β (2x).
+                                    −∞
+
+      Suppose now that Gs (p, x) is a many-valued function of x defined by
+
+                                      xs     p xs+1       p(p + 1) xs+2
+                     Gs (p, x) =           −            +                  − ···.
+                                   Γ(s + 1) 1! Γ(s + 2)      2!   Γ(s + 3)
+
+      Then it follows from (5.2) that if α, β, x, y are any numbers such that |x/y| = 1, and
+      R(α + β) > 0 when | arg(x/y)| = π and R(α + β) > −1 otherwise, we have
+                   Z ∞
+      (5.3)            Gα+ξ (p, x)Gβ−ξ (q, y)(x/y)ξ dξ = 0 or Gα+β (p + q, x + y),
+                    −∞
+
+      according as | arg(x/y)| ≥ π or < π, whatever be the branches of G(p, x) and G(q, y),
+      provided that the corresponding branch of G(p + q, x + y) is chosen according to our former
+      convention. If, in particular, R(α + β) > −1, then
+                            Z ∞
+      (5.31)                     Gα+ξ (p, x)Gβ−ξ (q, x)dξ = Gα+β (p + q, 2x).
+                              −∞
+A class of definite integrals                                                                           281
+
+
+It may be interesting to note that the right-hand sides of (5.3) and (5.31) are of the form
+Gα+β (p + q, z), which reduces to
+                                           z α+β
+                                       Γ(α + β + 1)
+when p = −q, becoming independent of p or q.
+The ordinary Bessel’s functions are particular cases of the function Gs (p, x). Hence we
+have the following particular results. If n is real, and R(α + β) > 0 when n = ±π and
+R(α + β) > −1 otherwise, then
+
+         Z ∞
+            Jα+ξ (x) Jβ−ξ (y) inξ
+(5.4)          α+ξ
+                                 e dξ = 0
+         −∞ x           y β−ξ
+                                      ! 1 (α+β)                 "r                                #
+                   2 cos 12 n           2
+                                                 1
+                                                   in(β−α)               1
+                                                                            
+                                                                                 − 1
+                                                                                     in     1
+                                                                                              in
+                                                                                                 
+         or         1            1              e2         Jα+β    2 cos 2 n x2 e 2 + y 2 e 2       ,
+              x2 e− 2 in + y 2 e 2 in
+
+ according as |n| ≥ π or < π. If n is real, and R(α+β) > 0 when n = ±π and R(α+β) > −1
+otherwise, then
+              Z ∞
+                                                     1
+                   Jα+ξ (x)Jβ−ξ (x)einξ dξ = 0 or e 2 in(β−α) Jα+β 2x cos 21 n ,
+                                                                              
+(5.41)
+               −∞
+
+according as |n| ≥ π or < π. If R(α + β) > −1, then
+                                                               np                o
+                     Z ∞
+                        Jα+ξ (x) Jβ−ξ (y)               Jα+β     (2x2 + 2y 2 )
+(5.42)                     α+ξ
+                                          dξ =
+                      −∞ x        y β−ξ                     1 2
+                                                                    1
+                                                                 1 2 2 (α+β)
+                                                            2x + 2y
+
+and
+                             Z ∞
+(5.43)                             Jα+ξ (x)Jβ−ξ (x)dξ = Jα+β (2x).
+                              −∞
+
+
+
+6. We shall now consider some special cases of the integral
+
+                                           einx
+                       Z ∞
+(6.1)                                                          dx,
+                         −∞ Γ(α + x)Γ(β − x)Γ(γ + lx)Γ(δ − lx)
+
+l and n being real numbers.
+Replacing 1/{Γ(γ + lx)Γ(δ − lx)} by
+                                      Z 1π
+                          1               2
+                                                 (2 cos z)γ+δ−2 e−iz(γ−δ+2lx) dz,
+                     πΓ(γ + δ − 1)      − 21 π
+282                                                                                                   Paper 27
+
+
+      it follows from (1.2) that (6.1) is equal to
+                                                     Z v
+                                       1                                   α+β−2
+                                                          2 cos 12 n − lz         (2 cos z)γ+δ−2
+                                                         
+      (6.11)
+                            πΓ(α + β − 1)Γ(γ + δ − 1) u
+                                          × exp i(β − α) 21 n − lz + i(δ − γ)z dz,
+                                                                  
+
+
+      where u and v are the lower and upper extremities of the common part of the intervals
+
+                                  − 21 π < z < 21 π,         − 12 π < 21 n − lz < 12 π.
+
+      If the intervals do not overlap, the value of (6.1) is zero. It is easy to see that if
+
+      (6.12)                                    |n| ≥ π(1 + |l|),
+
+      the intervals do not overlap; and that, if they do overlap and l > 0, then
+
+                                            π n−π    π n−π
+                                     u=       +    −   −    ,
+                                            4   4l   4   4l
+
+      and
+                                            π n+π    π n+π
+                                      v=      +    −   −    .
+                                            4   4l   4   4l
+      It should also be observed that, though (6.11) may not be convergent for all the values of
+      α, β, γ and δ for which (6.1) is convergent, yet we may evaluate (6.11) when it is conver-
+      gent, and so obtain a formula for (6.1) which may be extended, by the theory of analytic
+      continuation, to all values of the parameters for which the integral converges.
+      From (6.12) we see that, if l and n are any real numbers such that |n| ≥ π(1 + |l|), then
+
+                                                einx
+                           Z ∞
+      (6.2)                                                           dx = 0,
+                             −∞ Γ(α + x)Γ(β − x)Γ(γ + lx)Γ(δ − lx)
+
+      provided that          (i) R(α + β + γ + δ) > 2 when |n| > π(1 + |l|),
+      and                     (ii) R(α + β + γ + δ) > 3 when |n| = π(1 + |l|).
+
+      7. Suppose now that l = 1 and n = 0; then (6.11) reduces to
+                                                  Z 1π
+                              1                          2
+                                                                (2 cos z)α+β+γ+δ−4 eiz(α−β−γ+δ) dz,
+                   πΓ(α + β − 1)Γ(γ + δ − 1)           − 12 π
+
+      which is easily evaluated by the help of (1.1). Hence
+                            Z ∞
+                                                  dx
+      (7.1)
+                             −∞ Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+                                                Γ(α + β + γ + δ − 3)
+                              =                                                    ,
+                                  Γ(α + β − 1)Γ(β + γ − 1)Γ(γ + δ − 1)Γ(δ + α − 1)
+A class of definite integrals                                                                    283
+
+
+ provided that (i) R(α + β + γ + δ) > 3, or (ii) 2(α − γ) and 2(β − δ) are odd integers and
+R(α + β + γ + δ) > 2.
+It should be noted that the formula fails when α + β + γ + δ = 3 and 2(α − γ) and 2(β − δ)
+are odd integers. The value of the integral in this case is some times 1/2π and some times
+−1/2π. The value to be selected may be fixed as follows. It is easy to see that, in this case,
+one and only one of the numbers α+ β − 1, β + γ − 1, γ + δ − 1 and δ + α− 1 will be an integer
+less than or equal to zero. If α + β − 1 or β + γ − 1 happens to be such a number, then
+the value of the integral is ±1/2π, according as 2(β − δ) ≡ ∓1 (mod 4). But if γ + δ − 1
+or δ + α − 1 happens to be such a number, the value of the integral is ±1/2π, according as
+2(β − δ) ≡ ±1 (mod 4).
+As particular cases of (7.1), we have
+                      Z ∞
+                                   1               Γ(2α + 2β − 3)
+(7.11)                                      2
+                                              dx =                 ,
+                       −∞ {Γ(α + x)Γ(β − x)}       {Γ(α + β − 1)}4
+
+provided that R(α + β) > 23 ,
+         Z ∞
+                              dx                            Γ(2α + 2β − 3)
+(7.12)                                          =                                    ,
+         0     Γ(α + x)Γ(α − x)Γ(β + x)Γ(β − x)   2Γ(2α − 1)Γ(2β − 1){Γ(α + β − 1)}2
+
+provided that (i) R(α + β) > 32 , or (ii) 2(α − β) is an odd integer and R(α + β) > 1. If
+2(α + β) = 3 and 2(α − β) is an odd integer, then the value of the integral (7.12), when
+α ≥ 1, is ±1/2π, according as 2(α − β) ≡ ±1 (mod 4), and when α < 1 it is ±1/2π,
+according as 2(α − β) ≡ ∓1 (mod 4).
+Putting α = β in (7.11) or in (7.12), we obtain
+                        Z ∞
+                                       dx             Γ(4α − 3)
+(7.13)                                          2
+                                                  =               ,
+                          0   {Γ(α + x)Γ(α − x)}    2{Γ(2α − 1)}4
+
+if R(α) > 43 . Suppose again that l = 1, n = π, and α + δ = β + γ. Then (6.11) reduces to
+                         1                  Z 1π
+                        e 2 iπ(β−α)              2
+                                                     (2 sin z)α+β−2 (2 cos z)γ+δ−2 dz.
+                πΓ(α + β − 1)Γ(γ + δ − 1)    0
+
+Hence we see that
+(7.2)
+                                                                        1
+                                                       e± 2 iπ(β−α)
+   Z ∞
+                   e±iπx dx
+                                        =                                        ,
+                                          2Γ 2 (α + β) Γ 12 (γ + δ) Γ(α + δ − 1)
+                                            1          
+    −∞ Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+
+if α + δ = β + γ and R(α + β + γ + δ) > 2. In particular
+                                                                  1
+                                                     e± 2 iπ(β−α)
+               Z ∞
+                          e±iπx
+(7.21)                               2
+                                       dx =                           2 ,
+                −∞ {Γ(α + x)Γ(β − x)}       2Γ(α + β − 1) Γ 1 (α + β)
+                                                            
+                                                                        2
+284                                                                                       Paper 27
+
+
+      if R(α + β) > 1, and
+                         Z ∞
+                                      cos πx                     1
+      (7.22)                                        dx =                    ,
+                           0    {Γ(α + x)Γ(α − x)}2      4Γ(2α − 1) {Γ(α)}2
+
+      if R(α) > 21 .
+
+      8. It follows from (6.2), (7.1), and (7.2) that, if
+                                         ∞
+                                         X                          ∞
+                                                                    X
+                                φ(z) =        c2ν z 2ν ,   ψ(z) =        c2ν+1 z 2ν+1 ,
+                                         −∞                         −∞
+
+      the series being convergent when |z| = 1, then
+
+                                         φ(eiπx )
+                       Z ∞
+      (8.1)                                                  dx
+                         −∞ Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+                                                      c0 Γ(α + β + γ + δ − 3)
+                                     =                                                    ,
+                                         Γ(α + β − 1)Γ(β + γ − 1)Γ(γ + δ − 1)Γ(δ + α − 1)
+
+      provided that (i)R(α + β + γ + δ) > 3 or (ii)R(α + β + γ + δ) > 2 and
+
+                                c2 eiπ(β+δ) + c−2 e−iπ(β+δ) = 2c0 cos π(β − δ),
+
+                                c2 e−iπ(α+γ) + c−2 eiπ(α+γ) = 2c0 cos π(α − γ);
+      and that
+                                              ψ(eiπx )
+                               Z ∞
+      (8.2)                                                        dx
+                               −∞ Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+                                                           1                   1
+                                                    c1 e 2 iπ(β−α) + c−1 e− 2 iπ(β−α)
+                                          =                                           ,
+                                              2Γ 2 (α + β) Γ 12 (γ + δ) Γ(α + δ − 1)
+                                                  1             
+
+       provided that α + δ = β + γ and R(α + β + γ + δ) > 2.
+      If α + δ − β − γ is an integer other than zero, it is possible to evaluate the integrals (7.2)
+      and (8.2) in finite terms, but not as a single term.
+      The following integrals can be evaluated as a single term, with the help of (8.1) and (8.2),
+      whenever they are convergent:
+
+                                               Γ(δ + x)einx
+                                   Z ∞
+      (8.3)                                                         dx,
+                                    −∞ Γ(α + x)Γ(β − x)Γ(γ + x)
+
+      where (i) n is an odd multiple of π, or (ii) n is an even multiple of π and α + 1 = β + γ + δ;
+                                    Z ∞
+                                           Γ(γ + x)Γ(δ ± x) inx
+      (8.4)                                                   e  dx,
+                                      −∞  Γ(α  + x)Γ(β ± x)
+A class of definite integrals                                                                    285
+
+
+where (i) n is an even multiple of π, or (ii) n is an odd multiple of π and α + δ = β + γ;
+                         Z ∞
+                               Γ(β + x)Γ(γ − x)Γ(δ + x) inx
+(8.5)                                                     e   dx,
+                           −∞           Γ(α + x)
+
+where (i) n is an odd multiple of π, or (ii) n is an even multiple of π and α + β + γ = 1 + δ;
+                      Z ∞
+(8.6)                      Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)einx dx,
+                       −∞
+
+where (i) n is an even multiple of π, or (ii) n is an odd multiple of π and α + δ = β + γ.
+Thus for instance, if δ is not real, α + 1 = β + γ + δ, and R(α + β + γ − δ) > 1, then
+          Z ∞
+                          Γ(δ + x)
+(8.31)                                       dx
+            −∞  Γ(α  + x)Γ(β  − x)Γ(γ + x)
+                                                                     1
+                                                                 πe± 2 iπ(δ−γ)
+                                                =                                        ,
+                                                    Γ(α − δ)Γ 2 (α + β) Γ 12 (γ − δ + 1)
+                                                             1              
+
+
+ according as I(δ) is positive or negative; and if γ and δ are not real and R(α+β −γ −δ) > 1,
+then
+                       Z ∞
+                              Γ(γ + x)Γ(δ + x)
+(8.41)                                           dx = 0
+                         −∞ Γ(α + x)Γ(β + x)
+                                    2iπ 2          Γ(α + β − γ − δ − 1)
+                        or ±                                                  ,
+                                sin π(γ − δ) Γ(α − γ)Γ(α − δ)Γ(β − γ)Γ(β − δ)
+
+ the zero value being taken when I(γ) and I(δ) have the same sign, the plus sign when
+I(γ) > 0 and I(δ) < 0, and the minus sign when I(γ) < 0 and I(δ) > 0.
+
+9. The following results are easily obtained with the help of (6.11). If 2(α − β) = γ − δ
+and R(α + β + γ + δ) > 3, then
+            Z ∞
+                                 e±iπx
+(9.1)                                                   dx
+              −∞ Γ(α + x)Γ(β − x)Γ(γ + 2x)Γ(δ − 2x)
+                                                 1
+                                  2α+β+γ+δ−5 e± 2 iπ(β−α) Γ 12 (α + β + γ + δ − 3)
+                                                           
+                               = √                                                 .
+                                      π Γ 12 (α + β) Γ(γ + δ − 1)Γ(2α + δ − 2)
+                                          
+
+If R(α + β) > 23 , then
+             Z ∞
+                                  cos πx
+(9.11)                                                    dx
+               0    Γ(α + x)Γ(α − x)Γ(β + 2x)Γ(β − 2x)
+                                       22α+2β−6 Γ α + β − 32
+                                                              
+                               =√                                   .
+                                    π Γ(α)Γ(2β − 1)Γ(2α + β − 2)
+If α + β + γ + δ = 4, then
+286                                                                                           Paper 27
+
+                     Z ∞
+                                   cos π(x + β + γ)
+      (9.12)                                                 dx
+                       −∞ Γ(α + x)Γ(β − x)Γ(γ + 2x)Γ(δ − 2x)
+                                                                      1
+                                               =                                           .
+                                                   2Γ(γ + δ − 1)Γ(2α + δ − 2)Γ(2β + γ − 2)
+      If 2(α − β) = γ − δ + k, where k is ±1 or ±2, then
+                  Z ∞
+                                 sin π(2x + α − β)
+      (9.2)                                              dx
+                   −∞ Γ(α + x)Γ(β − x)Γ(γ + 2x)Γ(δ − 2x)
+
+                                                                    22α−γ−3
+                                               = ±√                                       ,
+                                                         π Γ β + γ − α + 21 Γ(2α + δ − 2)
+                                                                           
+
+      provided that R(α + β + γ + δ) > 2.
+      If 3(α − β) = γ − δ + k, where k is ±1 or ±2, then
+                  Z ∞
+                                 sin π(2x + α − β)
+      (9.3)                                                 dx
+                   −∞  Γ(α  + x)Γ(β  − x)Γ(γ + 3x)Γ(δ − 3x)
+                                                        33α+δ−4 Γ(2α − β + δ − 2)
+                                               =±                                   ,
+                                                       4π Γ(γ + δ − 1)Γ(3α + δ − 3)
+      provided that (i) R(α + β + γ + δ) > 3, or (ii)β + γ − 2α is integral and R(α + β + γ + δ) > 2.
+      In (9.2) and (9.3) the plus sign or minus sign on the right-hand side is to be taken according
+      as k is positive or negative. If k is an integer other than ±1 or ±2, the integrals in (9.2)
+      and (9.3) can still be evaluated in finite terms, but in a less simple form.
+
+      10. In this connection, it may be interesting to note that, if n is an even multiple of π,
+      and α + β + γ + δ = 4, then
+
+
+                                                                       einx
+                                                   Z ∞
+      (10.1)            (α + β − 2)(β + γ − 2)                                            dx
+                                                   ξ     Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+                                      Z ξ+1
+                                                                einx
+                                  =                                                    dx
+                                       ξ      Γ(α − 1 + x)Γ(β − x)Γ(γ − 1 + x)Γ(δ − x)
+
+       for all real values of ξ. The proof of this is the same as that of (1.4).
+      Finally I may mention the formula
+                 Z ∞
+                                                                α+β+γ+δ
+      (10.2)          Jα+ξ (x)Jβ−ξ (x)Jγ+ξ (x)Jδ−ξ (x)dξ = 12 x
+                 −∞
+               ν=∞                            ν−1
+               X                      − 14 x2      {Γ(α + β + γ + δ + 2ν − 1)}2
+           ×                                                                                  ,
+                     Γ(ν)Γ(α + β + γ + δ + ν)Γ(α + β + ν)Γ(β + γ + ν)Γ(γ + δ + ν)Γ(δ + α + ν)
+               ν=1
+
+       which holds if (i) R(α + β + γ + δ) > −1, or (ii) 2(α − γ) and 2(β − δ) are odd integers
+      and R(α + β + γ + δ) > −2.
+

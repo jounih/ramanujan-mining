@@ -1,0 +1,547 @@
+               On the expression of a number in the form
+                        ax2 + by 2 + cz 2 + du2
+
+      Proceedings of the Cambridge Philosophical Society, XIX, 1917, 11 – 21
+
+
+1. It is well known that all positive integers can be expressed as the sum of four squares.
+This naturally suggests the question: For what positive integral values of a, b, c, d, can all
+positive integers be expressed in the form
+
+                                    ax2 + by 2 + cz 2 + du2 ?                              (1.1)
+
+I prove in this paper that there are only 55 sets of values of a, b, c, d for which this is true.
+The more general problem of finding all sets of values of a, b, c, d for which all integers with
+a finite number of exceptions can be expressed in the form (1.1), is much more difficult and
+interesting. I have considered only very special cases of this problem, with two variables
+instead of four; namely, the cases in which (1.1) has one of the special forms
+
+                                    a(x2 + y 2 + z 2 ) + bu2 ,                             (1.2)
+
+and
+                                   a(x2 + y 2 ) + b(z 2 + u2 ).                            (1.3)
+These two cases are comparatively easy to discuss. In this paper I give the discussion of
+(1.2) only, reserving that of (1.3) for another paper.
+
+2. Let us begin with the first problem. We can suppose, without loss of generality, that
+
+                                        a ≤ b ≤ c ≤ d.                                     (2.1)
+
+if a > 1, then 1 cannot be expressed in the form (1.1); and so
+
+                                             a=1                                           (2.2)
+
+If b > 2, then 2 is an exception; and so
+
+                                           1 ≤ b ≤ 2.                                      (2.3)
+
+We have therefore only to consider the two cases in which (1.1) has one or other of the
+forms
+                      x2 + y 2 + cz 2 + du2 , x2 + 2y 2 + cz 2 + du2 .
+In the first case, If c > 3, then 3 is an exception; and so
+
+                                           1 ≤ c ≤ 3.                                     (2.31)
+218                                                                                                  Paper 20
+
+
+      In the second case, if c > 5, then 5 is an exception; and so
+
+                                                     2 ≤ c ≤ 5.                                           (2.32)
+
+      We can now distinguish 7 possible cases.
+
+                                         (2.41)       x2 + y 2 + z 2 + du2 .
+
+      If d > 7, 7 is an exception; and so
+                                                     1 ≤ d ≤ 7.                                         (2.411)
+                                         (2.42)      x2 + y 2 + 2z 2 + du2 .
+      If d > 14, 14 is an exception; and so
+
+                                                    2 ≤ d ≤ 14.                                         (2.421)
+
+                                         (2.43)      x2 + y 2 + 3z 2 + du2 .
+      If d > 6, 6 is an exception; and so
+                                                     3 ≤ d ≤ 6.                                         (2.431)
+                                        (2.44)      x2 + 2y 2 + 2z 2 + du2 .
+      If d > 7, 7 is an exception; and so
+                                                     2 ≤ d ≤ 7.                                         (2.441)
+                                        (2.45)      x2 + 2y 2 + 3z 2 + du2 .
+      If d > 10, 10 is an exception; and so
+
+                                                    3 ≤ d ≤ 10.                                         (2.451)
+
+                                        (2.46)      x2 + 2y 2 + 4z 2 + du2 .
+      If d > 14, 14 is an exception; and so
+
+                                                    4 ≤ d ≤ 14.                                         (2.461)
+
+                                        (2.47)      x2 + 2y 2 + 5z 2 + du2 .
+      If d > 10, 10 is an exception; and so
+
+                                                    5 ≤ d ≤ 10.                                         (2.471)
+
+      We have thus eliminated all possible sets of values of a, b, c, d, except the following 55∗ :
+         ∗
+          L. E. Dickson (Bulletin of the Ameraican Math. Soc. [vol XXXIII (1927), pp. 63 – 70]) has pointed
+      out that Ramanujan has overlooked the fact that (1, 2, 5, 5) does not represent 15. Consequently, there are
+      only 54 forms.
+On the expression of a number in the form ax2 + by 2 + cz 2 + du2                                                 219
+
+
+                               1, 1, 1, 1         1, 2, 3, 5        1, 2, 4, 8
+                               1, 1, 1, 2         1, 2, 4, 5        1, 2, 5, 8
+                               1, 1, 2, 2         1, 2, 5, 5        1, 1, 2, 9
+                               1, 2, 2, 2         1, 1, 1, 6        1, 2, 3, 9
+                               1, 1, 1, 3         1, 1, 2, 6        1, 2, 4, 9
+                               1, 1, 2, 3         1, 2, 2, 6        1, 2, 5, 9
+                               1, 2, 2, 3         1, 1, 3, 6        1, 1, 2, 10
+                               1, 1, 3, 3         1, 2, 3, 6        1, 2, 3, 10
+                               1, 2, 3, 3         1, 2, 4, 6        1, 2, 4, 10
+                               1, 1, 1, 4         1, 2, 5, 6        1, 2, 5, 10
+                               1, 1, 2, 4         1, 1, 1, 7        1, 1, 2, 11
+                               1, 2, 2, 4         1, 1, 2, 7        1, 2, 4, 11
+                               1, 1, 3, 4         1, 2, 2, 7        1, 1, 2, 12
+                               1, 2, 3, 4         1, 2, 3, 7        1, 2, 4, 12
+                               1, 2, 4, 4         1, 2, 4, 7        1, 1, 2, 13
+                               1, 1, 1, 5         1, 2, 5, 7        1, 2, 4, 13
+                               1, 1, 2, 5         1, 1, 2, 8        1, 1, 2, 14
+                               1, 2, 2, 5         1, 2, 3, 8        1, 2, 4, 14
+                               1, 1, 3, 5
+
+Of these 55 forms, the 12 forms
+
+                               1, 1, 1, 2         1, 1, 2, 4        1, 2, 4, 8
+                               1, 1, 2, 2         1, 2, 2, 4        1, 1, 3, 3
+                               1, 2, 2, 2         1, 2, 4, 4        1, 2, 3, 6
+                               1, 1, 1, 4         1, 1, 2, 8        1, 2, 5, 10
+
+have been already considered by Liouville and Pepin∗ .
+
+3. I shall now prove that all integers can be expressed in each of the 55 forms. In order to
+prove this we shall consider the seven cases (2.41)–(2.47) of the previous section separately.
+We shall require the following results concerning ternary quadratic arithmetical forms.
+    ∗
+      There are a large number of short notes by Liouville in Vols. V–VIII of the second series of his Journal.
+See also Pepin, ibid., Ser.4, Vol. VI, pp.1 – 67. The object of the work of Liouville and Pepin is rather
+different from mine, viz., to determine, in a number of special cases, explicit formulæ for the number of
+representations, in terms of other arithmetical functions.
+220                                                                                                       Paper 20
+
+
+      The necessary and sufficient condition that a number cannot be expressed in the form
+
+                                                         x2 + y 2 + z 2                                         (3.1)
+
+      is that it should be of the form
+
+                                  4λ (8µ + 7), (λ = 0, 1, 2, · · · , µ = 0, 1, 2, · · ·).                     (3.11)
+
+      Similarly the necessary and sufficient conditions that a number cannot be expressed in the
+      forms
+                                             x2 + y 2 + 2z 2 ,                             (3.2)
+                                                       x2 + y 2 + 3z 2 ,                                        (3.3)
+                                                       x2 + 2y 2 + 2z 2 ,                                       (3.4)
+                                                       x2 + 2y 2 + 3z 2 ,                                       (3.5)
+                                                       x2 + 2y 2 + 4z 2 ,                                       (3.6)
+                                                       x2 + 2y 2 + 5z 2 ,                                       (3.7)
+      are that it should be of the forms
+                                                        4λ (16µ + 14),                                        (3.21)
+                                                          9λ (9µ + 6),                                        (3.31)
+                                                          4λ (8µ + 7),                                        (3.41)
+                                                        4λ (16µ + 10),                                        (3.51)
+                                                        4λ (16µ + 14),                                        (3.61)
+                                         25λ (25µ + 10) or 25λ (25µ + 15).∗                                   (3.71)
+
+
+         ∗
+          Results (3.11)–(3.71) may tempt us to suppose that there are similar simple results for the form ax2 +
+      by + cz 2 , whatever are the values of a, b, c. It appears, however, that in most cases there are no such simple
+        2
+
+      results. For instance, the numbers which are not of the form x2 + 2y 2 + 10z 2 are those belonging to one or
+      other of the four classes
+
+                              25λ (8µ + 7), 25λ (25µ + 5), 25λ (25µ + 15), 25λ (25µ + 20).
+
+      Here some of the numbers of the first class belong also to one of the next three classes.
+        Again, the even numbers which are not of the form x2 + y 2 + 10z 2 are the numbers
+
+                                                          4λ (16µ + 6),
+
+      while the odd numbers that are not of the form, viz.
+
+                             3, 7, 21, 31, 33, 43, 67, 79, 87, 133, 217, 219, 223, 253, 307, 391, · · ·
+
+      do not seem to obey any simple law.
+On the expression of a number in the form ax2 + by 2 + cz 2 + du2                                   221
+
+
+The result concerning x2 + y 2 + z 2 is due to Cauchy: for a proof see. Landau, Handbuch
+der Lehre von der Verteilung der Primzahlen, p.550. The other results can be proved in an
+analogous manner. The form x2 + y 2 + 2z 2 has been considered by Lebesgue, and the form
+x2 + y 2 + 3z 2 by Dirichlet. For references see Bachmann, Zahlentheorie, Vol,IV, p.149.
+
+4. We proceed to consider the seven cases (2.41)–(2.47). In the first case we have to shew
+that any number N can be expressed in the form
+
+                                       N = x2 + y 2 + z 2 + du2 ,                          (4.1)
+
+d being any integer between 1 and 7 inclusive.
+If N is not of the form 4λ (8µ + 7), we can satisfy (4.1) with u = 0. We may therefore
+suppose that N = 4λ (8µ + 7).
+First, suppose that d has one of the values 1,2,4,5,6. Take u = 2λ . Then the number
+
+                                      N − du2 = 4λ (8µ + 7 − d)
+
+is plainly not of the form 4λ (8µ + 7), and is therefore expressible in the form x2 + y 2 + z 2 .
+Next, let d = 3. If µ = 0, take u = 2λ . Then
+
+                                            N − du2 = 4λ+1 .
+
+If µ ≥ 1, take u = 2λ+1 . Then
+
+                                        N − du2 = 4λ (8µ − 5).
+  I have succeeded in finding a law in the following six simple cases:
+
+                                               x2 + y 2 + 4z 2 ,
+
+                                               x2 + y 2 + 5z 2 ,
+                                               x2 + y 2 + 6z 2 ,
+                                               x2 + y 2 + 8z 2 ,
+                                              x2 + 2y 2 + 6z 2 ,
+                                              x2 + 2y 2 + 8z 2 .
+The numbers which are not of these forms are the numbers
+
+                                               4λ (8µ + 7) or 8µ + 3,
+                                                           4λ (8µ + 3),
+                                                           9λ (9µ + 3),
+                                  4λ (16µ + 14), 16µ + 6, or 4µ + 3,
+                                                           4λ (8µ + 5),
+                                               4λ (8µ + 7) or 8µ + 5.
+222                                                                                            Paper 20
+
+
+      In neither of these cases is N − du2 of the form 4λ (8µ + 7), and therefore in either case it
+      can be expressed in the form x2 + y 2 + z 2 .
+      Finally, let d = 7. If µ is equal to 0,1, or 2, take u = 2λ . Then N − du2 is equal to 0, 2 · 4λ+1 ,
+      or 4λ+2 . If µ ≥ 3, take u = 2λ+1 . Then
+
+                                          N − du2 = 4λ (8µ − 21).
+
+      Therefore in either case N − du2 can be expressed in the form x2 + y 2 + z 2 .
+      Thus in all cases N is expressible in the form (4.1). Similarly we can dispose of the
+      remaining cases, with the help of the results stated in § 3. Thus in discussing (2.42) we use
+      the theorem that every number not of the form (3.21) can be expressed in the form (3.2).
+      The proofs differ only in detail, and it is not worth while to state them at length.
+
+      5. We have seen that all integers without any exception can be expressed in the form
+
+                                           m(x2 + y 2 + z 2 ) + nu2 ,                               (5.1)
+
+      when
+                                             m = 1, 1 ≤ n ≤ 7,
+      and
+                                               m = 2, n = 1.
+      We shall now consider the values of m and n for which all integers with a finite number of
+      exceptions can be expressed in the form (5.1).
+      In the first place m must be 1 or 2. For, if m > 2, we can choose an integer ν so that
+
+                                              nu2 6≡ ν(mod m)
+
+      for all values of u. Then
+                                           (mµ + ν) − nu2
+                                                            ,
+                                                  m
+      where µ is any positive integer, is not an integer; and so mµ + ν can certainly not be
+      expressed in the form (5.1).
+      We have therefore only to consider the two cases in which m is 1 or 2. First let us consider
+      the form
+                                         x2 + y 2 + z 2 + nu2 .                              (5.2)
+      I shall shew that, when n has any of the values
+
+                                          1, 4, 9, 17, 25, 36, 68, 100,                            (5.21)
+
+      or is of any of the forms
+
+                                4k + 2, 4k + 3, 8k + 5, 16k + 12, 32k + 20,                        (5.22)
+On the expression of a number in the form ax2 + by 2 + cz 2 + du2                                 223
+
+
+then all integers save a finite number, and in fact all integers from 4n onwards at any rate,
+can be expressed in the form (5.2); but that for the remaining values of n there is an infinity
+of integers which cannot be expressed in the form required.
+In proving the first result we need obviously only consider numbers of the form 4λ (8µ + 7)
+greater than n, since otherwise we may take u = 0. The numbers of this form less than n
+are plainly among the exceptions.
+
+6. I shall consider the various cases which may arise in order of simplicity.
+
+                                   (6.1)      n ≡ 0(mod 8).
+
+There are an infinity of exceptions. For suppose that
+
+                                           N = 8µ + 7.
+
+Then the number
+                                     N − nu2 ≡ 7(mod 8)
+cannot be expressed in the form x2 + y 2 + z 2 .
+
+                                   (6.2)      n ≡ 2(mod 4).
+
+There is only a finite number of exceptions. In proving this we may suppose that N =
+4λ (8µ + 7). Take u = 1. Then the number
+
+                                  N − nu2 = 4λ (8µ + 7) − n
+
+is congruent to 1, 2, 5 or 6 to modulus 8, and so can be expressed in the form x2 + y 2 + z 2 .
+Hence the only numbers which cannot be expressed in the form (5.2) in this case are the
+numbers of the form 4λ (8µ + 7) not exceeding n.
+
+                                   (6.3)      n ≡ 5(mod 8).
+
+There is only a finite number of exceptions. We may suppose again that N = 4λ (8µ + 7).
+First, let λ 6= 1. Take u = 1. Then
+
+                        N − nu2 = 4λ (8µ + 7) − n ≡ 2 or 3(mod 8).
+
+If λ = 1 we cannot take u = 1, since
+
+                                      N − n ≡ 7(mod 8);
+
+so we take u = 2. Then
+
+                          N − nu2 = 4λ (8µ + 7) − 4n ≡ 8(mod 32).
+
+In either of these cases N − nu2 is of the form x2 + y 2 + z 2 .
+224                                                                                       Paper 20
+
+
+      Hence the only numbers which cannot be expressed in the form (5.2) are those of the form
+      4λ (8µ + 7) not exceeding n, and those of the form 4(8µ + 7) lying between n and 4n.
+
+                                           (6.4)      n ≡ 3(mod 4).
+
+      There is only a finite number of exceptions. Take
+
+                                               N = 4λ (8µ + 7).
+
+      if λ ≥ 1, take u = 1. Then
+                                         N − nu2 ≡ 1 or 5(mod 8).
+      if λ = 0, take u = 2. Then
+                                            N − nu2 ≡ 3(mod 8).
+      In either case the proof is completed as before.
+      In order to determine precisely which are the exceptional numbers, we must consider more
+      particularly the numbers between n and 4n for which λ = 0. For these u must be 1, and
+
+                                            N − nu2 ≡ 0(mod 4).
+
+      But the numbers which are multiples of 4 and which cannot be expressed in the form
+      x2 + y 2 + z 2 are the numbers
+
+                             4κ (8ν + 7), (κ = 1, 2, 3, . . . , ν = 0, 1, 2, 3, . . .).
+
+      The exceptions required are therefore those of the numbers
+
+                                                n + 4κ (8ν + 7)                              (6.41)
+
+      which lie between n and 4n and are of the form
+
+                                                     8µ + 7                                  (6.42).
+
+      Now in order that (6.41) may be of the form (6.42), κ must be 1 if n is of the form 8k + 3,
+      and κ may have any of the values 2, 3, 4, . . . if n is of the form 8k + 7. Thus the only
+      numbers which cannot be expressed in the form (5.2), in this case, are those of the form
+      4λ (8µ + 7) less than n and those of the form
+
+                                   n + 4κ (8ν + 7),      (ν = 0, 1, 2, 3, · · ·),
+
+      lying between n and 4n, where κ = 1 if n is of the form 8k + 3, and κ > 1 if n is of the
+      form 8k + 7.
+                                     (6.5)    n ≡ 1(mod 8).
+      In this case we have to prove that
+      (i) if n ≥ 33, there is an infinity of integers which cannot be expressed in the form (5.2);
+On the expression of a number in the form ax2 + by 2 + cz 2 + du2                                  225
+
+
+(ii) if n is 1, 9, 17, or 25, there is only a finite number of exceptions.
+In order to prove (i) suppose that N = 7.4λ . Then obviously u cannot be zero. But if u is
+not zero u2 is always of the form 4κ (8ν + 1). Hence
+
+                              N − nu2 = 7 · 4λ − n · 4κ (8ν + 1).
+
+Since n ≥ 33, λ must be greater than or equal to κ + 2, to ensure that the right-hand side
+shall not be negative. Hence
+                                 N − nu2 = 4κ (8k + 7),
+where
+                                                     1
+                             k = 14 · 4λ−κ−2 − nν − (n + 7)
+                                                     8
+is an integer; and so N − nu is not of the form x + y 2 + z 2 .
+                            2                     2
+
+In order to prove (ii) we may suppose, as usual, that
+
+                                       N = 4λ (8µ + 7).
+
+If λ = 0, take u = 1. Then
+
+                            N − nu2 = 8µ + 7 − n ≡ 6 (mod 8).
+
+If λ ≥ 1, take u = 2λ−1 . Then
+
+                                  N − nu2 = 4λ−1 (8k + 3),
+
+where
+                                                  1
+                                 k = 4(µ + 1) − (n + 7).
+                                                  8
+In either case the proof may be completed as before. Thus the only numbers which cannot
+be expressed in the form (5.2), in this case, are those of the form 8µ + 7 not exceeding n.
+In other words, there is no exception when n = 1; 7 is the only exception when n = 9; 7
+and 15 are the only exceptions when n = 17; 7, 15 and 23 are the only exceptions when
+n = 25.
+                                 (6.6)     n ≡ 4(mod 32).
+By arguments similar to those used in (6.5), we can shew that
+(i) if n ≥ 132, there is an infinity of integers which cannot be expressed in the form (5.2);
+(ii) if n is equal to 4, 36, 68, or 100, there is only a finite number of exceptions, namely the
+numbers of the form 4λ (8µ + 7) not exceeding n.
+
+                                  (6.7)     n ≡ 20(mod 32).
+
+By arguments similar to those used in (6.3), we can shew that the only numbers which
+cannot be expressed in the form (5.2) are those of the form 4λ (8µ + 7) not exceeding n, and
+those of the form 42 (8µ + 7) lying between n and 4n.
+
+                                  (6.8)     n ≡ 12(mod 16).
+226                                                                                      Paper 20
+
+
+      By arguments similar to those used in (6.4), we can shew that the only numbers which
+      cannot be expressed in the form (5.2) are those of the form 4λ (8µ + 7) less than n, and
+      those of the form
+                                n + 4κ (8ν + 7), (ν = 0, 1, 2, 3, . . .),
+
+      lying between n and 4n where κ = 2 if n is of the form 4(8k + 3) and κ > 2 if n is of the
+      form 4(8k + 7).
+      We have thus completed the discussion of the form (5.2), and determined the exceptional
+      values of N precisely whenever they are finite in number.
+
+      7. We shall proceed to consider the form
+
+                                         2(x2 + y 2 + z 2 ) + nu2 .                           (7.1)
+
+      In the first place n must be odd; otherwise the odd numbers cannot be expressed in this
+      form. Suppose then that n is odd. I shall shew that all integers save a finite number can
+      be expressed in the form (7.1); and that the numbers which cannot be so expressed are
+      (i) the odd numbers less than n,
+      (ii) the numbers of the form 4λ (16µ + 14) less that 4n,
+      (iii) the numbers of the form n + 4λ (16µ + 14) greater than n less than 9n,
+      (iv) the numbers of the form
+
+                               cn + 4κ (16ν + 14),      (ν = 0, 1, 2, 3, . . .),
+
+      greater than 9n and less than 25n, where c = 1 if n ≡ 1 (mod 4), c = 9 if n ≡ 3 (mod 4),
+      κ = 2 if n2 ≡ 1 (mod 16), and κ > 2 if n2 ≡ 9 (mod 16).
+      First, let us suppose N even. Then, since n is odd and N is even, it is clear that u must
+      be even. Suppose then that
+                                         u = 2v, N = 2M.
+
+      We have to shew that M can be expressed in the form
+
+                                          x2 + y 2 + z 2 + 2nv 2 .                            (7.2)
+
+      Since 2n ≡ 2 (mod 4), it follows from (6.2) that all integers except those which are less
+      than 2n and of the form 4λ (8µ + 7) can be expressed in the form (7.2). Hence the only even
+      integers which cannot be expressed in the form (7.1) are those of the form 4λ (16µ + 14) less
+      than 4n.
+      This completes the discussion of the case in which N is even. If N is odd the discussion
+      is more difficult. In the first place, all odd numbers less than n are plainly among the
+      exceptions. Secondly, since n and N are both odd, u must also be odd. We can therefore
+      suppose that
+                                      N = n + 2M, u2 = 1 + 8∆,
+On the expression of a number in the form ax2 + by 2 + cz 2 + du2                                  227
+
+
+where ∆ is an integer of the form 12 k(k + 1), so that ∆ may assume the values 0, 1, 3, 6,
+. . . And we have to consider whether n + 2M can be expressed in the form
+
+                                2(x2 + y 2 + z 2 ) + n(1 + 8∆),
+
+or M in the form
+                                     x2 + y 2 + z 2 + 4n∆.                                 (7.3)
+If M is not of the form 4λ (8µ + 7), we can take ∆ = 0. If it is of this form, and less than
+4n, it is plainly an exception. These numbers give rise to the exceptions specified in (iii) of
+section 7. We may therefore suppose that M is of the form 4λ (8µ + 7) and greater than 4n.
+
+8. In order to complete the discussion, we must consider the three cases in which n ≡ 1
+(mod 8), n ≡ 5 (mod 8), and n ≡ 3          (mod 4) separately.
+
+                                     (8.1) n ≡ 1 mod 8).
+
+If λ is equal to 0,1, or 2, take ∆ = 1. Then
+
+                                M − 4n∆ = 4λ (8µ + 7) − 4n
+
+is of one of the forms
+                                8ν + 3, 4(8ν + 3), 4(8ν + 6).
+If λ ≥ 3 we cannot take ∆ = 1, since M − 4n∆ assumes the form 4(8ν + 7); so we take
+∆ = 3. Then
+                           M − 4n = ∆4λ (8µ + 7) − 12n
+is of the form 4(8ν + 5). In either of these cases M − 4n∆ is of the form x2 + y 2 + z 2 . Hence
+the only values of M , other than those already specified which cannot be expressed in the
+form (7.3), are those of the form
+
+                            4κ (8ν + 7),     (ν = 0, 1, 2, . . . , κ > 2),
+
+lying between 4n and 12n. In other words, the only numbers greater than 9n which cannot
+be expressed in the form (7.1), in this case, are the numbers of the form
+
+                          n + 4κ (8ν + 7),     (ν = 0, 1, 2, . . . , κ > 2),
+
+lying between 9n and 25n.
+                                     (8.2) n ≡ 5 mod 8).
+if λ 6= 2, take ∆ = 1. Then
+
+                                M − 4n∆ = 4λ (8µ + 7) − 4n
+
+is of one of the forms
+                                8ν + 3, 4(8ν + 2), 4(8ν + 3).
+228                                                                                        Paper 20
+
+
+      If λ = 2, we cannot take ∆ = 1, since M − 4n∆ assumes the form 4(8ν + 7); so we take
+      ∆ = 3. Then
+                                  M − 4n∆ = 4λ (8µ + 7) − 12n
+      is of the form 4(8ν + 5). In either of these cases M − 4n∆ is of the form x2 + y 2 + z 2 . Hence
+      the only values of M , other than those already specified, which cannot be expressed in the
+      form (7.3), are those of the form 16(8µ + 7) lying between 4n and 12n. In other words, the
+      only numbers greater than 9n which cannot be expressed in the form (7.1), in this case, are
+      the numbers of the form n + 42 (16µ + 14) lying between 9n and 25n.
+                                             (8.3) n ≡ 3 (mod 4).
+      If λ 6= 1, take ∆ = 1. Then
+                                        M − 4n∆ = 4λ (8µ + 7) − 4n
+      is of one of the forms
+                                              8ν + 3, 4(4ν + 1).
+      If λ = 1, take ∆ = 3. Then
+                                        M − 4n∆ = 4(8µ + 7) − 12n
+      is of the form 4(4ν + 2). In either of these cases M − 4n∆ is of the form x2 + y 2 + z 2 .
+      This completes the proof that there is only a finite number of exceptions. In order to
+      determine what they are in this case, we have to consider the values of M , between 4n and
+      12n, for which ∆ = 1 and
+                                 M − 4n∆ = 4(8µ + 7 − n) ≡ 0 mod 16).
+      But the numbers which are multiples of 16 and which cannot be expressed in the form
+      x2 + y 2 + z 2 are the numbers
+                               4κ (8ν + 7), (κ = 2, 3, 4, . . . , ν = 0, 1, 2, . . .).
+      The exceptional values of M required are therefore those of the numbers
+                                                4n + 4κ (8ν + 7)                               (8.31)
+      which lie between 4n and 12n and are of the form
+                                                    4(8µ + 7).                                 (8.32)
+      But in order that (8.31) may be of the form (8.32), κ must be 2 if n is of the form 8k + 3,
+      and κ may have any of the values 3, 4, 5, . . . if n is of the form 8k + 7. It follows that the
+      only numbers greater than 9n which cannot be expressed in the form (7.1), in this case, are
+      the numbers of the form
+                                   9n + 4κ (16ν + 14),       (ν = 0, 1, 2, . . .),
+      lying between 9n and 25n, where κ = 2 if n is of the form 8k + 3, and κ > 2 if n is of the
+      form 8k + 7.
+      This completes the proof of the results stated in section 7.
+

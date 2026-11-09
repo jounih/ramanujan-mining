@@ -1,0 +1,102 @@
+                                Some definite integrals
+
+            Proceedings of the London Mathematical Society, 2, XVII, 1918,
+                               Records for 17 Jan. 1918
+
+Typical formulæ are:
+                 Z∞
+                           enix dx       (2 cos 12 n)α+β−2 1 n(β−α)i
+                                       =                  e2         (or 0),             (1)
+                      Γ(α + x)Γ(β − x)    Γ(α + β − 1)
+                −∞
+
+
+
+       Z∞
+            Γ(α + x) nix      2πi(2 sin 21 N )β−α−1 −nαi+ 1 (π−N )(β−α−1)i
+                     e dx = ±                      e      2                (or 0),       (2)
+            Γ(β + x)               Γ(β − α)
+       −∞
+
+
+
+                                                      Z∞
+                                                           Γ(α + x)Γ(β − x)enix dx
+                                                     −∞
+
+                 2πiΓ(α + β) 1 n(β−α)i   h
+                                               kπ(α+β)i            −kπ(α+β)i
+                                                                             i
+            =                    e 2   ǫ n (β)e         − ǫ n (−α)e            .         (3)
+                (2 sin 12 N )α+β
+
+Here n is real, n = 2kπ + N (0 ≤ N < 2π) in (2), and n = (2k − 1)π + N (0 ≤ N < 2π)
+in (3). In (1) the zero value is to be taken if |n| ≥ π, the non-zero value otherwise. In (2)
+α must be complex: the zero value is to be taken if n and I(α) have the same sign, the
+positive sign if n ≥ 0 and I(α) < 0, and the negative sign if n ≤ 0 and I(α) > 0. In (3) α
+and β must both be complex; and ǫn (ζ) is 0,1, or −1 according as (i) π − n and J(ζ) have
+the same sign, (ii) n ≤ π and I(ζ) < 0, (iii) n ≥ π and I(ζ) > 0.
+The convergence conditions are, in general,
+                  (1) R(α + β) > 1, (2) R(α − β) < 0, (3)R(α + β) < 1.
+But there are certain special cases in which a more stringent condition is required.
+A formula of a different character, deduced from (1), is
+
+                      Z∞                                                ! 1 (α+β)
+                           Jα+x (λ) Jβ−x (µ) nix           2 cos 21 n     2
+
+                                            e dx =
+                            λα+x     µβ−x                     Ω
+                      −∞
+                                                    q
+                                    1
+                                  e 2 n(β−α)i Jα+β { (2Ω cos 21 n)} (or 0).
+
+Here
+                                               1             1
+                                     Ω = λ2 e 2 ni + µ2 e− 2 ni ;
+256                                                                                             Paper 22
+
+
+      the zero value is to be taken if |n|+ ≥ π, the non-zero value otherwise; and the condition
+      of convergence is, in general, that
+
+                                                     R(α + β) > −1.
+
+      The formulæ include a large number of interesting special cases, such as
+                                              Z∞
+                                                          dx                    2α+β−2
+                                                                          =                ,
+                                                   Γ(α + x)Γ(β − x)           Γ(α + β − 1)
+                                            −∞
+                            Z∞
+                                               sin πxdx                             22k−1 π
+                                                                          = (−1)k           ,
+                                 x(x2 − 12 )(x2 − 22 ) · · · (x2 − k2 )              (2k)!
+                            0
+                                             Z∞
+                                                   Jα+x (λ)Jβ−x (λ)dx = Jα+β (2λ).
+                                            −∞
+
+      The formula
+                                              Z∞
+                                                                  dx
+                                                   Γ(α + x)Γ(β − x)Γ(γ + x)Γ(δ − x)
+                                             −∞
+
+                                              Γ(α + β + γ + δ − 3)
+                          =                                                      ,
+                                Γ(α + β − 1)Γ(β + γ − 1)Γ(γ + δ − 1)Γ(δ + α − 1)
+
+      may also be mentioned : it holds, in general, if
+
+                                                  R(α + β + γ + δ) > 3.
+
+      A fuller account of these formulæ will be published in the Quarterly Journal of Mathemat-
+      ics∗
+
+
+
+
+        ∗
+            [See No.27 of this volume]
+
